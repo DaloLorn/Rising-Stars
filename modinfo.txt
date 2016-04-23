@@ -1,0 +1,41 @@
+	Name: Alternate Balance Expansion Mod
+	Description: <<
+		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay.
+		
+		[b][h1]Current version: 0.4.1[/h1][/b]	
+		[b][h1]As of version 0.4.0, ABEM currently features the following:[/h1][/b][list]
+			[*]Four new lifestyles with various pros and cons[list]
+				[*]Berserkers, exemplified by the warlike Rahta race[list]
+					[*][i]Be the finest warriors in the galaxy, but be wary of galactic peace, for your internal strife will cripple you[/i][/list]
+				[*]Pacifists, such as the telepathic Fasshi[list]
+					[*][i]Peace is a means and a purpose to your people, but war disturbs them greatly[/i][/list]
+				[*]Progenitors, represented by the ancient, recently reawakened Ulthaar[list]
+					[*][i]Rebuild your broken civilization and awaken the Remnants to reclaim your heritage[/i][/list]
+				[*]Ringworlders, the first 'Vanguard' race, exemplified by the hedonistic Bluuhbi[list]
+					[*][i]Reassert your dominance over the Vanguard and gain the favor of the Overlords by ensuring their conquest of this galaxy[/i][/list]
+			[/list]
+			[*]A revamped tech grid with over a dozen new techs, such as infinite progression upgrades for Factory/Mothership Labor production and level 2+ planet population capacity, unlocks for most of the other new stuff, and a specialization system allowing you to choose between improving your flagships, your support ships, or maintaining a balance between the two
+			[*]More than two dozen new subsystems, including Nanite Armor, Superlasers, Recall Devices, Engineering Bays, Miner Hulls and Orbital Thrusters
+			[*]Several new orbitals - Stellar Shield Generators, Advanced Solar Engines, and Nylli variants of various ABEM and vanilla SR2 structures
+			[*]Nearly a dozen new buildings, including Power Plants, Command Centers, Intelligence Facilities, Slave Barracks and a revamped version of the Ancient Planetary Defense known as the Ancient Gravitational Collapser
+			[*]Increased control over the way the game plays, with settings such as the Global Sensor Multiplier, First Contact Mode, Research Effectiveness Decay, and more being changeable during game configuration
+			[*]New gameplay mechanics:[list]
+				[*]Derelicts - [i]flagships not using Sinew now have a chance of being disabled rather than destroyed when they lose all their Control, depending on how badly damaged they are[/i]
+				[*]Boarding - [i]flagships with the right subsystem can send a boarding party against non-Verdant asteroids, orbitals or flagships, possibly taking control of vital assets instead of destroying them[/i]
+				[*]Stellar phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
+				[*]A new victory condition accessible to 'Vanguard' races - [i]build a few Portal Stabilizers to summon an insurmountable alien armada and render any resistance completely ineffective[/i]
+				[*]Sensors - [i]place sensor arrays on your starships to improve their poor sight range, and target your enemy's sensors to blind them[/i]
+				[*]Several other things
+			[/list]
+		[/list]
+		
+		Full patch notes for versions 0.040 or later can be found in the forums.
+
+		[h1][b]Links[/b][/h1]
+		[b]ABEM on GitHub:[/b] https://github.com/Alarcarr/ABEMMOD
+		[b]ABEM on ModDB:[/b] http://moddb.com/mods/alternate-balance-expansion-mod
+		[b]ABEM's experimental branch:[/b] http://steamcommunity.com/sharedfiles/filedetails/?id=445360327
+		[b]ABEM forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/355873534
+		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/619574421213069797/
+		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
+	>>
