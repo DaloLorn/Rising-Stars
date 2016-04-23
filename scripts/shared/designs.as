@@ -245,7 +245,7 @@ void getDesignMesh(Empire@ owner, const Design& design, MeshDesc& mesh) {
 		@mesh.model = skin.model;
 		@mesh.material = skin.material;
 	}
-	else if(design.hasTag(ST_Gate) && design.hasTag(ST_Station)) {
+	else if(design.hasTag(ST_Gate) && design.hasTag(ST_Station) && !design.hasTag(ST_GateHull)) {
 		@mesh.model = model::Warpgate;
 		@mesh.material = material::VolkurGenericPBR;
 	}
