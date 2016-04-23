@@ -8,6 +8,7 @@ import elements.GuiSprite;
 import elements.GuiPanel;
 import dialogs.MessageDialog;
 import version;
+import ABEM_version;
 from gui import animate_speed, animate_time, animate_remove;
 
 enum MenuAnimation {
@@ -61,10 +62,17 @@ string latestSave;
 
 void init() {
 	//Show the version
-	@version = GuiText(null, Alignment(Right-200, Bottom-20, Right-4, Bottom));
+	@version = GuiText(null, Alignment(Right-1000, Bottom-20, Right-4, Bottom));
 	version.horizAlign = 1.0;
-	version.text = format("Version: $1 ($2)", GAME_VERSION, SCRIPT_VERSION);
+	version.text = "Mod: " + MOD_VERSION;
 	version.color = Color(0xaaaaaaaa);
+	// Check if mod is compatible with current game version, spew out alarming colors and errors if not
+	//if(!MOD_SUPPORTS_VERSION) {
+	if(!checkSupported()) {
+		version.color = Color(0xff0000ff);
+		//version.text += "(UNSUPPORTED VERSION)";
+		version.text = version.text + " (UNSUPPORTED VERSION)";
+	}
 
 	//Create container
 	@menu_container = MenuContainer();
@@ -125,6 +133,15 @@ void init() {
 		logo.load("data/images/heralds_logo.png");
 	else
 		logo.load("data/images/sr_logo.png");
+	
+	if(!checkDOF()) {
+		/*if(STEAM_EQUIV_BUILD) {
+			message(locale::DOF_MISSING_STEAM);
+		}
+		else {
+			message(locale::DOF_MISSING_OTHER);
+		}*/
+	}
 }
 
 void tick(double time) {

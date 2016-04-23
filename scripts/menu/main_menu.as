@@ -1,5 +1,6 @@
 import menus;
 import settings.game_settings;
+import util.engine_options;
 from new_game import showNewGame;
 from multiplayer_menu import showMultiplayer;
 from irc_window import openIRC, closeIRC, LinkableMarkupText;
@@ -340,4 +341,10 @@ void init() {
 	@main_menu = menu;
 	showDescBox(menu.news);
 	switchToMenu(menu);
+	if(!IRC.running && settings::bAutoEnableIRC) {
+		IRC.nickname = settings::sNickname;
+		IRC.connect();
+		openIRC();
+		menu.refresh();
+	}
 }

@@ -1,4 +1,4 @@
-import elements.BaseGuiElement;
+﻿import elements.BaseGuiElement;
 import elements.GuiDraggable;
 import elements.GuiPanel;
 import elements.GuiTextbox;
@@ -11,6 +11,8 @@ import elements.MarkupTooltip;
 import dialogs.InputDialog;
 import version;
 #include "dialogs/include/UniqueDialogs.as"
+#priority init 100
+#priority draw 200
 
 #section gui
 from tabs.WikiTab import showWikiPage, openGeneralLink;
@@ -105,14 +107,16 @@ void updateHighlights(IRCChannel@ chan, const string& myNick) {
 				}
 				else {
 					string msg = chan.messages[i];
-					highlight = msg.contains_nocase(myNick);
+					highlight = msg.contains_nocase(myNick) || msg.contains_nocase("%everyone%");
 				}
 
 				if(highlight) {
 					sound::notify.play(priority=true);
 
-					if(window is null || !window.visible)
+					if(window is null || !window.visible) {
 						ircButton.flash();
+						sound::order_complete.play(priority=true);
+					}
 					if(window is null || window.activeChannel !is chan)
 						chan.highlight = true;
 				}
@@ -586,6 +590,7 @@ class IRCWindow : GuiDraggable {
 
 		if(IRC.channelCount == 0) {
 			IRC.join("#starruler");
+			IRC.join("#abem");
 			return;
 		}
 
