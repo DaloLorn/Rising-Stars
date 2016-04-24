@@ -39,3 +39,5 @@
 		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/619574421213069797/
 		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
 	>>
+	Compatibility: 200
+	Derives From: DOF-Shipset-Common Library v1.000
