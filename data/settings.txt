@@ -19,6 +19,8 @@ Category: Game
 		Default: False
 	Bool: bHoldForPopup
 		Default: False
+	Bool: bAutoEnableIRC
+		Default: True
 	Bool: bRotateUIObjects
 		Default: True
 	Bool: bMenuBGScreenshot
@@ -42,6 +44,10 @@ Category: Audio
 		Default: 0.6
 		Min: 0.0
 		Max: 3.0
+	Bool: bEnableMTE
+		Default: False
+	Bool: bLoopTheme
+		Default: True
 Category: Graphics
 	Bool: bShowGalaxyGas
 		Default: True
