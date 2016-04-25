@@ -88,7 +88,7 @@ void tick(double time) {
 				if(restartDelay <= 0.0) {
 					restartDelay = 5.0;
 					
-					if(!settings::bEnableMTE) {}
+					if(!settings::bEnableMTE) {
 						playDefaultTheme();
 					}
 					else {
