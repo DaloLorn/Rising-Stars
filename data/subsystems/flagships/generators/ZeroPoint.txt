@@ -10,7 +10,7 @@ Subsystem: ZeroPoint
 	
 	
 	Size := HexSize * Hexes
-	Power := max(85 * Size,(60*log((Size/70)^2)+128)*Size)//Minimum power is now the AM gen Assert no longer need
+	Power := max(40 * Size,(60*log((Size/70)^2)+128)*Size)//Minimum power is now the AM gen Assert no longer need
 	EnergyCapacity := 0.25 * Power
 	SupplyCapacity := Size * 1200
 	SupplyRate := Size * 70

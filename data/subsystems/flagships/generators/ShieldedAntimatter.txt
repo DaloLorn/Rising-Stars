@@ -17,9 +17,9 @@ Subsystem: ShieldedAntimatter
 	Hex.HP := 25 * HexSize
 	Hex.Mass := 4 * HexSize
 
-	Hex.LaborCost := HexSize + 2
-	Hex.BuildCost := 20 * HexSize + 4
-	Hex.MaintainCost := 5*HexSize+5
+	Hex.LaborCost := 0.8*HexSize + 3
+	Hex.BuildCost := 25 * HexSize + 4
+	Hex.MaintainCost := 2*HexSize+1
 
 	Hook: ResupplyFlagship(CombatSupplyRate, In Combat = True)
 	Provides:
