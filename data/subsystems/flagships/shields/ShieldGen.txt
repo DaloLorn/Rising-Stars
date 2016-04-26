@@ -28,5 +28,5 @@ Subsystem: ShieldGen
 		Power = PowerUse
 	
 	Module: Core
-		Sprite: FissionReactor
+		Sprite: ShieldGen
 		Hex.BuildCost := 2 * Hex.BuildCost

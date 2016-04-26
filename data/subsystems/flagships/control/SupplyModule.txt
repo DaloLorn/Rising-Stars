@@ -5,7 +5,7 @@ Subsystem: SupplyModule
 	BaseColor: #2fd6b3
 	Elevation: 3
 	
-	Tags: DefaultUnlock, NonContiguous, NoCore, HasInternals, Category:Control
+	Tags: DefaultUnlock, NonContiguous, NoCore, HasInternals, Category:Power
 	Tags: Compressible
 	Hull: Flagship, Station
 	
@@ -31,4 +31,4 @@ Subsystem: SupplyModule
 		LeakPctPerSec = 1 / 60
 	
 	Module: Default
-		Sprite: SupplyStorage
+		Sprite: ABEMSupply

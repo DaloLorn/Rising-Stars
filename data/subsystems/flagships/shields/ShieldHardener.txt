@@ -36,5 +36,5 @@ Subsystem: ShieldHardener
 		Message: #ERROR_ONLY_ONE
 	
 	Module: Core
-		Sprite: FissionReactor
+		Sprite: ShieldHardener
 		Hex.BuildCost := 2 * Hex.BuildCost

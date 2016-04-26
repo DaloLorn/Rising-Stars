@@ -27,4 +27,4 @@ Subsystem: CargoStorage
 		CargoStorage := CargoStorage + Base::CargoStorage * (Amount / Hexes)
 
 	Module: Default
-		Sprite: SupplyStorage * #91692c
+		Sprite: CargoStorage

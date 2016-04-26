@@ -42,7 +42,7 @@ Subsystem: AICore
 		Sprite: HexagonSubsystems::4 * #ffa4a0
 	
 	Module: Core
-		Sprite: ComputerCore
+		Sprite: ABEMComputer
 		Hex.HP := 4 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost
