@@ -1,3 +1,14 @@
+// *********************************************************
+// **************SUBSYSTEM CATEGORIES HERE!*****************
+// *********************************************************
+
+SC_Armor:[hspace=4/][img=PlateArmor;32x32/][hspace=6/]  [color=#6e7371]Armor[/color]
+SC_Power:[hspace=4/][img=DesignationIcons::2;32x32/][hspace=6/]  [color=#6e7371]Power and Supply[/color]
+SC_Manufacturing:[hspace=4/][img=ResourceIcon::6;32x32/][hspace=6/]  [color=#6e7371]Manufacturing[/color]
+SC_Shields:[hspace=4/][img=TechIcons::6;32x32/][hspace=6/]  [color=#0A50F5]Shields[/color]
+SC_Sensors:[hspace=4/][img=TechIcons::1;32x32/][hspace=6/] [color=#9ed6ff]Sensors[/color]
+
+
 TARGETINGSENSOR_DESC: <<
 	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
 
@@ -39,6 +50,33 @@ S_DESTROYER_HULL_DESC: <<
 	[img=Minus]Weapon range reduced by 30%.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Destroyer Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
+// *********************************************************
+// ******************SUBSYSTEMS HERE!***********************
+// *********************************************************
+S_ZPG: Singularity Core
+S_SHIELDED_AMGEN: Shielded Antimatter Generator
+
+>>
+S_SHIELDED_AMGEN_DESC: <<
+	A sustained matter-antimatter annihilation reaction provides continuous power for the ship. This generator comes with a built-in shield generator to protect it, allowing it to operate at full output - though much of it is used by the shield - even in combat.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]very large[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color] [color=#fefc61]Resupply Rate[/color][/b]. Minor resupply even in [color=#ff0000][b]Combat[/b][/color].[/img]
+	[img=Plus]No maintenance cost.[/img]
+	[img=Minus]High construction cost.[/img]
+	[img=Minus]Provides less power and resupplies the ship slower than a regular antimatter generator.[/img]
+>>
+
+
+>>
+S_ZPG_DESC: <<
+	An artificial quantum singularity harnessed to provide immense quantities of power.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]huge[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color][/b] [b][color=#fefc61]Resupply Rate[/color][/b], somewhat lower than that of Antimatter Generators.[/img]
+	[img=Plus]No maintenance cost.[/img]
+	[img=Minus]Very high construction and Labor costs.[/img]
+	>>
 
 S_TORPEDOLAUNCHER_DESC: <<
 	Launches massive, slow-moving, guided bombs. These bombs explode in an area around their target.

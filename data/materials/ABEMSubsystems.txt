@@ -1,0 +1,16 @@
+Material: ABEMSubsystem
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+	
+Material: SAmatter
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/SAmmater.png	
+Material: AntimatterGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/amgen.png
+Material: ShieldedAntimatterGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shielded_amgen.png

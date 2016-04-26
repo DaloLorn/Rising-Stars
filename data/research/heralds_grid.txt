@@ -33,7 +33,6 @@ Grid: Heralds
 	SupplyStorage: -1,-3
 	TargetSensor: -4,-2
 	ShieldReg2: 0,-7
-	Damage: 0,-8
 	Thrust: 2,-6
 	BoosterEngine: 2,-7
 	Health: 0,-6
@@ -53,7 +52,7 @@ Grid: Heralds
 	FactoryLabor: -4,5
 	FactoryLabor2: -2,7
 	SupplyStorage: -2,6
-	ArmorDR: 1,2
+	ImpSupportSupplyUse: 1,2
 	FactoryLabor: 1,3
 	FlagHealth: 2,4
 	AugmentReload: -4,3
@@ -63,7 +62,6 @@ Grid: Heralds
 	PlanetSupport: 4,-7
 	SupportCap2: 6,-6
 	ShieldHarmonizer: 2,-11
-	ShieldCap2: 2,-10
 	ShieldReg2: 3,-10
 	SupportCap: 2,-9
 	Health: 4,-5
@@ -103,7 +101,6 @@ Grid: Heralds
 	FlareBomb: -3,13
 	ConstructionBay: 6,5
 	CrystalArmor: 9,3
-	DeflectorArray: 0,-13
 	EmergencySupplies: -4,-11
 	FlakBattery: -6,9
 	GravitonCondenser: -7,-10
@@ -114,7 +111,6 @@ Grid: Heralds
 	ParticleLance: 10,-9
 	PulseBolt: 8,-10
 	Disruptor: 8,-5
-	BroadcastAntenna: -9,-5
 	PlanetaryEngine: -10,-12
 	Ramjet: -3,-14
 	SelfDestruct: 1,13
@@ -127,7 +123,6 @@ Grid: Heralds
 	StationMaintenance: -4,8
 	ArtificialPlanetoid: -2,16
 	AugmentDamage: 3,14
-	AugmentSupply: -11,1
 	QuantumBattery: 2,-15
 	QuantumCompressor: 10,9
 	Damage: 10,0
@@ -147,10 +142,7 @@ Grid: Heralds
 	Energy: -8,-9
 	FTL: -7,-8
 	Thrust: -7,-7
-	Thrust: -3,-12
 	SupplyStorage: -3,-13
-	Thrust: -5,-11
-	GravitonChanneling: -5,-12
 	Health: 7,1
 	FactoryLabor: 8,1
 	ArmorDR2: 9,1
@@ -185,8 +177,6 @@ Grid: Heralds
 	PlanetSupport2: 4,-14
 	SupplyStorage2: 3,-15
 	Health: 2,-14
-	ShieldCap2: 1,-13
-	Repair: 2,-12
 	FTLJammerCombat: -9,10
 	OrbitalConstruction: -5,11
 	Damage: -4,10
@@ -209,8 +199,6 @@ Grid: Heralds
 	FlagHealth: 0,15
 	Warhead: 1,16
 	Damage: 1,17
-	Damage: -9,2
-	SupportCap: -10,2
 	Damage: 4,9
 	MissileRange: 5,10
 	InfiniteHealth: 5,7
@@ -223,10 +211,7 @@ Grid: Heralds
 	Thrust: -5,10
 	ArmorDR: -6,7
 	Range: -6,8
-	DroneCount: -13,-1
 	Ringworld: 16,-4
-	FTLHurdle: -12,0
-	SupportCap: -12,1
 	FlagHealth: -7,-2
 	Defense: -8,-3
 	InfluenceHurdle: -8,-4
@@ -245,8 +230,26 @@ Grid: Heralds
 	ShockMissiles: 1,9
 	SysNilingArmor: 6,12
 	Damage: 5,11
-	Laboratories: -2,-11
-	Repair: -2,-10
-	ShieldHardener: -1,-8
-	InfiniteShields: 0,-10
-	ShieldCap: 0,-9
+	Repair: -5,-9
+	Laboratories: -5,-10
+	Thrust: -4,-12
+	GravitonChanneling: -5,-13
+	Health: -3,-12
+	ShieldHardener: 1,-8
+	ShieldCap2: 0,-9
+	ShieldedAntimatter: -2,-9
+	BroadcastAntenna: -9,-4
+	Damage: -10,3
+	SupportCap: -11,3
+	AugmentSupply: -11,2
+	SupportCap: -12,2
+	FTLHurdle: -13,2
+	DroneCount: -14,2
+	Repair: 3,-12
+	ShieldCap2: 2,-13
+	DeflectorArray: 1,-13
+	EnergyHurdle2: -2,-8
+	InfiniteShields: 1,-10
+	ImpEnergyStorage: -1,-10
+	ZeroPoint: 0,-12
+	EnergyHurdle3: -1,-11
