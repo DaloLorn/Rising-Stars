@@ -28,7 +28,7 @@ Subsystem: ZeroPoint
 		Power = Power
 
 	Module: Core
-		Sprite: AntimatterGen
+		Sprite: SingularityCore
 
 	Module: Default
 

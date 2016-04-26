@@ -14,3 +14,24 @@ Material: AntimatterGen
 Material: ShieldedAntimatterGen
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shielded_amgen.png
+Material: SingularityCore
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/singularitycore.png
+Material: ShieldGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shieldgen.png
+Material: ABEMSupply
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/supply_normal.png
+Material: CargoStorage
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/cargostorage.png
+Material: ABEMComputer
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/computer.png
+Material: FusionGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/fusiongen.png
+Material: ShieldHardener
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shieldstuff.png

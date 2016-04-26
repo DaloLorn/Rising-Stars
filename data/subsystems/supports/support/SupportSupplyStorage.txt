@@ -22,4 +22,4 @@ Subsystem: SupportSupplyStorage
 	Hook: AddSupplyToFleet(SupplyCapacity, 0)
 
 	Module: Default
-		Sprite: SupplyStorage
+		Sprite: ABEMSupply

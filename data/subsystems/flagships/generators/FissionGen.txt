@@ -26,7 +26,7 @@ Subsystem: FissionGen
 		Power = Power
 
 	Module: Core
-		Sprite: FissionReactor
+		Sprite: TechIcons::19
 
 	Modifier: SupplyCapacityFactor(factor)
 		SupplyCapacity := SupplyCapacity * factor
