@@ -1,0 +1,3 @@
+RACE_TERRAKIN: Terrans
+RACE_FIRST: Atroans
+RACE_HERALDS: C'k'tnilit

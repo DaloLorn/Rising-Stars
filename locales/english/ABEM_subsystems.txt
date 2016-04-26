@@ -1,0 +1,60 @@
+TARGETINGSENSOR_DESC: <<
+	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
+
+	[img=Plus;22;#cf00ff]Can be placed on weapon subsystems.[/img]
+	[img=Plus]Increases the [b][color=#80ffea]range[/color][/b] of the weapon.[/img]
+	[img=Minus]Increases the build cost of the weapon by 50%.[/img]
+	[img=Minus]Slightly increases the [b][color=#fefc61]supply cost[/color][/b] of firing the weapon.[/img]
+	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
+>>
+
+S_TITAN_HULL_DESC: <<
+	An extremely heavy hull frame that allows larger ships to be constructed more efficiently.
+
+	[img=Plus]Much more internal space available.[/img]
+	[img=Plus]Reduces build costs by up to 50% as the ship size gets bigger.[/img]
+	[img=Plus]Rigorous construction increases turret potential firing arcs.[/img]
+	[img=Minus]Can only be used for ships of size 500 or greater.[/img]
+>>
+
+S_CARRIER_HULL_DESC: <<
+	A hull specifically designed to control and maintain a large fleet of support ships.
+
+	[img=Plus]Doubles any support capacity.[/img]
+	[img=Plus]Doubles all health.[/img]
+	[img=Plus]Increases supply capacity by 50%.[/img]
+	[img=Minus]Cannot have any weapons on the flagship.[/img]
+	[img=Minus]Less internal space available.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_DESTROYER_HULL_DESC: <<
+	A hull optimized to fit many different weapon turrets at the cost of being unable to field a support fleet.
+
+	[img=Plus]Increases all health by 200%, and increases armor damage resistance by 100%.[/img]
+	[img=Plus]Decreases mass by 50%.[/img]
+	[img=Plus]Increases repair rate by 200%.[/img]
+	[img=Plus]More internal space available.[/img]
+	[img=Minus]Cannot have any support command on the flagship.[/img]
+	[img=Minus]Weapon range reduced by 30%.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Destroyer Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_TORPEDOLAUNCHER_DESC: <<
+	Launches massive, slow-moving, guided bombs. These bombs explode in an area around their target.
+
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Deals damage in an area.[/img]
+	[img=Minus]Very slow fire rate.[/img]
+	[img=Minus]Very low [b][color=#ff8080]DPS[/color][/b].[/img]
+>>
+
+SUPPORTSUPPLY_DESC: <<
+	A secondary supply storage facility may be placed on particular support ships, increasing the amount of ammunition and general combat materials available to the fleet.
+
+	[img=AttributeIcons::4;22]Provides [b][color=#fefc61]Supply Capacity[/color][/b] to the fleet.[/img]
+	[img=Minus]Adds maintenance cost to the support ships.[/img]
+	[img=Minus]Destroyed supply storage hexes leak supplies over time.[/img]
+	[img=MenuIcons::3;20;#f00][i][color=#faa]Support ships with maintenance costs will not be created by Defense.[/color][/i][/img]
+>>
