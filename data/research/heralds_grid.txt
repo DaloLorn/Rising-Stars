@@ -132,7 +132,6 @@ Grid: Heralds
 	Population: 3,0
 	HydroponicsSatellite: 6,1
 	RingHabitat: 11,0
-	SupplyStorage2: -3,-10
 	Energy: -4,-9
 	Wealth: -5,-7
 	Population: -4,-8
@@ -224,7 +223,7 @@ Grid: Heralds
 	ArmorHealth: -5,14
 	EnergyHurdle: 11,-1
 	EnergyHurdle: 14,-2
-	Health2: 14,-3
+	DevInfluenceIncome: 14,-3
 	Population: 15,-4
 	ArtificialMoon: 11,1
 	ShockMissiles: 1,9
@@ -250,6 +249,8 @@ Grid: Heralds
 	DeflectorArray: 1,-13
 	EnergyHurdle2: -2,-8
 	InfiniteShields: 1,-10
-	ImpEnergyStorage: -1,-10
+	EnergyStorage: -1,-10
 	ZeroPoint: 0,-12
 	EnergyHurdle3: -1,-11
+	ImpSupplyRegen: -3,-10
+	ImpProjSpeed: 5,9

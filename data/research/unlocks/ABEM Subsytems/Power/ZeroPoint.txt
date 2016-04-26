@@ -1,7 +1,6 @@
 Technology: ZeroPoint
 	Name: #S_ZPG
 	Class: Unlock
-	Point Cost: 2000
 	Time Cost: 180
 	Icon: AntimatterGen
 	Description: #R_SYS_ZPG_DESC
