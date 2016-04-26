@@ -1,0 +1,33 @@
+Technology: Damage
+	Name: #R_IMP_DAMAGE
+	Blurb: #R_IMP_DAMAGE_BLURB:17%
+	Description: #R_IMP_DAMAGE_DESC:17%
+
+	Icon: techImpact * #ff8000
+	Color: #ff8000
+
+	Category: Basic Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddModifier( tag/Weapon::DamageFactor(1.17) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.17)
+
+Technology: Damage2
+	Name: #R_IMP_DAMAGE2
+	Blurb: #R_IMP_DAMAGE_BLURB:35%
+	Description: #R_IMP_DAMAGE_DESC:35%
+
+	Icon: techImpact2*#ffff00
+	Color: #ff8000
+
+	Category: Basic Upgrades
+	Class: Upgrade
+
+	Point Cost: 850
+	Time Cost: 80
+
+	AddModifier( tag/Weapon::DamageFactor(1.35) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.35)
