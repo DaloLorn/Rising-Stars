@@ -7,7 +7,7 @@ Trait: Ancient
 	Icon: TraitIcons::0
 	Color: #8953f7
 
-	Costs Points: 4
+	Costs Points: 3
 
 	Category: Lifestyle
 	Unique: Lifestyle

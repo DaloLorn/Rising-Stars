@@ -1,3 +1,119 @@
 RACE_TERRAKIN: Terrans
 RACE_FIRST: Atroans
 RACE_HERALDS: C'k'tnilit
+
+RACE_PROGENITORS: Ulthaar
+RACE_PROGENITORS_TAGLINE: The return of the Progenitors.
+RACE_PROGENITORS_LORE: <<
+[padding=20][b]TIME INDEX: UNKNOWN
+DATABASE INTEGRITY: 0.23 PERCENT
+DIRECTIVES: PRESERVE CONTENTS OF STASIS UNITS ONE THROUGH FORTY-SEVEN
+
+SELF-DIAGNOSTIC RUNNING...
+
+[i]ERROR: POWER CORES ONE THROUGH FIVE OFFLINE. AUXILIARY POWER FAILURE IN FIFTEEN HOURS, NINE MINUTES AND FOUR SECONDS.[/i]
+
+INITIATING EMERGENCY PROTOCOLS. REVIVAL IN PROGRESS IN UNITS ONE THROUGH FORTY-SEVEN.[/b][/padding]
+
+[hr/]
+[padding=20][b]TIME INDEX: FIVE DAYS SINCE AWAKENING
+DATABASE BREAKDOWN HALTED
+DIRECTIVES: NONE[/b][/padding]
+
+It has been a long time since our slumber began.
+
+We know not what has transpired in our absence, both on this world and throughout the galaxy; much has been lost, and of the countless billions of people on my world, only a handful remain.
+I have begun leading the reconstruction. With time, we shall return to the stars we once so proudly ruled.
+
+For now, however, we must concentrate our efforts elsewhere.
+With the database nearly obliterated, much of what we once knew is a mystery once again. We know more of what can be achieved than how to achieve it.
+Worse still, this once fertile world is no longer capable of supporting the civilization we once had - with only our technology to provide solely the barest necessities of our existence, we must hurry to build starships to transport resources from other worlds.
+
+[hr/]
+[padding=20][b]TIME INDEX: TWO WEEKS SINCE AWAKENING[/b][/padding]
+
+I had considered evacuating to a more appropriate planet.
+
+I should not have done so. There is an abundance of useful substances here - the rich cyllium deposits here could help us recreate some of our technology or channel the vast amounts of energy required to reactivate the artifacts of old.
+If we are fortunate, we may even be able to reuse some of that energy in the matter fabricators. Ships may be easier to come by than I anticipated.
+
+Our luck does not come without a high price, though. While we retain the scientific knowledge needed to travel amongst the stars, our infrastructure is abysmal.
+The methods we use to obtain our resources these days have not been used for millennia [b]before[/b] we first developed spaceflight.
+With time, we may learn again. I can only hope so.
+
+[hr/]
+[padding=20][b]TIME INDEX: THREE MONTHS SINCE AWAKENING[/b][/padding]
+
+When we were preserved in stasis, we launched many fleets of Keepers to protect our interests during our long sleep.
+
+Had we known of their survival, or how lacking their abilities were...
+
+In order to communicate effectively with the scouts we sent out to explore the system, we had to rebuild our communication systems.
+Finally, we heard it - a signal from one of the Keepers. Even now they remain vigilant, ensuring the safety of so much Ulthaar technology...
+Perhaps, if it becomes necessary, we shall call upon the Keepers to protect their builders.
+If only we had the command codes for the greatest of the Keepers - the Guardians that stand watch above our hubworlds - or the seed ships that scatter our technology for all to use...
+They would be of more use to us than any others.
+
+What concerns me now, however, is that new life has made this galaxy its home during our eons of sleep.
+Life that may fear us. Act against us. Withhold vital resources.
+
+The question remains: Will they join us as we rebuild...
+
+... or will they seek to end us?
+>>
+
+RACE_BERSERKERS: Rahta
+RACE_BERSERKERS_TAGLINE: Fight for honor and glory.
+RACE_BERSERKERS_LORE: <<
+[font=Medium]Archive footage, 42 years ago, Chambers of the Clan Council[/font]
+[hr/]
+Two guards bring a lone Raht before the Council.
+
+The nine council members - lords of the great master clans that ruled Rata'htat - sit in their great chairs, studying him carefully. "Speak," the leader of the Gd'ziil clan, and the Council itself, commands him. "What do you deem so important that you challenge the will of this Council? To cast aside your honor in such a futile act of defiance?"
+
+"It would be dishonorable of this council," the prisoner - a caption identifies him as Zut of the Aristhi clan, a common man from a common clan - answers in a grave tone, "to deprive all Rahta of the glory that awaits among the stars. Many great battles await those who can see beyond the limits of Rata'htat's skies." Zut pauses. The councillors mutter amongst themselves before he continues, "We all know that there has been much strife of late. No self-respecting Raht has ever laid down his weapons willingly; but there is no one left to fight. The urge to do battle is so deeply ingrained within us, we cannot simply cast it away. Yet, if our civilization is to prosper, we must do just that. Or..." he pauses again, this time for emphasis, "we must find new battlefields and new foes to fight."
+
+Bante-il, leader of the Intamthaal clan, chooses this moment to speak up. "And you believe these new battlefields, these new foes lie beyond the heavens?" she asks incredulously. "How do you expect the Rahta to explore strange new worlds, to seek out new life and new civilizations to conquer, when we have not even visited our moon? You are brave, that I no longer question. But you propose the impossible."
+
+"It [b]was[/b] impossible, yes. Not anymore. Two weeks ago, a strange craft crashed near my house. I do not know enough to control it, and I certainly cannot build another; but I am not a scientist, nor do I pretend to be one. Do you not know what this means? We can go out among the stars! Boldly go where no Raht has gone before, and do battle with all who wait beyond the final frontier! It will be [b]glorious![/b]"
+
+The council leader, an elderly Raht by the name of Tanshir, takes a few moments to digest what he has just heard. "Leave us, Zut of the Aristhi," he says. "This council will consider your words; soon, our decision shall be made known to all."
+
+[font=Medium]A week later, in front of the Council halls[/font]
+[hr/]
+Zut stands again - this time, it is alongside the Council as Tanshir is about to announce their decision.
+
+"People of Rata'htat, a week ago we were faced with the prospect of civil war. Today, we face the future. It is with nothing but pleasure that I announce that great, glorious armies shall be gathered and trained to fight all who would oppose us. For the honor and glory of Rahta everywhere, ships shall be built to carry our warriors out amongst the stars and we will spread war to all of the universe. The power of the Rahta will be felt far and wide, and the weak shall be vanquished."
+
+There is nothing but thunderous applause before the crowds disperse.
+>>
+
+RACE_PACIFISTS: Fasshi
+RACE_PACIFISTS_TAGLINE: A peaceful solution for any problem.
+RACE_PACIFISTS_LORE: <<
+We are a proud people, the Fasshi. Peaceful. Long-lived. It is not surprising, therefore, that we have remained on this beautiful world so long after learning how to leave it.
+
+However, times are changing. More Fasshi have been born in the past hundred years than the five hundred before, and Faa cannot support us anymore.
+We must venture out into the galaxy, and so we shall.
+
+There are those who would fear us. In the wrong hands, the telepathy of our kind can be a dangerous thing; yet it is that telepathy that has afforded us the peace we have had over the past millennia.
+We must remain vigilant, so that the powers of not even a single Fassh are abused. So that the peace can endure for another five thousand years.
+
+There will undoubtedly be less civilized peoples out there. We must not fear them.
+We must teach them the value of peace...
+
+... just as we had learnt it so long ago...
+>>
+
+RACE_VANGUARD_RINGWORLDER: Bluuhbi
+RACE_VANGUARD_RINGWORLDER_TAGLINE: The comfort of serving the Overlords.
+RACE_VANGUARD_RINGWORLDER_LORE: <<
+Many ages ago, our great Overlords sought to conquer this distant galaxy. They were thwarted by a small group of the natives, the Ulthaar.
+In their failure, however, they planted the seeds of their victory.
+
+The Ulthaar were forced into hibernation by a radiation surge from the destroyed portal; most of them unaware of the truth of what had transpired, they became vulnerable. Protected by their 'Keepers', they had to be destroyed through more clandestine means. As the Overlords recovered over the following eons, 'natural' disasters of one kind or another destroyed many former Ulthaar strongholds and potential allies. All the while, various younger races were manipulated - even created - to become willing or unwilling allies of our masters should the war be reignited.
+
+That is in the past, though. The Bluuhbi have served the Overlords for a great deal of time, gaining a great deal of prestige among the lesser races. We have become complacent. Now that the Overlords are finally ready to embark upon their quest to take what belongs to them, we have been sent out into the galaxy to secure a means of arrival for the full might of the Grand Armada.
+
+We are the Vanguard. To fail in our mission is to be exterminated. To achieve this goal before the other races of the Vanguard is to solidify and increase our power and prestige once more.
+>>
