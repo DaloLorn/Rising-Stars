@@ -34,7 +34,7 @@ void playRandomTheme() {
 		else {
 			playDefaultTheme();
 			settings::bEnableMTE = false;
-			error("Could not find valid sound file in data/music/theme, disabling Multiple Themes...")
+			error("Could not find valid sound file in data/music/theme, disabling Multiple Themes...");
 		}
 	}
 }

@@ -1,0 +1,145 @@
+OPT_AUTO_IRC: Automatically Connect to IRC
+OPTTT_AUTO_IRC: When toggled on, the game will automatically connect to the IRC and join the #starruler and #abem channels when started.
+OPT_MTE: Use Multiple Themes
+OPTTT_MTE: <<
+	When toggled on, the game will randomly select a valid .ogg file in data/music/theme to play while in the main menu. If no valid files are found, this option will automatically be switched off.
+>>
+OPT_THEME_LOOP: Loop Main Menu Theme
+OPTTT_THEME_LOOP: <<
+	When toggled on, the game will repeat the theme song as long as you're not in a match. If used alongside 'Use Multiple Themes', this will randomly cycle through all the files in data/music/theme.
+>>
+
+NG_ANOMALY_SYSTEM_OCCURANCE: Spatial Anomaly Occurrence
+NGTT_ANOMALY_SYSTEM_OCCURANCE: <<
+	Multiplier to the base frequency at which anomalous systems (nebulae, empty space) occur in the universe. Does not affect black holes at all.
+>>
+
+NG_BLACK_HOLE_OCCURANCE: Black Hole Occurrence
+NGTT_BLACK_HOLE_OCCURANCE: <<
+	Multiplier to the base frequency at which black hole systems occur in the universe. Does not affect the black holes spawned at the center of large galaxies.
+>>
+
+NG_SENSOR_OPTIONS: Sensor Options
+NG_SENSOR_MULT: Global Sensor Multiplier
+NGTT_SENSOR_MULT: The number by which all sight ranges in the game are multiplied. This is applied after all other sensor modifiers; useful when modifying the System Size option among other things.
+
+NG_FTL_MULT: FTL Storage/Generation Multiplier
+NGTT_FTL_MULT: <<
+	The number by which the storage capacity and generation rate of FTL Energy on a starship are multiplied. Increases the amount of FTL Energy generated from one FTL Crystal.
+
+	Useful when modifying galaxy spacing. For every 6500 units of spacing added, it is recommended that you increase this number by approximately 1.0. (Developer note: For example, 6500 spacing is 1.0, 12000 spacing is 2.0... you get the point.)
+>>
+
+NG_LEGACY_EXPLORATION: Legacy Exploration Mode
+NGTT_LEGACY_EXPLORATION: <<
+	When checked, entering a non-nebula system will immediately reveal everything inside, as if it were an unmodified game of Star Ruler 2.
+	
+	Sight range modifiers of all kinds will still take effect, though, making sensors useful when flying inside nebulae, flying a cloaked ship, or when searching for objects in interstellar space.
+>>
+
+NG_ADVANCED_OPTIONS: Advanced Options
+NG_ADVANCED_OPTIONS_DESC: <<
+	This tab contains options that, while (probably) safe to use, are not expected to be frequently used by players, and may sometimes cause balance issues or make some aspects of the game more difficult to use if they are misused.
+
+	[i][b]Multiplayer hosts: It is recommended that these options not be used without the knowledge and consent of the people you are playing with.[/b][/i]
+>>
+
+NG_PLANET_MOON_CHANCE: Moon Occurrence
+NGTT_PLANET_MOON_CHANCE: The probability that a planet will have a moon. (Developer note: I suspect that the game will add moons to a planet until the random number generator fails to produce an acceptable number. Therefore, to prevent instances of locking up the game by telling it to spawn moons ad infinitum, this is capped at 50%. Also, odds are you'll change the amount of moons significantly even by slightly modifying this number.)
+
+NG_PLANET_CONDITION_CHANCE: Condition Occurrence
+NGTT_PLANET_CONDITION_CHANCE: The probability that a planet will have a planetary condition. Planetary conditions can have various effects on a planet and its behavior, ranging from a reduced population cap to powerful ancient weapons.
+
+NG_HIDE_EMPIRE_RELATIONS: Hide Empire Relations
+NGTT_HIDE_EMPIRE_RELATIONS: When checked, the game will hide relationships between empires from other empires. (Developer note: I think this is supposed to conceal treaties, but I'm not sure just what it DOES do.)
+
+NG_TEAMS_START_CLOSE: Teams Start Together
+NGTT_TEAMS_START_CLOSE: When checked, the game will try to place members of a team close to each other, as opposed to evenly distributing everyone across the galaxy.
+
+NG_FIRST_CONTACT: First Contact Mode
+NGTT_FIRST_CONTACT: When unchecked, the game will act as if all the empires had already met before the beginning of the match.
+
+NG_CARD_STACK_INTERVAL: Influence Stack Refresh Rate
+NGTT_CARD_STACK_INTERVAL: How long it takes for the influence card stack to refresh. (Developer note: The timer above the right end of the stack - the thing that controls when new cards are added to/removed from the stack.)
+
+NG_ENERGY_EFFICIENCY_STEP: Energy Efficiency Step
+NGTT_ENERGY_EFFICIENCY_STEP: The amount of stored energy that will reduce an empire's energy generation rate by 50%. (Developer note: If you set this to 500, and collect 500 energy, your empire's generation will be halved. If you collect 1000 energy, the already halved generation rate will be halved again, for a net energy generation reduction of 75%.)
+
+NG_ENERGY_PER_SEEDSHIP: Energy per Seed Ship
+NGTT_ENERGY_PER_SEEDSHIP: How much energy must be collected in the entire galaxy to spawn a new seed ship.
+
+NG_SIEGE_LOYALTY_TIME: Siege Time
+NGTT_SIEGE_LOYALTY_TIME: How long it takes to reduce a planet's loyalty by 10 points during a siege. (Developer note: Measured in seconds, I think?)
+
+NG_SIEGE_LOYALTY_COST: Siege Cost
+NGTT_SIEGE_LOYALTY_COST: How many supplies are required to reduce a planet's loyalty by 1 point during a siege.
+
+NG_RANDOM_EVENT_INTERVAL: Random Event Interval
+NGTT_RANDOM_EVENT_INTERVAL: The minimum acceptable interval between the occurance of two random events. After an event has occurred, no new random events can happen until this interval passes.
+
+NG_FIRST_CONTACT_PRIZE: First Contact Bonus
+NGTT_FIRST_CONTACT_PRIZE: How many influence points are earnt when an empire is the first one to encounter another empire. Does not apply if First Contact Mode is unchecked.
+
+NG_LABOR_DUMP_TIME: Labor Storage Dump Time
+NGTT_LABOR_DUMP_TIME: How long it takes to empty an object's Labor storage into a project. Measured in seconds.
+
+NG_LEVEL_DECAY_TIME: Base Level Decay Time
+NGTT_LEVEL_DECAY_TIME: How long it takes for a planet's level to decay if a vital resource is no longer available. Measured in seconds, and can be modified by empire- or planet-specific factors such as technological upgrades.
+
+NG_DRYDOCK_BUILDCOST_FACTOR: Drydock Cost Multiplier
+NGTT_DRYDOCK_BUILDCOST_FACTOR: When building from a drydock, this is how much of the ship's original build cost will have to be paid. Negated by the Decentralized Construction tech node.
+
+NG_CRAZY_OPTIONS: Crazy Options
+NG_CRAZY_OPTIONS_DESC: <<
+	This tab contains options whose functionality is either approaching extreme (and possibly hazardous!) levels of control over the game's mechanics, or is just ludicrous. (Like asteroid mass. :P)
+
+	[i][b][color=#f00]Use these options at your own peril.
+
+	Multiplayer hosts, it is highly recommended that these options are left untouched without the express permission of everyone participating, and prior testing in a singleplayer match.[/color][/b][/i]
+>>
+
+NG_ASTEROID_PERMANENT_FREQ: Asteroid Permanent Resource Frequency
+NGTT_ASTEROID_PERMANENT_FREQ: The base frequency of permanent (non-consumable) resources on resource asteroids. (Developer note: I think. No idea how it works or if it even does what it says.)
+
+NG_ASTEROID_MASS: Asteroid Mass
+NGTT_ASTEROID_MASS: The mass of all the asteroids in the universe. (Developer note: Alternatively, the average mass of said asteroids.)
+
+NG_SYSTEMS_PER_WORMHOLE: Systems per Wormhole
+NGTT_SYSTEMS_PER_WORMHOLE: In a multi-galaxy game, how many star systems must exist in a galaxy(?) in order for a wormhole to another galaxy to spawn.
+
+NG_GALAXY_MIN_WORMHOLES: Minimum Wormholes per Galaxy
+NGTT_GALAXY_MIN_WORMHOLES: In a multi-galaxy game, how many wormholes must exist in a galaxy regardless of the galaxy's size and the game's 'Systems per Wormhole' setting.
+
+NG_ARTIFACTS_SEEDSHIP_DEATH: Artifacts From Seed Ship Death
+NGTT_ARTIFACTS_SEEDSHIP_DEATH: How many artifacts are spawned when a seed ship is destroyed.
+
+NG_ASTEROID_COST_STEP: Asteroid Cost Step
+NGTT_ASTEROID_COST_STEP: When building mining bases on asteroids from another star system, determines how much the Labor cost of construction is increased for every star system between the building planet and the asteroid. (Developer note: The shortest trade route is used, with each trade link increasing the cost by the percentage selected here.)
+
+NG_TERRAFORM_COST_STEP: Terraforming Cost Step
+NGTT_TERRAFORM_COST_STEP: When terraforming planets from another star system, determines how much the Labor cost of terraforming is increased for every star system between the terraforming planet and the terraformed planet. (Developer note: The shortest trade route is used, with each trade link increasing the cost by the percentage selected here.)
+
+NG_ORBITAL_LABOR_COST_STEP: Orbital Labor Cost Step
+NGTT_ORBITAL_LABOR_COST_STEP: When building orbitals from another star system, determines how much the Labor cost of construction is increased for every star system between the building planet and the desired location of the orbital. (Developer note: The shortest trade route is used, with each trade link increasing the cost by the percentage selected here.)
+
+NG_RESEARCH_DECAY_MULT: Research Efficiency Decay
+NGTT_RESEARCH_DECAY_MULT: <<
+	Affects how many research points must be generated to lower the research generation rate to a certain percentage of the empire's base generation. When set to 100%, an empire must generate 4000 - 5000 if Innovative - research points to halve its research efficiency.
+
+	Can be set to 0%, preventing research decay altogether. (Developer note: The above figures only apply in ABEM. In the base game, an empire must generate 2000 research points to halve efficiency, and Innovative does not affect research decay at all.)
+>>
+DOF_MISSING_BASE: <<
+	You do not appear to have the latest version of the DOF support library installed. This may cause certain assets to fail to load, and will also prevent various shipsets from functioning.
+>>
+DOF_MISSING_STEAM: <<
+	[bbloc=#DOF_MISSING_BASE/]
+
+	You can download the library from the Steam Workshop [b](recommended)[/b] at
+	[b]http://steamcommunity.com/sharedfiles/filedetails/?id=505348416[/b], 
+	or get the .zip file from dolynick's website at [b]http://www.olynick.net/sr2/mods/DOFShipsetCommonLibrary.zip[/b].
+>>
+DOF_MISSING_OTHER: <<
+	[bbloc=#DOF_MISSING_BASE/]
+
+	You can download the library from dolynick's website at [b]http://www.olynick.net/sr2/mods/DOFShipsetCommonLibrary.zip[/b].
+>>
