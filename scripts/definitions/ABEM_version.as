@@ -1,14 +1,14 @@
 import version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "735";
+const string MOD_REVISION = "739";
 const array<string> VERSIONS = {
 	"v2.0.0"
 };
 
 const array<string> REVISIONS = {
 	"5046",
-
+	"5054",
 };
 const string MOD_NAME = "ABEM 0.5.0 Alpha";
 const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0] + ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ")";
