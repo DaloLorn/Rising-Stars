@@ -295,6 +295,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 		if(msg >= SV_0144) {
 			msg >> FreeRaiding;
 			msg >> RaidRange;
+		}
 		msg >> cnt;
 		sightData.length = cnt;
 		sightOrder.length = cnt;
