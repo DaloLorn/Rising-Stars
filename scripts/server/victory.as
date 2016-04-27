@@ -24,7 +24,8 @@ void declareVictor(Empire@ emp) {
 	serverEndGame(ALL_PLAYERS);
 
 	if(emp !is null) {
-		emp.Victory = 1;
+		if(emp.Victory <= 0)
+			emp.Victory = emp.VictoryType;
 
 		int maxDiff = -1;
 		int maxCheats = 0;
@@ -40,6 +41,10 @@ void declareVictor(Empire@ emp) {
 						maxCheats = other.cheatLevel;
 				}
 			}
+			if(other.major && emp.team != -1 && emp.team == other.team) {
+				if(other.Victory >= 0 && other.VictoryType <= emp.VictoryType)
+					other.Victory = emp.VictoryType;
+			}	
 		}
 		if(emp is playerEmpire) {
 			if(achieve) {
@@ -83,7 +88,11 @@ void tick(double time) {
 
 	if(gameTime < 5.0)
 		return;
+	checkStandardVictory();
+	checkVanguardVictory();
+}
 
+void checkStandardVictory() {
 	if((!mpServer && playerEmpire.Victory == -1)
 			|| (config::GAME_TIME_LIMIT > 0.01 && gameTime >= config::GAME_TIME_LIMIT*60.0)) {
 		Empire@ winner;
@@ -137,7 +146,7 @@ void tick(double time) {
 			}
 		}
 		
-		if(other.Victory == 1)
+		if(other.Victory >= 1)
 			foundVictor = true;
 	}
 	
@@ -148,6 +157,18 @@ void tick(double time) {
 				continue;
 			if(other.Victory >= 0)
 				declareVictor(other);
+		}
+	}
+}
+
+void checkVanguardVictory() {
+	for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+		Empire@ other = getEmpire(i);
+		if(!other.major)
+			continue;
+		else if(other.VanguardVictoryRequirement <= 0 && other.VictoryType == 2) {
+			declareVictor(other);
+			return;
 		}
 	}
 }

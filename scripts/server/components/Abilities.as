@@ -184,7 +184,7 @@ class Abilities : Component_Abilities, Savable {
 	}
 
 	void abilityTick(Object& obj, double time) {
-		for(uint i = 0, cnt = abilities.length; i < cnt; ++i) {
+		for(uint i = 0; i < abilities.length; ++i) {
 			auto@ abl = abilities[i];
 			if(!abl.disabled) {
 				if(abl.cooldown > 0) {

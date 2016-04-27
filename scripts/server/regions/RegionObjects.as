@@ -2114,7 +2114,7 @@ final class RegionObjects : Component_RegionObjects, Savable {
 		region.AvailSupportMask = avSupMask;
 
 #section server
-		uint mask = 0, basicMask = 0;
+		uint mask = 0, basicMask = 0, donateMask = 0;
 		for(uint i = 0, cnt = objectCounts.length; i < cnt; ++i) {
 			Empire@ emp = getEmpire(i);
 			if(objectCounts[i] > 0) {
@@ -2123,6 +2123,7 @@ final class RegionObjects : Component_RegionObjects, Savable {
 			}
 			if(visionGrants[i] > 0) {
 				mask |= emp.mask;
+				donateMask |= emp.mask;
 			}
 		}
 		
@@ -2138,8 +2139,12 @@ final class RegionObjects : Component_RegionObjects, Savable {
 			region.SeenMask |= mask;
 			updatePlane(region);
 
-			if(system.donateVision)
-				region.DonateVisionMask = mask;
+			if(system.donateVision) {
+				if(config::LEGACY_EXPLORATION_MODE == 0)
+					region.DonateVisionMask = donateMask;
+				else
+					region.DonateVisionMask = mask;
+			}
 			else
 				region.DonateVisionMask = 0;
 

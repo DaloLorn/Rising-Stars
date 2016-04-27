@@ -62,8 +62,13 @@ class AutoExploreOrder : Order {
 				doMoveTo(obj, null);
 				return;
 			}
+
+			vec3d pt;
 		
-			vec3d pt = to.position + (obj.position - to.position).normalize(to.OuterRadius - 100.0);
+			if(config::LEGACY_EXPLORATION_MODE == 0)
+				pt = to.position + (obj.position - to.position).normalize(-to.OuterRadius + 100.0);
+			else
+				pt = to.position + (obj.position - to.position).normalize(to.OuterRadius - 100.0);
 			
 			bool moved = false;
 			if(ftl && obj.isShip) {

@@ -11,6 +11,7 @@ import elements.GuiPanel;
 import elements.MarkupTooltip;
 import util.formatting;
 import icons;
+import ABEM_data;
 from multiplayer import wantSpectator;
 
 class VictoryTab : Tab {
@@ -22,6 +23,8 @@ class VictoryTab : Tab {
 
 	GuiSkinElement@ buttonBar;
 	GuiPanel@ buttonPanel;
+	
+	VictorySelector@ victorySelector;
 
 	GuiButton@ rankingsButton;
 	GuiListbox@ rankings;
@@ -34,6 +37,8 @@ class VictoryTab : Tab {
 
 	VictoryTab() {
 		super();
+		
+		@victorySelector = VictorySelector();
 
 		@heading = GuiText(this, Alignment(Left, Top+30, Right, Top+90));
 		heading.horizAlign = 0.5;
@@ -147,34 +152,32 @@ class VictoryTab : Tab {
 		int myVictory = playerEmpire.Victory;
 
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
-			if(getEmpire(i).Victory == 1) {
+			if(getEmpire(i).Victory >= 1) {
 				@winner = getEmpire(i);
 				break;
 			}
 		}
 
 		//Show the appropriate victory message
-		if(myVictory == 1) {
-			heading.text = locale::V_WON_TITLE;
-			heading.color = colors::Green;
-			description.text = format(locale::V_WON_TEXT, formatEmpireName(winner), formatEmpireName(playerEmpire));
-			typeIcon = Sprite(material::PointsIcon);
-		}
-		else if(myVictory == -2 && playerEmpire.SubjugatedBy.Victory == 1) {
-			heading.text = locale::V_LESSER_TITLE;
-			heading.color = Color(0xfff500ff);
-			description.text = format(locale::V_LESSER_TEXT, formatEmpireName(winner), formatEmpireName(playerEmpire));
-			typeIcon = Sprite(material::PointsIcon);
-		}
-		else {
-			heading.text = locale::V_LOST_TITLE;
-			heading.color = colors::Red;
-			description.text = format(locale::V_LOST_TEXT, formatEmpireName(winner), formatEmpireName(playerEmpire));
-			typeIcon = Sprite(material::SystemUnderAttack);
-		}
+		VictoryTabData data;
+		victorySelector.AdjustVictorText(data, winner, playerEmpire);
+		heading.text = data.headingText;
+		heading.color = data.headingColor;
+		description.text = data.descriptionText;
+		typeIcon = data.typeIcon;
 
-		if(victorPanel.visible)
-			title = heading.text;
+		if(victorPanel.visible) {
+			if(playerEmpire is winner) {
+				if(winner.VanguardVictoryRequirement == 0)
+					title = locale::V_VANGUARD_TITLE;
+				else
+					title = locale::V_WON_TITLE;
+			}
+			else if(playerEmpire.SubjugatedBy is winner)
+				title = locale::V_LESSER_TITLE;
+			else
+				title = locale::V_LOST_TITLE;
+		}
 		else
 			title = locale::V_SCORES;
 
@@ -203,8 +206,12 @@ class VictoryTab : Tab {
 				string victory = "";
 				if(emp.SubjugatedBy !is null)
 					victory = format("[color=#aaa]$1[/color]", format(locale::V_SUBJUGATED, formatEmpireName(emp.SubjugatedBy)));
-				else if(emp.Victory == 1)
-					victory = format("[color=#0f0]$1[/color]", locale::V_WON_TITLE);
+				else if(emp.Victory >= 1) {
+					if(emp.Victory == 1)
+						victory = format("[color=#0f0]$1[/color]", locale::V_WON_TITLE);
+					else if(emp.Victory == 2)
+						victory = format("[color=#0f0]$1[/color]", locale::V_VANGUARD_TITLE);
+				}
 				else
 					victory = format("[color=#f00]$1[/color]", locale::V_LOST_TITLE);
 				text += format("[offset=450]$1[/offset]", victory);
@@ -274,24 +281,24 @@ class EmpSorter {
 
 	int opCmp(const EmpSorter& other) const {
 		if(other.emp.Victory != emp.Victory) {
-			if(emp.Victory == 1)
+			if(emp.Victory >= 1)
 				return -1;
 			if(emp.Victory == -1)
 				return 1;
-			if(other.emp.Victory == 1)
+			if(other.emp.Victory >= 1)
 				return 1;
 			if(other.emp.Victory == -1)
 				return -1;
 			if(emp.Victory == -2) {
 				if(other.emp.Victory == 0)
 					return 1;
-				if(emp.SubjugatedBy.Victory == 1)
+				if(emp.SubjugatedBy.Victory >= 1)
 					return -1;
 			}
 			if(other.emp.Victory == -2) {
 				if(emp.Victory == 0)
 					return -1;
-				if(other.emp.SubjugatedBy.Victory == 1)
+				if(other.emp.SubjugatedBy.Victory >= 1)
 					return 1;
 			}
 		}

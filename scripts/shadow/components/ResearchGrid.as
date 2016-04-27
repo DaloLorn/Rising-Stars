@@ -16,7 +16,7 @@ class ResearchGrid : Component_ResearchGrid {
 	}
 
 	double get_ResearchEfficiency() {
-		return 2000.0 / (2000.0 + totalGenerated);
+		return 4000.0 / (4000.0 + totalGenerated);
 	}
 
 	double get_ResearchPoints() {
