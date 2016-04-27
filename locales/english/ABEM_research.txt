@@ -1,0 +1,16 @@
+R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
+R_SYS_SHIELDED_AMGEN_DESC: <<
+	[color=#aaa][i]New advances in shield compacting unlock the Shielded Antimatter Generator subsystem.[/i][/color]
+
+	[bbloc=#S_SHIELDED_AMGEN_DESC/]
+>>
+
+R_SYS_ZPG_DESC: <<
+	[color=#aaa][i]Massive breakthroughs in physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
+
+	Unlocks the Singularity Core.
+
+	[i][bbloc=#S_ZPG_DESC/][/i]
+>>
+R_ENERGY_HURDLE_VERYLARGE: Energy Research
+R_ENERGY_HURDLE_INSANE: High-Energy Research

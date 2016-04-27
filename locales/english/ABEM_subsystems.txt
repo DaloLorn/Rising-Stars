@@ -63,14 +63,14 @@ S_SHIELDED_AMGEN_DESC: <<
 	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]very large[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
 	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color] [color=#fefc61]Resupply Rate[/color][/b]. Minor resupply even in [color=#ff0000][b]Combat[/b][/color].[/img]
 	[img=Plus]Does not destroy the ship when damaged.[/img]
-	[img=Minus]High construction and maintenance costs.[/img]
+	[img=Minus]High construction and moderate maintenance costs.[/img]
 	[img=Minus]Provides less power and resupplies the ship slower than a regular antimatter generator.[/img]
 >>
 
 S_ZPG_DESC: <<
 	An artificial quantum singularity harnessed to provide immense quantities of power.
 
-	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]huge[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]large to huge[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems, depending on its size.[/img]
 	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color][/b] [b][color=#fefc61]Resupply Rate[/color][/b], somewhat lower than that of Antimatter Generators.[/img]
 	[img=Plus]No maintenance cost.[/img]
 	[img=Minus]Very high construction and Labor costs.[/img]
