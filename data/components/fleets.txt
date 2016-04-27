@@ -2,11 +2,11 @@ Empire.FleetManager : components.FleetManager::FleetManager {
 restricted local:
 	safe uint get_fleetCount();
 	Object@ get_fleets(uint index);
+	Ship@[] getFlagships();
+	Ship@[] getStations();
 
 restricted local async:
 	Object@ getFleetFromPosition(vec3d pos);
-	Ship@[] getFlagships();
-	Ship@[] getStations();
 
 server:
 	Ship@ getStrongestFleet();

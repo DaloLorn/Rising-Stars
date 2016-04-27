@@ -77,6 +77,7 @@ visible:
 	attribute double PlanetDecaySpeed = 1
 	attribute double OrbitalHealthMod = 1
 	attribute double OrbitalArmorMod = 1
+	attribute double OrbitalShieldMod = 1
 	attribute double EnergyGenerationFactor = 1
 	attribute double StaticDamageFactor = 1
 	attribute double ArtifactsActivated = 0
@@ -91,6 +92,7 @@ visible:
 	attribute double ColonizeDevelopTiles = 1
 	attribute double PlanetLevelSupport = 0
 	attribute double ResearchUnlockSpeed = 1
+	attribute double ResearchDecaySpeed = 1
 	attribute double ForbidSecondaryUnlock = 0
 	attribute double DrydockCostFactor = 1
 	attribute double HasPopulation = 1
@@ -142,4 +144,8 @@ visible:
 	attribute double ColonizerMaintFactor = 1
 	attribute double NoAutoColonize = 0
 	attribute double HasPressure = 1
+	attribute double VictoryType = 1
+	attribute double VanguardVictoryRequirement = 3
+	attribute double OrbitalMaintMod = 1
+	attribute double ImmuneToRadiation = 0
 }

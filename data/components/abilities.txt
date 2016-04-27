@@ -20,7 +20,7 @@ server:
 	
 	void initAbilities(const Design@ fromDesign);
 	void destroyAbilities();
-	void abilityTick(double time);
+	relocking void abilityTick(double time);
 	void abilityOwnerChange(Empire@ prevOwner, Empire@ newOwner)
 	void setNeutralAbilities(bool value);
 	void setAbilityDestroy(bool value);
