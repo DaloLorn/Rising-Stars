@@ -15,7 +15,7 @@ enum ABEMVictoryTypes {
 const StatusType@ getABEMStatus(int index) {
 	switch(index) {
 		case SType_VoidRay:
-			return getStatusType("VoidRay");
+		//	return getStatusType("VoidRay");
 		default:
 			error("Invalid status index in function getABEMStatus: "+index); return null;
 	}
