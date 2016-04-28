@@ -1477,6 +1477,7 @@ class HealShieldFromSubsystem : AbilityHook {
 #section all
 };
 
+/* This never really worked IIRC.
 class ChangeOriginOnOwnerChange : StatusHook {
 	Document doc("When the object affected by this status changes owners, the status' origin empire is also changed.");
 	Argument refresh("Refresh Status", AT_Boolean, "True", doc="If true, the status will be removed and replaced with an identical copy of itself. If in doubt, set to true.");
@@ -1492,6 +1493,7 @@ class ChangeOriginOnOwnerChange : StatusHook {
 	}
 #section all
 }
+*/
 
 class ResourcelessRegenSurface : GenericEffect, TriggerableGeneric {
 	Document doc("When this hook is enabled on a planet, create a new surface with a particular size and biome count. Should be preferred to RegenSurface if both are available.");
