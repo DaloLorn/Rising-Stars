@@ -31,5 +31,5 @@ Subsystem: SupShieldGen
 		Hex.LaborCost := 0
 
 	Module: Core
-		Sprite: SupportShield
+		Sprite: ShieldGen
 		Hex.BuildCost := 2 * Hex.BuildCost
