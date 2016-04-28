@@ -1,0 +1,25 @@
+Module: StellarShieldGenerator
+	Name: #ORB_STELLAR_SHIELD
+	Blurb: #ORB_STELLAR_SHIELD_BLURB
+	Description: #ORB_STELLAR_SHIELD_DESC
+	Icon: ResourceIcon::5 * #429cffff
+
+	Core: True
+	Standalone: True
+
+	Build Cost: 1000
+	Maintenance: 250
+	Labor Cost: 30
+
+	Health: 5000
+	Armor: 2500
+
+	Model: DefenseStation
+	Material: VolkurGenericPBR
+
+	Strategic Icon: SystemUnderAttack
+	Size: 18
+
+	AddRegionStatus(StellarShield, false) // This 'false' says that the status must apply to all objects in the system regardless of owner.
+
+	RequireUnlockTag(StellarShieldOrbital)

@@ -35,7 +35,6 @@ Grid: Heralds
 	ShieldReg2: 0,-7
 	Thrust: 2,-6
 	BoosterEngine: 2,-7
-	Health: 0,-6
 	ShipComputer: -4,1
 	Simulator: -7,-1
 	FleetComputer: -6,4
@@ -101,9 +100,7 @@ Grid: Heralds
 	FlareBomb: -3,13
 	ConstructionBay: 6,5
 	CrystalArmor: 9,3
-	EmergencySupplies: -4,-11
 	FlakBattery: -6,9
-	GravitonCondenser: -7,-10
 	HyperLaser: -10,7
 	IonCannon: 3,9
 	OreProcessor: 8,7
@@ -111,8 +108,6 @@ Grid: Heralds
 	ParticleLance: 10,-9
 	PulseBolt: 8,-10
 	Disruptor: 8,-5
-	PlanetaryEngine: -10,-12
-	Ramjet: -3,-14
 	SelfDestruct: 1,13
 	SubspaceShredder: -7,12
 	SkipDrive: -10,12
@@ -138,17 +133,10 @@ Grid: Heralds
 	Thrust: -5,-6
 	Thrust2: -4,-4
 	Damage: -5,-5
-	Energy: -8,-9
-	FTL: -7,-8
-	Thrust: -7,-7
-	SupplyStorage: -3,-13
 	Health: 7,1
 	FactoryLabor: 8,1
 	ArmorDR2: 9,1
 	ArmorHealth2: 8,5
-	FireRate: -9,-9
-	FlagHealth2: -9,-10
-	Population: -10,-11
 	Health: 10,2
 	Health: 9,4
 	Damage2: 7,5
@@ -204,8 +192,6 @@ Grid: Heralds
 	ArmorDR: 6,6
 	InfiniteSupport: 4,-17
 	Damage: 4,-16
-	InfiniteThrust: -10,-8
-	Damage: -9,-8
 	PlanetSupport: -11,7
 	Thrust: -5,10
 	ArmorDR: -6,7
@@ -229,28 +215,45 @@ Grid: Heralds
 	ShockMissiles: 1,9
 	SysNilingArmor: 6,12
 	Damage: 5,11
-	Repair: -5,-9
-	Laboratories: -5,-10
-	Thrust: -4,-12
-	GravitonChanneling: -5,-13
-	Health: -3,-12
 	ShieldHardener: 1,-8
-	ShieldCap2: 0,-9
 	ShieldedAntimatter: -2,-9
 	BroadcastAntenna: -9,-4
 	Damage: -10,3
 	SupportCap: -11,3
 	AugmentSupply: -11,2
 	SupportCap: -12,2
-	FTLHurdle: -13,2
 	DroneCount: -14,2
 	Repair: 3,-12
 	ShieldCap2: 2,-13
 	DeflectorArray: 1,-13
 	EnergyHurdle2: -2,-8
-	InfiniteShields: 1,-10
-	EnergyStorage: -1,-10
-	ZeroPoint: 0,-12
-	EnergyHurdle3: -1,-11
-	ImpSupplyRegen: -3,-10
 	ImpProjSpeed: 5,9
+	Laboratories: -6,-9
+	Thrust: -7,-6
+	FTL: -8,-6
+	Energy: -9,-6
+	FireRate: -10,-6
+	FlagHealth2: -11,-7
+	Damage: -11,-5
+	InfiniteThrust: -11,-4
+	Population: -11,-8
+	PlanetaryEngine: -12,-9
+	EnergyHurdle: -7,-7
+	GravitonCondenser: -7,-8
+	Repair: -5,-8
+	ImpSupplyRegen: -4,-10
+	EmergencySupplies: -5,-11
+	Thrust: -5,-12
+	GravitonChanneling: -6,-13
+	Health: -4,-12
+	Ramjet: -3,-14
+	ImpSupplyUse: -4,-13
+	EnergyStorage: -2,-10
+	EnergyHurdle3: -3,-11
+	ZeroPoint: -2,-12
+	ImpProjSpeed: -13,2
+	ShieldCap2: 0,-6
+	InfiniteShields: 0,-12
+	AdvancedShielding: 0,-11
+	EnergyHurdle: 1,-10
+	Energy: 0,-9

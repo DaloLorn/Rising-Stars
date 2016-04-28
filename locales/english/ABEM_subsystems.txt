@@ -14,6 +14,9 @@ SC_Sensors:[hspace=4/][img=TechIcons::1;32x32/][hspace=6/] [color=#9ed6ff]Sensor
 
 S_ZPG: Singularity Core
 S_SHIELDED_AMGEN: Shielded Antimatter Generator
+S_COVARIANT_SHIELD: Covariant Shield Generator
+S_REMNANTSHIELD: Progenitor Shield Generator
+S_BATTERY_NAME: Batteries
 
 TARGETINGSENSOR_DESC: <<
 	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
@@ -93,4 +96,22 @@ SUPPORTSUPPLY_DESC: <<
 	[img=Minus]Adds maintenance cost to the support ships.[/img]
 	[img=Minus]Destroyed supply storage hexes leak supplies over time.[/img]
 	[img=MenuIcons::3;20;#f00][i][color=#faa]Support ships with maintenance costs will not be created by Defense.[/color][/i][/img]
+>>
+
+S_REMNANTSHIELD_DESC: <<
+	Incredibly advanced Progenitor technology. Creates a powerful shield around the vessel, blocking some incoming damage.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Plus]Stronger than covariant shields.[/img]
+	[img=Plus]Regenerates faster than standard shields.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Minus]Very expensive, and requires a lot of Power.[/img]
+>>
+S_COVARIANT_SHIELD_DESC: <<
+	Creates a shield around the vessel, blocking some incoming damage. Covariant shields are more powerful, but they regenerate at a slower rate than their standard counterparts.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Plus]Increased capacity.[/img]
+	[img=Minus]Reduced regenration.[/img]
 >>

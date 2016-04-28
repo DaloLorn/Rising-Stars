@@ -4,7 +4,11 @@ Material: ABEMSubsystem
 	DepthTest: NoDepthTest
 	Mipmap: False
 	Lighting: False
-	
+
+	// *********************************************************
+// ****************POWER AND SUPPLY!*******************
+// *********************************************************
+
 Material: SAmatter
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/SAmmater.png	
@@ -17,9 +21,7 @@ Material: ShieldedAntimatterGen
 Material: SingularityCore
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/singularitycore.png
-Material: ShieldGen
-	Inherit: ABEMSubsystem
-	Texture: data/images/subsystems/shieldgen.png
+
 Material: ABEMSupply
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/supply_normal.png
@@ -32,6 +34,19 @@ Material: ABEMComputer
 Material: FusionGen
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/fusiongen.png
+	
+// *********************************************************
+// ****************SHIELDS AND SHIELDS MODS!*******************
+// *********************************************************
+Material: ShieldGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shieldgen.png
+Material: CovariantShield
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/covariantshield.png
+
+//Remnant Shield use a included art
+
 Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png

@@ -1,0 +1,33 @@
+Subsystem: RemnantShield
+	Name: #S_REMNANTSHIELD
+	Description: #S_REMNANTSHIELD_DESC
+	BaseColor: #0044db
+	Elevation: 1
+
+	DamageOrder: -100
+	//No ishield tag to prevent random IA designs to use it
+	Tags: Defense, Category:Shields, HasInternals
+	Tags: SecondaryDefense,HighPowerUse
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	ShieldCapacity := Size * 220
+	ShieldRegen := Size * 1
+	ShieldHexes := Hexes
+	PowerUse := 40*Size
+
+	Hex.Resistance := 0.5
+	Hex.HP := 12 * HexSize
+	Hex.Mass := 1 * HexSize
+	Hex.LaborCost := 1 * HexSize
+	Hex.BuildCost := 1 * HexSize
+	Hex.MaintainCost := 2.5 * HexSize
+
+	Effect: ABEMShieldDamage
+
+	Requires:
+		Command = 2
+
+	Module: Core
+		Sprite: TechIcons::6
+		Hex.BuildCost := 2 * Hex.BuildCost
