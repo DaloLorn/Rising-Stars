@@ -1,0 +1,31 @@
+Trait: Technicist
+	Name: Technicist
+	Description: Dont localize yet
+	Category: Government
+	Order: 0
+
+	Icon: ConvertIcon::2
+	Color: #7200a0
+
+	Default: True
+	Unique: Government
+	Conflict: Devout
+
+
+	GainInfluenceCard(NameFlagship, Uses = 3, Quality = 3)
+	GainInfluenceCard(UnitedResearch)
+
+
+	//SpawnShip(Heavy Carrier, Empire, 10x Heavy Gunship, 15x Beamship, 25x Missile Boat, 45x Gunship)
+
+	InHomeSystem( MakeAsteroid() )
+	InRandomAdjacentSystem( MakeAsteroid() )
+	InRandomAdjacentSystem( MakeAsteroid() )
+	InRandomAdjacentSystem( MakeAsteroid() )
+
+	ReplaceTechnologyNodeAt((0,-4), Science)
+	UnlockSubsystem(ShieldGen)
+	AddModifier(ShieldRegenFactor(2))
+	AddModifier( ShieldCapacityFactor(2))
+	AddModifier(tag/IsArmor::HpFactor(0.30))
+	OnDLC(Heralds, GainAttitude(Delinquent, Level Up = 1))
