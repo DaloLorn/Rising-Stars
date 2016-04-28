@@ -86,13 +86,17 @@ server:
 
 Star : objects.Star::StarScript {
 	Orbit orbit
+	Statuses statuses
 visible:
 	double temperature
-	double Health = 20000000000
-	double MaxHealth = 20000000000
+	double Health = 20000000000 // 20G
+	double MaxHealth = 20000000000 // 20G
+	double Shield = 0
+	double MaxShield = 0
 
 server:
 	void dealStarDamage(double amount);
+	void dealStarDamage(double amount, const vec3d attackerPosition);
 }
 
 Planet : objects.Planet::PlanetScript {

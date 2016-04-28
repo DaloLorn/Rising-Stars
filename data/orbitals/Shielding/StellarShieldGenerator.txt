@@ -14,12 +14,13 @@ Module: StellarShieldGenerator
 	Health: 5000
 	Armor: 2500
 
-	Model: DefenseStation
-	Material: VolkurGenericPBR
+	Model: Fling
+	Material: GenericPBR_Fling
 
 	Strategic Icon: SystemUnderAttack
 	Size: 18
 
 	AddRegionStatus(StellarShield, false) // This 'false' says that the status must apply to all objects in the system regardless of owner.
+	FacesOrbitCenter()
 
 	RequireUnlockTag(StellarShieldOrbital)

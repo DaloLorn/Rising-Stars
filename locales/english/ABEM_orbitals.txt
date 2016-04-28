@@ -1,0 +1,17 @@
+ORB_SHIELD_CHARGER: Power Transmitter
+ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied flagships in the system.
+ORB_SHIELD_CHARGER_DESC: <<
+	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
+	
+	Increases the out-of-combat shield recharge rate of all ships in the system by 25, plus 0.01% of the ships' shield capacity.
+>>
+
+ORB_STELLAR_SHIELD: Stellar Shield Generator
+ORB_STELLAR_SHIELD_BLURB: Adds a powerful shield to all stars in the system.
+ORB_STELLAR_SHIELD_DESC: <<
+	A gargantuan shield emitter, this facility envelops entire stars in a powerful shield, providing a temporary defense against weapons such as Graviton Condensers.
+
+	Adds 1G shield capacity to every star in the system. Black holes receive 10G shield capacity. Shield regenerates at a rate of 1M per second.
+
+	Stacks with other stellar shielding technology. Will protect indiscriminately against friendly and enemy attacks alike.
+>>
