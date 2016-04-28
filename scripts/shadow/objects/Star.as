@@ -38,6 +38,7 @@ class StarScript {
 			makeLight(lightDesc);
 		
 		addAmbientSource("star_rumble", star.id, star.position, soundRadius);
+		star.readStatuses(msg);
 	}
 
 	void destroy(Star& obj) {
@@ -48,11 +49,22 @@ class StarScript {
 	void syncDetailed(Star& star, Message& msg, double tDiff) {
 		star.Health = msg.read_float();
 		star.MaxHealth = msg.read_float();
+		star.Shield = msg.read_float();
+		star.MaxShield = msg.read_float();
+		star.readStatuses(msg);
 	}
 
 	void syncDelta(Star& star, Message& msg, double tDiff) {
-		star.Health = msg.read_float();
-		star.MaxHealth = msg.read_float();
+		if(msg.readBit()){
+			star.MaxHealth = msg.read_float();
+			star.MaxShield = msg.read_float();
+		}
+		if(msg.readBit())
+			star.Shield = msg.readFixed(0.f, star.MaxShield, 16);
+		if(msg.readBit())
+			star.Health = msg.readFixed(0.f, star.MaxHealth, 16);
+		if(msg.readBit())
+			star.readStatusDelta(msg);
 	}
 
 	double tick(Star& star, double time) {
@@ -62,6 +74,7 @@ class StarScript {
 				node.hintParentObject(star.region);
 		}
 		star.orbitTick(time);
+		star.statusTick(time);
 
 		return 1.0;
 	}
