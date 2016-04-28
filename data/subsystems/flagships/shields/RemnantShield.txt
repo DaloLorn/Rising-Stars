@@ -6,13 +6,13 @@ Subsystem: RemnantShield
 
 	DamageOrder: -100
 	//No ishield tag to prevent random IA designs to use it
-	Tags: Defense, Category:Shields, HasInternals
-	Tags: SecondaryDefense,HighPowerUse
+	Tags: IsShield,Defense, Category:Shields, HasInternals
+	Tags: SecondaryDefense,HighPowerUse,BadFiller
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
 	ShieldCapacity := Size * 220
-	ShieldRegen := Size * 1
+	ShieldRegen := Size * 1.3
 	ShieldHexes := Hexes
 	PowerUse := 40*Size
 
