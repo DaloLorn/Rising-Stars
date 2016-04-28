@@ -14,3 +14,11 @@ R_SYS_ZPG_DESC: <<
 >>
 R_ENERGY_HURDLE_VERYLARGE: Energy Research
 R_ENERGY_HURDLE_INSANE: High-Energy Research
+R_ADV_SHIELD: Advanced Shield Manipulation
+R_ADV_SHIELD_DESC: <<
+	[color=#aaa][i]Extensive research into shields allows for new methods of manipulating shield plasma, from transferring it to organizing it on a moment's notice to maintaining sizable reserves of it.
+
+	Quite a significant advance considering the fact that we just wanted to draw pretty pictures with the stuff...[/i][/color]
+
+	Unlocks the Power Transmitter and Stellar Shield Generator orbitals, and the Covariant Shield Generator subsystem for use on flagships.
+>>
