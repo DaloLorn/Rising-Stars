@@ -1,0 +1,9 @@
+Status: BoardingParty
+	Name: #STATUS_BOARDED
+	Description: #STATUS_BOARDED_DESC
+	Visible To: Everybody
+	Unique: True
+	Icon: CrewQuarters*#9686ff
+	Color: #ff1010
+
+	ABEM_hooks::Boarders(BoardingStrength, 200, 100)

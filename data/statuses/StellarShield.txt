@@ -1,0 +1,9 @@
+Status: StellarShield
+	Name: #STATUS_STELLAR_SHIELD
+	Description: #STATUS_STELLAR_SHIELD_DESC
+	Collapses: True
+	Visible To: Everybody
+	Icon: ResourceIcon::5 * #429cffff * #00ff00
+
+	ABEM_hooks::ApplyToStars()
+	RepeatStacks(ABEM_hooks::AddStellarShield(SV_StellarShieldCap, SV_StellarShieldRegen))
