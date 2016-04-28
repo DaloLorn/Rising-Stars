@@ -8,7 +8,7 @@ Subsystem: ShieldHardener
 	DamageOrder: -200
 
 	Tags: BaseCost, HighPowerUse
-	Tags: Defense, Category:Defense, HasInternals
+	Tags: Defense, Category:Shields, HasInternals
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
