@@ -218,6 +218,14 @@ class GameOptions : OptionsBox {
 		setMarkupTooltip(IRCtoggle, locale::OPTTT_AUTO_IRC);
 		options.insertLast(IRCtoggle);
 
+		y += 34;
+		GuiEngineToggle sensorToggle(
+			panel, recti_area(8, y,  278, 28),
+			locale::OPT_DISPLAY_SENSOR_RANGE, "bDisplaySensorRange"
+		);
+		setMarkupTooltip(sensorToggle, locale::OPTTT_DISPLAY_SENSOR_RANGE);
+		options.insertLast(sensorToggle);
+
 		y += 38;
 		options.insertLast(GuiEngineToggle(
 			panel, recti_area(8, y,  550, 28),

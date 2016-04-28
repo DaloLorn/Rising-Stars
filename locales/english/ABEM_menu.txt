@@ -8,6 +8,12 @@ OPT_THEME_LOOP: Loop Main Menu Theme
 OPTTT_THEME_LOOP: <<
 	When toggled on, the game will repeat the theme song as long as you're not in a match. If used alongside 'Use Multiple Themes', this will randomly cycle through all the files in data/music/theme.
 >>
+OPT_DISPLAY_SENSOR_RANGE: Display Sensor Range
+OPTTT_DISPLAY_SENSOR_RANGE: <<
+	When toggled on, selecting an object owned by your empire will always display its sensor range as a dim blue circle.
+
+	Displaying weapon range always displays the sensor range of objects owned by your empire, regardless of this setting.
+>>
 
 NG_ANOMALY_SYSTEM_OCCURANCE: Spatial Anomaly Occurrence
 NGTT_ANOMALY_SYSTEM_OCCURANCE: <<

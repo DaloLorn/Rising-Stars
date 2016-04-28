@@ -940,6 +940,8 @@ class BEAMS {
 		}
 
 		//Update movement beams
+		uint rangeInd = 0;
+		bool showWeapons = (altKey || SHOW_FIREARCS) && (!isHover || !obj.selected);
 		uint movInd = 0;
 		if(obj.owner.controlled) {
 			vec3d atPos = obj.node_position;
@@ -987,6 +989,9 @@ class BEAMS {
 						atPos = dest;
 					}
 				}
+				if(settings::bDisplaySensorRange || showWeapons)
+					addPlane(ranges, rangeInd, obj.node_position,
+						obj.sightRange, Color(0x0044ff88));
 			}
 		}
 		truncateBeams(moveBeams, movInd);
@@ -1000,8 +1005,6 @@ class BEAMS {
 			regionY = region.position.y;
 		else
 			regionY = myY;
-		uint rangeInd = 0;
-		bool showWeapons = (altKey || SHOW_FIREARCS) && (!isHover || !obj.selected);
 
 		bool hasHeight = obj.region !is null && abs(myY - regionY) >= 1.0;
 		if(hasHeight) {

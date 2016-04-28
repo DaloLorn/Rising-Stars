@@ -25,6 +25,8 @@ Category: Game
 		Default: True
 	Bool: bMenuBGScreenshot
 		Default: False
+	Bool: bDisplaySensorRange
+		Default: True
 Category: Interface
 	String: sSkinName
 		Default: Default
