@@ -3,7 +3,7 @@ Grid: Heralds
 	ArmorHealth: -1,1
 	ModBulkhead: 0,2
 	FlagHealth: -2,1
-	ArmorDR: -1,3
+	Health: -1,3
 	ArmorHealth: -1,4
 	ArmorDR2: -2,4
 	SuperstructureHull: -3,5
@@ -12,7 +12,7 @@ Grid: Heralds
 	Damage: -1,-1
 	SolarSatellite: 3,-4
 	EnergyStorage: 4,-3
-	Energy: 4,-4
+	Damage: 4,-4
 	SupportCap: 3,-2
 	Energy: 4,-2
 	Health: 2,-3
@@ -59,7 +59,6 @@ Grid: Heralds
 	DroneLauncher: -9,3
 	CloakPlating: -9,-2
 	PlanetSupport: 4,-7
-	SupportCap2: 6,-6
 	ShieldHarmonizer: 2,-11
 	ShieldReg2: 3,-10
 	SupportCap: 2,-9
@@ -81,7 +80,7 @@ Grid: Heralds
 	ArmorHealth: 3,4
 	ArmorHealth2: 4,3
 	StarForge: -2,12
-	Health: -2,10
+	FTL: -2,10
 	Health2: -2,11
 	SupplyStorage: -3,-8
 	AntimatterGen: -3,-7
@@ -117,7 +116,6 @@ Grid: Heralds
 	FTLCost: 0,12
 	StationMaintenance: -4,8
 	ArtificialPlanetoid: -2,16
-	AugmentDamage: 3,14
 	QuantumBattery: 2,-15
 	QuantumCompressor: 10,9
 	Damage: 10,0
@@ -155,14 +153,14 @@ Grid: Heralds
 	OrbitalConstruction: -2,13
 	FactoryLabor: -2,15
 	ArmorHealth: -1,14
-	FTL: -1,11
+	Energy: -1,11
 	Damage: 1,12
 	FireRate: 9,-9
 	Damage: 8,-9
-	SupplyStorage: 5,-12
+	ImpSupportSupplyUse: 5,-12
 	SupportCap: 5,-11
 	PlanetSupport2: 4,-14
-	SupplyStorage2: 3,-15
+	ImpSupportSupplyUse: 3,-15
 	Health: 2,-14
 	FTLJammerCombat: -9,10
 	OrbitalConstruction: -5,11
@@ -176,12 +174,10 @@ Grid: Heralds
 	VacuumTelescope: 11,-4
 	OrbitalConstruction: 10,-3
 	FactoryLabor: 11,-2
-	Health: 6,-5
 	Damage: 8,-4
 	FactoryLabor: 7,-4
 	SupplyStorage2: 9,7
 	Energy: 10,8
-	Defense: 2,13
 	Range: 1,14
 	FlagHealth: 0,15
 	Warhead: 1,16
@@ -198,7 +194,7 @@ Grid: Heralds
 	Range: -6,8
 	Ringworld: 16,-4
 	FlagHealth: -7,-2
-	Defense: -8,-3
+	Construction: -8,-3
 	InfluenceHurdle: -8,-4
 	EnergyHurdle: -11,8
 	InfiniteDamage: -12,9
@@ -257,3 +253,10 @@ Grid: Heralds
 	AdvancedShielding: 0,-11
 	EnergyHurdle: 1,-10
 	Energy: 0,-9
+	ImpSupportDamage: 6,-6
+	ImpAoE2: 6,9
+	AugmentDamage: 1,11
+	ImpAoE: 2,13
+	ImpAoE: 0,17
+	DevBudgetSmall: 5,-1
+	ArmorDR: 0,1
