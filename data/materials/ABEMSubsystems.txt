@@ -50,3 +50,16 @@ Material: CovariantShield
 Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
+	
+	// *********************************************************
+// ****************ARMOR!*******************
+// *********************************************************
+Material: QuantumArmor
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/armor_quantum.png
+Material: CompositeArmor
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/armor_composite.png
+Material: Superstructure
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/superstructure.png

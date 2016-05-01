@@ -1,0 +1,16 @@
+Technology: CompositeArmor
+	Name: #S_COMPOSITE_ARMOR
+	Class: Unlock
+
+
+	Time Cost: 180
+
+	Icon: CompositeArmor
+	Color: #676210
+	Description: #S_COMPOSITE_ARMOR_DESC
+	Category: ABEM - Subsystems
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	SkipOnUnlockedSubsystem(CompositeArmor)
+	UnlockSubsystem(CompositeArmor)
+	SecondaryMoneyCost(750)

@@ -159,7 +159,7 @@ Grid: Heralds
 	Damage: 8,-9
 	ImpSupportSupplyUse: 5,-12
 	SupportCap: 5,-11
-	PlanetSupport2: 4,-14
+	ImpSupportDamage: 4,-14
 	ImpSupportSupplyUse: 3,-15
 	Health: 2,-14
 	FTLJammerCombat: -9,10
@@ -252,11 +252,14 @@ Grid: Heralds
 	InfiniteShields: 0,-12
 	AdvancedShielding: 0,-11
 	EnergyHurdle: 1,-10
-	Energy: 0,-9
+	Damage: 0,-9
 	ImpSupportDamage: 6,-6
-	ImpAoE2: 6,9
 	AugmentDamage: 1,11
 	ImpAoE: 2,13
 	ImpAoE: 0,17
 	DevBudgetSmall: 5,-1
 	ArmorDR: 0,1
+	FactoryLabor2: 6,7
+	CompositeArmor: -2,0
+	Repair2: 7,8
+	QuantumArmor: 7,9

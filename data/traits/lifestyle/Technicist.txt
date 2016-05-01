@@ -1,16 +1,18 @@
 Trait: Technicist
 	Name: Technicist
 	Description: Dont localize yet
-	Category: Government
+
 	Order: 0
 
+
+	Category: Lifestyle
+	Unique: Lifestyle
 	Icon: ConvertIcon::2
 	Color: #7200a0
 
-	Default: True
-	Unique: Government
-	Conflict: Devout
 
+
+	Default: True
 
 	GainInfluenceCard(NameFlagship, Uses = 3, Quality = 3)
 	GainInfluenceCard(UnitedResearch)
@@ -23,6 +25,10 @@ Trait: Technicist
 	InRandomAdjacentSystem( MakeAsteroid() )
 	InRandomAdjacentSystem( MakeAsteroid() )
 
+	ReplaceTechnologyNodes(ArmorHealth2, Health2)
+	ReplaceTechnologyNodes(ArmorHealth, Health)
+	UnlockSubsystem(ShieldHarmonizer)
+	UnlockSubsystem(Superstructure)
 	ReplaceTechnologyNodeAt((0,-4), Science)
 	UnlockSubsystem(ShieldGen)
 	AddModifier(ShieldRegenFactor(2))

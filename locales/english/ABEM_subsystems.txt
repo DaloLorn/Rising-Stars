@@ -115,3 +115,39 @@ S_COVARIANT_SHIELD_DESC: <<
 	[img=Plus]Increased capacity.[/img]
 	[img=Minus]Reduced regenration.[/img]
 >>
+
+// *********************************************************
+// ****************ARMOR!*******************
+// *********************************************************
+S_COMPOSITE_ARMOR: Composite Armor
+S_CRYSTAL_ARMOR: Crystalline Armor
+S_NANO_ARMOR: Nanite Armor
+S_POWERED_ARMOR: Powered Armor
+S_QUANTUM_ARMOR: Quantum Armor
+S_REMNANT_ARMOR: Progenitor Armor
+
+S_QUANTUM_ARMOR_DESC: <<
+
+	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.
+
+	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
+	[img=Plus]Lower mass than that of Neutronium Armor.[/img]
+	[img=Minus]Expensive.[/img]
+	[img=Minus]High labor cost.[/img]
+>>
+
+S_COMPOSITE_ARMOR_DESC: <<
+	A uniform, seamless coat of a highly resistant composite material.
+	[img=Plus]Reduces all incoming damage by a fixed percentage.[/img]
+	[img=MenuIcons::3;20]Just as heavy as Remnant or Reactive Armor. Slightly tougher than Ablative, but weaker than Plate Armor.[/img]
+	[img=Minus]Requires a low amount of maintenance, and is twice as labor-intensive as - and slightly more expensive than - Plate Armor.[/img]
+>>
+
+S_SUPERSTRUCTURE_DESC: <<
+	Light-weight metal scaffolding to give structure and definition to the ship.  Somewhat more resistant to damage than most other components, but not as protective per-weight as actual armor.
+
+	[img=Plus]Moderate [b][color=#80ff80]health[/color][/b].[/img]
+	[img=Plus]Slightly resists and reduces incoming damage.[/img]
+	[img=Plus]Superstructure on the outside of the ship does not use up interior space.[/img]
+	[img=Plus]Cheap.[/img]
+>>
