@@ -23,5 +23,8 @@ Trait: Sublight
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 
+	IfHaveTrait(Technicist, LoadDesigns(technicist/default))
+	IfHaveTrait(Technicist, LoadDesigns(technicist/not_hyperdrive))
+	
 	AddFTLStorage(-250)
 	AddFTLIncome(-1)
