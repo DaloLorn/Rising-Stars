@@ -1,12 +1,12 @@
 {
 	"__VERSION__": 1,
-	"name": "Corvette",
+	"name": "Heavy Gunship",
 	"size": 8,
 	"hull": "$1Large",
 	"type": "Support",
 	"gridWidth": 19,
 	"gridHeight": 16,
-	"class": "T-Support ",
+	"class": "Combat",
 	"subsystems": [
 		{
 			"type": "CrewDeck",

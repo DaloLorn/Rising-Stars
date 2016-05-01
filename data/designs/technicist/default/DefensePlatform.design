@@ -1,7 +1,7 @@
 {
 	"__VERSION__": 1,
-	"name": "Defensive Station",
-	"size": 100,
+	"name": "Defense Platform",
+	"size": 128,
 	"hull": "$1Station",
 	"type": "Station",
 	"gridWidth": 28,

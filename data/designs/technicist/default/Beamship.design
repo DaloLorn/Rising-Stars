@@ -1,12 +1,12 @@
 {
 	"__VERSION__": 1,
-	"name": "Laser Fighter",
+	"name": "Beamship",
 	"size": 4,
 	"hull": "$1Medium",
 	"type": "Support",
 	"gridWidth": 19,
 	"gridHeight": 16,
-	"class": "T-Support ",
+	"class": "Combat",
 	"subsystems": [
 		{
 			"type": "SupportLaser",
