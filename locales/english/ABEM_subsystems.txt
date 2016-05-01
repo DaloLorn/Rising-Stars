@@ -113,7 +113,7 @@ S_COVARIANT_SHIELD_DESC: <<
 	[img=Plus]Creates regenerating barrier against damage.[/img]
 	[img=Minus]Weakened shields allow some damage through.[/img]
 	[img=Plus]Increased capacity.[/img]
-	[img=Minus]Reduced regenration.[/img]
+	[img=Minus]Reduced regeneration.[/img]
 >>
 
 // *********************************************************
@@ -127,7 +127,6 @@ S_QUANTUM_ARMOR: Quantum Armor
 S_REMNANT_ARMOR: Progenitor Armor
 
 S_QUANTUM_ARMOR_DESC: <<
-
 	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.
 
 	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
@@ -138,8 +137,9 @@ S_QUANTUM_ARMOR_DESC: <<
 
 S_COMPOSITE_ARMOR_DESC: <<
 	A uniform, seamless coat of a highly resistant composite material.
+
 	[img=Plus]Reduces all incoming damage by a fixed percentage.[/img]
-	[img=MenuIcons::3;20]Just as heavy as Remnant or Reactive Armor. Slightly tougher than Ablative, but weaker than Plate Armor.[/img]
+	[img=MenuIcons::3;20]Just as heavy as Progenitor or Reactive Armor. Slightly tougher than Ablative, but weaker than Plate Armor.[/img]
 	[img=Minus]Requires a low amount of maintenance, and is twice as labor-intensive as - and slightly more expensive than - Plate Armor.[/img]
 >>
 

@@ -1,6 +1,0 @@
-
-Material: Superstructure
-	DepthTest: NoDepthTest
-	Alpha: True
-	Lighting: False
-	Texture: data/images/subsystems/superstructure.png
