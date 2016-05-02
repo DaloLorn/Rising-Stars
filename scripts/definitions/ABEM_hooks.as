@@ -712,13 +712,11 @@ class IsDerelict : StatusHook {
 			ship.Supply = 0;
 			ship.Shield = 0;
 		}
-/* Blocking this code because orbitals can't have shields yet.
 		else if(orb !is null) {
 			info.shield = orb.maxShield / orb.shieldMod;
 			orb.modMaxShield(-info.shield);
 			orb.setDerelict(true);
 		}
-*/
 		obj.engaged = true;
 		obj.rotationSpeed = 0;
 		obj.clearOrders();
@@ -736,7 +734,6 @@ class IsDerelict : StatusHook {
 				ship.MaxShield += info.shield;
 			}
 		}
-/* Blocking this code because orbitals can't have shields yet.
 		if(obj.isOrbital) {
 			Orbital@ orb = cast<Orbital>(obj);
 			if(orb !is null) {
@@ -744,7 +741,6 @@ class IsDerelict : StatusHook {
 				orb.modMaxShield(info.shield);
 			}
 		}
-*/
 		obj.engaged = false;
 		obj.rotationSpeed = 0.1;
 	}
@@ -767,7 +763,6 @@ class IsDerelict : StatusHook {
 				ship.MaxShield -= ship.MaxShield;
 			}
 		}
-/* Blocking this code because orbitals can't have shields yet.
 		else if(obj.isOrbital) {
 			Orbital@ orb = cast<Orbital>(obj);
 			if(orb !is null) {
@@ -775,8 +770,7 @@ class IsDerelict : StatusHook {
 					info.shield += orb.maxShield / orb.shieldMod;
 				orb.modMaxShield(-orb.maxShield);
 			}
-		}
-*/			
+		}				
 		if(decay.boolean) {
 			DamageEvent dmg;
 			dmg.damage = 1.0 * time;
@@ -1256,10 +1250,8 @@ class AddShieldCapacity : StatusHook {
 
 		if(obj.isShip)
 			@ship = cast<Ship>(obj);
-/* Orbitals can't have shields yet.
 		else if(obj.isOrbital)
 			@orb = cast<Orbital>(obj);
-*/
 		if(ship is null && orb is null)
 			return;
 		Ship@ caster = cast<Ship>(status.originObject);
@@ -1275,13 +1267,11 @@ class AddShieldCapacity : StatusHook {
 			if(startOn.boolean)
 				ship.Shield += bonus;
 		}
-/* Orbitals can't have shields yet.
 		else if(obj.isOrbital) {
 			orb.modMaxShield(bonus);
 			if(startOn.boolean)
 				orb.repairOrbitalShield(bonus);
 		}
-*/
 		ShieldData info;
 		info.bonus = bonus;
 		info.castedBySubsystem = castedBySubsystem;
@@ -1300,12 +1290,10 @@ class AddShieldCapacity : StatusHook {
 			if(ship.MaxShield < ship.Shield)
 				ship.Shield = ship.MaxShield;
 		}
-/* Orbitals can't have shields yet.
 		else if(obj.isOrbital) {
 			Orbital@ orb = cast<Orbital>(obj);
 			orb.modMaxShield(-bonus);
 		}
-*/
 	}
 	
 	void save(Status@ status, any@ data, SaveFile& file) override {
@@ -1326,7 +1314,6 @@ class AddShieldCapacity : StatusHook {
 #section all	
 }
 
-/* Orbitals can't have shields yet.
 class AddSizeScaledShield : StatusHook {
 	Document doc("Adds a certain amount of shield capacity and regeneration to the orbital affected by this status, based on its radius.");
 	Argument capacity("Capacity Multiplier", AT_Decimal, "500.0", doc="The amount of capacity to multiply the radius with. Defaults to 500.");
@@ -1353,7 +1340,6 @@ class AddSizeScaledShield : StatusHook {
 	}
 #section all	
 }
-*/
 
 class HealShieldFromSubsystem : AbilityHook {
 	Document doc("Heals the target object's (or fleet's) shields at a rate determined by a subsystem value, while draining supplies (if applicable). If the caster does not have the subsystem, uses a default value.");
