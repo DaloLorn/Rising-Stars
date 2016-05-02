@@ -25,9 +25,6 @@ Subsystem: SupShieldGen
 
 	Requires:
 		Command = 1
-	
-	//Assert: Sum.BonusShields == 0
-	//	Message: Shield bonusshields    ---NOT WORKING---
 		
 	Assert: Size>=5
 		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.	

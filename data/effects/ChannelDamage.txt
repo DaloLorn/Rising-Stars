@@ -1,0 +1,8 @@
+Effect: ChannelDamage
+	Value: ProjResist
+	Value: EnergyResist
+	Value: ExplResist
+	Value: MinimumPercent = 1 / 5
+	Value: RechargePercent
+
+	Damage: ABEMCombat::ChannelDamage

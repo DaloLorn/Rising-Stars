@@ -1,0 +1,9 @@
+Effect: MatterDisruptor
+	Value: Amount
+	Value: SizeMultiplier
+	Value: AmountPerSize
+	Value: MinRatio
+	Value: MaxRatio
+	Value: DamageType
+
+	End: ABEMCombat::DamageFromRelativeSize

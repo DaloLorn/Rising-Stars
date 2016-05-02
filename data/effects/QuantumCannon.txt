@@ -1,0 +1,9 @@
+Effect: QuantumArtillery
+	Value: Radius
+	Value: BaselineAmount
+	Value: BaselineSize
+	Value: MinRatio
+	Value: MaxRatio
+	Value: DamageType
+
+	End: ABEMCombat::SizeScaledAreaDamage
