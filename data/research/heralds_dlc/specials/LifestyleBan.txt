@@ -1,0 +1,9 @@
+Technology: TechBannned
+	Name: Armor Banned by the People Invent Reason .
+	Category: Special Upgrades
+	Description: Imagination Required
+	Time Cost: 60
+	Icon: ActiveEffects
+	Class: BigUpgrade
+	SecondaryMoneyCost(50)
+	AutomaticallyUnlocks()

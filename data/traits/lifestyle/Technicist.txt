@@ -1,6 +1,6 @@
 Trait: Technicist
 	Name: Technicist
-	Description:  [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have double effectiveness.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start.[/img] [vspace=6/][img=PlateArmor;22][b]Armor [/b] have 50% of the Hit Points[/img] 
+	Description: [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have double effectiveness.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start.[/img] [vspace=6/][img=PlateArmor;22][b]Armor [/b] have 50% of the Hit Points[/img]
 
 	Order: 0
 
@@ -21,13 +21,44 @@ Trait: Technicist
 	//SpawnShip(Heavy Carrier, Empire, 10x Heavy Gunship, 15x Beamship, 25x Missile Boat, 45x Gunship)
 
 
-	ForbidSubsystem(PlateArmor)
-	ReplaceTechnologyNodes(ArmorHealth2, Health2)
-	ReplaceTechnologyNodes(ArmorHealth, Health)
+	
+	
+
+	
 	UnlockSubsystem(ShieldHarmonizer)
+	UnlockSubsystem(SupShieldGen)
 	UnlockSubsystem(Superstructure)
-	ReplaceTechnologyNodeAt((0,-4), Science)
+	UnlockSubsystem(SupportSuperstructure)
 	UnlockSubsystem(ShieldGen)
+	
 	AddModifier(ShieldRegenFactor(1.5))
 	AddModifier( ShieldCapacityFactor(2))
 	AddModifier(tag/IsArmor::HpFactor(0.50))
+	
+	//ForbidSubsystem
+	
+	ForbidSubsystem(SupportPlateArmor)
+	ForbidSubsystem(SupportAblativeArmor)
+	ForbidSubsystem(ReactiveArmor)
+	ForbidSubsystem(AblativeArmor)
+	ForbidSubsystem(PlateArmor)
+
+	
+	//Grid Replacements
+	
+		//Armor for HP
+	ReplaceTechnologyNodes(ArmorHealth2, Health2)
+	ReplaceTechnologyNodes(ArmorHealth, Health)
+	
+	ReplaceTechnologyNodeAt((0,-4), Science) //Shields for SCience
+	
+	RemoveTechnologyNodes(CompositeArmor,)
+
+	ReplaceTechnologyNodes(QuantumArmor,TechBannned)
+	ReplaceTechnologyNodes(CrystalArmor,TechBannned)
+	ReplaceTechnologyNodes(NeutronArmor,TechBannned)
+	ReplaceTechnologyNodes(LiquidArmor,TechBannned)
+
+	//JJust in case more lines are neeed lazy boy!
+	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
+	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
