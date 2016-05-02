@@ -1270,7 +1270,8 @@ class AddShieldCapacity : StatusHook {
 			bonus = preset.decimal;
 		
 		if(obj.isShip) {
-			ship.modShieldBonus(bonus);
+//			ship.modShieldBonus(bonus);
+			ship.MaxShield += bonus;
 			if(startOn.boolean)
 				ship.Shield += bonus;
 		}
@@ -1294,7 +1295,8 @@ class AddShieldCapacity : StatusHook {
 		bonus = info.bonus;
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
-			ship.modShieldBonus(-bonus);
+//			ship.modShieldBonus(-bonus);
+			ship.MaxShield -= bonus;
 			if(ship.MaxShield < ship.Shield)
 				ship.Shield = ship.MaxShield;
 		}
