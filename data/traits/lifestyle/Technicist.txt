@@ -14,44 +14,43 @@ Trait: Technicist
 
 	Default: True
 
-	GainInfluenceCard(NameFlagship, Uses = 1, Quality = 3)
 	GainInfluenceCard(UnitedResearch)
 
 
 	//SpawnShip(Heavy Carrier, Empire, 10x Heavy Gunship, 15x Beamship, 25x Missile Boat, 45x Gunship)
 
 
-	
-	
 
-	
+
+
+
 	UnlockSubsystem(ShieldHarmonizer)
 	UnlockSubsystem(SupShieldGen)
 	UnlockSubsystem(Superstructure)
 	UnlockSubsystem(SupportSuperstructure)
 	UnlockSubsystem(ShieldGen)
-	
+
 	AddModifier(ShieldRegenFactor(1.5))
 	AddModifier( ShieldCapacityFactor(2))
 	AddModifier(tag/IsArmor::HpFactor(0.50))
-	
+
 	//ForbidSubsystem
-	
+
 	ForbidSubsystem(SupportPlateArmor)
 	ForbidSubsystem(SupportAblativeArmor)
 	ForbidSubsystem(ReactiveArmor)
 	ForbidSubsystem(AblativeArmor)
 	ForbidSubsystem(PlateArmor)
 
-	
+
 	//Grid Replacements
-	
+
 		//Armor for HP
 	ReplaceTechnologyNodes(ArmorHealth2, Health2)
 	ReplaceTechnologyNodes(ArmorHealth, Health)
-	
+
 	ReplaceTechnologyNodeAt((0,-4), Science) //Shields for SCience
-	
+
 	RemoveTechnologyNodes(CompositeArmor,)
 
 	ReplaceTechnologyNodes(QuantumArmor,TechBannned)
@@ -62,3 +61,4 @@ Trait: Technicist
 	//JJust in case more lines are neeed lazy boy!
 	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
 	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
+	AddModifier( ShieldHarmonizer::BonusShieldFactor(2) )
