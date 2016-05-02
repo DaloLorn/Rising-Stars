@@ -669,6 +669,7 @@ void loadOrbitalModules(const string& filename) {
 		}
 		else if(key.equals_nocase("Mass")) {
 			mod.mass = toDouble(value);
+		}
 		else if(key.equals_nocase("Always Regenerate Shields")) {
 			mod.alwaysRegenShield = toBool(value);
 		}
