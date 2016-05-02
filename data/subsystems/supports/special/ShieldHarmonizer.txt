@@ -1,0 +1,46 @@
+Subsystem: ShieldHarmonizer
+	Name: #S_SHIELD_HARMONIZER
+	Description: #S_SHIELD_HARMONIZER_DESC
+	BaseColor: #e2e676
+	Elevation: 1
+
+	EvaluationOrder: 100
+	DamageOrder: -200
+
+	Tags: HeraldsDLC, ShieldHarmonizer
+	Tags: Defense, Category:Defense, HasInternals
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+
+	Percentage := min(2.0 * Size / ShipSize, 1.0)
+	BonusShield := Size * 3.0
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+	
+	Hex.BuildCost := 1.25 * HexSize
+	Hex.LaborCost := 0.10 * HexSize
+	//All of the below work
+	//Assert: Sum.ShieldRegen == 0
+	//	Message: Harmerror reg
+	//Assert: Sum.ShieldCapacity == 0
+	//	Message: HarmErrorCap
+	
+	Assert:TagCount.IsShield == 0
+		Message: Shields and S.Harmonizer cannot be used at the same time.
+	
+	Requires:
+		Command = 1
+
+	Effect: ShieldRedirect
+		Percentage = Percentage
+
+	State: int = 0
+	Effect: AddBonusShields
+		Amount = BonusShield
+
+	Module: Core
+		Sprite: ShieldHarmonizer
+		Hex.BuildCost := 2 * Hex.BuildCost

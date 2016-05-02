@@ -19,16 +19,19 @@ Subsystem: SupShieldGen
 	Hex.HP := 8 * HexSize
 	Hex.Mass := 2.5 * HexSize
 	Hex.BuildCost := 2*HexSize
-	Assert: Size>=5
-		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.
+	
 
 	Effect: ABEMShieldDamage
 
 	Requires:
 		Command = 1
 	
-	Assert:TagCount.ShieldHarmonizer == 0
-		Message: #ERROR_SHIELDS_OR_HARMONIZER
+	//Assert: Sum.BonusShields == 0
+	//	Message: Shield bonusshields    ---NOT WORKING---
+		
+	Assert: Size>=5
+		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.	
+	
 	Modifier: LaborCostFactor(factor)
 		Hex.LaborCost := 0
 

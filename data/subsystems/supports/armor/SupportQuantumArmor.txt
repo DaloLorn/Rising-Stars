@@ -1,0 +1,30 @@
+Subsystem: SupportQuantumArmor
+	Name: #S_QUANTUM_ARMOR
+	Description: #S_QUANTUM_ARMOR_DESC
+	BaseColor: #37b306
+	Picture: SubsystemButtonArt::0
+	Elevation: 1
+
+	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, FauxExterior, ExternalSpace
+	Tags: NoWall, Category:Armor
+	Hull: Support
+
+
+	Tags: FauxExterior
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	Size := HexSize * Hexes
+
+	Hex.Resistance := 0.5
+	Hex.HP := 160* HexSize
+	Hex.Mass := 2.5 * HexSize
+
+	Hex.BuildCost := 1.5 * HexSize
+	Hex.LaborCost := 1 * HexSize
+
+	DamageResist := ShipSize / 19.0
+	Effect: DamageResist
+		Resist = DamageResist
+
+	Module: Default
+		Sprite: QuantumArmor
