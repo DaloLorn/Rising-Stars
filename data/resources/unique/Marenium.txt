@@ -23,6 +23,7 @@ Resource: Marenium
 	IfLevel(3, ModEmpireAttribute(MareniumEfficiency, Add, +0.20), Exact = True)
 	IfLevel(4, ModEmpireAttribute(MareniumEfficiency, Add, +0.25), Exact = True)
 	IfLevel(5, ModEmpireAttribute(MareniumEfficiency, Add, +0.30), Exact = True)
+	IfLevel(6, ModEmpireAttribute(MareniumEfficiency, Add, +0.40), Exact = True)
 
 	IfLevel(0, ModEmpireAttribute(MareniumAcceleration, Add, +0.10), Exact = True)
 	IfLevel(1, ModEmpireAttribute(MareniumAcceleration, Add, +0.20), Exact = True)
@@ -30,3 +31,4 @@ Resource: Marenium
 	IfLevel(3, ModEmpireAttribute(MareniumAcceleration, Add, +0.70), Exact = True)
 	IfLevel(4, ModEmpireAttribute(MareniumAcceleration, Add, +1.50), Exact = True)
 	IfLevel(5, ModEmpireAttribute(MareniumAcceleration, Add, +4.00), Exact = True)
+	IfLevel(6, ModEmpireAttribute(MareniumAcceleration, Add, +7.00), Exact = True)

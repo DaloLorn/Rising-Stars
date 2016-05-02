@@ -13,7 +13,7 @@ Resource: Cyllium
 
 	Limitless Level: True
 	Exportable: False
-	
+
 	ModCivResourceMult(Energy, +0.1)
 	RepeatPlanetLevel(ModCivResourceMult(Energy, +0.1))
 
@@ -23,5 +23,6 @@ Resource: Cyllium
 	IfLevel(3, TriggerPeriodic(SpawnArtifact(In System = True, Owned = True, Expire = 600), Interval = 120), Exact = True)
 	IfLevel(4, TriggerPeriodic(SpawnArtifact(In System = True, Owned = True, Expire = 960), Interval = 120), Exact = True)
 	IfLevel(5, TriggerPeriodic(SpawnArtifact(In System = True, Owned = True, Expire = 1800), Interval = 120), Exact = True)
-	
+
+	IfLevel(6, TriggerPeriodic(SpawnArtifact(In System = True, Owned = True, Expire = 1800), Interval = 60), Exact = True)
 	IfLevel(4, SetSystemFlag(CheapArtifacts))

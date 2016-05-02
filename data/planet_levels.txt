@@ -1,5 +1,6 @@
 //Requirements for unlocking planet levels
 Level: 0
+	Name: Fringe
 	Icon: PlanetIcon0
 	Population: 1
 	PopGrowth: 0.75
@@ -11,6 +12,7 @@ Level: 0
 	Points: 25
 
 Level: 1
+	Name: Core
 	Icon: PlanetIcon1
 	Required: 1 WaterType, 1 Food
 	Population: 3
@@ -25,6 +27,7 @@ Level: 1
 	Points: 100
 
 Level: 2
+	Name: Renowned
 	Icon: PlanetIcon2
 	Required: 1 WaterType, 2 Food, 1 Level1
 	PopGrowth: 1.6
@@ -40,6 +43,7 @@ Level: 2
 	Points: 400
 
 Level: 3
+	Name: Capital
 	Icon: PlanetIcon3
 	Required: 1 WaterType, 3 Food, 2 Level1, 1 Level2
 	PopGrowth: 1.7
@@ -55,6 +59,7 @@ Level: 3
 	Points: 1000
 
 Level: 4
+	Name: Master
 	Icon: PlanetIcon4
 	Required: 1 WaterType, 4 Food, 4 Level1, 2 Level2
 	PopGrowth: 1.8
@@ -69,6 +74,7 @@ Level: 4
 	Points: 1600
 
 Level: 5
+	Name: Unique
 	Icon: PlanetIcon5
 	Required: 1 WaterType, 5 Food, 6 Level1, 4 Level2
 	PopGrowth: 1.8
@@ -81,3 +87,18 @@ Level: 5
 	NeighbourLoyalty: 3
 	BaseSupport: 1500
 	Points: 2600
+	
+Level: 6
+	Name: Mythical
+	Icon: PlanetIcon5
+	Required: 1 WaterType, 6 Food, 6 Level1, 6 Level2, 1 Level3
+	PopGrowth: 2
+	Population: 60
+	RequiredPop: 30
+	BasePressure: 95
+	ExportPressurePenalty: 16
+	BaseIncome: 3000
+	BaseLoyalty: 30
+	NeighbourLoyalty: 3.0
+	BaseSupport: 2500
+	Points: 6000

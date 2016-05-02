@@ -13,7 +13,7 @@ Resource: Allondium
 
 	Limitless Level: True
 	Exportable: False
-	
+
 	ModCivResourceMult(Influence, +0.1)
 	RepeatPlanetLevel(ModCivResourceMult(Influence, +0.1))
 
@@ -30,4 +30,5 @@ Resource: Allondium
 	IfLevel(4, GrantAbility(BuyNameFlagship)) #version>=116
 	IfLevel(4, GrantAbility(BuyAnnexPlanet)) #version>=116
 
+	IfLevel(6, ModEmpireAttribute(VoteCardCostMod, Add, -1000))
 	IfLevel(5, ModEmpireAttribute(SupportCardCostMod, Add, -3)) #version>=116

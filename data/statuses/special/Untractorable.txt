@@ -1,0 +1,6 @@
+Status: Untractorable
+	Visible To: Nobody
+	Unique: True
+Status: Stationary
+	Visible To: Nobody
+	Unique: True

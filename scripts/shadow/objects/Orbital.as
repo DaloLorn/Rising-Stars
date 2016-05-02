@@ -16,11 +16,15 @@ tidy class OrbitalScript {
 	int contestion = 0;
 	bool disabled = false;
 	Orbital@ master;
+	bool derelict = false;
 
 	double Health = 0;
 	double MaxHealth = 0;
 	double Armor = 0;
 	double MaxArmor = 0;
+	double Shield = 0;
+	double MaxShield = 0;
+	double ShieldRegen = 0;
 	double DR = 2.5;
 	double DPS = 0;
 
@@ -66,6 +70,37 @@ tidy class OrbitalScript {
 		if(owner !is null)
 			v *= owner.OrbitalArmorMod;
 		return v;
+	}
+	
+	double get_shield(Orbital& orb) {
+		double v = Shield;
+		Empire@ owner = orb.owner;
+		if(owner !is null)
+			v *= owner.OrbitalShieldMod;
+		return v;
+	}
+	
+	double get_maxShield(Orbital& orb) {
+		double v = MaxShield;
+		Empire@ owner = orb.owner;
+		if(owner !is null)
+			v *= owner.OrbitalShieldMod;
+		return v;
+	}
+	
+	double get_shieldRegen(Orbital& orb) {
+		double v = ShieldRegen;
+		Empire@ owner = orb.owner;
+		if(owner !is null)
+			v *= owner.OrbitalShieldMod;
+		return v;
+	}
+
+	double get_shieldMod(Orbital& orb) {
+		Empire@ owner = orb.owner;
+		if(owner !is null)
+			return owner.OrbitalShieldMod;
+		else return 1;
 	}
 
 	double get_dps() {
@@ -269,6 +304,7 @@ tidy class OrbitalScript {
 		msg >> contestion;
 		msg >> disabled;
 		msg >> master;
+		msg >> derelict;
 	}
 
 	void _readHP(Orbital& obj, Message& msg) {
@@ -276,6 +312,9 @@ tidy class OrbitalScript {
 		msg >> MaxHealth;
 		msg >> Armor;
 		msg >> MaxArmor;
+		msg >> Shield;
+		msg >> MaxShield;
+		msg >> ShieldRegen;
 		msg >> DR;
 		msg >> DPS;
 	}

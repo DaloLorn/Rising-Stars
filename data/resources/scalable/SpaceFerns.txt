@@ -22,12 +22,14 @@ Resource: SpaceFerns
 	IfLevel(3, EnableModifier(tag/Engine::MaintCostFactor(0.50)), Exact = True)
 	IfLevel(4, EnableModifier(tag/Engine::MaintCostFactor(0.25)), Exact = True)
 	IfLevel(5, EnableModifier(tag/Engine::MaintCostFactor(0.10)), Exact = True)
+	IfLevel(6, EnableModifier(tag/Engine::MaintCostFactor(0)), Exact = True)
 
 	IfLevel(1, AddPressure(Energy, 2))
 	IfLevel(2, AddPressure(Money, 3))
 	IfLevel(3, AddPressure(Influence, 4))
 	IfLevel(4, AddPressure(Energy, 5))
 	IfLevel(5, AddPressure(Influence, 6))
+	IfLevel(6, AddPressure(Money, 7))
 
 	NativeLevelChain(FernChain)
 
@@ -67,3 +69,11 @@ Level Chain: FernChain
 		ResourceIncome: 0
 		Points: 800
 		Required: 9 WaterType, 12 Food
+
+	Level: 6
+		Population: 30
+		BaseIncome: 6000
+		BasePressure: 110
+		ResourceIncome: 0
+		Points: 1000
+		Required: 15 WaterType, 18 Food

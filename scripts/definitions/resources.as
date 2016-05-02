@@ -108,6 +108,7 @@ tidy final class ResourceType {
 	bool requirementDisplay = true;
 	bool willLock = false;
 	bool unique = false;
+	bool stealable = true;
 	double requireContestation = -INFINITY;
 	int rarityLevel = -1;
 	bool limitlessLevel = false;
@@ -1381,7 +1382,7 @@ void loadResources(const string& filename) {
 			string line = file.line;
 			parseLine(line, r, file);
 		}
-		else if(key == "Resource") {
+		else if(key.equals_nocase("Resource")) {
 			if(r !is null)
 				addResourceType(r);
 			@r = ResourceType();
@@ -1393,144 +1394,147 @@ void loadResources(const string& filename) {
 		else if(r is null) {
 			error("Missing 'Resource: ID' line in " + filename);
 		}
-		else if(key == "Name") {
+		else if(key.equals_nocase("Name")) {
 			r.name = localize(value);
 		}
-		else if(key == "Description") {
+		else if(key.equals_nocase("Description")) {
 			r.description = localize(value);
 		}
-		else if(key == "Blurb") {
+		else if(key.equals_nocase("Blurb")) {
 			r.blurb = localize(value);
 		}
-		else if(key == "Native Biome") {
+		else if(key.equals_nocase("Native Biome")) {
 			r.nativeBiome = value;
 		}
-		else if(key == "Class") {
+		else if(key.equals_nocase("Class")) {
 			r.className = value;
 		}
 		else if(key == "DLC") {
 			r.dlc = value;
 		}
-		else if(key == "Level") {
+		else if(key.equals_nocase("Level")) {
 			r.level = toUInt(value);
 			if(r.cargoWorth == 0)
 				r.cargoWorth = (r.level+1) * CARGO_WORTH_LEVEL;
 		}
-		else if(key == "Rarity Level") {
+		else if(key.equals_nocase("Rarity Level")) {
 			r.rarityLevel = toInt(value);
 		}
-		else if(key == "Limitless Level") {
+		else if(key.equals_nocase("Limitless Level")) {
 			r.limitlessLevel = toBool(value);
 		}
-		else if(key == "Can Be Terraformed") {
+		else if(key.equals_nocase("Can Be Terraformed")) {
 			r.canBeTerraformed = toBool(value);
 		}
-		else if(key == "Frequency") {
+		else if(key.equals_nocase("Frequency")) {
 			r.frequency = toDouble(value);
 		}
-		else if(key == "Distribution") {
+		else if(key.equals_nocase("Distribution")) {
 			r.distribution = toDouble(value);
 		}
-		else if(key == "Vanish Time") {
+		else if(key.equals_nocase("Vanish Time")) {
 			r.vanishTime = toDouble(value);
 		}
-		else if(key == "Cargo Worth") {
+		else if(key.equals_nocase("Cargo Worth")) {
 			r.cargoWorth = toInt(value);
 		}
-		else if(key == "Vanish Mode") {
-			if(value == "Never")
+		else if(key.equals_nocase("Vanish Mode")) {
+			if(value.equals_nocase("Never"))
 				r.vanishMode = VM_Never;
-			else if(value == "When Exported")
+			else if(value.equals_nocase("When Exported"))
 				r.vanishMode = VM_WhenExported;
-			else if(value == "Always")
+			else if(value.equals_nocase("Always"))
 				r.vanishMode = VM_Always;
-			else if(value == "Exported In Combat")
+			else if(value.equals_nocase("Exported In Combat"))
 				r.vanishMode = VM_ExportedInCombat;
-			else if(value == "Custom")
+			else if(value.equals_nocase("Custom"))
 				r.vanishMode = VM_Custom;
 			else
 				error("Invalid vanish mode: "+value);
 		}
-		else if(key == "Artificial") {
+		else if(key.equals_nocase("Artificial")) {
 			r.artificial = toBool(value);
 			if(r.artificial)
 				r.distribution = 0.0;
 		}
-		else if(key == "Exportable") {
+		else if(key.equals_nocase("Exportable")) {
 			r.exportable = toBool(value);
 		}
-		else if(key == "Unique") {
+		else if(key.equals_nocase("Unique")) {
 			r.unique = toBool(value);
 		}
-		else if(key == "Require Contestation") {
+		else if(key.equals_nocase("Stealable")) {
+			r.stealable = toBool(value);
+		}
+		else if(key.equals_nocase("Require Contestation")) {
 			r.requireContestation = toDouble(value);
 		}
-		else if(key == "Mode") {
-			if(value == "Normal")
+		else if(key.equals_nocase("Mode")) {
+			if(value.equals_nocase("Normal"))
 				r.mode = RM_Normal;
-			else if(value == "Universal")
+			else if(value.equals_nocase("Universal"))
 				r.mode = RM_Normal;
-			else if(value == "Universal Unique")
+			else if(value.equals_nocase("Universal Unique"))
 				r.mode = RM_UniversalUnique;
-			else if(value == "Non Requirement")
+			else if(value.equals_nocase("Non Requirement"))
 				r.mode = RM_NonRequirement;
 			else
 				error("Invalid resource mode: "+value);
 		}
-		else if(key == "Affinity") {
+		else if(key.equals_nocase("Affinity")) {
 			uint aff = getAffinityFromDesc(value);
 			if(aff != A_NULL)
 				r.addAffinity(aff);
 		}
-		else if(key == "Rarity") {
-			if(value == "Common")
+		else if(key.equals_nocase("Rarity")) {
+			if(value.equals_nocase("Common"))
 				r.rarity = RR_Common;
-			else if(value == "Uncommon")
+			else if(value.equals_nocase("Uncommon"))
 				r.rarity = RR_Uncommon;
-			else if(value == "Rare")
+			else if(value.equals_nocase("Rare"))
 				r.rarity = RR_Rare;
-			else if(value == "Epic")
+			else if(value.equals_nocase("Epic"))
 				r.rarity = RR_Epic;
-			else if(value == "Mythical")
+			else if(value.equals_nocase("Mythical"))
 				r.rarity = RR_Mythical;
-			else if(value == "Unique") {
+			else if(value.equals_nocase("Unique")) {
 				r.rarity = RR_Unique;
 				r.unique = true;
 			}
 			else
 				error("Invalid resource rarity: "+value);
 		}
-		else if(key == "Display Requirement") {
+		else if(key.equals_nocase("Display Requirement")) {
 			r.requirementDisplay = toBool(value);
 		}
-		else if(key == "Will Lock") {
+		else if(key.equals_nocase("Will Lock")) {
 			r.willLock = toBool(value);
 		}
-		else if(key == "Display Weight") {
+		else if(key.equals_nocase("Display Weight")) {
 			r.displayWeight = toDouble(value);
 		}
-		else if(key == "Asteroid Frequency") {
+		else if(key.equals_nocase("Asteroid Frequency")) {
 			r.asteroidFrequency = toDouble(value);
 		}
-		else if(key == "Asteroid Labor") {
+		else if(key.equals_nocase("Asteroid Labor")) {
 			r.asteroidCost = toDouble(value);
 		}
-		else if(key == "Terraform Cost") {
+		else if(key.equals_nocase("Terraform Cost")) {
 			r.terraformCost = toInt(value);
 		}
-		else if(key == "Terraform Labor") {
+		else if(key.equals_nocase("Terraform Labor")) {
 			r.terraformLabor = toDouble(value);
 		}
-		else if(key == "Icon") {
+		else if(key.equals_nocase("Icon")) {
 			r.icon = getSprite(value);
 		}
-		else if(key == "Small Icon") {
+		else if(key.equals_nocase("Small Icon")) {
 			r.smallIcon = getSprite(value);
 		}
-		else if(key == "Distant Icon") {
+		else if(key.equals_nocase("Distant Icon")) {
 			//TODO
 		}
-		else if(key == "Pressure") {
+		else if(key.equals_nocase("Pressure")) {
 			array<string>@ decls = value.split(",");
 			for(uint i = 0, cnt = decls.length; i < cnt; ++i) {
 				array<string>@ parts = decls[i].split(" ");

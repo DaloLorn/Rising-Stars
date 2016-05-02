@@ -3,6 +3,7 @@ Resource: Altar
 	Description: #ALTAR_DESC
 	Artificial: True
 	Exportable: False
+	Stealable: False
 
 	Icon: ResourceIconsSmall::53
 	Small Icon: ResourceIconsSmall::53

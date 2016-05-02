@@ -13,8 +13,9 @@ Resource: Plains
 	Limitless Level: True
 	Can Be Terraformed: False
 	Exportable: False
+	Stealable: False
 
-	RegenSurface(26, 16, Biome Count = 3)
+	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(SoilEnhanced, ABEM_hooks::ResourcelessRegenSurface(26, 16, Biome Count = 3))))))
 
 	ModTileDevelopRate(+1.0)
 	RepeatPlanetLevel(ModTileDevelopRate(+0.5))
@@ -24,4 +25,5 @@ Resource: Plains
 	IfLevel(2, AddBuildingMaintenanceRefund(300), Exact = True) #version>=134
 	IfLevel(3, AddBuildingMaintenanceRefund(500), Exact = True) #version>=134
 	IfLevel(4, AddBuildingMaintenanceRefund(750), Exact = True) #version>=134
-	IfLevel(5, AddBuildingMaintenanceRefund(1100)) #version>=134
+	IfLevel(5, AddBuildingMaintenanceRefund(1100), Exact = True) #version>=134
+	IfLevel(6, AddBuildingMaintenanceRefund(2000)) #version>=134

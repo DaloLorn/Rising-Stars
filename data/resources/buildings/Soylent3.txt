@@ -11,3 +11,4 @@ Resource: Soylent3
 	Level: 0
 	Exportable: False
 	Artificial: True
+	Stealable: False

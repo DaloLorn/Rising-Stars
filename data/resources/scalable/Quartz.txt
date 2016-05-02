@@ -17,6 +17,7 @@ Resource: Quartz
 	AddLaborStorage(10)
 	RepeatPlanetLevel(AddLaborStorage(100))
 
+	IfLevel(6, TriggerOnAttributeIncrease(ArtifactsActivated, AddStoredLabor(100, True)))
 	TriggerOnAttributeIncrease(ArtifactsActivated, AddStoredLabor(10, True))
 	IfLevel(1, TriggerOnAttributeIncrease(ArtifactsActivated, AddStoredLabor(15, True)))
 	IfLevel(2, TriggerOnAttributeIncrease(ArtifactsActivated, AddStoredLabor(25, True)))
