@@ -1,4 +1,4 @@
-	Name: Alternate Balance Expansion Mod
+	Name: Abem for Heralds
 	Description: <<
 		[h1][b]Links[/b][/h1]
 		[b]ABEM on GitHub:[/b] https://github.com/Alarcarr/ABEMMOD
