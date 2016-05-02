@@ -4,11 +4,12 @@ Technology: HydroponicsSatellite
 	Class: Unlock
 	Category: Orbitals
 
-	Point Cost: 250
+	Point Cost: 150
 	Time Cost: 90
 
 	Icon: GuiOrbitalIcons::14
 	Color: #ffdc40
 
+	SecondaryInfluenceCost(10)
 	UnlockTag(HydroponicsSatelliteUnlock)
 	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
