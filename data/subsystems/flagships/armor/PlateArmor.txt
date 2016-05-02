@@ -14,15 +14,13 @@ Subsystem: PlateArmor
 	Hex.Resistance := 0.5
 	Hex.HP := 60 * HexSize
 
-	Hex.Mass := 5.0 * HexSize
+	Hex.Mass := 5 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
-
-	DamageResist := ShipSize / 36.0
-	Effect: DamageResist
-		Resist = DamageResist
-
+	Hex.LaborCost := 0.1 * HexSize 
+	Hex.BuildCost := 0.3 * HexSize 
+	Hex.MaintainCost := 0
+	
+	
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 2
-		Hex.LaborCost := Hex.LaborCost * 4
-		Sprite: PlateArmor
+			Sprite: PlateArmor

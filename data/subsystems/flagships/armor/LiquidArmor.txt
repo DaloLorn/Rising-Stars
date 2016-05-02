@@ -13,14 +13,16 @@ Subsystem: LiquidArmor
 
 	Hex.Resistance := 0.1
 	Hex.HP := 60 * HexSize
-
 	Hex.Mass := 1 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Effect: DistributeHealth
-
+	
+	Hex.LaborCost := 0.2 * HexSize 
+	Hex.BuildCost := 0.7 * HexSize 
+	Hex.MaintainCost := 0.1
+	
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 2
-		Hex.LaborCost := Hex.LaborCost * 3
+	
 		Sprite: PlateArmor * #91692c

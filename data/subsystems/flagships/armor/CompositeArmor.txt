@@ -14,7 +14,7 @@ Subsystem: CompositeArmor
 
 	// 0.1 = 10%
 	CompProjResist := 0.3
-	CompEnergyResist := 0.3
+	CompEnergyResist := 0.10
 	CompExplosiveResist := 0.15
 
 	// Dummies for design_stats.txt
@@ -24,7 +24,8 @@ Subsystem: CompositeArmor
 
 	Hex.HP := 40 * HexSize
 	Hex.Mass := 2.5 * HexSize
-	Hex.LaborCost := 0.4 * HexSize
+	
+	Hex.LaborCost := 0.3 * HexSize
 	Hex.BuildCost := 0.4 * HexSize
 	Hex.MaintainCost := 0.1 * HexSize
 

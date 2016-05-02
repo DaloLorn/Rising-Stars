@@ -4,24 +4,28 @@ Subsystem: NeutronArmor
 	BaseColor: #898989
 	Elevation: 1
 
-	Tags: LowMaint, Category:Armor, FauxExterior
+	Tags: Category:Armor
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
-	Tags: PrimaryArmor
 	Hull: Flagship, Station
-
+	
+	Tags: FauxExterior
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+	
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 180 * HexSize
-	Hex.Mass := 20.0 * HexSize
-
-	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
-
-	DamageResist := ShipSize / 48.0
+	Hex.HP := 125 * HexSize
+	Hex.Mass := 6 * HexSize
+	Hex.LaborCost := 0.5 * HexSize 
+	Hex.BuildCost := 0.5 * HexSize 
+	Hex.MaintainCost := 0
+	
+	DamageResist := ShipSize /25
 	Effect: DamageResist
 		Resist = DamageResist
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 6
-		Hex.LaborCost := Hex.LaborCost * 6
+		
 		Sprite: PlateArmor * #449944
+
+		
