@@ -5,5 +5,4 @@ Technology: TechBannned
 	Time Cost: 60
 	Icon: ActiveEffects
 	Class: BigUpgrade
-	SecondaryMoneyCost(50)
 	AutomaticallyUnlocks()

@@ -6,6 +6,7 @@ Subsystem: NeutronArmor
 
 	Tags: Category:Armor
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
+	Tags: PrimaryArmor
 	Hull: Flagship, Station
 	
 	Tags: FauxExterior

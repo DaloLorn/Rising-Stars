@@ -6,8 +6,8 @@ Subsystem: AblativeArmor
 
 	Tags: Category:Armor
 	Tags: NoCore, NonContiguous, DefaultUnlock, Defense, IsArmor, ResistArmor, ExternalSpace
+	Tags: FauxExterior,PrimaryArmor
 	
-	Tags: FauxExterior
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 	
 	
@@ -15,6 +15,13 @@ Subsystem: AblativeArmor
 
 	Size := HexSize * Hexes
 	Hex.Resistance := 0.4
+	
+	Effect: ReduceDamage
+		ProjResist = DamageResist
+		EnergyResist = DamageResist * 2.0
+		ExplResist = DamageResist
+		MinimumPercent = 1/6
+	
 	Hex.HP := 30 * HexSize
 	Hex.Mass := 2.0 * HexSize
 	
