@@ -1,0 +1,37 @@
+Ability: ProtoLevel0
+	Name: #ABL_PROTO_LEVEL0
+	Description: #ABL_PROTO_LEVEL0_DESC
+	Icon: PlanetType::5
+
+	Energy Cost: 900
+
+	GiveAchievement(ACH_USE_ARTIFACT)
+	SpawnPlanet(RandomLevel:0)
+
+Ability: ProtoLevel1
+	Name: #ABL_PROTO_LEVEL1
+	Description: #ABL_PROTO_LEVEL1_DESC
+	Icon: ResourceClassIcons::0
+
+	Energy Cost: 1100
+
+	GiveAchievement(ACH_USE_ARTIFACT)
+	SpawnPlanet(RandomLevel:1)
+
+Ability: ProtoLevel2
+	Name: #ABL_PROTO_LEVEL2
+	Description: #ABL_PROTO_LEVEL2_DESC
+	Icon: ResourceClassIcons::1
+
+	Energy Cost: 1300
+
+	GiveAchievement(ACH_USE_ARTIFACT)
+	SpawnPlanet(RandomLevel:2)
+
+Ability: ProtoLevel3
+	Name: #ABL_PROTO_LEVEL3
+	Description: #ABL_PROTO_LEVEL3_DESC
+	Icon: ResourceClassIcons::2
+	Energy Cost: 1700
+	SpawnPlanet(RandomLevel:3)
+	GiveAchievement(ACH_USE_ARTIFACT)
