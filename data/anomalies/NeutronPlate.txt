@@ -5,7 +5,7 @@ Anomaly: NeutronPlate
 	State: Initial
 		Narrative: #ANOMALY_NAR_NEUTRONPLATE
 
-		Choice: Infuse
+		Choice: Study2
 		Choice: Study
 
 	Option: Study2
