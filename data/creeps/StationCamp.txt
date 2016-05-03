@@ -1,0 +1,26 @@
+Camp: StationCamp
+	Ship: Icarus [Remnant Icarus]
+
+	Frequency: 0.1
+	Remnant Status: RemStrIncrease
+
+	Pickup: UNLOCK_CRYS
+		Name: #PICKUP_CRYS
+		Description: #PICKUP_CRYS_DESC
+		UnlockSubsystem(CrystalArmor)
+		TakeOnClear()
+		DLC: Heralds
+
+	Pickup: UNLOCK_DISRUPTOR
+		Name: #PICKUP_DISRUPTOR
+		Description: #PICKUP_DISRUPTOR_DESC
+		UnlockSubsystem(Disruptor)
+		TakeOnClear()
+		DLC: Heralds
+
+	Pickup: UNLOCK_LANCE
+		Name: #PICKUP_PARTICLE_LANCE
+		Description: #PICKUP_PARTICLE_LANCE_DESC
+		DLC: Heralds
+		TakeOnClear()
+		UnlockSubsystem(ParticleLance)

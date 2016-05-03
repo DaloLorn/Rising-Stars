@@ -1,0 +1,5 @@
+Status: RemStrIncrease
+	Visible To: Nobody
+	Name: RemStrIncrease
+	Icon: PointsIcon
+	RepeatExtended(AddShipEffectiveness(0.02), Per Gametime Bonus = 3)

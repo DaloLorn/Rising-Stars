@@ -1,0 +1,10 @@
+
+
+PICKUP_CRYS:Crystaline Armor
+PICKUP_CRYS_DESC:Unlocks Crystaline Armor
+
+PICKUP_DISRUPTOR:Disruptors
+PICKUP_DISRUPTOR_DESC:Unlocks Disruptors
+
+PICKUP_PARTICLE_LANCE:Particle Lance
+PICKUP_PARTICLE_LANCE_DESC:Unlock Particle Lance
