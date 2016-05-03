@@ -334,6 +334,23 @@ void loadStats(const string& filename) {
 				stat.divVar = getSubsystemVariable(value);
 			}
 		}
+		else if(key == "MultBy") {
+            if(value.startswith("Hex.")) {
+                value = value.substr(4);
+                stat.divType = SVT_HexVariable;
+                stat.divVar = 1.0f / getHexVariable(value);
+            }
+            else if(value.startswith("Ship.")) {
+                value = value.substr(5);
+                stat.divType = SVT_ShipVariable;
+                stat.divVar = 1.0f / getShipVariable(value);
+            }
+            else {
+                stat.divType = SVT_SubsystemVariable;
+                stat.divVar = 1.0f / getSubsystemVariable(value);
+            }
+        }
+	
 	}
 }
 
