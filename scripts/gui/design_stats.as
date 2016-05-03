@@ -41,7 +41,9 @@ class DesignStat {
 	int usedVariable;
 
 	SysVariableType divType;
+	SysVariableType multType;
 	int divVar = -1;
+	int multVar = -1;
 
 	int importance;
 
@@ -160,6 +162,10 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 			double div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
 			if(div != 0.0)
 				val /= div;
+		}
+		if(stat.multVar != -1) {
+			double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
+			val *= mult;
 		}
 
 		if(val != 0.0) {
@@ -335,22 +341,21 @@ void loadStats(const string& filename) {
 			}
 		}
 		else if(key == "MultBy") {
-            if(value.startswith("Hex.")) {
-                value = value.substr(4);
-                stat.divType = SVT_HexVariable;
-                stat.divVar = 1.0f / getHexVariable(value);
-            }
-            else if(value.startswith("Ship.")) {
-                value = value.substr(5);
-                stat.divType = SVT_ShipVariable;
-                stat.divVar = 1.0f / getShipVariable(value);
-            }
-            else {
-                stat.divType = SVT_SubsystemVariable;
-                stat.divVar = 1.0f / getSubsystemVariable(value);
-            }
-        }
-	
+            		if(value.startswith("Hex.")) {
+		                value = value.substr(4);
+		                stat.multType = SVT_HexVariable;
+		                stat.multVar = getHexVariable(value);
+            		}
+                        else if(value.startswith("Ship.")) {
+		                value = value.substr(5);
+		                stat.multType = SVT_ShipVariable;
+		                stat.multVar = getShipVariable(value);
+            		}
+            		else {
+		                stat.multType = SVT_SubsystemVariable;
+		                stat.multVar = getSubsystemVariable(value);
+            		}
+        	}
 	}
 }
 
