@@ -194,11 +194,31 @@ tidy class ObjectManager : Component_ObjectManager {
 		return nearest;
 	}
 
-	bool hasStargates() {
-		return gates.length != 0;
+	bool hasStargates(Empire& emp) {
+		return hasStargates(emp, true);
 	}
 
-	Object@ getStargate(vec3d position) {
+	bool hasStargates(Empire& emp, bool recursive) {
+		bool result = gates.length != 0;
+		if(result)
+			return true;
+		if(recursive) {
+			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+				Empire@ other = getEmpire(i);
+				if(other is emp)
+					continue;
+				if(other.GateShareMask & emp.mask != 0) && (emp.GateShareMask & other.mask != 0) && other.hasStargates(false)
+					return true;
+			}
+		}
+		return result;
+	}
+
+	Object@ getStargate(Empire& emp, vec3d position) {
+		return getStargate(emp, position, true);
+	}
+
+	Object@ getStargate(Empire& emp, vec3d position, bool recursive) {
 		Lock lock(gateMutex);
 		Object@ best;
 		double bestDist = INFINITY;
@@ -210,6 +230,22 @@ tidy class ObjectManager : Component_ObjectManager {
 				@best = gate;
 			}
 		}
+		if(recursive) {
+			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+				Empire@ other = getEmpire(i);
+				if(other is emp || !other.major)
+					continue;
+				if(other.GateShareMask & emp.mask == 0) || (emp.GateShareMask & other.mask == 0)
+					continue;
+				// This is a terribly, TERRIBLY dangerous idea. Kids, do not try this at home. Or anywhere.
+				Object@ allyGate = other.getStargate(position, false);
+				double d = allyGate.position.distanceToSQ(position);
+				if(d < bestDist) {
+					bestDist = d;
+					@best = allyGate;
+				}
+			}
+		}		
 		return best;
 	}
 

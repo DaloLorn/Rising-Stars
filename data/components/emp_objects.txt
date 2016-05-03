@@ -10,8 +10,10 @@ restricted local:
 	Object@ getClosestFlingBeacon(Object& obj);
 	Object@[] getStargates();
 	Object@ getStargate(vec3d position);
+	Object@ getStargate(vec3d position, bool recursive);
 	Orbital@[] getOrbitals();
 	bool hasStargates();
+	bool hasStargates(bool recursive);
 	Artifact@[] getArtifacts();
 
 	bool isDefending(Object@ obj);

@@ -52,6 +52,7 @@ visible:
 	synced bool GlobalTrade = false
 	synced locked_int ContactMask = 0
 	synced locked_int TradeMask = 0
+	synced locked_int GateShareMask = 0
 	synced Empire SubjugatedBy
 	synced locked_int PathId = 1
 
