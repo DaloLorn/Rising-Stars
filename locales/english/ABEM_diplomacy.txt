@@ -1,0 +1,6 @@
+CLAUSE_GATESHARE: Gate Access
+CLAUSE_GATESHARE_DESC: <<
+	Empires that have signed this treaty allow mutual access to their stargates and synchronize their gate networks, essentially forming a larger network.
+
+	While part of this treaty, your ships can pass through other signatories' stargates as if they were your own.
+>>

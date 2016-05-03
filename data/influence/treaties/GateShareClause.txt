@@ -1,0 +1,11 @@
+Clause: GateShareClause
+	Name: #CLAUSE_GATESHARE
+	Description: #CLAUSE_GATESHARE_DESC
+
+	Icon: OrbitalIcons::1
+
+	Free Clause: True
+	Default Clause: True
+	Team Clause: True
+
+	ABEM_diplomacy::ShareGates()
