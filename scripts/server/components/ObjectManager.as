@@ -439,7 +439,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 				Empire@ other = getEmpire(i);
 				if(other is emp || !other.major)
 					continue;
-				if(other.GateShareMask & emp.mask == 0) || (emp.GateShareMask & other.mask == 0)
+				if((other.GateShareMask & emp.mask == 0) || (emp.GateShareMask & other.mask == 0))
 					continue;
 				// This is a terribly, TERRIBLY dangerous idea. Kids, do not try this at home. Or anywhere.
 				Object@ allyGate = other.getStargate(position, false);
@@ -707,7 +707,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 				Empire@ other = getEmpire(i);
 				if(other is emp)
 					continue;
-				if(other.GateShareMask & emp.mask != 0) && (emp.GateShareMask & other.mask != 0) && other.hasStargates(false)
+				if((other.GateShareMask & emp.mask != 0) && (emp.GateShareMask & other.mask != 0) && other.hasStargates(false))
 					return true;
 			}
 		}
