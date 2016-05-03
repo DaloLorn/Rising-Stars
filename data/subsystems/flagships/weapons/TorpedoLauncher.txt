@@ -15,7 +15,7 @@ Subsystem: TorpedoLauncher
 	Range := Size + 1200
 	Damage := Size * 6
 	Reload := 25.0 * min(1.0 + Size/512, 2.0)
-	Speed := max(60, Range / 40)
+	Speed := max(70, Range / 40)
 	Tracking := 1.5
 	Radius := 4.0 + (log(Size) / log(2) * 6.0)
 	SupplyCost := Size * 3.0
