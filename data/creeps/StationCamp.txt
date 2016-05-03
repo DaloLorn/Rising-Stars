@@ -1,8 +1,8 @@
 Camp: StationCamp
-	Ship: Icarus [Remnant Icarus]
+	Ship: Icarus 
 
 	Frequency: 0.1
-	Remnant Status: RemStrIncrease
+	//Remnant Status: RemStrIncrease
 
 	Pickup: UNLOCK_CRYS
 		Name: #PICKUP_CRYS
