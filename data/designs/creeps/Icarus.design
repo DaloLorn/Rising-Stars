@@ -1,7 +1,7 @@
 {
 	"__VERSION__": 1,
 	"name": "Icarus",
-	"size": 350,
+	"size": 650,
 	"hull": "MechanicaFlagLarge",
 	"type": "Flagship",
 	"gridWidth": 28,
