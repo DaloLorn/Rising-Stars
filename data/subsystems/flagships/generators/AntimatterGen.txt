@@ -9,7 +9,7 @@ Subsystem: AntimatterGen
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Power := 85 * Size
+	Power := 90 * Size
 
 	SupplyCapacity := Size * 300
 	SupplyRate := Size * 15
