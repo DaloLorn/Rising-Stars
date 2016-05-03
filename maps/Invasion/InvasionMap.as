@@ -21,6 +21,7 @@ enum MapSetting {
 	M_SysCount,
 	M_SystemSpacing,
 	M_Flatten,
+	M_AllowWar,
 };
 
 const double BASE_STRENGTH = 6000.0;
@@ -47,7 +48,8 @@ class InvasionMap : Map {
 #section client
 	void makeSettings() {
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
-		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Toggle(locale::ALLOW_WAR, M_AllowWar, false, halfWidth=true);
+		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=false);
 
 		auto@ diff = Dropdown(locale::INV_DIFFICULTY, "INVASION_DIFFICULTY");
 		diff.addOption(locale::EASY, 0.25);
@@ -228,10 +230,13 @@ class InvasionMap : Map {
 		}
 
 		//YOU WILL SIT IN THE CIRCLE AND SING KUMBAYA DAMNIT
-		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
-			Empire@ emp = getEmpire(i);
-			if(emp.major)
-				emp.ForcedPeaceMask |= majorMask;
+		// NO WE WILL NOT! TYRANT! DICTATOR! ... HYENA!
+		if(getSetting(M_AllowWar, 0.0) != 0.0) {
+			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+				Empire@ emp = getEmpire(i);
+				if(emp.major)
+					emp.ForcedPeaceMask |= majorMask;
+			}
 		}
 
 		//Spawn remnant defenses

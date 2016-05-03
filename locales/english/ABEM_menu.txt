@@ -15,6 +15,8 @@ OPTTT_DISPLAY_SENSOR_RANGE: <<
 	Displaying weapon range always displays the sensor range of objects owned by your empire, regardless of this setting.
 >>
 
+ALLOW_WAR: Allow War
+
 NG_ANOMALY_SYSTEM_OCCURANCE: Spatial Anomaly Occurrence
 NGTT_ANOMALY_SYSTEM_OCCURANCE: <<
 	Multiplier to the base frequency at which anomalous systems (nebulae, empty space) occur in the universe. Does not affect black holes at all.
