@@ -65,4 +65,12 @@ Material: CompositeArmor
 	Texture: data/images/subsystems/armor_composite.png
 Material: Superstructure
 	Inherit: ABEMSubsystem
-	Texture: data/images/subsystems/superstructure.png
+	Texture: data/images/subsystems/superstructure.png	
+	
+		// *********************************************************
+// ****************Modifiers!*******************
+// *********************************************************
+
+Material: CoolantModifier
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/Coolant.png
