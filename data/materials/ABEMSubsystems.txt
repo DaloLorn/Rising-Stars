@@ -21,6 +21,9 @@ Material: ShieldedAntimatterGen
 Material: SingularityCore
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/singularitycore.png
+Material: SolarCell
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/SolarCell.png
 
 Material: ABEMSupply
 	Inherit: ABEMSubsystem

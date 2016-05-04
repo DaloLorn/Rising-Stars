@@ -5,7 +5,7 @@ Subsystem: SolarPanel
 	Elevation: 3
 
 	Tags: IsReactor, Category:Power
-	Tags: NonContiguous, NoCore
+	Tags: NonContiguous, NoCore, NoWall
 	Tags: HeraldsDLC
 	Hull: Flagship, Station
 
@@ -36,4 +36,4 @@ Subsystem: SolarPanel
 		Power = Power
 
 	Module: Default
-		Sprite: SolarPanel
+		Sprite: SolarCell
