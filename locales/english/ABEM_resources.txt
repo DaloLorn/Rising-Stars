@@ -1,0 +1,107 @@
+QUARTZ_BLURB: <<
+	Gain [levels=$1;#ffb4b6]10/25/50/80/120/200/300[/levels] bonus stored labor per artifact activated.
+>>
+QUARTZ_DESC: <<
+	Every time you activate an artifact, this planet gains [levels=$1;#ffb4b6]10/25/50/80/120/200/300[/levels] stored labor, provided it has enough labor storage to hold it.
+
+	This planet has [levels=$1;#ffb4b6]10/110/210/310/410/510/610[/levels] bonus labor storage.
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+PHOSPHATE_BLURB: <<
+	Increases fleet strength in allied systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+>>
+PHOSPHATE_DESC: <<
+	Fleets fighting in any systems you control gain [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels] extra strength.
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+SULPHATE: Sulphate
+SULPHATE_BLURB: <<
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+>>
+SULPHATE_DESC: <<
+	Fleets fighting outside any systems you control gain [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels] extra strength.
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+FTL_CRYSTALS_BLURB: <<
+	Produces [levels=$1;#00c0ff]0.1/0.5/1/2/3/8/20[/levels] [img=ResourceIcons::22;20/] FTL/s.
+	Gives special effects at [b]levels 4 and 5[/b].
+>>
+FTL_CRYSTALS_DESC: <<
+	Produces [levels=$1;#00c0ff]0.1/0.5/1/2/3/8/20[/levels] [img=ResourceIcons::22;20/] FTL per second.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]Grants vision over all fleets currently in FTL anywhere.[/offset]
+
+	[b]If this planet is Level 5 or higher:[/b]
+	[offset=30]All FTL jumps leaving from this system are free.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+CYLLIUM_DESC: <<
+	Energy generation on this planet is increased by [levels=$1;#ffb4b6]10%/20%/30%/40%/50%/60%/70%[/levels].
+
+	Generates a new random artifact in the system every 2 minutes. Up to [levels=$1;#ffb4b6]1/2/3/5/8/15/30[/levels] artifacts will remain in the system, older artifacts will expire.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]Artifacts in this system are 25% cheaper to activate.[/offset]
+
+	[b]If this planet is Level 6:[/b]
+	[offset=30]Artifact generation rate is doubled.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+ALLONDIUM_DESC: <<
+	Influence generation on this planet is increased by [levels=$1;#ffb4b6]10%/20%/30%/40%/50%/60%/70%[/levels].
+
+	The cost of purchasing diplomacy cards further into the stack is reduced by up to [levels=$1;#ffb4b6]0/0/1/1/2/2/3[/levels] influence.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]This planet gains abilities to purchase 'Name Flagship' or 'Annex Planet' cards at will.[/offset]
+
+	[b]If this planet is Level 5 or higher:[/b]
+	[offset=30]The cost of playing cards into a vote is reduced by up to 3 influence.[/offset]
+
+	[b]If this planet is Level 6:[/b]
+	[offset=30]Starting a vote no longer costs any Influence.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+PLAINS_DESC: <<
+	The planet has a massive surface.
+
+	Tile development speed is increased by [levels=$1;#ffb4b6]100%/150%/200%/250%/300%/350%/400%[/levels].
+
+	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]§50k/§150k/§300k/§500k/§750k/§1.1M/§2M[/levels].
+>>
+RINGWORLD_DESC: <<
+	An enormous ring constructed around a system's star, with habitable space on the inner surface of the ring, facing the star.
+
+	Ringworlds have [levels=$1;#ffb4b6]+0/+10/+20/+30/+40/+50/+60[/levels] increased maximum population.
+
+	For each resource type, if the ringworld is receiving any pressure at all for that resource, it gains [levels=$1;#ffb4b6]2/4/6/8/10/12/14[/levels] extra pressure of that resource.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires extremely large amounts of Ore mined from asteroids.[/color][/b][/img]
+MARENIUM_DESC: <<|
+	[b]Unique[/b]. Unlocks the [b]Marenium Reactor[/b] to provide power on ships.
+
+	Ships using marenium reactors gain [levels=$1;#ff8000]5%/10%/15%/20%/25%/30%/40%[/levels] extra combat strength.
+
+	Ships using marenium reactors gain [levels=$1;#ff8000]0.1/0.2/0.4/0.7/1.5/4.0/7.0[/levels] extra acceleration.
+
+	If this planet is lost, any ships using marenium reactors you have will instead have their combat strength significantly reduced.
+>>
+R_SPACEFERNS_BLURB: <<
+	[font=Small]Reduce engine maintenance by [levels=$1;#ffb4b6]5% / 10% / 25% / 50% / 75% / 90% / 100%[/levels]. Gain various pressures per level.[/font]
+>>
+R_SPACEFERNS_DESC: <<|
+	The omnivorous ferns that have evolved to cover the entire surface of this planet have a myriad of useful and interesting properties. Beyond their stems serving as a delicacy for several species, they emit an extremely potent gaseous fuel as a byproduct of their efficient metabolism.
+
+	This planet only requires large quantities of food and water to level up.
+
+	Holding this planet reduces the maintenance cost of all the engines on your ships by [levels=$1;#ffb4b6]5%/10%/25%/50%/75%/90%/100%[/levels].
+
+	The planet gains various extra pressure as it is leveled; gaining 2 Energy pressure at level 1, 3 Money pressure at level 2, 4 Influence pressure at level 3, 5 Energy pressure at level 4, 6 Influence pressure at level 5, and 7 Money pressure at level 6.
+>>

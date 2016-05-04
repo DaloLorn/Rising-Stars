@@ -26,6 +26,7 @@ Resource: Allondium
 
 	IfLevel(2, ModEmpireAttribute(InfluencePlacementMod, Add, -1)) #version>=116
 	IfLevel(4, ModEmpireAttribute(InfluencePlacementMod, Add, -1)) #version>=116
+	IfLevel(6, ModEmpireAttribute(InfluencePlacementMod, Add, -1)) #version>=116
 
 	IfLevel(4, GrantAbility(BuyNameFlagship)) #version>=116
 	IfLevel(4, GrantAbility(BuyAnnexPlanet)) #version>=116
