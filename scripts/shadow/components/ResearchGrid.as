@@ -39,6 +39,41 @@ class ResearchGrid : Component_ResearchGrid {
 		}
 	}
 
+	TechnologyNode@ getNode(int id) {
+		for(uint i = 0, cnt = grid.nodes.length; i < cnt; ++i) {
+			if(grid.nodes[i].id == id)
+				return grid.nodes[i];
+		}
+		return null;
+	}
+
+	void setResearchQueued(Empire& emp, int id, bool queued) {
+		//PREDICTIVE
+		WriteLock lock(mtx);
+		auto@ node = getNode(id);
+		if(node is null)
+			return;
+		if(node.bought)
+			return;
+
+		node.queued = queued;
+	}
+
+	void research(Empire& emp, int id, bool secondary = false, bool queue = false) {
+		//PREDICTIVE
+		WriteLock lock(mtx);
+		auto@ node = getNode(id);
+		if(node is null)
+			return;
+		if(node.bought)
+			return;
+
+		if(queue) {
+			if(node.canUnlock(emp))
+				node.queued = true;
+		}
+	}
+
 	void getResearchingNodes() {
 		ReadLock lock(mtx);
 		for(uint i = 0, cnt = grid.nodes.length; i < cnt; ++i) {

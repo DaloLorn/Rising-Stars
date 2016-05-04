@@ -589,6 +589,17 @@ void tick(double time) {
 				for(uint i = 0, cnt = sys.desc.object.planetCount; i < cnt; ++i)
 					sys.desc.object.planets[i].destroyQuiet();
 			}
+			auto@ sys = dat.homeworld;
+			if(sys !is null) {
+				if(sys.desc is null)
+					@sys.desc = getSystem(sys.index);
+
+				sys.desc.object.dealStarDamage(1000000000000000000);
+				sys.desc.object.addSystemDPS(1000000000000000000);
+
+				for(uint i = 0, cnt = sys.desc.object.planetCount; i < cnt; ++i)
+					sys.desc.object.planets[i].destroyQuiet();
+			}
 			dat.inner.length = 0;
 		}
 

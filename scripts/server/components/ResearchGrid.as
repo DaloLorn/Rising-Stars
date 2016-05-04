@@ -238,7 +238,7 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 	}
 
 	void setResearchQueued(Empire& emp, int id, bool queued) {
-		ReadLock lock(mtx);
+		WriteLock lock(mtx);
 		auto@ node = getNode(id);
 		if(node is null)
 			return;
@@ -249,7 +249,8 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 	}
 
 	void research(Empire& emp, int id, bool secondary = false, bool queue = false) {
-		ReadLock lock(mtx);
+        WriteLock lock(mtx);
+
 		auto@ node = getNode(id);
 		if(node is null)
 			return;

@@ -11,6 +11,7 @@ Trait: Sublight
 
 	Gives Points: 3
 
+	ReplaceTechnologyNodes(FTLHurdle, EnergyHurdle)
 
 	IfNotHaveTrait(Technicist, LoadDesigns(default), LoadDesigns(technicist/default))
 	IfNotHaveTrait(Technicist, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
