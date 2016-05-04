@@ -1,7 +1,12 @@
 Technology: ShieldedAntimatter
 	Name: #S_SHIELDED_AMGEN
 	Class: Unlock
+	
 	Time Cost: 180
+	Point Cost: 0
+	
+	
+	
 	Icon: ShieldedAntimatterGen
 	Description: #R_SYS_SHIELDED_AMGEN_DESC
 	Color: #33ffcc

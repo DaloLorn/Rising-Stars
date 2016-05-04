@@ -2,7 +2,7 @@ Technology: CompositeArmor
 	Name: #S_COMPOSITE_ARMOR
 	Class: Unlock
 
-
+	Point Cost: 0
 	Time Cost: 180
 
 	Icon: CompositeArmor
