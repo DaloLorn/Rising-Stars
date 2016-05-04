@@ -15,4 +15,3 @@ Shipset: Progenitor
 
 	Hull: ProgenitorSmall
 	Hull: ProgenitorMedium
-	Hull: ProgenitorLarge
