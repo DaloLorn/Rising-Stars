@@ -5,17 +5,20 @@ Anomaly: NeutronPlate
 	State: Initial
 		Narrative: #ANOMALY_NAR_NEUTRONPLATE
 
-		Choice: Study2
-		Choice: Study
+		Choice: Liquid
+		Choice: Solid
 
-	Option: Study2
+	Option: Liquid
 		Icon: AffinityIcons::5
-		Description: #ANOMALY_NEUTRONPLATE_INFUSE:15
+		Description: #ANOMALY_NEUTRONPLATE_LIQUID:5
 
-
+		AddModifier(tag/IsArmor::MaintCostFactor(0.95))
 		UnlockSubsystem(LiquidArmor)
-	Option: Study
-		Icon: AffinityIcons::5
-		Description: #ANOMALY_NEUTRONPLATE_STUDY
 
+	Option: Solid
+		Icon: AffinityIcons::5
+		Description: #ANOMALY_NEUTRONPLATE_SOLID:10
+
+		AddModifier(tag/IsArmor::BuildCostFactor(0.9))
+		AddModifier(tag/IsArmor::LaborCostFactor(0.9))
 		UnlockSubsystem(NeutronArmor)

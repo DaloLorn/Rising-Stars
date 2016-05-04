@@ -1,0 +1,11 @@
+ANOMALY_NEUTRONPLATE_LIQUID: <<
+	Analyze the fragment as a whole, yielding new insights into low-temperature metallurgy and liquid metals.
+
+	[right][b][color=#96d196]Decrease all armor maintenance costs by $1%.
+	Unlock[/color] [template=subsys_ref;LiquidArmor/][/b][/right]
+>>
+ANOMALY_NEUTRONPLATE_SOLID: <<
+	This neutronium sample can give our scientists invaluable insight in replicating this material artificially - and constructing armor more efficiently.
+	[right][b][color=#80ff80]Decrease all armor build and Labor costs by $1%.
+	Unlock[/color] [template=subsys_ref;NeutronArmor/][/b][/right]
+>>

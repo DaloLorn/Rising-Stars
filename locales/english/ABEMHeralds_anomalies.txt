@@ -1,4 +1,0 @@
-ANOMALY_NEUTRONPLATE_INFUSE: <<
-	This sample can give our scientists invaluable insight in replicating this material artificially.
-	[right][b][color=#80ff80]Unlock[/color] [template=subsys_ref;LiquidArmor/][/b][/right]
->>
