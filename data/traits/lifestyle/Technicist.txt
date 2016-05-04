@@ -1,6 +1,6 @@
 Trait: Technicist
-	Name: Technicist
-	Description: [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have double effectiveness.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start.[/img] [vspace=6/][img=PlateArmor;22][b]Armor [/b] have 50% of the Hit Points[/img]
+	Name: #ShieldLifestyle_Name
+	Description: #ShieldLifestyle_Dec
 
 	Order: 0
 
