@@ -573,28 +573,51 @@ class TransferShieldFromSubsystem : AbilityHook {
 };
 
 class RechargeShields : GenericEffect {
-	Document doc("Recharge the fleet's shields over time.");
+	Document doc("Recharge the flagship's shields over time.");
 	Argument base(AT_Decimal, doc="Base rate to recharge at per second.");
 	Argument percent(AT_Decimal, "0", doc="Percentage of maximum shields to recharge per second.");
 	Argument in_combat(AT_Boolean, "False", doc="Whether the recharge rate should apply in combat.");
+	Argument fleet(AT_Boolean, "True", doc="Whether the recharge rate should apply to the rest of the fleet.");
 
 #section server
 	void tick(Object& obj, any@ data, double time) const override {
-		if(!obj.isShip)
+		if(!obj.hasLeaderAI)
 			return;
 		if(!in_combat.boolean && obj.inCombat)
 			return;
 
 		Ship@ ship = cast<Ship>(obj);
-		if(ship.Shield >= ship.MaxShield)
-			return;
+		Orbital@ orb = cast<Orbital>(obj);
 
 		double rate = time * base.decimal;
+		double maxShield = 0;
+		if(ship !is null)
+			maxShield = ship.MaxShield;
+		else if(orb !is null) {
+			maxShield = orb.maxShield;
+			rate /= orb.shieldMod;
+		}
+			
 		if(percent.decimal != 0)
-			rate += time * percent.decimal * ship.MaxShield;
-		ship.Shield += rate;
-		if(ship.Shield > ship.MaxShield)
-			ship.Shield = ship.MaxShield;
+			rate += time * percent.decimal * maxShield;
+		
+		if(ship !is null)
+			ship.restoreShield(rate);
+		else if(orb !is null)
+			orb.repairOrbitalShield(rate);
+
+		if(obj.supportCount > 0 && fleet.boolean) {
+			Ship@ support;
+			for(uint i = 0, count = target.supportCount; i < count; ++i) {
+				@support = cast<Ship>(target.supportShip[i]);
+				if(support !is null) {
+					rate = time * base.decimal;
+					if(percent.decimal != 0)
+						rate += time * percent.decimal * support.MaxShield;
+					support.restoreShield(rate);
+				}
+			}
+		}
 	}
 #section all
 };
@@ -708,7 +731,7 @@ class IsDerelict : StatusHook {
 			info.supply = ship.MaxSupply;
 			ship.modSupplyBonus(-info.supply);
 			info.shield = ship.MaxShield;
-			ship.MaxShield -= info.shield;
+			ship.modBonusShield(-info.shield);
 			ship.Supply = 0;
 			ship.Shield = 0;
 		}
@@ -730,8 +753,8 @@ class IsDerelict : StatusHook {
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null) {
-				ship.modSupplyBonus(+info.supply);
-				ship.MaxShield += info.shield;
+				ship.modSupplyBonus(info.supply);
+				ship.modBonusShield(info.shield);
 			}
 		}
 		if(obj.isOrbital) {
@@ -753,14 +776,14 @@ class IsDerelict : StatusHook {
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null) {
-				if(ship.MaxSupply > 0)
+				if(ship.MaxSupply != 0)
 					info.supply += ship.MaxSupply;
-				if(ship.MaxShield > 0)
+				if(ship.MaxShield != 0)
 					info.shield += ship.MaxShield;
 				ship.Supply = 0;
 				ship.Shield = 0;
 				ship.modSupplyBonus(-ship.MaxSupply);
-				ship.MaxShield -= ship.MaxShield;
+				ship.modBonusShield(-ship.MaxShield);
 			}
 		}
 		else if(obj.isOrbital) {
@@ -1262,8 +1285,7 @@ class AddShieldCapacity : StatusHook {
 			bonus = preset.decimal;
 		
 		if(obj.isShip) {
-//			ship.modShieldBonus(bonus);
-			ship.MaxShield += bonus;
+			ship.modBonusShield(bonus);
 			if(startOn.boolean)
 				ship.Shield += bonus;
 		}
@@ -1285,8 +1307,7 @@ class AddShieldCapacity : StatusHook {
 		bonus = info.bonus;
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
-//			ship.modShieldBonus(-bonus);
-			ship.MaxShield -= bonus;
+			ship.modBonusShield(-bonus);
 			if(ship.MaxShield < ship.Shield)
 				ship.Shield = ship.MaxShield;
 		}
