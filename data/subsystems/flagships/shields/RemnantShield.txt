@@ -5,9 +5,8 @@ Subsystem: RemnantShield
 	Elevation: 1
 
 	DamageOrder: -100
-	//No ishield tag to prevent random IA designs to use it
-	Tags: IsShield,Defense, Category:Shields, HasInternals
-	Tags: SecondaryDefense,HighPowerUse,BadFiller
+	Tags: IsShield, Defense, Category:Shields, HasInternals
+	Tags: SecondaryDefense, HighPowerUse, BadFiller
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
@@ -29,5 +28,6 @@ Subsystem: RemnantShield
 		Command = 2
 
 	Module: Core
-		Sprite: TechIcons::6
+		// If we're not going to use new icons for Progenitor shields, we should -at least- make sure we use the same ones we used before.
+		Sprite: TechIcons::35*#60ffff 
 		Hex.BuildCost := 2 * Hex.BuildCost
