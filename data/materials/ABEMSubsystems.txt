@@ -5,7 +5,7 @@ Material: ABEMSubsystem
 	Mipmap: False
 	Lighting: False
 
-	// *********************************************************
+// *********************************************************
 // ****************POWER AND SUPPLY!*******************
 // *********************************************************
 
@@ -47,6 +47,9 @@ Material: ShieldGen
 Material: CovariantShield
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/covariantshield.png
+Material: SupportShield
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/supportshield.png
 
 //Remnant Shield use a included art
 
@@ -54,7 +57,7 @@ Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
 	
-	// *********************************************************
+// *********************************************************
 // ****************ARMOR!*******************
 // *********************************************************
 Material: QuantumArmor
@@ -67,7 +70,7 @@ Material: Superstructure
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/superstructure.png	
 	
-		// *********************************************************
+// *********************************************************
 // ****************Modifiers!*******************
 // *********************************************************
 
