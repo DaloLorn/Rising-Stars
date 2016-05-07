@@ -8,7 +8,7 @@ Subsystem: SupShieldGen
 
 	Tags: IsShield, Defense, Category:Shields, HasInternals
 	Tags: SecondaryDefense
-	Hull: Support
+	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
 	ShieldCapacity := Size * 60
@@ -33,5 +33,5 @@ Subsystem: SupShieldGen
 		Hex.LaborCost := 0
 
 	Module: Core
-		Sprite: ShieldGen
+		Sprite: SupportShield
 		Hex.BuildCost := 2 * Hex.BuildCost

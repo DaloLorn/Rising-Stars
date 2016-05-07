@@ -3,9 +3,9 @@ Subsystem: SupportSuperstructure
 	Description: #S_SUPERSTRUCTURE_DESC
 	BaseColor: #a9a9a9
 
-    Tags: Category:Defense, NoWall, FauxExterior
+	Tags: Category:Defense, NoWall, FauxExterior
 	Tags: NoCore, NonContiguous,Defense, IsArmor , ExternalSpace
-	Hull: Support
+	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
 

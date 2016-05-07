@@ -7,7 +7,7 @@ Subsystem: SupportQuantumArmor
 
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, FauxExterior, ExternalSpace
 	Tags: NoWall, Category:Armor
-	Hull: Support
+	Hull: Support, Satellite
 
 
 	Tags: FauxExterior
