@@ -35,7 +35,7 @@ NG_FTL_MULT: FTL Storage/Generation Multiplier
 NGTT_FTL_MULT: <<
 	The number by which the storage capacity and generation rate of FTL Energy on a starship are multiplied. Increases the amount of FTL Energy generated from one FTL Crystal.
 
-	Useful when modifying galaxy spacing. For every 6500 units of spacing added, it is recommended that you increase this number by approximately 1.0. (Developer note: For example, 6500 spacing is 1.0, 12000 spacing is 2.0... you get the point.)
+	Useful when modifying galaxy spacing. Be carefull with this cause some FTL methods are not dependant of Galaxy Sizing like Gates or Fling Beacons.Increasing it will be fair for HyperDrive, SlipStream, JumpDrive but also a free FTL game for the rest.
 >>
 
 NG_LEGACY_EXPLORATION: Legacy Exploration Mode
@@ -53,13 +53,13 @@ NG_ADVANCED_OPTIONS_DESC: <<
 >>
 
 NG_PLANET_MOON_CHANCE: Moon Occurrence
-NGTT_PLANET_MOON_CHANCE: The probability that a planet will have a moon. (Developer note: I suspect that the game will add moons to a planet until the random number generator fails to produce an acceptable number. Therefore, to prevent instances of locking up the game by telling it to spawn moons ad infinitum, this is capped at 50%. Also, odds are you'll change the amount of moons significantly even by slightly modifying this number.)
+NGTT_PLANET_MOON_CHANCE: The probability that a planet will have a moon. 
 
 NG_PLANET_CONDITION_CHANCE: Condition Occurrence
 NGTT_PLANET_CONDITION_CHANCE: The probability that a planet will have a planetary condition. Planetary conditions can have various effects on a planet and its behavior, ranging from a reduced population cap to powerful ancient weapons.
 
 NG_HIDE_EMPIRE_RELATIONS: Hide Empire Relations
-NGTT_HIDE_EMPIRE_RELATIONS: When checked, the game will hide relationships between empires from other empires. (Developer note: I think this is supposed to conceal treaties, but I'm not sure just what it DOES do.)
+NGTT_HIDE_EMPIRE_RELATIONS: When checked, the game will hide relationships between empires from other empires. (Supposed to conceal treaties, but  not sure just what it DOES do.)
 
 NG_TEAMS_START_CLOSE: Teams Start Together
 NGTT_TEAMS_START_CLOSE: When checked, the game will try to place members of a team close to each other, as opposed to evenly distributing everyone across the galaxy.
@@ -68,16 +68,16 @@ NG_FIRST_CONTACT: First Contact Mode
 NGTT_FIRST_CONTACT: When unchecked, the game will act as if all the empires had already met before the beginning of the match.
 
 NG_CARD_STACK_INTERVAL: Influence Stack Refresh Rate
-NGTT_CARD_STACK_INTERVAL: How long it takes for the influence card stack to refresh. (Developer note: The timer above the right end of the stack - the thing that controls when new cards are added to/removed from the stack.)
+NGTT_CARD_STACK_INTERVAL: How long it takes for the influence card stack to refresh/discard a card. Lower timers will make Cards to appear faster.
 
 NG_ENERGY_EFFICIENCY_STEP: Energy Efficiency Step
-NGTT_ENERGY_EFFICIENCY_STEP: The amount of stored energy that will reduce an empire's energy generation rate by 50%. (Developer note: If you set this to 500, and collect 500 energy, your empire's generation will be halved. If you collect 1000 energy, the already halved generation rate will be halved again, for a net energy generation reduction of 75%.)
+NGTT_ENERGY_EFFICIENCY_STEP: The amount of stored energy that will reduce an empire's energy generation rate by 50%. Free Storage is not factored into this number.
 
 NG_ENERGY_PER_SEEDSHIP: Energy per Seed Ship
 NGTT_ENERGY_PER_SEEDSHIP: How much energy must be collected in the entire galaxy to spawn a new seed ship.
 
 NG_SIEGE_LOYALTY_TIME: Siege Time
-NGTT_SIEGE_LOYALTY_TIME: How long it takes to reduce a planet's loyalty by 10 points during a siege. (Developer note: Measured in seconds, I think?)
+NGTT_SIEGE_LOYALTY_TIME: How long it takes to reduce a planet's loyalty by 10 points during a siege. 
 
 NG_SIEGE_LOYALTY_COST: Siege Cost
 NGTT_SIEGE_LOYALTY_COST: How many supplies are required to reduce a planet's loyalty by 1 point during a siege.
@@ -107,7 +107,7 @@ NG_CRAZY_OPTIONS_DESC: <<
 >>
 
 NG_ASTEROID_PERMANENT_FREQ: Asteroid Permanent Resource Frequency
-NGTT_ASTEROID_PERMANENT_FREQ: The base frequency of permanent (non-consumable) resources on resource asteroids. (Developer note: I think. No idea how it works or if it even does what it says.)
+NGTT_ASTEROID_PERMANENT_FREQ: The base frequency of permanent (non-consumable) resources on resource asteroids. 
 
 NG_ASTEROID_MASS: Asteroid Mass
 NGTT_ASTEROID_MASS: The mass of all the asteroids in the universe. (Developer note: Alternatively, the average mass of said asteroids.)
@@ -132,9 +132,9 @@ NGTT_ORBITAL_LABOR_COST_STEP: When building orbitals from another star system, d
 
 NG_RESEARCH_DECAY_MULT: Research Efficiency Decay
 NGTT_RESEARCH_DECAY_MULT: <<
-	Affects how many research points must be generated to lower the research generation rate to a certain percentage of the empire's base generation. When set to 100%, an empire must generate 4000 - 5000 if Innovative - research points to halve its research efficiency.
+	Affects how many research points must be generated to lower the research generation rate to a certain percentage of the empire's base generation. If set to 0% will prevent research decay altogether. When set to 100%, an empire that already generated 2000 research points will halve the research speed halved .
 
-	Can be set to 0%, preventing research decay altogether. (Developer note: The above figures only apply in ABEM. In the base game, an empire must generate 2000 research points to halve efficiency, and Innovative does not affect research decay at all.)
+	
 >>
 DOF_MISSING_BASE: <<
 	You do not appear to have the latest version of the DOF support library installed. This may cause certain assets to fail to load, and will also prevent various shipsets from functioning.
