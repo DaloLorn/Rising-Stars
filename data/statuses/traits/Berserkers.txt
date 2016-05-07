@@ -17,8 +17,3 @@ Status: Berserkers
 	ABEM_races::IfNotAtWar(ModCivResourceMult(Defense, -0.5))
 
 	AddFleetCommand(256)
-Status: BerserkerFleet
-	Visible To: Nobody
-
-	AddFleetEffectiveness(0.25)
-	ABEM_races::GenerateResearchInCombat(0.5)

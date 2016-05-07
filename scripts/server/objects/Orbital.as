@@ -15,6 +15,7 @@ tidy class OrbitalScript {
 	StrategicIconNode@ icon;
 	OrbitalRequirements reqs;
 	Object@ lastHitBy;
+	Empire@ killCredit;
 
 	OrbitalSection@ core;
 	array<OrbitalSection@> sections;
@@ -890,6 +891,14 @@ tidy class OrbitalScript {
 			@icon = null;
 		}
 		@node = null;
+			
+		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
+			double laborCost;
+			for(i = 0, cnt = sections.count; i < count; ++i) {
+				laborCost += sections[i].laborCost;
+			}
+			killCredit.generatePoints(laborCost * killCredit.ResearchFromKill, false, false);
+		}
 
 		leaveRegion(obj);
 		obj.destroyObjResources();
@@ -1170,6 +1179,7 @@ tidy class OrbitalScript {
 			}
 			
 			@lastHitBy = evt.obj;
+			@killCredit = evt.obj.owner;
 		}
 
 		health -= evt.damage;
