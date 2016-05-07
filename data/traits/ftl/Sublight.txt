@@ -30,5 +30,5 @@ Trait: Sublight
 
 
 	
-	AddFTLStorage(-250)
+	AddFTLStorage(15) //FTL Jammers require FTL Energy/Storage.
 	AddFTLIncome(-1)

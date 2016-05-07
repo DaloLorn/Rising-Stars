@@ -10,8 +10,10 @@ Trait: Gate
 
 	UnlockSubsystem(GateModule)
 
-	LoadDesigns(default)
-	LoadDesigns(not_hyperdrive)
+	
+	IfNotHaveTrait(Technicist,LoadDesigns(default) ,LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicist,LoadDesigns(not_hyperdrive) ,LoadDesigns(technicist/not_hyperdrive))
+	
 	LoadDesigns(gate)
 
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))

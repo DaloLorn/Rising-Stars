@@ -1,3 +1,3 @@
 ShieldLifestyle_Name:Technicist
 
-ShieldLifestyle_Dec:[vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have double effectiveness.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start.[/img] [vspace=6/][img=PlateArmor;22][b]Armor [/b] have 50% of the Hit Points[/img]
+ShieldLifestyle_Dec: [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have 45% more regeneration and 90% more capacity.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start and gives double shield bonus to the flagship.[/img][vspace=6/][img=PlateArmor;22][/img] Technicist [b]cannot use regular armor[/b] and any armor they discover from any source will have half health.

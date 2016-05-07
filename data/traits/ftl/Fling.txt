@@ -9,9 +9,9 @@ Trait: Fling
 
 	Unique: FTL
 
-	LoadDesigns(default)
-	LoadDesigns(not_hyperdrive)
-
+	IfNotHaveTrait(Technicist,LoadDesigns(default) ,LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicist,LoadDesigns(not_hyperdrive) ,LoadDesigns(technicist/not_hyperdrive))
+	
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
 	IfHaveTrait(Verdant, LoadDesigns(verdant/not_hyperdrive))
 

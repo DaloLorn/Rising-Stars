@@ -3,7 +3,9 @@ Trait: Technicist
 	Description: #ShieldLifestyle_Dec
 
 	Order: 0
-
+	
+	
+	DLC: Heralds //They use harmonizers.
 
 	Category: Lifestyle
 	Unique: Lifestyle
@@ -17,7 +19,7 @@ Trait: Technicist
 	GainInfluenceCard(UnitedResearch)
 
 
-	//SpawnShip(Heavy Carrier, Empire, 10x Heavy Gunship, 15x Beamship, 25x Missile Boat, 45x Gunship)
+	
 
 
 
@@ -30,8 +32,8 @@ Trait: Technicist
 	UnlockSubsystem(SupportSuperstructure)
 	UnlockSubsystem(ShieldGen)
 
-	AddModifier(ShieldRegenFactor(1.5))
-	AddModifier( ShieldCapacityFactor(2))
+	AddModifier(ShieldRegenFactor(1.45))
+	AddModifier( ShieldCapacityFactor(1.9))
 	AddModifier(tag/IsArmor::HpFactor(0.50))
 
 	//ForbidSubsystem
