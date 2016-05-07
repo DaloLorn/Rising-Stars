@@ -194,7 +194,7 @@ LEGACY_EXPLORATION_MODE: 1
 //Whether empires have to look for each other in order to participate in diplomacy, or already know everyone at the start of the game.
 FIRST_CONTACT: 1
 
-//How much a research point contributes to research decay (when set to 1, 4000 research points will halve the empire's research generation rate ).
+//How much a research point contributes to research decay (when set to 1, 2000 research points will halve the empire's research generation rate).
 RESEARCH_EFFICIENCY_DECAY_MULT: 1
 
 //Multiplier to black hole frequency.
