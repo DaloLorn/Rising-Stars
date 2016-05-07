@@ -1,0 +1,10 @@
+STATUS_STELLAR_SHIELD: Shielded
+STATUS_FAST_RECHARGE: Shield Recharge
+STATUS_FAST_RECHARGE_DESC: <<
+	Is receiving power from a Power Transmitter.
+
+	While out of combat, all ships in the fleet receive an additional 25 shield regeneration, plus 0.01% of the ship's shield capacity.
+>>
+STATUS_STELLAR_SHIELD_DESC: <<
+	This stellar object is being protected from Graviton Condenser attacks. If the shield is powerful enough, the only way to destroy the object is to destroy the shield generator, which is probably located on a nearby flagship, orbital or planet.
+>>
