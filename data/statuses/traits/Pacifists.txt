@@ -9,11 +9,6 @@ Status: Pacifists
 	ABEM_races::IfAtWar(ModCivResourceMult(Money, -0.2))
 	ABEM_races::IfAtWar(ModCivResourceMult(Energy, -0.2))
 
-Status: PacifistFleet
-	Visible To: Nobody
-
-	AddFleetEffectiveness(-0.15)
-
 Status: Envoy
 	Name: #STATUS_ENVOY
 	Description: #STATUS_ENVOY_DESC

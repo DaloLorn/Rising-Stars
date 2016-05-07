@@ -10,10 +10,10 @@ Trait: Pacifists
 	Color: #00ffa4
 	
 	AddStatusOwnedPlanets(Pacifists)
-	AddStatusOwnedFleets(PacifistFleet)
 	
 	ModAttribute(VoteCardCostMod, Add, -2.0)
 	ModAttribute(SupportCardCostMod, Add, -1.0)
+	ModAttribute(FleetEfficiencyFactor, Add, -0.15)
 	
 	OnHomeworld(AddPlanetResource(Allondium))
 	

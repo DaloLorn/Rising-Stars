@@ -10,7 +10,6 @@ Trait: Berserkers
 	Color: #aaffaa
 	
 	AddStatusOwnedPlanets(Berserkers)
-	AddStatusOwnedFleets(BerserkerFleet)
 	
 	ModAttribute(VoteCardCostMod, Add, 4.0)
 	ModAttribute(SupportCardCostMod, Add, 2.0)
