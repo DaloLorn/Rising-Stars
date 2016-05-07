@@ -1,0 +1,19 @@
+Trait: Pacifists
+	Name: #TRAIT_PACIFISTS
+	Description: #TRAIT_PACIFISTS_DESC
+	Order: 9
+	
+	Category: Lifestyle
+	Unique: Lifestyle
+	
+	Icon: CardIcons::6
+	Color: #00ffa4
+	
+	AddStatusOwnedPlanets(Pacifists)
+	AddStatusOwnedFleets(PacifistFleet)
+	
+	ModAttribute(VoteCardCostMod, Add, -2.0)
+	ModAttribute(SupportCardCostMod, Add, -1.0)
+	
+	OnHomeworld(AddPlanetResource(Allondium))
+	

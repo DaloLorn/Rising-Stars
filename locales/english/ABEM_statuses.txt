@@ -14,3 +14,9 @@ STATUS_BOARDED_DESC: <<
 	
 	Boarding actions last between 10 and 100 seconds.
 >>
+STATUS_ENVOY: Diplomatic Expedition
+STATUS_ENVOY_DESC: <<
+	This planet has been visited by an Envoy. The Envoy and his entourage reassure allied populations of their security, preventing loyalty loss for 180 seconds.
+
+	Loyalty protection only takes effect if the planet's owner and the Envoy's owner are in an Alliance.
+>>

@@ -1,0 +1,21 @@
+Trait: Berserkers
+	Name: #TRAIT_BERSERKERS
+	Description: #TRAIT_BERSERKERS_DESC
+	Order: 10
+	
+	Category: Lifestyle
+	Unique: Lifestyle
+	
+	Icon: StatusWar
+	Color: #aaffaa
+	
+	AddStatusOwnedPlanets(Berserkers)
+	AddStatusOwnedFleets(BerserkerFleet)
+	
+	ModAttribute(VoteCardCostMod, Add, 4.0)
+	ModAttribute(SupportCardCostMod, Add, 2.0)
+	
+	OnHomeworld(AddPlanetResource(Sulphate))
+	
+	AddModifier(SupplyCostFactor(0.75))
+	AddModifier(SupportCapacityFactor(0.5))

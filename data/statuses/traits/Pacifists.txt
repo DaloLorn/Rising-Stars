@@ -1,0 +1,24 @@
+Status: Pacifists
+	Visible To: Nobody
+
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Influence, +0.25))
+	ABEM_races::IfNotAtWar(AddStatus(Happy))
+	ModCivResourceMult(Labor, -0.15)
+	ModCivResourceMult(Defense, -0.15)
+	ABEM_races::IfAtWar(ModCivResourceMult(Research, -0.2))
+	ABEM_races::IfAtWar(ModCivResourceMult(Money, -0.2))
+	ABEM_races::IfAtWar(ModCivResourceMult(Energy, -0.2))
+
+Status: PacifistFleet
+	Visible To: Nobody
+
+	AddFleetEffectiveness(-0.15)
+
+Status: Envoy
+	Name: #STATUS_ENVOY
+	Description: #STATUS_ENVOY_DESC
+	Icon: PoliticalStrengthIcon * #00ff00
+	Collapses: True
+
+	RemoveOnWarWithOriginEmpire(Trigger Origin = RandomTrigger(0.1, TakeControl()))
+	ABEM_races::IfAlliedWithOriginEmpire(ABEM_races::ProtectPlanet())

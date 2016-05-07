@@ -1,3 +1,32 @@
 ShieldLifestyle_Name:Technicist
 
 ShieldLifestyle_Dec: [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have 45% more regeneration and 90% more capacity.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start and gives double shield bonus to the flagship.[/img][vspace=6/][img=PlateArmor;22][/img] Technicist [b]cannot use regular armor[/b] and any armor they discover from any source will have half health.
+
+TRAIT_PACIFISTS: Pacifists
+TRAIT_PACIFISTS_DESC: <<|
+  [vspace=3/][img=ResourceIconsSmall::61]Starts with an Allondium on their homeworld.[/img]
+  [vspace=3/][img=ThumbsUp;22]The Influence cost of playing support cards during a vote is reduced by 1, while the cost of starting a vote is reduced by 2.[/img]
+  [vspace=3/][img=ResourceIcon::1;22]Civilian Influence generation is increased by 25% when not at war with another empire.[/img]
+  [vspace=3/][img=StatusWar;22]Civilian Money, Energy and Research generations are decreased by 20% when at war with another empire.[/img]
+  [vspace=3/][img=HappyFace;22]All planets are Happy when not at war with another empire.[/img]
+  [vspace=3/][img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
+  [vspace=3/][img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
+>>
+TRAIT_BERSERKERS: Berserkers
+TRAIT_BERSERKERS_DESC: <<|
+  [vspace=3/][img=ResourceIconsSmall::62*#f00]Starts with a Sulphate on their homeworld.[/img]
+  [vspace=3/][img=SubsystemButtonArt::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img]
+  [vspace=3/][img=StatusWar;22]Centuries of conflict have resulted in a 25% increase in fleet effectiveness and a 25% reduction in supply costs.[/img]
+  [vspace=3/][img=SystemUnderAttack;22]All planets are Happy when at war with another empire. All civilian non-Influence generations are increased by 5% when at war, and all civilian resource generations are halved when not at war. All planets receive +0.5 Defense generation when at war.[/img]
+  [vspace=3/][img=ResourceIcon::4;22]Fleets generate 0.5 Research per second when in combat.[/img]
+  [vspace=3/][img=ThumbsDown;22]The Influence cost of playing support cards during a vote is increased by 2, while the cost of starting a vote is increased by 4.[/img]
+  [vspace=3/][img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity.[/img]
+>>
+
+TRAIT_VERDANT: Verdant
+TRAIT_VERDANT_DESC: <<|
+	[vspace=3/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
+	[vspace=3/][img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
+	[vspace=3/][img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
+	[vspace=3/][img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
+>>

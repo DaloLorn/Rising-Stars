@@ -1,0 +1,30 @@
+Module: Embassy
+	Name: #ORB_EMBASSY
+	Blurb: #ORB_EMBASSY_BLURB
+	Description: #ORB_EMBASSY_DESC
+	Icon: GuiOrbitalIcons::0
+	Distant Icon: OrbitalIcons::0
+
+	Core: True
+	Standalone: True
+
+	Build Cost: 500
+	Maintenance: 50
+	Labor Cost: 15
+	Size: 7
+
+	Health: 6000
+	Armor: 4000
+
+	Model: CommerceStation
+	Material: VolkurGenericPBR
+
+	RequireTrait(Pacifists)
+
+	AddHealthEmpireAttribute(OutpostBoost, 10000)
+
+	GiveTrade()
+
+	GlobalTradeNode()
+	OnKillSpreadLeverageToFriendlies(Quality Factor = 5.0)
+	SpawnFreighters(Rate = 2, Status = Envoy, Name = Envoy, Set Origin Empire = True, Visit Hostile = True)

@@ -1,0 +1,24 @@
+Status: Berserkers
+	Visible To: Nobody
+
+	ABEM_races::IfAtWar(AddResource(Defense, 0.5))
+	ABEM_races::IfAtWar(AddStatus(Happy))
+	ABEM_races::IfAtWar(ModCivResourceMult(Research, 0.05))
+	ABEM_races::IfAtWar(ModCivResourceMult(Money, 0.05))
+	ABEM_races::IfAtWar(ModCivResourceMult(Energy, 0.05))
+	ABEM_races::IfAtWar(ModCivResourceMult(Labor, 0.05))
+	ABEM_races::IfAtWar(ModCivResourceMult(Defense, 0.05))
+
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Influence, -0.5))
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Research, -0.5))
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Money, -0.5))
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Energy, -0.5))
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Labor, -0.5))
+	ABEM_races::IfNotAtWar(ModCivResourceMult(Defense, -0.5))
+
+	AddFleetCommand(256)
+Status: BerserkerFleet
+	Visible To: Nobody
+
+	AddFleetEffectiveness(0.25)
+	ABEM_races::GenerateResearchInCombat(0.5)
