@@ -608,8 +608,8 @@ class RechargeShields : GenericEffect {
 
 		if(obj.supportCount > 0 && fleet.boolean) {
 			Ship@ support;
-			for(uint i = 0, count = target.supportCount; i < count; ++i) {
-				@support = cast<Ship>(target.supportShip[i]);
+			for(uint i = 0, count = obj.supportCount; i < count; ++i) {
+				@support = cast<Ship>(obj.supportShip[i]);
 				if(support !is null) {
 					rate = time * base.decimal;
 					if(percent.decimal != 0)

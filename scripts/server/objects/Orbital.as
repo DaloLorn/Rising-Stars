@@ -892,10 +892,10 @@ tidy class OrbitalScript {
 		}
 		@node = null;
 			
-		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
-			double laborCost;
-			for(i = 0, cnt = sections.count; i < count; ++i) {
-				laborCost += sections[i].laborCost;
+		if(killCredit !is null && killCredit !is obj.owner && killCredit.valid) {
+			double laborCost = 0;
+			for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
+				laborCost += sections[i].type.laborCost;
 			}
 			killCredit.generatePoints(laborCost * killCredit.ResearchFromKill, false, false);
 		}
