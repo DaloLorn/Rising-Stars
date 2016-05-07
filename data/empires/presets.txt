@@ -34,6 +34,18 @@ Preset: Hoonan
 	Trait: Hyperdrive
 	Trait: Linked
 	Trait: SpaceProgram
+	
+Preset: Rahta
+	Name: #RACE_BERSERKERS
+	Tagline: #RACE_BERSERKERS_TAGLINE
+	Lore: #RACE_BERSERKERS_LORE
+	Portrait: emp_portrait_berserker
+	Shipset: Gevron
+	
+	Trait: Empire
+	Trait: Slipstream
+	Trait: Berserkers
+	Trait: Frugal
 
 Preset: Feyh
 	Name: #RACE_FEYH
@@ -57,6 +69,19 @@ Preset: Saar
 	Trait: Communism
 	Trait: Hyperdrive
 	Trait: Evangelical
+	Trait: Charismatic
+	
+Preset: Fasshi
+	Name: #RACE_PACIFISTS
+	Tagline: #RACE_PACIFISTS_TAGLINE
+	Lore: #RACE_PACIFISTS_LORE
+	Portrait: emp_portrait_slug
+	Shipset: Volkur
+	Hard: True
+	
+	Trait: Capitalism
+	Trait: Hyperdrive
+	Trait: Pacifists
 	Trait: Charismatic
 
 Preset: Mono
