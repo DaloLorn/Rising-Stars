@@ -4,11 +4,15 @@ Subsystem: DevoutShrine
 	BaseColor: #408fc1
 	Elevation: 1
 
+	DamageOrder: -100
+	EvaluationOrder: -20
+
 	Tags: BaseCost, Prayer, RaceSpecial, Important
 	Tags: IsShield, Defense, Category:Control, HasInternals
 	Hull: Flagship, Station
 
 	Prayer := Hexes
+	RequirePrayer := 1
 
 	Size := HexSize * Hexes
 	ShieldCapacity := Size * 100
@@ -19,7 +23,7 @@ Subsystem: DevoutShrine
 	Hex.HP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
 
-	Effect: ShieldDamage
+	Effect: ABEMShieldDamage
 
 	Assert: Sum.Prayer >= Sum.Command
 		Unique: True

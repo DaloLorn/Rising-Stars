@@ -15,6 +15,9 @@ Subsystem: ShipComputer
 	Command := Hexes * 8
 	Repair := 4 * HexSize * (Hexes-1)
 	PowerUse := 40 * Size
+	Prayer := Sum.RequirePrayer * 4 * Hexes
+	
+	BoardingStrength := 20 * Size
 
 	SupplyRate := 30 * HexSize * (Hexes-1)
 	
@@ -24,10 +27,11 @@ Subsystem: ShipComputer
 
 	Duration := 30
 	EfficiencyBoost := 20 * (Size / ShipSize)
+	HasComputer := 1
 
 	Hook: AddStatus(ComputerCore)
 
-	Effect: ControlCore
+	Effect: ABEMControlCore
 	
 	Requires:
 		Power = PowerUse

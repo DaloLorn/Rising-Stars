@@ -6,7 +6,7 @@ Material: ABEMSubsystem
 	Lighting: False
 
 // *********************************************************
-// ****************POWER AND SUPPLY!*******************
+// ***************POWER AND SUPPLY TECHNOLOGY***************
 // *********************************************************
 
 Material: SAmatter
@@ -39,7 +39,7 @@ Material: FusionGen
 	Texture: data/images/subsystems/fusiongen.png
 	
 // *********************************************************
-// ****************SHIELDS AND SHIELDS MODS!*******************
+// *******************SHIELD TECHNOLOGY*********************
 // *********************************************************
 Material: ShieldGen
 	Inherit: ABEMSubsystem
@@ -50,15 +50,12 @@ Material: CovariantShield
 Material: SupportShield
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/supportshield.png
-
-//Remnant Shield use a included art
-
 Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
 	
 // *********************************************************
-// ****************ARMOR!*******************
+// ************************ARMOR****************************
 // *********************************************************
 Material: QuantumArmor
 	Inherit: ABEMSubsystem
@@ -71,9 +68,20 @@ Material: Superstructure
 	Texture: data/images/subsystems/superstructure.png	
 	
 // *********************************************************
-// ****************Modifiers!*******************
+// **********************MODIFIERS**************************
 // *********************************************************
 
 Material: CoolantModifier
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/Coolant.png
+
+// *********************************************************
+// ******************ABILITY SUBSYSTEMS*********************
+// *********************************************************
+
+Material: BoardingParty
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/boardingparty.png
+Material: SecurityStation
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/securityparty.png

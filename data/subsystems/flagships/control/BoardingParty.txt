@@ -1,0 +1,25 @@
+Subsystem: BoardingParty
+	Name: #S_BOARDING_PARTY
+	Description: #S_BOARDING_PARTY_DESC
+
+	BaseColor: #c5f946
+	Elevation: 5
+
+	Tags: BaseCost, NonContiguous,Category:Equipment, Ability:BoardingParty
+	Tags: Boarders, ExteriorCore
+	Tags: HasInternals
+	Hull: Flagship, Station
+
+	EvaluationOrder: -10
+
+	Size := HexSize * Hexes
+	BoardingStrength := floor(40 * Size)
+
+	Hex.Resistance := 0.2
+	Hex.HP := 36 * HexSize
+	Hex.Mass := HexSize
+	Module: Core
+		Sprite: shuttle
+
+	Module: Default
+		Sprite: BoardingParty

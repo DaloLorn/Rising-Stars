@@ -13,6 +13,8 @@ Subsystem: AncientCore
 	Size := HexSize * Hexes
 	Command := Hexes * 3
 
+	BoardingStrength := 5 * Size
+
 	Power := 20 * Size
 	SupplyCapacity := Size * 1000
 	SupplyRate := Size * 40
@@ -29,7 +31,7 @@ Subsystem: AncientCore
 	Hex.BuildCost := 1.5 * HexSize + 0.8
 	Hex.MaintainCost := 3 * HexSize + 2
 
-	Effect: ControlCore
+	Effect: ABEMControlCore
 	
 	Provides:
 		Command = Command

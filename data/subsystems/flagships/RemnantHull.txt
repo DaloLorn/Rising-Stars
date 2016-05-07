@@ -1,5 +1,5 @@
 Subsystem: RemnantHull
-	Tags: NoCore, HullSystem
+	Tags: NoCore, HullSystem, Ability:ScuttleDerelict
 	Hull: Flagship, Station
 	EvaluationOrder: -100
 
@@ -36,7 +36,7 @@ Subsystem: RemnantSupportHull
 	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
 
 Subsystem: SpecialRemnantHull
-	Tags: NoCore, HullSystem
+	Tags: NoCore, HullSystem, Ability:ScuttleDerelict
 	Hull: Flagship, Station
 	EvaluationOrder: -100
 
