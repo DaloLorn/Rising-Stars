@@ -11,6 +11,7 @@ TRAIT_PACIFISTS_DESC: <<|
   [vspace=3/][img=HappyFace;22]All planets are Happy when not at war with another empire.[/img]
   [vspace=3/][img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
   [vspace=3/][img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
+  [vspace=3/][img=Antenna;22]Broadcast Antennae are available from the beginning of the game, and require 20% less Influence to construct.[/img]
 >>
 TRAIT_BERSERKERS: Berserkers
 TRAIT_BERSERKERS_DESC: <<|

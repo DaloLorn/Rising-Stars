@@ -5,6 +5,7 @@ Trait: Pacifists
 	
 	Category: Lifestyle
 	Unique: Lifestyle
+	DLC: Heralds
 	
 	Icon: CardIcons::6
 	Color: #00ffa4
@@ -14,6 +15,9 @@ Trait: Pacifists
 	ModAttribute(VoteCardCostMod, Add, -2.0)
 	ModAttribute(SupportCardCostMod, Add, -1.0)
 	ModAttribute(FleetEfficiencyFactor, Add, -0.15)
+	UnlockSubsystem(BroadcastAntenna)
+	ReplaceTechnologyNodes(BroadcastAntenna, Science)
+	AddModifier(InfluenceBuildCostFactor(0.8))
 	
 	OnHomeworld(AddPlanetResource(Allondium))
 	
