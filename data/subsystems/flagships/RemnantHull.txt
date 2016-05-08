@@ -10,6 +10,7 @@ Subsystem: RemnantHull
 	Ship.HexSize := ShipSize / HexLimit
 
 	Repair := (ShipSize / HexLimit) * 16
+	TechMultiplier := 2
 
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)
@@ -29,6 +30,7 @@ Subsystem: RemnantSupportHull
 	Ship.HexSize := ShipSize / HexLimit
 
 	Repair := (ShipSize / HexLimit) * 16
+	TechModifier = 1.5
 
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)
@@ -43,6 +45,7 @@ Subsystem: SpecialRemnantHull
 	GridWidth := 28
 	GridHeight := 23
 	Repair := HexSize * 16
+	TechModifier := 3
 
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)

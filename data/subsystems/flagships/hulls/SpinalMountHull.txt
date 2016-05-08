@@ -12,6 +12,7 @@ Subsystem: SpinalMountHull
 	AddShipModifier: tag/Weapon::FireArcFactor(100.0)
 	AddShipModifier: tag/Weapon::HpFactor(1.5)
 	AddShipModifier: tag/Weapon::CoreHealthFactor(5.0)
+	AddShipModifier: TechMultFactor(1.5)
 
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300

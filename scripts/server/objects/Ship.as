@@ -754,7 +754,7 @@ tidy class ShipScript {
 			
 		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
 			killCredit.recordStatDelta(stat::ShipsDestroyed, 1);
-			killCredit.generatePoints(ship.blueprint.design.total(HV_LaborCost) * killCredit.ResearchFromKill, false, false);
+			killCredit.generatePoints(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill, false, false);
 		}
 
 		leaveRegion(ship);

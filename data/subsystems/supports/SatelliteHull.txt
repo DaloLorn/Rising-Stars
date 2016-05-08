@@ -19,6 +19,7 @@ Subsystem: SatelliteHull
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
 	Repair := (ShipSize / HexLimit) * 4
+	TechMult := 1.5
 
 	Hex.LaborCost := 0.07 * ShipSize
 	Hex.BuildCost := 0.75 * ShipSize

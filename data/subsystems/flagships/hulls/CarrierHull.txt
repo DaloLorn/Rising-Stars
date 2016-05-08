@@ -14,6 +14,7 @@ Subsystem: CarrierHull
 	AddShipModifier: SupportCapacityFactor(2.0)
 	AddShipModifier: HpFactor(2.0)
 	AddShipModifier: ShieldCapacityFactor(2.0)
+	AddShipModifier: TechMultFactor(1.25)
 
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300

@@ -13,6 +13,7 @@ Subsystem: StationHull
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
 	Repair := (ShipSize / HexLimit) * 8
+	TechMult := 2
 
 	OnCheckErrors: designs::checkGlobalDesign
 

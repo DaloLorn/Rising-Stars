@@ -14,6 +14,7 @@ Subsystem: DestroyerHull
 	AddShipModifier: ArmorResistFactor(1.5)
 	AddShipModifier: MassFactor(0.5)
 	AddShipModifier: tag/Weapon::RangeFactor(0.7)
+	AddShipModifier: TechMultFactor(3)
 
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300

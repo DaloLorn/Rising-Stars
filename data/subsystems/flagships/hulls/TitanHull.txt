@@ -13,6 +13,7 @@ Subsystem: TitanHull
 
 	AddShipModifier: BuildCostFactor(1.0 - 0.5 * min(sqrt((ShipSize - 500) / 3000), 1.0))
 	AddShipModifier: FireArcFactor(2.0)
+	AddShipModifier: TechMultFactor(1.25)
 
 	Assert: ShipSize >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
