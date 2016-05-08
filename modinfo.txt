@@ -1,4 +1,4 @@
-	Name: Abem for Heralds
+	Name: Rising Stars
 	Description: <<
 		[h1][b]Links[/b][/h1]
 		[b]ABEM on GitHub:[/b] https://github.com/Alarcarr/ABEMMOD
@@ -9,4 +9,3 @@
 		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
 	>>
 	Compatibility: 200
-	Derives From: DOF-Shipset-Common Library v1.000
