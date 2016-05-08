@@ -5,6 +5,7 @@ Trait: Berserkers
 	
 	Category: Lifestyle
 	Unique: Lifestyle
+	DLC: Heralds
 	
 	Icon: StatusWar
 	Color: #aaffaa
@@ -15,6 +16,9 @@ Trait: Berserkers
 	ModAttribute(SupportCardCostMod, Add, 2.0)
 	ModAttribute(FleetEfficiencyFactor, Add, 0.25)
 	ModAttribute(ResearchFromKill, Add, 1)
+
+	ReplaceTechnologyNodes(TroopPods, Science)
+	UnlockSubsystem(TroopPods)
 
 	OnHomeworld(AddPlanetResource(Sulphate))
 	
