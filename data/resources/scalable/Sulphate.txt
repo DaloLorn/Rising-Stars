@@ -1,0 +1,22 @@
+Resource: Sulphate
+	Name: #SULPHATE
+	Blurb: #SULPHATE_BLURB
+	Description: #SULPHATE_DESC
+	Native Biome: Ice
+	Class: Scalable
+
+	Small Icon: ResourceIconsSmall::62*#f00
+
+	Rarity Level: 3
+	Frequency: 2
+
+	Limitless Level: True
+	Exportable: False
+
+	IfLevel(6, AddStatusOwnedFleets(UnownedAllyBuff40))
+	IfLevel(0, AddStatusOwnedFleets(UnownedAllyBuff5), Exact = True) #version>=111
+	IfLevel(1, AddStatusOwnedFleets(UnownedAllyBuff10), Exact = True)
+	IfLevel(2, AddStatusOwnedFleets(UnownedAllyBuff15), Exact = True)
+	IfLevel(3, AddStatusOwnedFleets(UnownedAllyBuff25), Exact = True)
+	IfLevel(4, AddStatusOwnedFleets(UnownedAllyBuff40), Exact = True)
+	IfLevel(5, AddStatusOwnedFleets(UnownedAllyBuff60), Exact = False)
