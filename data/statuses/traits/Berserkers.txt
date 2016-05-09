@@ -5,5 +5,5 @@ Status: Berserkers
 
 
 	AllowFreeRaiding()
-	AddGlobalDefenseAdjacentFlags(Contested, 5, 10)
+//	AddGlobalDefenseAdjacentFlags(Contested, 5, 10)
 	AddFleetCommand(256)

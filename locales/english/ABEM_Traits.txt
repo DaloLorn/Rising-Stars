@@ -14,16 +14,15 @@ TRAIT_PACIFISTS_DESC: <<|
   [vspace=3/][img=Antenna;22]Broadcast Antennae are available from the beginning of the game, and require 20% less Influence to construct.[/img]
 >>
 TRAIT_BERSERKERS: Berserkers
-TRAIT_BERSERKERS_DESC:
+TRAIT_BERSERKERS_DESC:<<|
 	[vspace=3/][img=ResourceIconsSmall::62*#f00]Starts with a Sulphate on their homeworld.[/img]
-//	[vspace=3/][img=HexagonSubsystems::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img] 
 	[vspace=3/][img=StatusWar;22]Centuries of conflict have resulted in a 25% reduction in supply costs.[/img] 
 	[vspace=3/][img=ResourceIcon::4*ff8888;22]Civilian Research generation is not available.However they can convert any research pressure to defense at 150% rate[/img] 
 	[vspace=3/][img=ResourceIcon::4;22]Destroying enemy objects gives Research dependent on their type and Labor cost.[/img]   
 	[vspace=3/][img=ThumbsDown;22]The Influence cost of playing support cards during a vote is increased by 1, while the cost of starting a vote is increased by 4.[/img]  
 	[vspace=3/][img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity and produce support ships when they are in danger.[/img]  
 	[vspace=3/][img=TroopPods;22]Troop Pods are available from the beginning of the game.[/img]
-
+>>
 TRAIT_VERDANT: Verdant
 TRAIT_VERDANT_DESC: <<|
 	[vspace=3/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]

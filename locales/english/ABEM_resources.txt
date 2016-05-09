@@ -19,7 +19,6 @@ PHOSPHATE_DESC: <<
 SULPHATE: Sulphate
 SULPHATE_BLURB: <<
 	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]0%/2%/10%/15%/20%/30%/40%[/levels].
-
 	Decreased fleet strength inside owned systems by [levels=$1;#ffb4b6]0%/0%/5%/9%/12%/15%/20%[/levels].
 >>
 SULPHATE_DESC: <<
