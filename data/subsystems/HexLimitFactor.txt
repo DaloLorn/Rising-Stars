@@ -1,0 +1,4 @@
+Template: tag/HullSystem, var/HexLimit, var/FreeHexLimit
+	Modifier: HexLimitFactor(factor)
+		HexLimit := HexLimit * factor
+		FreeHexLimit := FreeHexLimit * factor
