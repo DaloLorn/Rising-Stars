@@ -18,7 +18,9 @@ PHOSPHATE_DESC: <<
 >>
 SULPHATE: Sulphate
 SULPHATE_BLURB: <<
-	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]0%/2%/10%/15%/20%/30%/40%[/levels].
+
+	Decreased fleet strength inside owned systems by [levels=$1;#ffb4b6]0%/0%/5%/9%/12%/15%/20%[/levels].
 >>
 SULPHATE_DESC: <<
 	Fleets fighting outside any systems you control gain [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels] extra strength.
@@ -65,7 +67,7 @@ ALLONDIUM_DESC: <<
 	[offset=30]The cost of playing cards into a vote is reduced by up to 3 influence.[/offset]
 
 	[b]If this planet is Level 6:[/b]
-	[offset=30]Starting a vote no longer costs any Influence.[/offset]
+	[offset=30]SOON[/offset]
 
 	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
 >>

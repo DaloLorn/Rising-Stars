@@ -1,0 +1,11 @@
+Material: ABEMBuilding
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+
+Material: BerConverter
+	Inherit: ABEMBuilding
+	Texture: data/images/buildings/BerConverter.png	
