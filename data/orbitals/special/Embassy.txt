@@ -25,6 +25,8 @@ Module: Embassy
 
 	GiveTrade()
 
+	TriggerPeriodic(RandomTrigger(0.05, GainRandomInfluenceCards(1)))
+	AddInfluenceStake(2)
 	GlobalTradeNode()
 	OnKillSpreadLeverageToFriendlies(Quality Factor = 5.0)
 	SpawnFreighters(Rate = 2, Status = Envoy, Name = Envoy, Set Origin Empire = True, Visit Hostile = True)
