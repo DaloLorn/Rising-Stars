@@ -1,0 +1,54 @@
+//Statuses used to provide scaling buffs to fleets/planets in a system
+Status: UnownedAllyBuff5
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.05))
+
+Status: UnownedAllyBuff10
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.10))
+
+Status: UnownedAllyBuff15
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.15))
+
+Status: UnownedAllyBuff20
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.20))
+
+Status: UnownedAllyBuff25
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.25))
+
+Status: UnownedAllyBuff30
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.30))
+
+Status: UnownedAllyBuff35
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.35))
+
+Status: UnownedAllyBuff40
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.40))
+
+Status: UnownedAllyBuff60
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.60))

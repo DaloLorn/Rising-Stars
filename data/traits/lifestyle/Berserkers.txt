@@ -2,23 +2,24 @@ Trait: Berserkers
 	Name: #TRAIT_BERSERKERS
 	Description: #TRAIT_BERSERKERS_DESC
 	Order: 10
-
+	
 	Category: Lifestyle
 	Unique: Lifestyle
 	DLC: Heralds
-
-	Icon: techCooling*#ff0213
-	Color: #ff0213
-	AI Support: False
-
+	
+	Icon: StatusWar
+	Color: #aaffaa
+	
 	AddStatusOwnedPlanets(Berserkers)
-
+	
 	ModAttribute(VoteCardCostMod, Add, 4.0)
-	ModAttribute(SupportCardCostMod, Add, 1.0)
+	ModAttribute(SupportCardCostMod, Add, 2.0)
+	ModAttribute(FleetEfficiencyFactor, Add, 0.25)
 	ModAttribute(ResearchFromKill, Add, 1)
 
 	UnlockSubsystem(TroopPods)
 
 	OnHomeworld(AddPlanetResource(Sulphate))
-
+	
 	AddModifier(SupplyCostFactor(0.75))
+	AddModifier(SupportCapacityFactor(0.5))
