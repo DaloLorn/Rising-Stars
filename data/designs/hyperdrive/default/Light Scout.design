@@ -1,8 +1,8 @@
 {
 	"__VERSION__": 1,
-	"name": "Scout",
+	"name": "Light Scout",
 	"size": 16,
-	"hull": "$1FlagVeryLarge",
+	"hull": "$1FlagTiny",
 	"type": "Flagship",
 	"gridWidth": 28,
 	"gridHeight": 23,
