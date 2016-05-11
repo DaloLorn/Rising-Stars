@@ -1,4 +1,4 @@
-# Alternate Balance Expansion Mod
+# Rising Star
 
 Instructions for modders forking this:
 
