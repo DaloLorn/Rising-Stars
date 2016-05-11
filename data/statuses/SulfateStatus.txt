@@ -24,28 +24,28 @@ Status: SulfateL2
 	
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.15))//Unowned :10%
-	AddFleetEffectiveness(-0.05)
+	AddFleetEffectiveness(-0.04)
 	
 Status: SulfateL3
 	Visible To: Nobody
 	
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.24))//Unowned :15%
-	AddFleetEffectiveness(-0.09)
+	AddFleetEffectiveness(-0.06)
 
 Status: SulfateL4
 	Visible To: Nobody
 	
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.32))//Unowned :20%
-	AddFleetEffectiveness(-0.12)
+	AddFleetEffectiveness(-0.10)
 	
 Status: SulfateL5
 	Visible To: Nobody
 
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.45))//Unowned :30%
-	AddFleetEffectiveness(-0.15)
+	AddFleetEffectiveness(-0.12)
 
 	
 Status: SulfateL6
@@ -53,4 +53,4 @@ Status: SulfateL6
 
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.60))//Unowned :40%
-	AddFleetEffectiveness(-0.20)
+	AddFleetEffectiveness(-0.15)
