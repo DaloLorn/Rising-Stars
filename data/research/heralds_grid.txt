@@ -241,9 +241,6 @@ Grid: Heralds
 	EmergencySupplies: -5,-11
 	Thrust: -5,-12
 	GravitonChanneling: -6,-13
-	Health: -4,-12
-	Ramjet: -3,-14
-	ImpSupplyUse: -4,-13
 	EnergyStorage: -2,-10
 	EnergyHurdle3: -3,-11
 	ZeroPoint: -2,-12
@@ -263,3 +260,11 @@ Grid: Heralds
 	CompositeArmor: -2,0
 	Repair2: 7,8
 	QuantumArmor: 7,9
+	Health: -6,-11
+	Ramjet: -7,-11
+	EnergyHurdle: -9,-7
+	Hyperdrive: -9,-8
+	EnergyHurdle: -9,12
+	FlingBeacons: -9,13
+	GateTech: 15,-2
+	SS: 0,10
