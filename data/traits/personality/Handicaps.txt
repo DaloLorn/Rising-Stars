@@ -1,0 +1,76 @@
+Trait: Handicap1
+	Name: Just got the game on Steam!
+	Icon: PlanetLevelIcons::2
+	Color: #50ff1a
+	Category: Handicaps
+	Description: Increase Fleet Eficiency by 30%
+
+
+	Unique: Handicap
+	ModAttribute(FleetEfficiencyFactor, Add, 0.3)
+
+Trait: Handicap2
+
+	Category: Handicaps
+	Icon: PlanetLevelIcons::1
+	Name: Newbie
+	Description: Increase your Fleet Eficiency by 20%
+	ModAttribute(FleetEfficiencyFactor, Add, 0.2)
+
+
+	Unique: Handicap
+
+
+Trait: Handicap3
+	Color: #ff0000
+	Icon: PlanetLevelIcons::0
+	Name: Casual Gamer
+	Description: Increase your Fleet Eficiency by 10%
+	Category: Handicaps
+	ModAttribute(FleetEfficiencyFactor, Add, 0.1)
+
+	
+	Unique: Handicap
+
+Trait: Handicap0
+	Color: #ff0000
+	Icon: HappyFace
+	Name: Normal
+	Description: I will handle this myself!
+	Category: Handicaps
+	Default: True
+
+	
+	Unique: Handicap
+Trait: Handicap4
+	Name: Veteran Player
+	Icon: PlanetLevelIcons::0*#ff1b0f
+	Color: #ff1b0f
+	Category: Handicaps
+	Description: Reduce Fleet Eficiency by 10%
+	ModAttribute(FleetEfficiencyFactor, Add, -0.1)
+
+	
+	Unique: Handicap
+
+
+Trait: Handicap5
+	Category: Handicaps
+	Icon: PlanetLevelIcons::1*#ff1b0f
+	Name: Hardcore Player
+	Description: Reduce your Fleet Eficiency by 20%
+	Color: #ff1b0f
+	ModAttribute(FleetEfficiencyFactor, Add, -0.2)
+
+	
+	Unique: Handicap
+Trait: Handicap6
+	Color: #ff0000
+	Icon: PlanetLevelIcons::2*#ff1b0f
+	Name: Monster
+	Description: Stop the bears and dinosaurs. 30% Handicap.
+	Category: Handicaps
+	ModAttribute(FleetEfficiencyFactor, Add, -0.3)
+
+	
+	Unique: Handicap
