@@ -6,7 +6,7 @@ Subsystem: SupShieldGen
 
 	DamageOrder: -100
 
-	Tags: IsShield, Defense, Category:Shields, HasInternals
+	Tags: IsShield, Defense, Category:Defense, HasInternals
 	Tags: SecondaryDefense
 	Hull: Support, Satellite
 
@@ -19,16 +19,16 @@ Subsystem: SupShieldGen
 	Hex.HP := 8 * HexSize
 	Hex.Mass := 2.5 * HexSize
 	Hex.BuildCost := 2*HexSize
-	
+
 
 	Effect: ABEMShieldDamage
 
 	Requires:
 		Command = 1
-		
+
 	Assert: Size>=5
-		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.	
-	
+		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.
+
 	Modifier: LaborCostFactor(factor)
 		Hex.LaborCost := 0
 
