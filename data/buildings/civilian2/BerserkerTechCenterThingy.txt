@@ -1,0 +1,10 @@
+Building: BerserkerTechCenterThingy
+	Name: #BLD_TECHCENTER
+	Description: #BLD_TECHCENTER_DESC
+	Sprite: BuildingSprites::9
+
+	Civilian: True
+	Upgrades From: BerserkerUniversityThingy
+
+	Saturation: 2 Research
+	Production: 1.5 Research

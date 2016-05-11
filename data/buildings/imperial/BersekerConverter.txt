@@ -10,7 +10,7 @@ Building: BersekerConverter
 	Base Cost: 300
 
 	Build Time: 120
-	Description: I have so much imagination for name , dont u think
+	Description: I have so much imagination for name , dont u think (Dalo: I'm hardly better, look at the new buildings! :P)
 
 	AddFleetCommand(300)
 	ConflictBuilding(BersekerConverter)
