@@ -16,6 +16,7 @@ Resource: Sulphate
 	Require Contestation: 30
 	Pressure: 2 Defense
 
+	AddPressureCap(2)
 	IfLevel(0, AddStatusOwnedFleets(SulfateL0), Exact = True)
 	IfLevel(1, AddStatusOwnedFleets(SulfateL1), Exact = True)
 	IfLevel(2, AddStatusOwnedFleets(SulfateL2), Exact = True)
