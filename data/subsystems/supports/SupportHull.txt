@@ -13,6 +13,9 @@ Subsystem: SupportHull
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
+	DummyForStR:=1000
+
+	
 	Repair := (ShipSize / HexLimit) * 4
 	TechMult := 0.75
 

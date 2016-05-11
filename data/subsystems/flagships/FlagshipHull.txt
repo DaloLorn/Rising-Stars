@@ -9,6 +9,8 @@ Subsystem: FlagshipHull
 	GridWidth := 28
 	GridHeight := 23
 
+	DummyForStR:=1000
+	
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 

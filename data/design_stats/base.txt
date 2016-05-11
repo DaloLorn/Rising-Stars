@@ -17,20 +17,23 @@ GlobalStat: HP
 GlobalStat: DPS
 	Name: #S_DPS
 	Description: #STT_DPS
-	Icon: AttributeIcons::3
+	 AttributeIcons::3
 	Color: #ff8080
 
 	Variable: DPS
+//Until we have something to add stats!	
 
-GlobalStat: EstStrenght
-		Name: Strenght
-		Description:Str
+		
+GlobalStat: HullStrenght
+		Name: HullStrenght
+		Description:Strenght Only considering the Hull (Real strenght will be the combined Shield Strenght+Hull Strenght)
 		Color: #aaa
-			
+		Icon: TimeReal
 
 		Variable: Hex.HP
 		MultBy: DPS
-	
+		DivBy:DummyForStR
+
 	
 	
 GlobalStat: SupplyCap

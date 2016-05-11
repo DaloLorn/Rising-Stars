@@ -1,0 +1,47 @@
+GlobalStat: Shield
+	Name: #S_Shield
+	Description: #STT_Shield
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ShieldCapacity
+
+	GlobalStat: ShieldRegen
+		Name: #S_ShieldRegen
+		Description: #STT_ShieldRegen
+		Icon: AttributeIcons::6
+		Color: #8080ff
+		Secondary: Shield
+
+		Variable: ShieldRegen
+GlobalStat: ShieldStrenght
+		Name: Shield Strenght
+		Description:Strenght Only considering the Shields (Real strenght will be the combined Shield Strenght+Hull Strenght)
+		Color: #aaa
+		Icon: TimeReal
+		Variable:ShieldCapacity
+		MultBy: DPS
+		DivBy:DummyForStR
+		
+SubsystemStat: Shield
+	Name: #S_Shield
+	Description: #STT_Shield
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ShieldCapacity
+
+SubsystemStat: ShieldRegen
+	Name: #S_ShieldRegen
+	Description: #STT_ShieldRegen
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ShieldRegen
+
+SubsystemStat: Chance
+	Name: #S_Chance
+	Icon: AttributeIcons::6 * #8080ff
+	Color: #8080ff
+
+	Variable: Chance
