@@ -18,7 +18,7 @@ Subsystem: AblativeArmor
 	
 	Effect: ReduceDamage
 		ProjResist = DamageResist
-		EnergyResist = DamageResist * 2.0
+		EnergyResist = DamageResist
 		ExplResist = DamageResist
 		MinimumPercent = 1/6
 	
@@ -26,7 +26,7 @@ Subsystem: AblativeArmor
 	Hex.Mass := 2.0 * HexSize
 	
 	
-	Hex.LaborCost := 0.2 * HexSize 
+	Hex.LaborCost := 0.4 * HexSize 
 	Hex.BuildCost := 0.5 * HexSize 
 	Hex.MaintainCost := 0
 	

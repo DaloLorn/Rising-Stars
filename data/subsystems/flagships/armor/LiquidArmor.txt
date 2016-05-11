@@ -19,7 +19,7 @@ Subsystem: LiquidArmor
 
 	Effect: DistributeHealth
 	
-	Hex.LaborCost := 0.2 * HexSize 
+	Hex.LaborCost := 0.4 * HexSize 
 	Hex.BuildCost := 0.7 * HexSize 
 	Hex.MaintainCost := 0.1
 	

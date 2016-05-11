@@ -17,7 +17,7 @@ Subsystem: PlateArmor
 	Hex.Mass := 5 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
-	Hex.LaborCost := 0.1 * HexSize 
+	Hex.LaborCost := 0.2 * HexSize 
 	Hex.BuildCost := 0.3 * HexSize 
 	Hex.MaintainCost := 0
 	

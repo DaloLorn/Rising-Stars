@@ -25,7 +25,7 @@ Subsystem: CompositeArmor
 	Hex.HP := 40 * HexSize
 	Hex.Mass := 2.5 * HexSize
 	
-	Hex.LaborCost := 0.3 * HexSize
+	Hex.LaborCost := 0.6 * HexSize
 	Hex.BuildCost := 0.4 * HexSize
 	Hex.MaintainCost := 0.1 * HexSize
 

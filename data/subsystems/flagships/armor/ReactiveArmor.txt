@@ -26,7 +26,7 @@ Subsystem: ReactiveArmor
 	Modifier: ImpactFactor(factor)
 		MinPct := MinPct / factor
 
-	Hex.LaborCost := 0.2 * HexSize 
+	Hex.LaborCost := 0.4 * HexSize 
 	Hex.BuildCost := 0.5 * HexSize 
 	Hex.MaintainCost := 0
 	
