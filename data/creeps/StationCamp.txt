@@ -1,8 +1,10 @@
 Camp: StationCamp
 
 	Frequency: 0.1
-	Flagship Size: 768
-	Support Occupation: 0.10
+	
+	Ship: Fortress [Remnant Fortress]
+	//Flagship Size: 768
+	//Support Occupation: 0.10
 	//Remnant Status: RemStrIncrease
 
 	Pickup: UNLOCK_CRYS
