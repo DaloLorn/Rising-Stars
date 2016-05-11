@@ -30,6 +30,16 @@ R_SYS_HYPERDRIVE_DESC: <<
 
 	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
 >>
+R_SYS_JUMPDRIVE_DESC: <<
+	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
+
+	Unlocks the Jumpdrive subsystem for use on flagships if it is not already available.
+
+	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
+>>
+
+
+
 R_SYS_QUANTUM_ARMOR: Quantum Armor
 R_SYS_QUANTUM_ARMOR_DESC: <<
 	[color=#aaa][i]After years of research, we have managed to improve upon Neutronium Armor. Most of this new armor's mass is stored outside our physical universe, only reappearing just before impact to withstand devastating blows without impairing mobility. Unfortunately, as this technology is applied to existing Neutronium Armor, the process is just as expensive as - and more difficult than - producing regular Neutronium Armor.[/i][/color]
@@ -81,6 +91,9 @@ R_ORB_FLING: Fling Beacons
 R_ORB_GATE: Gate Technology
 R_SYS_HYPERDRIVE: Hyperdrive
 R_SYS_SLIPSTREAM: Slipstream
+R_SYS_JUMPDRIVE: Jumpdrive
+
+
 R_LINK: LINK
 R_BOARDING_PARTY: Boarding Parties
 R_COMPOSITE_ARMOR: Composite Armor

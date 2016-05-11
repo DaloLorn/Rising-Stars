@@ -1,0 +1,12 @@
+Technology: Jumpdrive
+	Name: #R_SYS_JUMPDRIVE
+	Point Cost: 2500
+	Time Cost: 300
+	Icon: Jumpdrive
+	Description: #R_SYS_JUMPDRIVE_DESC
+	Class: Unlock
+	Color: #00c0ff
+	Category: FTL
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedSubsystem(Jumpdrive)
+	UnlockSubsystem(Jumpdrive)

@@ -268,3 +268,4 @@ Grid: Heralds
 	FlingBeacons: -9,13
 	GateTech: 15,-2
 	SS: 0,10
+	Jumpdrive: 12,-2
