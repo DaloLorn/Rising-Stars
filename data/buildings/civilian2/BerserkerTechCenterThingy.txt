@@ -7,4 +7,4 @@ Building: BerserkerTechCenterThingy
 	Upgrades From: BerserkerUniversityThingy
 
 	Saturation: 2 Research
-	Production: 1.5 Research
+	Production: 2.25 Defense

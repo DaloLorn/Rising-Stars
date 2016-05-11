@@ -6,4 +6,4 @@ Building: BerserkerUniversityThingy
 	Civilian: True
 
 	Saturation: 1 Research
-	Production: 1 Research
+	Production: 1.5 Defense
