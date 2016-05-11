@@ -1,0 +1,2 @@
+ABL_PROTO_LEVEL3: Form Planet (Tier 3)
+ABL_PROTO_LEVEL3_DESC: Manipulate the planet's formation by expending a large amount of energy. The planet will produce a random tier 3 resource.
