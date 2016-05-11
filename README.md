@@ -1,4 +1,4 @@
-# Rising Star
+# Rising Stars
 
 Instructions for modders forking this:
 
