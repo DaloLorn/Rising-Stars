@@ -1,7 +1,7 @@
 {
 	"__VERSION__": 1,
 	"name": "Fortress",
-	"size": 512,
+	"size": 768,
 	"hull": "GevronStation",
 	"type": "Station",
 	"gridWidth": 28,
