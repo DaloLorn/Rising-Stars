@@ -28,10 +28,10 @@ Subsystem: AntimatterGen
 		Power = Power
 
 	Module: Core
+		Sprite: AntimatterGen
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 		Hex.HP := 1
-		Sprite: AntimatterReactor
 
 	Module: Default
 		Hex.BuildCost := 0.9 * Hex.BuildCost

@@ -30,9 +30,9 @@ Subsystem: FissionGen
 		Hex.Mass := 0.9 * Hex.Mass
 	
 	Module: Core
+		Sprite: TechIcons::19
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
-		Sprite: FissionReactor
 
 	Modifier: SupplyCapacityFactor(factor)
 		SupplyCapacity := SupplyCapacity * factor
