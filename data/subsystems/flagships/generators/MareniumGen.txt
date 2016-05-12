@@ -34,8 +34,12 @@ Subsystem: MareniumGen
 
 	Module: Core
 		Sprite: MareniumReactor
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
 
 	Module: Default
+		Hex.BuildCost := 0.9 * Hex.BuildCost
+		Hex.Mass := 0.9 * Hex.Mass
 
 	Assert: Sum.Power == Sum.MareniumPower
 		Unique: True

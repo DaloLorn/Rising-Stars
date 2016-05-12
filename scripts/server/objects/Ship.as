@@ -1479,6 +1479,10 @@ tidy class ShipScript {
 					leader.postSupportRetrofit(ship, prevDesign, newDesign);
 			}
 		}
+		ship.Supply = min(ship.Supply, ship.MaxSupply);
+ 		ship.Shield = min(ship.Shield, ship.MaxShield);
+ 		barDelta = true;
+	
 	}
 
 	void syncDetailed(const Ship& ship, Message& msg) {

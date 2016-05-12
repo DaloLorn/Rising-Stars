@@ -26,9 +26,13 @@ Subsystem: FusionGen
 		Power = Power
 
 	Module: Core
-		Sprite: FusionGen
-
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+		Sprite: FusionReactor
+	
 	Module: Default
+		Hex.BuildCost := 0.9 * Hex.BuildCost
+		Hex.Mass := 0.9 * Hex.Mass
 
 	Modifier: SupplyCapacityFactor(factor)
 		SupplyCapacity := SupplyCapacity * factor

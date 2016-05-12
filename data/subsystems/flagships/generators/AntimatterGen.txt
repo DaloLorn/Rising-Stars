@@ -28,15 +28,25 @@ Subsystem: AntimatterGen
 		Power = Power
 
 	Module: Core
-		Sprite: AntimatterGen
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+		Hex.HP := 1
+		Sprite: AntimatterReactor
+
+	Module: Default
+		Hex.BuildCost := 0.9 * Hex.BuildCost
+		Hex.Mass := 0.9 * Hex.Mass
+
+		
 		// OH MY GOD NO WONDER IT EXPLODES WHEN SNEEZED AT HOW CAN ANYONE USE THIS
 		// Shielded Antimatter suddenly sounds like a straight upgrade, even with its slight inferiority and high maintenance. *shudders*
 		// Maybe we should come up with a slightly less catastrophic response to exploding. Oooor some kind of 'warp core ejection' modifier to make avoiding disaster just -a little- easier...
 		// Who in their right mind would use antimatter when singularities are safer -and- more powerful? I smell an impending buff. Or a nerf. :/
 		// Must stop commenting on this. This is not why I am here.
+		
+		//I use them *shrugs*
 		Hex.HP := 1
 
-	Module: Default
 
 	Modifier: SupplyCapacityFactor(factor)
 		SupplyCapacity := SupplyCapacity * factor

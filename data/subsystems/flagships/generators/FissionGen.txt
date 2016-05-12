@@ -9,7 +9,7 @@ Subsystem: FissionGen
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Power := 10 * Size
+	Power := 15 * Size
 
 	SupplyCapacity := Size * 500
 	SupplyRate := Size * 30
@@ -24,9 +24,15 @@ Subsystem: FissionGen
 
 	Provides:
 		Power = Power
-
+	
+	Module: Default
+		Hex.BuildCost := 0.9 * Hex.BuildCost
+		Hex.Mass := 0.9 * Hex.Mass
+	
 	Module: Core
-		Sprite: TechIcons::19
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+		Sprite: FissionReactor
 
 	Modifier: SupplyCapacityFactor(factor)
 		SupplyCapacity := SupplyCapacity * factor
