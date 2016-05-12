@@ -457,12 +457,14 @@ bool hasInvasionMap() {
 }
 
 bool initialized = false;
+uint InvaderStatus = UINT_MAX;
 void tick(double time) {
 	if(!hasInvasionMap())
 		return;
 
 	if(!initialized && playerEmpire.valid) {
 		guiDialogueAction(CURRENT_PLAYER, "Invasion.InvasionMap::SetupGUI");
+		InvaderStatus = getStatusID("IsInvader");
 		if(!isLoadedSave) {
 			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 				Empire@ emp = getEmpire(i);
@@ -702,6 +704,10 @@ void tick(double time) {
 				spawnPos += sys.desc.position;
 
 				Ship@ invader = spawnRemnantFleet(spawnPos, fleets[f], emp=Invaders, alwaysVisible=true);
+				if(InvaderStatus != UINT_MAX)
+					invader.addStatus(InvaderStatus);
+				else
+					print("Invader status isn't working.");
 				sys.invaders.insertLast(invader);
 
 				if(f == 0 && dat.empire !is null && dat.empire.player !is null)

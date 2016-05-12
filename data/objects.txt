@@ -53,6 +53,7 @@ server:
 	void setHealthPct(float pct);
 	void modSupplyBonus(float amount);
 	void modMass(float amount);
+	void grantDestructionRewards();
 	safe float getMass();
 	safe float getBaseMass();
 	int get_maintenanceCost();

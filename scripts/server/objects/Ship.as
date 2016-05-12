@@ -664,6 +664,49 @@ tidy class ShipScript {
 		return lastHitBy;
 	}
 	
+	void grantDestructionRewards(Ship& ship) {
+		if(killCredit !is null && !game_ending) {
+			auto size = ship.blueprint.design.size;
+			auto@ region = ship.region;
+			if(region !is null && killCredit !is ship.owner && ship.hasLeaderAI)
+				region.grantExperience(killCredit, size * config::EXPERIENCE_GAIN_FACTOR, combatOnly=true);
+				
+			if(ship.hasLeaderAI && currentMaintenance != 0) {
+				Empire@ master = killCredit.SubjugatedBy;
+				if(master !is null && master.getEdictType() == DET_Conquer) {
+					if(master.getEdictEmpire() is ship.owner) {
+						giveRandomReward(killCredit, double(currentMaintenance) / 100.0);
+					}
+				}
+
+				double reward = killCredit.DestroyShipReward + ship.owner.ShipDestroyBounty;
+				if(reward > 0.001) {
+					reward = floor(reward * currentMaintenance);
+					if(reward >= 1.0)
+						killCredit.addBonusBudget(int(reward));
+				}
+
+				if(ship.owner.major && ship.getFleetMaxStrength() >= 1000.0)
+					killCredit.modAttribute(EA_EnemyFlagshipsDestroyed, AC_Add, 1.0);
+			}
+		}
+					
+		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
+			killCredit.recordStatDelta(stat::ShipsDestroyed, 1);
+			if(killCredit.ResearchFromKill != 0 && ship.blueprint.design.total(HV_LaborCost) != 0)
+				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill, 1.0), false, false);
+		}
+	
+		if(ship.owner !is null && ship.owner.valid) {
+			if(ship.hasLeaderAI) {
+				ship.owner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
+				ship.owner.recordStatDelta(statType(ship), -1);
+			}
+			if(killCredit !is ship.owner)
+				ship.owner.recordStatDelta(stat::ShipsLost, 1);
+		}
+	}
+	
 	void destroy(Ship& ship) {
 		if(ship.owner !is null && ship.owner.valid && currentMaintenance != 0)
 			ship.owner.modMaintenance(-currentMaintenance, moneyType(ship));
@@ -694,39 +737,11 @@ tidy class ShipScript {
 				uint debris = uint(log(size) / log(2.0));
 				if(debris > 0)
 					region.addShipDebris(ship.position, debris);
-				if(killCredit !is ship.owner && ship.hasLeaderAI)
-					region.grantExperience(killCredit, size * config::EXPERIENCE_GAIN_FACTOR, combatOnly=true);
 			}
 			
-
-			if(ship.hasLeaderAI && currentMaintenance != 0) {
-				Empire@ master = killCredit.SubjugatedBy;
-				if(master !is null && master.getEdictType() == DET_Conquer) {
-					if(master.getEdictEmpire() is ship.owner) {
-						giveRandomReward(killCredit, double(currentMaintenance) / 100.0);
-					}
-				}
-
-				double reward = killCredit.DestroyShipReward + ship.owner.ShipDestroyBounty;
-				if(reward > 0.001) {
-					reward = floor(reward * currentMaintenance);
-					if(reward >= 1.0)
-						killCredit.addBonusBudget(int(reward));
-				}
-
-				if(ship.owner.major && ship.getFleetMaxStrength() >= 1000.0)
-					killCredit.modAttribute(EA_EnemyFlagshipsDestroyed, AC_Add, 1.0);
-			}
-		}
-	
-		if(ship.owner !is null && ship.owner.valid) {
-			if(ship.hasLeaderAI) {
-				ship.owner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
-				ship.owner.recordStatDelta(statType(ship), -1);
-			}
-			if(killCredit !is ship.owner)
-				ship.owner.recordStatDelta(stat::ShipsLost, 1);
-		}
+		}		
+		
+		grantDestructionRewards(ship);
 
 		if(lastHitBy !is null && lastHitBy !is ship)
 			ship.lastHit = lastHitBy.id;
@@ -751,12 +766,6 @@ tidy class ShipScript {
 			ship.destroyConstruction();
 		if(ship.hasAbilities)
 			ship.destroyAbilities();
-			
-		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
-			killCredit.recordStatDelta(stat::ShipsDestroyed, 1);
-			if(killCredit.ResearchFromKill != 0 && ship.blueprint.design.total(HV_LaborCost) != 0)
-				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill, 1.0), false, false);
-		}
 
 		leaveRegion(ship);
 	}

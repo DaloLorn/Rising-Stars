@@ -48,16 +48,18 @@ int getDRResponse(double type) {
 
 void ABEMControlDestroyed(Event& evt) {
 	Ship@ ship = cast<Ship>(evt.obj);
+	int invaderID = getStatusID("IsInvader");
 
 	//Make sure we still have a bridge or something with control up
 	if(!ship.blueprint.hasTagActive(ST_ControlCore)) {
-		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates)			
+		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates || (invaderID != -1 && ship.hasStatusEffect(invaderID)))
 			ship.destroy();
 		else {
 			double chance = ship.blueprint.currentHP / ship.blueprint.design.totalHP;
 			if(randomd() < chance) {
 				const uint type = getStatusID("DerelictShip");
 				ship.addStatus(-1, type);
+				ship.grantDestructionRewards();
 				@ship.owner = defaultEmpire;
 			}
 			else {
