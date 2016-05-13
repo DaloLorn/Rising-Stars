@@ -2,6 +2,20 @@ RACE_TERRAKIN: Terrans
 RACE_FIRST: Atroans
 RACE_HERALDS: C'k'tnilit
 
+RACE_TECHNICISTS: Alipha
+RACE_TECHNICISTS_TAGLINE: The science of defiance.
+RACE_TECHNICISTS_LORE: <<
+Centuries ago, our galaxy was conquered by a powerful race. We knew them only as 'Overlords', and they were not alone. Their servants came before them in what they called the 'Vanguard' - they prepared, quietly, and they ushered in the wrath of the universe. We had no choice, we were scientists, not warriors; we surrendered rather than face oblivion.
+
+But we shall not let that be the end of this tale. We shall not stand by and do nothing as countless galaxies are purged of any life the Overlords do not approve of. We shall not allow them to twist science - to coopt everything we hold dear - and use it as a weapon to beat down countless innocents.
+
+And we shall not go quietly.
+
+Our new masters have sent us into this galaxy to be the first of their Vanguard. We were to assist the others as they entered the galaxy and stabilized the portals that would doom the indigenous species to slavery or extinction. Instead, we turned against them, and bought the galaxy - and ourselves - precious time to prepare for the coming war.
+
+We must use that time well, and if we cannot stop the Overlords, we must at least perish with the dignity we had lost in our own galaxy...
+>>
+
 RACE_PROGENITORS: Ulthaar
 RACE_PROGENITORS_TAGLINE: The return of the Progenitors.
 RACE_PROGENITORS_LORE: <<
@@ -116,58 +130,4 @@ The Ulthaar were forced into hibernation by a radiation surge from the destroyed
 That is in the past, though. The Bluuhbi have served the Overlords for a great deal of time, gaining a great deal of prestige among the lesser races. We have become complacent. Now that the Overlords are finally ready to embark upon their quest to take what belongs to them, we have been sent out into the galaxy to secure a means of arrival for the full might of the Grand Armada.
 
 We are the Vanguard. To fail in our mission is to be exterminated. To achieve this goal before the other races of the Vanguard is to solidify and increase our power and prestige once more.
->>
-
-
-RACE_UKALONS:Ukalons
-RACE_UKALONS_TAGLINE:Energy is the key.
-
-RACE_UKALONS_LORE: <<
-
-From the Journal of Professor Cecil B. Heimerdinger
-Current meteorological conditions in Bandle City seem optimal. Atmospheric pressure is ideal for today's experiments!
-
-Running a fifth trial for my Tridyminiumobulator this afternoon. Some fine tuning is required; singed my mustache. Need to adjust the energy throughput.
-
-Tridyminiumobulator is still not maintaining intended proper energy efficiency! Necessary to run more numbers. In the meantime, I have found something else that's very intriguing.
-
-While returning home after today's tests, I passed a gaggle of young yordles throwing a spherical projectile at each other. It's a simple enough concept: throw the object at someone, catch it, throw it at another yordle, repeat. But yordle miscalculations result in several errors! They throw with inconsistent accuracy and force, and the ''ball'' (as they refer to it) is frequently dropped... There are many ways for this process to be improved. According to my calculations, and after collecting data from the participants, if the pitching was consistent in both speed and arc there would be a 44.57% increase to fun! I need to ponder this for the evening.
-
-
-Eureka! I've devised a solution.
-
-I've invented an automated ball pitcher. Current name: H-28G. It employs a consistent speed and trajectory, ensuring that the recipient will always be able to catch the ball. It redirects itself to the nearest yordle (if there is more than one in the vicinity) ensuring everyone has a turn. I'll take it to the young yordles today and demonstrate my invention.
-
-Also: spilled toxic acid on my shoes this morning. Bothersome.
-Tested the automated pitcher today. It did not go as planned. The young ones were excited enough about my invention, but, when the machine was turned on, it was far too powerful! Even at its lowest setting it completely knocked a yordle off his feet. Clearly, I overestimated the velocity behind their throws... I'll return soon to make adjustments.
-
-But my priority, for now, is the Tridyminiumobulator; I must fix its complications before lunch. Once it's in good shape, I'll need to test it somewhere else. Bandle City is proving insufficient for field research.
-
-
-Apparently, there's a giant in town. A highly annoying anomaly. The noise outside is disturbing my research!
-
-Must check fish tank today. They've been strangely quiet...
-
-10.17
-
-10:40
-
-I have heard that many yordles have been injured due to the giant-related disturbance. If this doesn't stop soon, intervention will be necessary! I hope H-28G is still intact. I would lose a lot of time if it has to be rebuilt.
-
-16:30
-
-Everything is quiet again. It seems that the giant came to his senses and ran off. I need to gather H-28G tomorrow, once I've finished with more pressing matters. I've almost perfected the Tridyminiumobulator!
-
-10.18
-
-08:30
-
-Today has been quite eventful already. I was surprised by a knock at my door. It seemed like the entire city was standing in front of my house. Normally, when a crowd has gathered, it's because they have some petty grievance about my work. But this time, they were celebrating!
-
-Astonishingly, it seems one of the young yordles took advantage of the H-28G prototype I had left behind amidst the giant tomfoolery. He proved to be innovative, and repurposed the invention into a makeshift turret. It's powerful enough to scare off a giant - imagine that! What an ingenious little fellow.
-
-I wish I could employ his like-minded encephalon in the near future - I have big plans and his assistance could be valuable - but he'd have to leave Bandle City. The scope of my plans necessitates a more expansive testing ground.
-
-Runeterra should suffice!
- 
 >>

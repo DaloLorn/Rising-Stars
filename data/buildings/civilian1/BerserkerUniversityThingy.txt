@@ -1,9 +1,10 @@
-Building: BerserkerUniversityThingy
-	Name: #BLD_UNIVERSITY
-	Description: #BLD_UNIVERSITY_DESC
-	Sprite: BuildingSprites::8
+Building: BerserkerLaborCamp
+	Name: #BLD_LABORCAMP
+	Description: #BLD_LABORCAMP_DESC
+	Sprite: BuildingSprites::5*fa3
 
 	Civilian: True
 
 	Saturation: 1 Research
-	Production: 1.5 Defense
+	Production: 0.75 Defense
+	Production: 1.5 Labor

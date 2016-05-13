@@ -7,7 +7,7 @@ Trait: Berserkers
 	Unique: Lifestyle
 	DLC: Heralds
 
-	Icon: techCooling*#ff0213
+	Icon: TroopPods
 	Color: #ff0213
 	AI Support: False
 

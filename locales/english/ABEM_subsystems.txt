@@ -213,11 +213,12 @@ S_COMPOSITE_ARMOR_DESC: <<
 	[img=Minus]Requires a low amount of maintenance, and is twice as labor-intensive as - and slightly more expensive than - Plate Armor.[/img]
 >>
 
+S_SUPERSTRUCTURE: Structural Reinforcement
 S_SUPERSTRUCTURE_DESC: <<
 	Light-weight metal scaffolding to give structure and definition to the ship.  Somewhat more resistant to damage than most other components, but not as protective per-weight as actual armor.
 
-	[img=Plus]Moderate [b][color=#80ff80]health[/color][/b].[/img]
 	[img=Plus]Slightly resists and reduces incoming damage.[/img]
-	[img=Plus]Superstructure on the outside of the ship does not use up interior space.[/img]
-	[img=Plus]Cheap.[/img]
+	[img=Plus]Structural Reinforcement on the outside of the ship does not use up interior space.[/img]
+	[img=Plus]Cheap and lightweight.[/img]
+	[img=Minus][b][color=#f00]Very low[/color] [color=#80ff80]health[/color][/b].[/img]
 >>

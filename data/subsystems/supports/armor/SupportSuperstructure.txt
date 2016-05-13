@@ -1,10 +1,10 @@
 Subsystem: SupportSuperstructure
-	Name: Superstructure
+	Name: #S_SUPERSTRUCTURE
 	Description: #S_SUPERSTRUCTURE_DESC
 	BaseColor: #a9a9a9
 
 	Tags: Category:Defense, NoWall, FauxExterior
-	Tags: NoCore, NonContiguous,Defense, IsArmor , ExternalSpace
+	Tags: NoCore, NonContiguous,Defense, ExternalSpace
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
@@ -16,11 +16,16 @@ Subsystem: SupportSuperstructure
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	//DamageResist := ShipSize / 70.0
+	DamageResist := ShipSize / 70.0
 
 	Hex.BuildCost := HexSize * 0.3
 	Hex.LaborCost := HexSize * 0.04
-	//	Resist = DamageResist
+
+	Effect: DamageResist
+		Resist = DamageResist
+
+	Modifier: ArmorResistFactor(factor)
+		DamageResist := DamageResist * factor
 
 	Module: Default
 		Hex.BuildCost := Hex.BuildCost * 2

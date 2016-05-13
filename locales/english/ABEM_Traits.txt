@@ -1,6 +1,10 @@
-ShieldLifestyle_Name:Technicist
-
-ShieldLifestyle_Dec: [vspace=6/][img=ShieldGen;22][b]Shield[/b] subsystem is available from the start and have 45% more regeneration and 90% more capacity.[/img] [vspace=6/][img=ShieldHarmonizer;22][b]Shield Harmonizer[/b] subsystem is available from the start and gives double shield bonus to the flagship.[/img][vspace=6/][img=PlateArmor;22][/img] Technicist [b]cannot use regular armor[/b] and any armor they discover from any source will have half health.
+TRAIT_TECHNICISTS: Technicists
+TRAIT_TECHNICISTS_DESC: <<|
+  [vspace=3/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]
+  [vspace=3/][img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide twice as much shield capacity to flagships.[/img]
+  [vspace=3/][img=PlateArmor;22]Cannot research most armor types. Armor discovered from alternative sources will have halved health.[/img]
+  [vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
+>>
 
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<|

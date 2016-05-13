@@ -1,10 +1,11 @@
-Building: BerserkerTechCenterThingy
-	Name: #BLD_TECHCENTER
-	Description: #BLD_TECHCENTER_DESC
-	Sprite: BuildingSprites::9
+Building: BerserkerSlaveCamp
+	Name: #BLD_SLAVECAMP
+	Description: #BLD_SLAVECAMP_DESC
+	Sprite: Factory*#fa3
 
 	Civilian: True
-	Upgrades From: BerserkerUniversityThingy
+	Upgrades From: BerserkerLaborCamp
 
 	Saturation: 2 Research
-	Production: 2.25 Defense
+	Production: 1.175 Defense
+	Production: 2.25 Labor

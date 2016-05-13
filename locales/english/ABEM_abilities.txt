@@ -10,3 +10,5 @@ ABL_BOARDING_PARTY_DESC: <<
 	
 	Only one boarding action can be running on an object at any given time, and Verdant-owned objects cannot be boarded. Boarding actions cannot be initiated by ships which are already being boarded. Asteroids and orbitals always have 100 boarding strength.
 >>
+ABL_PROTO_LEVEL3: Form Planet (Tier 3)
+ABL_PROTO_LEVEL3_DESC: Manipulate the planet's formation by expending a large amount of energy. The planet will produce a random tier 3 resource.

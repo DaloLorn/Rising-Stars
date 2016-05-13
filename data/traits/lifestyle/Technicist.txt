@@ -1,30 +1,15 @@
-Trait: Technicist
-	Name: #ShieldLifestyle_Name
-	Description: #ShieldLifestyle_Dec
+Trait: Technicists
+	Name: #TRAIT_TECHNICISTS
+	Description: #TRAIT_TECHNICISTS_DESC
+	Order: 11
 
-	Order: 0
-	
-	
-	DLC: Heralds //They use harmonizers.
+	DLC: Heralds 
 
 	Category: Lifestyle
 	Unique: Lifestyle
-	Icon: ConvertIcon::2
-	Color: #7200a0
 
-
-
-	Default: True
-
-	GainInfluenceCard(UnitedResearch)
-
-
-	
-
-
-
-
-
+	Icon: BuildingSprites::9
+	Color: #8c4ec9
 
 	UnlockSubsystem(ShieldHarmonizer)
 	UnlockSubsystem(SupShieldGen)
@@ -33,34 +18,31 @@ Trait: Technicist
 	UnlockSubsystem(ShieldGen)
 
 	AddModifier(ShieldRegenFactor(1.45))
-	AddModifier( ShieldCapacityFactor(1.9))
-	AddModifier(tag/IsArmor::HpFactor(0.50))
+	AddModifier(ShieldCapacityFactor(1.9))
+	AddModifier(tag/IsArmor::HpFactor(0.5))
+	AddModifier( ShieldHarmonizer::BonusShieldFactor(2) )
 
 	//ForbidSubsystem
-
 	ForbidSubsystem(SupportPlateArmor)
 	ForbidSubsystem(SupportAblativeArmor)
 	ForbidSubsystem(ReactiveArmor)
 	ForbidSubsystem(AblativeArmor)
 	ForbidSubsystem(PlateArmor)
 
-
 	//Grid Replacements
 
-		//Armor for HP
+	//Armor for HP
 	ReplaceTechnologyNodes(ArmorHealth2, Health2)
 	ReplaceTechnologyNodes(ArmorHealth, Health)
 
 	ReplaceTechnologyNodeAt((0,-4), Science) //Shields for SCience
 
-	RemoveTechnologyNodes(CompositeArmor,)
+	RemoveTechnologyNodes(CompositeArmor)
 
-	ReplaceTechnologyNodes(QuantumArmor,TechBannned)
-	ReplaceTechnologyNodes(CrystalArmor,TechBannned)
-	ReplaceTechnologyNodes(NeutronArmor,TechBannned)
-	ReplaceTechnologyNodes(LiquidArmor,TechBannned)
-
+	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(NeutronArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
 	//JJust in case more lines are neeed lazy boy!
 	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
 	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
-	AddModifier( ShieldHarmonizer::BonusShieldFactor(2) )

@@ -33,6 +33,7 @@ Trait: Flux
 
 	GrantVisionTradeRange()
 
+	RemoveTechnologyNodes(FlingBeacons)
 	RemoveTechnologyNodes(SS)
 	RemoveTechnologyNodes(GateTech)
 	RemoveTechnologyNodes(Hyperdrive)

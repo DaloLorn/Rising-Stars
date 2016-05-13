@@ -1,10 +1,10 @@
 Subsystem: Superstructure
-	Name: Superstructure
+	Name: #S_SUPERSTRUCTURE
 	Description: #S_SUPERSTRUCTURE_DESC
 	BaseColor: #a9a9a9
 
-    Tags: Category:Defense, NoWall, FauxExterior
-	Tags: NoCore, NonContiguous,Defense, IsArmor , ExternalSpace
+    	Tags: Category:Defense, NoWall, FauxExterior
+	Tags: NoCore, NonContiguous, Defense, ExternalSpace
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
@@ -21,7 +21,12 @@ Subsystem: Superstructure
 	Hex.BuildCost := HexSize * 0.3
 	Hex.LaborCost := HexSize * 0.04
 	Hex.MaintainCost := 0.03 * HexSize
-	//	Resist = DamageResist
+
+	Effect: DamageResist
+		Resist = DamageResist
+
+	Modifier: ArmorResistFactor(factor)
+		DamageResist := DamageResist * factor
 
 	Module: Default
 		Hex.BuildCost := Hex.BuildCost * 2

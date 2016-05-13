@@ -31,11 +31,17 @@ R_SYS_HYPERDRIVE_DESC: <<
 	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
 >>
 R_SYS_JUMPDRIVE_DESC: <<
-	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
+	[i][color=#aaa]A device capable of punching through subspace to instantaneously teleport a starship.[/color][/i]
 
 	Unlocks the Jumpdrive subsystem for use on flagships if it is not already available.
 
-	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
+	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
+>>
+R_IMPROVEDLABS: Containment Protocols
+R_IMPROVEDLABS_DESC: <<
+	[i][color=#aaa]Developing and standardizing new methods of isolating experiments and dangerous samples allows more scientists to work in the same amount of space.[/color][/i]
+
+	Increases the Research generation of Tech Centers and Research Complexes by 0.1. This effectively reduces the penalty for allowing Universities to condense into Tech Centers by 20%.
 >>
 
 
@@ -51,7 +57,7 @@ R_SYS_QUANTUM_ARMOR_DESC: <<
 R_ORB_FLING_DESC: <<
 	[i][color=#aaa]A device capable of catapulting nearby vessels into hyperspace. The ships then proceed to exit from hyperspace under their own power.[/color][/i]
 
-	Unlocks the Fling Beacon orbitals and subsystems.
+	Unlocks the Fling Beacon orbital.
 
 	[i][bbloc=#ORB_FLING_CORE_DESC][/bbloc][/i]
 >>
@@ -67,7 +73,7 @@ R_SYS_SLIPSTREAM_DESC: <<
 
 	Unlocks the Slipstream Generator subsystem.
 
-	[i]Grants the ability to generate slipstream portals.[/i]
+	[i][bbloc=#S_SLIPSTREAM_GENERATOR_DESC/][/i]
 >>
 R_BOARDING_PARTY_DESC: <<
 	[color=#aaa][i]Recent studies of old science fiction have taught us the value of capturing enemy ships intact. To that end, we have started designing boarding pods for our flagships to launch.[/i][/color]

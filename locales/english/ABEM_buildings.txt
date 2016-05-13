@@ -1,0 +1,25 @@
+BLD_LABORCAMP: Xenomanufacturing Center
+BLD_SLAVECAMP: Xenoindustrial Sector
+BLD_LABORCAMP_DESC: <<
+	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
+
+	Produces Defense and Labor in quantities equivalent to 75% of a Base and Industry, respectively. Uses 1 Research pressure.
+
+	[img=$Defense;22/] [bbloc=#PRESSURE_DEFENSE/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_LABOR/]
+
+	[bbloc=#TIP_PRESSURE/]
+>>
+BLD_SLAVECAMP: <<
+	Upgrades from Xenomanufacturing Center.
+	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
+
+	Produces Defense and Labor in quantities equivalent to 75% of a Launch Pad and Enterprise, respectively. Uses 2 Research pressure.
+
+	[img=$Defense;22/] [bbloc=#PRESSURE_DEFENSE/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_LABOR/]
+
+	[bbloc=#TIP_PRESSURE/]
+
+	[bbloc=#TIP_CIV_UPGRADES/]
+>>

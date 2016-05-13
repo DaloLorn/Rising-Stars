@@ -34,36 +34,20 @@ Preset: Hoonan
 	Trait: Hyperdrive
 	Trait: Linked
 	Trait: SpaceProgram
-
-	
-Preset: Ukalons
-	Name: #RACE_UKALONS
-	Tagline: #RACE_UKALONS_TAGLINE
-	Lore: #RACE_UKALONS_LORE
-	Portrait: emp_portrait_ukalons
-	Shipset: Gevron
-	
-	DLC: Heralds
-	
-	Trait: Empire
-	Trait: Jumpdrive
-	Trait: Technicist
-	Trait: Innovative
-
 	
 Preset: Rahta
-
 	Name: #RACE_BERSERKERS
 	Tagline: #RACE_BERSERKERS_TAGLINE
 	Lore: #RACE_BERSERKERS_LORE
 	Portrait: emp_portrait_berserker
 	Shipset: Gevron
-	DLC: Heralds	
+	DLC: Heralds
+	Hard: True
 	
 	Trait: Empire
 	Trait: Slipstream
 	Trait: Berserkers
-	Trait: Prideful
+	Trait: Frugal
 
 Preset: Feyh
 	Name: #RACE_FEYH
@@ -95,7 +79,7 @@ Preset: Fasshi
 	Lore: #RACE_PACIFISTS_LORE
 	Portrait: emp_portrait_slug
 	Shipset: Volkur
-
+	Hard: True
 	
 	Trait: Capitalism
 	Trait: Hyperdrive
@@ -157,3 +141,18 @@ Preset: First
 	Trait: Empire
 	Trait: Sublight
 	Trait: Ancient
+	Trait: Workshop
+
+Preset: Alipha
+	Name: #RACE_TECHNICISTS
+	Tagline: #RACE_TECHNICISTS_TAGLINE
+	Lore: #RACE_TECHNICISTS_LORE
+	Portrait: emp_portrait_bug
+	Shipset: Mechanica
+	Hard: True
+	DLC: Heralds
+
+	Trait: Communism
+	Trait: Flux
+	Trait: Technicists
+	Trait: Innovative
