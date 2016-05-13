@@ -11,8 +11,8 @@ Trait: Sublight
 
 	Gives Points: 3
 
-	IfNotHaveTrait(Technicist, LoadDesigns(default), LoadDesigns(technicist/default))
-	IfNotHaveTrait(Technicist, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
+	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicists, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
 	
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
 	IfHaveTrait(Verdant, LoadDesigns(verdant/not_hyperdrive))
@@ -23,5 +23,5 @@ Trait: Sublight
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 
-	IfHaveTrait(Technicist, LoadDesigns(technicist/default))
-	IfHaveTrait(Technicist, LoadDesigns(technicist/not_hyperdrive))
+	IfHaveTrait(Technicists, LoadDesigns(technicist/default))
+	IfHaveTrait(Technicists, LoadDesigns(technicist/not_hyperdrive))

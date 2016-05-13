@@ -13,8 +13,8 @@ Trait: Jumpdrive
 
 	UnlockSubsystem(Jumpdrive)
 
-	IfNotHaveTrait(Technicist, LoadDesigns(default), LoadDesigns(technicist/default))
-	IfNotHaveTrait(Technicist, LoadDesigns(jumpdrive), LoadDesigns(technicist/jumpdrive))
+	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicists, LoadDesigns(jumpdrive), LoadDesigns(technicist/jumpdrive))
 
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
 	IfHaveTrait(Verdant, LoadDesigns(verdant/jumpdrive))

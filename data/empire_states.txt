@@ -150,4 +150,5 @@ visible:
 	attribute double OrbitalMaintMod = 1
 	attribute double ImmuneToRadiation = 0
 	attribute double ResearchFromKill = 0
+	attribute double ResearchProductionBoost = 0
 }

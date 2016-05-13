@@ -3,13 +3,14 @@ Trait: Technicists
 	Description: #TRAIT_TECHNICISTS_DESC
 	Order: 11
 
-	DLC: Heralds 
+	DLC: Heralds
 
 	Category: Lifestyle
 	Unique: Lifestyle
 
 	Icon: BuildingSprites::9
 	Color: #8c4ec9
+	AI Support: False
 
 	UnlockSubsystem(ShieldHarmonizer)
 	UnlockSubsystem(SupShieldGen)

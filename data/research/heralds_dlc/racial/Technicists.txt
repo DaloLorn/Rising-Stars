@@ -1,9 +1,9 @@
 Technology: ImprovedLabs
 	Name: #R_IMPROVEDLABS
 	Description: #R_IMPROVEDLABS_DESC
-	Class: Boost
 	Category: ABEM - Racial Techs
 	Icon: ResourceIcons::17
-	Symbol: TabResearch
+	Symbol: ResourceIcon::4
 	Color: #8c4ec9
 	Point Cost: 500
+¸	ModAttribute(ResearchProductionBoost, Add, 1)

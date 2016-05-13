@@ -12,8 +12,8 @@ Trait: Hyperdrive
 
 	UnlockSubsystem(Hyperdrive)
 
-	IfNotHaveTrait(Technicist, LoadDesigns(default), LoadDesigns(technicist/default))
-	IfNotHaveTrait(Technicist, LoadDesigns(hyperdrive), LoadDesigns(technicist/hyperdrive))
+	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicists, LoadDesigns(hyperdrive), LoadDesigns(technicist/hyperdrive))
 
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
 	IfHaveTrait(Verdant, LoadDesigns(verdant/hyperdrive))

@@ -12,8 +12,8 @@ Trait: Flux
 
 	Unique: FTL
 
-	IfNotHaveTrait(Technicist, LoadDesigns(default), LoadDesigns(technicist/default))
-	IfNotHaveTrait(Technicist, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
+	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicists, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
 
 
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
