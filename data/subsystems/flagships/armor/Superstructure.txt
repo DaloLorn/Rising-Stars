@@ -22,9 +22,6 @@ Subsystem: Superstructure
 	Hex.LaborCost := HexSize * 0.04
 	Hex.MaintainCost := 0.03 * HexSize
 
-	Effect: DamageResist
-		Resist = DamageResist
-
 	Effect: ReduceDamage
 		ProjResist = DamageResist
 		EnergyResist = DamageResist
