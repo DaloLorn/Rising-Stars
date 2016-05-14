@@ -9,14 +9,14 @@ Subsystem: Superstructure
 
 	Size := HexSize * Hexes
 
-	Hex.Resistance := 0
-	Hex.HP := 12 * HexSize
+	Hex.Resistance := 0.2
+	Hex.HP := 10 * HexSize
 
 	Hex.Mass := 0.7* HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	DamageResist := ShipSize / 90.0
+	DamageResist := ShipSize / 16.0
 
 	Hex.BuildCost := HexSize * 0.3
 	Hex.LaborCost := HexSize * 0.04
@@ -25,6 +25,12 @@ Subsystem: Superstructure
 	Effect: DamageResist
 		Resist = DamageResist
 
+	Effect: ReduceDamage
+		ProjResist = DamageResist
+		EnergyResist = DamageResist
+		ExplResist = DamageResist
+		MinimumPercent = 1/8
+		
 	Modifier: ArmorResistFactor(factor)
 		DamageResist := DamageResist * factor
 
