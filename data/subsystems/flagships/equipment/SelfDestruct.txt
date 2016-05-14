@@ -19,8 +19,8 @@ Subsystem: SelfDestruct
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 	
-	//Dirtyaf
-	DumbSelf:=123456
+	Assert: Sum.DumbSelf ==123456
+		Message: One Destruction Device is Required and Allowed
 	
 	Requires:
 		Command = 1

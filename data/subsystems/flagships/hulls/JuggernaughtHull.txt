@@ -4,8 +4,8 @@ Subsystem: JuggernaughtHull
 
 	Tags: Applied:Hull, Category:Hulls, NoCore
 	Tags: HeraldsDLC
-	Tags: Ability:RammingSpeed
-
+	Tags: Ability:RammingSpeedAbil
+	//Have to fix this ability to self use atm is necesary to set target.
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #ff0724
@@ -15,13 +15,16 @@ Subsystem: JuggernaughtHull
 	AddShipModifier: HpFactor(12.0)
 	AddShipModifier: ArmorResistFactor(1.5)
 	AddShipModifier: MassFactor(5)
-	AddShipModifier: TurnThrustFactor(0.3)
+	AddShipModifier: TurnThrustFactor(1.5)
 
 
 	AddShipModifier: TechMultFactor(1)
 	AddShipModifier: LaborCostFactor(4)
 	AddShipModifier: MaintCostFactor(0.5)
 
+	//Dirtyaf
+	DumbSelf:=123456
+	
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 
@@ -31,8 +34,8 @@ Subsystem: JuggernaughtHull
 	Assert: Sum.SupportCapacity == 0
 		Message: #ERROR_CANNOT_HAVE_SUPPORT
 
-	Assert: Sum.DumbSelf ==123456
-		Message: One Destruction Device is Required and Allowed
+	Assert: TagCount.SelfDestruct >= 1
+		Message: One Destruction Device is Required and Allowed	
 
 	//Rescue the idea if needed
 	//Assert: Acceleration <= 2
@@ -40,6 +43,7 @@ Subsystem: JuggernaughtHull
 
 	//Asegurar que no se usa como Simulator ship.
 
+	//Still can use cloack
 
 	Module: Default
 		Sprite: HullSubsystems::5
