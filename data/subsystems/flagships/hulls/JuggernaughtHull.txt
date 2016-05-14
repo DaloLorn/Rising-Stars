@@ -1,0 +1,46 @@
+Subsystem: JuggernaughtHull
+	Name: #S_JUGGERNAUGHT_HULL
+	Description: #S_JUGGERNAUGHT_HULL_DESC
+
+	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: HeraldsDLC
+	Tags: Ability:RammingSpeed
+
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #ff0724
+
+	HexLimit := -50
+
+	AddShipModifier: HpFactor(12.0)
+	AddShipModifier: ArmorResistFactor(1.5)
+	AddShipModifier: MassFactor(5)
+	AddShipModifier: TurnThrustFactor(0.3)
+
+
+	AddShipModifier: TechMultFactor(1)
+	AddShipModifier: LaborCostFactor(4)
+	AddShipModifier: MaintCostFactor(0.5)
+
+	Assert: TagCount.Weapon == 0
+		Message: #ERROR_CANNOT_HAVE_WEAPONS
+
+	Assert: ShipSize >= 300
+		Message: #ERROR_MIN_SIZE:$1:300
+
+	Assert: Sum.SupportCapacity == 0
+		Message: #ERROR_CANNOT_HAVE_SUPPORT
+
+	Assert: Sum.DumbSelf ==123456
+		Message: One Destruction Device is Required and Allowed
+
+	//Rescue the idea if needed
+	//Assert: Acceleration <= 2
+	//	Message: Juggernaught payload its too delicate to blabalbabla
+
+	//Asegurar que no se usa como Simulator ship.
+
+
+	Module: Default
+		Sprite: HullSubsystems::5
+		DrawMode: 3

@@ -22,6 +22,9 @@ Subsystem: CarrierHull
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 
+	Assert: Sum.DumbSelf <=1
+		Message: One Destruction Device is Required and Allowed	
+		
 	Module: Default
 		Sprite: HullSubsystems::0
 		DrawMode: 3

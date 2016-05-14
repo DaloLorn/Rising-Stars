@@ -1,0 +1,10 @@
+Material: ABEMStatus
+	Culling: None
+	Alpha: False
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+	
+Material: RammingSpeed
+	Inherit: ABEMStatus
+	Texture: data/images/status/RammingSpeed.png	

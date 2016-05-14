@@ -107,7 +107,6 @@ Grid: Heralds
 	ParticleLance: 10,-9
 	PulseBolt: 8,-10
 	Disruptor: 8,-5
-	SelfDestruct: 1,13
 	SubspaceShredder: -7,12
 	SkipDrive: -10,12
 	TroopPods: 8,-13
@@ -269,3 +268,4 @@ Grid: Heralds
 	GateTech: 15,-2
 	SS: 0,10
 	Jumpdrive: 12,-2
+	JuggernaughtHull: 2,12
