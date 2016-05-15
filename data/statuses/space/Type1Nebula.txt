@@ -5,4 +5,4 @@ Status: Type1Nebula
 	Color: #ff0000
 
 	ABEM_sensors::AddSightModifier(200, 0.33)
-	LimitSeeableRange(500)
+	LimitSeeableRange(500*$SENSOR_RANGE_MULT)

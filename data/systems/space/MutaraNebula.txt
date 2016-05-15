@@ -18,4 +18,4 @@ System: MutaraNebula
 	AddRegionStatus(Mutara) // Disables shields. Also uses LimitedSight to heavily obscure sensors.
 	
 	NoRegionVision()
-	SetStaticSeeableRange(100)
+	SetStaticSeeableRange(100*$SENSOR_RANGE_MULT)

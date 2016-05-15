@@ -20,4 +20,4 @@ System: RadioactiveNebula
 	AddRegionStatus(Radioactive) // Damages shields. If shields offline or non-existent, crew starts to decay until ship becomes a derelict or leaves the nebula. Also significantly obscures sensors.
 	
 	NoRegionVision()
-	SetStaticSeeableRange(300)
+	SetStaticSeeableRange(300*$SENSOR_RANGE_MULT)

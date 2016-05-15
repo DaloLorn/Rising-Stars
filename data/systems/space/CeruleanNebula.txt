@@ -16,4 +16,4 @@ System: CeruleanNebula
 	
 	NoRegionVision()
 	
-	SetStaticSeeableRange(1000)
+	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)

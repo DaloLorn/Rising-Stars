@@ -6,4 +6,4 @@ Status: Radioactive
 
 	ABEM_nebulae::KillCrew()
 	ABEM_sensors::AddSightModifier(200, 0.2)
-	LimitSeeableRange(300)
+	LimitSeeableRange(300*$SENSOR_RANGE_MULT)

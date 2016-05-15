@@ -6,4 +6,4 @@ Status: Metreon
 
 	ABEM_nebulae::DealRandomDamage()
 	ABEM_sensors::AddSightModifier(200, 0.5)
-	LimitSeeableRange(750)
+	LimitSeeableRange(750*$SENSOR_RANGE_MULT)

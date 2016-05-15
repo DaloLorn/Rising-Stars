@@ -17,4 +17,4 @@ System: MetaphasicNebula
 	AddRegionStatus(Metaphasic) // Increases shield regeneration, slightly obscures sensors.
 	
 	NoRegionVision()
-	SetStaticSeeableRange(1000)
+	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)

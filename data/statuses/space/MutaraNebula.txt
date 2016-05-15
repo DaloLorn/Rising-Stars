@@ -6,4 +6,4 @@ Status: Mutara
 
 	ABEM_nebulae::DisableShields()
 	ABEM_sensors::AddSightModifier(200, 0.066)
-	LimitSeeableRange(100)
+	LimitSeeableRange(100*$SENSOR_RANGE_MULT)

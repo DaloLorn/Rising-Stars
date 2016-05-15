@@ -18,4 +18,4 @@ System: TachyonNebula
 	ABEM_nebulae::SetGlobalSystemFlag(TachyonNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(750)
+	SetStaticSeeableRange(750*$SENSOR_RANGE_MULT)

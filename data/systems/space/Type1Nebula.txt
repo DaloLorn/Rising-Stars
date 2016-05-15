@@ -18,4 +18,4 @@ System: Type1Nebula
 	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
 
 	NoRegionVision()
-	SetStaticSeeableRange(500)
+	SetStaticSeeableRange(500*$SENSOR_RANGE_MULT)

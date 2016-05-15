@@ -20,4 +20,4 @@ System: EconomicNebula
 	ABEM_nebulae::SetGlobalSystemFlag(EconomicNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(1000)
+	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)
