@@ -1,0 +1,21 @@
+System: Type1Nebula
+	Frequency: 0.02 * $ANOMALY_SYSTEM_FREQ_MULT
+
+	ExpandSystem(1000)
+
+	Repeat(1:7)
+		MakeAnomaly()
+	Repeat(0:4)
+		MakeArtifact()
+	Repeat(0:4)
+		MakeAsteroid(Cargo = Ore, Resource = Distributed)
+
+	MakeNebula(#f0c870)
+
+	Repeat(0:2)
+		MakeCreepCamp(Offset = 1200)
+
+	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
+
+	NoRegionVision()
+	SetStaticSeeableRange(500)

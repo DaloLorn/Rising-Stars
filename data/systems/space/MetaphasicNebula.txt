@@ -1,0 +1,20 @@
+System: MetaphasicNebula
+	Frequency: 0.01 * $ANOMALY_SYSTEM_FREQ_MULT
+	
+	ExpandSystem(1000)
+	
+	Repeat(1:6)
+		MakeAnomaly()
+	Repeat(1:4)
+		MakeArtifact()
+	Repeat(0:7)
+		MakeAsteroid(Cargo = Ore, Resource = Distributed)
+	Repeat(0:3)
+		MakeCreepCamp(Offset = 700)
+		
+	MakeNebula(#80ff80)
+	
+	AddRegionStatus(Metaphasic) // Increases shield regeneration, slightly obscures sensors.
+	
+	NoRegionVision()
+	SetStaticSeeableRange(1000)

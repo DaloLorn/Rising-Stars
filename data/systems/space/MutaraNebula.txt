@@ -1,0 +1,21 @@
+System: MutaraNebula
+	Frequency: 0.01 * $ANOMALY_SYSTEM_FREQ_MULT
+	
+	ExpandSystem(1000)
+	
+	Repeat(1:4)
+		MakeAnomaly()
+	Repeat(0:2)
+		MakeArtifact()
+	Repeat(0:2)
+		MakeAsteroid(Cargo = Ore, Resource = Distributed)
+		
+	Repeat(0:2)
+		MakeCreepCamp(Offset = 1200)
+		
+	MakeNebula(#c000df)
+	
+	AddRegionStatus(Mutara) // Disables shields. Also uses LimitedSight to heavily obscure sensors.
+	
+	NoRegionVision()
+	SetStaticSeeableRange(100)
