@@ -22,6 +22,7 @@ Subsystem: CarrierHull
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 
+		
 	Module: Default
 		Sprite: HullSubsystems::0
 		DrawMode: 3
