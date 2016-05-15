@@ -287,25 +287,34 @@ class AttitudesTab : Tab {
 	void tick(double time) override {
 		if(!visible)
 			return;
+		bool hasGlory = false;
+		uint gloryID = -1;
 		if(playerEmpire is null || !playerEmpire.valid) {
 			attitudes.length = 0;
 		}
 		else {
 			attitudes.syncFrom(playerEmpire.getAttitudes());
+			hasGlory = playerEmpire.hasGloryMeter();
+			gloryID = playerEmpire.gloryID;
 			@portrait.empire = playerEmpire;
 		}
 
 		uint prevCnt = boxes.length;
 		uint newCnt = attitudes.length;
+		if(hasGlory)
+			newCnt -= 1;
 		for(uint i = newCnt; i < prevCnt; ++i)
 			boxes[i].remove();
 		boxes.length = newCnt;
 		for(uint i = prevCnt; i < newCnt; ++i)
 			@boxes[i] = AttitudeBox(panel);
 
+		uint offset = 0;
 		int y = 216, h = 150;
 		for(uint i = 0; i < newCnt; ++i) {
-			@boxes[i].att = attitudes[i];
+			if(hasGlory && attitudes[i].type.id == gloryID)
+				offset = 1; // There can be only one attitude of a given type, thankfully.
+			@boxes[i].att = attitudes[i+offset];
 			@boxes[i].alignment = Alignment(Left+0.1f, Top+y, Right-0.1f, Top+y+h);
 			boxes[i].update();
 			y += h+8;
@@ -314,7 +323,7 @@ class AttitudesTab : Tab {
 		bool haveTakeable = false;
 		for(uint i = 0, cnt = getAttitudeTypeCount(); i < cnt; ++i) {
 			auto@ att = getAttitudeType(i);
-			if(att.canTake(playerEmpire)) {
+			if(!att.hidden && att.canTake(playerEmpire)) {
 				haveTakeable = true;
 				break;
 			}
@@ -424,7 +433,8 @@ class TakeAttitudeOverlay : GuiOverlay {
 		for(uint i = 0, cnt = getAttitudeTypeCount(); i < cnt; ++i) {
 			auto@ att = getAttitudeType(i);
 			/*if(att.canTake(playerEmpire))*/
-			attitudes.insertLast(att);
+			if(!att.hidden)
+				attitudes.insertLast(att);
 		}
 		attitudes.sortAsc();
 

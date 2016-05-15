@@ -16,6 +16,7 @@ from overlays.ArtifactPopup import ArtifactPopup;
 from overlays.StarPopup import StarPopup;
 from overlays.AnomalyOverlay import AnomalyOverlay;
 from overlays.Quickbar import Quickbar;
+from overlays.GloryBar import GloryBar;
 
 from overlays.ContextMenu import openContextMenu;
 from navigation.smart_pan import showSmartPan, hideSmartPan;
@@ -124,6 +125,11 @@ class PopupRoot : BaseGuiElement {
 			if(ele !is null)
 				return ele;
 		}
+		if(tab.gloryBar !is null && tab.gloryBar.visible) {
+			IGuiElement@ ele = tab.gloryBar.elementFromPosition(pos);
+			if(ele !is null)
+				return ele;
+		}
 		return null;
 	}
 
@@ -143,6 +149,8 @@ class PopupRoot : BaseGuiElement {
 			tab.overlay.draw();
 		if(tab.infoBar !is null && tab.infoBar.visible)
 			tab.infoBar.draw();
+		if(tab.gloryBar !is null && tab.gloryBar.visible)
+			tab.gloryBar.draw();
 	}
 };
 
@@ -167,6 +175,7 @@ class GalaxyTab : Tab {
 	Quickbar@ quickbar;
 	GalaxyOverlay@ overlay;
 	ActionBar@ actionBar;
+	GloryBar@ gloryBar;
 
 	Object@ pressedObject;
 	double popupTimer = -1.0;
@@ -222,6 +231,7 @@ class GalaxyTab : Tab {
 	void _GalaxyTab() {
 		@popupRoot = PopupRoot(this);
 		@quickbar = Quickbar(popupRoot);
+		@gloryBar = GloryBar(popupRoot);
 		title = locale::GALAXY;
 		setExtents(cam.camera);
 
@@ -588,6 +598,9 @@ class GalaxyTab : Tab {
 		//Update quickbar
 		if(quickbar !is null)
 			quickbar.update(time);
+			
+		if(gloryBar !is null)
+			gloryBar.update();
 
 		//Update selection popup
 		if(popupTimer != -1.0) {

@@ -63,6 +63,8 @@ tidy class AttitudeType {
 
 	array<IAttitudeHook@> hooks;
 	array<AttitudeLevel@> levels;
+	
+	bool hidden = false;
 
 	bool canTake(Empire& emp) const {
 		if(emp.hasAttitude(id))
@@ -414,6 +416,9 @@ bool loadAttitude(ReadFile@ file) {
 			}
 			else if(file.key.equals_nocase("Sort")) {
 				att.sort = toInt(file.value);
+			}
+			else if(file.key.equals_nocase("Secret")) {
+				att.hidden = toBool(file.value);
 			}
 			else {
 				auto@ hook = cast<IAttitudeHook>(parseHook(file.line, "attitude_effects::", instantiate=false));
