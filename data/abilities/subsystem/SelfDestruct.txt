@@ -9,5 +9,5 @@ Ability: RammingSpeedAbil
 	Name: Ramming Speed
 	Icon: RammingSpeed
 	Cooldown: 140
-	Target: a = Object
-	AddStatusTo(a, JRamSpeed, Duration = 20)
+	Activate Sound: RedAlert
+	AddStatusSelf(JRamSpeed, Duration = 25)
