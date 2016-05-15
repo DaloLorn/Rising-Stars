@@ -1,5 +1,5 @@
 Subsystem: RemnantHull
-	Tags: NoCore, HullSystem, Ability:ScuttleDerelict
+	Tags: NoCore, HullSystem, RemnantComputer, Ability:ScuttleDerelict
 	Hull: Flagship, Station
 	EvaluationOrder: -100
 
@@ -21,7 +21,7 @@ Subsystem: RemnantHull
 	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
 
 Subsystem: RemnantSupportHull
-	Tags: NoCore, HullSystem
+	Tags: NoCore, RemnantComputer, HullSystem
 	Tags: IsSupport, SupportShip
 	Hull: Support
 	EvaluationOrder: -100
@@ -38,7 +38,7 @@ Subsystem: RemnantSupportHull
 	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
 
 Subsystem: SpecialRemnantHull
-	Tags: NoCore, HullSystem, Ability:ScuttleDerelict
+	Tags: NoCore, RemnantComputer, HullSystem, Ability:ScuttleDerelict
 	Hull: Flagship, Station
 	EvaluationOrder: -100
 
