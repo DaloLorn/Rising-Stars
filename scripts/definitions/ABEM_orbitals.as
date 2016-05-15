@@ -24,7 +24,7 @@ class RequireSystemFlag : OrbitalEffect {
 			return false;
 		if(obj is null)
 			return false;
-		return system.getSystemFlag(obj.owner, flag.integer));
+		return system.getSystemFlag(obj.owner, flag.integer);
 	}
 
 	string getBuildError(Object@ obj, const vec3d& pos) const override {
@@ -34,7 +34,7 @@ class RequireSystemFlag : OrbitalEffect {
 #section server	
 	void onOwnerChange(Orbital& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
 		Region@region = obj.region;
-		if(newOwner !is null && newOwner.valid && (region is null || !region.getSystemFlag(newOwner, flag.integer)) {
+		if(newOwner !is null && newOwner.valid && (region is null || !region.getSystemFlag(newOwner, flag.integer))) {
 			obj.destroy();
 		}
 	}
