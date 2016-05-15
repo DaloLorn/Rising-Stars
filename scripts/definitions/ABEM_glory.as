@@ -1,6 +1,7 @@
 import attitudes;
 from attitudes import AttitudeHook;
 import hooks;
+import attributes;
 
 class CannotManuallyTake : AttitudeHook {
 	Document doc("This attitude cannot be taken through regular means.");
@@ -46,7 +47,7 @@ class DecayProgress : AttitudeHook {
 		double amt = amount.decimal * time;
 		if(useProgressFactor.boolean)
 			amt /= emp.AttitudeProgressFactor;
-		att.progress = max(att.progress - amt, 0);
+		att.progress = max(att.progress - amt, 0.0);
 	}
 #section all
 }
@@ -77,7 +78,7 @@ class DecayProgressFromContested : AttitudeHook {
 		double amt = emp.ContestedSystems * multiplier.decimal * time;
 		if(useProgressFactor.boolean)
 			amt /= emp.AttitudeProgressFactor;
-		att.progress = max(att.progress - amt);
+		att.progress = max(att.progress - amt, 0.0);
 	}
 #section all
 }
@@ -116,7 +117,8 @@ class DecayFromNegativeAttribute : AttitudeHook {
 			amt *= -multiplier.decimal;
 			if(useProgressFactor.boolean)
 				amt /= emp.AttitudeProgressFactor;
-			att.progress = max(att.progress - amt, 0);
+			att.progress = max(att.progress - amt, 0.0);
 		}
 	}
+#section all
 }

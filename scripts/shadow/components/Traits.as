@@ -6,7 +6,7 @@ tidy class Traits : Component_Traits {
 	array<bool> hasTraits(getTraitCount(), false);
 
 	array<Attitude> attitudes;
-	uint gloryID = UINT_MAX;
+	uint localGloryID = UINT_MAX;
 	ReadWriteMutex attMtx;
 
 	bool hasTrait(uint id) {
@@ -56,22 +56,23 @@ tidy class Traits : Component_Traits {
 	}
 		
 	Attitude@ getGloryMeter() const {
-		if(gloryID == UINT_MAX) 
+		if(localGloryID == UINT_MAX) 
 			return null;
 		
 		ReadLock lck(attMtx);
 		for(uint i = 0, cnt = attitudes.length; i < cnt; ++i) {
-			if(attitudes[i].type.id == gloryID)
+			if(attitudes[i].type.id == localGloryID)
 				return attitudes[i];
 		}
+		return null;
 	}
 	
 	bool hasGloryMeter() const {
-		return gloryID != UINT_MAX && hasAttitude(gloryID);
+		return localGloryID != UINT_MAX && hasAttitude(localGloryID);
 	}
 	
 	uint get_gloryID() const {
-		return gloryID;
+		return localGloryID;
 	}
 
 	bool hasAttitude(uint id) {
@@ -97,7 +98,7 @@ tidy class Traits : Component_Traits {
 				msg >> attitudes[i];
 		}
 		if(msg.readBit())
-			msg >> gloryID;
+			msg >> localGloryID;
 	}
 };
 

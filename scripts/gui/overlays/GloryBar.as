@@ -44,7 +44,7 @@ class GloryBar : BaseGuiElement {
 			return;
 		}
 		else {
-			meter = playerEmpire.getGloryMeter();
+			@meter = playerEmpire.getGloryMeter();
 		}
 		if(meter is null || meter.type is null) 
 			return;
@@ -59,7 +59,7 @@ class GloryBar : BaseGuiElement {
 		if(nextProgress > curProgress) {
 			progressText.text = format("[color=#aaa][b]$1 $2:[/b][/color] $3",
 				locale::LEVEL, toString(meter.nextLevel),
-				format(meter.type.progress, toString(nextProgress-curProgress, o)));
+				format(meter.type.progress, toString(nextProgress-curProgress, 0)));
 		}
 		else {
 			progressText.text = format(locale::GLORY_MAXIMUM, meter.type.name);

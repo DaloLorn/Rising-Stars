@@ -5,7 +5,7 @@ Empire.Traits : components.Traits::Traits {
 
 	local uint get_attitudeCount() const;
 	local Attitude@[] getAttitudes() const;
-	local Attitude@ getGloryMeter() const; // This function can return null. Always check if it's null.
+	local Attitude@ getGloryMeter(); // This function can return null. Always check if it's null.
 	local uint get_gloryID() const; // Cheaper way of getting the glory meter's type.
 	local bool hasAttitude(uint id) const;
 	local bool hasGloryMeter() const;

@@ -13,7 +13,7 @@ tidy class Traits : Component_Traits, Savable {
 	array<bool> hasTraits(getTraitCount(), false);
 
 	array<Attitude@> attitudes;
-	uint gloryID = UINT_MAX;
+	uint localGloryID = UINT_MAX;
 	bool gloryDelta = false;
 	ReadWriteMutex attMtx;
 
@@ -101,22 +101,23 @@ tidy class Traits : Component_Traits, Savable {
 	}
 	
 	Attitude@ getGloryMeter() {
-		if(gloryID == UINT_MAX) 
+		if(localGloryID == UINT_MAX) 
 			return null;
 		
 		ReadLock lck(attMtx);
 		for(uint i = 0, cnt = attitudes.length; i < cnt; ++i) {
-			if(attitudes[i].type.id == gloryID)
+			if(attitudes[i].type.id == localGloryID)
 				return attitudes[i];
 		}
+		return null;
 	}
 	
 	uint get_gloryID() {
-		return gloryID;
+		return localGloryID;
 	}
 	
 	bool hasGloryMeter() {
-		return gloryID != UINT_MAX && hasAttitude(gloryID);
+		return localGloryID != UINT_MAX && hasAttitude(localGloryID);
 	}
 
 	bool hasAttitude(uint id) {
@@ -131,7 +132,7 @@ tidy class Traits : Component_Traits, Savable {
 		if(emp.FreeAttitudes > 0)
 			return 0;
 		int count = max(int(attitudes.length)-1, 0);
-		if(gloryID != UINT_MAX)
+		if(localGloryID != UINT_MAX)
 			count -= 1;
 		return config::ATTITUDE_BASE_COST + config::ATTITUDE_INC_COST * count;
 	}
@@ -185,17 +186,17 @@ tidy class Traits : Component_Traits, Savable {
 	}
 	
 	void setGloryMeter(Empire& emp, uint id) {
-		if(gloryID == id)
+		if(localGloryID == id)
 			return;
 		if(id == UINT_MAX || getAttitudeType(id) is null) {
-			gloryDelta = gloryID != UINT_MAX;
+			gloryDelta = localGloryID != UINT_MAX;
 			// If something's changing your glory meter, odds are you don't want the previous one causing trouble.
-			forceDiscardAttitude(emp, gloryID);
-			gloryID = UINT_MAX;
+			forceDiscardAttitude(emp, localGloryID);
+			localGloryID = UINT_MAX;
 		}
 		else {
-			forceDiscardAttitude(emp, gloryID);
-			gloryID = id;
+			forceDiscardAttitude(emp, localGloryID);
+			localGloryID = id;
 			gloryDelta = true;
 			forceAttitude(emp, id);
 		}
@@ -252,8 +253,8 @@ tidy class Traits : Component_Traits, Savable {
 			attitudes[i].delta = true;
 			
 		// One should never be able to discard his glory meter - but better safe than sorry.
-		if(gloryID == id) {
-			gloryID = UINT_MAX;
+		if(localGloryID == id) {
+			localGloryID = UINT_MAX;
 			gloryDelta = true;
 		}
 	}
@@ -334,7 +335,7 @@ tidy class Traits : Component_Traits, Savable {
 
 		uint count = 0;
 		for(uint i = 0, cnt = attitudes.length; i < cnt; ++i) {
-			if(attitudes[i].type.id != gloryID && attitudes[i].level >= level)
+			if(attitudes[i].type.id != localGloryID && attitudes[i].level >= level)
 				count += 1;
 		}
 		return count;
@@ -352,7 +353,7 @@ tidy class Traits : Component_Traits, Savable {
 		file << cnt;
 		for(uint i = 0; i < cnt; ++i)
 			file << attitudes[i];
-		file << gloryID;
+		file << localGloryID;
 	}
 
 	void load(SaveFile& file) {
@@ -379,7 +380,7 @@ tidy class Traits : Component_Traits, Savable {
 
 				@attitudes[i] = att;
 			}
-			file >> gloryID;
+			file >> localGloryID;
 		}
 	}
 
@@ -407,7 +408,7 @@ tidy class Traits : Component_Traits, Savable {
 		}
 		if(gloryDelta) {
 			msg.write1();
-			msg << gloryID;
+			msg << localGloryID;
 		}
 	}
 };
