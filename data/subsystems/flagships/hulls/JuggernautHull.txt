@@ -1,8 +1,8 @@
-Subsystem: JuggernaughtHull
-	Name: #S_JUGGERNAUGHT_HULL
-	Description: #S_JUGGERNAUGHT_HULL_DESC
+Subsystem: JuggernautHull
+	Name: #S_JUGGERNAUT_HULL
+	Description: #S_JUGGERNAUT_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: Applied:Hull, Category:Hulls, NoCore, CanUseSelfDestruct
 	Tags: HeraldsDLC
 	Tags: Ability:RammingSpeedAbil
 	//Have to fix this ability to self use atm is necesary to set target.
@@ -21,9 +21,6 @@ Subsystem: JuggernaughtHull
 	AddShipModifier: TechMultFactor(1)
 	AddShipModifier: LaborCostFactor(4)
 	AddShipModifier: MaintCostFactor(0.5)
-
-	//Dirtyaf
-	DumbSelf:=123456
 	
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
@@ -34,8 +31,8 @@ Subsystem: JuggernaughtHull
 	Assert: Sum.SupportCapacity == 0
 		Message: #ERROR_CANNOT_HAVE_SUPPORT
 
-	Assert: TagCount.SelfDestruct >= 1
-		Message: One Destruction Device is Required and Allowed	
+	Assert: TagCount.SelfDestruct == 1
+		Message: #ERROR_MUST_HAVE_SELFDESTRUCT
 
 	//Rescue the idea if needed
 	//Assert: Acceleration <= 2

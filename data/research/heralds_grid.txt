@@ -268,4 +268,4 @@ Grid: Heralds
 	GateTech: 15,-2
 	SS: 0,10
 	Jumpdrive: 12,-2
-	JuggernaughtHull: 2,12
+	JuggernautHull: 2,12

@@ -8,7 +8,7 @@ Subsystem: SelfDestruct
 
 	Tags: BaseCost
 	Tags: Category:Equipment, Ability:SelfDestruct
-	Tags: IsExplosiveWeapon, HasInternals, NoAugment,SelfDestruct
+	Tags: IsExplosiveWeapon, HasInternals, NoAugment, SelfDestruct
 	Hull: Flagship
 
 	Size := HexSize * Hexes
@@ -19,8 +19,8 @@ Subsystem: SelfDestruct
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 	
-	Assert: Sum.DumbSelf ==123456
-		Message: One Destruction Device is Required and Allowed
+	Assert: TagCount.CanUseSelfDestruct >= 1
+		Message: #ERROR_CANNOT_USE_SELFDESTRUCT
 	
 	Requires:
 		Command = 1
@@ -40,10 +40,7 @@ Subsystem: SelfDestruct
 		Hex.DamageResist := ShipSize / 64.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
-
-	Assert
-	
-	
+		
 	Effect: SelfDestruct
 		Amount = Damage
 		Radius = Radius

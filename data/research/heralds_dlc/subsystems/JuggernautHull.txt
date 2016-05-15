@@ -1,6 +1,6 @@
-Technology: JuggernaughtHull
-	Name: #R_SYS_JUGGERNAUGHT_HULL
-	Description: #R_SYS_JUGGERNAUGHT_HULL_DESC
+Technology: JuggernautHull
+	Name: #R_SYS_JUGGERNAUT_HULL
+	Description: #R_SYS_JUGGERNAUT_HULL_DESC
 	Class: Unlock
 	Category: ABEM-Subsystems
 
@@ -13,8 +13,8 @@ Technology: JuggernaughtHull
 	Icon: HullSubsystems::5
 	Color: #ff0623
 
-	UnlockSubsystem(JuggernaughtHull)
-	SkipOnUnlockedSubsystem(JuggernaughtHull)
+	UnlockSubsystem(JuggernautHull)
+	SkipOnUnlockedSubsystem(JuggernautHull)
 
 	SecondaryEnergyCost(1000)
 	UnlockSubsystem(SelfDestruct)
