@@ -1,0 +1,45 @@
+Attitude: BerserkerGlory
+	Name: #GLORY_BERSERKER
+	Progress: #GLORY_BERSERKER_PROGRESS
+	Color: #c73434
+	Sort: 1000
+
+	Secret: True
+
+	ABEM_glory::CannotManuallyTake()
+	ABEM_glory::NoProgressPastMaxLevel()
+
+	ABEM_glory::ProgressFromContested(0.5)
+	ABEM_glory::ConsumeAttributeToProgress(Glory, 1)
+	ModEmpireAttribute(GloryMode, Add, 1)
+
+	ABEM_glory::DecayProgress(1)
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL1
+		Icon: SupportNayIcon
+	Level:
+		Description: #GLORY_BERSERKER_LVL2
+		Icon: SupportIcon
+		Threshold: 200
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	Level:
+		Description: #GLORY_BERSERKER_LVL3
+		Threshold: 1200
+		Icon: StatusWar
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	Level:
+		Description: #GLORY_BERSERKER_LVL4
+		Icon: ResourceIcons::6
+		Threshold: 2700
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	Level:
+		Description: #GLORY_BERSERKER_LVL5
+		Icon: SystemUnderAttack
+		Threshold: 5200
+		ModEmpireAttribute(FleetEfficiencyFactor, Add, 0.25)
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	Level:
+		Description: #GLORY_BERSERKER_LVL6
+		Icon: HappyFace
+		Threshold: 12000

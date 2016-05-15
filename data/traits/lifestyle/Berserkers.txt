@@ -14,11 +14,13 @@ Trait: Berserkers
 	AddStatusOwnedPlanets(Berserkers)
 
 	ModAttribute(VoteCardCostMod, Add, 4.0)
-	ModAttribute(SupportCardCostMod, Add, 1.0)
+	ModAttribute(SupportCardCostMod, Add, 2.0)
 	ModAttribute(ResearchFromKill, Add, 1)
 
 	UnlockSubsystem(TroopPods)
 
 	OnHomeworld(AddPlanetResource(Sulphate))
 
+	ABEM_glory::SetGloryMeter(BerserkerGlory, Level Up = 3)
+	AddModifier(SupportCapacityFactor(0.5))
 	AddModifier(SupplyCostFactor(0.75))
