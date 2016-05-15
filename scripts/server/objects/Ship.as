@@ -695,6 +695,9 @@ tidy class ShipScript {
 			killCredit.recordStatDelta(stat::ShipsDestroyed, 1);
 			if(killCredit.ResearchFromKill != 0 && ship.blueprint.design.total(HV_LaborCost) != 0)
 				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill, 1.0), false, false);
+			if(killCredit.GloryMode == 1) {
+				killCredit.Glory += ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult);
+			}
 		}
 	
 		if(ship.owner !is null && ship.owner.valid) {
@@ -702,8 +705,12 @@ tidy class ShipScript {
 				ship.owner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
 				ship.owner.recordStatDelta(statType(ship), -1);
 			}
-			if(killCredit !is ship.owner)
+			if(killCredit !is ship.owner) {
 				ship.owner.recordStatDelta(stat::ShipsLost, 1);
+				if(ship.owner.GloryMode == 2) {
+					ship.owner.Glory -= ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult);
+				}
+			}
 		}
 	}
 	

@@ -843,9 +843,18 @@ final class RegionObjects : Component_RegionObjects, Savable {
 
 				if(totEnemy > 20 || reg.SiegedMask & other.mask != 0) {
 					CMask |= other.mask;
+					// Hopefully, this'll trigger if the system has become contested - but not if it was already contested.
+					if(reg.ContestedMask & other.mask == 0) {
+						other.ContestedSystems += 1;
+					}
 					if(isServer && reg.ContestedMask & other.mask == 0 && planetCounts[i] > 0)
 						other.notifyWarEvent(region, WET_ContestedSystem);
 				}
+			}
+			
+			// Inverted form of the above - this should trigger if the system was contested, but has stopped being contested.
+			if(CMask & other.mask == 0 && reg.ContestedMask & other.mask != 0) {
+				other.ContestedSystems -= 1;
 			}
 
 			//Check if this is a core system

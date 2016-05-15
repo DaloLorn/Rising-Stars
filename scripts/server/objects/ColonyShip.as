@@ -129,8 +129,12 @@ tidy class ColonyShipScript {
 
 	void damage(ColonyShip& ship, DamageEvent& evt, double position, const vec2d& direction) {
 		ship.Health -= evt.damage;
-		if(ship.Health <= 0)
+		if(ship.Health <= 0) {
+			if(ship.owner !is null && ship.owner.valid && ship.owner.GloryMode == 2) {
+				ship.owner.Glory -= 5 * ship.CarriedPopulation;
+			}
 			ship.destroy();
+		}
 	}
 
 	void syncInitial(const ColonyShip& ship, Message& msg) {

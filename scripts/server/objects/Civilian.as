@@ -222,8 +222,12 @@ tidy class CivilianScript {
 		}
 		leaveRegion(obj);
 		if(obj.owner !is null && obj.owner.valid) {
-			if(type == CiT_Freighter)
+			if(type == CiT_Freighter) {
 				obj.owner.CivilianTradeShips -= 1;
+			}
+			if((obj.inCombat || obj.engaged) && obj.owner.GloryMode == 2) {
+				obj.owner.Glory -= obj.radius;
+			}
 			if(income != 0)
 				obj.owner.modTotalBudget(-income, MoT_Trade);
 		}
