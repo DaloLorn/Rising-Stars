@@ -14,13 +14,11 @@ Resource: Sulphate
 	Exportable: False
 	Icon: ResourceIconsSmall::62*#f00
 	Require Contestation: 30
-	Pressure: 2 Defense
 
-	AddPressureCap(2)
-	IfLevel(0, AddStatusOwnedFleets(SulfateL0), Exact = True)
-	IfLevel(1, AddStatusOwnedFleets(SulfateL1), Exact = True)
-	IfLevel(2, AddStatusOwnedFleets(SulfateL2), Exact = True)
-	IfLevel(3, AddStatusOwnedFleets(SulfateL3), Exact = True)
-	IfLevel(4, AddStatusOwnedFleets(SulfateL4), Exact = True)
-	IfLevel(5, AddStatusOwnedFleets(SulfateL5), Exact = True)
-	IfLevel(6, AddStatusOwnedFleets(SulfateL6), Exact = True)
+	IfLevel(6, AddStatusOwnedFleets(UnownedAllyBuff40))
+	IfLevel(0, AddStatusOwnedFleets(UnownedAllyBuff5), Exact = True) #version>=111
+	IfLevel(1, AddStatusOwnedFleets(UnownedAllyBuff10), Exact = True)
+	IfLevel(2, AddStatusOwnedFleets(UnownedAllyBuff15), Exact = True)
+	IfLevel(3, AddStatusOwnedFleets(UnownedAllyBuff25), Exact = True)
+	IfLevel(4, AddStatusOwnedFleets(UnownedAllyBuff40), Exact = True)
+	IfLevel(5, AddStatusOwnedFleets(UnownedAllyBuff60), Exact = False)
