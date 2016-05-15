@@ -288,7 +288,7 @@ class AttitudesTab : Tab {
 		if(!visible)
 			return;
 		bool hasGlory = false;
-		uint gloryID = -1;
+		uint gloryID = UINT_MAX;
 		if(playerEmpire is null || !playerEmpire.valid) {
 			attitudes.length = 0;
 		}

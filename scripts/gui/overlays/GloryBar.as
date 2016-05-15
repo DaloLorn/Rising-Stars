@@ -15,7 +15,7 @@ import attitudes;
 from tabs.AttitudesTab import LevelMarker;
 
 class GloryBar : BaseGuiElement {
-	Attitude@ meter;
+	Attitude meter;
 	
 	GuiMarkupText@ title;
 	GuiMarkupText@ progressText;
@@ -24,7 +24,7 @@ class GloryBar : BaseGuiElement {
 	array<LevelMarker@> markers;
 	
 	GloryBar(IGuiElement@ parent) {
-		super(parent, Alignment(Left+0.2, Top+TAB_HEIGHT+GLOBAL_BAR_HEIGHT+1, Right-0.2f, Height=150));
+		super(parent, Alignment(Left+0.2-14, Top+1, Right-0.2f+14, Height=150));
 		
 		@title = GuiMarkupText(this, Alignment(Left+12, Top+8, Right-12, Top+40));
 		title.defaultFont = FT_Medium;
@@ -34,17 +34,17 @@ class GloryBar : BaseGuiElement {
 		progressText.defaultColor = Color(0x888888ff);
 		progressText.defaultStroke = colors::Black;
 		
-		@bar = GuiProgressbar(this, Alignment(Left+12, Top+65, Right-12, Top+110));
+		@bar = GuiProgressbar(this, Alignment(Left+26, Top+65, Right-26, Top+110));
 		updateAbsolutePosition();
 	}
 	
 	void update() {
+		meter = Attitude();
 		if(playerEmpire is null || !playerEmpire.valid) {
-			@meter = null;
 			return;
 		}
 		else {
-			@meter = playerEmpire.getGloryMeter();
+			receive(playerEmpire.getGloryMeter(), @meter);
 		}
 		if(meter is null || meter.type is null) 
 			return;

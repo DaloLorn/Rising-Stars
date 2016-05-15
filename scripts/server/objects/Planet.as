@@ -228,11 +228,17 @@ tidy class PlanetScript {
 			prevOwner.recordStatDelta(stat::Planets, -1);
 			prevOwner.TotalPlanets -= 1;
 			prevOwner.unregisterPlanet(planet);
+			if(prevOwner.GloryMode == 2 && (planet.inCombat || planet.engaged)) {
+				prevOwner.Glory -= 50 * planet.Population;
+			}
 		}
 		if(planet.owner !is null) {
 			planet.owner.recordStatDelta(stat::Planets, 1);
 			planet.owner.TotalPlanets += 1;
 			planet.owner.registerPlanet(planet);
+			if(planet.owner.GloryMode == 1 && (planet.inCombat || planet.engaged)) {
+				planet.owner.Glory += 50 * planet.Population;
+			}
 		}
 		planet.clearRally();
 		if(planet.hasAbilities)

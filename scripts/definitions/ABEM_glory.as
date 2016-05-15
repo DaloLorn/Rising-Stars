@@ -2,6 +2,7 @@ import attitudes;
 from attitudes import AttitudeHook;
 import hooks;
 import attributes;
+import generic_hooks;
 
 class CannotManuallyTake : AttitudeHook {
 	Document doc("This attitude cannot be taken through regular means.");
@@ -21,6 +22,23 @@ class NoProgressPastMaxLevel : AttitudeHook {
 	}
 #section all
 }
+
+class SetGloryMeter : EmpireTrigger {
+	Document doc("Set the empire's glory meter to a certain attitude.");
+	Argument attitude(AT_Attitude, doc="Attitude to use.");
+	Argument level_up(AT_Integer, "0", doc="Immediately provide level ups for this attitude as well.");
+
+#section server
+	void activate(Object@ obj, Empire@ emp) const override {
+		if(emp is null)
+			return;
+		emp.setGloryMeter(attitude.integer);
+		int levelups = level_up.integer - int(emp.AttitudeStartLevel);
+		if(levelups > 0)
+			emp.levelAttitude(attitude.integer, levelups);
+	}
+#section all
+};
 
 class ProgressOverTime : AttitudeHook {
 	Document doc("Slowly increases the progress value of this attitude over time.");

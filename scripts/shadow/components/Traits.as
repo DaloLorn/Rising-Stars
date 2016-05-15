@@ -55,16 +55,18 @@ tidy class Traits : Component_Traits {
 			yield(attitudes[i]);
 	}
 		
-	Attitude@ getGloryMeter() const {
-		if(localGloryID == UINT_MAX) 
-			return null;
+	void getGloryMeter() {
+		if(localGloryID == UINT_MAX) {
+			return;
+		}
 		
 		ReadLock lck(attMtx);
 		for(uint i = 0, cnt = attitudes.length; i < cnt; ++i) {
-			if(attitudes[i].type.id == localGloryID)
-				return attitudes[i];
+			if(attitudes[i].type.id == localGloryID) {
+				yield(attitudes[i]);
+				return;
+			}
 		}
-		return null;
 	}
 	
 	bool hasGloryMeter() const {
