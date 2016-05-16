@@ -28,6 +28,10 @@ class LevelMarker : BaseGuiElement {
 		tt.FollowMouse = false;
 		tt.offset = vec2i(0, 5);
 	}
+	
+	LevelMarker(IGuiElement@ parent, recti rect) {
+		super(parent, rect);
+	}
 
 	string get_tooltip() {
 		string tt;

@@ -14,6 +14,18 @@ import attitudes;
 
 from tabs.AttitudesTab import LevelMarker;
 
+class GloryMarker : LevelMarker {
+
+	GloryMarker(IGuiElement@ parent) {
+		super(parent, recti(0,0, 42,45));
+		noClip = true;
+		auto@ tt = addLazyMarkupTooltip(this, width=300);
+		tt.FollowMouse = false;
+		tt.offset = vec2i(0, 5);
+	}
+
+}
+
 class GloryBar : BaseGuiElement {
 	Attitude meter;
 	
@@ -21,10 +33,10 @@ class GloryBar : BaseGuiElement {
 	GuiMarkupText@ progressText;
 	GuiProgressbar@ bar;
 	
-	array<LevelMarker@> markers;
+	array<GloryMarker@> markers;
 	
 	GloryBar(IGuiElement@ parent) {
-		super(parent, Alignment(Left+0.2-14, Top+1, Right-0.2f+14, Height=150));
+		super(parent, Alignment(Left+0.2-14, Top+1, Right-0.2f+14, Height=125));
 		
 		@title = GuiMarkupText(this, Alignment(Left+12, Top+8, Right-12, Top+40));
 		title.defaultFont = FT_Medium;
@@ -34,7 +46,7 @@ class GloryBar : BaseGuiElement {
 		progressText.defaultColor = Color(0x888888ff);
 		progressText.defaultStroke = colors::Black;
 		
-		@bar = GuiProgressbar(this, Alignment(Left+26, Top+65, Right-26, Top+110));
+		@bar = GuiProgressbar(this, Alignment(Left+26, Top+65, Right-26, Top+80));
 		updateAbsolutePosition();
 	}
 	
@@ -76,7 +88,7 @@ class GloryBar : BaseGuiElement {
 			markers[i].remove();
 		markers.length = newCnt;
 		for(uint i = prevCnt; i < newCnt; ++i)
-			@markers[i] = LevelMarker(bar);
+			@markers[i] = GloryMarker(bar);
 			
 		for(uint i = 0; i < newCnt; ++i) {
 			@markers[i].lvl = meter.type.levels[i];
