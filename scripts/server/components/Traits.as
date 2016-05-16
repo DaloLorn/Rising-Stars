@@ -408,7 +408,7 @@ tidy class Traits : Component_Traits, Savable {
 				msg.write0();
 			}
 		}
-		if(gloryDelta) {
+		if(gloryDelta || initial) {
 			msg.write1();
 			msg << localGloryID;
 		}
