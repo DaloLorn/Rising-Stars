@@ -989,9 +989,14 @@ class BEAMS {
 						atPos = dest;
 					}
 				}
-				if(settings::bDisplaySensorRange || showWeapons)
+				if(settings::bDisplaySensorRange || showWeapons) {
 					addPlane(ranges, rangeInd, obj.node_position,
 						obj.sightRange, Color(0x0044ff88));
+					if(obj.seeableRange < 1000000000) {
+						addPlane(ranges, rangeInd, obj.node_position,
+							obj.seeableRange, Color(0xff004488));
+					}
+				}
 			}
 		}
 		truncateBeams(moveBeams, movInd);

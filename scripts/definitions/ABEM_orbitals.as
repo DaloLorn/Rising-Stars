@@ -28,7 +28,7 @@ class RequireSystemFlag : OrbitalEffect {
 	}
 
 	string getBuildError(Object@ obj, const vec3d& pos) const override {
-		return "You cannot build this orbital here.";
+		return "You cannot build this orbital in that system.";
 	}
 	
 #section server	
