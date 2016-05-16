@@ -6,7 +6,7 @@ from bonus_effects import BonusEffect;
 import listed_values;
 import region_effects;
 import system_flags;
-from map_systems import IMapHook, MapHook
+from map_systems import IMapHook, MapHook;
 import orbitals;
 #section server
 import empire;
