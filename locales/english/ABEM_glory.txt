@@ -35,32 +35,31 @@ GLORY_PACIFIST_LVL6: <<
 >>
 GLORY_BERSERKER: Glory
 GLORY_BERSERKER_PROGRESS: Accumulate [b]$1 Glory[/b] by fighting and killing enemies.
+
 GLORY_BERSERKER_LVL1: <<
-	[i][color=#aaa]Severe infighting between the clans drastically diminishes your influence over the empire.[/color][/i]
-	
-	Civilian Money, Energy, Influence, Labor and Defense generation is halved while at this level.
+
 >>
 GLORY_BERSERKER_LVL2: <<
-	[i][color=#aaa]Petty disputes between the clans slightly diminish your influence over the empire.[/color][/i]
 	
-	No particular advantages or disadvantages while at this level.
 >>
 GLORY_BERSERKER_LVL3: <<
-	[i][color=#aaa]The clans begin to put their differences aside and grudgingly work together for the glory of the empire.[/color][/i]
 	
-	Civilian Money, Energy, Labor and Defense generation increased by 5%.
 >>
 GLORY_BERSERKER_LVL4: <<
-	[i][color=#aaa]The clans are united under your leadership in battle![/color][/i]
-	
-	All planets are Happy.
+
 >>
 GLORY_BERSERKER_LVL5: <<
-	[i][color=#aaa]Your people are as one - you are continuing to lead them to glory, and there is not a man among them that doubts your martial prowess.[/color][/i]
 	
-	All planets generate 0.5 Defense. (Affected by the Happiness from level 4.)
-	All fleet effectiveness increased by 25%.
 >>
 GLORY_BERSERKER_LVL6: <<
-	No further Glory can be accumulated past this point.
+	
+>>
+GLORY_BERSERKER_LVL7: <<
+	
+>>
+GLORY_BERSERKER_LVL8: <<
+	
+>>
+GLORY_BERSERKER_LVL9: <<
+	
 >>

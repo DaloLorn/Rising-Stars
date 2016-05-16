@@ -15,31 +15,67 @@ Attitude: BerserkerGlory
 
 	ABEM_glory::DecayProgress(1)
 	
-	Level:
+	Level:                                             //Level1
+		
 		Description: #GLORY_BERSERKER_LVL1
-		Icon: SupportNayIcon
-	Level:
+		//Icon: SupportNayIcon
+	
+	Level: 												 //Level2
+		
 		Description: #GLORY_BERSERKER_LVL2
-		Icon: SupportIcon
-		Threshold: 200
+		//Icon: SupportIcon
+		Threshold: 1000
 		ModEmpireAttribute(GloryLevel, Add, 1)
+	
 	Level:
+		
 		Description: #GLORY_BERSERKER_LVL3
-		Threshold: 1200
-		Icon: StatusWar
+		Threshold: 2000
+		//Icon: StatusWar
 		ModEmpireAttribute(GloryLevel, Add, 1)
+	
 	Level:
 		Description: #GLORY_BERSERKER_LVL4
-		Icon: ResourceIcons::6
-		Threshold: 2700
+		//Icon: ResourceIcons::6
+		Threshold: 3500
+		
 		ModEmpireAttribute(GloryLevel, Add, 1)
-	Level:
+	
+	Level: 									 //Level5 MID START 4000p
+		
 		Description: #GLORY_BERSERKER_LVL5
-		Icon: SystemUnderAttack
-		Threshold: 5200
-		ModEmpireAttribute(FleetEfficiencyFactor, Add, 0.25)
+		Icon: SupportIcon
+		Threshold: 4000
+		
 		ModEmpireAttribute(GloryLevel, Add, 1)
+	
 	Level:
+		
 		Description: #GLORY_BERSERKER_LVL6
-		Icon: HappyFace
-		Threshold: 12000
+		//Icon: HappyFace
+		Threshold: 4500
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	
+	
+	Level:
+		
+		Description: #GLORY_BERSERKER_LVL7
+		//Icon: HappyFace
+		Threshold: 6000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		
+	Level:
+		
+		Description: #GLORY_BERSERKER_LVL8
+		//Icon: HappyFace
+		Threshold: 7000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	
+	Level:
+		
+		Description: #GLORY_BERSERKER_LVL9
+		//Icon: HappyFace
+		Threshold: 8000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		
+		
