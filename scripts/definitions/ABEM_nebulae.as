@@ -7,6 +7,8 @@ import listed_values;
 import region_effects;
 import system_flags;
 from map_systems import IMapHook, MapHook;
+import settings.map_lib;
+import map_systems;
 import orbitals;
 #section server
 import empire;
@@ -23,9 +25,9 @@ class SetGlobalSystemFlag : MapHook {
 	Argument flag(AT_SystemFlag, doc="Identifier for the system flag to set. Can be set to any arbitrary name, and the matching system flag will be created.");
 
 #section server
-	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
+	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const {
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
-			system.object.setSystemFlag(emp, flag.integer, true);
+			system.object.setSystemFlag(getEmpire(i), flag.integer, true);
 		}
 	}
 #section all
