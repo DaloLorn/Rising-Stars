@@ -5,6 +5,8 @@ import artifacts;
 from bonus_effects import BonusEffect;
 import listed_values;
 import region_effects;
+import system_flags;
+from map_systems import IMapHook, MapHook
 import orbitals;
 #section server
 import empire;
@@ -14,6 +16,19 @@ import components.Abilities;
 class ShieldData {
 	double shield = 0;
 	double maxShield = 0;
+}
+
+class SetGlobalSystemFlag : MapHook {
+	Document doc("Permanently set a system flag in this system for all empires.");
+	Argument flag(AT_SystemFlag, doc="Identifier for the system flag to set. Can be set to any arbitrary name, and the matching system flag will be created.");
+
+#section server
+	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			system.object.setSystemFlag(emp, flag.integer, true);
+		}
+	}
+#section all
 }
 
 class DisableShields : StatusHook {
@@ -30,7 +45,8 @@ class DisableShields : StatusHook {
 				if(preserve.boolean)
 					info.shield = ship.Shield;
 				ship.Shield = 0;
-				ship.MaxShield = 0;
+				info.maxShield = ship.MaxShield;
+				ship.modBonusShield(-info.maxShield);
 			}
 		}
 		else if(obj.isOrbital) {
@@ -52,7 +68,7 @@ class DisableShields : StatusHook {
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null) {
-				ship.MaxShield += ship.blueprint.getEfficiencySum(SV_ShieldCapacity);
+				ship.modBonusShield(info.shield);
 				ship.Shield = min(info.shield, ship.MaxShield);
 			}
 		}
@@ -73,7 +89,10 @@ class DisableShields : StatusHook {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null) {
 				ship.Shield = 0;
-				ship.MaxShield = 0;
+				if(ship.MaxShield != 0) {
+					info.maxShield += ship.MaxShield;
+				}
+				ship.modBonusShield(-ship.MaxShield);
 			}
 		}
 		else if(obj.isOrbital) {
