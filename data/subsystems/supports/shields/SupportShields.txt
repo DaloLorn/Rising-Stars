@@ -11,13 +11,13 @@ Subsystem: SupShieldGen
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	ShieldCapacity := Size * 60
+	ShieldCapacity := Size * 55
 	ShieldRegen := Size * 0.5
 	ShieldHexes := Hexes
 
 	Hex.Resistance := 0.5
 	Hex.HP := 8 * HexSize
-	Hex.Mass := 2.5 * HexSize
+	Hex.Mass := 4 * HexSize
 	Hex.BuildCost := 2*HexSize
 
 
