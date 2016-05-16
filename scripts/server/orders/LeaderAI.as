@@ -501,7 +501,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 			dps = ship.DPS * bp.shipEffectiveness;
 						
 			//double shieldRegen = design.total(SV_ShieldRegen);
-			maxHP = bp.design.totalHP - bp.removedHP + ship.MaxShield;//Mod to add shield reg*60
+			maxHP = bp.design.totalHP - bp.removedHP + 2*ship.MaxShield;//Mod to add shield reg*60
 			maxDPS = ship.MaxDPS;
 		}
 		if(obj.isOrbital) {
