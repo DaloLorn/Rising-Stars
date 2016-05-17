@@ -785,7 +785,7 @@ class InvasionUI : BaseGuiElement {
 	GuiText@ strength;
 
 	InvasionUI() {
-		super(null, Alignment(Left+0.5f-200, Top+TAB_HEIGHT+GLOBAL_BAR_HEIGHT+79, Width=400, Height=40));
+		super(null, Alignment(Left+0.5f-200, Top+TAB_HEIGHT+GLOBAL_BAR_HEIGHT+66, Width=400, Height=40));
 
 		@waveLabel = GuiText(this, Alignment(Left+8, Top+4, Left+90, Bottom-4), locale::NEXT_WAVE);
 		waveLabel.color = Color(0xaaaaaaff);

@@ -59,13 +59,13 @@ class GloryBar : BaseGuiElement {
 	array<GloryMarker@> markers;
 	
 	GloryBar(IGuiElement@ parent) {
-		super(parent, Alignment(Left+0.2-2, Top+1, Right-0.2f+2, Height=77));
+		super(parent, Alignment(Left+0.2-2, Top, Right-0.2f+2, Height=65));
 
-		@progressText = GuiMarkupText(this, Alignment(Left+8, Top+4, Right-12, Top+33));
+		@progressText = GuiMarkupText(this, Alignment(Left+8, Top+2, Right-12, Top+31));
 		progressText.defaultColor = Color(0x888888ff);
 		progressText.defaultStroke = colors::Black;
 		
-		@bar = GuiProgressbar(this, Alignment(Left+14, Top+33, Right-14, Top+48));
+		@bar = GuiProgressbar(this, Alignment(Left+14, Top+31, Right-14, Top+46));
 		updateAbsolutePosition();
 	}
 	
@@ -117,7 +117,7 @@ class GloryBar : BaseGuiElement {
 	void draw() override {
 		if(meter is null || meter.type is null)
 			return;
-		skin.draw(SS_PlainOverlay, SF_Normal, AbsolutePosition.padded(0, -2, 0, 0));
+		skin.draw(SS_PlainOverlay, SF_Normal, AbsolutePosition.padded(0, -1, 0, 0));
 		BaseGuiElement::draw();
 	}
 }
