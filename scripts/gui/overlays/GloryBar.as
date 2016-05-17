@@ -17,36 +17,55 @@ from tabs.AttitudesTab import LevelMarker;
 class GloryMarker : LevelMarker {
 
 	GloryMarker(IGuiElement@ parent) {
-		super(parent, recti(0,0, 42,45));
+		super(parent, recti(0,0, 26,29));
 		noClip = true;
 		auto@ tt = addLazyMarkupTooltip(this, width=300);
 		tt.FollowMouse = false;
 		tt.offset = vec2i(0, 5);
 	}
 
+	void draw() override {
+		if(hovered) {
+			drawLine(AbsolutePosition.topLeft + vec2i(size.width/2, 2),
+					 AbsolutePosition.topLeft + vec2i(size.width/2, size.height-19),
+					 Color(0xffffff40), 12);
+		}
+
+		drawLine(AbsolutePosition.topLeft + vec2i(size.width/2, 2),
+				 AbsolutePosition.topLeft + vec2i(size.width/2, size.height),
+				 Color(0x00000080), 5);
+
+		drawLine(AbsolutePosition.topLeft + vec2i(size.width/2, 2),
+				 AbsolutePosition.topLeft + vec2i(size.width/2, size.height),
+				 color, 3);
+
+		recti iconPos = recti_area(5,size.height-16, 16,16) + AbsolutePosition.topLeft;
+		if(hovered)
+			drawRectangle(iconPos.padded(-4), Color(0xffffff40));
+		drawRectangle(iconPos.padded(-2), Color(0x00000080));
+		drawRectangle(iconPos, color);
+
+		lvl.icon.draw(iconPos.aspectAligned(lvl.icon.aspect));
+		BaseGuiElement::draw();
+	}
+
 }
 
 class GloryBar : BaseGuiElement {
 	Attitude meter;
-	
-	GuiMarkupText@ title;
 	GuiMarkupText@ progressText;
 	GuiProgressbar@ bar;
 	
 	array<GloryMarker@> markers;
 	
 	GloryBar(IGuiElement@ parent) {
-		super(parent, Alignment(Left+0.2-14, Top+1, Right-0.2f+14, Height=125));
-		
-		@title = GuiMarkupText(this, Alignment(Left+12, Top+8, Right-12, Top+40));
-		title.defaultFont = FT_Medium;
-		title.defaultStroke = colors::Black;
+		super(parent, Alignment(Left+0.2-2, Top+1, Right-0.2f+2, Height=77));
 
-		@progressText = GuiMarkupText(this, Alignment(Left+20, Top+36, Right-12, Top+65));
+		@progressText = GuiMarkupText(this, Alignment(Left+8, Top+4, Right-12, Top+33));
 		progressText.defaultColor = Color(0x888888ff);
 		progressText.defaultStroke = colors::Black;
 		
-		@bar = GuiProgressbar(this, Alignment(Left+26, Top+65, Right-26, Top+80));
+		@bar = GuiProgressbar(this, Alignment(Left+14, Top+33, Right-14, Top+48));
 		updateAbsolutePosition();
 	}
 	
@@ -69,15 +88,13 @@ class GloryBar : BaseGuiElement {
 		//Progress data
 		// As if the code itself wasn't enough to explain that this is a simplified Attitude, I copy the comments too...
 		if(nextProgress > curProgress) {
-			progressText.text = format("[color=#aaa][b]$1 $2:[/b][/color] $3",
+			progressText.text = format("[color=#aaa][b]$4 $1 $2:[/b][/color] $3",
 				locale::LEVEL, toString(meter.nextLevel),
-				format(meter.type.progress, toString(nextProgress-curProgress, 0)));
+				format(meter.type.progress, toString(nextProgress-curProgress, 0)), meter.type.name);
 		}
 		else {
 			progressText.text = format(locale::GLORY_MAXIMUM, meter.type.name);
 		}
-		
-		title.text = meter.type.name;
 		bar.frontColor = meter.type.color;
 		bar.progress = curProgress / finalProgress;
 		
