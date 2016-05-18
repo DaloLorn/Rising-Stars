@@ -4,6 +4,7 @@ Trait: Technicists
 	Order: 11
 
 	DLC: Heralds
+	Available: False
 
 	Category: Lifestyle
 	Unique: Lifestyle
@@ -39,6 +40,8 @@ Trait: Technicists
 	ReplaceTechnologyNodeAt((0,-4), Science) //Shields for SCience
 
 	RemoveTechnologyNodes(CompositeArmor)
+	// Uncomment this when and if Ferrofluid Armor is merged into master.
+	//RemoveTechnologyNodes(FerrofluidArmor)
 
 	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
