@@ -412,5 +412,8 @@ tidy class Traits : Component_Traits, Savable {
 			msg.write1();
 			msg << localGloryID;
 		}
+		else {
+			msg.write0();
+		}
 	}
 };
