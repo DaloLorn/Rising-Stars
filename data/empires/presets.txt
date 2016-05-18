@@ -125,7 +125,7 @@ Preset: Heralds
 	DLC: Heralds
 
 	Trait: Theocracy
-	Trait: Flux
+	Trait: Jumpdrive
 	Trait: Extragalactic
 	Trait: Animated
 
@@ -142,17 +142,3 @@ Preset: First
 	Trait: Sublight
 	Trait: Ancient
 	Trait: Workshop
-
-Preset: Alipha
-	Name: #RACE_TECHNICISTS
-	Tagline: #RACE_TECHNICISTS_TAGLINE
-	Lore: #RACE_TECHNICISTS_LORE
-	Portrait: emp_portrait_bug
-	Shipset: Mechanica
-	Hard: True
-	DLC: Heralds
-
-	Trait: Communism
-	Trait: Flux
-	Trait: Technicists
-	Trait: Innovative
