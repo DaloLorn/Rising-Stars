@@ -91,7 +91,6 @@ Grid: Heralds
 	SupplyStorage: 5,-3
 	GravityEngine: -6,-6
 	Abundance: 9,-1
-	Prosperity: 3,6
 	SupportCap: 3,5
 	ColossusHull: 0,8
 	HyperfieldSequencing: -8,7
@@ -269,3 +268,5 @@ Grid: Heralds
 	SS: 0,10
 	Jumpdrive: 12,-2
 	JuggernautHull: 2,12
+	Prosperity: 4,6
+	FerroFluidArmor: 2,6
