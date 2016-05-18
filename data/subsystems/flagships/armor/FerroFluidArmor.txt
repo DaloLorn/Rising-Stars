@@ -21,7 +21,7 @@ Subsystem: FerroFluidArmor
 
 	Hex.LaborCost := 0.5 * HexSize
 	Hex.BuildCost := 0.9 * HexSize
-	Hex.MaintainCost := 0.125
+	Hex.MaintainCost := 0.125 * HexSize
 	DamageResist := Size / 21
 	Effect: ReduceDamage
 
