@@ -1,0 +1,9 @@
+Status: Tachyon
+	Name: #NEBULA_TACHYON
+	Description: #NEBULA_TACHYON_DESC
+	Icon: ActionBarIcons::5 * #00aa00
+	Color: #00aa00
+
+	ABEM_nebulae::StatusFreeFTLSystem()
+	ABEM_sensors::AddSightModifier(200, 0.5)
+	LimitSeeableRange(750*$SENSOR_RANGE_MULT)

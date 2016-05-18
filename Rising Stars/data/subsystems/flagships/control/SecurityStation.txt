@@ -1,0 +1,22 @@
+Subsystem: SecurityStation
+	Name: #S_SECURITY_STATION
+	Description: #S_SECURITY_STATION_DESC
+
+	BaseColor: #9686ff
+	Elevation: 5
+
+	Tags: BaseCost, NonContiguous,Category:Equipment, NoCore, DefaultUnlock
+	Tags: ExteriorCore
+	Tags: HasInternals
+	Hull: Flagship, Station
+
+	EvaluationOrder: -10
+
+	Size := HexSize * Hexes
+	BoardingStrength := floor(80 * Size)
+
+	Hex.Resistance := 0.2
+	Hex.HP := 36 * HexSize
+	Hex.Mass := HexSize
+	Module: Default
+		Sprite: SecurityStation

@@ -1,0 +1,9 @@
+Status: Radioactive
+	Name: #NEBULA_RADIOACTIVE
+	Description: #NEBULA_RADIOACTIVE_DESC
+	Icon: ResourceIcons::13 * #aa0000
+	Color: #aa0000
+
+	ABEM_nebulae::KillCrew()
+	ABEM_sensors::AddSightModifier(200, 0.2)
+	LimitSeeableRange(300*$SENSOR_RANGE_MULT)

@@ -1,0 +1,41 @@
+Empire.Traits : components.Traits::Traits {
+	local bool hasTrait(uint id) const;
+	local uint get_traitCount() const;
+	local uint getTraitType(uint index) const;
+
+	local uint get_attitudeCount() const;
+	local Attitude@[] getAttitudes() const;
+	local Attitude@[] getGloryMeter(); // This function can return null. Always check if it's null.
+	local uint get_gloryID() const; // Cheaper way of getting the glory meter's type.
+	local bool hasAttitude(uint id) const;
+	local bool hasGloryMeter() const;
+	local int getNextAttitudeCost();
+	local uint getAttitudeLevel(uint id) const;
+
+restricted remote:
+	void takeAttitude(uint id);
+	void discardAttitude(uint id);
+
+server:
+	void addTrait(uint id, bool doPreInit = false);
+
+	void preInitTraits();
+	void initTraits();
+	void postInitTraits();
+	void traitsTick(double time);
+	void replaceTrait(uint fromId, uint toId, bool doPreInit = true);
+
+	async void forceAttitude(uint id);
+	async void setGloryMeter(uint id);
+	async void forceDiscardAttitude(uint id);
+	async void levelAttitude(uint id, int levels = 1);
+	async void progressAttitude(uint id, double progress = 0.0, double pct = 0.0);
+	async void resetAttitude(uint id);
+	uint getLevelAttitudeCount(uint level);
+
+	void writeTraits(Message& msg);
+	void writeAttitudes(Message& msg, bool initial);
+shadow:
+	void readTraits(Message& msg);
+	void readAttitudes(Message& msg, bool initial);
+};

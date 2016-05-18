@@ -1,0 +1,12 @@
+Technology: AdvancedShielding
+	Category: ABEM - Subsystems
+	Name: #R_ADV_SHIELD
+	Description: R_ADV_SHIELD_DESC
+	Icon: TechIcons::6
+	Time Cost: 120
+	Class: Unlock
+	Color: #e20dff
+	UnlockTag(ShieldCharger)
+	UnlockTag(StellarShieldOrbital)
+	UnlockSubsystem(CovariantShield)
+	SecondaryEnergyCost(1500)

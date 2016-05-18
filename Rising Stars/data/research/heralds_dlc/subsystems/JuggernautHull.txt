@@ -1,0 +1,20 @@
+Technology: JuggernautHull
+	Name: #R_SYS_JUGGERNAUT_HULL
+	Description: #R_SYS_JUGGERNAUT_HULL_DESC
+	Class: Unlock
+	Category: ABEM-Subsystems
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: HullSubsystems::5
+	Color: #ff0623
+
+	UnlockSubsystem(JuggernautHull)
+	SkipOnUnlockedSubsystem(JuggernautHull)
+
+	SecondaryEnergyCost(1000)
+	UnlockSubsystem(SelfDestruct)

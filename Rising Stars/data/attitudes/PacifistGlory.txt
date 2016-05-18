@@ -1,0 +1,47 @@
+Attitude: PacifistGlory
+	Name: #GLORY_PACIFIST
+	Progress: #GLORY_PACIFIST_PROGRESS
+	Sort: 1000
+	Color: #4b8aff
+
+	ABEM_glory::CannotManuallyTake()
+	ABEM_glory::NoProgressPastMaxLevel()
+
+	ABEM_glory::DecayProgressFromContested(0.5)
+	ABEM_glory::DecayFromNegativeAttribute(Glory, 1)
+	ModEmpireAttribute(GloryMode, Add, 2)
+
+	ABEM_glory::ProgressOverTime(1)
+
+	Secret: True
+
+	Level:
+		Description: #GLORY_PACIFIST_LVL1
+		Icon: SupportNayIcon
+	Level:
+		Description: #GLORY_PACIFIST_LVL2
+		Icon: SupportIcon
+		Threshold: 200
+		ModEmpireAttribute(GloryLevel, Add, 1)
+	Level:
+		Description: #GLORY_PACIFIST_LVL3
+		Icon: StatusPeace
+		Threshold: 700
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		EnableModifier(InfluenceBuildCostFactor(0.8))
+	Level:
+		Description: #GLORY_PACIFIST_LVL4
+		Icon: TabDiplomacy
+		Threshold: 2700
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(SupportCardCostMod, Add, -1.0)
+	Level:
+		Description: #GLORY_PACIFIST_LVL5
+		Icon: Propositions
+		Threshold: 7700
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(VoteCardCostMod, Add, -2.0)
+	Level:
+		Description: #GLORY_PACIFIST_LVL6
+		Icon: HappyFace
+		Threshold: 17700

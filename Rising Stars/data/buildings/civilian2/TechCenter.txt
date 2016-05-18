@@ -1,0 +1,13 @@
+Building: TechCenter
+	Name: #BLD_TECHCENTER
+	Description: #BLD_TECHCENTER_DESC
+	Sprite: BuildingSprites::9
+
+	Civilian: True
+	Upgrades From: University
+
+	Saturation: 2 Research
+	Production: 1.5 Research
+	RepeatExtended(AddResource(Research, 0.1), Base Attribute = ResearchProductionBoost)
+	ShowAttributeValue(Inefficiency Reduction, ResearchProductionBoost, Multiplier = 20, Icon = Plus, Suffix = %, Hide Zero = True)
+	RequireNotTrait(Berserkers)

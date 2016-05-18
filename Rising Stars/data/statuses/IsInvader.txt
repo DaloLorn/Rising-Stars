@@ -1,0 +1,3 @@
+Status: IsInvader
+	Visible To: Nobody
+	Unique: True

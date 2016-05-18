@@ -1,0 +1,34 @@
+Status: Berserkers
+	Visible To: Nobody
+	
+	IfAttributeLT(GloryLevel, 1, AddStatus(BerserkerGlory1))
+	// Yes, the numbers seem off. No, it's not broken, just a bit oddly coded. :P
+	IfAttributeGTE(GloryLevel, 2, AddStatus(BerserkerGlory3))
+	IfAttributeGTE(GloryLevel, 3, AddStatus(BerserkerGlory4))
+	IfAttributeGTE(GloryLevel, 4, AddStatus(BerserkerGlory5))
+
+	AllowFreeRaiding()
+	AddFleetCommand(256)
+	
+Status: BerserkerGlory1
+	Visible To: Nobody
+	ModCivResourceMult(Money, -0.5)
+	ModCivResourceMult(Energy, -0.5)
+	ModCivResourceMult(Influence, -0.5)
+	ModCivResourceMult(Labor, -0.5)
+	ModCivResourceMult(Defense, -0.5)
+	
+Status: BerserkerGlory3
+	Visible To: Nobody
+	ModCivResourceMult(Money, +0.05)
+	ModCivResourceMult(Energy, +0.05)
+	ModCivResourceMult(Labor, +0.05)
+	ModCivResourceMult(Defense, +0.05)
+	
+Status: BerserkerGlory4
+	Visible To: Nobody
+	AddStatus(Happy)
+	
+Status: BerserkerGlory5
+	Visible To: Nobody
+	AddResource(Defense, 0.5)

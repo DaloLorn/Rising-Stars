@@ -1,0 +1,47 @@
+Subsystem: JuggernautHull
+	Name: #S_JUGGERNAUT_HULL
+	Description: #S_JUGGERNAUT_HULL_DESC
+
+	Tags: Applied:Hull, Category:Hulls, NoCore, CanUseSelfDestruct
+	Tags: HeraldsDLC
+	Tags: Ability:RammingSpeedAbil
+	//Have to fix this ability to self use atm is necesary to set target.
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #ff0724
+
+	HexLimit := -50
+
+	AddShipModifier: HpFactor(12.0)
+	AddShipModifier: ArmorResistFactor(1.5)
+	AddShipModifier: MassFactor(5)
+	AddShipModifier: TurnThrustFactor(1.5)
+
+
+	AddShipModifier: TechMultFactor(1)
+	AddShipModifier: LaborCostFactor(4)
+	AddShipModifier: MaintCostFactor(0.5)
+	
+	Assert: TagCount.Weapon == 0
+		Message: #ERROR_CANNOT_HAVE_WEAPONS
+
+	Assert: ShipSize >= 300
+		Message: #ERROR_MIN_SIZE:$1:300
+
+	Assert: Sum.SupportCapacity == 0
+		Message: #ERROR_CANNOT_HAVE_SUPPORT
+
+	Assert: TagCount.SelfDestruct == 1
+		Message: #ERROR_MUST_HAVE_SELFDESTRUCT
+
+	//Rescue the idea if needed
+	//Assert: Acceleration <= 2
+	//	Message: Juggernaught payload its too delicate to blabalbabla
+
+	//Asegurar que no se usa como Simulator ship.
+
+	//Still can use cloack
+
+	Module: Default
+		Sprite: HullSubsystems::5
+		DrawMode: 3

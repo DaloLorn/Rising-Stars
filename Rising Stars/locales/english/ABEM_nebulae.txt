@@ -1,0 +1,45 @@
+EMPTY_SPACE_DESC: <<
+	Slight gravitational anomalies caused by subspace eddies in this sector have pulled in a variety of interesting objects into an otherwise featureless region of space.
+	
+	Some interesting side-effects of the subspace anomalies are that shields are formed a bit more effectively, and the gravitational anomalies they create are attracted to massive objects. This manifests itself as a 5% boost to shield regeneration and a 25% boost to sensor range.
+>>
+NEBULA_TYPE1_DESC: <<
+	A fairly unimpressive nebula. Some day it might give birth to a star, but right now it's just messing with the fleet's sensors. 
+	
+	There may, however, be lots of interesting objects within.
+>>
+NEBULA_METAPHASIC_DESC: <<
+	A high concentration of metaphasic particles in this nebula increases shield regeneration rates by as much as 25%, but sensors are slightly impaired.
+	
+	There are probably some interesting objects within the nebula itself, if they have not been found by other empires already.
+>>
+NEBULA_CERULEAN_DESC: <<
+	Nebulae like these wreak havoc upon most combat systems, making them a safe haven for ships in need of repairs.
+	
+	Disables shields, cloaking, FTL and weapons systems. Does not disable Boarding Parties or any form of planet killer.
+>>
+NEBULA_METREON_DESC: <<
+	Exceptional concentrations of metreon gas in nebulae like this one have a highly damaging effect on starship hulls. Shields slow the process down, but unless the shield generator is a powerful one, the ship will invariably have to leave to avoid destruction.
+	
+	Deals 25 (plus 0.1% of the ship's maximum hull) damage per second. Shields delay hull damage, but suffer 125 damage per second, in addition to 0.1% of shield capacity.
+>>
+NEBULA_RADIOACTIVE_DESC: <<
+	High quantities of radioactive materials in this nebula cause significant damage to living tissue amd drastically decrease sensor range. Control computers are also damaged, with the exception of Remnant ship computers; if not evacuated within 5 minutes, control of the object will be lost.
+	
+	Shields delay control loss, but take 30 (plus 0.1% of capacity) damage per second.
+	
+	Nebulae such as this contain at least one asteroid rich in [img=ResourceIconsSmall::4][/img]Uranium, with a low concentration of [img=ResourceIconsSmall::11 * #91692c][/img]Ore.
+>>
+NEBULA_TACHYON_DESC: <<
+	This nebula contains an unusual amount of tachyons which can be harnessed as a substitute for FTL crystals. Sensors are somewhat impaired, though.
+	
+	FTL jumps out of the nebula are free.
+>>
+NEBULA_ECONOMIC_DESC: <<
+	The exceptional amount of [img=ResourceIconsSmall::30][/img]gold, as well as other [img=ResourceIconsSmall::11][/img]rare metals and moderate concentrations of [img=ResourceIconsSmall::11 * #91692c][/img]Ore in this nebula give it its mild color. Mining these resources from the asteroids within could provide a massive economic bonus to the owner.
+>>
+NEBULA_MUTARA_DESC: <<
+	Of all the nebulae in the galaxy, these are the hardest to fight in. Electrical discharges and massive clouds of highly charged particles render shields completely useless, and sensors don't fare much better.
+	
+	However, they also make an excellent hiding place, and sometimes you can find valuable items within, perhaps even relics of battles long over...
+>>

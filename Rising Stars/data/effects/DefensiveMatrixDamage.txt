@@ -1,0 +1,2 @@
+Effect: DefensiveMatrixDamage
+	GlobalDamage: ABEMCombat::DefensiveMatrixDamage

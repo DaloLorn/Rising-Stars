@@ -1,0 +1,6 @@
+﻿CARD_PIRATERAIDERS: Send Pirate Raiders
+CARD_PIRATERAIDERS_DESC: <<
+	Instructs one of the pirate ships under your command to begin raiding civilian shipping belonging to another empire. Upon receiving these orders, they will cease all contact with you to avoid being traced back to your empire - even if you want them to cease their attacks. However, they may significantly weaken an enemy's economy, or provoke them into diverting vital forces to end the pirate threat.
+
+	[i]Spawns a pirate ship targetting the civilian traders of the planet's current owner. Cannot be used on allied empires.[/i]
+>>

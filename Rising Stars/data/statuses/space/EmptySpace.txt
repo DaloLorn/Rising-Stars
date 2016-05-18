@@ -1,0 +1,7 @@
+Status: EmptySpace
+	Name: #EMPTY_SPACE
+	Description: #EMPTY_SPACE_DESC
+	Icon: ResourceIcon::5 * #429cffff * #00ff00
+
+	ABEM_sensors::AddSightModifier(200, 1.25)
+	ABEM_nebulae::ShieldRegenBoost(0.05)

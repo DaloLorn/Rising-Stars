@@ -1,0 +1,28 @@
+TRAIT_TECHNICISTS: Technicists
+TRAIT_TECHNICISTS_DESC: <<|
+  [vspace=3/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]
+  [vspace=3/][img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide twice as much shield capacity to flagships.[/img]
+  [vspace=3/][img=PlateArmor;22]Cannot research most armor types. Armor discovered from alternative sources will have halved health.[/img]
+  [vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
+>>
+
+TRAIT_PACIFISTS: Pacifists
+TRAIT_PACIFISTS_DESC: <<|
+  [vspace=3/][img=ResourceIconsSmall::61]Starts with an Allondium on their homeworld.[/img]
+  [vspace=3/][img=ThumbsUp;22]Maintaining a high level of Comfort by avoiding combat, planet loss and casualties bestows various benefits - failing to do so weakens the empire through civil unrest.[/img]
+  [vspace=3/][img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
+  [vspace=3/][img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
+  [vspace=3/][img=Antenna;22]Broadcast Antennae are available from the beginning of the game.[/img]
+>>
+TRAIT_BERSERKERS: Berserkers
+TRAIT_BERSERKERS_DESC: <<|
+  
+>>
+
+TRAIT_VERDANT: Verdant
+TRAIT_VERDANT_DESC: <<|
+	[vspace=3/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
+	[vspace=3/][img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
+	[vspace=3/][img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
+	[vspace=3/][img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
+>>

@@ -1,0 +1,46 @@
+Technology: EnergyHurdle
+	Name: #R_ENERGY_HURDLE
+	Description: #R_ENERGY_HURDLE_DESC
+
+	Icon: ResourceIcon::2
+	Symbol: QuickbarIcons::3
+	Color: #ff0000
+
+	Category: Hurdles
+	Class: Boost
+
+	Point Cost: 0
+	Time Cost: 80
+
+	SecondaryEnergyCost(1500)
+
+Technology: EnergyHurdle2
+	Name: #R_ENERGY_HURDLE_VERYLARGE
+	Description: #R_ENERGY_HURDLE_DESC
+
+	Icon: ResourceIcon::2*#00cc00
+	Symbol: QuickbarIcons::3
+	Color: #ff0000
+
+	Category: Hurdles
+
+	Point Cost: 0
+	Time Cost: 80
+
+	SecondaryEnergyCost(2200)
+
+Technology: EnergyHurdle3
+	Name: #R_ENERGY_HURDLE_INSANE
+	Description: #R_ENERGY_HURDLE_DESC
+
+	Icon: ResourceIcon::2*#00cc00
+	Symbol: QuickbarIcons::3
+	Color: #ff0000
+
+	Category: Hurdles
+	Class: Boost
+
+	Point Cost: 0
+	Time Cost: 80
+
+	SecondaryEnergyCost(2500)

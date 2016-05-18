@@ -1,0 +1,3 @@
+Sound: RedAlert
+	File: data/sounds/status/Red Alert.ogg
+	Volume: 0.25

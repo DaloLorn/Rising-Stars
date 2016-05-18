@@ -1,0 +1,11 @@
+Building: BerserkerLaborCamp
+	Name: #BLD_LABORCAMP
+	Description: #BLD_LABORCAMP_DESC
+	Sprite: BuildingSprites::5*fa3
+
+	Civilian: True
+
+	Saturation: 1 Research
+	Production: 0.75 Defense
+	Production: 1.5 Labor
+	RequireTrait(Berserkers)

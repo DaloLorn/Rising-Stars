@@ -1,0 +1,95 @@
+Hull: ProgenitorFlagSmall
+	Name: Battlecruiser
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 1.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantFlagshipSmall
+
+	Tags: Flagship
+	MinSize: 16
+	Subsystem: FlagshipHull
+
+Hull: ProgenitorFlagMedium
+	Name: Battleship
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 1.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantFlagshipMedium
+
+	Tags: Flagship
+	MinSize: 32
+	Subsystem: FlagshipHull
+
+Hull: ProgenitorFlagLarge
+	Name: Dreadnought
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 1.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantFlagshipLarge
+
+	Tags: Flagship
+	MinSize: 64
+	Subsystem: FlagshipHull
+
+Hull: ProgenitorFlagVeryLarge
+	Name: Titan
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 1.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantFlagshipVeryLarge
+
+	Tags: Flagship
+	MinSize: 128
+	Subsystem: FlagshipHull
+
+Hull: ProgenitorFlagHuge
+	Name: Colossus
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 1.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantFlagshipHuge
+
+	Tags: Flagship
+	Special: True
+	MinSize: 256
+	Subsystem: FlagshipHull
+
+Hull: ProgenitorSeedShip
+	Name: Seed Ship
+	Background: TyrantMediumBlue
+	BackgroundScale: 0.66
+	ModelScale: 0.66
+	Material: SeedShipPBR
+	Model: SeedShip
+	Subsystem: FlagshipHull
+
+	Tags: Flagship
+	MinSize: 16
+
+Hull: ProgenitorSmall
+	Name: Frigate
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 0.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantA
+
+	Tags: Support
+	Subsystem: SupportHull
+
+Hull: ProgenitorMedium
+	Name: Destroyer
+	Background: VolkurBlueprint
+	BackgroundScale: 1.0
+	ModelScale: 0.8
+	Material: TyrantPBRAdvanced
+	Model: TyrantB
+
+	Tags: Support
+	MinSize: 2
+	Subsystem: SupportHull

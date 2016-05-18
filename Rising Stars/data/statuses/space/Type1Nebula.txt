@@ -1,0 +1,8 @@
+Status: Type1Nebula
+	Name: #NEBULA_TYPE1
+	Description: #NEBULA_TYPE1_DESC
+	Icon: VoteIcons::3
+	Color: #ff0000
+
+	ABEM_sensors::AddSightModifier(200, 0.33)
+	LimitSeeableRange(500*$SENSOR_RANGE_MULT)

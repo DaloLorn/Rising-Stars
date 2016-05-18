@@ -1,0 +1,41 @@
+Status: Pacifists
+	Visible To: Nobody
+
+	IfAttributeLT(GloryLevel, 1, AddStatus(PacifistGlory1))
+	// Yes, the numbers seem off. No, it's not broken, just a bit oddly coded. :P
+	IfAttributeGTE(GloryLevel, 2, AddStatus(PacifistGlory3))
+	IfAttributeGTE(GloryLevel, 3, AddStatus(PacifistGlory4))
+	IfAttributeGTE(GloryLevel, 4, AddStatus(PacifistGlory5))
+	
+	ModCivResourceMult(Labor, -0.15)
+	ModCivResourceMult(Defense, -0.15)
+	
+Status: PacifistGlory1
+	Visible To: Nobody
+	ModCivResourceMult(Research, -0.2)
+	ModCivResourceMult(Money, -0.2)
+	ModCivResourceMult(Energy, -0.2)
+	
+Status: PacifistGlory3
+	Visible To: Nobody
+	ModCivResourceMult(Influence, +0.125)
+	
+Status: PacifistGlory4
+	Visible To: Nobody
+	AddStatus(Happy)
+	
+Status: PacifistGlory5
+	Visible To: Nobody
+	ModCivResourceMult(Influence, +0.125)
+	ModCivResourceMult(Money, +0.05)
+	ModCivResourceMult(Research, +0.05)
+	ModCivResourceMult(Energy, +0.05)
+
+Status: Envoy
+	Name: #STATUS_ENVOY
+	Description: #STATUS_ENVOY_DESC
+	Icon: PoliticalStrengthIcon * #00ff00
+	Collapses: True
+
+	RemoveOnWarWithOriginEmpire(Trigger Origin = RandomTrigger(0.1, TakeControl()))
+	ABEM_races::IfAlliedWithOriginEmpire(ABEM_races::ProtectPlanet())

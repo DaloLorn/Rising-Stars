@@ -1,0 +1,12 @@
+Building: BerserkerSlaveCamp
+	Name: #BLD_SLAVECAMP
+	Description: #BLD_SLAVECAMP_DESC
+	Sprite: Factory*#fa3
+
+	Civilian: True
+	Upgrades From: BerserkerLaborCamp
+
+	Saturation: 2 Research
+	Production: 1.175 Defense
+	Production: 2.25 Labor
+	RequireTrait(Berserkers)

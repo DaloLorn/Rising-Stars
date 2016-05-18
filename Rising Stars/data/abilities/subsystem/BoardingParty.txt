@@ -1,0 +1,25 @@
+Ability: BoardingParty
+	Name: #ABL_BOARDING_PARTY
+	Description: #ABL_BOARDING_PARTY_DESC
+	Icon: CrewQuarters*#9686ff
+
+	Energy Cost: 0
+	Cooldown: 300
+	Range: 300
+
+	Target: targ = Object
+	ABEM_hooks::TargetFilterNotType(targ, Planet)
+	Either(ABEM_hooks::TargetRequireCommand(targ), Either(TargetFilterType(targ, Orbital), TargetFilterType(targ, Asteroid)))
+	ABEM_hooks::UserMustNotHaveStatus(BoardingParty)
+//	ABEM_hooks::UserMustNotHaveStatus(Radioactive)
+	TargetFilterNotStatus(targ, BoardingParty)
+//	TargetFilterNotStatus(targ, Radioactive)
+//	TargetFilterNotStatus(targ, IsGuardian)
+//	TargetFilterNotStatus(targ, GuardianShipyardActive)
+//	TargetFilterNotStatus(targ, GuardianShipyardBuilding)
+	ABEM_hooks::TargetFilterNotRemnantOrPirate(targ)
+	Either(TargetFilterNotAllied(targ), ABEM_hooks::TargetFilterStatus(targ, DerelictShip))
+
+	ABEM_races::TargetFilterNotRace(targ, Verdant, #RACE_OKO)
+	OffensiveToTarget(targ)
+	ABEM_hooks::AddOwnedStatus(targ, BoardingParty)

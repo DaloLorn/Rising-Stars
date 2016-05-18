@@ -1,0 +1,8 @@
+Status: Economic
+	Name: #NEBULA_ECONOMIC
+	Description: #NEBULA_ECONOMIC_DESC
+	Icon: ResourceIcons::30 * #00aa00
+	Color: #00aa00
+
+	ABEM_sensors::AddSightModifier(200, 0.66)
+	LimitSeeableRange(1000*$SENSOR_RANGE_MULT)

@@ -1,0 +1,9 @@
+Status: Metreon
+	Name: #NEBULA_METREON
+	Description: #NEBULA_METREON_DESC
+	Icon: PlateArmor * #ff0000
+	Color: #ff0000
+
+	ABEM_nebulae::DealRandomDamage()
+	ABEM_sensors::AddSightModifier(200, 0.5)
+	LimitSeeableRange(750*$SENSOR_RANGE_MULT)

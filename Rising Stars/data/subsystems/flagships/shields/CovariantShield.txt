@@ -1,0 +1,34 @@
+Subsystem: CovariantShield
+	Name: #S_COVARIANT_SHIELD
+	Description: #S_COVARIANT_SHIELD_DESC
+	BaseColor: #0044db
+	Elevation: 1
+
+	DamageOrder: -100
+
+	Tags: BaseCost
+	Tags: IsShield, Defense, Category:Shields, HasInternals
+	Tags: SecondaryDefense, HighPowerUse
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	ShieldCapacity := Size * 140
+	ShieldRegen := Size * 0.5
+	ShieldHexes := Hexes
+	PowerUse := 20 * Size
+
+	Hex.Resistance := 0.5
+	Hex.HP := 6 * HexSize
+	Hex.Mass := 1 * HexSize
+
+	Hex.LaborCost := 0.5 * HexSize
+	Hex.BuildCost := 0.1 * HexSize
+	Hex.MaintainCost := 1 * HexSize
+
+	Effect: ABEMShieldDamage
+
+	Requires:
+		Command = 1
+
+	Module: Core
+		Sprite: CovariantShield

@@ -1,0 +1,15 @@
+Trait: Lavish
+	Name: #TRAIT_LAVISH
+	Description: #TRAIT_LAVISH_DESC
+	Category: Personality
+	Order: 3
+
+	Conflict: Frugal
+	Conflict: Ancient
+
+	Color: #ffaaaa
+	Icon: ResourceIconsSmall::32
+
+	Gives Points: 1
+
+	AddStatusOwnedPlanets(Lavish)

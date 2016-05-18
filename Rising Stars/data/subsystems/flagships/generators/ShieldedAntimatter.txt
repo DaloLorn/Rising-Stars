@@ -1,0 +1,36 @@
+Subsystem: ShieldedAntimatter
+	Name: #S_SHIELDED_AMGEN
+	Description: #S_SHIELDED_AMGEN_DESC
+	BaseColor: #5ade8b
+	Elevation: 1
+
+	Tags: IsReactor, Category:Power
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	Power := 75 * Size
+	SupplyCapacity := Size * 300
+	SupplyRate := Size * 75
+	CombatSupplyRate := SupplyRate / 10
+
+	Hex.Resistance := 0.5
+	Hex.HP := 25 * HexSize
+	Hex.Mass := 4 * HexSize
+
+	Hex.LaborCost := 1.5*HexSize + 3
+	Hex.BuildCost := 25 * HexSize + 4
+	Hex.MaintainCost := 4* HexSize+1
+
+	Hook: ResupplyFlagship(CombatSupplyRate, In Combat = True)
+	Provides:
+		Power = Power
+
+	Module: Core
+		Sprite: ShieldedAntimatterGen
+	Module: Default
+
+	Modifier: SupplyCapacityFactor(factor)
+		SupplyCapacity := SupplyCapacity * factor
+
+	Modifier: PowerFactor(factor)
+		Power := Power * factor

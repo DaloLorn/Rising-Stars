@@ -1,0 +1,8 @@
+Status: Metaphasic
+	Name: #NEBULA_METAPHASIC
+	Description: #NEBULA_METAPHASIC_DESC
+	Icon: ResourceIcon::5 * #429cffff * #00ff00
+
+	ABEM_nebulae::ShieldRegenBoost(0.25)
+	ABEM_sensors::AddSightModifier(200, 0.66)
+	LimitSeeableRange(1000*$SENSOR_RANGE_MULT)

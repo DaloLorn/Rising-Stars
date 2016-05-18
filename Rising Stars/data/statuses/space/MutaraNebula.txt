@@ -1,0 +1,9 @@
+Status: Mutara
+	Name: #NEBULA_MUTARA
+	Description: #NEBULA_MUTARA_DESC
+	Icon: ResourceIcon::5 * #aa0000
+	Color: #aa0000
+
+	ABEM_nebulae::DisableShields()
+	ABEM_sensors::AddSightModifier(200, 0.066)
+	LimitSeeableRange(100*$SENSOR_RANGE_MULT)

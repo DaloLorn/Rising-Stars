@@ -1,0 +1,112 @@
+R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
+R_SYS_SHIELDED_AMGEN_DESC: <<
+	[color=#aaa][i]New advances in shield compacting unlock the Shielded Antimatter Generator subsystem.[/i][/color]
+
+	[bbloc=#S_SHIELDED_AMGEN_DESC/]
+>>
+
+R_SYS_ZPG_DESC: <<
+	[color=#aaa][i]Massive breakthroughs in physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
+
+	Unlocks the Singularity Core.
+
+	[i][bbloc=#S_ZPG_DESC/][/i]
+>>
+R_ENERGY_HURDLE_VERYLARGE: Energy Research
+R_ENERGY_HURDLE_INSANE: High-Energy Research
+R_ADV_SHIELD: Advanced Shield Manipulation
+R_ADV_SHIELD_DESC: <<
+	[color=#aaa][i]Extensive research into shields allows for new methods of manipulating shield plasma, from transferring it to organizing it on a moment's notice to maintaining sizable reserves of it.
+
+	Quite a significant advance considering the fact that we just wanted to draw pretty pictures with the stuff...[/i][/color]
+
+	Unlocks the Power Transmitter and Stellar Shield Generator orbitals, and the Covariant Shield Generator subsystem for use on flagships.
+>>
+
+R_SYS_HYPERDRIVE_DESC: <<
+	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
+
+	Unlocks the Hyperdrive subsystem for use on flagships if it is not already available.
+
+	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
+>>
+R_SYS_JUMPDRIVE_DESC: <<
+	[i][color=#aaa]A device capable of punching through subspace to instantaneously teleport a starship.[/color][/i]
+
+	Unlocks the Jumpdrive subsystem for use on flagships if it is not already available.
+
+	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
+>>
+R_IMPROVEDLABS: Containment Protocols
+R_IMPROVEDLABS_DESC: <<
+	[i][color=#aaa]Developing and standardizing new methods of isolating experiments and dangerous samples allows more scientists to work in the same amount of space.[/color][/i]
+
+	Increases the Research generation of Tech Centers and Research Complexes by 0.1. This effectively reduces the penalty for allowing Universities to condense into Tech Centers by 20%.
+>>
+
+
+
+R_SYS_QUANTUM_ARMOR: Quantum Armor
+R_SYS_QUANTUM_ARMOR_DESC: <<
+	[color=#aaa][i]After years of research, we have managed to improve upon Neutronium Armor. Most of this new armor's mass is stored outside our physical universe, only reappearing just before impact to withstand devastating blows without impairing mobility. Unfortunately, as this technology is applied to existing Neutronium Armor, the process is just as expensive as - and more difficult than - producing regular Neutronium Armor.[/i][/color]
+
+	Unlocks the Quantum Armor subsystem.
+
+	[i][bbloc=#S_QUANTUM_ARMOR_DESC/][/i]
+>>
+R_ORB_FLING_DESC: <<
+	[i][color=#aaa]A device capable of catapulting nearby vessels into hyperspace. The ships then proceed to exit from hyperspace under their own power.[/color][/i]
+
+	Unlocks the Fling Beacon orbital.
+
+	[i][bbloc=#ORB_FLING_CORE_DESC][/bbloc][/i]
+>>
+R_ORB_GATE_DESC: <<
+	[i][color=#aaa]A space station capable of maintaining a node in an artificial wormhole network. Each gate network operates on a slightly different frequency, so fleets cannot use gates belonging to other empires.[/color][/i]
+
+	Unlocks Gates.
+
+	[i][bbloc=#S_GATE_MODULE_DESC][/bbloc][/i]
+>>
+R_SYS_SLIPSTREAM_DESC: <<
+	[i][color=#aaa]A device capable of penetrating subspace on a level far greater than - and considerably different from - conventional hyperdrives. 'Slipstream tears', while similar to wormholes, decay much more rapidly than known stable wormholes; with a bigger generator, the created rift will last longer.[/color][/i]
+
+	Unlocks the Slipstream Generator subsystem.
+
+	[i][bbloc=#S_SLIPSTREAM_GENERATOR_DESC/][/i]
+>>
+R_BOARDING_PARTY_DESC: <<
+	[color=#aaa][i]Recent studies of old science fiction have taught us the value of capturing enemy ships intact. To that end, we have started designing boarding pods for our flagships to launch.[/i][/color]
+	
+	Unlocks Boarding Parties for use on flagships.
+	
+	[i][bbloc=#S_BOARDING_PARTY_DESC/][/i]
+>>
+R_NYLLI_FOOD: Nutrient Reclamation
+R_NYLLI_FOOD_BLURB: Nutrient Orbitals
+R_NYLLI_FOOD_DESC: <<
+	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
+
+	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
+	
+	[i][bbloc=#ORB_FARM_DESC/][/i]
+	
+	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
+>>
+R_ORB_FLING: Fling Beacons
+R_ORB_GATE: Gate Technology
+R_SYS_HYPERDRIVE: Hyperdrive
+R_SYS_SLIPSTREAM: Slipstream
+R_SYS_JUMPDRIVE: Jumpdrive
+
+
+R_LINK: LINK
+R_BOARDING_PARTY: Boarding Parties
+R_COMPOSITE_ARMOR: Composite Armor
+R_COMPOSITE_ARMOR_DESC: <<
+	[color=#aaa][i]Advances in composite materials allow us to make better armor.[/i][/color]
+
+	Unlocks Composite Armor for use on flagships.
+
+	[i][bbloc=#S_COMPOSITE_ARMOR_DESC/][/i]
+>>

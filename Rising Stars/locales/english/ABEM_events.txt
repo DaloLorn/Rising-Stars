@@ -1,0 +1,254 @@
+EVT_NOTIFY_HUBWORLD: Progenitor Archives Reactivated on [color=$4]$3[/color]!
+EVT_NOTIFY_HUBWORLD_DESC: The [color=$2]$1[/color] have reactivated a Progenitor archive on [color=$4]$3[/color]! Tremendous knowledge is just a step away from their scientists!
+EVT_NOTIFY_PROGENITOR_BREAKTHROUGH: Progenitor Resurgence
+EVT_NOTIFY_PROGENITOR_BREAKTHROUGH_DESC: The [color=$2]$1[/color] have begun rediscovering their most advanced technology!
+EVT_PROGENITOR_BREAKTHROUGH: Technological Breakthrough!
+EVT_PROGENITOR_BREAKTHROUGH_DESC: <<
+	After a long and arduous process, we have finally rediscovered enough of our old knowledge to have a contextual understanding of the remnants of our database.
+
+	Finally, we can start taking our first steps towards rebuilding and improving upon the great wonders of our past!
+>>
+EVT_VANGUARD_PORTAL: Portal Stabilizer constructed on [color=$4]$3[/color]!
+EVT_VANGUARD_PORTAL_DESC: <<
+	The [color=$2]$1[/color] have constructed a Portal Stabilizer on [color=$4]$3[/color]! Quickly, capture the planet to destroy the Stabilizer; if they own three Stabilizers simultaneously, they will summon the Overlords!
+>>
+EVT_GUARDIANSHIPYARD_FOUND: Analysis Complete
+EVT_GUARDIANSHIPYARD_FOUND_DESC: <<
+	Detailed analysis of the device found near the Guardian has led to the conclusion that it has a dual purpose. Firstly, it is a nav beacon.
+
+	Secondly, it has transmitted some kind of signal to a location in the system. Investigation of the signal has allowed us to discover a gargantuan, phase-shifted facility at those coordinates - the beacon must have been intended to allow contact with the facility. Unfortunately, the facility's phase cloak has partially deactivated itself; other empires will be able to detect the structure as well!
+>>
+EVT_BROKENSEEDSHIP: A Dying Sower
+EVT_BROKENSEEDSHIP_DESC: <<
+	A Remnant seed ship drifts into one of your star systems, on a collision course towards [target=Location/]. Sensor scans of the vessel indicate that it has already been badly damaged by weapons fire, and cannot alter its course.
+
+	Leaving the ship alone is out of the question - at its current speed, the impact would decimate the planet's population and render it borderline uninhabitable for decades. The planetary militia has sent several teams to the ship - they can plant explosives to destroy the ship - disperse its remains before it comes too close to the planet - and salvage valuable equipment after the charges are set, but the team leader suggests that there may be a few alternative solutions.
+
+	He believes that a series of controlled detonations can, with the help of their shuttles' thrusters, provide enough thrust in just the right places to slow the ship and safely bring it down to the surface for study. However, execution of this plan would require the ship to come dangerously close to the planet - if it fails, the outcome will undoubtedly be as disastrous for the colony as if they had done nothing.
+
+	Alternatively, they might be able to bring the ship's engines back online and send it on its way - such an effort, however, would demand the militia's full attention, and if unsuccessful, prevent any significant salvage operation from taking place.
+
+	What should they do?
+>>
+EVT_BROKENSEEDSHIP_SCRAP: <<
+	Proceed with the salvage operation. There's no reason to expect the alternate plans will get us anywhere.
+>>
+EVT_BROKENSEEDSHIP_SCRAP_SUCCESS_TITLE: Playing it Safe
+EVT_BROKENSEEDSHIP_SCRAP_SUCCESS: <<
+	Once the charges are set, the remaining time until detonation is spent salvaging the ship. By the time the ship explodes, the militia is quite satisfied with their findings. One team manages to salvage a damaged matter fabricator from the seed system - another successfully procures several high-capacity power cells while the others gather a wide range of components and valuable metals.
+
+	All in all, a nice find and a job well done as far as everyone on [target=Location/] is concerned. All of the resources have been forwarded to the proper authorities.
+
+	[b]Gained a moderate amount of Energy, Research, and Special Funds. Also gained a moderate quantity of Labor on [target=Location/][/b]
+>>
+EVT_BROKENSEEDSHIP_LAND: Make preparations for the landing, but evacuate as many people as possible, just in case.
+EVT_BROKENSEEDSHIP_LAND_SUCCESS_TITLE: Grounded
+EVT_BROKENSEEDSHIP_LAND_SUCCESS: <<
+	It is a close call, but the plan works. Eventually, the seed ship reaches the surface of [target=Location/] more or less in one piece, and while the landscape in its wake cannot say the same, everyone is fine.
+
+	Your scientists are confident that you can learn much from the ship - some have already begun establishing an interface with the ship's computer to trigger its artifact fabrication routines. While that part of the ship's functionality remains effectively a black box, it is still a valuable asset.
+
+	[b]Gained +2 Research generation and a +10% bonus to civilian Research production. Additionally, [target=Location/] can now occasionally construct random artifacts![/b]
+>>
+EVT_BROKENSEEDSHIP_LAND_FAIL_TITLE: Extinction
+EVT_BROKENSEEDSHIP_LAND_FAIL: <<
+	As the ship approaches [target=Location/], it becomes far too obvious that nothing can be done to stabilize its descent - but it is too late. The charges are detonated to break the ship apart; regardless, as the debris hurtles down towards the surface, it leaves nothing but death and devastation throughout the planet. Casualties are numbered in the billions - the ecological damage, however, is just as bad. The planet is just barely habitable now, and though your technology is advanced enough to compensate for the problem to a degree, it cannot negate the effects completely.
+
+	[b]Up to 2 billion inhabitants killed. [target=Location/]'s population capacity decreased by 3 for 180 seconds.[/b]
+>>
+EVT_BROKENSEEDSHIP_REPAIR: Repair the ship, but try to reprogram its computer before it leaves.
+EVT_BROKENSEEDSHIP_REPAIR_SUCCESS_TITLE: A Different Destiny
+EVT_BROKENSEEDSHIP_REPAIR_SUCCESS: <<
+	The away teams manage to repair the engines. Detecting the threat, the ship's computer quickly alters course away from the planet - but not before your personnel manage to program in a few command overrides and instruct it to dump several artifacts into the system. You can now exercise control over the ship for brief periods of time, directing its movements to a certain degree - and better yet, it is now transmitting a transponder code identifying it as part of your empire, so it will not be fired upon by allied forces!
+
+	[b]Gained a Seed Ship and three random artifacts near [target=Location/].[/b]
+>>
+EVT_BROKENSEEDSHIP_REPAIR_FAIL_TITLE: A Missed Opportunity
+EVT_BROKENSEEDSHIP_REPAIR_FAIL: <<
+	Despite the best efforts of your people, the repairs do not go well. In the end, the ship is destroyed after all, and while [target=Location/] has been saved from this threat, the fact remains that you have gained nothing from this. No salvage, no technology...
+
+	[b]Nothing.[/b]
+>>
+EVT_PIRATEMERCS: Letters of Marque
+EVT_PIRATEMERCS_DESC: <<
+	You are contacted by a representative of a group of cutthroat pirates. Due to mounting tensions between your empire and the other empires in the galaxy, they feel that an armed conflict may be inevitable. Claiming patriotic tendencies for your empire, they would like to offer you the following deal:
+
+	In exchange for 500 thousand credits - or goods of equivalent value, or some combination of the two - and full pardons, they will grant you the use of their forces as privateers - harassing your empire's opposition by preying upon merchant vessels. This could divert valuable military resources away from a battle or deal a significant blow to their economy.
+
+	However, it is possible that the pirates are simply trying to milk you for easy cash and have no real intention of following through on their end of the bargain. What is your response?
+>>
+EVT_PIRATEMERCS_HIRE: <<
+	Accept the deal.
+
+	[b]You will lose §500k regardless of the outcome.[/b]
+>>
+EVT_PIRATEMERCS_HIRE_SUCCESS_TITLE: Honor Amongst Thieves
+EVT_PIRATEMERCS_HIRE_SUCCESS: <<
+	The credits are delivered as arranged, and the pardons provided. You soon receive an encrypted message containing contact information for the pirate ships. Each ship captain is willing to go up against an empire of your choosing - however, after that, they will cease contact with your empire to prevent their activities from being traced back to you. This also means calling them off will be impossible.
+
+	[b]Received 1-5 'Send Pirate Raiders' influence cards.[/b]
+>>
+EVT_PIRATEMERCS_HIRE_FAIL_TITLE: A Successful Scam
+EVT_PIRATEMERCS_HIRE_FAIL: <<
+	The credits are delivered as arranged, and the pardons provided. However, as time passes, the lack of response from the pirates speaks volumes about their intent; now that they have your money, they have no reason to keep up their end of the bargain.
+
+	[b]Received nothing.[/b]
+>>
+EVT_PIRATEMERCS_SHOO: Tell them you're not interested in their offer.
+EVT_PIRATEMERCS_SHOO_SUCCESS_TITLE: Peaceful Departure
+EVT_PIRATEMERCS_SHOO_SUCCESS: <<
+	The pirate representative seems somewhat disappointed, but graciously accepts your decision and ceases communications.
+>>
+EVT_PIRATEMERCS_SHOO_FAIL_TITLE: Many Hard Feelings
+EVT_PIRATEMERCS_SHOO_FAIL: <<
+	The pirate representative seems offended by your response. Before ending his transmission, he makes it quite clear that your refusal has made you their next target. So much for patriotism.
+
+	[b]1-5 new pirate ships will now attack your civilian shipping.[/b]
+>>
+EVT_PIRATEMERCS_SHOO_DISASTER_TITLE: Relocating Business
+EVT_PIRATEMERCS_SHOO_DISASTER: <<
+	The pirate representative appears somewhat frustrated by your response, and makes a point of noting that they will seek business with the [target=OtherEmp/] instead before he closes the channel.
+
+	[b]This event has now been started for the [target=OtherEmp/].[/b]
+>>
+EVT_PIRATEMERCS_BUYOUT: <<
+	Why buy their services when you can buy their ships instead? Offer to purchase their fleet for a significantly larger sum.
+
+	[b]Will spend §2M if successful.[/b]
+>>
+EVT_PIRATEMERCS_BUYOUT_FAIL_TITLE: Too Hardcore
+EVT_PIRATEMERCS_BUYOUT_FAIL: <<
+	Clearly surprised by your offer, the pirate representative closes the channel. After a while, you receive another message saying they're not interested.
+>>
+EVT_PIRATEMERCS_BUYOUT_SUCCESS_TITLE: Pirates No More
+EVT_PIRATEMERCS_BUYOUT_SUCCESS: <<
+	Clearly surprised by your offer, the pirate representative closes the channel. After a while, you are contacted again - once the details of the transaction are ironed out, you find yourself the proud owner of several pirate ships gathered in orbit of [target=Location/]. Whether the price was worth it, however, is open for debate.
+
+	[b]Lost §2M. Received 1-5 'Dread Pirate' ships in orbit over [target=Location/].[/b]
+>>
+EVT_PEDDLER: A Peddler
+EVT_PEDDLER_DESC: <<
+	A moderately sized ship enters orbit of [target=Location/]. When the planetary militia targets it, its owner quickly introduces itself as a dealer in various goods and data, and offers to trade some of his goods.
+
+	The offer seems genuine enough - before you even answer, he offers to sell you 2500 tons of useful ores, useful information from his travels or something more exotic from his collection. However, he makes a point of telling you that all sales are final.
+
+	What do you want to buy?
+>>
+EVT_PEDDLER_SHOO: Refuse his offer and send him on his way.
+EVT_PEDDLER_TRINKETS: <<
+	Purchase an item from his 'exotic inventory'.
+
+	[b]You will lose §750k regardless of the outcome.[/b]
+>>
+EVT_PEDDLER_TRINKETS_JUNK: <<
+	Whether you bought a cute, furry little critter trying to breed out of control, a twisted piece of hull plating from some historically significant ship or another, or just a precious gem, it doesn't matter - the bottom line is it couldn't possibly have been worth the money you paid for it.
+
+	[b]Received nothing.[/b]
+>>
+EVT_PEDDLER_TRINKETS_ARTIFACT: <<
+	The item seems fairly worthless - but the first archaeologist to lay eyes upon it recognizes it as a cultural artifact of tremendous significance. Before long, the artifact is put on display in a museum for countless tourists from all over the galaxy to marvel at.
+
+	[b]Received +5 Influence generation.[/b]
+>>
+EVT_PEDDLER_TRINKETS_KNOWLEDGE: <<
+	Detailed examination of the item you purchased reveals it to be a data storage device. Within is a treasure trove of ancient knowledge regarding all sorts of aspects of civilization, but very little of any technological value.
+
+	[b]Received two Ancient Knowledge influence cards.[/b]
+>>
+EVT_PEDDLER_TRINKETS_RESEARCH: <<
+	Detailed examination of the item you purchased reveals it to be a data storage device. Within is a treasure trove of scientific knowledge; your scientists are already lining up to download and examine the records.
+
+	[b]Received a lot of research points.[/b]
+>>
+EVT_PEDDLER_TRINKETS_FTL: <<
+	The strange crystalline item appears to be nothing more than a precious, if somewhat rough, gem at first, so - trying to make the best of it - you order for it to be cut and prepared for use as jewelry. It is fortunate that you did; when exposed to a laser cutter, the crystal begins to glow in a fashion similar to known types of FTL crystals. It turns out to be a vastly superior form of FTL crystal, and studying it will undoubtedly improve our understanding of hyperfield particles.
+
+	[b]Received +2 FTL generation.[/b]
+>>
+EVT_PEDDLER_ORE: <<
+	Buy out the merchant's ore stockpile.
+
+	[b]You will receive 2500 Ore on [target=Location/] and lose §500k.[/b]
+EVT_PEDDLER_INFO: <<
+	Trade for the information.
+
+	[b]You will lose §400k regardless of the outcome.[/b]
+>>
+EVT_PEDDLER_INFO_LEVERAGE: <<
+	It takes some time, but eventually you manage to convince the trader to give you information that certain empires would prefer to conceal. This will no doubt come in handy during your next session in the Senate.
+
+	[b]Gained high-quality 'Leverage' influence cards against two random empires.[/b]
+>>
+EVT_PEDDLER_INFO_CHART: <<
+	After a short round of negotiations, you arrive at a deal, obtaining astrometric and ecological data detailing the locations, resources and environments of every planet within several star systems.
+
+	[b]Received full knowledge of planets in four randomly selected systems.[/b]
+>>
+
+//*********************************************
+//***********VANGUARD VICTORY TEXTS************
+//*********************************************
+
+V_VANGUARD_TITLE: Vanguard Victory!
+V_VANGUARD_LESSER_TITLE: Lesser Victory...
+V_VANGUARD_LESSER_TEXT: <<|
+	Your mission has failed. The Overlords will not be pleased.
+	
+	All is not lost, however. You have helped the $1 reach for the stars. They may think you a mere vassal, but when the Overlords come... you shall take up arms to assist them once more, and hope they show mercy upon you...
+>>
+V_VANGUARD_LOST_TITLE: Defeat!
+V_VANGUARD_LOST_TEXT: <<|
+	You have been [color=#f00]defeated[/color]! Your invasion force lies in ruin, and what few survivors remain now beg the leaders of the $1 for mercy, knowing that the Overlords will show them none...
+>>
+V_VANGUARD_SUCCESS_TITLE: Invasion!
+V_VANGUARD_SUCCESS_TEXT: <<|
+	As the portal opens, the Overlords' fleet emerges. Your completion of your mission will undoubtedly see your race gain great prestige.
+	
+	There are those in this region that continue to fight us. It does not matter, for the supreme might of this new armada will exterminate all resistance, and [color=#0f0]victory[/color] shall be ours...
+>>
+V_VANGUARD_WON_TITLE: Glorious Victory!
+V_VANGUARD_WON_TEXT: <<|
+	You have achieved [color=#0f0]victory[/color]! The Overlords will surely reward you and your race for such exceptional performance, and while you continue making preparations for their arrival, you will rule the galaxy in their name...
+>>
+V_VANGUARD_LESSEROTHERSUCCESS_TEXT: <<|
+	The portal opens, and the Overlords emerge, leading an armada of insurmountable might. Your race may gain prestige today, but it pains you greatly that you were forced to give the $1 the honor of allowing the Overlords' arrival.
+	
+	There are other races that do not recognize the power the Overlords represent. Perhaps you can still curry some favor with your great masters by shattering pockets of resistance; if you do not, they or your competing races most certainly will...
+>>
+V_VANGUARD_LESSEROTHER_TEXT: <<|
+	As a vassal empire, you have helped the $1 subjugate this this galaxy in the name of the Overlords. They will continue their efforts to bring forth your masters, but you cannot gain any prestige here anymore; only try to avoid losing it while you wait...
+>>
+V_VANGUARD_LOSTOTHERSUCCESS_TEXT: <<|
+	The $1 has [color=#f00]defeated[/color] you; beaten you to it. How many of your forces remain is of no consequence now; all that matters as the Overlord fleet emerges from the portal is that your failed efforts to take this great honor for yourself have caused you to lose all of it.
+	
+	Your race will be purged, a fate even worse than what awaits those empires that still resist; perhaps you could still save yourselves by allying against the Overlords...
+>>
+V_VANGUARD_LOSTOTHER_TEXT: <<|
+	The $1 has [color=#f00]defeated[/color] you and conquered the galaxy. For now, they rule in the Overlords' name, and if you survived, you have time to reflect upon the mistakes you have made, and upon the grisly fate that awaits you when the portal is opened...
+>>
+
+//*********************************************
+//***********DEFAULT VICTORY TEXTS*************
+//*********************************************
+
+V_LESSERTOVANGUARD_TITLE: Enslaved, but not destroyed...
+V_LESSERTOVANGUARDSUCCESS_TEXT: <<|
+	You saw the wisdom of assisting the $1 in their quest. You are somewhat nervous about the arrival of their 'Overlords'; while your race will survive past this dreaded day, they will now be enslaved.
+	
+	Perhaps, someday, your race will prove its worth and regain some of the freedoms they have sacrificed. However, they will never again have hopes of galactic dominance...
+>>
+V_LESSERTOVANGUARD_TEXT: <<|
+	You saw the wisdom of assisting the $1 as they conquered the galaxy. Now, they act as stewards for the 'Overlords' they spoke of. Your race has survived, but it now exists only in slavery.
+	
+	Perhaps, someday, after the Overlords arrive, your race will gain their favor, gaining prestige and regaining some of their freedoms. Despite this, they will never again have a chance at galactic dominance...
+>>
+V_LOSTTOVANGUARDSUCCESS_TITLE: Invasion!
+V_LOSTTOVANGUARDSUCCESS_TEXT: <<|
+	The day you have feared for so long has finally come. The $1 have succeeded in their quest to summon the so-called 'Overlords'. Whether you still have any forces left is of no consequence; within the near future, the last of your race's resistance forces will be [color=#f00]destroyed[/color] and the survivors exterminated. It is over.
+>>
+V_LOSTTOVANGUARD_TITLE: Exterminated!
+V_LOSTTOVANGUARD_TEXT: <<|
+	You, and all the other races of this galaxy, have been [color=#f00]defeated[/color] by the $1 in the name of their 'Overlords'. Some would argue that you were among the less fortunate ones - your race exterminated, with what few survivors still exist doomed to die while the Overlords are summoned.
+	
+	Others would argue that you avoided a lifetime of slavery, the fate that awaits the rest of the galaxy...
+>>

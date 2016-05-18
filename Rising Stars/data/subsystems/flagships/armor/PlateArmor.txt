@@ -1,0 +1,26 @@
+Subsystem: PlateArmor
+	Name: #PLATEARMOR_NAME
+	Description: #PLATEARMOR_DESC
+	BaseColor: #a9a9a9
+	Elevation: 1
+
+	Tags: LowMaint, Category:Armor, NoWall, FauxExterior
+	Tags: NoCore, NonContiguous, DefaultUnlock, Defense, IsArmor, TankArmor, ExternalSpace
+	Tags: PrimaryArmor
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+
+	Hex.Resistance := 0.5
+	Hex.HP := 60 * HexSize
+
+	Hex.Mass := 5 * HexSize
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+	Hex.LaborCost := 0.2 * HexSize 
+	Hex.BuildCost := 0.3 * HexSize 
+	Hex.MaintainCost := 0
+	
+	
+	Module: Default
+			Sprite: PlateArmor

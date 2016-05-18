@@ -1,0 +1,27 @@
+Trait: Sublight
+	Name: #TRAIT_SUBLIGHT
+	Description: #TRAIT_SUBLIGHT_DESC
+	Order: 50
+
+	Category: FTL
+	Unique: FTL
+
+	Icon: TraitIcons::1
+	Color: #ffaaaa
+
+	Gives Points: 3
+
+	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
+	IfNotHaveTrait(Technicists, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
+	
+	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
+	IfHaveTrait(Verdant, LoadDesigns(verdant/not_hyperdrive))
+
+	IfHaveTrait(Devout, LoadDesigns(devout/default))
+	IfHaveTrait(Devout, LoadDesigns(devout/not_hyperdrive))
+
+	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
+	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
+
+	IfHaveTrait(Technicists, LoadDesigns(technicist/default))
+	IfHaveTrait(Technicists, LoadDesigns(technicist/not_hyperdrive))

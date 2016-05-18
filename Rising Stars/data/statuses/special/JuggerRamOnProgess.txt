@@ -1,0 +1,4 @@
+Status: JRamSpeed
+	Name: Ramming
+	Icon: RammingSpeed
+	AddAccelerationBonus(10)

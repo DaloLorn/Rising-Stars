@@ -1,0 +1,11 @@
+Status: Cerulean
+	Name: #NEBULA_CERULEAN
+	Description: #NEBULA_CERULEAN_DESC
+	Icon: ResourceIcon::5 * #00ff00
+
+	ABEM_nebulae::DisableShields()
+	ABEM_nebulae::DisableStatus(Cloaked)
+	ForceHoldFire()
+	ABEM_nebulae::StatusBlockFTLSystem()
+	ABEM_sensors::AddSightModifier(200, 0.66)
+	LimitSeeableRange(1000*$SENSOR_RANGE_MULT)

@@ -1,0 +1,87 @@
+Material: ABEMSubsystem
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+// *********************************************************
+// ***************POWER AND SUPPLY TECHNOLOGY***************
+// *********************************************************
+
+Material: SAmatter
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/SAmmater.png	
+Material: AntimatterGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/amgen.png
+Material: ShieldedAntimatterGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shielded_amgen.png
+Material: SingularityCore
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/singularitycore.png
+Material: SolarCell
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/SolarCell.png
+
+Material: ABEMSupply
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/supply_normal.png
+Material: CargoStorage
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/cargostorage.png
+Material: ABEMComputer
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/computer.png
+Material: FusionGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/fusiongen.png
+	
+// *********************************************************
+// *******************SHIELD TECHNOLOGY*********************
+// *********************************************************
+Material: ShieldGen
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shieldgen.png
+Material: CovariantShield
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/covariantshield.png
+Material: SupportShield
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/supportshield.png
+Material: ShieldHardener
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/shieldstuff.png
+	
+// *********************************************************
+// ************************ARMOR****************************
+// *********************************************************
+Material: QuantumArmor
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/armor_quantum.png
+Material: CompositeArmor
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/armor_composite.png
+Material: Superstructure
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/superstructure.png	
+	
+// *********************************************************
+// **********************MODIFIERS**************************
+// *********************************************************
+
+Material: CoolantModifier
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/Coolant.png
+
+// *********************************************************
+// ******************ABILITY SUBSYSTEMS*********************
+// *********************************************************
+
+Material: BoardingParty
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/boardingparty.png
+Material: SecurityStation
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/securityparty.png

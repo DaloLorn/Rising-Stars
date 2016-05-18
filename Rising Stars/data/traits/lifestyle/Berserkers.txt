@@ -1,0 +1,26 @@
+Trait: Berserkers
+	Name: #TRAIT_BERSERKERS
+	Description: #TRAIT_BERSERKERS_DESC
+	Order: 10
+
+	Category: Lifestyle
+	Unique: Lifestyle
+	DLC: Heralds
+
+	Icon: TroopPods
+	Color: #ff0213
+	AI Support: False
+
+	AddStatusOwnedPlanets(Berserkers)
+
+	ModAttribute(VoteCardCostMod, Add, 4.0)
+	ModAttribute(SupportCardCostMod, Add, 2.0)
+	ModAttribute(ResearchFromKill, Add, 1)
+
+	UnlockSubsystem(TroopPods)
+
+	//OnHomeworld(AddPlanetResource(Sulphate))
+
+	ABEM_glory::SetGloryMeter(BerserkerGlory, Level Up = 5)
+	//AddModifier(SupportCapacityFactor(0.5))
+	//AddModifier(SupplyCostFactor(0.75))

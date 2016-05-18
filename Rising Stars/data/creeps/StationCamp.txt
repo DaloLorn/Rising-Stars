@@ -1,0 +1,29 @@
+Camp: StationCamp
+
+	Frequency: 0.1
+	
+	Ship: Fortress [Remnant Fortress]
+	//Flagship Size: 768
+	//Support Occupation: 0.10
+	//Remnant Status: RemStrIncrease
+
+	Pickup: UNLOCK_CRYS
+		Name: #PICKUP_CRYS
+		Description: #PICKUP_CRYS_DESC
+		UnlockSubsystem(CrystalArmor)
+		TakeOnClear()
+		DLC: Heralds
+
+	Pickup: UNLOCK_DISRUPTOR
+		Name: #PICKUP_DISRUPTOR
+		Description: #PICKUP_DISRUPTOR_DESC
+		UnlockSubsystem(Disruptor)
+		TakeOnClear()
+		DLC: Heralds
+
+	Pickup: UNLOCK_LANCE
+		Name: #PICKUP_PARTICLE_LANCE
+		Description: #PICKUP_PARTICLE_LANCE_DESC
+		DLC: Heralds
+		TakeOnClear()
+		UnlockSubsystem(ParticleLance)

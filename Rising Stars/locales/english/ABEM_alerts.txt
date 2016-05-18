@@ -1,0 +1,2 @@
+ALERT_READY_FOR_HARVESTING: Ready to Harvest [color=$4]$3[/color]
+ALERT_READY_FOR_HARVESTING_DESC: A Harvester has prepared the planet [color=$4]$3[/color] for harvesting. Use the 'Harvest Planet' ability on one of your Ringworlds to harvest it.

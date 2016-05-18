@@ -1,0 +1,224 @@
+// *********************************************************
+// **************SUBSYSTEM CATEGORIES HERE!*****************
+// *********************************************************
+
+SC_Armor:[hspace=4/][img=PlateArmor;32x32/][hspace=6/]  [color=#6e7371]Armor[/color]
+SC_Power:[hspace=4/][img=DesignationIcons::2;32x32/][hspace=6/]  [color=#6e7371]Power and Supply[/color]
+SC_Manufacturing:[hspace=4/][img=ResourceIcon::6;32x32/][hspace=6/]  [color=#6e7371]Manufacturing[/color]
+SC_Shields:[hspace=4/][img=TechIcons::6;32x32/][hspace=6/]  [color=#0A50F5]Shields[/color]
+SC_Sensors:[hspace=4/][img=TechIcons::1;32x32/][hspace=6/] [color=#9ed6ff]Sensors[/color]
+
+// *********************************************************
+// ****************SUBSYSTEM ERRORS HERE!*******************
+// *********************************************************
+
+// *********************************************************
+// ****************SUBSYSTEM STATS HERE!********************
+// *********************************************************
+
+S_COMBATSUPPLYREGEN: Combat Supply Regeneration
+STT_COMBATSUPPLYREGEN: <<
+	The rate at which this ship regenerates Supply in combat. This is in addition to normal Supply regeneration.
+>>
+S_BOARDTOTAL: Boarding Defense
+STT_BOARDTOTAL: <<
+	The strength with which the ship will fight off boarders. This number must exceed the Boarding Strength of the attacking ship's Boarding Parties in order to survive a boarding action.
+>>
+S_BOARDSUBSYS: Boarding Strength
+STT_BOARDSUBSYS: <<
+	The strength this subsystem contributes to a boarding defense. Only Boarding Parties contribute to an offensive boarding action; their offensive strength is the same as their defensive strength.
+>>
+S_SENSORRANGE: Base Sensor Range
+STT_SENSORRANGE: <<
+	How far the ship can see, prior to the application of any multiplying effects such as entering a nebula, and prior to modification by the game's Global Sensor Multiplier.
+	
+	This does not necessarily have to be the actual range of the ship's sensors, but it might provide a good idea of how big that range will be.
+>>
+S_PLANETMININGRATE: Mining Rate
+STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
+S_SENSORMULT: Sensor Multiplier
+S_SENSORPRIORITY: Sensor Priority
+S_PROJRESIST: Projectile Resistance
+S_ENERGYRESIST: Energy Resistance
+S_EXPLRESIST: Explosive Resistance
+
+// *********************************************************
+// ******************SUBSYSTEMS HERE!***********************
+// *********************************************************
+
+S_ZPG: Singularity Core
+S_SHIELDED_AMGEN: Shielded Antimatter Generator
+S_COVARIANT_SHIELD: Covariant Shield Generator
+S_REMNANTSHIELD: Progenitor Shield Generator
+S_BATTERY_NAME: Batteries
+S_BOARDING_PARTY: Boarding Parties
+S_GUARDIANHULL: Guardian Hull
+S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
+
+TARGETINGSENSOR_DESC: <<
+	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
+
+	[img=Plus;22;#cf00ff]Can be placed on weapon subsystems.[/img]
+	[img=Plus]Increases the [b][color=#80ffea]range[/color][/b] of the weapon.[/img]
+	[img=Minus]Increases the build cost of the weapon by 50%.[/img]
+	[img=Minus]Slightly increases the [b][color=#fefc61]supply cost[/color][/b] of firing the weapon.[/img]
+	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
+>>
+
+S_TITAN_HULL_DESC: <<
+	An extremely heavy hull frame that allows larger ships to be constructed more efficiently.
+
+	[img=Plus]Much more internal space available.[/img]
+	[img=Plus]Reduces build costs by up to 50% as the ship size gets bigger.[/img]
+	[img=Plus]Rigorous construction increases turret potential firing arcs.[/img]
+	[img=Minus]Can only be used for ships of size 500 or greater.[/img]
+>>
+
+S_CARRIER_HULL_DESC: <<
+	A hull specifically designed to control and maintain a large fleet of support ships.
+
+	[img=Plus]Doubles any support capacity.[/img]
+	[img=Plus]Doubles all health.[/img]
+	[img=Plus]Increases supply capacity by 50%.[/img]
+	[img=Minus]Cannot have any weapons on the flagship.[/img]
+	[img=Minus]Less internal space available.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_DESTROYER_HULL_DESC: <<
+	A hull optimized to fit many different weapon turrets at the cost of being unable to field a support fleet.
+
+	[img=Plus]Increases all health by 200%, and increases armor damage resistance by 100%.[/img]
+	[img=Plus]Decreases mass by 50%.[/img]
+	[img=Plus]Increases repair rate by 200%.[/img]
+	[img=Plus]More internal space available.[/img]
+	[img=Minus]Cannot have any support command on the flagship.[/img]
+	[img=Minus]Weapon range reduced by 30%.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Destroyer Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_SHIELDED_AMGEN_DESC: <<
+	A sustained matter-antimatter annihilation reaction provides continuous power for the ship. This generator comes with a built-in shield generator to protect it, allowing it to operate at full output - though much of it is used by the shield - even in combat.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]very large[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color] [color=#fefc61]Resupply Rate[/color][/b]. Minor resupply even in [color=#ff0000][b]Combat[/b][/color].[/img]
+	[img=Plus]Does not destroy the ship when damaged.[/img]
+	[img=Minus]High construction and moderate maintenance costs.[/img]
+	[img=Minus]Provides less power and resupplies the ship slower than a regular antimatter generator.[/img]
+>>
+
+S_SHRINE_DESC: <<
+	A shrine to honor the Old Gods, constructed in accordance with the blueprints they bestowed upon us. Praying to the shrine protects the ship from harm.
+
+	[img=Plus]Adds a Shield to the ship.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+
+S_ZPG_DESC: <<
+	An artificial quantum singularity harnessed to provide immense quantities of power.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]large to huge[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems, depending on its size.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color][/b] [b][color=#fefc61]Resupply Rate[/color][/b], somewhat lower than that of Antimatter Generators.[/img]
+	[img=Plus]No maintenance cost.[/img]
+	[img=Minus]Very high construction and Labor costs.[/img]
+>>
+
+S_TORPEDOLAUNCHER_DESC: <<
+	Launches massive, slow-moving, guided bombs. These bombs explode in an area around their target.
+
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Deals damage in an area.[/img]
+	[img=Minus]Very slow fire rate.[/img]
+	[img=Minus]Very low [b][color=#ff8080]DPS[/color][/b].[/img]
+>>
+
+SUPPORTSUPPLY_DESC: <<
+	A secondary supply storage facility may be placed on particular support ships, increasing the amount of ammunition and general combat materials available to the fleet.
+
+	[img=AttributeIcons::4;22]Provides [b][color=#fefc61]Supply Capacity[/color][/b] to the fleet.[/img]
+	[img=Minus]Adds maintenance cost to the support ships.[/img]
+	[img=Minus]Destroyed supply storage hexes leak supplies over time.[/img]
+	[img=MenuIcons::3;20;#f00][i][color=#faa]Support ships with maintenance costs will not be created by Defense.[/color][/i][/img]
+>>
+
+S_REMNANTSHIELD_DESC: <<
+	Incredibly advanced Progenitor technology. Creates a powerful shield around the vessel, blocking some incoming damage.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Plus]Stronger than covariant shields.[/img]
+	[img=Plus]Regenerates faster than standard shields.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Minus]Very expensive, and requires a lot of Power.[/img]
+>>
+S_COVARIANT_SHIELD_DESC: <<
+	Creates a shield around the vessel, blocking some incoming damage. Covariant shields are more powerful, but they regenerate at a slower rate than their standard counterparts.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Plus]Increased capacity.[/img]
+	[img=Minus]Reduced regeneration.[/img]
+>>
+
+S_SUPSHIELD_DESC: <<
+	Creates a shield around the vessel, blocking some incoming damage. This shield's capacitors must be charged by the support ship's inferior power supply, so it regenerates at a slower rate compared to flagship shielding.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+>>
+
+S_BOARDING_PARTY_DESC: <<
+	Contains all the equipment required to send boarding parties onto an object in space, and attempt to capture it.
+
+	[img=Plus]Allows a ship to attempt to capture enemy flagships, orbitals, or asteroid mines.[/img]
+	[img=Plus]Can also be used for defense against boarders, or to take control of derelict ships.[/img]
+	[img=Minus]Only one boarding party can attempt to capture an object at any given moment.[/img]
+	[img=Minus]Can take between 10 to 100 seconds to complete, and has a high cooldown.[/img]
+	[img=MenuIcons::3;20]Objects belonging to a Verdant race cannot be boarded.[/img]
+>>
+S_SECURITY_STATION: Security Station
+S_SECURITY_STATION_DESC: <<
+	Defensive installations designed to prevent ship capture by boarding parties.
+
+	[img=Plus]Is twice as effective at boarding defense than a Boarding Party hex.[/img]
+	[img=Minus]Cannot be used for boarding offense.[/img]
+>>
+
+// *********************************************************
+// ****************ARMOR!*******************
+// *********************************************************
+S_COMPOSITE_ARMOR: Composite Armor
+S_CRYSTAL_ARMOR: Crystalline Armor
+S_NANO_ARMOR: Nanite Armor
+S_POWERED_ARMOR: Powered Armor
+S_QUANTUM_ARMOR: Quantum Armor
+S_REMNANT_ARMOR: Progenitor Armor
+
+S_QUANTUM_ARMOR_DESC: <<
+	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.
+
+	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
+	[img=Plus]Lower mass than that of Neutronium Armor.[/img]
+	[img=Minus]Expensive.[/img]
+	[img=Minus]High labor cost.[/img]
+>>
+
+S_COMPOSITE_ARMOR_DESC: <<
+	A uniform, seamless coat of a highly resistant composite material.
+
+	[img=Plus]Reduces all incoming damage by a fixed percentage.[/img]
+	[img=MenuIcons::3;20]Just as heavy as Progenitor or Reactive Armor. Slightly tougher than Ablative, but weaker than Plate Armor.[/img]
+	[img=Minus]Requires a low amount of maintenance, and is twice as labor-intensive as - and slightly more expensive than - Plate Armor.[/img]
+>>
+
+S_SUPERSTRUCTURE: Structural Reinforcement
+S_SUPERSTRUCTURE_DESC: <<
+	Light-weight metal scaffolding to give structure and definition to the ship.  Somewhat more resistant to damage than most other components, but not as protective per-weight as actual armor.
+
+	[img=Plus]Slightly resists and reduces incoming damage.[/img]
+	[img=Plus]Structural Reinforcement on the outside of the ship does not use up interior space.[/img]
+	[img=Plus]Cheap and lightweight.[/img]
+	[img=Minus][b][color=#f00]Very low[/color] [color=#80ff80]health[/color][/b].[/img]
+>>

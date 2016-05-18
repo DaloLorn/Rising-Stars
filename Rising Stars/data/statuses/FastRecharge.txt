@@ -1,0 +1,8 @@
+Status: FastRecharge
+	Name: #STATUS_FAST_RECHARGE
+	Description: #STATUS_FAST_RECHARGE_DESC
+	Icon: ResourceIcon::5 * 429cffff * #00ff00
+	Collapses: True
+
+	ABEM_hooks::ApplyToLeaderAI()
+	RepeatStacks(ABEM_hooks::RechargeShields(25, Percent = 0.01))

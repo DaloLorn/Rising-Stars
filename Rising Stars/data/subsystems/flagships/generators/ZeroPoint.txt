@@ -1,0 +1,39 @@
+Subsystem: ZeroPoint
+	Name: #S_ZPG
+	Description: #S_ZPG_DESC
+	BaseColor: #5ade8b
+	Elevation: 1
+
+	Tags: IsReactor, Category:Power
+	Hull: Flagship, Station
+	Tags: Important, HasInternals
+
+
+	Size := HexSize * Hexes
+	Power := max(40 * Size,(60*log((Size/70)^2)+128)*Size) //Minimum power is now the AM gen Assert no longer need
+	EnergyCapacity := 0.25 * Power
+	SupplyCapacity := Size * 1200
+	SupplyRate := Size * 70
+
+	Hex.Resistance := 0.5
+	Hex.HP := 18 * HexSize
+	Hex.Mass := 3 * HexSize+3
+
+	Hex.LaborCost := 1 * HexSize + 5
+	Hex.BuildCost := 20 * HexSize + 20
+	Hex.MaintainCost := 0
+
+
+	Provides:
+		Power = Power
+
+	Module: Core
+		Sprite: SingularityCore
+
+	Module: Default
+
+	Modifier: SupplyCapacityFactor(factor)
+		SupplyCapacity := SupplyCapacity * factor
+
+	Modifier: PowerFactor(factor)
+		Power := Power * factor

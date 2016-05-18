@@ -1,0 +1,7 @@
+Effect: ReduceDamagePercentile
+	Value: ProjResist
+	Value: EnergyResist
+	Value: ExplResist
+	Value: MinimumPercent = 0
+
+	Damage: ABEMCombat::ReduceDamagePercentile

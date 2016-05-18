@@ -1,0 +1,28 @@
+ORB_SHIELD_CHARGER: Power Transmitter
+ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.
+ORB_SHIELD_CHARGER_DESC: <<
+	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
+	
+	Increases the out-of-combat shield recharge rate of all ships in the system by 25, plus 0.01% of the ships' shield capacity.
+>>
+
+ORB_STELLAR_SHIELD: Stellar Shield Generator
+ORB_STELLAR_SHIELD_BLURB: Adds a powerful shield to all stars in the system.
+ORB_STELLAR_SHIELD_DESC: <<
+	A gargantuan shield emitter, this facility envelops entire stars in a powerful shield, providing a temporary defense against weapons such as Graviton Condensers.
+
+	Adds 1G shield capacity to every star in the system. Black holes receive 10G shield capacity. Shield regenerates at a rate of 1M per second.
+
+	Stacks with other stellar shielding technology. Will protect indiscriminately against friendly and enemy attacks alike.
+>>
+ORB_EMBASSY: Embassy
+ORB_EMBASSY_BLURB: Sends envoys to other planets to achieve diplomatic goals.
+ORB_EMBASSY_DESC: <<
+	A center of diplomatic activity, this station periodically sends out Envoys to other planets. Envoys persuade the governments of enemy planets that they would be better off under their empire's rule, and inspire the populations of allied planets into persisting long after they would normally be beaten.
+
+	Enemy planets visited by an Envoy have a 10% chance of defecting to your empire. Planets belonging to your empire, your vassals or an empire you have an Alliance with will be immune to loyalty loss for 180 seconds.
+
+	Diplomatic backlash gives you and your allies Leverage against anyone who would destroy the Embassy.
+
+	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
+>>

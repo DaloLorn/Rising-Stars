@@ -1,0 +1,17 @@
+Technology: ZeroPoint
+	Name: #S_ZPG
+	Class: Unlock
+	Icon: SingularityCore
+	Description: #R_SYS_ZPG_DESC
+	Color: #24ff99
+	Category: ABEM - Subsystems
+	Symbol: ResourceIcon::2
+	
+	
+	Point Cost: 0
+	Time Cost: 180
+	
+	ModAttribute(ProgenitorTechProgress, Add, 10)
+	SkipOnUnlockedSubsystem(ZeroPoint)
+	SecondaryEnergyCost(500)
+	UnlockSubsystem(ZeroPoint)
