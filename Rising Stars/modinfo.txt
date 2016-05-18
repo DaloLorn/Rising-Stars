@@ -1,11 +1,11 @@
 	Name: Rising Stars
 	Description: <<
 		[h1][b]Links[/b][/h1]
-		[b]Rising Stars  on GitHub:[/b] https://github.com/Alarcarr/ABEMMOD
-		[b]Rising Stars on ModDB:[/b] http://moddb.com/mods/alternate-balance-expansion-mod
-		[b]Rising Stars 's experimental branch:[/b] http://steamcommunity.com/sharedfiles/filedetails/?id=445360327
-		[b]Rising Stars  forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/355873534
-		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/619574421213069797/
-		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
+		[b]Rising Stars  on GitHub:[/b]	https://github.com/Alarcarr/Rising-Star
+		[b]Rising Stars on ModDB:[/b]
+		[b]Rising Stars 's experimental branch:[/b]
+		[b]Rising Stars  forums:[/b] 
+		[b]Patch notes:[/b] 
+		[b]Credits:[/b] 
 	>>
 	Compatibility: 200

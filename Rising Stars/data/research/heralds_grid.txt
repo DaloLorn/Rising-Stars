@@ -176,10 +176,6 @@ Grid: Heralds
 	FactoryLabor: 7,-4
 	SupplyStorage2: 9,7
 	Energy: 10,8
-	Range: 1,14
-	FlagHealth: 0,15
-	Warhead: 1,16
-	Damage: 1,17
 	Damage: 4,9
 	MissileRange: 5,10
 	InfiniteHealth: 5,7
@@ -250,8 +246,6 @@ Grid: Heralds
 	Damage: 0,-9
 	ImpSupportDamage: 6,-6
 	AugmentDamage: 1,11
-	ImpAoE: 2,13
-	ImpAoE: 0,17
 	DevBudgetSmall: 5,-1
 	ArmorDR: 0,1
 	FactoryLabor2: 6,7
@@ -270,3 +264,5 @@ Grid: Heralds
 	JuggernautHull: 2,12
 	Prosperity: 4,6
 	FerroFluidArmor: 2,6
+	Tactics: 0,13
+	Warhead: 1,14
