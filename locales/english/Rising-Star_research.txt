@@ -1,0 +1,6 @@
+R_SYS_FERROFLUID_ARMOR: FerroFluid Armor
+R_SYS_FERROFLUID_ARMOR_DESC: <<
+	[color=#aaa][i]Unlocks the FerroFluid Armor subsystem.[/i][/color]
+
+	[bbloc=#S_FERROFLUIDARMOR_DESC/]
+>>
