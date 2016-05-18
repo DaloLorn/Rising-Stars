@@ -18,11 +18,11 @@ Subsystem: LiquidArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Effect: DistributeHealth
-	
-	Hex.LaborCost := 0.4 * HexSize 
-	Hex.BuildCost := 0.7 * HexSize 
-	Hex.MaintainCost := 0.1
-	
+
+	Hex.LaborCost := 0.4 * HexSize
+	Hex.BuildCost := 0.7 * HexSize
+	Hex.MaintainCost := 0.1 * HexSize
+
 	Module: Default
-	
+
 		Sprite: PlateArmor * #91692c
