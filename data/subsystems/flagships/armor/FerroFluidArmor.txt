@@ -13,7 +13,7 @@ Subsystem: FerroFluidArmor
 
 	Hex.Resistance := 0.1
 	Hex.HP := 60 * HexSize
-	Hex.Mass := 1.5 * HexSize
+	Hex.Mass := 1.1 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
