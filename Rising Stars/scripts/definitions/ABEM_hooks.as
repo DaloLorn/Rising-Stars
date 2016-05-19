@@ -59,7 +59,7 @@ class Regeneration : SubsystemEffect {
 	void tick(SubsystemEvent& event, double time) const override {
 		uint Hexes = event.subsystem.hexCount;
 		uint i = 0;
-		double amount = arguments[0].decimal;
+		double amount = arguments[0].decimal * time;
 		double excess = 0;
 		if(arguments[1].boolean) {
 			amount = amount / Hexes;
