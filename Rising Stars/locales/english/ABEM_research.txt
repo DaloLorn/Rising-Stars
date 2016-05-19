@@ -110,3 +110,9 @@ R_COMPOSITE_ARMOR_DESC: <<
 
 	[i][bbloc=#S_COMPOSITE_ARMOR_DESC/][/i]
 >>
+R_SYS_FERROFLUID_ARMOR: Ferrofluid Armor
+R_SYS_FERROFLUID_ARMOR_DESC: <<
+	[color=#aaa][i]Unlocks the Ferrofluid Armor subsystem.[/i][/color]
+
+	[bbloc=#S_FERROFLUIDARMOR_DESC/]
+>>
