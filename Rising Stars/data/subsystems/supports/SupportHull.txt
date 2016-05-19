@@ -5,6 +5,7 @@ Subsystem: SupportHull
 	EvaluationOrder: -100
 
 	HexLimit := 60
+	BaseHexLimit := 60
 	FreeHexLimit := 0
 
 	GridWidth := 19

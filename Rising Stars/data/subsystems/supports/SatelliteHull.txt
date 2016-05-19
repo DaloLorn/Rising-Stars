@@ -8,6 +8,7 @@ Subsystem: SatelliteHull
 	EvaluationOrder: -100
 
 	HexLimit := 70
+	BaseHexLimit := 70
 	FreeHexLimit := 0
 
 	GridWidth := 21

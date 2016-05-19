@@ -4,6 +4,7 @@ Subsystem: StationHull
 	EvaluationOrder: -100
 
 	HexLimit := 160
+	BaseHexLimit := 160
 	FreeHexLimit := 0
 
 	GridWidth := 28

@@ -9,12 +9,16 @@ Subsystem: Forcefield
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	PowerUse := (10 + 1 * (Hexes - 1)) * HexSize
+	PowerUse := (10 + 1 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
 	RegenRate := 0.75 * Size
 	Capacity := 15 * HexSize * (Hexes - 1)
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
 	State: double = Capacity
+
+	Requires:
+		Command = 1
+		Power = PowerUse
 
 	Module: Core
 		Sprite: SupportShield*#50ffff

@@ -5,6 +5,7 @@ Subsystem: FlagshipHull
 
 	HexLimit := 128
 	FreeHexLimit := 0
+	BaseHexLimit := 128
 
 	GridWidth := 28
 	GridHeight := 23

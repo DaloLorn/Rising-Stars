@@ -4,6 +4,7 @@ Subsystem: RemnantHull
 	EvaluationOrder: -100
 
 	HexLimit := 80
+	BaseHexLimit := 80
 	GridWidth := 28
 	GridHeight := 23
 
@@ -27,6 +28,7 @@ Subsystem: RemnantSupportHull
 	EvaluationOrder: -100
 
 	HexLimit := 40
+	BaseHexLimit := 40
 	Ship.HexSize := ShipSize / HexLimit
 
 	Repair := (ShipSize / HexLimit) * 16
