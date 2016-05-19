@@ -11,7 +11,7 @@ Material: ABEMSubsystem
 
 Material: SAmatter
 	Inherit: ABEMSubsystem
-	Texture: data/images/subsystems/SAmmater.png	
+	Texture: data/images/subsystems/SAmmater.png
 Material: AntimatterGen
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/amgen.png
@@ -37,7 +37,7 @@ Material: ABEMComputer
 Material: FusionGen
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/fusiongen.png
-	
+
 // *********************************************************
 // *******************SHIELD TECHNOLOGY*********************
 // *********************************************************
@@ -53,7 +53,7 @@ Material: SupportShield
 Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
-	
+
 // *********************************************************
 // ************************ARMOR****************************
 // *********************************************************
@@ -65,8 +65,8 @@ Material: CompositeArmor
 	Texture: data/images/subsystems/armor_composite.png
 Material: Superstructure
 	Inherit: ABEMSubsystem
-	Texture: data/images/subsystems/superstructure.png	
-	
+	Texture: data/images/subsystems/superstructure.png
+
 // *********************************************************
 // **********************MODIFIERS**************************
 // *********************************************************
@@ -85,3 +85,6 @@ Material: BoardingParty
 Material: SecurityStation
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/securityparty.png
+Material: ProgenitorArmor
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/armor4.png

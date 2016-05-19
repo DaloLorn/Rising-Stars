@@ -4,32 +4,32 @@ Subsystem: CompositeArmor
 	BaseColor: #128cc1
 	Elevation: 1
 
-	Tags: Category:Armor
+	Tags: Category:Armor, FauxExterior, PrimaryArmor
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Tags: FauxExterior
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	// 0.1 = 10%
-	CompProjResist := 0.3
+	CompProjResist := 0.20
 	CompEnergyResist := 0.10
-	CompExplosiveResist := 0.15
+	CompExplosiveResist := 0.35
 
 	// Dummies for design_stats.txt
 	DummyProjResist := CompProjResist * 100
 	DummyEnergyResist := CompEnergyResist * 100
 	DummyExplosiveResist := CompExplosiveResist * 100
 
-	Hex.HP := 40 * HexSize
+	Hex.HP := 45 * HexSize
 	Hex.Mass := 2.5 * HexSize
-	
+
 	Hex.LaborCost := 0.6 * HexSize
 	Hex.BuildCost := 0.4 * HexSize
-	Hex.MaintainCost := 0.1 * HexSize
+	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 
 
+	Hex.Resistance := 0.6
 	Effect: ReduceDamagePercentile
 		ProjResist = CompProjResist
 		EnergyResist = CompEnergyResist

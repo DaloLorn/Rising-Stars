@@ -200,9 +200,11 @@ S_QUANTUM_ARMOR_DESC: <<
 	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.
 
 	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
-	[img=Plus]Lower mass than that of Neutronium Armor.[/img]
+	[img=Plus]Lower mass than most types of Armor.[/img]
 	[img=Minus]Expensive.[/img]
 	[img=Minus]High labor cost.[/img]
+	[img=Minus]Ongoing maintenence cost[/img]
+	[img=Minus]Requires a little power[/img]
 >>
 
 S_COMPOSITE_ARMOR_DESC: <<

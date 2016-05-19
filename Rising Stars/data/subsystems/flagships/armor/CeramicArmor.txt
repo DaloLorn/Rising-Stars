@@ -14,8 +14,8 @@ Subsystem: CeramicArmor
 	Hex.HP := 30 * HexSize
 	Hex.Mass := 1.0 * HexSize
 
-	Hex.LaborCost := 0.425 * HexSize
-	Hex.BuildCost := 0.2 * HexSize
+	Hex.LaborCost := 0.35 * HexSize
+	Hex.BuildCost := 1.75 * HexSize
 	Hex.MaintainCost := 0
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
@@ -24,7 +24,7 @@ Subsystem: CeramicArmor
 
 	Effect: ReduceDamage
 		ProjResist = DamageResist * 0.8
-		EnergyResist = DamageResist * 4.0
+		EnergyResist = DamageResist * 3.0
 		ExplResist = DamageResist
 		MinimumPercent = 1/6
 

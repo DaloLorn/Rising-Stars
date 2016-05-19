@@ -8,25 +8,23 @@ Subsystem: NeutronArmor
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
 	Tags: PrimaryArmor
 	Hull: Flagship, Station
-	
+
 	Tags: FauxExterior
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
-	
+
 	Size := HexSize * Hexes
 
-	Hex.Resistance := 0.5
-	Hex.HP := 125 * HexSize
-	Hex.Mass := 6 * HexSize
-	Hex.LaborCost := 1 * HexSize 
-	Hex.BuildCost := 0.5 * HexSize 
+	Hex.Resistance := 0.8
+	Hex.HP := 300 * HexSize
+	Hex.Mass := 8 * HexSize
+	Hex.LaborCost := 2 * HexSize
+	Hex.BuildCost := 8 * HexSize
 	Hex.MaintainCost := 0
-	
-	DamageResist := ShipSize /25
+
+	DamageResist := ShipSize / 30
 	Effect: DamageResist
 		Resist = DamageResist
 
 	Module: Default
-		
-		Sprite: PlateArmor * #449944
 
-		
+		Sprite: PlateArmor * #449944

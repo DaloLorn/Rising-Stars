@@ -85,6 +85,7 @@ RINGWORLD_DESC: <<
 	For each resource type, if the ringworld is receiving any pressure at all for that resource, it gains [levels=$1;#ffb4b6]2/4/6/8/10/12/14[/levels] extra pressure of that resource.
 
 	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires extremely large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
 MARENIUM_DESC: <<|
 	[b]Unique[/b]. Unlocks the [b]Marenium Reactor[/b] to provide power on ships.
 

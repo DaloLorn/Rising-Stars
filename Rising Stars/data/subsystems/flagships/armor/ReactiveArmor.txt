@@ -4,7 +4,7 @@ Subsystem: ReactiveArmor
 	BaseColor: #b9a9a9
 	Elevation: 1
 
-	Tags: LowMaint, Category:Armor, FauxExterior
+	Tags: Category:Armor, FauxExterior
 	Tags: NoCore, NonContiguous, DefaultUnlock, Defense, IsArmor, BlockArmor, ExternalSpace
 	Tags: PrimaryArmor
 	Hull: Flagship, Station
@@ -13,9 +13,9 @@ Subsystem: ReactiveArmor
 	ImpactLevel := 27 * HexSize
 	MinPct := 1/6
 
-	Hex.Resistance := 0.4
-	Hex.HP := 30 * HexSize
-	Hex.Mass := 5.0 * HexSize
+	Hex.Resistance := 0.8
+	Hex.HP := 35 * HexSize
+	Hex.Mass := 4.0 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
@@ -26,9 +26,9 @@ Subsystem: ReactiveArmor
 	Modifier: ImpactFactor(factor)
 		MinPct := MinPct / factor
 
-	Hex.LaborCost := 0.4 * HexSize 
-	Hex.BuildCost := 0.5 * HexSize 
+	Hex.LaborCost := 0.4 * HexSize
+	Hex.BuildCost := 3 * HexSize
 	Hex.MaintainCost := 0
-	
+
 	Module: Default
 		Sprite: PlateArmor * #ff9999
