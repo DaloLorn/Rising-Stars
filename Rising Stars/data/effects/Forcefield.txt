@@ -1,0 +1,15 @@
+Effect: ForcefieldBase
+	Value: Regen
+	Value: Capacity
+
+	Tick: ABEM_effects::ForcefieldTick
+
+Effect: ForcefieldDamage
+	Value: Capacity
+	Value: UseBleedthrough = 1
+
+	Damage: ABEM_effects::ForcefieldDamage
+
+Effect: ForcefieldShutdown
+
+	End: ABEM_effects::ForcefieldShutdown

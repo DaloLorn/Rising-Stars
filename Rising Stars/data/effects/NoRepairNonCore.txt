@@ -1,0 +1,2 @@
+Effect: NoRepairNonCore
+	Start: ABEM_effects::NoRepairNonCore

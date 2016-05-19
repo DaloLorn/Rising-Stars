@@ -1,0 +1,2 @@
+Effect: NoRepairHexes
+	Start: heralds_combat::NoRepairHexes

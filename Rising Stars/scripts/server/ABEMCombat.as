@@ -460,3 +460,41 @@ void UnspillableDamage(Event& evt, double Amount, double Pierce, double DRRespon
 
 	evt.target.damage(dmg, -1.0, evt.direction);
 }
+
+
+// This is here in case we want to do stuff to Warheads.
+// At the time of writing, 'stuff' means reducing Warhead damage by shields, like with Particle Lances or Disruptors.
+void ABEMWarheadExpl(Event& evt, double Damage, double Radius) {
+	ABEMWarheadAoE(evt.obj, evt.target, evt.impact, Damage, Radius);
+}
+
+void ABEMWarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, double Radius) {
+	vec3d center = impact;
+	if(targ !is null)
+		center = targ.position + center.normalize(targ.radius);
+	playParticleSystem("TorpExplosionTurquise", center, quaterniond(), Radius / 3.0, targ.visibleMask);
+
+	array<Object@>@ objs = findInBox(center - vec3d(Radius), center + vec3d(Radius), source.owner.hostileMask);
+
+	double maxDSq = Radius * Radius;
+	
+	for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
+		Object@ target = objs[i];
+		vec3d off = target.position - center;
+		double dist = off.length - target.radius;
+		if(dist > Radius)
+			continue;
+		
+		double deal = Damage;
+		if(dist > 0.0)
+			deal *= 1.0 - (dist / Radius);
+
+		if(target.isShip) {
+			Ship@ ship = cast<Ship>(target);
+			if(ship.MaxShield > 0) {
+				deal *= 1.0 - (ship.Shield / ship.MaxShield);
+			}
+			ship.damageAllHexes(deal, source=source);
+		}
+	}
+}
