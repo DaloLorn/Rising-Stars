@@ -116,3 +116,10 @@ R_SYS_FERROFLUID_ARMOR_DESC: <<
 
 	[bbloc=#S_FERROFLUIDARMOR_DESC/]
 >>
+
+R_SYS_NANOMESH: Nanomesh
+R_SYS_NANOMESH_DESC: <<
+	[color=#aaa][i]Unlocks the Nanomesh subsystem for flagships and support ships.[/i][/color]
+
+	[bbloc=#NANOMESH_DESC/]
+>>

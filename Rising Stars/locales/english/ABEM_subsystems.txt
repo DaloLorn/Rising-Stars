@@ -243,4 +243,12 @@ S_FERROFLUIDARMOR_DESC: <<
 	[img=Minus]Does not provide any Damage Resistance against Energy or Explosive damage.[/img]
 	[img=Minus]Heavier, more expensive and more complex than standard Liquid Armor, and cannot interact with it.[/img]
 >>
-
+NANOMESH_NAME: Nanomesh
+NANOMESH_DESC: <<
+	A finely weaved mesh of nanobots strengthen the integrity of nearby subsystems.
+	
+	[img=Plus]Increases the [b][color=#80ff80]health[/color][/b] of surrounding hexes.[/img]
+	[img=Plus]Health bonus is improved by armor health research.[/img]
+	[img=Minus]Always uses internal space.[/img]
+	[img=Minus]The nanomesh itself has no health.[/img]
+>>
