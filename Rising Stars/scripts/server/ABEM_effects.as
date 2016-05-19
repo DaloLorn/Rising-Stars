@@ -21,7 +21,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
 	if(sys.type.hasCore) {
-		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 0) {
+		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 1) {
 			return; // Emitter is offline. Forcefields are offline. Everything's offline.
 		}
 	}
@@ -83,7 +83,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 		if(position == sys.core) {
 			return DE_Continue; // This is the emitter, kill it!
 		}
-		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 0) {
+		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 1) {
 			return DE_SkipHex; // Emitter is offline. Forcefields are offline. Everything's offline.
 		}
 	}
@@ -112,6 +112,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	bp.decimal(sys, 0) = health;
 	
 	// Postprocessing.
+	cast<Ship>(evt.target).recordDamage(evt.obj);
 	sync_health_nocore(sys, bp, health, Capacity); // Sync the damaged forcefield's health.
 	if(dmg <= 0.0) // Send the diminished damage (if any) on its merry way.
 		return DE_EndDamage;
