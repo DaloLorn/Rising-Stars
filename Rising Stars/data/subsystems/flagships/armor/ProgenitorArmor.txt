@@ -27,6 +27,7 @@ Subsystem: ProgenitorArmor
 	ImpactLevel := 80 * HexSize
 	Effect: CapDamage
 		MaxDamage = ImpactLevel
+		MinimumPercent = 1/6
 	Hook: ABEM_hooks::Regeneration(RegenPerSecond)
 	Requires:
 		Power = PowerUse

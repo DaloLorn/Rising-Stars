@@ -1,0 +1,65 @@
+Subsystem: Forcefield
+	Name: #S_FORCEFIELD
+	Description: #S_FORCEFIELD_DESC
+	BaseColor: #00a4db
+	Elevation: 2
+
+	Tags: Category:Shields, NoWall, PassExterior
+	Tags: Defense, HasInternals, SecondaryDefense, ExternalSpace, HasInternals
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	PowerUse := (10 + 1 * (Hexes - 1)) * HexSize
+	RegenRate := 0.75 * Size
+	Capacity := 15 * HexSize * (Hexes - 1)
+
+	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
+	State: double = Capacity
+
+	Module: Core
+		Sprite: SupportShield*#50ffff
+
+		Hex.HP := 20 * HexSize
+		Hex.Mass := 3 * HexSize
+		Hex.Resistance := 0.1
+
+		Hex.BuildCost := 6.0 * HexSize
+		Hex.LaborCost := 1.5 * HexSize
+		Hex.MaintainCost := 4 * HexSize
+
+	Module: Default
+		Sprite: Forcefield*#00a4db
+		Hex.HP := Capacity
+		Hex.Resistance := 1
+		Hex.Mass := 0
+
+		Hex.BuildCost := 2.0 * HexSize
+		Hex.LaborCost := 0.25 * HexSize
+		Hex.MaintainCost := 0
+
+	Modifier: HpFactor(factor)
+		Hex.HP := if(IsCore, Hex.HP * factor, Hex.HP)
+
+	Modifier: AddBaseHP(factor)
+		Hex.HP := if(IsCore, Hex.HP + Base::Hex.HP * factor, Hex.HP)
+
+	Modifier: AddHP(amount)
+		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
+
+	Modifier: ShieldCapacityFactor(factor)
+		Capacity := Capacity * factor
+
+	Modifier: ShieldRegenFactor(factor)
+		RegenRate := RegenRate * factor
+
+	Effect: NoRepairNonCore
+
+	Effect: ForcefieldBase
+		Regen = RegenRate
+		Capacity = Capacity
+
+	Effect: ForcefieldShutdown
+
+	Effect: ForcefieldDamage
+		Capacity = Capacity
+		UseBleedthrough = 1

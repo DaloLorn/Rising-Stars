@@ -53,6 +53,9 @@ Material: SupportShield
 Material: ShieldHardener
 	Inherit: ABEMSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
+Material: Forcefield
+	Inherit: ABEMSubsystem
+	Texture: data/images/subsystems/forcefield.png
 
 // *********************************************************
 // ************************ARMOR****************************

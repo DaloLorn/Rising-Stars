@@ -20,6 +20,11 @@ void NoRepairNonCore(Event& evt) {
 void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
+	if(sys.type.hasCore) {
+		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 0) {
+			return; // Emitter is offline. Forcefields are offline. Everything's offline.
+		}
+	}
 	double health = bp.decimal(sys, 0); // Get current shield integrity.
 	health = min(health + Regen, Capacity); // Calculate new shield integrity.
 	bp.decimal(sys, 0) = health; // Store new shield integrity.
@@ -67,7 +72,7 @@ void sync_health(const Subsystem& sys, Blueprint& bp, double health, double maxH
 	}
 }
 
-DamageEventStatus ForcefieldDamage(DamageEvent& evt, vec2u& position, double Capacity, double UseBleedthrough) {
+DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, double Capacity, double UseBleedthrough) {
 	// This allows us to decide if forcefields can be penetrated by shield bleedthrough, like that from Progenitor drones.
 	bool hasShieldBleedthrough = UseBleedthrough != 0;
 	
