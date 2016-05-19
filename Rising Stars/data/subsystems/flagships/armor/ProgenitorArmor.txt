@@ -1,0 +1,38 @@
+Subsystem: ProgenitorArmor
+	Name: #S_PROGENITOR_ARMOR
+	BaseColor: #898989
+	Elevation: 1
+
+	Tags: Category:Armor
+	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
+	Hull: Flagship, Station
+
+	Tags: FauxExterior, PrimaryArmor
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	Size := HexSize * Hexes
+
+	Hex.Resistance := 0.5
+	Hex.HP := 200 * HexSize
+	Hex.Mass := 2.5 * HexSize
+	Hex.LaborCost := 3 * HexSize
+	Hex.BuildCost := 10 * HexSize
+	Hex.MaintainCost := 10 * HexSize / ShipSize^0.5
+
+	DamageResist := ShipSize / 18
+	Description: #S_PROGENITOR_ARMOR_DESC
+	PowerUse := 8 * Size
+	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
+	RegenPerSecond := 2 * HexSize
+	ImpactLevel := 80 * HexSize
+	Effect: CapDamage
+		MaxDamage = ImpactLevel
+	Hook: ABEM_hooks::Regeneration(RegenPerSecond)
+	Requires:
+		Power = PowerUse
+	Effect: DamageResist
+		Resist = DamageResist
+
+	Module: Default
+
+		Sprite: ProgenitorArmor

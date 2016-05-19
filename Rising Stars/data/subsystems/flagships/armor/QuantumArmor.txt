@@ -7,20 +7,23 @@ Subsystem: QuantumArmor
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, ExternalSpace
 	Hull: Flagship, Station
 
-	Tags: FauxExterior
+	Tags: FauxExterior, PrimaryArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 120 * HexSize
-	Hex.Mass := 3* HexSize
-	Hex.LaborCost := 1.6 * HexSize
-	Hex.BuildCost := 1 * HexSize
-	Hex.MaintainCost := 0.1 * HexSize
+	Hex.HP := 280 * HexSize
+	Hex.Mass := 3 * HexSize
+	Hex.LaborCost := 3 * HexSize
+	Hex.BuildCost := 10 * HexSize
+	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 
-	DamageResist := ShipSize /30
+	DamageResist := ShipSize / 30
 	Description: #S_QUANTUM_ARMOR_DESC
+	PowerUse := 2 * Size
+	Requires:
+		Power = PowerUse
 	Effect: DamageResist
 		Resist = DamageResist
 

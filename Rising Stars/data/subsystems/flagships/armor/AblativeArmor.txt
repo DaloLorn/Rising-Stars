@@ -7,34 +7,27 @@ Subsystem: AblativeArmor
 	Tags: Category:Armor
 	Tags: NoCore, NonContiguous, DefaultUnlock, Defense, IsArmor, ResistArmor, ExternalSpace
 	Tags: FauxExterior,PrimaryArmor
-	
+
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
-	
-	
+
+
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
 	Hex.Resistance := 0.4
-	
-	Effect: ReduceDamage
-		ProjResist = DamageResist
-		EnergyResist = DamageResist
-		ExplResist = DamageResist
-		MinimumPercent = 1/6
-	
+
 	Hex.HP := 30 * HexSize
-	Hex.Mass := 2.0 * HexSize
-	
-	
-	Hex.LaborCost := 0.4 * HexSize 
-	Hex.BuildCost := 0.5 * HexSize 
+	Hex.Mass := 4.0 * HexSize
+
+
+	Hex.LaborCost := 0.4 * HexSize
+	Hex.BuildCost := 3.0 * HexSize
 	Hex.MaintainCost := 0
-	
-	DamageResist := ShipSize / 15.0
+
+	DamageResist := ShipSize / 16.0
 	Effect: DamageResist
 		Resist = DamageResist
 
+		MinimumPercent = 1/6
 	Module: Default
 		Sprite: PlateArmor * #9999ff
-
-		

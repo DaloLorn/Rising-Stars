@@ -4,7 +4,7 @@ Subsystem: NilingArmor
 	BaseColor: #9dffb9
 	Elevation: 1
 
-	Tags: LowMaint, Category:Armor, FauxExterior, HeraldsDLC
+	Tags: Category:Armor, FauxExterior, HeraldsDLC
 	Tags: NoCore, NonContiguous, Defense, ExternalSpace, AlwaysTakeDamage
 	Tags: SecondaryArmor
 	Hull: Flagship, Station
@@ -24,6 +24,9 @@ Subsystem: NilingArmor
 
 	State: double = 0
 
+	Hex.LaborCost := 0.8 * HexSize
+	Hex.BuildCost := 4.5 * HexSize
+	Hex.MaintainCost := 4 * HexSize / ShipSize^0.5
 	Effect: NilingAbsorb
 		Damage = Damage
 		Radius = Radius

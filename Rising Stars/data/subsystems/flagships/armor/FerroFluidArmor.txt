@@ -13,16 +13,19 @@ Subsystem: FerroFluidArmor
 
 	Hex.Resistance := 0.1
 	Hex.HP := 60 * HexSize
-	Hex.Mass := 1.1 * HexSize
+	Hex.Mass := 3.2 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Effect: DistributeHealth
 
-	Hex.LaborCost := 0.5 * HexSize
-	Hex.BuildCost := 0.9 * HexSize
-	Hex.MaintainCost := 0.125 * HexSize
-	DamageResist := Size / 21
+	Hex.LaborCost := 0.525 * HexSize
+	Hex.BuildCost := 3.25 * HexSize
+	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
+	DamageResist := Size / 20
+	PowerUse := Size * 1
+	Requires:
+		Power = PowerUse
 	Effect: ReduceDamage
 
 		ProjResist = DamageResist

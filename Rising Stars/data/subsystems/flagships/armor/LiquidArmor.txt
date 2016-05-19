@@ -12,17 +12,17 @@ Subsystem: LiquidArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.1
-	Hex.HP := 60 * HexSize
-	Hex.Mass := 1 * HexSize
+	Hex.HP := 55 * HexSize
+	Hex.Mass := 3 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Effect: DistributeHealth
 
-	Hex.LaborCost := 0.4 * HexSize
-	Hex.BuildCost := 0.7 * HexSize
-	Hex.MaintainCost := 0.1 * HexSize
+	Hex.LaborCost := 0.5 * HexSize
+	Hex.BuildCost := 3 * HexSize
 
+	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 	Module: Default
 
 		Sprite: PlateArmor * #91692c

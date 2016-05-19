@@ -4,14 +4,14 @@ Subsystem: CrystalArmor
 	BaseColor: #ef45ff
 	Elevation: 2
 
-	Tags: LowMaint, Category:Armor, FauxExterior
+	Tags: Category:Armor, FauxExterior
 	Tags: NoCore, NonContiguous, Defense, IsArmor, ResistArmor, ExternalSpace
 	Tags: PrimaryArmor
 	Tags: HeraldsDLC
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Hex.Resistance := 0.4
+	Hex.Resistance := 0.6
 	Hex.HP := 200 * HexSize
 	Hex.Mass := 3.0 * HexSize
 
@@ -19,6 +19,9 @@ Subsystem: CrystalArmor
 
 	DamageResist := ShipSize / 16.0
 
+	Hex.LaborCost := 0.4 * HexSize
+	Hex.BuildCost := 6.0  * HexSize
+	Hex.MaintainCost := 0
 	Effect: ReduceDamage
 		ProjResist = DamageResist
 		EnergyResist = DamageResist * 4.0
