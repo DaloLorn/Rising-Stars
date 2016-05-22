@@ -10,7 +10,7 @@ Attitude: BerserkerGlory
 	ABEM_glory::NoProgressPastMaxLevel()
 
 	ABEM_glory::ProgressFromContested(0.5)
-	ABEM_glory::ConsumeAttributeToProgress(Glory, 1)
+	ABEM_glory::ConsumeAttributeToProgress(Glory, 2)
 	ModEmpireAttribute(GloryMode, Add, 1)
 
 	ABEM_glory::DecayProgress(1)

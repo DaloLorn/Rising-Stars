@@ -897,12 +897,12 @@ tidy class OrbitalScript {
 			for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 				laborCost += sections[i].type.laborCost;
 			}
-			killCredit.generatePoints(laborCost * killCredit.ResearchFromKill * 2, false, false);
+			killCredit.generatePoints(laborCost * killCredit.ResearchFromKill * 4, false, false);
 			if(killCredit.GloryMode == 1) {
-				killCredit.Glory += laborCost * 2;
+				killCredit.Glory += laborCost * 4;
 			}
 			if(obj.owner.GloryMode == 2) {
-				obj.owner.Glory -= laborCost * 2;
+				obj.owner.Glory -= laborCost * 4;
 			}
 		}
 
