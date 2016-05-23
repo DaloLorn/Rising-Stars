@@ -154,4 +154,5 @@ visible:
 	attribute double GloryMode = 0
 	attribute double Glory = 0
 	attribute double ContestedSystems = 0
+	attribute double GloryFactor = 1
 }

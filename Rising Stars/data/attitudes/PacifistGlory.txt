@@ -8,7 +8,7 @@ Attitude: PacifistGlory
 	ABEM_glory::NoProgressPastMaxLevel()
 
 	ABEM_glory::DecayProgressFromContested(0.5)
-	ABEM_glory::DecayFromNegativeAttribute(Glory, 1)
+	ABEM_glory::DecayFromNegativeAttribute(Glory, 1, GloryFactor)
 	ModEmpireAttribute(GloryMode, Add, 2)
 
 	ABEM_glory::ProgressOverTime(1)

@@ -104,15 +104,18 @@ class DecayProgressFromContested : AttitudeHook {
 class ConsumeAttributeToProgress : AttitudeHook {
 	Document doc("Increases progress by decreasing an empire attribute.");
 	Argument attribute(AT_EmpAttribute, doc="Attribute to consume.");
-	Argument multiplier(AT_Decimal, "1.0", doc="How much progress to grant per attribute point.");
+	Argument base(AT_Decimal, "1.0", doc="How much progress to grant per attribute point.");
+	Argument multiplier(AT_EmpAttribute, doc="Attribute to multiply the decay by.");
 	Argument useProgressFactor(AT_Boolean, "True", doc="If set, the added progress is multiplied by the empire's attribute progression factor.");
 	
 #section server
 	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
 		double amt = emp.getAttribute(attribute.integer);
 		if(amt > 0) {
+			mult = emp.getAttribute(multiplier.integer);
 			emp.modAttribute(attribute.integer, AC_Multiply, 0);
-			amt *= multiplier.decimal;
+			amt *= base.decimal;
+			amt *= mult;
 			if(useProgressFactor.boolean)
 				amt *= emp.AttitudeProgressFactor;
 			att.progress += amt;
@@ -124,15 +127,18 @@ class ConsumeAttributeToProgress : AttitudeHook {
 class DecayFromNegativeAttribute : AttitudeHook {
 	Document doc("Decreases progress by increasing a negative empire attribute.");
 	Argument attribute(AT_EmpAttribute, doc="Attribute to monitor.");
-	Argument multiplier(AT_Decimal, "1.0", doc="How much progress to remove per attribute point.");
+	Argument base(AT_Decimal, "1.0", doc="How much progress to remove per attribute point.");
+	Argument multiplier(AT_EmpAttribute, doc="Attribute to multiply the decay by.");
 	Argument useProgressFactor(AT_Boolean, "True", doc="If set, the removed progress is divided by the empire's attitude progression factor.");
 
 #section server
 	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
 		double amt = emp.getAttribute(attribute.integer);
 		if(amt < 0) {
+			mult = emp.getAttribute(multiplier.integer);
 			emp.modAttribute(attribute.integer, AC_Multiply, 0);
-			amt *= -multiplier.decimal;
+			amt *= -base.decimal;
+			amt *= mult;
 			if(useProgressFactor.boolean)
 				amt /= emp.AttitudeProgressFactor;
 			att.progress = max(att.progress - amt, 0.0);
