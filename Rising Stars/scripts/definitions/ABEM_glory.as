@@ -112,7 +112,7 @@ class ConsumeAttributeToProgress : AttitudeHook {
 	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
 		double amt = emp.getAttribute(attribute.integer);
 		if(amt > 0) {
-			mult = emp.getAttribute(multiplier.integer);
+			double mult = emp.getAttribute(multiplier.integer);
 			emp.modAttribute(attribute.integer, AC_Multiply, 0);
 			amt *= base.decimal;
 			amt *= mult;
@@ -135,7 +135,7 @@ class DecayFromNegativeAttribute : AttitudeHook {
 	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
 		double amt = emp.getAttribute(attribute.integer);
 		if(amt < 0) {
-			mult = emp.getAttribute(multiplier.integer);
+			double mult = emp.getAttribute(multiplier.integer);
 			emp.modAttribute(attribute.integer, AC_Multiply, 0);
 			amt *= -base.decimal;
 			amt *= mult;
