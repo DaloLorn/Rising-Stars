@@ -2,7 +2,6 @@ Grid: Reactionary
 	Science: -2,0
 	LifeInfiniteEnergyWeapons: -5,2
 	LifeInfiniteChasis: 2,2
-	Connector: -1,5
 	Connector: 2,3
 	Connector: 3,4
 	XSuperstructureHull: 3,1
@@ -31,10 +30,9 @@ Grid: Reactionary
 	XSubspaceShredder: -10,3
 	XPulseBolt: -8,4
 	BeamCycling: -9,1
-	Connector: -9,-2
+	PowerGeneration: -9,-2
 	XAntimatterGen: -10,-3
-	PowerGeneration: -10,-1
-	XQuantumBattery: -11,-3
+	XQuantumBattery: -10,-1
 	Connector: -2,-1
 	Connector: 0,0
 	Connector: -1,-2
@@ -45,7 +43,6 @@ Grid: Reactionary
 	LifeInfiniteMetallurgy: -3,5
 	Connector: -2,6
 	LifeInfiniteArmor: -2,7
-	XNeutronArmor: -1,7
 	XLiquidArmor: -2,8
 	XNanoMesh: -3,9
 	XCrystalArmor: -2,10
@@ -57,7 +54,6 @@ Grid: Reactionary
 	XVacuumTelescope: 2,9
 	XStarForge: 1,8
 	SupportSize: 4,-1
-	XQuantumCompressor: -11,-2
 	Laboratories: -9,-4
 	Connector: -6,2
 	XArtificialPlanetoid: 4,8
@@ -99,7 +95,6 @@ Grid: Reactionary
 	Connector: 4,-11
 	Connector: 1,-11
 	XMissileRange: 3,-10
-	XSelfDestruct: 0,-11
 	Connector: 2,-12
 	XWarhead: 1,-13
 	XShockMissiles: 3,-12
@@ -109,3 +104,8 @@ Grid: Reactionary
 	Connector: -2,-5
 	Connector: -1,-6
 	Connector: 0,-6
+	XShieldedAntimatter: -11,-3
+	XQuantumCompressor: -11,-1
+	CompositeArmor: -1,7
+	XNeutronArmor: 0,6
+	XQuantumArmor: -1,5

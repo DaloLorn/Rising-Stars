@@ -1,3 +1,23 @@
+Technology: CompositeArmor
+	Name: #S_COMPOSITE_ARMOR
+	Description: #S_COMPOSITE_ARMOR_DESC
+
+		
+	Point Cost: 0
+	Time Cost: 180
+	SecondaryMoneyCost(750)
+
+	Icon: CompositeArmor
+	Color: #676210
+	Description: #S_COMPOSITE_ARMOR_DESC
+	Category: Reactionary
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	SkipOnUnlockedSubsystem(CompositeArmor)
+	UnlockSubsystem(CompositeArmor)
+
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 2, #R_LIFESTYLE_REQ:Armor:2)
+
 Technology: XNeutronArmor
 	Name: #R_SYS_NEUTRON_ARMOR
 	Description: #R_SYS_NEUTRON_ARMOR_DESC
@@ -12,8 +32,31 @@ Technology: XNeutronArmor
 	UnlockSubsystem(NeutronArmor)
 	SkipOnUnlockedSubsystem(NeutronArmor)
 
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 2, #R_LIFESTYLE_REQ:Armor:2)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armor:4)
 	SecondaryMoneyCost(1000)
+
+Technology: XQuantumArmor
+	Name: #S_QUANTUM_ARMOR
+	Description: #S_QUANTUM_ARMOR_DESC
+
+	Point Cost: 0
+	Time Cost: 240
+	Category: Reactionary
+
+	Icon: QuantumArmor
+	Color: #449944
+
+	
+	UnlockSubsystem(QuantumArmor)
+	UnlockSubsystem(SupportQuantumArmor)
+
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedSubsystem(QuantumArmor)
+	SkipOnUnlockedSubsystem(SupportQuantumArmor)
+	
+	SecondaryMoneyCost(2000)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 8, #R_LIFESTYLE_REQ:Armor:8)
+
 
 Technology: XLiquidArmor
 	Name: #R_SYS_LIQUID_ARMOR
