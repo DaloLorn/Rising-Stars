@@ -19,7 +19,7 @@ class OverviewTab : Tab, QuestionDialogCallback {
 
 	GuiButton@ researchGridBtn;
 	GuiButton@ researchGridBtn2;
-
+	GuiButton@ researchGridBtn3;
 	OverviewTab() {
 		super();
 		title = "Overview";
@@ -59,6 +59,10 @@ class OverviewTab : Tab, QuestionDialogCallback {
 		if(hasDLC("Heralds")) {
 			@researchGridBtn2 = GuiButton(this, Alignment(Left+712, Top+y, Width=250, Height=42), "Grid (Heralds)");
 			researchGridBtn2.font = FT_Medium;
+			
+			@researchGridBtn3 = GuiButton(this, Alignment(Left+1012, Top+y, Width=250, Height=42), "Grid (Reactionary)");
+			researchGridBtn3.font = FT_Medium;
+		
 		}
 
 		updateAbsolutePosition();
@@ -124,6 +128,11 @@ class OverviewTab : Tab, QuestionDialogCallback {
 			}
 			else if(evt.caller is researchGridBtn2) {
 				open(ResearchEditor("heralds_grid.txt", "Heralds"));
+				return true;
+			}
+			
+			else if(evt.caller is researchGridBtn3) {
+				open(ResearchEditor("reactionary_grid.txt", "Reactionary"));
 				return true;
 			}
 			else for(uint i = 0, cnt = buttons.length; i < cnt; ++i) {
