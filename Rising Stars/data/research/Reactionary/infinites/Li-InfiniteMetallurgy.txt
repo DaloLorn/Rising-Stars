@@ -1,0 +1,23 @@
+Technology: LifeInfiniteMetallurgy
+	Name: Metallurgy
+	Description: #INFINITE_METALLURGY_DESC:2:10%
+
+	Icon: AffinityIcons::4
+	Symbol: EditIcons::7
+	Color: #a5df1e
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 250
+	Time Cost: 60
+
+	AddPointCostAttribute(InfiniteMetallurgyTaken, 120)
+	AddTimeCostAttribute(InfiniteMetallurgyTaken, 12)
+
+	ResetWhenUnlocked()
+
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.90)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.90)
+	ModAttribute(FactoryLaborMod, Add, 3)
+	ModAttribute(InfiniteMetallurgyTaken, Add, 1)

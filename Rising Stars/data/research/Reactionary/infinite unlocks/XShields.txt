@@ -1,0 +1,87 @@
+Technology: XShieldGen
+	Name: #R_SYS_SHIELDGEN
+	Description: #R_SYS_SHIELDGEN_DESC
+
+	
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: FissionReactor
+	Color: #2b2bce
+
+	UnlockSubsystem(ShieldGen)
+	SkipOnUnlockedSubsystem(ShieldGen)
+
+	SecondaryEnergyCost(700)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
+	
+
+Technology: XShieldHarmonizer
+	Name: #R_SYS_SHIELD_HARMONIZER
+	Description: #R_SYS_SHIELD_HARMONIZER_DESC
+	
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: ShieldCap
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: ShieldHarmonizer
+	Color: #e2e676
+	
+	UnlockSubsystem(ShieldHarmonizer)
+	SkipOnUnlockedSubsystem(ShieldHarmonizer)
+
+	SecondaryEnergyCost(1300)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
+	
+Technology: XShieldHardener
+	Name: #R_SYS_SHIELD_HARDENER
+	Description: #R_SYS_SHIELD_HARDENER_DESC
+	
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: FissionReactor
+	Color: #681be3
+
+	UnlockSubsystem(ShieldHardener)
+	SkipOnUnlockedSubsystem(ShieldHardener)
+
+	SecondaryEnergyCost(1400)
+
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5,#R_LIFESTYLE_REQ:Shields Modulation:5)
+	
+
+Technology: XDeflectorArray
+	Name: #R_SYS_DEFLECTOR_ARRAY
+	Description: #R_SYS_DEFLECTOR_ARRAY_DESC
+	
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: ShieldCap2
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: Dish
+	Color: #348c99
+	
+	UnlockSubsystem(DeflectorArray)
+	SkipOnUnlockedSubsystem(DeflectorArray)
+
+	SecondaryEnergyCost(1500)
+	
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6,#R_LIFESTYLE_REQ:Shields Modulation:6)
+
+
+
+
+	

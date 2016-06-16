@@ -1,0 +1,24 @@
+Technology: LifeInfiniteDamage
+	Name: Proyectile Weapons
+	Description: #INFINITE_PROYECTILE_WEAPONS:5%
+
+	Icon: TechIcons::38
+	Symbol: EditIcons::7
+	Color: #6bd425
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 300
+	Time Cost: 30
+
+	AddPointCostAttribute(InfiniteProyTech, 100)
+	AddTimeCostAttribute(InfiniteProyTech, 10)
+
+	ResetWhenUnlocked()
+	
+	AffectsTaggedSubsystems(IsProjWeapon)
+	
+	AddModifier( tag/Weapon::DamageFactor(1.05) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.05)
+	ModAttribute(InfiniteProyTech, Add, 1)

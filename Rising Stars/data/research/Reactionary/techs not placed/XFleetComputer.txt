@@ -1,0 +1,19 @@
+Technology: XFleetComputer
+	Name: #R_SYS_FLEET_COMPUTER
+	Description: #R_SYS_FLEET_COMPUTER_DESC
+	Class: Unlock
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: SupportCap
+
+	Icon: FleetComputer
+	Color: #ca5700
+	
+	UnlockSubsystem(FleetComputer)
+	SkipOnUnlockedSubsystem(FleetComputer)
+
+	SecondaryEnergyCost(1000)

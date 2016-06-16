@@ -1,0 +1,112 @@
+Technology: XSuperstructureHull
+	Name: #R_SYS_SUPERSTRUCTURE_HULL
+	Description: #R_SYS_SUPERSTRUCTURE_HULL_DESC
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	Icon: HullSubsystems::3
+	Color: #cc6a3a
+
+	UnlockSubsystem(SuperstructureHull)
+	SkipOnUnlockedSubsystem(SuperstructureHull)
+
+	SecondaryMoneyCost(1000)
+
+Technology: XDestroyerHull
+	Name: #R_SYS_DESTROYER_HULL
+	Description: #R_SYS_DESTROYER_HULL_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: HullSubsystems::1
+	Color: #ff8080
+
+	UnlockSubsystem(DestroyerHull)
+	SkipOnUnlockedSubsystem(DestroyerHull)
+
+	SecondaryMoneyCost(1000)
+
+Technology: XCarrierHull
+	Name: #R_SYS_CARRIER_HULL
+	Description: #R_SYS_CARRIER_HULL_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: HullSubsystems::0
+	Color: #d6d300
+
+	UnlockSubsystem(CarrierHull)
+	SkipOnUnlockedSubsystem(CarrierHull)
+
+	SecondaryMoneyCost(1000)
+
+Technology: XTitanHull
+	Name: #R_SYS_TITAN_HULL
+	Description: #R_SYS_TITAN_HULL_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: DesignationIcons::16
+	Color: #cc6a3a
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	UnlockSubsystem(TitanHull)
+	SkipOnUnlockedSubsystem(TitanHull)
+
+	SecondaryEnergyCost(1500)
+
+Technology: XColossusHull
+	Name: #R_SYS_COLOSSUS_HULL
+	Description: #R_SYS_COLOSSUS_HULL_DESC
+	Category: Reactionary
+
+	Point Cost: 1000
+	Time Cost: 60
+
+	DLC: Heralds
+	DLC Replace: SupplyStorage
+
+	Secret: True
+
+	Icon: DesignationIcons::16
+	Color: #cc3a7d
+
+	RequireBuildShipsWith(TitanHull, 5)
+
+	UnlockSubsystem(ColossusHull)
+	SkipOnUnlockedSubsystem(ColossusHull)
+
+Technology: XSpinalMountHull
+	Name: #R_SYS_SPINAL_MOUNT_HULL
+	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: HullSubsystems::2
+	Color: #8edcef
+
+	UnlockSubsystem(SpinalMountHull)
+	SkipOnUnlockedSubsystem(SpinalMountHull)
+
+	SecondaryMoneyCost(1000)

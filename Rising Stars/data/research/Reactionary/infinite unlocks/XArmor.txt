@@ -1,0 +1,97 @@
+Technology: XNeutronArmor
+	Name: #R_SYS_NEUTRON_ARMOR
+	Description: #R_SYS_NEUTRON_ARMOR_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: PlateArmor * #449944
+	Color: #449944
+
+	UnlockSubsystem(NeutronArmor)
+	SkipOnUnlockedSubsystem(NeutronArmor)
+
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 2, #R_LIFESTYLE_REQ:Armor:2)
+	SecondaryMoneyCost(1000)
+
+Technology: XLiquidArmor
+	Name: #R_SYS_LIQUID_ARMOR
+	Description: #R_SYS_LIQUID_ARMOR_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: PlateArmor * #91692c
+	Color: #91692c
+
+	UnlockSubsystem(LiquidArmor)
+	UnlockSubsystem(SupportLiquidArmor)
+	SkipOnUnlockedSubsystem(LiquidArmor)
+
+	SecondaryInfluenceCost(10)
+
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 3, #R_LIFESTYLE_REQ:Armor:3)
+
+Technology: XNanoMesh
+	Name: #R_SYS_NANOMESH
+	Description: #R_SYS_NANOMESH_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	DLC: Heralds
+	DLC Replace: ArmorHealth
+
+	Icon: NanoMesh
+	Color: #a9a9a9
+
+	UnlockSubsystem(NanoMesh)
+	UnlockSubsystem(SupportNanoMesh)
+	SkipOnUnlockedSubsystem(NanoMesh)
+
+	SecondaryInfluenceCost(12)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armor:4)
+
+Technology: XSysNilingArmor
+	Name: #R_SYS_NILINGARMOR
+	Description: #R_SYS_NILINGARMOR_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: ArmorHealth
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	Icon: NilingArmor
+	Color: #9dffb9
+
+	UnlockSubsystem(NilingArmor)
+	SkipOnUnlockedSubsystem(NilingArmor)
+
+	SecondaryEnergyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 5, #R_LIFESTYLE_REQ:Armor:5)
+
+Technology: XCrystalArmor
+	Name: #R_SYS_CRYSTAL_ARMOR
+	Description: #R_SYS_CRYSTAL_ARMOR_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: ArmorHealth2
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: CrystalArmor
+	Color: #ef45ff
+
+	UnlockSubsystem(CrystalArmor)
+	UnlockSubsystem(SupportCrystalArmor)
+	SkipOnUnlockedSubsystem(CrystalArmor)
+
+	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 6, #R_LIFESTYLE_REQ:Armor:6)

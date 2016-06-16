@@ -1,0 +1,113 @@
+Technology: XMuonCannon
+	Name: #R_SYS_MUON_CANNON
+	Description: #R_SYS_MUON_CANNON_DESC
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: Railgun::2
+	Color: #8f2399
+
+	UnlockSubsystem(MuonCannon)
+	SkipOnUnlockedSubsystem(MuonCannon)
+
+	UnlockSubsystem(MuonBattery)
+
+	SecondaryMoneyCost(1200)
+	RequireEmpireAttributeGTE(InfiniteProyTech, 3, #R_LIFESTYLE_REQ:Proyectile Weapons:3)
+
+Technology: XFlakBattery
+	Name: #R_SYS_FLAK_BATTERY
+	Description: #R_SYS_FLAK_BATTERY_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Point Cost: 0
+	Time Cost: 120
+
+	Icon: Flak::0
+	Color: #41fdc1
+
+	UnlockSubsystem(FlakBattery)
+	SkipOnUnlockedSubsystem(FlakBattery)
+
+	SecondaryEnergyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteProyTech, 4, #R_LIFESTYLE_REQ:Proyectile Weapons:4)
+
+
+
+Technology: XPlasmaThrower
+	Name: #R_SYS_PLASMA_THROWER
+	Description: #R_SYS_PLASMA_THROWER_DESC
+
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Icon: RocketPod::0
+	Color: #ce815a
+
+	UnlockSubsystem(PlasmaThrower)
+	UnlockSubsystem(SupportPlasmaThrower)
+	SkipOnUnlockedSubsystem(PlasmaThrower)
+
+	SecondaryMoneyCost(1000)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 3, #R_LIFESTYLE_REQ:Energy Weapons:3)
+	RequireEmpireAttributeGTE(InfiniteProyTech, 4, #R_LIFESTYLE_REQ:Proyectile Weapons:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy:6)
+
+Technology: XParticleLance
+	Name: #R_SYS_PARTICLELANCE
+	Description: #R_SYS_PARTICLELANCE_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: ParticleLance::2
+	Color: #ff7600
+
+	UnlockSubsystem(ParticleLance)
+	SkipOnUnlockedSubsystem(ParticleLance)
+
+	SecondaryMoneyCost(2000)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
+	RequireEmpireAttributeGTE(InfiniteProyTech, 5, #R_LIFESTYLE_REQ:Proyectile Weapons:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
+
+
+///////////////////////////////////////
+//Proyectile WEAPONS SPECIAL UPGRADES/////////////
+////////////////////////////////////
+
+Technology: XProjTracking
+	Name: #R_ADVANCED_TRACKING
+	Description: #R_ADVANCED_TRACKING_DESC:40%
+
+	Icon: Railgun::3
+	Symbol: techHydraulics*#ffc419
+	Color: #80ffea
+
+	Category: Reactionary
+	Class: BigUpgrade
+
+	Point Cost: 750
+	Time Cost: 100
+
+	AddModifier( tag/IsProjWeapon::TrackingFactor(1.4) )
+	AddModifier( tag/IsProjWeapon::SpreadFactor(0.6) )
+	AddModifier( tag/IsProjWeapon::SupplyCostFactor(0.6) )
+
+	AffectsTaggedSubsystems(IsProjWeapon)

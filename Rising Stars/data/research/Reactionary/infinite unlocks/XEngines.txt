@@ -1,0 +1,69 @@
+
+Technology: XBoosterEngine
+	Name: #R_SYS_BOOSTER_ENGINE
+	Description: #R_SYS_BOOSTER_ENGINE_DESC
+	Class: Unlock
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Thrust
+
+	Point Cost: 0
+	Time Cost: 100
+
+	Icon: ResearchIcons::1
+	Color: #8872bb
+	
+	UnlockSubsystem(BoosterEngine)
+	SkipOnUnlockedSubsystem(BoosterEngine)
+
+	SecondaryEnergyCost(1000)
+
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 2, #R_LIFESTYLE_REQ:Propulsion:2)
+
+
+
+
+	
+	
+Technology: XSkipDrive
+	Name: #R_SYS_SKIP_DRIVE
+	Description: #R_SYS_SKIP_DRIVE_DESC
+	Class: Unlock
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: HexagonSubsystems::10 * #fff980
+	Color: #fff980
+	
+	SecondaryEnergyCost(1000)
+	
+	UnlockSubsystem(SkipDrive)
+	SkipOnUnlockedSubsystem(SkipDrive)
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 4, #R_LIFESTYLE_REQ:Propulsion:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4 ,#R_LIFESTYLE_REQ:Energy:4)
+
+	
+	
+Technology: XRamjet
+	Name: #R_SYS_RAMJET
+	Description: #R_SYS_RAMJET_DESC
+	Class: Unlock
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: Thrust
+
+	Icon: ResearchIcons::0
+	Color: #629b26
+	
+	UnlockSubsystem(Ramjet)
+	SkipOnUnlockedSubsystem(Ramjet)
+
+	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 5,#R_LIFESTYLE_REQ:Propulsion:5)

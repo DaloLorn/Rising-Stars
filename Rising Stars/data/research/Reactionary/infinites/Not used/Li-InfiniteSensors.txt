@@ -1,0 +1,20 @@
+Technology: LifeInfiniteSensors
+	Name: Sensor
+	Description: #R_INFINITE_HEALTH_DESC:5%
+
+	Icon: techScanner
+	Symbol: EditIcons::7
+	Color: #6607ff
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddPointCostAttribute(InfiniteSensorTaken, 300)
+	AddTimeCostAttribute(InfiniteSensorTaken, 15)
+
+	ResetWhenUnlocked()
+
+	ModAttribute(InfiniteSensor, Add, 1)

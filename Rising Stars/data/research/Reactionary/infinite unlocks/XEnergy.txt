@@ -1,0 +1,113 @@
+Technology: XFusionGen
+	Name: Fusion Generator
+	Description: #R_SYS_Fusion_DESC
+	 
+	Category: Reactionary
+
+	Time Cost: 90
+
+	Icon: FusionReactor
+	Color: #5ade8b
+
+	UnlockSubsystem(FusionGen)
+	SkipOnUnlockedSubsystem(FusionGen)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 1, #R_LIFESTYLE_REQ:Energy:1)
+	SecondaryEnergyCost(300)
+	
+Technology: XSolarPanel
+	Name: #R_SYS_SOLARPANEL
+	Description: #R_SYS_SOLARPANEL_DESC
+	 
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: SolarPanel
+	Color: #64fff9
+	
+	UnlockSubsystem(SolarPanel)
+	SkipOnUnlockedSubsystem(SolarPanel)
+
+	SecondaryInfluenceCost(15)
+
+
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 3, #R_LIFESTYLE_REQ:Energy:3 )
+	
+Technology: XEmergencySupplies
+	Name: #R_SYS_EMERGENCY_SUPPLIES
+	Description: #R_SYS_EMERGENCY_SUPPLIES_DESC
+	 
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: AntimatterReactor * #b8b800
+	Color: #b88b00
+	
+	UnlockSubsystem(EmergencySupplies)
+	SkipOnUnlockedSubsystem(EmergencySupplies)
+
+	SecondaryEnergyCost(500)
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 4, #R_LIFESTYLE_REQ:Energy:4)
+	
+	
+	
+Technology: XAntimatterGen
+	Name: #R_SYS_ANTIMATTER
+	Description: #R_SYS_ANTIMATTER_DESC
+	 
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: AntimatterReactor
+	Color: #5ade8b
+
+	UnlockSubsystem(AntimatterGen)
+	SkipOnUnlockedSubsystem(AntimatterGen)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 5, #R_LIFESTYLE_REQ:Energy:5)
+	SecondaryEnergyCost(1000)
+	
+
+
+
+Technology: XQuantumBattery
+	Name: #R_MOD_QUANTUM_BATTERY
+	Description: #R_MOD_QUANTUM_BATTERY_DESC:1200
+	 
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Color: #d8cc48
+	Icon: QuantumBattery
+	
+	UnlockModule(QuantumBattery)
+	SkipOnUnlockedModule(QuantumBattery)
+	
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 6,#R_LIFESTYLE_REQ:Energy:6 )
+	
+	
+Technology: XQuantumCompressor
+
+	Name: #R_MOD_QUANTUM_COMPRESSOR
+	Description: #R_MOD_QUANTUM_COMPRESSOR_DESC
+	 
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Color: #69eaf2
+	Icon: QuantumCompressor
+	
+	UnlockModule(QuantumCompressor)
+	SkipOnUnlockedModule(QuantumCompressor)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyTech, 6, #R_LIFESTYLE_REQ:Energy:6)

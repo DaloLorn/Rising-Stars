@@ -1,0 +1,109 @@
+
+Technology: XHyperLaser
+	Name: #R_SYS_HYPERLASER
+	Description: #R_SYS_HYPERLASER_DESC
+	
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: HyperdenseLaser::0
+	Color: #f9394d
+	
+	UnlockSubsystem(HyperLaser)
+	SkipOnUnlockedSubsystem(HyperLaser)
+
+	SecondaryEnergyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 4, #R_LIFESTYLE_REQ:Energy Weapons:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:4)
+	
+	
+Technology: XDisruptor
+	Name: #R_SYS_DISRUPTOR
+	Description: #R_SYS_DISRUPTOR_DESC
+	
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: Laser::0
+	Color: #f0e5b5
+	
+	UnlockSubsystem(Disruptor)
+	SkipOnUnlockedSubsystem(Disruptor)
+
+	SecondaryFTLCost(250)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 6, #R_LIFESTYLE_REQ:Energy Weapons:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
+
+Technology: XSubspaceShredder
+	Name: #R_SYS_SUBSPACE_SHREDDER
+	Description: #R_SYS_SUBSPACE_SHREDDER_DESC
+	
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Icon: MissileLauncher::0
+	Color: #ae6383
+	
+	UnlockSubsystem(SubspaceShredder)
+	SkipOnUnlockedSubsystem(SubspaceShredder)
+
+	SecondaryMoneyCost(1500)
+	
+		RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
+			RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
+
+Technology: XPulseBolt
+	Name: #R_SYS_PULSE_BOLT
+	Description: #R_SYS_PULSE_BOLT_DESC
+	
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 120
+
+	DLC: Heralds
+	DLC Replace: Damage
+
+	Icon: HyperdenseLaser::0
+	Color: #7390db
+	
+	UnlockSubsystem(PulseBolt)
+	SkipOnUnlockedSubsystem(PulseBolt)
+
+	SecondaryEnergyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy:6)
+	
+///////////////////////////////////	
+//ENERGY WEAPONS SPECIAL UPGRADES/////////////
+////////////////////////////////////	
+	
+Technology: XBeamCycling
+	Name: #R_BEAM_CYCLING
+	Description: #R_BEAM_CYCLING_DESC:30%
+
+	Icon: Laser::3
+	Symbol: techCooling * #c680ff
+	Color: #80ffea
+	
+	Category: Reactionary
+	Class: Special Upgrades
+
+	Point Cost: 750
+	Time Cost: 100
+
+	AddModifier( tag/BeamBase::DurationFactor(1.3) )
+
+	AffectsTaggedSubsystems(BeamBase)

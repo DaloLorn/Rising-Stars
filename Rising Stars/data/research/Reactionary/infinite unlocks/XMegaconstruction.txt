@@ -1,0 +1,72 @@
+Technology: XRingHabitat
+	Name: #R_ORB_RING_HABITAT
+	Description: #R_ORB_RING_HABITAT_DESC
+	Category: Reactionary
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: GuiOrbitalIcons::11
+	Color: #ffdc40
+
+	UnlockTag(RingHabitatUnlock)
+	SkipOnUnlockedTag(RingHabitatUnlock)
+
+
+Technology: XArtificialPlanetoid
+	Name: #R_ORB_ARTIFICIAL_PLANETOID
+	Description: #R_ORB_ARTIFICIAL_PLANETOID_DESC
+	Category: Reactionary
+
+	Point Cost: 1000
+	Time Cost: 200
+
+	Icon: PlanetType::1
+	Color: #f3ff00
+
+	UnlockTag(ArtificialPlanetoidUnlock)
+	SkipOnUnlockedTag(ArtificialPlanetoidUnlock)
+
+
+Technology: XStarForge
+	Name: #R_ORB_STARFORGE
+	Description: #R_ORB_STARFORGE_DESC
+	Category: Reactionary
+
+	Point Cost: 1200
+	Time Cost: 180
+
+	Icon: OrbitalIcons::16
+	Color: #fff300
+
+	UnlockTag(StarForgeUnlock)
+	SkipOnUnlockedTag(StarForgeUnlock)
+
+
+Technology: XRingworld
+	Name: #R_ORB_RINGWORLD
+	Description: #R_ORB_RINGWORLD_DESC
+	Category: Reactionary
+
+	Point Cost: 2000
+	Time Cost: 200
+
+	Icon: PlanetType::14
+	Color: #83ff40
+
+	UnlockTag(RingworldUnlock)
+	SkipOnUnlockedTag(RingworldUnlock)
+
+Technology: XVacuumTelescope
+	Name: #R_ORB_VACUUM_TELESCOPE
+	Description: #R_ORB_VACUUM_TELESCOPE_DESC
+	Category: Reactionary
+
+	Point Cost: 900
+	Time Cost: 180
+
+	Icon: GuiOrbitalIcons::17
+	Color: #fff300
+
+	UnlockTag(VacuumTelescopeUnlock)
+	SkipOnUnlockedTag(VacuumTelescopeUnlock)

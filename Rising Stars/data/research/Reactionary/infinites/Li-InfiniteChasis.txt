@@ -1,0 +1,19 @@
+Technology: LifeInfiniteChasis
+	Name: Chasis Enginiering
+
+	Icon: GuiOrbitalIcons::6*#a8df21
+	Symbol: EditIcons::7
+	Color: #a8df21
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddPointCostAttribute(InfiniteChasisTaken, 300)
+	AddTimeCostAttribute(InfiniteChasisTaken, 15)
+
+	ResetWhenUnlocked()
+
+	ModAttribute(InfiniteChasisTaken, Add, 1)

@@ -1,0 +1,21 @@
+Technology: LifeInfiniteMissileWeapons
+	Name: Missille Weapons
+	Description: #INFINITE_MISILE_WEAPONS:7%
+	Icon: TechIcons::27
+	Symbol: EditIcons::7
+	Color: #ac0cd4
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 300
+	Time Cost: 30
+
+	AddPointCostAttribute(InfiniteMissileTech, 100)
+	AddTimeCostAttribute(InfiniteMissileTech, 10)
+
+	ResetWhenUnlocked()
+
+	AffectsTaggedSubsystems(IsExplosiveWeapon)
+	AddModifier( tag/MissileBase::DamageFactor(1.07) )
+	ModAttribute(InfiniteMissileTech, Add, 1)

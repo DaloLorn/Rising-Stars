@@ -1,0 +1,20 @@
+Technology: LifeInfiniteCargo
+	Name: Cargo Storage
+
+	Icon: AttributeIcons::4
+	Symbol: EditIcons::7
+	Color: #314f0e
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddPointCostAttribute(InfiniteCargoTaken, 100)
+	AddTimeCostAttribute(InfiniteCargoTaken, 10)
+
+	ResetWhenUnlocked()
+
+	AddModifier( SupplyCapacityFactor(1.05) )
+	ModAttribute(InfiniteCargoTaken, Add, 1)

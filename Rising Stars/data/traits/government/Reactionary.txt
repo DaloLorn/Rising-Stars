@@ -1,0 +1,19 @@
+Trait: Reactionary
+	Name: Reactionary
+	Description: xxxxxxx
+	Order: 5
+
+	Category: Government
+	Unique: Government
+
+	Icon: techBallistics*#57bd13
+	Color: #57bd13
+	AI Support: False
+
+
+
+	SpawnShip(Dreadnaught, Empire, 6x Beamship, 12x Missile Boat, 20x Gunship)
+	SpawnShip(Dreadnaught, Empire, 6x Beamship, 12x Missile Boat, 20x Gunship)
+
+	ReplaceTechnologyGrid(Reactionary)
+	OnDLC(Heralds, GainAttitude(Xenophobic, Level Up = 1))

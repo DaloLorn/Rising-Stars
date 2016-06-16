@@ -1,0 +1,23 @@
+Technology: LifeInfiniteMaterials
+	Name: Materials Development
+	Description: #R_INFINITE_HEALTH_DESC:5%
+
+	Icon: techMaterialScience1*#a8df21
+	Symbol: EditIcons::7
+	Color: #a8df21
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 300
+	Time Cost: 30
+
+	AddPointCostAttribute(InfiniteHealthTaken, 100)
+	AddTimeCostAttribute(InfiniteHealthTaken, 10)
+
+	ResetWhenUnlocked()
+
+	AddModifier(HpFactor(1.05))
+	AddModifier(ReactiveArmor::ImpactLevelFactor(1.05))
+	ModAttribute(OrbitalHealthMod, Multiply, 1.05)
+	ModAttribute(InfiniteHealthTaken, Add, 1)

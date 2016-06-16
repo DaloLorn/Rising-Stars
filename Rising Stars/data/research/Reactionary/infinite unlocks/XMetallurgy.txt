@@ -1,0 +1,88 @@
+Technology: XConstructionBay
+	Name: #R_SYS_CONSTRUCTION_BAY
+	Description: #R_SYS_CONSTRUCTION_BAY_DESC
+	Category: Reactionary
+
+	Point Cost: 700
+	Time Cost: 60
+
+	Icon: ComputerCore * #fca404
+	Color: #fca404
+
+	UnlockSubsystem(ConstructionBay)
+	SkipOnUnlockedSubsystem(ConstructionBay)
+
+	SecondaryMoneyCost(1000)
+
+Technology: XOreProcessor
+	Name: #R_SYS_ORE_PROCESSOR
+	Description: #R_SYS_ORE_PROCESSOR_DESC
+	
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: SupportCommand * #8870ac
+	Color: #8870ac
+	
+	UnlockSubsystem(OreProcessor)
+	SkipOnUnlockedSubsystem(OreProcessor)
+
+	SecondaryMoneyCost(750)
+
+Technology: XBulkhead
+	Name: #R_MOD_BULKHEAD
+	Description: #R_MOD_BULKHEAD_DESC
+	Category: Reactionary
+
+	Point Cost: 400
+	Time Cost: 60
+
+	Icon: HexagonSubsystems::0 * #cf00ff
+	Color: #eda1ff
+
+	UnlockModule(Bulkhead)
+	SkipOnUnlockedModule(Bulkhead)
+
+Technology: XSolarSatellite
+	Name: #R_ORB_SOLAR_SATELLITE
+	Description: #R_ORB_SOLAR_SATELLITE_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: GuiOrbitalIcons::13
+	Color: #ffdc40
+	
+	UnlockTag(SolarSatelliteUnlock)
+	SkipOnUnlockedTag(SolarSatelliteUnlock)
+	
+Technology: XHydroponicsSatellite
+	Name: #R_ORB_HYDROPONICS_SATELLITE
+	Description: #R_ORB_HYDROPONICS_SATELLITE_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+	
+	UnlockTag(HydroponicsSatelliteUnlock)
+	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
+
+Technology: XDefenseSatellite
+	Name: #R_ORB_DEFENSE_SATELLITE
+	Description: #R_ORB_DEFENSE_SATELLITE_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+	
+	UnlockTag(DefenseSatelliteUnlock)
+	SkipOnUnlockedTag(DefenseSatelliteUnlock)
