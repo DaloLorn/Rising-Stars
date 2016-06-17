@@ -12,7 +12,7 @@ Technology: XFusionGen
 	UnlockSubsystem(FusionGen)
 	SkipOnUnlockedSubsystem(FusionGen)
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 1, #R_LIFESTYLE_REQ:Energy:1)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 1, #R_LIFESTYLE_REQ:Energy:1)
 	SecondaryEnergyCost(300)
 	
 Technology: XSolarPanel
@@ -33,7 +33,7 @@ Technology: XSolarPanel
 	SecondaryInfluenceCost(15)
 
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 3, #R_LIFESTYLE_REQ:Energy:3 )
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy:3 )
 	
 Technology: XEmergencySupplies
 	Name: #R_SYS_EMERGENCY_SUPPLIES
@@ -51,7 +51,7 @@ Technology: XEmergencySupplies
 	SkipOnUnlockedSubsystem(EmergencySupplies)
 
 	SecondaryEnergyCost(500)
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 4, #R_LIFESTYLE_REQ:Energy:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:4)
 	
 	
 	
@@ -70,7 +70,7 @@ Technology: XAntimatterGen
 	UnlockSubsystem(AntimatterGen)
 	SkipOnUnlockedSubsystem(AntimatterGen)
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 5, #R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
 	SecondaryEnergyCost(1000)
 	
 
@@ -91,7 +91,7 @@ Technology: XQuantumBattery
 	UnlockModule(QuantumBattery)
 	SkipOnUnlockedModule(QuantumBattery)
 	
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 6,#R_LIFESTYLE_REQ:Energy:6 )
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6,#R_LIFESTYLE_REQ:Energy:6 )
 	
 	
 Technology: XQuantumCompressor
@@ -110,7 +110,7 @@ Technology: XQuantumCompressor
 	UnlockModule(QuantumCompressor)
 	SkipOnUnlockedModule(QuantumCompressor)
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 6, #R_LIFESTYLE_REQ:Energy:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy:6)
 	
 Technology: XShieldedAntimatter
 	Name: #S_SHIELDED_AMGEN
@@ -134,7 +134,7 @@ Technology: XShieldedAntimatter
 	
 	SkipOnUnlockedSubsystem(ShieldedAntimatter)
 	
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 7, #R_LIFESTYLE_REQ:Energy:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy:7)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
 	
 Technology: XZeroPoint
@@ -157,5 +157,5 @@ Technology: XZeroPoint
 	SecondaryEnergyCost(18000)
 	UnlockSubsystem(ZeroPoint)
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTech, 8, #R_LIFESTYLE_REQ:Energy:8)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 8, #R_LIFESTYLE_REQ:Energy:8)
 	
