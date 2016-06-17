@@ -1,4 +1,6 @@
 R_LIFESTYLE_REQ: Require $1 tech level $2
+TRAIT_GENIOCRACY_NAME:Government: Geniocracy
+
 INFINITE_THRUST: Propulsion
 INFINITE_METALLURGY_DESC: <<
 	[i][color=#aaa]Improvements to the use of materials and labor division in planetary surface factories.[/color][/i]
@@ -35,4 +37,12 @@ INFINITE_MISILE_WEAPONS:<<
 
 	Increases the missile damage by  $1.
 	
+>>
+
+TRAIT_COMMUNISM: Government: Communism
+TRAIT_GENIOCRACY_DESC: <<
+	[vspace=6/][b][color=#0f0]Bonus:[/color][/b] [offset=140][color=#00ddff]Free research  increasing with time[/color][/offset].
+	[vspace=6/][b][color=#f00]Starting Fleet:[/color][/b] [offset=140][color=#f00]Damaged [/color] 1x Battleship.[/offset]
+	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=140]5x Energy Clash, 1x Mall of the galaxy , 1x Take Control.[/offset]
+	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=140]Level 1 [color=#57bd13]Progresive[/color][/offset][/dlc]
 >>

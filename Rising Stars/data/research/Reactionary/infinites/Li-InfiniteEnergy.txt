@@ -20,6 +20,6 @@ Technology: LifeInfiniteEnergy
 	AddModifier( tag/IsReactor::PowerFactor(1.05))
 	AffectsTaggedSubsystems(IsReactor)
 	AddEnergyIncome(0.5)
-	
+	ModAttribute(FreeEnergyStorage, Add, 50)
 	
 	ModAttribute(InfiniteEnergyTaken, Add, 1)

@@ -1,0 +1,23 @@
+Trait: Geniocracy
+	Name: #TRAIT_GENIOCRACY_NAME
+	Description: #TRAIT_GENIOCRACY_DESC
+	Order: 5
+
+	Category: Government
+	Unique: Government
+
+	Icon: techBallistics*#57bd13
+	Color: #57bd13
+	AI Support: False
+
+
+
+	SpawnShip(Battleship, Design From = Empire, , Add Status = Damaged)
+	OnHomeworld(GenerateDefenseShips(30))
+
+	GainInfluenceCard(ClaimArtifact)
+	GainInfluenceCard(EnergyClash, Uses = 5)
+	GainInfluenceCard(GalaxyMall)
+	RepeatExtended(AddResearchIncome(0.07), Per Gametime Bonus = 1)
+	ReplaceTechnologyGrid(Reactionary)
+	OnDLC(Heralds, GainAttitude(Progressive, Level Up = 1))

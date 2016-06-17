@@ -1,0 +1,8 @@
+Status: Damaged
+	Name: Damaged
+	Description: This ship is not fully functional
+	Color: #ff041d
+	Visible To: Owner
+	Icon: techMaterialScience1*#ff041d
+	GrantAbility(Repair)
+	AddFleetEffectiveness(-0.5)

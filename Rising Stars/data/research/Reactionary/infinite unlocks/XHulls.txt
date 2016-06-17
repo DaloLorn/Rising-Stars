@@ -16,25 +16,26 @@ Technology: XSuperstructureHull
 	SkipOnUnlockedSubsystem(SuperstructureHull)
 
 	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 2, #R_LIFESTYLE_REQ:Chasing Enginiering:2)
 
-Technology: XDestroyerHull
-	Name: #R_SYS_DESTROYER_HULL
-	Description: #R_SYS_DESTROYER_HULL_DESC
+	
+Technology: XSpinalMountHull
+	Name: #R_SYS_SPINAL_MOUNT_HULL
+	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
 	Category: Reactionary
-
-	DLC: Heralds
-	DLC Replace: Health
 
 	Point Cost: 600
 	Time Cost: 120
 
-	Icon: HullSubsystems::1
-	Color: #ff8080
+	Icon: HullSubsystems::2
+	Color: #8edcef
 
-	UnlockSubsystem(DestroyerHull)
-	SkipOnUnlockedSubsystem(DestroyerHull)
+	UnlockSubsystem(SpinalMountHull)
+	SkipOnUnlockedSubsystem(SpinalMountHull)
 
 	SecondaryMoneyCost(1000)
+	
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
 
 Technology: XCarrierHull
 	Name: #R_SYS_CARRIER_HULL
@@ -44,7 +45,7 @@ Technology: XCarrierHull
 	DLC: Heralds
 	DLC Replace: Health
 
-	Point Cost: 600
+	Point Cost:0
 	Time Cost: 120
 
 	Icon: HullSubsystems::0
@@ -54,13 +55,39 @@ Technology: XCarrierHull
 	SkipOnUnlockedSubsystem(CarrierHull)
 
 	SecondaryMoneyCost(1000)
+	
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
+	
+	
+Technology: XDestroyerHull
+	Name: #R_SYS_DESTROYER_HULL
+	Description: #R_SYS_DESTROYER_HULL_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Health
+
+	Point Cost: 0
+	Time Cost: 120
+
+	Icon: HullSubsystems::1
+	Color: #ff8080
+
+	UnlockSubsystem(DestroyerHull)
+	SkipOnUnlockedSubsystem(DestroyerHull)
+
+	SecondaryMoneyCost(1500)
+	
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 5, #R_LIFESTYLE_REQ:Chasing Enginiering:5)
+
+
 
 Technology: XTitanHull
 	Name: #R_SYS_TITAN_HULL
 	Description: #R_SYS_TITAN_HULL_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: DesignationIcons::16
@@ -73,6 +100,7 @@ Technology: XTitanHull
 	SkipOnUnlockedSubsystem(TitanHull)
 
 	SecondaryEnergyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 5, #R_LIFESTYLE_REQ:Chasing Enginiering:5)
 
 Technology: XColossusHull
 	Name: #R_SYS_COLOSSUS_HULL
@@ -94,19 +122,7 @@ Technology: XColossusHull
 
 	UnlockSubsystem(ColossusHull)
 	SkipOnUnlockedSubsystem(ColossusHull)
+	
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 6, #R_LIFESTYLE_REQ:Chasing Enginiering:6)
 
-Technology: XSpinalMountHull
-	Name: #R_SYS_SPINAL_MOUNT_HULL
-	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
-	Category: Reactionary
 
-	Point Cost: 600
-	Time Cost: 120
-
-	Icon: HullSubsystems::2
-	Color: #8edcef
-
-	UnlockSubsystem(SpinalMountHull)
-	SkipOnUnlockedSubsystem(SpinalMountHull)
-
-	SecondaryMoneyCost(1000)

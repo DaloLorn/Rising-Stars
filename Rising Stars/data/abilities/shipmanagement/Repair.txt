@@ -1,0 +1,9 @@
+Ability: Repair
+	Name: Repair
+	Description: Repair the Ship
+	Icon: techConstruction*#00ff00
+	Energy Cost: 300
+	ShowEnergyValue(300, Apply Penalty = False)
+	ConsumeMoney(400)
+	ShowMoneyValue(400)
+	ConsumeStatus(Damaged, Hide = True)
