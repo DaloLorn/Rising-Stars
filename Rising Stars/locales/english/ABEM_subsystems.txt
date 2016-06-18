@@ -54,7 +54,18 @@ S_BATTERY_NAME: Batteries
 S_BOARDING_PARTY: Boarding Parties
 S_GUARDIANHULL: Guardian Hull
 S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
+S_HAULER_HULL: Hauler Hull
+S_MINER_HULL: Miner Hull
 
+S_MINER_HULL_DESC: <<
+	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
+
+	[img=Plus]Increases shield capacity by 50%.[/img]
+	[img=Plus]Reduces maintenance costs  and supply capacity by 90%.[/img]
+	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
+	[img=Minus]Weapon base damage is reduced by 100% (Can't use weapons). [/img]
+	[img=Minus]Cannot have support ships.[/img]
+>>
 TARGETINGSENSOR_DESC: <<
 	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
 

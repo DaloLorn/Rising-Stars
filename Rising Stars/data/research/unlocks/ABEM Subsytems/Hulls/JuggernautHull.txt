@@ -2,7 +2,7 @@ Technology: JuggernautHull
 	Name: #R_SYS_JUGGERNAUT_HULL
 	Description: #R_SYS_JUGGERNAUT_HULL_DESC
 	Class: Unlock
-	Category: ABEM-Subsystems
+	Category: ABEM - Subsystems
 
 	DLC: Heralds
 	DLC Replace: Health

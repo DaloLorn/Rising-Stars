@@ -3,7 +3,7 @@ Technology: XSuperstructureHull
 	Description: #R_SYS_SUPERSTRUCTURE_HULL_DESC
 	Category: Reactionary
 
-	Point Cost: 600
+	Point Cost: 0
 	Time Cost: 120
 
 	DLC: Heralds
@@ -16,9 +16,29 @@ Technology: XSuperstructureHull
 	SkipOnUnlockedSubsystem(SuperstructureHull)
 
 	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
+
+Technology: XMinerHull
+	Name: #S_MINER_HULL
+	Description: #S_MINER_HULL_DESC
+	Category: Reactionary
+	DLC: Heralds
+	DLC Replace: Health
+
+	Point Cost: 0
+	Time Cost: 120
+
+	Icon: HullSubsystems::6
+	Color: #46f5ff
+
+	UnlockSubsystem(MinerHull)
+	SkipOnUnlockedSubsystem(MinerHull)
+
+	SecondaryMoneyCost(500)
+
 	RequireEmpireAttributeGTE(InfiniteChasisTaken, 2, #R_LIFESTYLE_REQ:Chasing Enginiering:2)
 
-	
+
 Technology: XSpinalMountHull
 	Name: #R_SYS_SPINAL_MOUNT_HULL
 	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
@@ -34,8 +54,8 @@ Technology: XSpinalMountHull
 	SkipOnUnlockedSubsystem(SpinalMountHull)
 
 	SecondaryMoneyCost(1000)
-	
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
+
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 4, #R_LIFESTYLE_REQ:Chasing Enginiering:4)
 
 Technology: XCarrierHull
 	Name: #R_SYS_CARRIER_HULL
@@ -45,7 +65,7 @@ Technology: XCarrierHull
 	DLC: Heralds
 	DLC Replace: Health
 
-	Point Cost:0
+	Point Cost: 0
 	Time Cost: 120
 
 	Icon: HullSubsystems::0
@@ -55,10 +75,10 @@ Technology: XCarrierHull
 	SkipOnUnlockedSubsystem(CarrierHull)
 
 	SecondaryMoneyCost(1000)
-	
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
-	
-	
+
+	RequireEmpireAttributeGTE(InfiniteChasisTaken, 4, #R_LIFESTYLE_REQ:Chasing Enginiering:4)
+
+
 Technology: XDestroyerHull
 	Name: #R_SYS_DESTROYER_HULL
 	Description: #R_SYS_DESTROYER_HULL_DESC
@@ -77,7 +97,7 @@ Technology: XDestroyerHull
 	SkipOnUnlockedSubsystem(DestroyerHull)
 
 	SecondaryMoneyCost(1500)
-	
+
 	RequireEmpireAttributeGTE(InfiniteChasisTaken, 5, #R_LIFESTYLE_REQ:Chasing Enginiering:5)
 
 
@@ -122,7 +142,5 @@ Technology: XColossusHull
 
 	UnlockSubsystem(ColossusHull)
 	SkipOnUnlockedSubsystem(ColossusHull)
-	
+
 	RequireEmpireAttributeGTE(InfiniteChasisTaken, 6, #R_LIFESTYLE_REQ:Chasing Enginiering:6)
-
-

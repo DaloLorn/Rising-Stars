@@ -85,7 +85,6 @@ Grid: Reactionary
 	Connector: 0,-6
 	XShieldedAntimatter: -11,-3
 	XQuantumCompressor: -11,-1
-	CompositeArmor: -1,7
 	XNeutronArmor: 0,6
 	XQuantumArmor: -1,5
 	XShielChargerOrbital: -6,-5
@@ -120,3 +119,5 @@ Grid: Reactionary
 	XAugmentDamage: 5,4
 	XSimulator: 5,-2
 	XTargetSensor: 6,-1
+	XMinerHull: -5,4
+	XCompositeArmor: -1,7

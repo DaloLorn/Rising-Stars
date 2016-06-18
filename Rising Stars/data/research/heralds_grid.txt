@@ -266,3 +266,4 @@ Grid: Heralds
 	FerroFluidArmor: 2,6
 	Tactics: 0,13
 	Warhead: 1,14
+	MinerHull: 10,6
