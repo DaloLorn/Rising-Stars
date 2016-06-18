@@ -23,9 +23,6 @@ Grid: Reactionary
 	XDisruptor: -7,2
 	XHyperLaser: -8,2
 	XShieldGen: -5,-5
-	XShieldHarmonizer: -6,-5
-	XShieldHardener: -7,-5
-	XDeflectorArray: -4,-6
 	Connector: -9,3
 	XSubspaceShredder: -10,3
 	XPulseBolt: -8,4
@@ -88,10 +85,7 @@ Grid: Reactionary
 	XDroneLauncher: 0,-9
 	Connector: 2,-10
 	XDroneCount: -1,-9
-	LifeInfiniteThrust: -3,-10
 	Connector: -3,-9
-	Connector: -2,-8
-	Connector: -2,-7
 	Connector: 4,-11
 	Connector: 1,-11
 	XMissileRange: 3,-10
@@ -99,9 +93,6 @@ Grid: Reactionary
 	XWarhead: 1,-13
 	XShockMissiles: 3,-12
 	Connector: 1,-6
-	Connector: -2,-3
-	Connector: -2,-4
-	Connector: -2,-5
 	Connector: -1,-6
 	Connector: 0,-6
 	XShieldedAntimatter: -11,-3
@@ -109,3 +100,16 @@ Grid: Reactionary
 	CompositeArmor: -1,7
 	XNeutronArmor: 0,6
 	XQuantumArmor: -1,5
+	XShielChargerOrbital: -6,-5
+	XStellarShieldOrbital: -7,-5
+	Connector: -4,-6
+	XDeflectorArray: -3,-6
+	LifeInfiniteThrust: 0,-2
+	Connector: -2,-3
+	Connector: -2,-4
+	Connector: -2,-5
+	Connector: -5,-7
+	XSupShieldGen: -4,-8
+	XCovariantShield: -6,-7
+	XShieldHarmonizer: -7,-7
+	XShieldHardener: -8,-7

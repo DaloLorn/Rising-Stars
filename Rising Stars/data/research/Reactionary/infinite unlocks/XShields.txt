@@ -2,7 +2,7 @@ Technology: XShieldGen
 	Name: #R_SYS_SHIELDGEN
 	Description: #R_SYS_SHIELDGEN_DESC
 
-	
+
 	Category: Reactionary
 
 	Point Cost: 0
@@ -17,11 +17,60 @@ Technology: XShieldGen
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
 	
+	
+Technology: XSupShieldGen
+	Name: Support Shields
+	Description: #R_SYS_SHIELDGEN_DESC
+
+
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: FissionReactor
+	Color: #2b2bce
+	
+	UnlockSubsystem(SupShieldGen)
+)	SkipOnUnlockedSubsystem(ShieldGen)
+
+	SecondaryEnergyCost(700)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
+
+Technology: XShielChargerOrbital
+	Name: Orbital Shield Charger
+	Description: R_ADV_SHIELD_DESC
+
+	Category: Reactionary
+	Icon: GuiOrbitalIcons::19
+	Time Cost: 120
+	Color: #0010ff
+
+	UnlockTag(ShieldCharger)
+	UnlockSubsystem(CovariantShield)
+	SecondaryEnergyCost(800)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 3, #R_LIFESTYLE_REQ:Shields Modulation:3)
+
+
+
+Technology: XCovariantShield
+	Name: Covariant Shield
+	Description: R_ADV_SHIELD_DESC
+
+	Category: Reactionary
+	Icon: TechIcons::6
+	Time Cost: 120
+	Color: #e20dff
+
+	UnlockSubsystem(CovariantShield)
+	SecondaryEnergyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
 
 Technology: XShieldHarmonizer
 	Name: #R_SYS_SHIELD_HARMONIZER
 	Description: #R_SYS_SHIELD_HARMONIZER_DESC
-	
+
 	Category: Reactionary
 
 	DLC: Heralds
@@ -32,17 +81,17 @@ Technology: XShieldHarmonizer
 
 	Icon: ShieldHarmonizer
 	Color: #e2e676
-	
+
 	UnlockSubsystem(ShieldHarmonizer)
 	SkipOnUnlockedSubsystem(ShieldHarmonizer)
 
 	SecondaryEnergyCost(1300)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
-	
+
 Technology: XShieldHardener
 	Name: #R_SYS_SHIELD_HARDENER
 	Description: #R_SYS_SHIELD_HARDENER_DESC
-	
+
 	Category: Reactionary
 
 	Point Cost: 500
@@ -57,12 +106,12 @@ Technology: XShieldHardener
 	SecondaryEnergyCost(1400)
 
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5,#R_LIFESTYLE_REQ:Shields Modulation:5)
-	
+
 
 Technology: XDeflectorArray
 	Name: #R_SYS_DEFLECTOR_ARRAY
 	Description: #R_SYS_DEFLECTOR_ARRAY_DESC
-	
+
 	Category: Reactionary
 
 	DLC: Heralds
@@ -73,15 +122,25 @@ Technology: XDeflectorArray
 
 	Icon: Dish
 	Color: #348c99
-	
+
 	UnlockSubsystem(DeflectorArray)
 	SkipOnUnlockedSubsystem(DeflectorArray)
 
 	SecondaryEnergyCost(1500)
-	
+
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6,#R_LIFESTYLE_REQ:Shields Modulation:6)
 
 
+Technology: XStellarShieldOrbital
+	Name: Orbital Stellar Shield
+	Description: R_ADV_SHIELD_DESC
 
+	Category: Reactionary
+	Icon: GuiOrbitalIcons::12
+	Time Cost: 120
+	Color: #0630ff
 
-	
+	UnlockTag(StellarShieldOrbital)
+	UnlockSubsystem(CovariantShield)
+	SecondaryEnergyCost(1600)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shields Modulation:8)
