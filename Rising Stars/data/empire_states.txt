@@ -71,8 +71,12 @@ visible:
 	attribute double WelfareEfficiency = 1
 	attribute double FactoryLaborMod = 0
 	attribute double PlanetSupplyMod = 0
+	attribute double PopulationLevel1Mod = 0
 	attribute double PopulationLevel2Mod = 0
 	attribute double PopulationLevel3Mod = 0
+	attribute double PopulationLevel4Mod = 0
+	attribute double PopulationLevel5Mod = 0
+	attribute double PopulationLevel6Mod = 0
 	attribute double ForgeCount = 0
 	attribute double RevenantParts = 0
 	attribute double PlanetDecaySpeed = 1

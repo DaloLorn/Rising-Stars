@@ -277,10 +277,18 @@ tidy class PlanetScript {
 
 		float newPop = 0.f;
 		uint lev = obj.level;
-		if(lev == 2)
+		if(lev == 1)
+			newPop += obj.owner.PopulationLevel1Mod;
+		else if(lev == 2)
 			newPop += obj.owner.PopulationLevel2Mod;
-		else if(lev >= 3)
+		else if(lev >= 3) //this change in == -> >= is intentional to avoid breaking more things
 			newPop += obj.owner.PopulationLevel3Mod;
+		else if(lev >= 4)
+			newPop += obj.owner.PopulationLevel4Mod;
+		else if(lev >= 5)
+			newPop += obj.owner.PopulationLevel5Mod;
+		else if(lev >= 6)
+			newPop += obj.owner.PopulationLevel6Mod;
 		if(int(newPop) != int(bonusPop)) {
 			obj.modMaxPopulation(int(newPop) - int(bonusPop));
 			bonusPop = newPop;

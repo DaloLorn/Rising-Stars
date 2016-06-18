@@ -1,10 +1,8 @@
 Technology: XTroopPods
 	Name: #R_SYS_TROOP_PODS
 	Description: #R_SYS_TROOP_PODS_DESC
-	Class: Unlock
 	Category: Reactionary
 
-	Point Cost: 600
 	Time Cost: 120
 
 	Icon: TroopPods
@@ -12,6 +10,7 @@ Technology: XTroopPods
 
 	DLC: Heralds
 	DLC Replace: SupportCap
-	
+
+	SecondaryInfluenceCost(20)
 	UnlockSubsystem(TroopPods)
 	SkipOnUnlockedSubsystem(TroopPods)

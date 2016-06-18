@@ -1,0 +1,32 @@
+Technology: LifeInfiniteSociology
+	Name: Sociology
+	Description: INFINITE_SOCIETY:0.1:10%:1:5
+
+	Icon: ResourceIcon::8
+	Symbol: EditIcons::7
+	Color: #b63fff
+
+	Category: InfinitesLifeStyle
+	Class: Keystone
+
+	Point Cost: 300
+	Time Cost: 60
+
+	AddPointCostAttribute(InfinitePopTaken, 100)
+	AddTimeCostAttribute(InfinitePopTaken, 10)
+	ModAttribute(InfinitePopTaken, Add, 1)
+
+	ResetWhenUnlocked()
+
+
+	ModAttribute(PopulationLevel1Mod, Add, 0.1)
+
+	AddGlobalLoyalty(1)
+	ModDefenseReserve(5)
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.9) )
+	ModAttribute(TileDevelopmentFactor, Multiply, 1.10)
+	ModAttribute(PopulationLevel2Mod, Add, 0.2)
+	ModAttribute(PopulationLevel3Mod, Add, 0.3) //check Rising Stars\scripts\server\objects\Planet.as
+	ModAttribute(PopulationLevel4Mod, Add, 0.1)
+	ModAttribute(PopulationLevel5Mod, Add, 0.1)
+	ModAttribute(PopulationLevel6Mod, Add, 0.1)

@@ -86,10 +86,10 @@ INFINITE_CARGO:<<
 INFINITE_SOCIETY:<<
 	[i][color=#aaa] [/color][/i]
 	
-	Increases population of planets  by $1 per level of the planet.Higher level planets get more pop 
+	Increases population of planets  by $1 per level of the planet.
 	Increases Civilian Imperial building speed by $2 
-	Increase homeworld pressure capacity by $3
-	Increase planet loyaly by $4
+	Increses time for planets to decay by ~$2% and loyalty by $3
+	Increase defense reserve by $4.
 	
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 	
