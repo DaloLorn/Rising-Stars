@@ -1,7 +1,6 @@
 Technology: XShipComputer
 	Name: #R_SYS_SHIP_COMPUTER
 	Description: #R_SYS_SHIP_COMPUTER_DESC
-	Class: Unlock
 	Category: Reactionary
 
 	Point Cost: 500

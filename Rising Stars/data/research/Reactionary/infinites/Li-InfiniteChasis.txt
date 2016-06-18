@@ -6,14 +6,17 @@ Technology: LifeInfiniteChasis
 	Color: #a8df21
 
 	Category: InfinitesLifeStyle
-	Class: Keystone
+	Class: BigUpgrade
 
 	Point Cost: 500
 	Time Cost: 60
+	Description: #INFINITE_CHASIS:10%:40%
 
 	AddPointCostAttribute(InfiniteChasisTaken, 300)
 	AddTimeCostAttribute(InfiniteChasisTaken, 15)
 
 	ResetWhenUnlocked()
 
+	AddModifier(RepairFactor(1.10))
+	CivilanHPBonus(1.40)
 	ModAttribute(InfiniteChasisTaken, Add, 1)

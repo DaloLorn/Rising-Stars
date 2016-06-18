@@ -1,16 +1,9 @@
 Grid: Reactionary
 	Science: -2,0
 	LifeInfiniteEnergyWeapons: -5,2
-	LifeInfiniteChasis: 2,2
-	Connector: 2,3
-	Connector: 3,4
-	XSuperstructureHull: 3,1
-	XCarrierHull: 4,0
 	XSpinalMountHull: 4,2
-	Connector: 2,1
 	Connector: 5,2
 	XTitanHull: 5,3
-	XDestroyerHull: 5,1
 	Connector: -3,0
 	LifeInfiniteEnergy: -4,0
 	Connector: -5,1
@@ -31,7 +24,6 @@ Grid: Reactionary
 	XAntimatterGen: -10,-3
 	XQuantumBattery: -10,-1
 	Connector: -2,-1
-	Connector: 0,0
 	Connector: -1,-2
 	Connector: -2,1
 	LifeInfiniteMaterials: -1,2
@@ -45,21 +37,17 @@ Grid: Reactionary
 	XCrystalArmor: -2,10
 	LifeInfiniteMegaconstruction: 2,7
 	Connector: 2,6
-	Connector: 2,5
 	XRingHabitat: 3,7
 	Connector: 2,8
 	XVacuumTelescope: 2,9
 	XStarForge: 1,8
-	SupportSize: 4,-1
 	Laboratories: -9,-4
 	Connector: -6,2
 	XArtificialPlanetoid: 4,8
 	ArtificialMoon: 4,6
-	ColossusHull: 6,4
 	XRingworld: 5,8
 	XSysNilingArmor: -4,9
 	Connector: 0,2
-	Connector: 1,2
 	Connector: -4,5
 	Connector: -5,5
 	XBulkhead: -5,6
@@ -113,3 +101,22 @@ Grid: Reactionary
 	XCovariantShield: -6,-7
 	XShieldHarmonizer: -7,-7
 	XShieldHardener: -8,-7
+	Connector: 1,5
+	LifeInfiniteChasis: 2,1
+	Connector: 0,1
+	Connector: 1,1
+	Connector: 0,3
+	Connector: 1,4
+	XAugmentReload: 3,3
+	XShipComputer: 5,1
+	XDestroyerHull: 6,0
+	Connector: 3,1
+	XCarrierHull: 4,0
+	XFleetComputer: 3,-1
+	Connector: 4,-2
+	SupportSize: 2,-1
+	XAugmentSupply: 0,-11
+	ColossusHull: 6,3
+	XAugmentDamage: 5,4
+	XSimulator: 5,-2
+	XTargetSensor: 6,-1

@@ -1,11 +1,11 @@
-Technology: CompositeArmor
+Technology: XCompositeArmor
 	Name: #S_COMPOSITE_ARMOR
 	Description: #S_COMPOSITE_ARMOR_DESC
 
-		
+
 	Point Cost: 0
 	Time Cost: 180
-	SecondaryMoneyCost(750)
+	SecondaryMoneyCost(450)
 
 	Icon: CompositeArmor
 	Color: #676210
@@ -46,14 +46,14 @@ Technology: XQuantumArmor
 	Icon: QuantumArmor
 	Color: #449944
 
-	
+
 	UnlockSubsystem(QuantumArmor)
 	UnlockSubsystem(SupportQuantumArmor)
 
 	ModAttribute(ProgenitorTechProgress, Add, 5)
 	SkipOnUnlockedSubsystem(QuantumArmor)
 	SkipOnUnlockedSubsystem(SupportQuantumArmor)
-	
+
 	SecondaryMoneyCost(2000)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 8, #R_LIFESTYLE_REQ:Armor:8)
 

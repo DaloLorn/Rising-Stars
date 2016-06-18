@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMissileWeapons
 	Name: Missille Weapons
-	Description: #INFINITE_MISILE_WEAPONS:7%
+	Description: #INFINITE_MISILE_WEAPONS:5%:2%
 	Icon: TechIcons::27
 	Symbol: EditIcons::7
 	Color: #ac0cd4
@@ -13,9 +13,12 @@ Technology: LifeInfiniteMissileWeapons
 
 	AddPointCostAttribute(InfiniteMissileTech, 100)
 	AddTimeCostAttribute(InfiniteMissileTech, 10)
+	ModAttribute(InfiniteMissileTech, Add, 1)
 
 	ResetWhenUnlocked()
 
+	AddModifier( tag/Weapon::DamageFactor(1.02))
+	AddModifier( tag/MissileBase::DamageFactor(1.05) )
+
+	
 	AffectsTaggedSubsystems(IsExplosiveWeapon)
-	AddModifier( tag/MissileBase::DamageFactor(1.07) )
-	ModAttribute(InfiniteMissileTech, Add, 1)

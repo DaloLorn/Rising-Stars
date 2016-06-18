@@ -14,10 +14,10 @@ Technology: LifeInfiniteMaterials
 
 	AddPointCostAttribute(InfiniteHealthTaken, 100)
 	AddTimeCostAttribute(InfiniteHealthTaken, 10)
+	ModAttribute(InfiniteHealthTaken, Add, 1)
 
 	ResetWhenUnlocked()
 
 	AddModifier(HpFactor(1.05))
 	AddModifier(ReactiveArmor::ImpactLevelFactor(1.05))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.05)
-	ModAttribute(InfiniteHealthTaken, Add, 1)

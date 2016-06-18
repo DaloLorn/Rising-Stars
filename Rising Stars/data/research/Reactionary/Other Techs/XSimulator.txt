@@ -1,7 +1,6 @@
 Technology: XSimulator
 	Name: #R_SYS_SIMULATOR
 	Description: #R_SYS_SIMULATOR_DESC
-	Class: Unlock
 	Category: Reactionary
 
 	Point Cost: 600
@@ -9,7 +8,7 @@ Technology: XSimulator
 
 	Icon: Simulator
 	Color: #f17757
-	
+
 	UnlockSubsystem(Simulator)
 	SkipOnUnlockedSubsystem(Simulator)
 

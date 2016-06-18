@@ -1,17 +1,13 @@
 Technology: LifeInfiniteEnergyWeapons
 	Name: Energy Weapons
-	Description: <<
-		Increases the damage dealt by all energy weapons  by 5%.
-
-		Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-	>>
+	Description: #INFINITE_ENERGY_WEAPONS:5%:2%
 
 	Icon: TechIcons::26
 	Symbol: EditIcons::7
 	Color: #d45418
+	Class: Keystone
 
 	Category: InfinitesLifeStyle
-	Class: Keystone
 
 	Point Cost: 200
 	Time Cost: 30
@@ -21,6 +17,7 @@ Technology: LifeInfiniteEnergyWeapons
 
 	ResetWhenUnlocked()
 
+	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AffectsTaggedSubsystems(IsBeamWeapon)
 	AddModifier( tag/BeamBase::DamageFactor(1.05) )
 	ModAttribute(InfiniteEnergyWeaponsTech, Add, 1)
