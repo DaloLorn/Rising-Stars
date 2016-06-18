@@ -14,10 +14,12 @@ Technology: LifeInfiniteEnergyWeapons
 
 	AddPointCostAttribute(InfiniteEnergyWeaponsTech, 100)
 	AddTimeCostAttribute(InfiniteEnergyWeaponsTech, 10)
-
+	ModAttribute(InfiniteEnergyWeaponsTech, Add, 1)
 	ResetWhenUnlocked()
-
+	
+////////////////////////
+//Subsystem  Bonus//
+///////////////////////
+	AddModifier( tag/BeamBase::DamageFactor(1.05) )
 	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AffectsTaggedSubsystems(IsBeamWeapon)
-	AddModifier( tag/BeamBase::DamageFactor(1.05) )
-	ModAttribute(InfiniteEnergyWeaponsTech, Add, 1)

@@ -14,12 +14,21 @@ Technology: LifeInfiniteDamage
 
 	AddPointCostAttribute(InfiniteProyTech, 100)
 	AddTimeCostAttribute(InfiniteProyTech, 10)
+	ModAttribute(InfiniteProyTech, Add, 1)
 
 	ResetWhenUnlocked()
 
-	AffectsTaggedSubsystems(IsProjWeapon)
 
+	
+////////////////////////
+//Subsystem  Bonus//
+///////////////////////
 	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AddModifier( tag/Weapon::DamageFactor(1.05) )
+	AffectsTaggedSubsystems(IsProjWeapon)
+		
+////////////////////////
+//Orbital Bonus//
+///////////////////////
+	
 	ModAttribute(StaticDamageFactor, Multiply, 1.05)
-	ModAttribute(InfiniteProyTech, Add, 1)

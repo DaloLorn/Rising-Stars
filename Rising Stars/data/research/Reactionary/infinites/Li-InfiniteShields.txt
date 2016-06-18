@@ -14,11 +14,15 @@ Technology: LifeInfiniteShields
 
 	AddPointCostAttribute(InfiniteShieldsTaken, 200)
 	AddTimeCostAttribute(InfiniteShieldsTaken, 20)
+	ModAttribute(InfiniteShieldsTaken, Add, 1)
 
 	ResetWhenUnlocked()
-
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy:3)
+	
+	
+////////////////////////
+//Subsystem  Bonus//
+///////////////////////
 	AddModifier(ShieldCapacityFactor(1.07))
 	AddModifier(ShieldRegenFactor(1.07))
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy,3)
-	ModAttribute(InfiniteShieldsTaken, Add, 1)

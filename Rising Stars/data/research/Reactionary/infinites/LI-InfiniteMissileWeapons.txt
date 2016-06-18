@@ -17,6 +17,10 @@ Technology: LifeInfiniteMissileWeapons
 
 	ResetWhenUnlocked()
 
+////////////////////////
+//Subsystem  Bonus//
+///////////////////////
+	
 	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AddModifier( tag/MissileBase::DamageFactor(1.05) )
 
