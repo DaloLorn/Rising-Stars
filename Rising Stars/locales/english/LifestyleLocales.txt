@@ -9,7 +9,6 @@ INFINITE_METALLURGY_DESC: <<
 	Reduce orbital labor and build cost by $2
 	
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-
 	
 >>
 
@@ -30,7 +29,6 @@ INFINITE_ARMOR_DESC:<<
 	Increases the armor damage resistance by   $2.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-
 >>
 
 INFINITE_PROYECTILE_WEAPONS:<<
@@ -38,7 +36,6 @@ INFINITE_PROYECTILE_WEAPONS:<<
 
 	Increases the projectile weapons damage by  $1 and all damage by $2.
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-	
 >>
 
 INFINITE_MISILE_WEAPONS:<<
@@ -73,7 +70,6 @@ INFINITE_CHASIS:<<
 
 INFINITE_CARGO:<<
 	[i][color=#aaa] [/color][/i]
-	
 	Increases Support Command by $1
 	Increases Suplly Capacity by $2
 	Increases Cargo capacity by $3
@@ -85,14 +81,20 @@ INFINITE_CARGO:<<
 
 INFINITE_SOCIETY:<<
 	[i][color=#aaa] [/color][/i]
-	
 	Increases population of planets  by $1 per level of the planet.
 	Increases Civilian Imperial building speed by $2 
 	Increses time for planets to decay by ~$2% and loyalty by $3
 	Increase defense reserve by $4.
 	
-	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
+	Each 8 levels Increase pop of level 1 planets by 1
+	Each 4 levels Increase pop of level 2 planets by 1
+	Each 3 levels Increase pop of level 3 planets by 1
+	Each 2 levels Increase pop of level 4 planets by 1
+	Each level Increase pop of level 5 planets by 1
+	Each 2 levels increase pop of Level 6 Planets by 3
 	
+	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
+
 >>
 
 TRAIT_COMMUNISM: Government: Communism

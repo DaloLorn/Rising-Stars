@@ -1,0 +1,111 @@
+Technology: XMegacity
+	Name: #R_BLD_MEGACITY
+	Description: #R_BLD_MEGACITY_DESC:16
+	Category: Reactionary
+
+	Time Cost: 90
+
+	Icon: Megacity
+	Color: #00f3ff
+
+	SecondaryMoneyCost(1200)
+	UnlockTag(MegacityUnlock)
+	SkipOnUnlockedTag(MegacityUnlock)
+
+Technology: XTroopPods
+	Name: #R_SYS_TROOP_PODS
+	Description: #R_SYS_TROOP_PODS_DESC
+	Category: Reactionary
+
+	Time Cost: 120
+
+	Icon: TroopPods
+	Color: #dd3b4e
+
+	DLC: Heralds
+	DLC Replace: SupportCap
+
+	SecondaryInfluenceCost(20)
+	UnlockSubsystem(TroopPods)
+	SkipOnUnlockedSubsystem(TroopPods)
+
+Technology: XBroadcastAntenna
+	Name: #R_SYS_BROADCAST_ANTENNA
+	Description: #R_SYS_BROADCAST_ANTENNA_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Thrust
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: Antenna
+	Color: #f67bed
+
+	UnlockSubsystem(BroadcastAntenna)
+	SkipOnUnlockedSubsystem(BroadcastAntenna)
+
+	SecondaryInfluenceCost(10)
+
+Technology: XWealth
+	Name: #R_WEALTH
+	Description: #R_WEALTH_DESC:500k
+
+	Icon: techEconomics * #b0d16a
+	Color: #b0d16a
+
+	Category: Reactionary
+
+	Time Cost: 100
+	Class: BigUpgrade
+
+	AddPermanentIncome(500)
+
+	SecondaryInfluenceCost(10)
+Technology: XProsperity
+	Name: #R_PROSPERITY
+	Description: #R_PROSPERITY_DESC:35%
+
+	Icon: techEconomics * #4f2cb4
+	Color: #4f2cb4
+
+	Category: Reactionary
+	Class: BigUpgrade
+
+	Time Cost: 80
+
+	ModAttribute(WelfareEfficiency, Multiply, 1.35)
+
+	SecondaryInfluenceCost(10)
+Technology: XAbundance
+	Name: #R_ABUNDANCE
+	Description: #R_ABUNDANCE_DESC:50%
+
+	Icon: techEconomics * #2ffca8
+	Color: #2ffca8
+
+	Category: Reactionary
+
+	Time Cost: 120
+	Class: BigUpgrade
+
+	ModAttribute(Tier3PressureFactor, Multiply, 1.5)
+
+	SecondaryInfluenceCost(10)
+Technology: XLaboratories
+	Name: #R_LABORATORIES
+	Description: #R_LABORATORIES_DESC:2
+
+	Icon: ResearchComplex
+	Symbol: ResourceIcon::4
+	Color: #8c4ec9
+
+	Category: Reactionary
+
+	Time Cost: 180
+	Class: BigUpgrade
+
+	SecondaryEnergyCost(2000)
+	ModAttribute(ResearchComplexExtraPressure, Add, 2)
+Technology: XPopulation

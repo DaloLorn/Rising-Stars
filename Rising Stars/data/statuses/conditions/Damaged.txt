@@ -5,4 +5,4 @@ Status: Damaged
 	Visible To: Owner
 	Icon: techMaterialScience1*#ff041d
 	GrantAbility(Repair)
-	AddFleetEffectiveness(-0.5)
+	AddFleetEffectiveness(-0.4)

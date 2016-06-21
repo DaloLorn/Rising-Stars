@@ -17,7 +17,7 @@ Technology: XConstructionBay
 Technology: XOreProcessor
 	Name: #R_SYS_ORE_PROCESSOR
 	Description: #R_SYS_ORE_PROCESSOR_DESC
-	
+
 	Category: Reactionary
 
 	Point Cost: 500
@@ -25,7 +25,7 @@ Technology: XOreProcessor
 
 	Icon: SupportCommand * #8870ac
 	Color: #8870ac
-	
+
 	UnlockSubsystem(OreProcessor)
 	SkipOnUnlockedSubsystem(OreProcessor)
 
@@ -50,15 +50,15 @@ Technology: XSolarSatellite
 	Description: #R_ORB_SOLAR_SATELLITE_DESC
 	Category: Reactionary
 
-	Point Cost: 500
 	Time Cost: 90
 
 	Icon: GuiOrbitalIcons::13
 	Color: #ffdc40
-	
+
 	UnlockTag(SolarSatelliteUnlock)
 	SkipOnUnlockedTag(SolarSatelliteUnlock)
-	
+
+	SecondaryMoneyCost(600)
 Technology: XHydroponicsSatellite
 	Name: #R_ORB_HYDROPONICS_SATELLITE
 	Description: #R_ORB_HYDROPONICS_SATELLITE_DESC
@@ -69,7 +69,7 @@ Technology: XHydroponicsSatellite
 
 	Icon: GuiOrbitalIcons::14
 	Color: #ffdc40
-	
+
 	UnlockTag(HydroponicsSatelliteUnlock)
 	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
 
@@ -83,6 +83,6 @@ Technology: XDefenseSatellite
 
 	Icon: GuiOrbitalIcons::14
 	Color: #ffdc40
-	
+
 	UnlockTag(DefenseSatelliteUnlock)
 	SkipOnUnlockedTag(DefenseSatelliteUnlock)

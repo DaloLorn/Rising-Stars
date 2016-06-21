@@ -2,7 +2,7 @@ Subsystem: MinerHull
 	Name: #S_MINER_HULL
 	Description: #S_MINER_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore,DefaultUnlock
+	Tags: Applied:Hull, Category:Hulls, NoCore
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #7000cc

@@ -10,15 +10,15 @@ Technology: LifeInfiniteArmor
 
 	Point Cost: 200
 	Time Cost: 60
-	Description: #INFINITE_ARMOR_DESC:10%:10%
+	Description: #INFINITE_ARMOR_DESC:8%:8%
 
 	AddPointCostAttribute(InfiniteArmorTaken,150)
 	AddTimeCostAttribute(InfiniteArmorTaken, 15)
 
 	ResetWhenUnlocked()
 
-	AddModifier(any::ArmorResistFactor(1.10))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.10))
-	AddModifier(tag/IsArmor::HpFactor(1.10))
+	AddModifier(any::ArmorResistFactor(1.08))
+	AddModifier(ReactiveArmor::ImpactLevelFactor(1.08))
+	AddModifier(tag/IsArmor::HpFactor(1.08))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.022)
 	ModAttribute(InfiniteArmorTaken, Add, 1)

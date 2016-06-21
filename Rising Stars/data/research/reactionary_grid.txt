@@ -3,7 +3,6 @@ Grid: Reactionary
 	LifeInfiniteEnergyWeapons: -5,2
 	XSpinalMountHull: 4,2
 	Connector: 5,2
-	XTitanHull: 5,3
 	Connector: -3,0
 	LifeInfiniteEnergy: -4,0
 	Connector: -5,1
@@ -13,8 +12,6 @@ Grid: Reactionary
 	LifeInfiniteShields: -4,-4
 	XEmergencySupplies: -8,-2
 	Connector: -6,-2
-	XDisruptor: -7,2
-	XHyperLaser: -8,2
 	XShieldGen: -5,-5
 	Connector: -9,3
 	XSubspaceShredder: -10,3
@@ -23,78 +20,24 @@ Grid: Reactionary
 	PowerGeneration: -9,-2
 	XAntimatterGen: -10,-3
 	XQuantumBattery: -10,-1
-	Connector: -2,-1
 	Connector: -2,1
-	LifeInfiniteMaterials: -1,2
-	Connector: -2,3
-	Connector: -2,4
-	LifeInfiniteMetallurgy: -3,5
-	Connector: -2,6
-	LifeInfiniteArmor: -2,7
-	XLiquidArmor: -2,8
-	XNanoMesh: -3,9
-	XCrystalArmor: -2,10
-	LifeInfiniteMegaconstruction: 2,7
-	Connector: 2,6
-	XRingHabitat: 3,7
-	Connector: 2,8
-	XVacuumTelescope: 2,9
-	XStarForge: 1,8
 	Connector: -6,2
-	XArtificialPlanetoid: 4,8
-	ArtificialMoon: 4,6
-	XRingworld: 5,8
-	XSysNilingArmor: -4,9
-	Connector: 0,2
-	Connector: -4,5
-	Connector: -5,5
-	XBulkhead: -5,6
-	XSolarSatellite: -7,-3
 	XSolarPanel: -7,-1
 	Connector: -8,-3
 	Connector: -8,-1
-	XConstructionBay: -6,6
-	XOreProcessor: -7,6
-	Connector: 2,-7
-	LifeInfiniteDamage: 4,-7
-	Connector: 3,-7
-	Connector: 5,-8
-	XMuonCannon: 6,-8
-	Connector: 5,-6
-	XParticleLance: 4,-5
-	XProjTracking: 6,-6
-	XFlakBattery: 7,-8
-	XPlasmaThrower: 4,-9
-	LifeInfiniteMissileWeapons: 2,-10
-	Connector: -3,-9
 	Connector: 4,-11
-	Connector: 1,-11
-	XMissileRange: 3,-10
-	Connector: 2,-12
-	XWarhead: 1,-13
-	XShockMissiles: 3,-12
-	Connector: -1,-6
 	XShieldedAntimatter: -11,-3
 	XQuantumCompressor: -11,-1
-	XNeutronArmor: 0,6
-	XQuantumArmor: -1,5
 	XShielChargerOrbital: -6,-5
 	XStellarShieldOrbital: -7,-5
 	Connector: -4,-6
 	XDeflectorArray: -3,-6
-	Connector: -2,-4
-	Connector: -2,-5
 	Connector: -5,-7
 	XSupShieldGen: -4,-8
 	XCovariantShield: -6,-7
 	XShieldHarmonizer: -7,-7
 	XShieldHardener: -8,-7
-	Connector: 1,5
 	LifeInfiniteChasis: 2,1
-	Connector: 0,1
-	Connector: 1,1
-	Connector: 0,3
-	Connector: 1,4
 	XAugmentReload: 3,3
 	XShipComputer: 5,1
 	XDestroyerHull: 6,0
@@ -103,28 +46,104 @@ Grid: Reactionary
 	XFleetComputer: 3,-1
 	Connector: 4,-2
 	SupportSize: 2,-1
-	Connector: 0,-11
-	ColossusHull: 6,3
-	XAugmentDamage: 5,4
 	XSimulator: 5,-2
-	XTargetSensor: 6,-1
-	XMinerHull: -5,4
-	XCompositeArmor: -1,7
-	Connector: -2,-2
-	Connector: -3,-3
-	LifeInfiniteSociology: -1,-1
-	XTroopPods: 1,-2
-	XMegacity: -1,-3
-	Connector: 0,-2
-	Laboratories: 0,-4
-	Prosperity: 1,-3
+	Connector: -2,-1
+	Connector: -1,-2
+	XDisruptor: -8,2
+	XHyperLaser: -7,2
+	XZeroPoint: -12,-3
+	Connector: -1,-3
+	LifeInfiniteThrust: 0,-5
+	Connector: 0,-4
+	Connector: 0,-6
+	Connector: 1,-5
+	XGravityEngine: 2,-4
+	Connector: 3,-6
+	XBoosterEngine: 3,-7
+	XSkipDrive: 3,-5
 	Connector: -1,-7
-	Connector: 1,-8
-	XDroneLauncher: 0,-12
-	XAugmentSupply: 0,-10
+	Connector: -1,-8
+	GravitonChanneling: 1,-3
+	Connector: 2,-6
+	XRamjet: 4,-7
+	LifeInfiniteMissileWeapons: 0,-10
+	Connector: -1,-9
+	XDroneLauncher: -1,-11
 	XDroneCount: -1,-12
-	Connector: 1,-9
-	Connector: 0,-8
-	Connector: 1,-7
-	Abundance: 2,-4
-	Wealth: 2,-5
+	Connector: 1,-10
+	XShockMissiles: 1,-11
+	XMissileRange: 1,-9
+	XWarhead: 2,-11
+	Connector: -1,2
+	LifeInfiniteMaterials: 1,4
+	Connector: 1,5
+	Connector: 2,2
+	Connector: 1,3
+	Connector: 0,4
+	Connector: -1,3
+	Connector: 2,6
+	Connector: 2,7
+	Connector: -1,5
+	Connector: -1,6
+	Connector: 7,0
+	XAugmentDamage: 7,-1
+	XTargetSensor: 7,1
+	Connector: 5,3
+	LifeInfiniteMegaconstruction: 6,4
+	Connector: 7,4
+	XTitanHull: 7,3
+	Connector: 7,5
+	XColossusHull: 8,3
+	Connector: 8,6
+	XVacuumTelescope: 9,5
+	Connector: 9,6
+	XStarForge: 10,5
+	Connector: 7,7
+	XHydroponicsSatellite: 6,7
+	XDefenseSatellite: 8,8
+	Connector: 9,7
+	XRingHabitat: 10,8
+	ArtificialMoon: 9,9
+	XArtificialPlanetoid: 11,8
+	XRingworld: 12,8
+	Connector: -2,7
+	Connector: 3,8
+	Connector: 2,9
+	Connector: 4,8
+	Connector: 4,9
+	FlareBomb: 11,5
+	LifeInfiniteArmor: 1,11
+	XCompositeArmor: 0,11
+	XLiquidArmor: 2,12
+	XNanoMesh: 2,13
+	XSysNilingArmor: 2,14
+	XCrystalArmor: 3,13
+	Connector: 5,11
+	Connector: 5,10
+	XSolarSatellite: -7,-3
+	LifeInfiniteDamage: 6,12
+	Connector: 7,12
+	XPlasmaThrower: 5,13
+	XMuonCannon: 7,11
+	Connector: 7,13
+	XFlakBattery: 8,11
+	XProjTracking: 7,14
+	XParticleLance: 8,13
+	XNeutronArmor: 0,12
+	XQuantumArmor: -1,13
+	Connector: 2,10
+	LifeInfiniteSociology: -3,9
+	Connector: -2,8
+	Connector: -4,9
+	Connector: -4,8
+	XProsperity: -4,10
+	XMegacity: -5,8
+	XBroadcastAntenna: -6,7
+	XLaboratories: -6,9
+	Connector: -7,9
+	XTroopPods: -7,8
+	XAbundance: -7,10
+	XWealth: -6,6
+	StationMaintenance: -8,8
+	FTLCost: 4,-5
+	FTLJammerCombat: 5,-7

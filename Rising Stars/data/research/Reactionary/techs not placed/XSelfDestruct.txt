@@ -1,7 +1,6 @@
 Technology: XSelfDestruct
 	Name: #R_SYS_SELF_DESTRUCT
 	Description: #R_SYS_SELF_DESTRUCT_DESC
-	Class: Unlock
 	Category: Reactionary
 
 	Point Cost: 500
@@ -9,7 +8,7 @@ Technology: XSelfDestruct
 
 	Icon: AntimatterReactor * #ff0000
 	Color: #ff0000
-	
+
 	UnlockSubsystem(SelfDestruct)
 	SkipOnUnlockedSubsystem(SelfDestruct)
 

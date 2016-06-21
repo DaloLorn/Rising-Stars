@@ -1,7 +1,6 @@
 Technology: XGravityEngine
 	Name: #R_SYS_GRAVITY_ENGINE
 	Description: #R_SYS_GRAVITY_ENGINE_DESC
-	Class: Unlock
 	Category: Reactionary
 
 	Point Cost: 500
@@ -9,7 +8,7 @@ Technology: XGravityEngine
 
 	Icon: HexagonSubsystems::5
 	Color: #e0f946
-	
+
 	UnlockSubsystem(GravityEngine)
 	SkipOnUnlockedSubsystem(GravityEngine)
 

@@ -10,7 +10,7 @@ Technology: LifeInfiniteEnergy
 	Class: Keystone
 
 	Point Cost: 200
-	Time Cost: 60
+	Time Cost: 20
 
 	AddPointCostAttribute(InfiniteEnergyTaken, 125)
 	AddTimeCostAttribute(InfiniteEnergyTaken, 10)
