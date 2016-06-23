@@ -27,8 +27,6 @@ Subsystem: RailgunBattery
 	Hex.HP := 24 * HexSize
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
-	Effector: RailgunBattery
-
 	Modifier: AddRailgunKnockback(Amount)
 		Impulse := Impulse + Amount * Size
 
@@ -64,8 +62,8 @@ Subsystem: RailgunBattery
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 24
 		Impulse = Impulse
-
 		StaggerDelay = 0.5
+
 	Effector: RailgunBattery
 		Range = Range
 		Damage = Damage

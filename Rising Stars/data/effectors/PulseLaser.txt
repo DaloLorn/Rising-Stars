@@ -6,6 +6,8 @@ Effector: PulseLaser
 	Value: Tracking
 	Value: SupplyCost = 0
 	Value: FireArc = pi
+	Value: PodSize = 1
+	Value: FireDelay = 0.5
 
 	Range: Range
 	Lifetime: Duration
@@ -32,7 +34,6 @@ Effector: PulseLaser
 	Material: Laser
 	ImpactGfx: ImpactFlareLaserRed
 	TrailCol: ff3300aa, ff33ffaa
-	Value: PodSize = 1
 	EfficiencyMode: Reload Partial
 
 	Skin: Skin1

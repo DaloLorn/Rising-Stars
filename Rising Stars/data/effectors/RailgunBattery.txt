@@ -13,6 +13,7 @@ Effector: RailgunBattery
 	Value: SupplyCost = 0
 	Value: IgnoreDR = 0
 	Value: Impulse = 0
+	Value: StaggerDelay = 0.25
 
 	Range: Range
 	Speed: Speed
@@ -29,7 +30,7 @@ Effector: RailgunBattery
 	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
 
 	EfficiencyMode: Reload Partial
-	Activation: StaggeredTimed(Reload, StaggerDelayFraction)
+	Activation: StaggeredTimed(Reload, StaggerDelay)
 	OnTrigger: combat::WeaponFire(SupplyCost)
 
 	Effect: ProjImpact
@@ -47,7 +48,6 @@ Effector: RailgunBattery
 	Trail: RailTrail
 	TrailCol: 8888ffff, 00000000
 	ImpactGfx: ImpactFlareRailBlue
-	Value: StaggerDelay = 0.25
 
 	Skin: Skin1
 		ImpactGfx: ImpactFlareRailRed

@@ -7,6 +7,8 @@ Effector: Rockets
 	Value: Speed
 	Value: Tracking = 6
 	Value: SupplyCost = 0
+	Value: Spread = 0.5
+	Value: FireArc = 0.5
 
 	Range: Range
 	Speed: Speed
@@ -32,10 +34,8 @@ Effector: Rockets
 	TrailCol: 99220000, 00000000
 	Material: Missile
 	ImpactGfx: ImpactFlareRocket
-	Value: FireArc = 0.5
 	FireArc: FireArc
 	Spread: Spread
-	Value: Spread = 0.05
 
 	Effect: ExplDamage
 		Amount = Damage

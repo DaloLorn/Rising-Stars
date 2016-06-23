@@ -14,25 +14,26 @@ Subsystem: MissileLauncher
 	Size := HexSize * Hexes
 	Range := Size * 2.5 + 850
 	Damage := Size * 15.0
+	PodSize := 1
 	Reload := (4.75 * min(1.0 + Size/512, 2.0)) * PodSize
 	Speed := max(75, Range / 30)
 	Tracking := 3
 	SupplyCost := Size * 3.5
+	out DPS := (Damage * PodSize) / (Reload)
+	out SupplyDrain := SupplyCost / PodSize
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
-	PodSize := 2
 	Module: LaunchTube
 		DefaultUnlock: True
 		Sprite: WarheadTube * #78a8bf
-		DrawMode: 1
 		Name: Launch Tube
 		Description: Adds an additional missile to the salvo per tube added.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
 		PodSize := PodSize + 1
-		Assert: PodSize < 13
-			Message: Cannot have more than 12 tubes per launcher.
+		Assert: PodSize < 7
+			Message: Cannot have more than 6 tubes per launcher.
 	Requires:
 		Command = 1
 
@@ -50,12 +51,12 @@ Subsystem: MissileLauncher
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 
-	Effector: Missile
+	Effector: SalvoMissile
 		Range = Range
 		Damage = Damage
 		Reload = Reload
 		Speed = Speed
 		Tracking = Tracking
-		SupplyCost = SupplyCost * Reload
+		SupplyCost = SupplyCost * (Reload / PodSize)
 		PodSize = PodSize
 		FireDelay = (1.5 / PodSize)
