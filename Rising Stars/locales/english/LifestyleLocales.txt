@@ -104,3 +104,5 @@ TRAIT_GENIOCRACY_DESC: <<
 	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=140]5x Energy Clash, 1x Mall of the galaxy , 1x Claim Artifact.[/offset]
 	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=140]Level 1 [color=#57bd13]Progresive[/color][/offset][/dlc]
 >>
+ATT_PROGRESSIVEGEN_PROGRESS:Research [b]$1 Big Upgrade(s)[/b] on the technology grid.
+
