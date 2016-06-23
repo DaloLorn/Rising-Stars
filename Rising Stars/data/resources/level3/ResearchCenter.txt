@@ -1,0 +1,17 @@
+Resource: ResearchCenter
+	Name: #RESOURCE_RESEARCH
+	Blurb: #RESOURCE_RESEARCH_BLURB
+	Description: #RESOURCE_RESEARCH_DESC
+	Small Icon: ResourceIcon::3
+	Icon: ResourceIcon::3
+	Native Biome: Crystallic
+	Level: 3
+	Pressure: 7 Research
+	Exportable: False
+	Affinity: Research
+	Artificial: True
+	Unique: True
+	Rarity: Uncommon
+	ModCivResourceMult(Research, 0.2)
+	ConvertResource(Energy, 1, Research)
+	ConvertResource(Labor, 1, Research)

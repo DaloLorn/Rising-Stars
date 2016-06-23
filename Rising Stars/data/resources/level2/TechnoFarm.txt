@@ -1,0 +1,18 @@
+Resource: Technofarm
+	Name: #TECHNOFARM_NAME
+	Small Icon: ResourceIconsSmall::72
+	Icon: ResourceIconsSmall::72
+	Native Biome: Forest
+	Level: 2
+	Pressure: 3 Money
+	Pressure: 3 Research
+	Blurb: #TECHNOFARM_BLURB
+	Description: #TECHNOFARM_DESC
+	Exportable: False
+	Artificial: True
+	Affinity: Money
+	Affinity: Research
+	Rarity: Uncommon
+	AddDummyResource(Soylent1)
+	PeriodicInfluenceCard(Cultivation, Timer = 360)
+	ModPopulationGrowth(0.5)

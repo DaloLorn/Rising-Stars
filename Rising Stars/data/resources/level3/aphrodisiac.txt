@@ -1,0 +1,21 @@
+Resource: Aphrodisiac
+	Name: #PARADISE_NAME
+	Blurb: #PARADISE_BLURB
+	Description: #PARADISE_DESC
+	Small Icon: DesignationIcons::15
+	Icon: DesignationIcons::15
+	Native Biome: Forest
+	Level: 3
+	Exportable: False
+	Pressure: 5 Money
+	Pressure: 5 Influence
+	Affinity: Money + Influence
+	Unique: True
+	Rarity: Uncommon
+	ModCivResourceMult(Labor, -0.5)
+	ModCivResourceMult(Research, -0.5)
+	ModCivResourceMult(Defense, -0.5)
+	ModCivResourceMult(Energy, -0.5)
+	ModLoyalty(5)
+	ModPopulationGrowth(1)
+	AddMaxPopulation(10)

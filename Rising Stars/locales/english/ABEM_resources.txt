@@ -107,3 +107,54 @@ R_SPACEFERNS_DESC: <<|
 
 	The planet gains various extra pressure as it is leveled; gaining 2 Energy pressure at level 1, 3 Money pressure at level 2, 4 Influence pressure at level 3, 5 Energy pressure at level 4, 6 Influence pressure at level 5, and 7 Money pressure at level 6.
 >>
+
+RESOURCE_SHIPYARD_BLURB: <<
+	Adds 16 Labor generation. Can upgrade fleets, granting them +40% combat effectiveness.
+	Cannot be exported.
+>>
+RESOURCE_SHIPYARD_DESC: <<
+	An ancient shipyard of immense scale. While its purpose is unknown, you can repurpose its technology to upgrade your own ships' systems and build new ships.
+
+	Adds 16 Labor generation. Cannot be exported.
+>>
+RESOURCE_INTEL_BLURB: <<
+	Provides various intelligence-related effects.
+	Cannot be exported.
+>>
+RESOURCE_INTEL_DESC: <<
+	Abandoned ancient facilities that were designed to look over an entire empire. Gives full vision of adjacent systems. Generates Intelligence cards against empires in adjacent systems. Grants the 'Telescope' ability.
+
+	Cannot be exported.
+>>
+RESOURCE_RESEARCH_BLURB: <<
+	Converts Labor and Energy into Research. Civilian research generation on the planet is increased by 20%.
+	Cannot be exported.
+>>
+RESOURCE_RESEARCH_DESC: <<
+	A massive ancient research facility. Converts Labor and Energy into Research. Civilian research on the planet is increased by 20%.
+
+	Cannot be exported.
+>>
+
+PARADISE_BLURB: <<
+	+100% population growth. +10 maximum population. +5 bonus to planet loyalty.
+	-50% to civilian Labor, Research, Defense and Energy generation. Cannot be exported.
+>>
+PARADISE_DESC: <<
+	A carefree, peaceful planet, this world attracts many people, some simply for holidays, others as permanent residents.
+
+	+100% population growth. +10 maximum population. +5 bonus to planet loyalty.
+
+	-50% to civilian Labor, Research, Defense or Energy generation on this planet. Cannot be exported.
+>>
+TECHNOFARM_BLURB: <<
+	Generates a Cultivation card every 6 minutes. Increases population growth by 50%. Does not require a third [img=ResourceClassIcons::3;20/] Food resource to reach level 3.
+	Cannot be exported.
+>>
+TECHNOFARM_DESC: <<
+	A huge laboratory dedicated to the creation, improvement and adaptation of new plant types to any number of environments. The facility's massive capabilities can also be used to create large quantities of food for local populations.
+
+	Once operational, the facility's food production attracts settlers, increasing population growth by 50%, and acts as a free Megafarm. Furthermore, its more scientific applications generate a Cultivation card every 6 minutes.
+
+	Cannot be exported.
+>>

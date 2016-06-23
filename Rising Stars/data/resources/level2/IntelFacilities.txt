@@ -1,0 +1,16 @@
+Resource: IntelFacilities
+	Name: #RESOURCE_INTEL
+	Blurb: #RESOURCE_INTEL_BLURB
+	Description: #RESOURCE_INTEL_DESC
+	Small Icon: ResourceIcons::37
+	Icon: ResourceIcons::37
+	Native Biome: Mountains
+	Level: 2
+	Pressure: 2 Defense
+	Artificial: True
+	Affinity: Defense
+	Rarity: Uncommon
+	Require Contestation: 30
+	PeriodicNearbyIntelligence()
+	GrantAbility(Telescope)
+	GiveNeighbourVision()
