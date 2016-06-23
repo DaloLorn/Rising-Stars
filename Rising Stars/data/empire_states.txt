@@ -130,6 +130,7 @@ visible:
 	attribute double ImperialBuildingsBuilt = 0
 	attribute double OrbitalsBuilt = 0
 	attribute double ResearchUnlocksDone = 0
+	attribute double ResearchBigUpgradesDone = 0
 	attribute double FTLEnergySpent = 0
 	attribute double InfluenceCardsBought = 0
 	attribute double SpecialFundsFactor = 1
