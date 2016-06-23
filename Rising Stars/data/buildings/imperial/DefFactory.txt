@@ -1,0 +1,16 @@
+Building: DefenseFactory
+	Name: #B_DEFENSEFACTORY
+
+
+	Sprite: LoyaltyIcon*#75ff13
+	Base Cost: 300
+	Size: 2x2
+	Tile Cost: 50
+	Base Maintenance: 150
+	Tile Maintenance: 100
+	Build Time: 250
+	Category: Military
+	Description: #B_DEFENSEFACTORY_DESC
+	//ABEM_sensors::AddSightModifier(AddedRange = 25)
+	AddResource(Defense, 2)
+	AddFleetCommand(128)

@@ -92,7 +92,8 @@ Technology: XAbundance
 
 	ModAttribute(Tier3PressureFactor, Multiply, 1.5)
 
-	SecondaryInfluenceCost(10)
+	SecondaryInfluenceCost(20)
+
 Technology: XLaboratories
 	Name: #R_LABORATORIES
 	Description: #R_LABORATORIES_DESC:2
@@ -108,4 +109,22 @@ Technology: XLaboratories
 
 	SecondaryEnergyCost(2000)
 	ModAttribute(ResearchComplexExtraPressure, Add, 2)
-Technology: XPopulation
+
+Technology: XSenate
+	Name: #F_SENATE_NAME
+	Description: #F_SENATE_DESC
+
+
+
+	Time Cost: 100
+
+	Icon: PoliticalStrengthIcon
+	Color: #00f3ff
+	Blurb:
+	Category: Reactionary
+
+
+	UnlockTag(Senate)
+
+	SkipOnUnlockedTag(Senate)
+	SecondaryInfluenceCost(15)

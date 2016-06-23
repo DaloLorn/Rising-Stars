@@ -136,14 +136,15 @@ Grid: Reactionary
 	Connector: -2,8
 	Connector: -4,9
 	Connector: -4,8
-	XProsperity: -4,10
 	XMegacity: -5,8
-	XBroadcastAntenna: -6,7
 	XLaboratories: -6,9
 	Connector: -7,9
 	XTroopPods: -7,8
 	XAbundance: -7,10
-	XWealth: -6,6
 	StationMaintenance: -8,8
 	FTLCost: 4,-5
 	FTLJammerCombat: 5,-7
+	XSenate: -6,7
+	XBroadcastAntenna: -6,6
+	XProsperity: -4,10
+	XWealth: -7,6

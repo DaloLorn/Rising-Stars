@@ -1,0 +1,22 @@
+Building: Senate
+	Name: #F_SENATE_NAME
+	Description: #F_SENATE_DESC
+	
+	Category: Infrastructure
+	
+	Base Cost: 600
+	Tile Cost: 25
+	Base Maintenance: 400
+	Tile Maintenance: 50
+	Labor Cost: 125
+	
+	Sprite: PoliticalStrengthIcon
+	Size: 8x6
+	
+	RepeatEmpirePopulation(20, AddInfluenceStake(1))
+	ShowTotalPopulation(Empire Population, Icon = ResourceIcon::8)
+
+	ConflictBuilding(SlaveBarracks)
+	TriggerConstructed(ModAttribute(SenateCount, Add, 2))
+	RequireAttributeLT(Senate, Value = 2)
+	RequireUnlockTag(Senate)
