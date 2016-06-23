@@ -46,6 +46,18 @@ S_EXPLRESIST: Explosive Resistance
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
 
+MISSILELAUNCHER_DESC: <<
+	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Slow fire rate.[/img]
+	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase alpha strike at the cost of porportionately longer salvo reload times.[/img]
+>>
+
 S_HYPERLASER_DESC: <<
 	A brief laser with energy densities nearly high enough to spontaneously generate matter.
 

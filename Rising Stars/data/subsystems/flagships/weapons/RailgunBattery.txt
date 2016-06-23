@@ -13,10 +13,10 @@ Subsystem: RailgunBattery
 
 	Size := HexSize * Hexes
 	Range := (Size * 2) + 750
-	Damage := Size * 1.0
+	Damage := Size * 1.2
 	Reload := 0.32 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
-	Spread := 0.041 / max(Range / 600, 1)
+	Spread := 0.045 / max(Range / 900, 1)
 	Tracking := 0.4
 	FireArc := 0.5 * pi
 	Pierce := 1
@@ -49,25 +49,25 @@ Subsystem: RailgunBattery
 			Resist = Hex.DamageResist
 
 	Effector: RailgunBattery
-		Range = Range / 2.5
+		Range = Range / 2.2
 		Damage = Damage
-		Reload = Reload * 1.5
+		Reload = Reload * 1.2
 		Speed = Speed
 		Tracking = Tracking
 		Spread = Spread
 		FireArc = FireArc
 		TargetTolerance = max(pi,FireArc + pi/4)
 		FireTolerance = Spread * 3
-		Pierce = Pierce / 2
+		Pierce = Pierce * 0.75
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 24
 		Impulse = Impulse
-		StaggerDelay = 0.2
+		StaggerDelay = 0.08
 
 	Effector: RailgunBattery
-		Range = Range
+		Range = Range * 1.2
 		Damage = Damage
-		Reload = Reload * 3
+		Reload = Reload * 4
 		Speed = Speed
 		Tracking = Tracking
 		Spread = Spread / 2
@@ -78,4 +78,4 @@ Subsystem: RailgunBattery
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 8
 		Impulse = Impulse
-		StaggerDelay = 0.3
+		StaggerDelay = 0.15

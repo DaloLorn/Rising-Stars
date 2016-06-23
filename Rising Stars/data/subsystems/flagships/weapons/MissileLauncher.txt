@@ -12,11 +12,11 @@ Subsystem: MissileLauncher
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size * 2.5 + 850
-	Damage := Size * 15.0
+	Range := Size * 2.75 + 950
+	Damage := Size * 13.5
 	PodSize := 1
 	Reload := (4.75 * min(1.0 + Size/512, 2.0)) * PodSize
-	Speed := max(75, Range / 30)
+	Speed := max(85, Range / 30)
 	Tracking := 3
 	SupplyCost := Size * 3.5
 	out DPS := (Damage * PodSize) / (Reload)
@@ -32,8 +32,11 @@ Subsystem: MissileLauncher
 		Name: Launch Tube
 		Description: Adds an additional missile to the salvo per tube added.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
 		PodSize := PodSize + 1
+		Hex.BuildCost := 2 * Hex.BuildCost
+		Hex.LaborCost := 5 * Hex.LaborCost
 		Assert: PodSize < 7
 			Message: Cannot have more than 6 tubes per launcher.
+			Unique: True
 	Requires:
 		Command = 1
 
