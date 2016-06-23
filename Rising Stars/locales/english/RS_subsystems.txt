@@ -46,6 +46,15 @@ S_EXPLRESIST: Explosive Resistance
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
 
+S_HYPERLASER_DESC: <<
+	A brief laser with energy densities nearly high enough to spontaneously generate matter.
+
+	[img=Plus]Accurate and instant beam lock-on.[/img]
+	[img=Plus]Deals damage in short pulses so better vs armor.[/img]
+	[img=Minus]Lower overall DPS against shields or unarmored targets.[/img]
+	[img=Minus]Very limited turret firing arc, but more than beam lasers.[/img]
+>>
+
 S_ZPG: Singularity Core
 S_SHIELDED_AMGEN: Shielded Antimatter Generator
 S_COVARIANT_SHIELD: Covariant Shield Generator
