@@ -887,6 +887,8 @@ void init() {
 		IRC_HOSTNAME += "S";
 	if(!IS_STEAM_BUILD)
 		IRC_HOSTNAME += "G";
+	if(hasDLC("Heralds"))
+		IRC_HOSTNAME += "H";
 #section all
 
 	@ircButton.onClick = IRCButtonEvent();
