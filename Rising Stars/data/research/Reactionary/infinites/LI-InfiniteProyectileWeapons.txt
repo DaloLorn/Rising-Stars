@@ -19,16 +19,17 @@ Technology: LifeInfiniteDamage
 	ResetWhenUnlocked()
 
 
-	
+
 ////////////////////////
 //Subsystem  Bonus//
 ///////////////////////
 	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AddModifier( tag/Weapon::DamageFactor(1.05) )
 	AffectsTaggedSubsystems(IsProjWeapon)
-		
+
 ////////////////////////
 //Orbital Bonus//
 ///////////////////////
-	
+
+	AddModifier( tag/BeamBase::RangeFactor(1.05) )
 	ModAttribute(StaticDamageFactor, Multiply, 1.05)

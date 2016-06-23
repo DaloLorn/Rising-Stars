@@ -31,30 +31,36 @@ INFINITE_ARMOR_DESC:<<
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
 
-INFINITE_PROYECTILE_WEAPONS:<<
+INFINITE_PROYECTILE_WEAPONS: <<
 	[i][color=#aaa] [/color][/i]
 
 	Increases the projectile weapons damage by  $1 and all damage by $2.
+	Increases the projectile weapons range by  $1
+
+
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
 
-INFINITE_MISILE_WEAPONS:<<
+INFINITE_MISILE_WEAPONS: <<
 	[i][color=#aaa] [/color][/i]
 
 	Increases the missile damage by  $1 and all damage by $2.
-	
+	Increases the missile range by  $1
+
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-	
+
 >>
 
-INFINITE_ENERGY_WEAPONS:<<
+INFINITE_ENERGY_WEAPONS: <<
 	[i][color=#aaa] [/color][/i]
 
-	Increases energy weapons damage by  $1 and all damage by $2.
-	
+	Increase energy weapons damage by  $1 and all damage by $2.
+	Increase energy weapons range by 1$
+
+
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 
-	
+
 >>
 
 INFINITE_CHASIS:<<
@@ -105,4 +111,3 @@ TRAIT_GENIOCRACY_DESC: <<
 	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=140]Level 1 [color=#57bd13]Progresive[/color][/offset][/dlc]
 >>
 ATT_PROGRESSIVEGEN_PROGRESS:Research [b]$1 Big Upgrade(s)[/b] on the technology grid.
-
