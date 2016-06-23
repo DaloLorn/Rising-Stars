@@ -23,3 +23,42 @@ BLD_SLAVECAMP: <<
 
 	[bbloc=#TIP_CIV_UPGRADES/]
 >>
+
+F_SENATE_NAME: Government Center
+F_SENATE_DESC: <<
+	[color=#aaa][i]Places for government officials to discuss and enforce imperial policies from, the larger of these facilities are also of some diplomatic significance.[/i][/color]
+
+	Generates 1 Influence Stake per each 20 population your empire have.
+	Show total population.
+>>
+
+B_SLAVE: Slave Barracks
+B_SLAVE_DESC: <<
+	Massive slave camps where all the planet's resources - and its population - are dedicated to construction.
+
+	Generates 1.5 Labor per 1 billion inhabitants. Converts Energy generation to Labor generation at a 2:1 ratio. Converts Defense generation to Labor at a 1:1 ratio. Adds 50 Labor storage. Replaces 4 cities.
+
+	Reduces planet's civilian influence and research production by 90%. Reduces loyalty of all planets in the system by 3.
+>>
+B_TAXCENTER_DESC: <<
+	Facilities dedicated to ensuring that the population pays their taxes regularly, no matter the cost.
+
+	Adds 1 Money generation for every 0.5 billion inhabitants.
+
+	Decreases population growth by 20%. Decreases planet loyalty by 10.
+>>
+
+F_POWERPLANT_NAME: Power Plant
+F_POWERPLANT_DESC: <<
+	[color=#aaa][i]A massive power plant dedicated to the production of large amounts of clean energy.[/i][/color]
+
+	Provides Energy generation equivalent to 10 pressure.
+>>
+
+
+B_DEFENSEFACTORY: Command Center
+B_DEFENSEFACTORY_DESC: <<
+	A facility dedicated to the coordination of defensive forces across the planet.
+
+	Adds 2 Defense generation. Adds 128 support capacity. Adds 25 units of sensor range.
+>>
