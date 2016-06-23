@@ -12,24 +12,26 @@ Subsystem: TorpedoLauncher
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size + 1200
-	Damage := Size * 6
-	Reload := 25.0 * min(1.0 + Size/512, 2.0)
-	Speed := max(70, Range / 40)
-	Tracking := 1.5
-	Radius := 4.0 + (log(Size) / log(2) * 6.0)
-	SupplyCost := Size * 3.0
-	Hex.Mass := HexSize
+	Range := Size * 3 + 1500
+	Damage := Size * 7.0
+	Reload := 25.0 * min(1.0 + Size/1024, 1.5)
+	Speed := max(45, Range / 40)
+	Tracking := 0.75
+	Radius := 10.0 + (log(Size) / log(2) * 10.0)
+	SupplyCost := Size * 1.0
+	Hex.Mass := HexSize * 3
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 
+	PowerUse := Size * 7
 	Modifier: AoERadiusFactor(Factor)
 		Radius := Radius * Factor
 
 	Requires:
 		Command = 1
 
+		Power = PowerUse
 	Module: Default
 
 	Module: Core

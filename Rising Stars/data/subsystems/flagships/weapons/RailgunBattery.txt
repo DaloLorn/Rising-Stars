@@ -1,0 +1,83 @@
+Subsystem: RailgunBattery
+	Name: #RAILBATTERY_NAME
+	Description: #RAILBATTERY_DESC
+	BaseColor: #c5f946
+	TypeColor: #c5f946
+	Picture: SubsystemButtonArt::2
+	Elevation: 2
+
+	Tags: BaseCost, Category:Weapons
+	Tags: WeaponBase, Rotatable, HexLimitArc
+	Tags: ExteriorCore, Weapon, DefaultUnlock, IsProjWeapon, IsRailgun, HasInternals, MainDPS
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	Range := (Size * 2) + 500
+	Damage := Size * 1.0
+	Reload := 0.32 * min(1.0 + Size/512, 2.0)
+	Speed := max(110, Range / 15)
+	Spread := 0.030 / max(Range / 600, 1)
+	Tracking := 0.4
+	FireArc := 0.5 * pi
+	Pierce := 1
+	SupplyCost := Size * 1.5
+	PowerUse := 2.5 * Size
+	Impulse := 0
+
+	Hex.HP := 24 * HexSize
+	Hex.Resistance := 0.4
+	Hex.Mass := HexSize
+	Effector: RailgunBattery
+
+	Modifier: AddRailgunKnockback(Amount)
+		Impulse := Impulse + Amount * Size
+
+	Requires:
+		Command = 1
+		Power = PowerUse
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 3
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: Railgun::0
+		DrawMode: 1
+
+		Hex.DamageResist := ShipSize / 48.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: RailgunBattery
+		Range = Range / 2
+		Damage = Damage
+		Reload = Reload * 2
+		Speed = Speed
+		Tracking = Tracking
+		Spread = Spread
+		FireArc = FireArc
+		TargetTolerance = max(pi,FireArc + pi/4)
+		FireTolerance = Spread * 3
+		Pierce = Pierce
+		SupplyCost = SupplyCost * Reload
+		CapOnTarget = 24
+		Impulse = Impulse
+
+		StaggerDelay = 0.5
+	Effector: RailgunBattery
+		Range = Range
+		Damage = Damage
+		Reload = Reload * 2
+		Speed = Speed
+		Tracking = Tracking
+		Spread = Spread / 2
+		FireArc = FireArc / 2
+		TargetTolerance = max(pi,FireArc + pi/4)
+		FireTolerance = Spread * 3
+		Pierce = Pierce
+		SupplyCost = SupplyCost * Reload
+		CapOnTarget = 12
+		Impulse = Impulse
+		StaggerDelay = 0.3
