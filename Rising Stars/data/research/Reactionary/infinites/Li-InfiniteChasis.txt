@@ -16,14 +16,16 @@ Technology: LifeInfiniteChasis
 	AddTimeCostAttribute(InfiniteChasisTaken, 15)
 	ModAttribute(InfiniteChasisTaken, Add, 1)
 	ResetWhenUnlocked()
-	
+
 ////////////////////////
 //Empire Wide Bonus//
 ///////////////////////
 	CivilanHPBonus(1.40)
-	
-	
+
+
 ////////////////////////
 //Subsystem  Bonus//
 ///////////////////////
+	AddModifier( CargoStorageFactor(1.10))
+	AddModifier( SupplyCapacityFactor(1.10) )
 	AddModifier(RepairFactor(1.10))

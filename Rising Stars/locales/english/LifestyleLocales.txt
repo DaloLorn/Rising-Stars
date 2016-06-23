@@ -63,15 +63,16 @@ INFINITE_ENERGY_WEAPONS: <<
 
 >>
 
-INFINITE_CHASIS:<<
+INFINITE_CHASIS: <<
 	[i][color=#aaa] [/color][/i]
 
 	Increases Repair Speed by $1
+	Increase Supply/Cargo (Asteroid Minerals) Capacity by 1$
 	Increases Civilian HP by $2
-	
-	
+
+
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
-	
+
 >>
 
 INFINITE_CARGO:<<

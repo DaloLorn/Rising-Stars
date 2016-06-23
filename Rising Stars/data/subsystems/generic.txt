@@ -53,3 +53,7 @@ Template: var/ShieldCapacity
 Template: var/ShieldRegen
 	Modifier: ShieldRegenFactor(factor)
 		ShieldRegen := ShieldRegen * factor
+		
+Template: var/CargoStorage
+	Modifier: CargoStorageFactor(factor)
+		CargoStorage := CargoStorage * factor
