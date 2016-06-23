@@ -1,0 +1,21 @@
+Resource: Ancient Shipyard
+	Name: #RESOURCE_SHIPYARD
+	Description: #RESOURCE_SHIPYARD_DESC
+	Blurb: #RESOURCE_SHIPYARD_BLURB
+	Icon: TechIcons::33
+
+	Level: 4
+	
+	Pressure: 7 Defense
+	Small Icon: TechIcons::33
+	Affinity: Defense
+	Exportable: False
+	Artificial: True
+	Unique: True
+	
+	Native Biome: Mountains
+	Rarity Level: 3
+	Rarity: Uncommon
+	Require Contestation: 30
+	AddLaborIncome(Amount = 16)
+	GrantAbility(OverchargeFleet)
