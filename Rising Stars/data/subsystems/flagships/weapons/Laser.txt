@@ -13,8 +13,8 @@ Subsystem: Laser
 
 	Size := HexSize * Hexes
 	BeamDPS := 2 * Size
-	Duration := 12
-	Cooldown := 0
+	Duration := 10
+	Cooldown := 0.01
 	Range := Size + 450
 	Tracking := 0.5
 	SupplyCost := Size * 0.75
