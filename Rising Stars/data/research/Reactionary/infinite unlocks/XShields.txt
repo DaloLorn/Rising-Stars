@@ -32,7 +32,7 @@ Technology: XSupShieldGen
 	Color: #2b2bce
 	
 	UnlockSubsystem(SupShieldGen)
-)	SkipOnUnlockedSubsystem(ShieldGen)
+	SkipOnUnlockedSubsystem(ShieldGen)
 
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)

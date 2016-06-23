@@ -9,11 +9,11 @@ Technology: LifeInfiniteThrust
 	Category: InfinitesLifeStyle
 	Class: Keystone
 
-	Point Cost: 400
-	Time Cost: 50
+	Point Cost: 300
+	Time Cost: 30
 
-	AddPointCostAttribute(InfiniteThrustTaken, 300)
-	AddTimeCostAttribute(InfiniteThrustTaken, 10)
+	AddPointCostAttribute(InfiniteThrustTaken, 125)
+	AddTimeCostAttribute(InfiniteThrustTaken, 12)
 	
 	AffectsTaggedSubsystems(Engine)
 	ResetWhenUnlocked()

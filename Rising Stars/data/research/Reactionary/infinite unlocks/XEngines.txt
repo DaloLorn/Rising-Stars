@@ -62,3 +62,45 @@ Technology: XRamjet
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 5,#R_LIFESTYLE_REQ:Propulsion:5)
+
+	
+Technology: XGravityEngine
+	Name: #R_SYS_GRAVITY_ENGINE
+	Description: #R_SYS_GRAVITY_ENGINE_DESC
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 90
+
+	Icon: HexagonSubsystems::5
+	Color: #e0f946
+
+	UnlockSubsystem(GravityEngine)
+	SkipOnUnlockedSubsystem(GravityEngine)
+
+	SecondaryEnergyCost(1000)
+	
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
+	
+Technology: XGravitonChanneling
+	Name: #R_GRAVITON_CHANNELING
+	Description: #R_GRAVITON_CHANNELING_DESC:50%
+
+	Icon: HexagonSubsystems::5
+	Symbol: techPropulsion*#a77751
+	Color: #e0f946
+
+	Category: Reactionary
+	Class: BigUpgrade
+
+	Point Cost: 0
+	Time Cost: 100
+	
+	SecondaryEnergyCost(1700)
+	
+	AddModifier( GravityEngine::ThrustFactor(1.5) )
+	AddModifier( GravityEngine::PowerUseFactor(2.0) )
+	
+RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
+RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
