@@ -18,7 +18,7 @@ Subsystem: Disruptor
 	Range := Size + 250
 	Tracking := 0.5
 	SupplyCost := Size * 0.75
-	FireArc := 0.16666 * pi
+	FireArc := 0.25 * pi
 	PowerUse := 10 * Size
 
 	Hex.HP := 10 * HexSize

@@ -18,7 +18,7 @@ Subsystem: Laser
 	Range := Size + 450
 	Tracking := 0.5
 	SupplyCost := Size * 0.75
-	FireArc := 0.083333333 * pi
+	FireArc := 0.1666 * pi
 	PowerUse := 7 * Size
 
 	Hex.HP := 12 * HexSize

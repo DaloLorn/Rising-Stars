@@ -17,7 +17,7 @@ Subsystem: ParticleLance
 	Speed := max(60, Range / 30)
 	Spread := 0
 	Tracking := 0.1
-	FireArc := 0.125 * pi
+	FireArc := 0.1666 * pi
 	SupplyCost := Size * 2.5
 	PowerUse := 4.5 * Size
 

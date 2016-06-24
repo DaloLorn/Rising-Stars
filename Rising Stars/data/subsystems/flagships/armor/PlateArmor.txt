@@ -12,13 +12,13 @@ Subsystem: PlateArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 40 * HexSize
+	Hex.HP := 50 * HexSize
 
-	Hex.Mass := 5 * HexSize
+	Hex.Mass := 6 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 	Hex.LaborCost := 0.25 * HexSize
-	Hex.BuildCost := 2.0 * HexSize
+	Hex.BuildCost := 1.5 * HexSize
 	Hex.MaintainCost := 0
 
 
