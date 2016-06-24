@@ -19,7 +19,7 @@ Subsystem: HyperLaser
 	Tracking := 0.8
 	SupplyCost := Size * 0.75
 	PowerUse := 8 * Size
-	FireArc := 0.125 * pi
+	FireArc := 0.166666 * pi
 
 	Hex.HP := 12 * HexSize
 	Hex.Resistance := 0.2

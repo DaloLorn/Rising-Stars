@@ -13,11 +13,11 @@ Subsystem: RocketPod
 
 	Size := HexSize * Hexes
 	Range := Size + 250
-	Damage := Size * 6.0
+	Damage := Size * 5.5
 	Reload := 7 * min(1.0 + Size/512, 2.0)
 	Speed := max(105, Range / 12)
 	Tracking := 0.2
-	SupplyCost := Size * 3.3
+	SupplyCost := Size * 4.0
 	Spread := 1.5
 	out DPS := (Damage * PodSize) / (Reload * 2)
 	out SupplyDrain := SupplyCost / 2

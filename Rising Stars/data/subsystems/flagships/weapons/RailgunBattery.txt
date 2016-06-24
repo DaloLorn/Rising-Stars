@@ -17,7 +17,7 @@ Subsystem: RailgunBattery
 	Reload := 0.32 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
 	Spread := 0.045 / max(Range / 900, 1)
-	Tracking := 0.4
+	Tracking := 0.8 / min(1.0 + Size/512, 2.0)
 	FireArc := 0.5 * pi
 	Pierce := 1
 	SupplyCost := Size * 1.5
@@ -57,7 +57,7 @@ Subsystem: RailgunBattery
 		Spread = Spread
 		FireArc = FireArc
 		TargetTolerance = max(pi,FireArc + pi/4)
-		FireTolerance = Spread * 3
+		FireTolerance = Spread * 2
 		Pierce = Pierce * 0.75
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 24
@@ -73,7 +73,7 @@ Subsystem: RailgunBattery
 		Spread = Spread / 2
 		FireArc = FireArc / 2
 		TargetTolerance = max(pi,FireArc + pi/4)
-		FireTolerance = Spread * 3
+		FireTolerance = Spread
 		Pierce = Pierce
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 8
