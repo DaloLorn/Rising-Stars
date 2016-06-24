@@ -27,7 +27,7 @@ Effector: SalvoMissile
 	PhysicalType: Missile
 	PhysicalSize: 0.25
 	GfxType: Sprite
-	GfxSize: 4.0
+	GfxSize: 8.0
 	FireSfx: missile_launch
 	FireSfx: missile_launch_2
 	FireSfx: missile_launch_3

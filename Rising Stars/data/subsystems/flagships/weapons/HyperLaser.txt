@@ -12,8 +12,8 @@ Subsystem: HyperLaser
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	BeamDPS := 8.5 * Size
-	Duration := 0.5
+	BeamDPS := 10 * Size
+	Duration := 0.75
 	Cooldown := 5 * min(1.0 + Size/1024, 1.5)
 	Range := Size + 550
 	Tracking := 0.8
@@ -26,7 +26,7 @@ Subsystem: HyperLaser
 	Hex.Mass := HexSize
 
 	PodSize := 3
-	FireDelay := 0.5
+	FireDelay := 1.65
 	Requires:
 		Command = 1
 		Power = PowerUse

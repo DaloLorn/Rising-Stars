@@ -25,7 +25,7 @@ Effector: Rockets
 
 	PhysicalType: Aimed Missile
 	GfxType: Sprite
-	GfxSize: 0.7
+	GfxSize: 1.5
 	FireSfx: rocket
 	ImpactSfx: rocket_impact
 	ImpactSfx: rocket_impact_2
@@ -52,7 +52,7 @@ Effector: Torpedo
 	Range: Range
 	Speed: Speed
 	Tracking: Tracking
-	Lifetime: Range / Speed * 1.1
+	Lifetime: Range / Speed * 1.25
 
 	TargetAlgorithm: SingleTarget
 	CanTarget: isEnemy && isDamageable
@@ -63,7 +63,7 @@ Effector: Torpedo
 
 	PhysicalType: Missile
 	GfxType: Sprite
-	GfxSize: 1.25
+	GfxSize: 8.5
 	FireSfx: torpedo_launch
 	ImpactSfx: torpedo_impact
 	Trail: MissileTrail
@@ -73,7 +73,7 @@ Effector: Torpedo
 	Effect: AreaExplDamage
 		Amount = Damage
 		Radius = Radius
-		Hits = 4
+		Hits = 5
 
 Effector: PopulationBomb
 	Value: Range

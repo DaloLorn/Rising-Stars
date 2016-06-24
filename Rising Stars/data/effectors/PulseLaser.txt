@@ -18,7 +18,7 @@ Effector: PulseLaser
 	CanTarget: isEnemy && isDamageable
 	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
 
-	Activation: Magazine(FireDelay, PodSize, Reload)
+	Activation: Magazine(FireDelay, PodSize, Cooldown)
 	OnTrigger: combat::WeaponFire(SupplyCost)
 
 	Effect: EnergyDamage

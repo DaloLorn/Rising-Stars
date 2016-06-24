@@ -1,0 +1,100 @@
+Material: Missile
+	Texture: data/images/sprites/missile.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: ColorFlicker
+
+Material: Torpedo
+	Texture: data/images/sprites/railgun_emit.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: ColorFlicker
+
+Material: MissileTrail
+	Texture: data/images/sprites/torpedo_trail.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	WrapHorizontal: ClampEdge
+
+Material: Railgun
+	Texture: data/images/sprites/railgun.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+
+Material: RailTrail
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: ColoredAddPlain
+
+Material: RailgunEmit
+	Texture: data/images/sprites/railgun_emit.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+
+Material: Laser
+	Texture: data/images/sprites/laser_beam.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: BeamFade
+
+Material: LaserEmit
+	Texture: data/images/sprites/laser_emit.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+
+Material: Tractor
+	Texture: data/images/sprites/laser_beam.png
+	Texture2: data/images/difference_noise.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: Tractor
+
+Material: Drone
+	Texture: data/images/sprites/drone.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: ColorFlicker
+
+Material: ParticleLance
+	Texture: data/images/sprites/laser_beam.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: ParticleLance
+
+Material: PlasmaThrower
+	Texture: data/images/sprites/prime_blast_add_high2.png
+	Lighting: False
+	DepthWrite: False
+	Culling: None
+	Blend: Add
+	Shader: NodeColored
+
+Material: SubspaceShred
+	Culling: None
+	Blend: Add
+	Lighting: False
+	DepthWrite: False
+	Shader: NodeColored
+	Texture: data/images/sprites/subspace_shred.png
