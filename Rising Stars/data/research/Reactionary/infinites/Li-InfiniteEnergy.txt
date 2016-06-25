@@ -1,6 +1,6 @@
 Technology: LifeInfiniteEnergy
 	Name: Energy Science
-	Description: #INFINITE_ENERGY_DESC:5%:0.5:50
+	Description: #INFINITE_ENERGY_DESC:5%:0.4:40
 
 	Icon: AffinityIcons::2
 	Symbol: EditIcons::7
@@ -14,6 +14,9 @@ Technology: LifeInfiniteEnergy
 
 	AddPointCostAttribute(InfiniteEnergyTaken, 125)
 	AddTimeCostAttribute(InfiniteEnergyTaken, 10)
+	
+	ModAttribute(InfiniteShieldsTaken, Add, -0.1)
+	
 	ResetWhenUnlocked()
 	
 ////////////////////////
@@ -28,7 +31,7 @@ Technology: LifeInfiniteEnergy
 //Empire Wide Bonus//
 ///////////////////////
 	
-	AddEnergyIncome(0.5)
-	ModAttribute(FreeEnergyStorage, Add, 50)
+	AddEnergyIncome(0.4)
+	ModAttribute(FreeEnergyStorage, Add, 40)
 	
 	ModAttribute(InfiniteEnergyTaken, Add, 1)

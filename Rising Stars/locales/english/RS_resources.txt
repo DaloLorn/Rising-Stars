@@ -1,3 +1,11 @@
+PARADISE_NAME: Tropical Paradise
+RESOURCE_INTEL: Intelligence Hub
+TECHNOFARM_NAME: Technofarm
+RESOURCE_SHIPYARD: Ancient Shipyard
+RESOURCE_RESEARCH: Research Center
+RESOURCE_HUBWORLD: Ancient Hubworld
+
+
 QUARTZ_BLURB: <<
 	Gain [levels=$1;#ffb4b6]10/25/50/80/120/200/300[/levels] bonus stored labor per artifact activated.
 >>

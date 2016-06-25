@@ -20,7 +20,6 @@ Grid: Reactionary
 	PowerGeneration: -9,-2
 	XAntimatterGen: -10,-3
 	XQuantumBattery: -10,-1
-	Connector: -2,1
 	Connector: -6,2
 	XSolarPanel: -7,-1
 	Connector: -8,-3
@@ -74,17 +73,10 @@ Grid: Reactionary
 	XShockMissiles: 1,-11
 	XMissileRange: 1,-9
 	XWarhead: 2,-11
-	Connector: -1,2
-	LifeInfiniteMaterials: 1,4
-	Connector: 1,5
 	Connector: 2,2
 	Connector: 1,3
-	Connector: 0,4
-	Connector: -1,3
 	Connector: 2,6
 	Connector: 2,7
-	Connector: -1,5
-	Connector: -1,6
 	Connector: 7,0
 	XAugmentDamage: 7,-1
 	XTargetSensor: 7,1
@@ -106,7 +98,6 @@ Grid: Reactionary
 	ArtificialMoon: 9,9
 	XArtificialPlanetoid: 11,8
 	XRingworld: 12,8
-	Connector: -2,7
 	Connector: 3,8
 	Connector: 2,9
 	Connector: 4,8
@@ -132,19 +123,25 @@ Grid: Reactionary
 	XNeutronArmor: 0,12
 	XQuantumArmor: -1,13
 	Connector: 2,10
-	LifeInfiniteSociology: -3,9
-	Connector: -2,8
-	Connector: -4,9
 	Connector: -4,8
-	XMegacity: -5,8
-	XLaboratories: -6,9
-	Connector: -7,9
-	XTroopPods: -7,8
-	XAbundance: -7,10
-	StationMaintenance: -8,8
 	FTLCost: 4,-5
 	FTLJammerCombat: 5,-7
-	XSenate: -6,7
-	XBroadcastAntenna: -6,6
-	XProsperity: -4,10
-	XWealth: -7,6
+	Connector: 1,4
+	Connector: 1,5
+	StationMaintenance: -12,8
+	XTroopPods: -11,8
+	XProsperity: -11,10
+	XWealth: -11,6
+	Connector: -11,9
+	XBroadcastAntenna: -10,6
+	XSenate: -10,7
+	XMegacity: -9,8
+	Connector: -10,9
+	XLaboratories: -12,10
+	LifeInfiniteSociology: -8,8
+	Science: -7,8
+	LifeInfiniteMetallurgy: 0,4
+	XBulkhead: -1,5
+	Connector: -2,1
+	Connector: -1,2
+	Connector: -1,3

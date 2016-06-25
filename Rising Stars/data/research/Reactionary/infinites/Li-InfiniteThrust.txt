@@ -1,6 +1,6 @@
 Technology: LifeInfiniteThrust
 	Name: #INFINITE_THRUST
-	Description: #R_INFINITE_THRUST_DESC:5%
+	Description: #R_INFINITE_THRUST_DESC:8%
 
 	Icon: techPropulsion * #e2f83a
 	Symbol: EditIcons::7
@@ -9,16 +9,16 @@ Technology: LifeInfiniteThrust
 	Category: InfinitesLifeStyle
 	Class: Keystone
 
-	Point Cost: 300
+	Point Cost: 200
 	Time Cost: 30
 
-	AddPointCostAttribute(InfiniteThrustTaken, 125)
-	AddTimeCostAttribute(InfiniteThrustTaken, 12)
+	AddPointCostAttribute(InfiniteThrustTaken, 100)
+	AddTimeCostAttribute(InfiniteThrustTaken, 10)
 	
 	AffectsTaggedSubsystems(Engine)
 	ResetWhenUnlocked()
 
-	AddModifier( ThrustFactor(1.05) )
-	AddModifier( TurnThrustFactor(1.05) )
-	AddModifier( Hyperdrive::SpeedFactor(1.05) )
+	AddModifier( ThrustFactor(1.08) )
+	AddModifier( TurnThrustFactor(1.08) )
+	AddModifier( Hyperdrive::SpeedFactor(1.08) )
 	ModAttribute(InfiniteThrustTaken, Add, 1)

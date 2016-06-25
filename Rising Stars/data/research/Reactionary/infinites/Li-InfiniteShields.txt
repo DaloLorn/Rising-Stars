@@ -1,6 +1,6 @@
 Technology: LifeInfiniteShields
 	Name: #R_INFINITE_SHIELDS
-	Description: #R_INFINITE_SHIELDS_DESC:7%
+	Description: #R_INFINITE_SHIELDS_DESC:12%
 
 	Icon: techPhaseContainment * #78a9ff
 	Symbol: EditIcons::7
@@ -23,6 +23,6 @@ Technology: LifeInfiniteShields
 ////////////////////////
 //Subsystem  Bonus//
 ///////////////////////
-	AddModifier(ShieldCapacityFactor(1.07))
-	AddModifier(ShieldRegenFactor(1.07))
+	AddModifier(ShieldCapacityFactor(1.12))
+	AddModifier(ShieldRegenFactor(1.12))
 
