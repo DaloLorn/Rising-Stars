@@ -24,9 +24,9 @@ GlobalStat: DPS
 //Until we have something to add stats!	
 
 		
-GlobalStat: HullStrenght
-		Name: HullStrenght
-		Description:Strenght Only considering the Hull (Real strenght will be the combined Shield Strenght+Hull Strenght)
+GlobalStat: HullStrength
+		Name: Hull Strength
+		Description:Predicted strength, only considering the Hull hp (Real strength will be the combined Shield Strength+Hull Strength)
 		Color: #aaa
 		Icon: TimeReal
 
