@@ -236,6 +236,7 @@ S_QUANTUM_ARMOR_DESC: <<
 	[img=Minus][i]Very[/i] expensive.[/img]
 	[img=Minus][i]Very[/i] high labor cost.[/img]
 	[img=Minus]Requires a small amount of maintenance and power.[/img]
+>>
 
 S_COMPOSITE_ARMOR_DESC: <<
 	A uniform, seamless coat of a highly resistant composite material.
