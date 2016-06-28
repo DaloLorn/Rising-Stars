@@ -16,8 +16,8 @@ Technology: XShieldGen
 
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
-	
-	
+
+
 Technology: XSupShieldGen
 	Name: Support Shields
 	Description: #R_SYS_SHIELDGEN_DESC
@@ -30,7 +30,7 @@ Technology: XSupShieldGen
 
 	Icon: FissionReactor
 	Color: #2b2bce
-	
+
 	UnlockSubsystem(SupShieldGen)
 	SkipOnUnlockedSubsystem(ShieldGen)
 
@@ -144,3 +144,17 @@ Technology: XStellarShieldOrbital
 	UnlockSubsystem(CovariantShield)
 	SecondaryEnergyCost(1600)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shields Modulation:8)
+Technology: XShieldUpgrade
+	Name: Advanced Shielding
+	Description: <<
+		Increase shield capacity and regeneration by 25%.
+		Increase power use of shield subsystems by 40%.
+	>>
+	Class: BigUpgrade
+	Icon: PlanetImage*#7810ff
+	Time Cost: 150
+	Category: Reactionary
+	SecondaryEnergyCost(1200)
+	AddModifier( tag/IsShield::PowerUseFactor(2.0) )
+	AddModifier(ShieldRegenFactor(1.12))
+	AddModifier(ShieldCapacityFactor(1.25))

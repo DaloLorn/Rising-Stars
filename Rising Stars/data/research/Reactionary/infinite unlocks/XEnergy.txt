@@ -1,7 +1,7 @@
 Technology: XFusionGen
 	Name: Fusion Generator
 	Description: #R_SYS_Fusion_DESC
-	 
+
 	Category: Reactionary
 
 	Time Cost: 90
@@ -14,11 +14,11 @@ Technology: XFusionGen
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 1, #R_LIFESTYLE_REQ:Energy:1)
 	SecondaryEnergyCost(300)
-	
+
 Technology: XSolarPanel
 	Name: #R_SYS_SOLARPANEL
 	Description: #R_SYS_SOLARPANEL_DESC
-	 
+
 	Category: Reactionary
 
 	Point Cost: 600
@@ -26,7 +26,7 @@ Technology: XSolarPanel
 
 	Icon: SolarPanel
 	Color: #64fff9
-	
+
 	UnlockSubsystem(SolarPanel)
 	SkipOnUnlockedSubsystem(SolarPanel)
 
@@ -34,11 +34,11 @@ Technology: XSolarPanel
 
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy:3 )
-	
+
 Technology: XEmergencySupplies
 	Name: #R_SYS_EMERGENCY_SUPPLIES
 	Description: #R_SYS_EMERGENCY_SUPPLIES_DESC
-	 
+
 	Category: Reactionary
 
 	Point Cost: 500
@@ -46,19 +46,19 @@ Technology: XEmergencySupplies
 
 	Icon: AntimatterReactor * #b8b800
 	Color: #b88b00
-	
+
 	UnlockSubsystem(EmergencySupplies)
 	SkipOnUnlockedSubsystem(EmergencySupplies)
 
 	SecondaryEnergyCost(500)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:4)
-	
-	
-	
+
+
+
 Technology: XAntimatterGen
 	Name: #R_SYS_ANTIMATTER
 	Description: #R_SYS_ANTIMATTER_DESC
-	 
+
 	Category: Reactionary
 
 	Point Cost: 500
@@ -72,14 +72,14 @@ Technology: XAntimatterGen
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
 	SecondaryEnergyCost(1000)
-	
+
 
 
 
 Technology: XQuantumBattery
 	Name: #R_MOD_QUANTUM_BATTERY
 	Description: #R_MOD_QUANTUM_BATTERY_DESC:1200
-	 
+
 	Category: Reactionary
 
 	Point Cost: 500
@@ -87,18 +87,18 @@ Technology: XQuantumBattery
 
 	Color: #d8cc48
 	Icon: QuantumBattery
-	
+
 	UnlockModule(QuantumBattery)
 	SkipOnUnlockedModule(QuantumBattery)
-	
+
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6,#R_LIFESTYLE_REQ:Energy:6 )
-	
-	
+
+
 Technology: XQuantumCompressor
 
 	Name: #R_MOD_QUANTUM_COMPRESSOR
 	Description: #R_MOD_QUANTUM_COMPRESSOR_DESC
-	 
+
 	Category: Reactionary
 
 	Point Cost: 600
@@ -106,56 +106,54 @@ Technology: XQuantumCompressor
 
 	Color: #69eaf2
 	Icon: QuantumCompressor
-	
+
 	UnlockModule(QuantumCompressor)
 	SkipOnUnlockedModule(QuantumCompressor)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy:6)
-	
+
 Technology: XShieldedAntimatter
 	Name: #S_SHIELDED_AMGEN
 	Description: #R_SYS_SHIELDED_AMGEN_DESC
 
-	
+
 	Time Cost: 180
 	Point Cost: 0
-	
+
 	Category: Reactionary
-	
+
 	Icon: ShieldedAntimatterGen
 	Color: #33ffcc
-	
-	
+
+
 	SecondaryEnergyCost(1600)
-	
+
 	Symbol: ResourceIcon::2
 	ModAttribute(ProgenitorTechProgress, Add, 5)
 	UnlockSubsystem(ShieldedAntimatter)
-	
+
 	SkipOnUnlockedSubsystem(ShieldedAntimatter)
-	
+
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy:7)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
-	
+
 Technology: XZeroPoint
 	Name: #S_ZPG
 	Description: #R_SYS_ZPG_DESC
-	
+
 	Category: Reactionary
-	Class: Unlock
 	Symbol: ResourceIcon::2
 
 	Icon: SingularityCore
 	Color: #24ff99
-	
-	
+
+
 	Point Cost: 0
 	Time Cost: 180
-	
+
 	ModAttribute(ProgenitorTechProgress, Add, 10)
 	SkipOnUnlockedSubsystem(ZeroPoint)
 	SecondaryEnergyCost(18000)
 	UnlockSubsystem(ZeroPoint)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 8, #R_LIFESTYLE_REQ:Energy:8)
-	

@@ -50,7 +50,6 @@ Grid: Reactionary
 	Connector: -1,-2
 	XDisruptor: -8,2
 	XHyperLaser: -7,2
-	XZeroPoint: -12,-3
 	Connector: -1,-3
 	LifeInfiniteThrust: 0,-5
 	Connector: 0,-4
@@ -106,9 +105,6 @@ Grid: Reactionary
 	LifeInfiniteArmor: 1,11
 	XCompositeArmor: 0,11
 	XLiquidArmor: 2,12
-	XNanoMesh: 2,13
-	XSysNilingArmor: 2,14
-	XCrystalArmor: 3,13
 	Connector: 5,11
 	Connector: 5,10
 	XSolarSatellite: -7,-3
@@ -141,7 +137,19 @@ Grid: Reactionary
 	LifeInfiniteSociology: -8,8
 	Science: -7,8
 	LifeInfiniteMetallurgy: 0,4
-	XBulkhead: -1,5
 	Connector: -2,1
 	Connector: -1,2
 	Connector: -1,3
+	Connector: 2,13
+	FerroFluidArmor: 3,13
+	Connector: 2,14
+	XNanoMesh: 1,15
+	XSysNilingArmor: 0,15
+	XCrystalArmor: 2,16
+	BldSpire: -9,10
+	Connector: -12,-3
+	FlareBomb: -12,-4
+	XZeroPoint: -12,-2
+	HyperfieldSequencing: 1,-7
+	XShieldUpgrade: -9,-7
+	XBulkhead: -1,5

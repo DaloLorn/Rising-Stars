@@ -1,8 +1,9 @@
 Status: Damaged
 	Name: Damaged
-	Description: This ship is not fully functional
+	Description: This ship is not fully functional.Have reduced HP and weapon damage.However can be repaired.
 	Color: #ff041d
 	Visible To: Owner
 	Icon: techMaterialScience1*#ff041d
+	AddBonusHP(-0.3)
 	GrantAbility(Repair)
-	AddFleetEffectiveness(-0.4)
+	AddFleetEffectiveness(-0.3)
