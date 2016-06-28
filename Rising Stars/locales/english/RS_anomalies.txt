@@ -6,6 +6,6 @@ ANOMALY_NEUTRONPLATE_LIQUID: <<
 >>
 ANOMALY_NEUTRONPLATE_SOLID: <<
 	This neutronium sample can give our scientists invaluable insight in replicating this material artificially - and constructing armor more efficiently.
-	[right][b][color=#80ff80]Decrease all armor build and Labor costs by $1%.
+	[right][b][color=#80ff80]Decrease all armor Labor costs by $1%.
 	Unlock[/color] [template=subsys_ref;NeutronArmor/][/b][/right]
 >>

@@ -19,6 +19,5 @@ Anomaly: NeutronPlate
 		Icon: AffinityIcons::5
 		Description: #ANOMALY_NEUTRONPLATE_SOLID:10
 
-		AddModifier(tag/IsArmor::BuildCostFactor(0.9))
 		AddModifier(tag/IsArmor::LaborCostFactor(0.9))
 		UnlockSubsystem(NeutronArmor)
