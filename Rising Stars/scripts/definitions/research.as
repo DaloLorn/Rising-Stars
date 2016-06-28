@@ -30,7 +30,6 @@ interface ITechnologyHook {
 
 class TechnologyHook : ITechnologyHook, Hook {
 	void unlock(TechnologyNode@ node, Empire& emp) const {}
-	void unlock2(TechnologyNode@ node, Empire& emp) const {}
 	bool canUnlock(TechnologyNode@ node, Empire& emp) const { return true; }
 	bool canBeSecret(TechnologyNode@ node, Empire& emp) const { return true; }
 	bool getSecondaryUnlock(TechnologyNode@ node, Empire@ emp, string& text) const { return false; }
@@ -306,15 +305,10 @@ tidy final class TechnologyNode : Serializable, Savable {
 			type.hooks[i].unlock(this, emp);
 		if(type.cls == Tech_Unlock)
 			emp.modAttribute(EA_ResearchUnlocksDone, AC_Add, 1.0);
+		if(type.cls == Tech_BigUpgrade)
+			emp.modAttribute(EA_ResearchBigUpgradesDone, AC_Add, 1.0); 
 	}
 	
-	void unlock2(Empire& emp) {
-		unlocked = true;
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
-			type.hooks[i].unlock(this, emp);
-		if(type.cls == Tech_BigUpgrade)
-			emp.modAttribute(EA_ResearchBigUpgradesDone, AC_Add, 1.0);
-	}
 #section all
 
 	void stateChange(Empire@ emp) {
