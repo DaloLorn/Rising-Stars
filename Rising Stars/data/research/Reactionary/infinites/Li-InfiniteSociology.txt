@@ -9,7 +9,7 @@ Technology: LifeInfiniteSociology
 	Category: InfinitesLifeStyle
 	Class: Keystone
 
-	Point Cost: 300
+	Point Cost: 200
 	Time Cost: 30
 
 	AddPointCostAttribute(InfinitePopTaken, 100)
@@ -25,12 +25,13 @@ Technology: LifeInfiniteSociology
 	ModDefenseReserve(5)
 	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.9) )
 	ModAttribute(TileDevelopmentFactor, Multiply, 1.10)
+	ModAttribute(CivBldConstructionRate, Multiply, 1.1)
 	
 	//Dont work in fractional increments cause Max pop is a integer.
-	//check Rising Stars\scripts\server\objects\Planet.as
+	//check Rising Stars\scripts\server\objects\Planet.as 
 	ModAttribute(PopulationLevel1Mod, Add, 0.125)	 	//Each 8 levels Increase pop of level 1 planets by 1
-	ModAttribute(PopulationLevel2Mod, Add, 0.250) 		//Each 4 levels Increase pop of level 2 planets by 1
-	ModAttribute(PopulationLevel3Mod, Add, 0.3334)	 	//Each 3 levels Increase pop of level 3 planets by 1
-	ModAttribute(PopulationLevel4Mod, Add, 0.1667)   	//Each 2 levels Increase pop of level 4 planets by 1
+	ModAttribute(PopulationLevel2Mod, Add, 0.25) 		//Each 4 levels Increase pop of level 2 planets by 1
+	ModAttribute(PopulationLevel3Mod, Add, 0.34)	 	//Each 3 levels Increase pop of level 3 planets by 1
+	ModAttribute(PopulationLevel4Mod, Add, 0.17)   	//Each 2 levels Increase pop of level 4 planets by 1
 	ModAttribute(PopulationLevel5Mod, Add, 0.5)			//Each level Increase pop of level 5 planets by 1
 	ModAttribute(PopulationLevel6Mod, Add, 0.5)			//Each 2 levels increase pop of Level 6 Planets by 3
