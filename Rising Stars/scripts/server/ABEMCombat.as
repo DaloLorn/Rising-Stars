@@ -46,6 +46,32 @@ int getDRResponse(double type) {
 	return 0;
 }
 
+bool AntiShipRailgunFire(const Effector& efftr, Object& obj, Object& target, float& efficiency, double supply) {
+	uint firingStatus = getStatusID("FiringRailgunsCloseIn");
+	
+	if(obj.getStatusStackCountAny(firingStatus) < 5)
+		obj.addStatus(firingStatus, 2.0);
+	
+	Ship@ ship = cast<Ship>(obj);
+	if(ship is null)
+		return true;
+
+	ship.consumeSupply(supply);
+	return true;
+}
+
+bool AntiOrbitalRailgunFire(const Effector& efftr, Object& obj, Object& target, float& efficiency, double supply) {
+	if(obj.hasStatusEffect(getStatusID("FiringRailgunsCloseIn")))
+		return false;
+	
+	Ship@ ship = cast<Ship>(obj);
+	if(ship is null)
+		return true;
+
+	ship.consumeSupply(supply);
+	return true;
+}
+
 void ABEMControlDestroyed(Event& evt) {
 	Ship@ ship = cast<Ship>(evt.obj);
 	int invaderID = getStatusID("IsInvader");

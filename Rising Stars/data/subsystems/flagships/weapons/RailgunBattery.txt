@@ -12,11 +12,11 @@ Subsystem: RailgunBattery
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := (Size * 2) + 750
-	Damage := Size * 1.2
-	Reload := 0.32 * min(1.0 + Size/512, 2.0)
+	Range := (Size * 2) + 600
+	Damage := Size * 3.5
+	Reload := 1.0 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
-	Spread := 0.045 / max(Range / 900, 1)
+	Spread := 0.030 / max(Range / 900, 1)
 	Tracking := 0.8 / min(1.0 + Size/512, 2.0)
 	FireArc := 0.5 * pi
 	Pierce := 1
@@ -48,34 +48,34 @@ Subsystem: RailgunBattery
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 
-	Effector: RailgunBattery
-		Range = Range / 2.2
+	Effector: AntiShipRailgunBattery
+		Range = Range
 		Damage = Damage
-		Reload = Reload * 1.2
+		Reload = Reload
 		Speed = Speed
 		Tracking = Tracking
 		Spread = Spread
 		FireArc = FireArc
 		TargetTolerance = max(pi,FireArc + pi/4)
 		FireTolerance = Spread * 2
-		Pierce = Pierce * 0.75
+		Pierce = Pierce
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 24
 		Impulse = Impulse
-		StaggerDelay = 0.08
+		StaggerDelay = 0.05
 
-	Effector: RailgunBattery
-		Range = Range * 1.2
+	Effector: AntiOrbitalRailgunBattery
+		Range = Range * 1.66666
 		Damage = Damage
-		Reload = Reload * 4
+		Reload = Reload * 1.5
 		Speed = Speed
 		Tracking = Tracking
 		Spread = Spread / 2
-		FireArc = FireArc / 2
+		FireArc = FireArc
 		TargetTolerance = max(pi,FireArc + pi/4)
 		FireTolerance = Spread
 		Pierce = Pierce
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 8
 		Impulse = Impulse
-		StaggerDelay = 0.15
+		StaggerDelay = 0.05

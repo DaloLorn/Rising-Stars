@@ -1,0 +1,3 @@
+Status: FiringRailgunsCloseIn
+	Description: Firing railguns quickly at close in targets
+	Visible To: Nobody

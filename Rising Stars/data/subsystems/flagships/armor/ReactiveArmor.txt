@@ -13,7 +13,7 @@ Subsystem: ReactiveArmor
 	ImpactLevel := 27 * HexSize
 	MinPct := 1/6
 
-	Hex.Resistance := 0.8
+	Hex.Resistance := 0.55
 	Hex.HP := 31 * HexSize
 	Hex.Mass := 4.0 * HexSize
 
