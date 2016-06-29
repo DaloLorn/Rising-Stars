@@ -56,7 +56,7 @@ bool AddStatusToSelf(const Effector& efftr, Object& obj, Object& target, float& 
 }
 
 bool FireIfNotStatus(const Effector& efftr, Object& obj, Object& target, float& efficiency, double supply, double statusType) {
-	if(obj.hasStatusEffect(getABEMStatus(statusType)))
+	if(obj.hasStatusEffect(getABEMStatus(statusType).id))
 		return false;
 
 	return WeaponFire(efftr, obj, target, efficiency, supply);
