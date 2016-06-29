@@ -14,6 +14,7 @@ Effector: AntiOrbitalRailgunBattery
 	Value: IgnoreDR = 0
 	Value: Impulse = 0
 	Value: StaggerDelay = 0.25
+	Value: StatusType = 2
 
 	Range: Range
 	Speed: Speed
@@ -31,7 +32,7 @@ Effector: AntiOrbitalRailgunBattery
 
 	EfficiencyMode: Reload Partial
 	Activation: StaggeredTimed(Reload, StaggerDelay)
-	OnTrigger: ABEMCombat::AntiOrbitalRailgunFire(SupplyCost)
+	OnTrigger: ABEMCombat::FireIfNotStatus(SupplyCost, StatusType)
 
 	Effect: ProjImpact
 		Damage = Damage

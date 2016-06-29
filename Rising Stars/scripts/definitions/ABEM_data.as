@@ -4,7 +4,8 @@ import util.formatting;
 // For use in effects using statuses.
 // DO NOT CHANGE THIS UNLESS YOU KNOW WHAT YOU'RE DOING.
 enum ABEMStatusTypes {
-	SType_VoidRay = 1
+	SType_VoidRay = 1,
+	SType_FiringMeleeRailguns = 2,
 };
 
 enum ABEMVictoryTypes {
@@ -14,8 +15,10 @@ enum ABEMVictoryTypes {
 
 const StatusType@ getABEMStatus(int index) {
 	switch(index) {
-		case SType_VoidRay:
-		//	return getStatusType("VoidRay");
+		case SType_VoidRay: // This status hasn't been ported because we haven't restored Adaptive Lasers to the mod.
+		//	return getStatusType("VoidRay"); 
+		case SType_FiringMeleeRailguns:
+			return getStatusType("FiringRailgunsCloseIn");
 		default:
 			error("Invalid status index in function getABEMStatus: "+index); return null;
 	}
