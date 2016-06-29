@@ -17,7 +17,7 @@ Subsystem: Laser
 	Cooldown := 0.01
 	Range := Size + 450
 	Tracking := 0.5
-	SupplyCost := Size * 0.75
+	SupplyCost := Size * 0.5
 	FireArc := 0.1666 * pi
 	PowerUse := 7 * Size
 
