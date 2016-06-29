@@ -2,11 +2,11 @@
 	"__VERSION__": 1,
 	"name": "Scout",
 	"size": 16,
-	"hull": "MechanicaFlagLarge",
+	"hull": "$1FlagTiny",
 	"type": "Flagship",
 	"gridWidth": 28,
 	"gridHeight": 23,
-	"class": "Combat",
+	"class": "Exploration",
 	"subsystems": [
 		{
 			"type": "RocketEngine",
