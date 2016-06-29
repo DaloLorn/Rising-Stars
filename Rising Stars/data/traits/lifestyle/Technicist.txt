@@ -29,6 +29,7 @@ Trait: Technicists
 	ForbidSubsystem(ReactiveArmor)
 	ForbidSubsystem(AblativeArmor)
 	ForbidSubsystem(PlateArmor)
+	ForbidSubsystem(CeramicArmor)
 
 	//Grid Replacements
 
