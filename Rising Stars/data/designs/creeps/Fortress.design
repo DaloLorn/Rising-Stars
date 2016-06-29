@@ -6,7 +6,7 @@
 	"type": "Station",
 	"gridWidth": 28,
 	"gridHeight": 23,
-	"class": "Combat",
+	"class": "Creep",
 	"subsystems": [
 		{
 			"type": "CrewControl",
