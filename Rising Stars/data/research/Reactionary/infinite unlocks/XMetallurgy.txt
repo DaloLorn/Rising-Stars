@@ -1,9 +1,28 @@
+Technology: XBulkhead
+	Name: #R_MOD_BULKHEAD
+	Description: #R_MOD_BULKHEAD_DESC
+	Category: Reactionary
+
+	Point Cost: 0
+	Time Cost: 60
+
+	Icon: HexagonSubsystems::0 * #cf00ff
+	Color: #eda1ff
+
+	UnlockModule(Bulkhead)
+	SkipOnUnlockedModule(Bulkhead)
+
+	
+	SecondaryMoneyCost(600)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 1, #R_LIFESTYLE_REQ:Metallurgy:2)
+
+
 Technology: XConstructionBay
 	Name: #R_SYS_CONSTRUCTION_BAY
 	Description: #R_SYS_CONSTRUCTION_BAY_DESC
 	Category: Reactionary
 
-	Point Cost: 700
+	Point Cost:0
 	Time Cost: 60
 
 	Icon: ComputerCore * #fca404
@@ -13,6 +32,7 @@ Technology: XConstructionBay
 	SkipOnUnlockedSubsystem(ConstructionBay)
 
 	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 2, #R_LIFESTYLE_REQ:Metallurgy:2)
 
 Technology: XOreProcessor
 	Name: #R_SYS_ORE_PROCESSOR
@@ -20,7 +40,7 @@ Technology: XOreProcessor
 
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost:0
 	Time Cost: 90
 
 	Icon: SupportCommand * #8870ac
@@ -30,20 +50,8 @@ Technology: XOreProcessor
 	SkipOnUnlockedSubsystem(OreProcessor)
 
 	SecondaryMoneyCost(750)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 3, #R_LIFESTYLE_REQ:Metallurgy:3)
 
-Technology: XBulkhead
-	Name: #R_MOD_BULKHEAD
-	Description: #R_MOD_BULKHEAD_DESC
-	Category: Reactionary
-
-	Point Cost: 400
-	Time Cost: 60
-
-	Icon: HexagonSubsystems::0 * #cf00ff
-	Color: #eda1ff
-
-	UnlockModule(Bulkhead)
-	SkipOnUnlockedModule(Bulkhead)
 
 Technology: XSolarSatellite
 	Name: #R_ORB_SOLAR_SATELLITE
@@ -58,13 +66,16 @@ Technology: XSolarSatellite
 	UnlockTag(SolarSatelliteUnlock)
 	SkipOnUnlockedTag(SolarSatelliteUnlock)
 
-	SecondaryMoneyCost(600)
+	SecondaryMoneyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 4, #R_LIFESTYLE_REQ:Metallurgy:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:5)
+
 Technology: XHydroponicsSatellite
 	Name: #R_ORB_HYDROPONICS_SATELLITE
 	Description: #R_ORB_HYDROPONICS_SATELLITE_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: GuiOrbitalIcons::14
@@ -72,13 +83,16 @@ Technology: XHydroponicsSatellite
 
 	UnlockTag(HydroponicsSatelliteUnlock)
 	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
-
+	SecondaryMoneyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 5, #R_LIFESTYLE_REQ:Metallurgy:5)
+	
+	
 Technology: XDefenseSatellite
 	Name: #R_ORB_DEFENSE_SATELLITE
 	Description: #R_ORB_DEFENSE_SATELLITE_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: GuiOrbitalIcons::14
@@ -86,3 +100,5 @@ Technology: XDefenseSatellite
 
 	UnlockTag(DefenseSatelliteUnlock)
 	SkipOnUnlockedTag(DefenseSatelliteUnlock)
+	SecondaryMoneyCost(1500)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 5, #R_LIFESTYLE_REQ:Metallurgy:5)

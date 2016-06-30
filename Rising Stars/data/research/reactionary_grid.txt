@@ -21,9 +21,6 @@ Grid: Reactionary
 	XAntimatterGen: -10,-3
 	XQuantumBattery: -10,-1
 	Connector: -6,2
-	XSolarPanel: -7,-1
-	Connector: -8,-3
-	Connector: -8,-1
 	Connector: 4,-11
 	XShieldedAntimatter: -11,-3
 	XQuantumCompressor: -11,-1
@@ -89,9 +86,6 @@ Grid: Reactionary
 	XVacuumTelescope: 9,5
 	Connector: 9,6
 	XStarForge: 10,5
-	Connector: 7,7
-	XHydroponicsSatellite: 6,7
-	XDefenseSatellite: 8,8
 	Connector: 9,7
 	XRingHabitat: 10,8
 	ArtificialMoon: 9,9
@@ -107,7 +101,6 @@ Grid: Reactionary
 	XLiquidArmor: 2,12
 	Connector: 5,11
 	Connector: 5,10
-	XSolarSatellite: -7,-3
 	LifeInfiniteDamage: 6,12
 	Connector: 7,12
 	XPlasmaThrower: 5,13
@@ -119,7 +112,6 @@ Grid: Reactionary
 	XNeutronArmor: 0,12
 	XQuantumArmor: -1,13
 	Connector: 2,10
-	Connector: -4,8
 	FTLCost: 4,-5
 	FTLJammerCombat: 5,-7
 	Connector: 1,4
@@ -152,4 +144,12 @@ Grid: Reactionary
 	XZeroPoint: -12,-2
 	HyperfieldSequencing: 1,-7
 	XShieldUpgrade: -9,-7
-	XBulkhead: -1,5
+	XBulkhead: -1,6
+	Connector: -1,5
+	Connector: -2,6
+	XConstructionBay: -3,5
+	XOreProcessor: -4,5
+	XDefenseSatellite: -1,7
+	XSolarPanel: -7,-2
+	Connector: -3,7
+	XSolarSatellite: -4,7
