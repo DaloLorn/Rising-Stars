@@ -34,17 +34,33 @@ Trait: Technicists
 	//Grid Replacements
 
 	//Armor for HP
+	
 	ReplaceTechnologyNodes(ArmorHealth2, Health2)
 	ReplaceTechnologyNodes(ArmorHealth, Health)
+	ReplaceTechnologyNodes(ShieldGen, Science)
 
-	ReplaceTechnologyNodeAt((0,-4), Science) //Shields for SCience
 
+	////ARMOR BANS
+	
 	RemoveTechnologyNodes(CompositeArmor)
-
 	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(NeutronArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
-	//JJust in case more lines are neeed lazy boy!
-	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
-	//ReplaceTechnologyNodes(SysLiquidArmor,TechBannned )
+	
+	///SECRET ARMOR BAN
+	RemoveTechnologyNodes(FerroFluidArmor)
+
+	/////////////////////////////////////
+	///////// GENIOCRACY GRID//////////
+	/////////////////////////////////////
+	RemoveTechnologyNodes(XCompositeArmor)
+	RemoveTechnologyNodes(XNeutronArmor)
+	RemoveTechnologyNodes(XQuantumArmor)
+	RemoveTechnologyNodes(XLiquidArmor)
+	RemoveTechnologyNodes(XNanoMesh)
+	RemoveTechnologyNodes(XSysNilingArmor)
+	RemoveTechnologyNodes(XCrystalArmor)
+	
+	
+
