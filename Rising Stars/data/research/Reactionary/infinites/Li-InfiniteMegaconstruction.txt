@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMegaconstruction
 	Name: Megaconstruction
-	Description: #INFINITE_MEGA_DESC:10%
+	Description: #INFINITE_MEGA_DESC:15%
 	
 
 	Icon: GuiOrbitalIcons::24*#f88b9f
@@ -20,4 +20,4 @@ Technology: LifeInfiniteMegaconstruction
 
 	ModAttribute(InfiniteMegaTaken, Add, 1)
 	
-	ModAttribute(OrbitalHealthMod, Multiply, 1.10)
+	ModAttribute(OrbitalHealthMod, Multiply, 1.15)

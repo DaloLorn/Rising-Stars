@@ -3,7 +3,7 @@ Technology: XRingHabitat
 	Description: #R_ORB_RING_HABITAT_DESC
 	Category: Reactionary
 
-	Point Cost: 600
+	Point Cost: 0
 	Time Cost: 120
 
 	Icon: GuiOrbitalIcons::11
@@ -11,14 +11,16 @@ Technology: XRingHabitat
 
 	UnlockTag(RingHabitatUnlock)
 	SkipOnUnlockedTag(RingHabitatUnlock)
+	SecondaryMoneyCost(1000)
 
+	RequireEmpireAttributeGTE(InfiniteMegaTaken, 3, #R_LIFESTYLE_REQ:Megaconstruction:3)
 
 Technology: XArtificialPlanetoid
 	Name: #R_ORB_ARTIFICIAL_PLANETOID
 	Description: #R_ORB_ARTIFICIAL_PLANETOID_DESC
 	Category: Reactionary
 
-	Point Cost: 1000
+	Point Cost: 0
 	Time Cost: 200
 
 	Icon: PlanetType::1
@@ -26,47 +28,56 @@ Technology: XArtificialPlanetoid
 
 	UnlockTag(ArtificialPlanetoidUnlock)
 	SkipOnUnlockedTag(ArtificialPlanetoidUnlock)
+	SecondaryMoneyCost(4000)
 
+	RequireEmpireAttributeGTE(InfiniteMegaTaken, 5, #R_LIFESTYLE_REQ:Megaconstruction:5)
 
 Technology: XStarForge
 	Name: #R_ORB_STARFORGE
 	Description: #R_ORB_STARFORGE_DESC
 	Category: Reactionary
 
-	Point Cost: 1200
+	Point Cost: 0
 	Time Cost: 180
 
 	Icon: OrbitalIcons::16
 	Color: #fff300
+	SecondaryMoneyCost(2000)
 
 	UnlockTag(StarForgeUnlock)
 	SkipOnUnlockedTag(StarForgeUnlock)
-
+	
+	RequireEmpireAttributeGTE(InfiniteMegaTaken, 4, #R_LIFESTYLE_REQ:Megaconstruction:4)
 
 Technology: XRingworld
 	Name: #R_ORB_RINGWORLD
 	Description: #R_ORB_RINGWORLD_DESC
 	Category: Reactionary
 
-	Point Cost: 2000
+	Point Cost: 0
 	Time Cost: 200
 
 	Icon: PlanetType::14
 	Color: #83ff40
+	SecondaryMoneyCost(7000)
 
 	UnlockTag(RingworldUnlock)
 	SkipOnUnlockedTag(RingworldUnlock)
 
+	RequireEmpireAttributeGTE(InfiniteMegaTaken, 9, #R_LIFESTYLE_REQ:Megaconstruction:9)
+	
 Technology: XVacuumTelescope
 	Name: #R_ORB_VACUUM_TELESCOPE
 	Description: #R_ORB_VACUUM_TELESCOPE_DESC
 	Category: Reactionary
 
-	Point Cost: 900
+	Point Cost: 0
 	Time Cost: 180
+	SecondaryMoneyCost(2500)
 
 	Icon: GuiOrbitalIcons::17
 	Color: #fff300
 
 	UnlockTag(VacuumTelescopeUnlock)
 	SkipOnUnlockedTag(VacuumTelescopeUnlock)
+	RequireEmpireAttributeGTE(InfiniteMegaTaken, 4, #R_LIFESTYLE_REQ:Megaconstruction:4)
