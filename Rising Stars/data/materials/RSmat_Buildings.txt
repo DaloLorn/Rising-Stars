@@ -1,0 +1,37 @@
+Material: RSBuilding
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+
+Material: BerConverter
+	Inherit: RSBuilding
+	Texture: data/images/buildings/BerConverter.png	
+	
+	
+	//Artificial Resources
+Material: lvl1r
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Research.png
+
+Material: lvl1b
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Budget.png
+
+Material: lvl1d
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Defense.png
+	
+Material: lvl2r
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Research.png
+
+Material: lvl2b
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Budget.png
+
+Material: lvl2d
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Defense.png	

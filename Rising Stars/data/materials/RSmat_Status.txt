@@ -1,4 +1,4 @@
-Material: ABEMStatus
+Material: RSStatus
 	Culling: None
 	Alpha: False
 	DepthTest: NoDepthTest
@@ -6,5 +6,5 @@ Material: ABEMStatus
 	Lighting: False
 	
 Material: RammingSpeed
-	Inherit: ABEMStatus
+	Inherit: RSStatus
 	Texture: data/images/status/RammingSpeed.png	

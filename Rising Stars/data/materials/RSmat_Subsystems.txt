@@ -1,4 +1,4 @@
-Material: ABEMSubsystem
+Material: RSSubsystem
 	Culling: None
 	Alpha: True
 	DepthTest: NoDepthTest
@@ -10,64 +10,64 @@ Material: ABEMSubsystem
 // *********************************************************
 
 Material: SAmatter
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/SAmmater.png
 Material: AntimatterGen
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/amgen.png
 Material: ShieldedAntimatterGen
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/shielded_amgen.png
 Material: SingularityCore
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/singularitycore.png
 Material: SolarCell
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/SolarCell.png
 
-Material: ABEMSupply
-	Inherit: ABEMSubsystem
+Material: RSSupply
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/supply_normal.png
 Material: CargoStorage
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/cargostorage.png
-Material: ABEMComputer
-	Inherit: ABEMSubsystem
+Material: RSComputer
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/computer.png
 Material: FusionGen
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/fusiongen.png
 
 // *********************************************************
 // *******************SHIELD TECHNOLOGY*********************
 // *********************************************************
 Material: ShieldGen
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/shieldgen.png
 Material: CovariantShield
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/covariantshield.png
 Material: SupportShield
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/supportshield.png
 Material: ShieldHardener
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/shieldstuff.png
 Material: Forcefield
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/forcefield.png
 
 // *********************************************************
 // ************************ARMOR****************************
 // *********************************************************
 Material: QuantumArmor
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/armor_quantum.png
 Material: CompositeArmor
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/armor_composite.png
 Material: Superstructure
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/superstructure.png
 
 // *********************************************************
@@ -75,7 +75,7 @@ Material: Superstructure
 // *********************************************************
 
 Material: CoolantModifier
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/Coolant.png
 
 // *********************************************************
@@ -83,11 +83,11 @@ Material: CoolantModifier
 // *********************************************************
 
 Material: BoardingParty
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/boardingparty.png
 Material: SecurityStation
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/securityparty.png
 Material: ProgenitorArmor
-	Inherit: ABEMSubsystem
+	Inherit: RSSubsystem
 	Texture: data/images/subsystems/armor4.png

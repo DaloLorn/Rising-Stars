@@ -1,0 +1,60 @@
+Building: Lvl2Research
+	Name: #B_FAKELVL2_RESEARCH
+	Sprite: lvl2r
+
+	Category: Tier II Resources
+
+	Size: 4x8
+	Base Cost: 2000
+
+
+	Labor Cost: 500
+	Description: #B_FAKELVL2_RESEARCH_DESC
+
+	ConsumeCargo(Ore, 6000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Research, 7)
+	AddDummyResource(Medicines, 1)
+
+Building: Lvl2Budget
+	Name: #B_FAKELVL2_MONEY
+	Sprite: lvl2b
+
+	Category: Tier II Resources
+
+	Size: 4x8
+	Base Cost: 2000
+
+
+	Labor Cost: 500
+
+	Description: #B_FAKELVL2_MONEY_DESC
+
+	ConsumeCargo(Ore, 6000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Money, 7)
+	AddDummyResource(Medicines, 1)
+
+
+
+Building: Lvl2Defense
+	Name: #B_FAKELVL2_DEFENSE
+	Sprite: lvl2d
+
+	Category: Tier II Resources
+
+	Size: 4x8
+	Base Cost: 2000
+
+
+	Labor Cost: 500
+
+	Description: #B_FAKELVL2_DEFENSE_DESC
+
+	ConsumeCargo(Ore, 6000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Defense, 7)
+	AddDummyResource(Medicines, 1)

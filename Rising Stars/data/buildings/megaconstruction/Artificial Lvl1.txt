@@ -1,0 +1,60 @@
+Building: Lvl1Research
+	Name: #B_FAKELVL1_RESEARCH
+	Sprite: lvl1r
+
+	Category: Tier I Resources
+
+	Size: 4x4
+	Base Cost: 1000
+
+
+	Labor Cost: 250
+	Description: #B_FAKELVL1_RESEARCH_DESC
+
+	ConsumeCargo(Ore, 2000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Research, 3)
+	AddDummyResource(Titanium, 1)
+
+Building: Lvl1Budget
+	Name: #B_FAKELVL1_MONEY
+	Sprite: lvl1b
+
+	Category: Tier I Resources
+
+	Size: 4x4
+	Base Cost: 1000
+
+
+	Labor Cost: 250
+
+	Description: #B_FAKELVL1_MONEY_DESC
+
+	ConsumeCargo(Ore, 2000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Money, 3)
+	AddDummyResource(Titanium, 1)
+
+
+
+Building: Lvl1Defense
+	Name: #B_FAKELVL1_DEFENSE
+	Sprite: lvl1d
+
+	Category: Tier I Resources
+
+	Size: 4x4
+	Base Cost: 1000
+
+
+	Labor Cost: 250
+
+	Description: #B_FAKELVL1_DEFENSE_DESC
+
+	ConsumeCargo(Ore, 2000)
+
+	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	AddPressure(Defense, 3)
+	AddDummyResource(Titanium, 1)

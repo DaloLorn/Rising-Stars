@@ -62,3 +62,39 @@ B_DEFENSEFACTORY_DESC: <<
 
 	Adds 2 Defense generation. Adds 128 support capacity. Adds 25 units of sensor range.
 >>
+B_FAKELVL1_RESEARCH: Research Complex
+B_FAKELVL1_RESEARCH_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Research pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL1_MONEY: Space Market
+B_FAKELVL1_MONEY_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Money pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL1_DEFENSE: Weapons Factory
+B_FAKELVL1_DEFENSE_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Defense pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_RESEARCH: Research Complex
+B_FAKELVL2_RESEARCH_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Research pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_MONEY: Space Market
+B_FAKELVL2_MONEY_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Money pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_DEFENSE: Weapons Factory
+B_FAKELVL2_DEFENSE_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Defense pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
