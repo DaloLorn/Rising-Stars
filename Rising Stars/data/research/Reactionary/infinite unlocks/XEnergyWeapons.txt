@@ -15,7 +15,7 @@ Technology: XHyperLaser
 	SkipOnUnlockedSubsystem(HyperLaser)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 4, #R_LIFESTYLE_REQ:Energy Weapons:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 5, #R_LIFESTYLE_REQ:Energy Weapons:4)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:4)
 	
 	
@@ -38,7 +38,7 @@ Technology: XDisruptor
 	SkipOnUnlockedSubsystem(Disruptor)
 
 	SecondaryFTLCost(250)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 6, #R_LIFESTYLE_REQ:Energy Weapons:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:6)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
 
 Technology: XSubspaceShredder
@@ -61,7 +61,7 @@ Technology: XSubspaceShredder
 
 	SecondaryMoneyCost(1500)
 	
-		RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
+		RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 8, #R_LIFESTYLE_REQ:Energy Weapons:7)
 			RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
 
 Technology: XPulseBolt
@@ -83,9 +83,53 @@ Technology: XPulseBolt
 	SkipOnUnlockedSubsystem(PulseBolt)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 9, #R_LIFESTYLE_REQ:Energy Weapons:7)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy:6)
 	
+	
+Technology: XVoidRay
+	Name: #R_VOIDRAY
+	Description: #R_VOIDRAY_DESC
+
+	Category: ABEM - Subsystems
+	Time Cost: 120
+	Icon: Laser::2*#32ff17
+	Color: #ff0314
+	
+	
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
+	SkipOnUnlockedSubsystem(VoidRay)
+	
+	UnlockSubsystem(VoidRay)
+	
+	SecondaryMoneyCost(1500)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 10, #R_LIFESTYLE_REQ:Energy Weapons:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy:6)
+	
+	
+Technology: XMatterDisruptor
+	Name: #R_SYS_MATTERDISRUPTOR
+	Class: Unlock
+	Point Cost: 700
+	Time Cost: 120
+	Icon: WaveEmitter
+	Description: #R_MATTERDISRUPTOR_DESC
+	
+	Category: ABEM - Subsystems
+
+	Color: #06c0ff
+	
+	SecondaryMoneyCost(1000)
+
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 12, #R_LIFESTYLE_REQ:Energy Weapons:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy:6)
+	
+	SkipOnUnlockedSubsystem(MatterDisruptor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	UnlockSubsystem(MatterDisruptor)
+
+
 ///////////////////////////////////	
 //ENERGY WEAPONS SPECIAL UPGRADES/////////////
 ////////////////////////////////////	
