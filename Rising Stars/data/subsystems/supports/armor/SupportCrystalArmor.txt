@@ -13,14 +13,14 @@ Subsystem: SupportCrystalArmor
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	Hex.Resistance := 0.5
+	Hex.Resistance := 0.6
 	Hex.HP := 200 * HexSize
-	Hex.Mass := 1.5 * HexSize
+	Hex.Mass := 2.4 * HexSize
 
-	Hex.BuildCost := 2.0 * HexSize
-	Hex.LaborCost := 0.35 * HexSize
+	Hex.BuildCost := 6.0 * HexSize
+	Hex.LaborCost := 0.4 * HexSize
 	
-	DamageResist := ShipSize / 9.0
+	DamageResist := ShipSize / 10.0
 	Effect: ReduceDamage
 		ProjResist = DamageResist
 		EnergyResist = DamageResist * 3.0

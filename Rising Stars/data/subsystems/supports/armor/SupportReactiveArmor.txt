@@ -10,12 +10,12 @@ Subsystem: SupportReactiveArmor
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	ImpactLevel := 27 * HexSize
+	ImpactLevel := 18 * HexSize
 	MinPct := 1/6
 
 	Hex.Resistance := 0.55
-	Hex.HP := 31 * HexSize
-	Hex.Mass := 4.0 * HexSize
+	Hex.HP := 36 * HexSize
+	Hex.Mass := 2.8 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
@@ -26,8 +26,8 @@ Subsystem: SupportReactiveArmor
 	Modifier: ImpactFactor(factor)
 		MinPct := MinPct / factor
 
-	Hex.LaborCost := 0.4 * HexSize
-	Hex.BuildCost := 3.5 * HexSize
+	Hex.LaborCost := 0.325 * HexSize
+	Hex.BuildCost := 2.6 * HexSize
 	Hex.MaintainCost := 0
 
 	Module: Default

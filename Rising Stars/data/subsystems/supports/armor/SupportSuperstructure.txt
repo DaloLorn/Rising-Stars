@@ -9,25 +9,16 @@ Subsystem: SupportSuperstructure
 
 	Size := HexSize * Hexes
 
-	Hex.Resistance := 0
-	Hex.HP := 12 * HexSize
+	Hex.Resistance := 0.1
+	Hex.HP := 10.5 * HexSize
 
-	Hex.Mass := 0.7* HexSize
+	Hex.Mass := 1.3 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	DamageResist := ShipSize / 70.0
-
-	Hex.BuildCost := HexSize * 0.3
-	Hex.LaborCost := HexSize * 0.04
-
-	Effect: DamageResist
-		Resist = DamageResist
-
-	Modifier: ArmorResistFactor(factor)
-		DamageResist := DamageResist * factor
+	Hex.BuildCost := HexSize * 0.75
+	Hex.LaborCost := HexSize * 0.09
+	Hex.MaintainCost := 0
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 2
-		Hex.LaborCost := Hex.LaborCost * 4
 		Sprite: Superstructure

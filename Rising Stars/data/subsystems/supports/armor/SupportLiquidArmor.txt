@@ -15,11 +15,11 @@ Subsystem: SupportLiquidArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Hex.Resistance := 0.1
-	Hex.HP := 60 * HexSize
-	Hex.Mass := 2 * HexSize
+	Hex.HP := 55 * HexSize
+	Hex.Mass := 1.4 * HexSize
 
-	Hex.BuildCost := 0.75 * HexSize
-	Hex.LaborCost := 0.14 * HexSize
+	Hex.BuildCost := 4.0 * HexSize
+	Hex.LaborCost := 0.5 * HexSize
 	
 	Effect: DistributeHealth
 

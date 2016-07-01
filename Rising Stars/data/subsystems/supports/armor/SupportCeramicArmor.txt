@@ -11,16 +11,16 @@ Subsystem: SupportCeramicArmor
 
 	Size := HexSize * Hexes
 	Hex.Resistance := 0.3
-	Hex.HP := 30 * HexSize
-	Hex.Mass := 1.0 * HexSize
+	Hex.HP := 31 * HexSize
+	Hex.Mass := 0.6 * HexSize
 
-	Hex.LaborCost := 0.35 * HexSize
-	Hex.BuildCost := 1.75 * HexSize
+	Hex.LaborCost := 0.2 * HexSize
+	Hex.BuildCost := 1.25 * HexSize
 	Hex.MaintainCost := 0
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	DamageResist := ShipSize / 18.0
+	DamageResist := ShipSize / 10.0
 
 	Effect: ReduceDamage
 		ProjResist = DamageResist * 0.8
