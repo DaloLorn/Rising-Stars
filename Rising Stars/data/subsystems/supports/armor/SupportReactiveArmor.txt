@@ -1,4 +1,4 @@
-Subsystem: ReactiveArmor
+Subsystem: SupportReactiveArmor
 	Name: #REACTIVEARMOR_NAME
 	Description: #REACTIVEARMOR_DESC
 	BaseColor: #b9a9a9

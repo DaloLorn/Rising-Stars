@@ -1,4 +1,4 @@
-Subsystem: CeramicArmor
+Subsystem: SupportCeramicArmor
 	Name: #S_CERAMICARMOR
 	Description: #S_CERAMICARMOR_DESC
 	BaseColor: #a6661e
