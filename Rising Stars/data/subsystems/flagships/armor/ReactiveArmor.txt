@@ -27,7 +27,7 @@ Subsystem: ReactiveArmor
 		MinPct := MinPct / factor
 
 	Hex.LaborCost := 0.4 * HexSize
-	Hex.BuildCost := 3 * HexSize
+	Hex.BuildCost := 3.5 * HexSize
 	Hex.MaintainCost := 0
 
 	Module: Default
