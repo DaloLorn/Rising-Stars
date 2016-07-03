@@ -17,7 +17,7 @@ Technology: LifeInfiniteShields
 	ModAttribute(InfiniteShieldsTaken, Add, 1)
 
 	ResetWhenUnlocked()
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy:3)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy Science:3)
 	
 	
 ////////////////////////

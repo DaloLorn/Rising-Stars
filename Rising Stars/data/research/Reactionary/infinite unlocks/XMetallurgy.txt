@@ -68,7 +68,7 @@ Technology: XSolarSatellite
 
 	SecondaryMoneyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 4, #R_LIFESTYLE_REQ:Metallurgy:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:5)
 
 Technology: XHydroponicsSatellite
 	Name: #R_ORB_HYDROPONICS_SATELLITE

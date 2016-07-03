@@ -1,5 +1,5 @@
 Technology: LifeInfiniteMaterials
-	Name: Materials Development
+	Name: #INFINITE_HEALTH
 	Description: #R_INFINITE_HEALTH_DESC:8%
 
 	Icon: techMaterialScience1*#a8df21

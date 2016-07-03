@@ -24,17 +24,16 @@ BLD_SLAVECAMP: <<
 	[bbloc=#TIP_CIV_UPGRADES/]
 >>
 
-F_SENATE_NAME: Government Center
+F_SENATE_NAME: Centralized Coordination Complex
 F_SENATE_DESC: <<
-	[color=#aaa][i]Places for government officials to discuss and enforce imperial policies from, the larger of these facilities are also of some diplomatic significance.[/i][/color]
+	[color=#aaa][i]Centralized Coordination Complexes, or 'C3s' as they're sometimes called, coordinate and monitor the activities of the empire's government, attempting to remove excessive red tape and corrupt officials. The procedures used vary wildly from empire to empire, but the net effect is always an improvement of the government's ability to look outward - and to focus its power and influence on more important matters.[/i][/color]
 
-	Generates 1 Influence Stake per each 20 population your empire have.
-	Show total population.
+	Generates 1 Influence Stake for every 20 billion inhabitants in your empire.
 >>
 
 B_SLAVE: Slave Barracks
 B_SLAVE_DESC: <<
-	Massive slave camps where all the planet's resources - and its population - are dedicated to construction.
+	[color=#aaa][i]Massive slave camps where all the planet's resources - and its population - are dedicated to construction.[/i][/color]
 
 	Generates 1.5 Labor per 1 billion inhabitants. Converts Energy generation to Labor generation at a 2:1 ratio. Converts Defense generation to Labor at a 1:1 ratio. Adds 50 Labor storage. Replaces 4 cities.
 

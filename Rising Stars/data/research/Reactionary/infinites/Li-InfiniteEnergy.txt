@@ -1,5 +1,5 @@
 Technology: LifeInfiniteEnergy
-	Name: Energy Science
+	Name: #INFINITE_ENERGY
 	Description: #INFINITE_ENERGY_DESC:5%:0.4:40
 
 	Icon: AffinityIcons::2

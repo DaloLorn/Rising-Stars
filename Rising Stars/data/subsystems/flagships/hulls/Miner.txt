@@ -10,9 +10,7 @@ Subsystem: MinerHull
 
 	AddShipModifier: MassFactor(1)
 	AddShipModifier: ShieldCapacityFactor(1.5)
-	AddShipModifier: SupportCapacityFactor(0.0)
 	AddShipModifier: ArmorHpFactor(1)
-	AddShipModifier: DamageFactor(0)
 	AddShipModifier: MaintCostFactor(0.1)
 	AddShipModifier: SupplyCapacityFactor(0.1)
 	AddShipModifier: MiningRateFactor(1.25)
@@ -21,3 +19,9 @@ Subsystem: MinerHull
 	Module: Default
 		Sprite: HullSubsystems::6
 		DrawMode: 3
+	
+	Assert: TagCount.Weapon == 0
+		Message: #ERROR_CANNOT_HAVE_WEAPONS
+
+	Assert: Sum.SupportCapacity
+		Message: #ERROR_CANNOT_HAVE_SUPPORT

@@ -1,5 +1,5 @@
-Technology: LifeInfiniteChasis
-	Name: Chasis Enginiering
+Technology: LifeInfiniteChassis
+	Name: #INFINITE_CHASSIS
 
 	Icon: GuiOrbitalIcons::6*#a8df21
 	Symbol: EditIcons::7
@@ -10,11 +10,11 @@ Technology: LifeInfiniteChasis
 
 	Point Cost: 300
 	Time Cost: 60
-	Description: #INFINITE_CHASIS:10%:40%
+	Description: #INFINITE_CHASSIS_DESC:10%:40%
 
-	AddPointCostAttribute(InfiniteChasisTaken, 125)
-	AddTimeCostAttribute(InfiniteChasisTaken, 15)
-	ModAttribute(InfiniteChasisTaken, Add, 1)
+	AddPointCostAttribute(InfiniteChassisTaken, 125)
+	AddTimeCostAttribute(InfiniteChassisTaken, 15)
+	ModAttribute(InfiniteChassisTaken, Add, 1)
 	ResetWhenUnlocked()
 
 ////////////////////////

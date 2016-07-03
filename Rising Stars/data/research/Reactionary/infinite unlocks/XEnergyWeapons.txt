@@ -15,8 +15,8 @@ Technology: XHyperLaser
 	SkipOnUnlockedSubsystem(HyperLaser)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 4, #R_LIFESTYLE_REQ:Energy Weapons:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 4, #R_LIFESTYLE_REQ:Beam Focusing:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
 	
 	
 Technology: XDisruptor
@@ -38,8 +38,8 @@ Technology: XDisruptor
 	SkipOnUnlockedSubsystem(Disruptor)
 
 	SecondaryFTLCost(250)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 6, #R_LIFESTYLE_REQ:Energy Weapons:6)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 6, #R_LIFESTYLE_REQ:Beam Focusing:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
 
 Technology: XSubspaceShredder
 	Name: #R_SYS_SUBSPACE_SHREDDER
@@ -61,8 +61,8 @@ Technology: XSubspaceShredder
 
 	SecondaryMoneyCost(1500)
 	
-		RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
-			RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Beam Focusing:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)
 
 Technology: XPulseBolt
 	Name: #R_SYS_PULSE_BOLT
@@ -83,8 +83,8 @@ Technology: XPulseBolt
 	SkipOnUnlockedSubsystem(PulseBolt)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Energy Weapons:7)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Beam Focusing:7)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6 ,#R_LIFESTYLE_REQ:Energy Science:6)
 	
 ///////////////////////////////////	
 //ENERGY WEAPONS SPECIAL UPGRADES/////////////

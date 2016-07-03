@@ -24,7 +24,7 @@ Grid: Reactionary
 	Connector: 4,-11
 	XShieldedAntimatter: -11,-3
 	XQuantumCompressor: -11,-1
-	XShielChargerOrbital: -6,-5
+	XShieldChargerOrbital: -6,-5
 	XStellarShieldOrbital: -7,-5
 	Connector: -4,-6
 	XDeflectorArray: -3,-6
@@ -33,7 +33,7 @@ Grid: Reactionary
 	XCovariantShield: -6,-7
 	XShieldHarmonizer: -7,-7
 	XShieldHardener: -8,-7
-	LifeInfiniteChasis: 2,1
+	LifeInfiniteChassis: 2,1
 	XAugmentReload: 3,3
 	XShipComputer: 5,1
 	XDestroyerHull: 6,0

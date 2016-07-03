@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMetallurgy
-	Name: Metallurgy
-	Description: #INFINITE_METALLURGY_DESC:2:10%:5%
+	Name: #INFINITE_METALLURGY
+	Description: #INFINITE_METALLURGY_DESC:3:10%:5%:8%
 
 	Icon: AffinityIcons::4
 	Symbol: EditIcons::7

@@ -107,7 +107,7 @@ R_SPACEFERNS_BLURB: <<
 	[font=Small]Reduce engine maintenance by [levels=$1;#ffb4b6]5% / 10% / 25% / 50% / 75% / 90% / 100%[/levels]. Gain various pressures per level.[/font]
 >>
 R_SPACEFERNS_DESC: <<|
-	The omnivorous ferns that have evolved to cover the entire surface of this planet have a myriad of useful and interesting properties. Beyond their stems serving as a delicacy for several species, they emit an extremely potent gaseous fuel as a byproduct of their efficient metabolism.
+	The omnivorous ferns that have evolved to cover the entire surface of this planet have a myriad of useful and interesting properties. Aside from their stems serving as a delicacy for several species, they also emit an extremely potent gaseous fuel as a byproduct of their efficient metabolism.
 
 	This planet only requires large quantities of food and water to level up.
 

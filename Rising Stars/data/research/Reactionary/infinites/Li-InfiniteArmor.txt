@@ -1,5 +1,5 @@
 Technology: LifeInfiniteArmor
-	Name: Armor
+	Name: #INFINITE_ARMOR
 
 	Icon: PlateArmor
 	Symbol: EditIcons::7
@@ -10,7 +10,7 @@ Technology: LifeInfiniteArmor
 
 	Point Cost: 200
 	Time Cost: 60
-	Description: #INFINITE_ARMOR_DESC:8%:8%
+	Description: #INFINITE_ARMOR_DESC:8%:2.2%
 
 	AddPointCostAttribute(InfiniteArmorTaken,150)
 	AddTimeCostAttribute(InfiniteArmorTaken, 15)

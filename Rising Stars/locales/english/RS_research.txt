@@ -44,8 +44,6 @@ R_IMPROVEDLABS_DESC: <<
 	Increases the Research generation of Tech Centers and Research Complexes by 0.1. This effectively reduces the penalty for allowing Universities to condense into Tech Centers by 20%.
 >>
 
-
-
 R_SYS_QUANTUM_ARMOR: Quantum Armor
 R_SYS_QUANTUM_ARMOR_DESC: <<
 	[color=#aaa][i]After years of research, we have managed to improve upon Neutronium Armor. Most of this new armor's mass is stored outside our physical universe, only reappearing just before impact to withstand devastating blows without impairing mobility. Unfortunately, as this technology is applied to existing Neutronium Armor, the process is just as expensive as - and more difficult than - producing regular Neutronium Armor.[/i][/color]

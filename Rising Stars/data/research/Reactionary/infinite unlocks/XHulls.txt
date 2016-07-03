@@ -16,7 +16,7 @@ Technology: XSuperstructureHull
 	SkipOnUnlockedSubsystem(SuperstructureHull)
 
 	SecondaryMoneyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 3, #R_LIFESTYLE_REQ:Chasing Enginiering:3)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 3, #R_LIFESTYLE_REQ:Chassis Engineering:3)
 
 Technology: XMinerHull
 	Name: #S_MINER_HULL
@@ -36,7 +36,7 @@ Technology: XMinerHull
 
 	SecondaryMoneyCost(500)
 
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 2, #R_LIFESTYLE_REQ:Chasing Enginiering:2)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 2, #R_LIFESTYLE_REQ:Chassis Engineering:2)
 
 
 Technology: XSpinalMountHull
@@ -55,7 +55,7 @@ Technology: XSpinalMountHull
 
 	SecondaryMoneyCost(1000)
 
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 4, #R_LIFESTYLE_REQ:Chasing Enginiering:4)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 4, #R_LIFESTYLE_REQ:Chassis Engineering:4)
 
 Technology: XCarrierHull
 	Name: #R_SYS_CARRIER_HULL
@@ -76,7 +76,7 @@ Technology: XCarrierHull
 
 	SecondaryMoneyCost(1000)
 
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 4, #R_LIFESTYLE_REQ:Chasing Enginiering:4)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 4, #R_LIFESTYLE_REQ:Chassis Engineering:4)
 
 
 Technology: XDestroyerHull
@@ -98,7 +98,7 @@ Technology: XDestroyerHull
 
 	SecondaryMoneyCost(1500)
 
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 5, #R_LIFESTYLE_REQ:Chasing Enginiering:5)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 5, #R_LIFESTYLE_REQ:Chassis Engineering:5)
 
 
 
@@ -120,7 +120,7 @@ Technology: XTitanHull
 	SkipOnUnlockedSubsystem(TitanHull)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 5, #R_LIFESTYLE_REQ:Chasing Enginiering:5)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 5, #R_LIFESTYLE_REQ:Chassis Engineering:5)
 
 Technology: XColossusHull
 	Name: #R_SYS_COLOSSUS_HULL
@@ -143,4 +143,4 @@ Technology: XColossusHull
 	UnlockSubsystem(ColossusHull)
 	SkipOnUnlockedSubsystem(ColossusHull)
 
-	RequireEmpireAttributeGTE(InfiniteChasisTaken, 6, #R_LIFESTYLE_REQ:Chasing Enginiering:6)
+	RequireEmpireAttributeGTE(InfiniteChassisTaken, 6, #R_LIFESTYLE_REQ:Chassis Engineering:6)

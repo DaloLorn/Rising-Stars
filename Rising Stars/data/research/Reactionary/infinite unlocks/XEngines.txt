@@ -1,4 +1,3 @@
-
 Technology: XBoosterEngine
 	Name: #R_SYS_BOOSTER_ENGINE
 	Description: #R_SYS_BOOSTER_ENGINE_DESC
@@ -20,11 +19,6 @@ Technology: XBoosterEngine
 
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 2, #R_LIFESTYLE_REQ:Propulsion:2)
 
-
-
-
-
-
 Technology: XSkipDrive
 	Name: #R_SYS_SKIP_DRIVE
 	Description: #R_SYS_SKIP_DRIVE_DESC
@@ -40,9 +34,7 @@ Technology: XSkipDrive
 	UnlockSubsystem(SkipDrive)
 	SkipOnUnlockedSubsystem(SkipDrive)
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 4, #R_LIFESTYLE_REQ:Propulsion:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4 ,#R_LIFESTYLE_REQ:Energy:4)
-
-
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4 ,#R_LIFESTYLE_REQ:Energy Science:4)
 
 Technology: XRamjet
 	Name: #R_SYS_RAMJET
@@ -62,7 +54,6 @@ Technology: XRamjet
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 5,#R_LIFESTYLE_REQ:Propulsion:5)
-
 	
 Technology: XGravityEngine
 	Name: #R_SYS_GRAVITY_ENGINE
@@ -81,7 +72,7 @@ Technology: XGravityEngine
 	SecondaryEnergyCost(1000)
 	
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)
 	
 Technology: XGravitonChanneling
 	Name: #R_GRAVITON_CHANNELING
@@ -102,5 +93,5 @@ Technology: XGravitonChanneling
 	AddModifier( GravityEngine::ThrustFactor(1.5) )
 	AddModifier( GravityEngine::PowerUseFactor(2.0) )
 	
-RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
-RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)

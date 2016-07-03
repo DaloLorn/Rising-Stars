@@ -16,7 +16,7 @@ Technology: XCompositeArmor
 	SkipOnUnlockedSubsystem(CompositeArmor)
 	UnlockSubsystem(CompositeArmor)
 
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 2, #R_LIFESTYLE_REQ:Armor:2)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 2, #R_LIFESTYLE_REQ:Armoring:2)
 
 Technology: XNeutronArmor
 	Name: #R_SYS_NEUTRON_ARMOR
@@ -32,7 +32,7 @@ Technology: XNeutronArmor
 	UnlockSubsystem(NeutronArmor)
 	SkipOnUnlockedSubsystem(NeutronArmor)
 
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armor:4)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armoring:4)
 	SecondaryMoneyCost(1000)
 
 Technology: XQuantumArmor
@@ -55,7 +55,7 @@ Technology: XQuantumArmor
 	SkipOnUnlockedSubsystem(SupportQuantumArmor)
 
 	SecondaryMoneyCost(2000)
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 8, #R_LIFESTYLE_REQ:Armor:8)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 8, #R_LIFESTYLE_REQ:Armoring:8)
 
 
 Technology: XLiquidArmor
@@ -75,7 +75,7 @@ Technology: XLiquidArmor
 
 	SecondaryInfluenceCost(10)
 
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 3, #R_LIFESTYLE_REQ:Armor:3)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 3, #R_LIFESTYLE_REQ:Armoring:3)
 
 Technology: XNanoMesh
 	Name: #R_SYS_NANOMESH
@@ -96,7 +96,7 @@ Technology: XNanoMesh
 	SkipOnUnlockedSubsystem(NanoMesh)
 
 	SecondaryInfluenceCost(12)
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armor:4)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armoring:4)
 
 Technology: XSysNilingArmor
 	Name: #R_SYS_NILINGARMOR
@@ -116,7 +116,7 @@ Technology: XSysNilingArmor
 	SkipOnUnlockedSubsystem(NilingArmor)
 
 	SecondaryEnergyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 5, #R_LIFESTYLE_REQ:Armor:5)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 5, #R_LIFESTYLE_REQ:Armoring:5)
 
 Technology: XCrystalArmor
 	Name: #R_SYS_CRYSTAL_ARMOR
@@ -137,4 +137,4 @@ Technology: XCrystalArmor
 	SkipOnUnlockedSubsystem(CrystalArmor)
 
 	SecondaryMoneyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteArmorTaken, 6, #R_LIFESTYLE_REQ:Armor:6)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 6, #R_LIFESTYLE_REQ:Armoring:6)

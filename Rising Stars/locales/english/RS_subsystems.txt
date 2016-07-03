@@ -59,12 +59,12 @@ MISSILELAUNCHER_DESC: <<
 >>
 
 S_HYPERLASER_DESC: <<
-	A brief laser with energy densities nearly high enough to spontaneously generate matter.
+	A powerful pulse laser with energy densities nearly high enough to spontaneously generate matter.
 
 	[img=Plus]Accurate and instant beam lock-on.[/img]
-	[img=Plus]Deals damage in short pulses so better vs armor.[/img]
+	[img=Plus]Deals damage in short pulses, resulting in higher effectiveness against armor.[/img]
 	[img=Minus]Lower overall DPS against shields or unarmored targets.[/img]
-	[img=Minus]Very limited turret firing arc, but more than beam lasers.[/img]
+	[img=Minus]Very limited turret firing arc. Firing arc is larger than that of regular lasers.[/img]
 >>
 
 S_ZPG: Singularity Core
@@ -82,10 +82,9 @@ S_MINER_HULL_DESC: <<
 	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
 
 	[img=Plus]Increases shield capacity by 50%.[/img]
-	[img=Plus]Reduces maintenance costs  and supply capacity by 90%.[/img]
+	[img=Plus]Reduces maintenance costs and supply capacity by 90%.[/img]
 	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
-	[img=Minus]Weapon base damage is reduced by 100% (Can't use weapons). [/img]
-	[img=Minus]Cannot have support ships.[/img]
+	[img=Minus]Cannot have weapons or support command.[/img]
 >>
 TARGETINGSENSOR_DESC: <<
 	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
@@ -163,6 +162,8 @@ S_TORPEDOLAUNCHER_DESC: <<
 	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
 	[img=Plus]No firing arc limitations.[/img]
 	[img=Plus]Deals damage in an area.[/img]
+	[img=Plus]Low supply consumption.[/img]
+	[img=Minus]High power requirements.[/img]
 	[img=Minus]Very slow fire rate.[/img]
 	[img=Minus]Very low [b][color=#ff8080]DPS[/color][/b].[/img]
 >>

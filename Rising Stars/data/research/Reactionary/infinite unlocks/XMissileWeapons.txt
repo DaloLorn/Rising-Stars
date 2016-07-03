@@ -16,7 +16,7 @@ Technology: XDroneLauncher
 	SkipOnUnlockedSubsystem(DroneLauncher)
 
 	SecondaryMoneyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteMissileTech, 5,#R_LIFESTYLE_REQ:Missile Weapons:5 )
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 5,#R_LIFESTYLE_REQ:Rocketry:5 )
 
 
 
@@ -39,7 +39,7 @@ Technology: XShockMissiles
 	SkipOnUnlockedSubsystem(ShockMissiles)
 
 	SecondaryMoneyCost(750)
-	RequireEmpireAttributeGTE(InfiniteMissileTech, 6,#R_LIFESTYLE_REQ:Missile Weapons:6 )
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 6,#R_LIFESTYLE_REQ:Rocketry:6 )
 
 Technology: XWarhead
 	Name: #R_SYS_WARHEAD
@@ -57,7 +57,7 @@ Technology: XWarhead
 
 	UnlockSubsystem(Warhead)
 	SkipOnUnlockedSubsystem(Warhead)
-	RequireEmpireAttributeGTE(InfiniteMissileTech, 8,#R_LIFESTYLE_REQ:Missile Weapons:8 )
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 8,#R_LIFESTYLE_REQ:Rocketry:8 )
 ///////////////////////////////////
 //MISILE SPECIAL UPGRADES/////////////
 ////////////////////////////////////
@@ -78,8 +78,8 @@ Technology: XDroneCount
 
 	AddModifier( DroneLauncher::DroneCountFactor(1.5))
 	AddModifier( DroneLauncher::DamageFactor(1.3) )
-	RequireEmpireAttributeGTE(InfiniteMissileTech, 7,#R_LIFESTYLE_REQ:Missile Weapons:7 )
-	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 5, #R_LIFESTYLE_REQ:Energy Weapons:5)
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 7,#R_LIFESTYLE_REQ:Rocketry:7 )
+	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 5, #R_LIFESTYLE_REQ:Beam Focusing:5)
 
 Technology: XMissileRange
 	Name: #R_MISSILE_RANGE
@@ -98,5 +98,5 @@ Technology: XMissileRange
 
 	AffectsTaggedSubsystems(MissileBase)
 
-	RequireEmpireAttributeGTE(InfiniteMissileTech, 6,#R_LIFESTYLE_REQ:Missile Weapons:6 )
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 6,#R_LIFESTYLE_REQ:Rocketry:6 )
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6,#R_LIFESTYLE_REQ:Propulsion:6 )

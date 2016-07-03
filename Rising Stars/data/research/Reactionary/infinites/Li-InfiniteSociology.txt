@@ -1,6 +1,6 @@
 Technology: LifeInfiniteSociology
-	Name: Sociology
-	Description: INFINITE_SOCIETY:0.1:10%:1:5
+	Name: #INFINITE_SOCIETY
+	Description: #INFINITE_SOCIETY_DESC:0.1:10%:1:5
 
 	Icon: ResourceIcon::8
 	Symbol: EditIcons::7
@@ -17,9 +17,6 @@ Technology: LifeInfiniteSociology
 	ModAttribute(InfinitePopTaken, Add, 1)
 
 	ResetWhenUnlocked()
-
-
-	ModAttribute(PopulationLevel1Mod, Add, 0.1)
 
 	AddGlobalLoyalty(1)
 	ModDefenseReserve(5)

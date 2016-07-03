@@ -1,6 +1,6 @@
 Technology: LifeInfiniteEnergyWeapons
-	Name: Energy Weapons
-	Description: #INFINITE_ENERGY_WEAPONS:5%:2%
+	Name: #INFINITE_ENERGY_WEAPONS
+	Description: #INFINITE_ENERGY_WEAPONS_DESC:5%:2%
 
 	Icon: TechIcons::26
 	Symbol: EditIcons::7
@@ -22,5 +22,5 @@ Technology: LifeInfiniteEnergyWeapons
 ///////////////////////
 	AddModifier( tag/BeamBase::RangeFactor(1.05) )
 	AddModifier( tag/BeamBase::DamageFactor(1.05) )
-	AddModifier( tag/Weapon::DamageFactor(1.02))
+	AddModifier( !tag/BeamBase::DamageFactor(1.02) )
 	AffectsTaggedSubsystems(IsBeamWeapon)

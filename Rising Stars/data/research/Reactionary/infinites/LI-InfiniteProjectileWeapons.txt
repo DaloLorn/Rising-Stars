@@ -1,6 +1,6 @@
 Technology: LifeInfiniteDamage
-	Name: Proyectile Weapons
-	Description: #INFINITE_PROYECTILE_WEAPONS:5%:2%
+	Name: #INFINITE_PROJECTILE_WEAPONS
+	Description: #INFINITE_PROJECTILE_WEAPONS_DESC:5%:2%
 
 	Icon: TechIcons::38
 	Symbol: EditIcons::7
@@ -12,9 +12,9 @@ Technology: LifeInfiniteDamage
 	Point Cost: 300
 	Time Cost: 30
 
-	AddPointCostAttribute(InfiniteProyTech, 100)
-	AddTimeCostAttribute(InfiniteProyTech, 10)
-	ModAttribute(InfiniteProyTech, Add, 1)
+	AddPointCostAttribute(InfiniteProjTech, 100)
+	AddTimeCostAttribute(InfiniteProjTech, 10)
+	ModAttribute(InfiniteProjTech, Add, 1)
 
 	ResetWhenUnlocked()
 
@@ -23,13 +23,13 @@ Technology: LifeInfiniteDamage
 ////////////////////////
 //Subsystem  Bonus//
 ///////////////////////
-	AddModifier( tag/Weapon::DamageFactor(1.02))
-	AddModifier( tag/Weapon::DamageFactor(1.05) )
+	AddModifier( !tag/IsProjWeapon::DamageFactor(1.02))
+	AddModifier( tag/IsProjWeapon::DamageFactor(1.05))
 	AffectsTaggedSubsystems(IsProjWeapon)
 
 ////////////////////////
 //Orbital Bonus//
 ///////////////////////
 
-	AddModifier( tag/BeamBase::RangeFactor(1.05) )
+	AddModifier( tag/IsProjWeapon::RangeFactor(1.05) )
 	ModAttribute(StaticDamageFactor, Multiply, 1.05)

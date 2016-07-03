@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMegaconstruction
-	Name: Megaconstruction
-	Description: #INFINITE_MEGA_DESC:15%
+	Name: #INFINITE_MEGACONSTRUCTION
+	Description: #INFINITE_MEGACONSTRUCTION_DESC:15%
 	
 
 	Icon: GuiOrbitalIcons::24*#f88b9f

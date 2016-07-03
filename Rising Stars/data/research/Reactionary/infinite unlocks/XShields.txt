@@ -15,7 +15,7 @@ Technology: XShieldGen
 	SkipOnUnlockedSubsystem(ShieldGen)
 
 	SecondaryEnergyCost(700)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shield Modulation:1)
 
 
 Technology: XSupShieldGen
@@ -35,10 +35,10 @@ Technology: XSupShieldGen
 	SkipOnUnlockedSubsystem(ShieldGen)
 
 	SecondaryEnergyCost(700)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy:5)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
 
-Technology: XShielChargerOrbital
+Technology: XShieldChargerOrbital
 	Name: Orbital Shield Charger
 	Description: R_ADV_SHIELD_DESC
 
@@ -50,7 +50,7 @@ Technology: XShielChargerOrbital
 	UnlockTag(ShieldCharger)
 	UnlockSubsystem(CovariantShield)
 	SecondaryEnergyCost(800)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 3, #R_LIFESTYLE_REQ:Shields Modulation:3)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 3, #R_LIFESTYLE_REQ:Shield Modulation:3)
 
 
 
@@ -65,7 +65,7 @@ Technology: XCovariantShield
 
 	UnlockSubsystem(CovariantShield)
 	SecondaryEnergyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shields Modulation:1)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shield Modulation:1)
 
 Technology: XShieldHarmonizer
 	Name: #R_SYS_SHIELD_HARMONIZER
@@ -86,7 +86,7 @@ Technology: XShieldHarmonizer
 	SkipOnUnlockedSubsystem(ShieldHarmonizer)
 
 	SecondaryEnergyCost(1300)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shields Modulation:4)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
 
 Technology: XShieldHardener
 	Name: #R_SYS_SHIELD_HARDENER
@@ -105,7 +105,7 @@ Technology: XShieldHardener
 
 	SecondaryEnergyCost(1400)
 
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5,#R_LIFESTYLE_REQ:Shields Modulation:5)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5,#R_LIFESTYLE_REQ:Shield Modulation:5)
 
 
 Technology: XDeflectorArray
@@ -128,7 +128,7 @@ Technology: XDeflectorArray
 
 	SecondaryEnergyCost(1500)
 
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6,#R_LIFESTYLE_REQ:Shields Modulation:6)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6,#R_LIFESTYLE_REQ:Shield Modulation:6)
 
 
 Technology: XStellarShieldOrbital
@@ -143,13 +143,11 @@ Technology: XStellarShieldOrbital
 	UnlockTag(StellarShieldOrbital)
 	UnlockSubsystem(CovariantShield)
 	SecondaryEnergyCost(1600)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shields Modulation:8)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shield Modulation:8)
+
 Technology: XShieldUpgrade
-	Name: Advanced Shielding
-	Description: <<
-		Increase shield capacity and regeneration by 25%.
-		Increase power use of shield subsystems by 40%.
-	>>
+	Name: #GENIOCRACY_SHIELDUPGRADE
+	Description: #GENIOCRACY_SHIELDUPGRADE_DESC:12%:25%
 	Class: BigUpgrade
 	Icon: PlanetImage*#7810ff
 	Time Cost: 150
