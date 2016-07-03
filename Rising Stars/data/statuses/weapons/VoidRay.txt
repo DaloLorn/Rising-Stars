@@ -1,0 +1,7 @@
+Status: VoidRay
+	Name: #STATUS_VOIDRAY
+	Description: #STATUS_VOIDRAY_DESC
+	Visible To: Origin Empire
+	Collapses: True
+	ABEM_hooks::MaxStacks(10)
+	ABEM_hooks::CombinedExpiration(10.0)

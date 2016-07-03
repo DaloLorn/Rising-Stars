@@ -1,0 +1,70 @@
+Subsystem: MatterDisruptor
+	Name: #S_MATTERDISRUPTOR
+	Description: #S_MATTERDISRUPTOR_DESC
+	BaseColor: #c5f946
+	TypeColor: #c5f946
+	Picture: SubsystemButtonArt::2
+	Elevation: 2
+
+	Tags: BaseCost, Category:Weapons
+	Tags: WeaponBase, Rotatable, HexLimitArc
+	Tags: ExteriorCore, Weapon,  IsProjWeapon, IsRailgun, HasInternals, MainDPS
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+
+	Range := Size + 500
+	Damage := Size * 3.2
+	Reload := 2 * (1.0 + Size/512)
+	Speed := max(110, Range / 15)
+	Spread := 0.035 / max(Range / 600, 1)
+	Tracking := 0.4
+	FireArc := 1.5
+	SupplyCost := Size * 1.5
+	PowerUse := 2.5 * Size
+	SizeMultiplier := 1 // Basically, the difference in scale multiplies the damage. No extra factors.
+	AmountPerSize := 0 // This is a tricky one. If the enemy is double size, you deal this amount multiplied by 2. Really not sure what I was thinking.
+	MinRatio := 0.5 // Basically, the scaling cuts off at 50% of our ship's size. Could have set it to 1, which meant that damage only GREW with relative size, but couldn't be decreased.
+	MaxRatio := 4 // Again, cuts off at 400% of our size.
+
+	DamageType := 2 // Read scripts/server/ABEMCombat.as before changing this.
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+
+	Requires:
+		Command = 1
+		Power = PowerUse
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 2
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: WaveEmitter
+
+		Hex.DamageResist := ShipSize / 64.0
+		DrawMode: 1
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: MatterDisruptor
+		Range = Range
+		Damage = Damage
+		Reload = Reload
+		Speed = Speed
+		Tracking = Tracking
+		Spread = Spread
+		FireArc = FireArc
+		TargetTolerance = max(pi,FireArc + pi/4)
+		FireTolerance = Spread * 3
+		SupplyCost = SupplyCost * Reload
+		CapOnTarget = 24
+		SizeMultiplier = SizeMultiplier
+		AmountPerSize = AmountPerSize
+		MinRatio = MinRatio
+		MaxRatio = MaxRatio
+		DamageType = DamageType

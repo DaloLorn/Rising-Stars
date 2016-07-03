@@ -1,0 +1,16 @@
+Technology: MatterDisruptor
+	Name: #R_SYS_MATTERDISRUPTOR
+	Class: Unlock
+	Point Cost: 700
+	Time Cost: 120
+	Icon: WaveEmitter
+	Description: #R_MATTERDISRUPTOR_DESC
+	
+	Category: ABEM - Subsystems
+
+	Color: #06c0ff
+	
+	
+	SkipOnUnlockedSubsystem(MatterDisruptor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	UnlockSubsystem(MatterDisruptor)

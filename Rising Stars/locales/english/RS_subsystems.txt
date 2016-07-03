@@ -45,7 +45,24 @@ S_EXPLRESIST: Explosive Resistance
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
-
+S_MATTERDISRUPTOR: Matter Disruptor
+S_MATTERDISRUPTOR_DESC: <<
+	An energy weapon which abuses the gravitational attraction between the parts of its target to deal additional damage.
+	
+	[img=Plus]Deals up to 400% of listed damage based on the relative sizes of the ship and its target. Scaling cuts off at 400% size.[/img]
+	[img=Minus]Deals as little as 50% of listed damage if the target is smaller than the ship. Scaling cuts off at 50% size.[/img]
+	[img=Minus]Fires 10 times slower than a Railgun Battery, and deals only 5 times as much damage per shot as a Railgun Battery does.[/img]
+	[img=MenuIcons::3;20]Behaves like a Railgun Battery in every other way, except that it deals energy damage.[/img]
+>>
+S_VOIDRAY: Adaptive Laser
+S_VOIDRAY_DESC: <<
+	Advanced sensors attached to a laser allow for the beam to be automatically tuned to deal more damage to a target.
+	
+	[img=Plus]Deals up to 150% of listed damage based on how long it has been firing at a target.[/img]
+	[img=Minus]Base damage is 25% lower than that of a Laser.[/img]
+	[img=MenuIcons::3;20]Takes around 10 seconds of activity to reach maximum damage output.[/img]
+	[img=MenuIcons::3;20]Behaves like a Laser in every other way.[/img]
+>>
 MISSILELAUNCHER_DESC: <<
 	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
 
