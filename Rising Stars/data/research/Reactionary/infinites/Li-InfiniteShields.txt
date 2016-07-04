@@ -13,7 +13,11 @@ Technology: LifeInfiniteShields
 	Time Cost: 30
 
 	AddPointCostAttribute(InfiniteShieldsTaken, 200)
+	AddPointCostAttribute(InfiniteEnergyTaken, -20)
+
 	AddTimeCostAttribute(InfiniteShieldsTaken, 20)
+	AddTimeCostAttribute(InfiniteEnergyTaken, -2)
+
 	ModAttribute(InfiniteShieldsTaken, Add, 1)
 
 	ResetWhenUnlocked()
