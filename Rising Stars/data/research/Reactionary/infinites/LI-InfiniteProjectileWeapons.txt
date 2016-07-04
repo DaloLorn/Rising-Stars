@@ -1,6 +1,6 @@
 Technology: LifeInfiniteDamage
 	Name: #INFINITE_PROJECTILE_WEAPONS
-	Description: #INFINITE_PROJECTILE_WEAPONS_DESC:5%:2%
+	Description: #INFINITE_PROJECTILE_WEAPONS_DESC:7%:2%
 
 	Icon: TechIcons::38
 	Symbol: EditIcons::7
@@ -23,7 +23,7 @@ Technology: LifeInfiniteDamage
 ////////////////////////
 //Subsystem  Bonus//
 ///////////////////////
-	AddModifier( !tag/IsProjWeapon::DamageFactor(1.02))
+	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AddModifier( tag/IsProjWeapon::DamageFactor(1.05))
 	AffectsTaggedSubsystems(IsProjWeapon)
 

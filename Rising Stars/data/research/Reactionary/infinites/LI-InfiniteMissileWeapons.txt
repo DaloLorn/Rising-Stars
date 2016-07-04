@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMissileWeapons
 	Name: #INFINITE_MISSILE_WEAPONS
-	Description: #INFINITE_MISSILE_WEAPONS_DESC:5%:2%
+	Description: #INFINITE_MISSILE_WEAPONS_DESC:7%:2%
 	Icon: TechIcons::27
 	Symbol: EditIcons::7
 	Color: #ac0cd4
@@ -21,7 +21,7 @@ Technology: LifeInfiniteMissileWeapons
 //Subsystem  Bonus//
 ///////////////////////
 
-	AddModifier( !tag/MissileBase::DamageFactor(1.02))
+	AddModifier( tag/Weapon::DamageFactor(1.02))
 	AddModifier( tag/MissileBase::DamageFactor(1.05) )
 
 
