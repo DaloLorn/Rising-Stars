@@ -110,8 +110,8 @@ INFINITE_SOCIETY_DESC:<<
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
 
-#GENIOCRACY_SHIELDUPGRADE: Subspace Deflectors
-#GENIOCRACY_SHIELDUPGRADE_DESC: <<
+GENIOCRACY_SHIELDUPGRADE: Subspace Deflectors
+GENIOCRACY_SHIELDUPGRADE_DESC: <<
 	[color=#aaa][i]New developments into shield technology allow us to shunt enemy weapons fire into subspace where they can't harm us. Unfortunately, the technology is currently incompatible with conventional plasma shields, and requires a great amount of power. More problematically, some incompetent lab tech managed to purge the database of any trace of plasma shield technology, so we'll have to develop it all over again.[/i][/color]
 
 	Doubles the power consumption of all shields, and increases their capacity and regeneration by $2 and $1, respectively.

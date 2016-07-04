@@ -15,8 +15,6 @@ Technology: LifeInfiniteEnergy
 	AddPointCostAttribute(InfiniteEnergyTaken, 125)
 	AddTimeCostAttribute(InfiniteEnergyTaken, 10)
 	
-	ModAttribute(InfiniteShieldsTaken, Add, -0.1)
-	
 	ResetWhenUnlocked()
 	
 ////////////////////////

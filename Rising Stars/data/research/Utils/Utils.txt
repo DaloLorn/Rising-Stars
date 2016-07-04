@@ -1,4 +1,5 @@
 Technology: Connector
+	Name: LINK
 	Category: Utils
 	Class: Special
 	AutomaticallyUnlocks()
