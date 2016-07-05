@@ -30,7 +30,7 @@ Attitude: BerserkerGlory
 	Level:
 		Description: #GLORY_BERSERKER_LVL3
 		Threshold: 2000
-		Icon: StatusCeasefkre*#ff2222
+		Icon: StatusCeasefire*#ff2222
 		ModEmpireAttribute(GloryLevel, Add, 1)
 		ModEmpireAttribute(GloryFactor, Add, -1) // 300% Glory generation
 	
