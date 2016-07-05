@@ -36,6 +36,7 @@ Building: Lvl1Budget
 
 	//RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
 	RequireStatus(Ringworld)
+	
 	AddPressure(Money, 3)
 	AddDummyResource(Titanium, 1)
 
@@ -57,6 +58,8 @@ Building: Lvl1Defense
 
 	ConsumeCargo(Ore, 2000)
 
-	RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	//RequireEither(RequireStatus(Ringworld), RequireEither(RequireStatus(RRInitialRingworld), RequireStatus(ReclusiveRingworlder)))
+	RequireStatus(Ringworld)
+
 	AddPressure(Defense, 3)
 	AddDummyResource(Titanium, 1)
