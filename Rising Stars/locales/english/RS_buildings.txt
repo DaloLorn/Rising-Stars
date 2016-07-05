@@ -5,19 +5,19 @@ BLD_LABORCAMP_DESC: <<
 
 	Produces Defense and Labor in quantities equivalent to 75% of a Base and Industry, respectively. Uses 1 Research pressure.
 
-	[img=$Defense;22/] [bbloc=#PRESSURE_DEFENSE/]
-	[img=$Labor;22/] [bbloc=#PRESSURE_LABOR/]
+	[img=$Defense;22/] [bbloc=#PRESSURE_Defense/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_Labor/]
 
 	[bbloc=#TIP_PRESSURE/]
 >>
-BLD_SLAVECAMP: <<
+BLD_SLAVECAMP_DESC: <<
 	Upgrades from Xenomanufacturing Center.
 	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
 
 	Produces Defense and Labor in quantities equivalent to 75% of a Launch Pad and Enterprise, respectively. Uses 2 Research pressure.
 
-	[img=$Defense;22/] [bbloc=#PRESSURE_DEFENSE/]
-	[img=$Labor;22/] [bbloc=#PRESSURE_LABOR/]
+	[img=$Defense;22/] [bbloc=#PRESSURE_Defense/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_Labor/]
 
 	[bbloc=#TIP_PRESSURE/]
 

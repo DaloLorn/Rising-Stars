@@ -1,0 +1,21 @@
+Resource: RahtaSulphate
+	Name: #RAHTA_SULPHATE
+	Blurb: #RAHTA_SULPHATE_BLURB
+	Description: #RAHTA_SULPHATE_DESC
+
+	Small Icon: ResourceIconsSmall::62*#ff000088
+
+	Distribution: 0
+	Frequency: 0
+	Scalable: True
+	Limitless Level: True
+	Exportable: False
+	Icon: ResourceIconsSmall::62*#ff000088
+
+	IfLevel(6, AddStatusOwnedFleets(UnownedAllyBuff20))
+	IfLevel(0, AddStatusOwnedFleets(UnownedAllyBuff2.5), Exact = True) #version>=111
+	IfLevel(1, AddStatusOwnedFleets(UnownedAllyBuff5), Exact = True)
+	IfLevel(2, AddStatusOwnedFleets(UnownedAllyBuff7.5), Exact = True)
+	IfLevel(3, AddStatusOwnedFleets(UnownedAllyBuff12.5), Exact = True)
+	IfLevel(4, AddStatusOwnedFleets(UnownedAllyBuff20), Exact = True)
+	IfLevel(5, AddStatusOwnedFleets(UnownedAllyBuff30), Exact = False)

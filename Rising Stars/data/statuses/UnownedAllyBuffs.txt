@@ -1,15 +1,33 @@
 //Statuses used to provide scaling buffs to fleets/planets in a system
+Status: UnownedAllyBuff2.5
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.025))
+
 Status: UnownedAllyBuff5
 	Visible To: Nobody
 
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.05))
 
+Status: UnownedAllyBuff7.5
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.075))
+
 Status: UnownedAllyBuff10
 	Visible To: Nobody
 
 	ApplyToFlagships()
 	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.10))
+
+Status: UnownedAllyBuff12.5
+	Visible To: Nobody
+
+	ApplyToFlagships()
+	ABEM_races::IfInUnownedSpace(AddFleetEffectiveness(+0.125))
 
 Status: UnownedAllyBuff15
 	Visible To: Nobody

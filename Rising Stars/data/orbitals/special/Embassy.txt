@@ -9,7 +9,7 @@ Module: Embassy
 	Standalone: True
 
 	Build Cost: 500
-	Maintenance: 50
+	Maintenance: 200
 	Labor Cost: 15
 	Size: 7
 

@@ -19,7 +19,7 @@ Trait: Berserkers
 
 	UnlockSubsystem(TroopPods)
 
-	OnHomeworld(AddPlanetResource(Sulphate))
+	OnHomeworld(AddPlanetResource(RahtaSulphate))
 
 	ABEM_glory::SetGloryMeter(BerserkerGlory, Level Up = 5)
 	AddModifier(SupportCapacityFactor(0.5))

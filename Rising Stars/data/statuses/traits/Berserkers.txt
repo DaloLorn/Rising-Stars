@@ -10,9 +10,6 @@ Status: Berserkers
 	IfAttributeGTE(GloryLevel, 5, AddStatus(BerserkerGlory6))
 	IfAttributeGTE(GloryLevel, 6, AddStatus(BerserkerGlory7))
 	IfAttributeGTE(GloryLevel, 7, AddStatus(BerserkerGlory8))
-
-	AllowFreeRaiding()
-	AddFleetCommand(256)
 	
 Status: BerserkerGlory1
 	Visible To: Nobody
