@@ -1,0 +1,56 @@
+Effector: VoidRay
+	Value: Range
+	Value: DPS
+	Value: Duration
+	Value: Cooldown
+	Value: Tracking
+	Value: SupplyCost = 0
+	Value: FireArc = pi
+	Value: StatusMultiplier
+	Value: StatusAmount
+	Value: Status
+	Value: StatusIncrement
+	Value: DamageType
+
+	Range: Range
+	Lifetime: Duration
+	Tracking: Tracking
+	FireArc: FireArc
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
+
+	EfficiencyMode: Normal
+	Activation: VariableTimed(Duration+Cooldown, 0.25)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	Effect: VoidRay
+		Amount = DPS
+		Status = Status
+		StatusMultiplier = StatusMultiplier
+		StatusAmount = StatusAmount
+		StatusIncrement = StatusIncrement
+		DamageType = DamageType
+		
+
+	GfxSize: 1
+	FirePitchVariance: 0.06
+	FireSfx: laser_fire
+	Material: Laser
+	ImpactGfx: ImpactFlareLaserRed
+	TrailCol: ff3300aa, ff33ffaa
+	PhysicalType: Beam
+	Color: #1dff0c
+
+	Skin: Skin1
+		ImpactGfx: ImpactFlareLaserGold
+		TrailCol: ffee99aa, ffee99aa
+
+	Skin: Skin2
+		ImpactGfx: ImpactFlareLaserBlue
+		TrailCol: 00ccddaa, 00ccddaa
+
+	Skin: Skin3
+		ImpactGfx: ImpactFlareLaserViolet
+		TrailCol: ff99ffaa, ff99ffaa
