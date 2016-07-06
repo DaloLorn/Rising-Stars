@@ -1,0 +1,10 @@
+Construction: Terraform
+	Name: Terraform Planet Surface
+	Build Cost: 700
+	Labor Cost: 100
+	Icon: DesignationIcons::10
+	AddLaborCostStatusCount(TerraformStacks, Multiply = 100)
+	//RequireUnlockTag(TerraformSurface)
+
+	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000)
+	AddSurfaceArea(Artificial, (1, 8), Separate = False)

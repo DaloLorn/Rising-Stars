@@ -1,0 +1,6 @@
+Construction: DevelopSurface
+	Labor Cost: 200
+	Name: Develop Surface Tiles
+	Icon: SequesteredSociety
+	ConsumeCargo(Ore, 1000)
+	DevelopTiles(15)
