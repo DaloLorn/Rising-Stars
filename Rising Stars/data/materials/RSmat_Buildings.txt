@@ -6,11 +6,7 @@ Material: RSBuilding
 	Lighting: False
 
 
-Material: BerConverter
-	Inherit: RSBuilding
-	Texture: data/images/buildings/BerConverter.png	
-	
-	
+
 	//Artificial Resources
 Material: lvl1r
 	Inherit: RSBuilding
@@ -23,7 +19,7 @@ Material: lvl1b
 Material: lvl1d
 	Inherit: RSBuilding
 	Texture: data/images/buildings/Lvl1Defense.png
-	
+
 Material: lvl2r
 	Inherit: RSBuilding
 	Texture: data/images/buildings/Lvl2Research.png
@@ -34,4 +30,4 @@ Material: lvl2b
 
 Material: lvl2d
 	Inherit: RSBuilding
-	Texture: data/images/buildings/Lvl2Defense.png	
+	Texture: data/images/buildings/Lvl2Defense.png
