@@ -19,3 +19,4 @@ Building: Warehouse
 	AddLaborStorage(100)
 
 	AI: RegisterForUse(LaborStorage)
+	RepeatEmpireAttribute(InfiniteMetallurgyTaken, AddLaborStorage(25))
