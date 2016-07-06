@@ -4,7 +4,7 @@ Subsystem: SupportNanoMesh
 	BaseColor: #a9a9a9
 	Elevation: 1
 
-	Tags: Category:Defense, NoWall, PassExterior
+	Tags: Category:Armor, NoWall, PassExterior
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor
 	Tags: SecondaryArmor, HeraldsDLC
 	Hull: Support, Satellite

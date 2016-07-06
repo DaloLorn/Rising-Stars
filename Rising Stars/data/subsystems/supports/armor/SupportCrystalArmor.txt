@@ -5,7 +5,7 @@ Subsystem: SupportCrystalArmor
 	Elevation: 2
 
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor
-	Tags: NoWall, Category:Defense, FauxExterior, ExternalSpace
+	Tags: NoWall, Category:Armor, FauxExterior, ExternalSpace
 	Tags: PrimaryArmor, HeraldsDLC
 	Hull: Support, Satellite
 

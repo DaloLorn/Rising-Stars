@@ -6,7 +6,7 @@ Subsystem: SupportPlateArmor
 	Elevation: 1
 
 	Tags: NoCore, NonContiguous, DefaultUnlock, Defense, IsArmor, TankArmor
-	Tags: NoWall, Category:Defense, FauxExterior, ExternalSpace
+	Tags: NoWall, Category:Armor, FauxExterior, ExternalSpace
 	Tags: PrimaryArmor
 	Hull: Support, Satellite
 

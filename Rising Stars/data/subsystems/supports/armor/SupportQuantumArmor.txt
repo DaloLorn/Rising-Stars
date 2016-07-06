@@ -6,7 +6,7 @@ Subsystem: SupportQuantumArmor
 	Elevation: 1
 
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, FauxExterior, ExternalSpace
-	Tags: NoWall, Category:Armor
+	Tags: NoWall, Category:Armor,Disabled
 	Hull: Support
 
 
