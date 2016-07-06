@@ -120,10 +120,9 @@ Grid: Reactionary
 	XTroopPods: -11,8
 	XProsperity: -11,10
 	XWealth: -11,6
-	Connector: -11,9
+	XMegacity: -11,9
 	XBroadcastAntenna: -10,6
 	XSenate: -10,7
-	XMegacity: -9,8
 	Connector: -10,9
 	XLaboratories: -12,10
 	LifeInfiniteSociology: -8,8
@@ -153,3 +152,4 @@ Grid: Reactionary
 	XSolarPanel: -7,-2
 	Connector: -3,7
 	XSolarSatellite: -4,7
+	MetropolisUpg: -9,8

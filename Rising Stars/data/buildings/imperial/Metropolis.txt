@@ -24,3 +24,5 @@ Building: Metropolis
 	ModBuildSpeedAttribute(CityConstructRate)
 
 	AI: BuildForPressureCap(5)
+ 
+	RepeatEmpireAttribute(MetropolisExtraPressureCap, AddPressureCap(2))

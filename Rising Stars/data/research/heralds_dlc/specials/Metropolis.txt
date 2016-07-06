@@ -1,0 +1,15 @@
+Technology: MetropolisUpg
+	Name: Metropolis 
+	Description: Metropolis buildings give 2 additional Pressure Cap.
+
+	Icon: Metropolis
+	Symbol: ResourceIcon::4
+	Color: #8c4ec9
+
+	Category: Special Upgrades
+	Class: BigUpgrade
+
+	Point Cost: 700
+	Time Cost: 180
+
+	ModAttribute(MetropolisExtraPressureCap, Add, 2)
