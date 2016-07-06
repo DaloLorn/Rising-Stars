@@ -11,6 +11,7 @@ Trait: Flux
 	Color: #67ad85
 
 	Unique: FTL
+	AI Support: False
 
 	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
 	IfNotHaveTrait(Technicists, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))

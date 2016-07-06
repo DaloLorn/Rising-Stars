@@ -14,8 +14,8 @@ Resource: Ancient Shipyard
 	Unique: True
 	
 	Native Biome: Mountains
-	Rarity Level: 3
-	Rarity: Uncommon
+	Rarity Level: 2
+	Rarity: Common
 	Require Contestation: 30
 	AddLaborIncome(Amount = 16)
 	GrantAbility(OverchargeFleet)
