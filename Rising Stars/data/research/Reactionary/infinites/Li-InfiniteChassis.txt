@@ -28,4 +28,5 @@ Technology: LifeInfiniteChassis
 ///////////////////////
 	AddModifier( CargoStorageFactor(1.10))
 	AddModifier( SupplyCapacityFactor(1.10) )
+	AddModifier( SupportCapacityFactor(1.1) )
 	AddModifier(RepairFactor(1.10))

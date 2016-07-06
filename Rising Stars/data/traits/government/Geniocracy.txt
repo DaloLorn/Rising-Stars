@@ -13,11 +13,11 @@ Trait: Geniocracy
 
 
 	SpawnShip(Battleship, Design From = Empire, Add Status = Damaged)
-	OnHomeworld(GenerateDefenseShips(35))
+	OnHomeworld(GenerateDefenseShips(40))
 
+	ModAttribute(ResearchDecaySpeed, Multiply, 0.75)
 	GainInfluenceCard(ClaimArtifact)
-	GainInfluenceCard(EnergyClash, Uses = 5)
+	GainInfluenceCard(EnergyClash, Uses = 6)
 	GainInfluenceCard(GalaxyMall)
-	RepeatExtended(AddResearchIncome(0.04), Per Gametime Bonus = 1)
 	ReplaceTechnologyGrid(Reactionary)
 	OnDLC(Heralds, GainAttitude(Progressive_Geniocracy, Level Up = 1))

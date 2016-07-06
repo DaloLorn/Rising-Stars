@@ -66,7 +66,7 @@ INFINITE_CHASSIS: Chassis Engineering
 INFINITE_CHASSIS_DESC: <<
 	[i][color=#aaa]New engineering methods and tools allow for easier repairs, storage and commercial manufacturing.[/color][/i]
 
-	Increases the repair rate, supply storage and cargo capacity of ships by $1. Also increases the health of civilian ships by $2.
+	Increases the repair rate, support command, supply storage and cargo capacity of ships by $1. Also increases the health of civilian ships by $2.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
@@ -94,7 +94,7 @@ INFINITE_SOCIETY: Social Studies
 INFINITE_SOCIETY_DESC:<<
 	[i][color=#aaa]A better understanding of our society and why it has developed into its current state allows us to better direct its evolution.[/color][/i]
 
-	Reduces the level decay rate of planets by $2. Also increases tile development and civilian construction speeds by $2.
+	Reduces the level decay rate of planets by $2. Also increases tile development and all construction speeds by $2.
 	Increases the loyalty of all planets by $3 and adds $4 Defense Reserve.
 
 	Increases the maximum population of planets depending on their level and this technology's current tech level:
@@ -117,7 +117,7 @@ GENIOCRACY_SHIELDUPGRADE_DESC: <<
 	Doubles the power consumption of all shields, and increases their capacity and regeneration by $2 and $1, respectively.
 >>
 TRAIT_GENIOCRACY_DESC: <<
-	[vspace=6/][b][color=#0f0]Bonus:[/color][/b] [offset=140][color=#00ddff]Gradually increasing research income. Drastically different technology grid with infinite progression.[/color][/offset].
+	[vspace=6/][b][color=#0f0]Bonus:[/color][/b] [offset=140][color=#00ddff]Drastically different technology grid with infinite progression.Reduced research decay.[/color][/offset]
 	[vspace=6/][b][color=#f00]Starting Fleet:[/color][/b] [offset=140]1x [color=#f00]Damaged[/color] Battleship.[/offset]
 	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=140]5x Energy Clash, 1x Mall of the Galaxy, 1x Claim Artifact.[/offset]
 	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=140]Level 1 [color=#57bd13]Progressive[/color][/offset][/dlc]

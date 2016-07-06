@@ -9,7 +9,7 @@ Technology: LifeInfiniteSociology
 	Category: InfinitesLifeStyle
 	Class: Keystone
 
-	Point Cost: 200
+	Point Cost: 150
 	Time Cost: 30
 
 	AddPointCostAttribute(InfinitePopTaken, 100)

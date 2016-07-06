@@ -14,7 +14,7 @@ Technology: XBulkhead
 
 	
 	SecondaryMoneyCost(600)
-	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 1, #R_LIFESTYLE_REQ:Metallurgy:2)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 2, #R_LIFESTYLE_REQ:Metallurgy:2)
 
 
 Technology: XConstructionBay
@@ -32,7 +32,7 @@ Technology: XConstructionBay
 	SkipOnUnlockedSubsystem(ConstructionBay)
 
 	SecondaryMoneyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 2, #R_LIFESTYLE_REQ:Metallurgy:2)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 3, #R_LIFESTYLE_REQ:Metallurgy:3)
 
 Technology: XOreProcessor
 	Name: #R_SYS_ORE_PROCESSOR
@@ -50,7 +50,7 @@ Technology: XOreProcessor
 	SkipOnUnlockedSubsystem(OreProcessor)
 
 	SecondaryMoneyCost(750)
-	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 3, #R_LIFESTYLE_REQ:Metallurgy:3)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 4, #R_LIFESTYLE_REQ:Metallurgy:4)
 
 
 Technology: XSolarSatellite
@@ -67,8 +67,8 @@ Technology: XSolarSatellite
 	SkipOnUnlockedTag(SolarSatelliteUnlock)
 
 	SecondaryMoneyCost(1500)
-	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 4, #R_LIFESTYLE_REQ:Metallurgy:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:5)
+	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 5, #R_LIFESTYLE_REQ:Metallurgy:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
 
 Technology: XHydroponicsSatellite
 	Name: #R_ORB_HYDROPONICS_SATELLITE

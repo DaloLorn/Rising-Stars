@@ -11,6 +11,8 @@ Technology: XMegacity
 	SecondaryMoneyCost(1200)
 	UnlockTag(MegacityUnlock)
 	SkipOnUnlockedTag(MegacityUnlock)
+	
+	RequireEmpireAttributeGTE(InfinitePopTaken, 2, #R_LIFESTYLE_REQ:Social Studies:2)
 
 Technology: XTroopPods
 	Name: #R_SYS_TROOP_PODS
@@ -28,7 +30,8 @@ Technology: XTroopPods
 	SecondaryInfluenceCost(20)
 	UnlockSubsystem(TroopPods)
 	SkipOnUnlockedSubsystem(TroopPods)
-
+	RequireEmpireAttributeGTE(InfinitePopTaken, 4, #R_LIFESTYLE_REQ:Social Studies:4)
+	
 Technology: XBroadcastAntenna
 	Name: #R_SYS_BROADCAST_ANTENNA
 	Description: #R_SYS_BROADCAST_ANTENNA_DESC
@@ -47,6 +50,7 @@ Technology: XBroadcastAntenna
 	SkipOnUnlockedSubsystem(BroadcastAntenna)
 
 	SecondaryInfluenceCost(10)
+RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
 
 Technology: XWealth
 	Name: #R_WEALTH
@@ -60,9 +64,10 @@ Technology: XWealth
 	Time Cost: 100
 	Class: BigUpgrade
 
-	AddPermanentIncome(500)
+	AddPermanentIncome(1000)
 
-	SecondaryInfluenceCost(10)
+	SecondaryInfluenceCost(20)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 6, #R_LIFESTYLE_REQ:Social Studies:6)
 Technology: XProsperity
 	Name: #R_PROSPERITY
 	Description: #R_PROSPERITY_DESC:35%
@@ -77,7 +82,8 @@ Technology: XProsperity
 
 	ModAttribute(WelfareEfficiency, Multiply, 1.35)
 
-	SecondaryInfluenceCost(10)
+	SecondaryInfluenceCost(20)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
 Technology: XAbundance
 	Name: #R_ABUNDANCE
 	Description: #R_ABUNDANCE_DESC:50%
@@ -109,7 +115,10 @@ Technology: XLaboratories
 
 	SecondaryEnergyCost(2000)
 	ModAttribute(ResearchComplexExtraPressure, Add, 2)
-
+	
+	RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy Science:7 )
+	
 Technology: XSenate
 	Name: #F_SENATE_NAME
 	Description: #F_SENATE_DESC
@@ -128,3 +137,4 @@ Technology: XSenate
 
 	SkipOnUnlockedTag(Senate)
 	SecondaryInfluenceCost(15)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
