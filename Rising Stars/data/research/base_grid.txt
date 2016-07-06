@@ -145,3 +145,12 @@ Grid: Base
 	DevEnergyIncome: -5,8
 	ImpShieldCap2: -4,8
 	ImpSupplyUse: -3,8
+	ImpEnergyStorage: -6,10
+	ImpPlanetDamage: -7,11
+	ShieldedAntimatter: -7,12
+	ImpEnergyStorage: -8,12
+	ImpImpConstructionRate2: -9,12
+	ImpShieldCap2: -10,12
+	ZeroPoint: -11,12
+	ImpAllHealth: -3,9
+	QuantumArmor: -2,10
