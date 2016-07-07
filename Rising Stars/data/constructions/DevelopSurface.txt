@@ -1,6 +1,10 @@
 Construction: DevelopSurface
-	Labor Cost: 200
+	Labor Cost: 100
+	Description: Develop 15 tiles .
+	Category: Planetary Development
+
 	Name: Develop Surface Tiles
 	Icon: SequesteredSociety
+	
 	ConsumeCargo(Ore, 1000)
 	DevelopTiles(15)

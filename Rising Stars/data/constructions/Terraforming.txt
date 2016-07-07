@@ -1,10 +1,37 @@
-Construction: Terraform
-	Name: Terraform Planet Surface
+Construction: TerraformIN
+	Name: Terraform Planet Surface II
 	Build Cost: 700
-	Labor Cost: 100
+	Labor Cost: 50
 	Icon: DesignationIcons::10
-	AddLaborCostStatusCount(TerraformStacks, Multiply = 100)
+	Category: Planetary Development
+	Description: Add 10  tiles to the planet
+
 	//RequireUnlockTag(TerraformSurface)
 
-	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000)
-	AddSurfaceArea(Artificial, (1, 8), Separate = False)
+	OnStart(AddStatus(TerraformStacks))
+	AddLaborCostStatusCount(TerraformStacks, Multiply = 1.5)
+
+	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000, Allow Cancel = True)
+
+
+	AddSurfaceArea(Artificial, (1, 10), Separate = False, Developed = False)
+
+
+	RequireStatus(TerraformStacks)
+	OnCancel(RemoveStatusInstance(TerraformStacks))
+Construction: Terraform
+	Name: Terraform Planet Surface
+	Icon: DesignationIcons::10
+	Description: Add 10  tiles to the planet
+
+
+	Build Cost: 500
+	Labor Cost: 50
+	Category: Planetary Development
+	RequireNotStatus(TerraformStacks)
+	ConsumeCargo(Ore, 500)
+
+	AddSurfaceArea(Artificial, (1, 10), Separate = False, Developed = False)
+	OnStart(AddStatus(TerraformStacks))
+	//RequireUnlockTag(TerraformSurface)
+	OnCancel(RemoveStatusInstance(TerraformStacks))
