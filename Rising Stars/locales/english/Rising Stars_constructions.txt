@@ -1,0 +1,7 @@
+CONS_MOON_BASE_DESC_MECH: <<
+	Construct a large amount of infrastructure on one of the planet's moons, making more area available for placing buildings and increasing the maximum population of the planet by 2.
+
+	Only one moon base may be constructed for every moon present in orbit of the planet.
+
+	Increase planet income by 100$
+>>

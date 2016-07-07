@@ -9,7 +9,7 @@ Technology: MetropolisUpg
 	Category: Special Upgrades
 	Class: BigUpgrade
 
-	Point Cost: 700
+	Point Cost: 0
 	Time Cost: 180
-
+	SecondaryMoneyCost(500)
 	ModAttribute(MetropolisExtraPressureCap, Add, 2)

@@ -54,21 +54,11 @@ Grid: Reactionary
 	Connector: 1,-5
 	XGravityEngine: 2,-4
 	Connector: 3,-6
-	XBoosterEngine: 3,-7
-	XSkipDrive: 3,-5
 	Connector: -1,-7
 	Connector: -1,-8
 	GravitonChanneling: 1,-3
 	Connector: 2,-6
-	XRamjet: 4,-7
-	LifeInfiniteMissileWeapons: 0,-10
 	Connector: -1,-9
-	XDroneLauncher: -1,-11
-	XDroneCount: -1,-12
-	Connector: 1,-10
-	XShockMissiles: 1,-11
-	XMissileRange: 1,-9
-	XWarhead: 2,-11
 	Connector: 2,2
 	Connector: 1,3
 	Connector: 2,6
@@ -112,8 +102,6 @@ Grid: Reactionary
 	XNeutronArmor: 0,12
 	XQuantumArmor: -1,13
 	Connector: 2,10
-	FTLCost: 4,-5
-	FTLJammerCombat: 5,-7
 	Connector: 1,4
 	Connector: 1,5
 	StationMaintenance: -12,8
@@ -141,7 +129,6 @@ Grid: Reactionary
 	Connector: -12,-3
 	FlareBomb: -12,-4
 	XZeroPoint: -12,-2
-	HyperfieldSequencing: 1,-7
 	XShieldUpgrade: -9,-7
 	XBulkhead: -1,6
 	Connector: -1,5
@@ -153,3 +140,25 @@ Grid: Reactionary
 	Connector: -3,7
 	XSolarSatellite: -4,7
 	MetropolisUpg: -9,8
+	XSkipDrive: 3,-7
+	FTLCost: 4,-8
+	Connector: 0,-10
+	LifeInfiniteMissileWeapons: 1,-12
+	Connector: 0,-11
+	XDroneCount: 0,-14
+	XDroneLauncher: 0,-13
+	Connector: 2,-12
+	MissileRange: 2,-11
+	Connector: 2,-13
+	Connector: 3,-14
+	XSkipDrive: 2,-15
+	XBoosterEngine: 4,-14
+	XRamjet: 5,-14
+	XBoosterEngine: 3,-5
+	XRamjet: 4,-5
+	HyperfieldSequencing: 6,-7
+	XFlingBeacons: 1,-7
+	XSS: 3,-9
+	XGateTech: 2,-9
+	XJumpdrive: 5,-8
+	Hyperdrive: 6,-8

@@ -1,0 +1,80 @@
+Technology: XFlingBeacons
+	Name: #R_ORB_FLING
+	Icon: OrbitalIcons::2
+
+	Point Cost: 4000
+	Time Cost: 400
+	Description: #R_ORB_FLING_DESC
+
+	Color: #00c0ff
+	Category: Reactionary
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedTag(HasFling)
+	UnlockTag(HasFling)
+
+	SecondaryMoneyCost(10000)
+	NotSecondary(ReduceResearchPenalty(4000))
+
+Technology: XGateTech
+	Name: #R_ORB_GATE
+	Icon: OrbitalIcons::1
+	Point Cost: 4000
+	Time Cost: 400
+	Description: #R_ORB_GATE_DESC
+
+	Color: #00c0ff
+	Category: Reactionary
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	UnlockSubsystem(GateModule)
+	SkipOnUnlockedSubsystem(GateModule)
+	SecondaryInfluenceCost(80)
+
+	NotSecondary(ReduceResearchPenalty(4000))
+
+Technology: Hyperdrive
+	Name: #R_SYS_HYPERDRIVE
+	Point Cost: 2500
+	Time Cost: 300
+	Icon: TechIcons::34
+	Description: #R_SYS_HYPERDRIVE_DESC
+
+	Color: #00c0ff
+	Category: Reactionary
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedSubsystem(Hyperdrive)
+	UnlockSubsystem(Hyperdrive)
+
+	SecondaryFTLCost(1700)
+	NotSecondary(ReduceResearchPenalty(2500))
+
+Technology: XJumpdrive
+	Name: #R_SYS_JUMPDRIVE
+	Point Cost: 2000
+	Time Cost: 200
+	Icon: Jumpdrive
+	Description: #R_SYS_JUMPDRIVE_DESC
+
+	Color: #00c0ff
+	Category: Reactionary
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedSubsystem(Jumpdrive)
+	UnlockSubsystem(Jumpdrive)
+
+	SecondaryFTLCost(1500)
+
+
+Technology: XSS
+	Name: #R_SYS_SLIPSTREAM
+	Icon: TechIcons::57
+	Point Cost: 2500
+	Time Cost: 300
+	Description: #R_SYS_SLIPSTREAM_DESC
+
+	Color: #00c0ff
+	Category: Reactionary
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+	SkipOnUnlockedSubsystem(Slipstream)
+	UnlockSubsystem(Slipstream)
+
+	NotSecondary(ReduceResearchPenalty(2500))
+	SecondaryFTLCost(1700)

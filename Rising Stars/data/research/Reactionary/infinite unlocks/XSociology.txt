@@ -116,8 +116,8 @@ Technology: XLaboratories
 	SecondaryEnergyCost(2000)
 	ModAttribute(ResearchComplexExtraPressure, Add, 2)
 	
-	RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy Science:7 )
+	RequireEmpireAttributeGTE(InfinitePopTaken, 8, #R_LIFESTYLE_REQ:Social Studies:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5 )
 	
 Technology: XSenate
 	Name: #F_SENATE_NAME
