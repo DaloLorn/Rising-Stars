@@ -48,6 +48,7 @@ Effector: Torpedo
 	Value: Tracking
 	Value: Radius
 	Value: SupplyCost = 0
+	Value: Hits = 8
 
 	Range: Range
 	Speed: Speed
@@ -73,7 +74,7 @@ Effector: Torpedo
 	Effect: AreaExplDamage
 		Amount = Damage
 		Radius = Radius
-		Hits = 5
+		Hits = Hits
 
 Effector: PopulationBomb
 	Value: Range
