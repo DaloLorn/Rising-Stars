@@ -12,18 +12,18 @@ Subsystem: Railgun
 
 	Size := HexSize * Hexes
 	
-	Range := Size + 330
-	Damage := Size * 2.9
+	Range := (Size*2) + 525
+	Damage := Size * 3.5
 	Reload := 2.0 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
-	Spread := 0.045 / max(Range / 600, 1)
+	Spread := 0.0225 / max(Range / 600, 1)
 	Tracking := 0.8
 	FireArc := 0.5 * pi
-	Pierce := 0.6
+	Pierce := 1.2
 	SupplyCost := Size * 1.5
 	
-	Hex.HP := 18 * HexSize
-	Hex.Resistance := 0.2
+	Hex.HP := 24 * HexSize
+	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Hex.BuildCost := 0.75 * HexSize
 	Hex.MaintainCost := 0
@@ -42,7 +42,7 @@ Subsystem: Railgun
 		Sprite: Railgun::0
 		DrawMode: 1
 
-		Hex.DamageResist := ShipSize / 28.0
+		Hex.DamageResist := ShipSize / 21.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 
