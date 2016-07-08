@@ -1,7 +1,7 @@
 Technology: LifeInfiniteMegaconstruction
 	Name: #INFINITE_MEGACONSTRUCTION
-	Description: #INFINITE_MEGACONSTRUCTION_DESC:15%
-	
+	Description: #INFINITE_MEGACONSTRUCTION_DESC:20%
+
 
 	Icon: GuiOrbitalIcons::24*#f88b9f
 	Symbol: EditIcons::7
@@ -19,5 +19,5 @@ Technology: LifeInfiniteMegaconstruction
 	ResetWhenUnlocked()
 
 	ModAttribute(InfiniteMegaTaken, Add, 1)
-	
-	ModAttribute(OrbitalHealthMod, Multiply, 1.15)
+
+	ModAttribute(OrbitalHealthMod, Multiply, 1.20)

@@ -31,7 +31,7 @@ Technology: XGateTech
 
 	NotSecondary(ReduceResearchPenalty(4000))
 
-Technology: Hyperdrive
+Technology: XHyperdrive
 	Name: #R_SYS_HYPERDRIVE
 	Point Cost: 2500
 	Time Cost: 300

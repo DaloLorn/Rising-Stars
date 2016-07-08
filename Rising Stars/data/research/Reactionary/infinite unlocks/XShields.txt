@@ -94,7 +94,7 @@ Technology: XShieldHardener
 
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: FissionReactor
@@ -117,7 +117,7 @@ Technology: XDeflectorArray
 	DLC: Heralds
 	DLC Replace: ShieldCap2
 
-	Point Cost: 600
+	Point Cost: 0
 	Time Cost: 120
 
 	Icon: Dish

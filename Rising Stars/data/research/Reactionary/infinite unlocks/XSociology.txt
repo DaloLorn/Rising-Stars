@@ -12,7 +12,7 @@ Technology: XMegacity
 	UnlockTag(MegacityUnlock)
 	SkipOnUnlockedTag(MegacityUnlock)
 	
-	RequireEmpireAttributeGTE(InfinitePopTaken, 2, #R_LIFESTYLE_REQ:Social Studies:2)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 3, #R_LIFESTYLE_REQ:Social Studies:3)
 
 Technology: XTroopPods
 	Name: #R_SYS_TROOP_PODS
@@ -40,7 +40,7 @@ Technology: XBroadcastAntenna
 	DLC: Heralds
 	DLC Replace: Thrust
 
-	Point Cost: 600
+	Point Cost: 0
 	Time Cost: 120
 
 	Icon: Antenna
@@ -83,7 +83,7 @@ Technology: XProsperity
 	ModAttribute(WelfareEfficiency, Multiply, 1.35)
 
 	SecondaryInfluenceCost(20)
-	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
 Technology: XAbundance
 	Name: #R_ABUNDANCE
 	Description: #R_ABUNDANCE_DESC:50%
@@ -116,7 +116,7 @@ Technology: XLaboratories
 	SecondaryEnergyCost(2000)
 	ModAttribute(ResearchComplexExtraPressure, Add, 2)
 	
-	RequireEmpireAttributeGTE(InfinitePopTaken, 8, #R_LIFESTYLE_REQ:Social Studies:5)
+	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5 )
 	
 Technology: XSenate

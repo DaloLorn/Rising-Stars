@@ -35,7 +35,6 @@ Grid: Reactionary
 	XShieldHardener: -8,-7
 	LifeInfiniteChassis: 2,1
 	XAugmentReload: 3,3
-	XShipComputer: 5,1
 	XDestroyerHull: 6,0
 	Connector: 3,1
 	XCarrierHull: 4,0
@@ -66,7 +65,6 @@ Grid: Reactionary
 	Connector: 7,0
 	XAugmentDamage: 7,-1
 	XTargetSensor: 7,1
-	Connector: 5,3
 	LifeInfiniteMegaconstruction: 6,4
 	Connector: 7,4
 	XTitanHull: 7,3
@@ -157,8 +155,13 @@ Grid: Reactionary
 	XBoosterEngine: 3,-5
 	XRamjet: 4,-5
 	HyperfieldSequencing: 6,-7
-	XFlingBeacons: 1,-7
+	DevFTLIncome: 1,-7
 	XSS: 3,-9
 	XGateTech: 2,-9
 	XJumpdrive: 5,-8
-	Hyperdrive: 6,-8
+	Connector: 5,5
+	Connector: 5,6
+	Connector: 4,7
+	XShipComputer: 5,1
+	XFlingBeacons: 1,-8
+	XHyperdrive: 6,-8

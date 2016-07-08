@@ -23,7 +23,7 @@ Technology: XNeutronArmor
 	Description: #R_SYS_NEUTRON_ARMOR_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: PlateArmor * #449944
@@ -63,7 +63,7 @@ Technology: XLiquidArmor
 	Description: #R_SYS_LIQUID_ARMOR_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: PlateArmor * #91692c
@@ -82,7 +82,7 @@ Technology: XNanoMesh
 	Description: #R_SYS_NANOMESH_DESC
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	DLC: Heralds
@@ -106,7 +106,7 @@ Technology: XSysNilingArmor
 	DLC: Heralds
 	DLC Replace: ArmorHealth
 
-	Point Cost: 1000
+	Point Cost: 0
 	Time Cost: 180
 
 	Icon: NilingArmor
@@ -126,7 +126,7 @@ Technology: XCrystalArmor
 	DLC: Heralds
 	DLC Replace: ArmorHealth2
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: CrystalArmor

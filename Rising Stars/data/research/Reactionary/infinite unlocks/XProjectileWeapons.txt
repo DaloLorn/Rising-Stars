@@ -14,8 +14,8 @@ Technology: XMuonCannon
 
 	UnlockSubsystem(MuonBattery)
 
-	SecondaryMoneyCost(1200)
-	RequireEmpireAttributeGTE(InfiniteProjTech, 3, #R_LIFESTYLE_REQ:Ballistics:3)
+	SecondaryMoneyCost(1000)
+	RequireEmpireAttributeGTE(InfiniteProjTech, 4, #R_LIFESTYLE_REQ:Ballistics:4)
 
 Technology: XFlakBattery
 	Name: #R_SYS_FLAK_BATTERY
@@ -35,7 +35,7 @@ Technology: XFlakBattery
 	SkipOnUnlockedSubsystem(FlakBattery)
 
 	SecondaryEnergyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteProjTech, 4, #R_LIFESTYLE_REQ:Ballistics:4)
+	RequireEmpireAttributeGTE(InfiniteProjTech, 6, #R_LIFESTYLE_REQ:Ballistics:6)
 
 
 
@@ -58,11 +58,11 @@ Technology: XPlasmaThrower
 	UnlockSubsystem(SupportPlasmaThrower)
 	SkipOnUnlockedSubsystem(PlasmaThrower)
 
-	SecondaryMoneyCost(1000)
+	SecondaryMoneyCost(1200)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 3, #R_LIFESTYLE_REQ:Beam Focusing:3)
-	RequireEmpireAttributeGTE(InfiniteProjTech, 4, #R_LIFESTYLE_REQ:Ballistics:4)
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
+	RequireEmpireAttributeGTE(InfiniteProjTech, 5, #R_LIFESTYLE_REQ:Ballistics:5)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
 
 Technology: XParticleLance
 	Name: #R_SYS_PARTICLELANCE

@@ -44,7 +44,7 @@ Technology: XSpinalMountHull
 	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
 	Category: Reactionary
 
-	Point Cost: 600
+	Point Cost: 0
 	Time Cost: 120
 
 	Icon: HullSubsystems::2

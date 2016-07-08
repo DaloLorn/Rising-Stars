@@ -13,7 +13,7 @@ Technology: XSolarPanel
 	UnlockSubsystem(SolarPanel)
 	SkipOnUnlockedSubsystem(SolarPanel)
 
-	SecondaryInfluenceCost(15)
+	SecondaryMoneyCost(700)
 
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy Science:3 )
@@ -24,7 +24,7 @@ Technology: XEmergencySupplies
 
 	Category: Reactionary
 
-	Point Cost: 500
+	Point Cost: 0
 	Time Cost: 90
 
 	Icon: AntimatterReactor * #b8b800
