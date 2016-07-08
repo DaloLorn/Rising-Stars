@@ -10,16 +10,16 @@ Subsystem: SupportReactiveArmor
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	ImpactLevel := 50 * HexSize
-	MinPct := 1/5
+	ImpactLevel := 27 * HexSize
+	MinPct := 1/4
 
 	Hex.Resistance := 0.55
-	Hex.HP := 25 * HexSize
+	Hex.HP := 32 * HexSize
 	Hex.Mass := 2.8 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	Effect: CapDamage
+	Effect: CapDamageExceptEnergy
 		MaxDamage = ImpactLevel
 		MinimumPercent = MinPct
 

@@ -14,12 +14,12 @@ Subsystem: ReactiveArmor
 	MinPct := 1/6
 
 	Hex.Resistance := 0.55
-	Hex.HP := 31 * HexSize
+	Hex.HP := 28 * HexSize
 	Hex.Mass := 4.0 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	Effect: CapDamage
+	Effect: CapDamageExceptEnergy
 		MaxDamage = ImpactLevel
 		MinimumPercent = MinPct
 

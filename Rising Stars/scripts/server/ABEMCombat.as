@@ -85,6 +85,22 @@ void ABEMControlDestroyed(Event& evt) {
 	}
 }
 
+DamageEventStatus CapDamageExceptEnergy(DamageEvent& evt, const vec2u& position,
+	double maxDamage, double MinimumPercent)
+{
+	if((evt.flags & typeMask) == DT_Energy) {
+		print("Energy hit a CapDamageExceptEnergy");
+		return DE_Continue;
+	}
+	if(evt.flags & DF_IgnoreDR != 0)
+		return DE_Continue;
+	if(evt.flags & DF_FullDR != 0)
+		MinimumPercent = 0.01;
+	if(evt.damage > maxDamage * evt.partiality)
+		evt.damage = max(maxDamage * evt.partiality, evt.damage * MinimumPercent);
+	return DE_Continue;
+}
+
 DamageEventStatus ChannelDamage(DamageEvent& evt, const vec2u& position,
 	double ProjResist, double EnergyResist, double ExplResist, double MinPct, double RechargePercent)
 {
