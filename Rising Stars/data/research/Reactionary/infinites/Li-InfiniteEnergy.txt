@@ -1,6 +1,6 @@
 Technology: LifeInfiniteEnergy
 	Name: #INFINITE_ENERGY
-	Description: #INFINITE_ENERGY_DESC:5%:0.4:40
+	Description: #INFINITE_ENERGY_DESC:5%:0.5:30
 
 	Icon: AffinityIcons::2
 	Symbol: EditIcons::7
@@ -29,7 +29,7 @@ Technology: LifeInfiniteEnergy
 //Empire Wide Bonus//
 ///////////////////////
 	
-	AddEnergyIncome(0.4)
-	ModAttribute(FreeEnergyStorage, Add, 40)
+	AddEnergyIncome(0.5)
+	ModAttribute(FreeEnergyStorage, Add, 30)
 	
 	ModAttribute(InfiniteEnergyTaken, Add, 1)

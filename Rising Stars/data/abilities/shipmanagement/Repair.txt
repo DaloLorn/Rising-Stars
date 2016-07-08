@@ -2,7 +2,7 @@ Ability: Repair
 	Name: Repair
 	Description: Repair the Ship
 	Icon: techConstruction*#00ff00
-	Energy Cost: 300
-	ConsumeMoney(400)
-	ShowMoneyValue(400)
+	Energy Cost: 400
+	ConsumeMoney(600)
+	ShowMoneyValue(600)
 	ConsumeStatus(Damaged, Hide = True)

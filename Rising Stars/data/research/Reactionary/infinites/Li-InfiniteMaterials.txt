@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMaterials
 	Name: #INFINITE_HEALTH
-	Description: #R_INFINITE_HEALTH_DESC:8%
+	Description: #R_INFINITE_HEALTH_DESC:10%
 
 	Icon: techMaterialScience1*#a8df21
 	Symbol: EditIcons::7
@@ -23,5 +23,5 @@ Technology: LifeInfiniteMaterials
 //Subsystem  Bonus//
 ///////////////////////
 	AddModifier(HpFactor(1.05))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.08))
-	ModAttribute(OrbitalHealthMod, Multiply, 1.08)
+	AddModifier(ReactiveArmor::ImpactLevelFactor(1.10))
+	ModAttribute(OrbitalHealthMod, Multiply, 1.10)

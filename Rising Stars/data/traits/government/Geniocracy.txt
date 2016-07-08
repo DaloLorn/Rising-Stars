@@ -13,7 +13,7 @@ Trait: Geniocracy
 
 
 	SpawnShip(Battleship, Design From = Empire, Add Status = Damaged)
-	OnHomeworld(GenerateDefenseShips(40))
+	OnHomeworld(GenerateDefenseShips(70))
 
 	ModAttribute(ResearchDecaySpeed, Multiply, 0.75)
 	GainInfluenceCard(ClaimArtifact)

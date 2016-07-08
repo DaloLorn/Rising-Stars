@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMetallurgy
 	Name: #INFINITE_METALLURGY
-	Description: #INFINITE_METALLURGY_DESC:3:10%:5%:8%:10
+	Description: #INFINITE_METALLURGY_DESC:2:10%:5%:8%:10
 
 	Icon: AffinityIcons::4
 	Symbol: EditIcons::7
@@ -24,6 +24,6 @@ Technology: LifeInfiniteMetallurgy
 
 	
 	
-	AddModifier(HpFactor(1.05))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.08))
+	AddModifier(HpFactor(1.10))
+	AddModifier(ReactiveArmor::ImpactLevelFactor(1.10))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.08)

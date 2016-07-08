@@ -1,6 +1,6 @@
 Technology: LifeInfiniteThrust
 	Name: #INFINITE_THRUST
-	Description: #R_INFINITE_THRUST_DESC:8%
+	Description: #R_INFINITE_THRUST_DESC:10%
 
 	Icon: techPropulsion * #e2f83a
 	Symbol: EditIcons::7
@@ -18,7 +18,7 @@ Technology: LifeInfiniteThrust
 	AffectsTaggedSubsystems(Engine)
 	ResetWhenUnlocked()
 
-	AddModifier( ThrustFactor(1.08) )
-	AddModifier( TurnThrustFactor(1.08) )
-	AddModifier( Hyperdrive::SpeedFactor(1.08) )
+	AddModifier( ThrustFactor(1.10) )
+	AddModifier( TurnThrustFactor(1.05) )
+	AddModifier( Hyperdrive::SpeedFactor(1.10) )
 	ModAttribute(InfiniteThrustTaken, Add, 1)
