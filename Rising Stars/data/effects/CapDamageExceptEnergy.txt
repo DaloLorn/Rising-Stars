@@ -1,0 +1,5 @@
+Effect: CapDamageExceptEnergy
+	Value: MaxDamage
+	Value: MinimumPercent
+
+	Damage: ABEMCombat::CapDamageExceptEnergy

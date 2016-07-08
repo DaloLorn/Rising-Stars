@@ -10,7 +10,7 @@ Subsystem: ReactiveArmor
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	ImpactLevel := 27 * HexSize
+	ImpactLevel := 27 * ShipSize/128
 	MinPct := 1/6
 
 	Hex.Resistance := 0.55

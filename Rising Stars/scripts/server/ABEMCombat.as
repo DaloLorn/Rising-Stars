@@ -88,10 +88,8 @@ void ABEMControlDestroyed(Event& evt) {
 DamageEventStatus CapDamageExceptEnergy(DamageEvent& evt, const vec2u& position,
 	double maxDamage, double MinimumPercent)
 {
-	if((evt.flags & typeMask) == DT_Energy) {
-		print("Energy hit a CapDamageExceptEnergy");
+	if((evt.flags & typeMask) == DT_Energy)
 		return DE_Continue;
-	}
 	if(evt.flags & DF_IgnoreDR != 0)
 		return DE_Continue;
 	if(evt.flags & DF_FullDR != 0)
