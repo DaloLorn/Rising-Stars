@@ -13,7 +13,7 @@ Status: Berserkers
 	
 Status: BerserkerGlory1
 	Visible To: Nobody
-	ModCivResourceMult(Money, -0.15)
+	//ModCivResourceMult(Money, -0.15)
 	ModCivResourceMult(Energy, -0.15)
 	ModCivResourceMult(Influence, -0.15)
 	ModCivResourceMult(Labor, -0.15)
@@ -21,7 +21,7 @@ Status: BerserkerGlory1
 	
 Status: BerserkerGlory2
 	Visible To: Nobody
-	ModCivResourceMult(Money, -0.15)
+	//ModCivResourceMult(Money, -0.15)
 	ModCivResourceMult(Energy, -0.15)
 	ModCivResourceMult(Influence, -0.15)
 	ModCivResourceMult(Labor, -0.15)
@@ -29,7 +29,7 @@ Status: BerserkerGlory2
 	
 Status: BerserkerGlory3
 	Visible To: Nobody
-	ModCivResourceMult(Money, -0.15)
+	//ModCivResourceMult(Money, -0.15)
 	ModCivResourceMult(Energy, -0.15)
 	ModCivResourceMult(Influence, -0.15)
 	ModCivResourceMult(Labor, -0.15)
@@ -37,7 +37,7 @@ Status: BerserkerGlory3
 	
 Status: BerserkerGlory4
 	Visible To: Nobody
-	ModCivResourceMult(Money, -0.05)
+	//ModCivResourceMult(Money, -0.05)
 	ModCivResourceMult(Energy, -0.05)
 	ModCivResourceMult(Influence, -0.05)
 	ModCivResourceMult(Labor, -0.05)
@@ -45,7 +45,7 @@ Status: BerserkerGlory4
 	
 Status: BerserkerGlory6
 	Visible To: Nobody
-	ModCivResourceMult(Money, +0.05)
+	//ModCivResourceMult(Money, +0.05)
 	ModCivResourceMult(Energy, +0.05)
 	ModCivResourceMult(Labor, +0.05)
 	ModCivResourceMult(Defense, +0.05)

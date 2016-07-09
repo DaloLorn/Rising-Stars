@@ -40,22 +40,22 @@ GLORY_BERSERKER_PROGRESS: Accumulate [b]$1 Glory[/b] by fighting and killing ene
 GLORY_BERSERKER_LVL1: <<
 	[i][color=#aaa]Infighting amongst the clans reaches a climax, crippling your influence over the empire.[/color][/i]
 
-	Civilian Money, Energy, Influence, Labor and Defense generation is halved while at this level.
+	Civilian Energy, Influence, Labor and Defense generation is halved while at this level.
 >>
 GLORY_BERSERKER_LVL2: <<
 	[i][color=#aaa]Severe infighting amongst the clans drastically diminishes your influence over the empire.[/color][/i]
 
-	Civilian Money, Energy, Influence, Labor and Defense generation is reduced by 35% while at this level.
+	Civilian Energy, Influence, Labor and Defense generation is reduced by 35% while at this level.
 >>
 GLORY_BERSERKER_LVL3: <<
 	[i][color=#aaa]The clans begin overtly fighting each other, significantly reducing your influence over the empire.[/color][/i]
 
-	Civilian Money, Energy, Influence, Labor and Defense generation is reduced by 20% while at this level.
+	Civilian Energy, Influence, Labor and Defense generation is reduced by 20% while at this level.
 >>
 GLORY_BERSERKER_LVL4: <<
 	[i][color=#aaa]Minor skirmishes between the clans moderately diminish your influence over the empire.[/color][/i]
 
-	Civilian Money, Energy, Influence, Labor and Defense generation is reduced by 5% while at this level.
+	Civilian Energy, Influence, Labor and Defense generation is reduced by 5% while at this level.
 >>
 GLORY_BERSERKER_LVL5: <<
 	[i][color=#aaa]Petty disputes between the clans slightly diminish your influence over the empire.[/color][/i]
@@ -65,7 +65,7 @@ GLORY_BERSERKER_LVL5: <<
 GLORY_BERSERKER_LVL6: <<
 	[i][color=#aaa]The clans begin to put their differences aside and work together for the glory of the empire.[/color][/i]
 
-	Civilian Money, Energy, Labor and Defense generation increased by 5%.
+	Civilian Energy, Labor and Defense generation increased by 5%.
 >>
 GLORY_BERSERKER_LVL7: <<
 	[i][color=#aaa]The clans are united under your leadership in battle![/color][/i]
