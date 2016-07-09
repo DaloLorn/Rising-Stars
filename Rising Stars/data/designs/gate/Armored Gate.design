@@ -3,10 +3,10 @@
 	"name": "Armored Gate",
 	"size": 128,
 	"hull": "$1Station",
-	"type": "Gate",
+	"type": "Station",
 	"gridWidth": 28,
 	"gridHeight": 23,
-	"class": "Stations",
+	"class": "Gate",
 	"subsystems": [
 		{
 			"type": "GateModule",
