@@ -7,7 +7,7 @@ Subsystem: DeflectorArray
 	DamageOrder: -500
 
 	Tags: BaseCost
-	Tags: IsShield, Defense, Category:Defense, HasInternals
+	Tags: IsShield, Defense, Category:Shields, HasInternals
 	Tags: SecondaryDefense, HighPowerUse
 	Tags: ExteriorCore, HexLimitArc, Rotatable
 	Tags: HeraldsDLC
@@ -36,7 +36,7 @@ Subsystem: DeflectorArray
 	Requires:
 		Command = 1
 		Power = PowerUse
-	
+
 	Module: Core
 		Sprite: Dish
 		Hex.HP := 6 * Hex.HP

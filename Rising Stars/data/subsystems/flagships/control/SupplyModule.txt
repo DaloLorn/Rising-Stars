@@ -4,19 +4,19 @@ Subsystem: SupplyModule
 	Picture: SubsystemButtonArt::8 * #b3ffef
 	BaseColor: #2fd6b3
 	Elevation: 3
-	
+
 	Tags: DefaultUnlock, NonContiguous, NoCore, HasInternals, Category:Power
 	Tags: Compressible
 	Hull: Flagship, Station
-	
+
 	Size := HexSize * Hexes
 	SupplyCapacity := Size * 4000
 	SupplyRate := Size * 6
-	
+
 	Hex.LaborCost := 0.15 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2
 	Hex.MaintainCost := 2 * HexSize + 3 - (4 * HexSize / ShipSize^0.5)
-	
+
 	Hex.Resistance := 0.2
 	Hex.HP := 18 * HexSize
 	Hex.Mass := HexSize
@@ -29,6 +29,6 @@ Subsystem: SupplyModule
 
 	Effect: LeakSupply
 		LeakPctPerSec = 1 / 60
-	
+
 	Module: Default
-		Sprite: ABEMSupply
+		Sprite: RSSupply
