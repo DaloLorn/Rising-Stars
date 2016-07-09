@@ -1,0 +1,13 @@
+Trait: IndustriousB
+	Name: #TRAIT_INDUSTRIOUS
+	Description: Increase civilian labor on homeworld by 10%
+	Category: Foundation
+
+	Color: #aaffaa
+	Icon: Industrious
+
+	Costs Points: 1
+	Order: 1
+	Conflict: StarChildren
+	Conflict: Ancient
+	OnHomeworld( ModCivResourceMult(Labor, +0.10))

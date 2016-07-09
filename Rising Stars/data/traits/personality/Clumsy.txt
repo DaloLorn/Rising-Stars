@@ -1,0 +1,15 @@
+Trait: Clumsy
+	Name: Clumsy
+	Description: Engine thrust and hyperdrive speed (when applicable) are decreased by 30%.
+	Category: Personality
+	Order: 9
+
+	Color: #aaffaa
+	Icon: AttributeIcons::0*#ff0000
+	Gives Points: 1
+	Conflict: Nimble
+
+
+	AddModifier( ThrustFactor(0.77) )
+	AddModifier( TurnThrustFactor(0.77) )
+	AddModifier( Hyperdrive::SpeedFactor(0.77) )
