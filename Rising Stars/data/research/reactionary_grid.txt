@@ -83,7 +83,6 @@ Grid: Reactionary
 	Connector: 2,9
 	Connector: 4,8
 	Connector: 4,9
-	FlareBomb: 11,5
 	LifeInfiniteArmor: 1,11
 	XCompositeArmor: 0,11
 	XLiquidArmor: 2,12
@@ -105,10 +104,10 @@ Grid: Reactionary
 	StationMaintenance: -12,8
 	XTroopPods: -11,8
 	XProsperity: -11,10
-	XWealth: -11,6
+	XSenate: -11,6
 	XMegacity: -11,9
-	XBroadcastAntenna: -10,6
-	XSenate: -10,7
+	Wealth: -10,6
+	XBroadcastAntenna: -10,7
 	Connector: -10,9
 	XLaboratories: -12,10
 	LifeInfiniteSociology: -8,8
@@ -125,7 +124,6 @@ Grid: Reactionary
 	XCrystalArmor: 2,16
 	BldSpire: -9,10
 	Connector: -12,-3
-	FlareBomb: -12,-4
 	XZeroPoint: -12,-2
 	XShieldUpgrade: -9,-7
 	XBulkhead: -1,6
@@ -149,9 +147,6 @@ Grid: Reactionary
 	MissileRange: 2,-11
 	Connector: 2,-13
 	Connector: 3,-14
-	XSkipDrive: 2,-15
-	XBoosterEngine: 4,-14
-	XRamjet: 5,-14
 	XBoosterEngine: 3,-5
 	XRamjet: 4,-5
 	HyperfieldSequencing: 6,-7
@@ -165,3 +160,9 @@ Grid: Reactionary
 	XShipComputer: 5,1
 	XFlingBeacons: 1,-8
 	XHyperdrive: 6,-8
+	XHydroponicsSatellite: 7,7
+	XShockMissiles: 4,-14
+	XWarhead: 2,-15
+	XGravitonCondenser: -11,3
+	FlareBomb: -13,-4
+	XIonCannon: -12,-4

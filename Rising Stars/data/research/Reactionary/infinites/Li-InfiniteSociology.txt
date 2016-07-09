@@ -23,12 +23,40 @@ Technology: LifeInfiniteSociology
 	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.9) )
 	ModAttribute(TileDevelopmentFactor, Multiply, 1.10)
 	ModAttribute(CivBldConstructionRate, Multiply, 1.1)
-	
+
 	//Dont work in fractional increments cause Max pop is a integer.
-	//check Rising Stars\scripts\server\objects\Planet.as 
-	ModAttribute(PopulationLevel1Mod, Add, 0.125)	 	//Each 8 levels Increase pop of level 1 planets by 1
-	ModAttribute(PopulationLevel2Mod, Add, 0.25) 		//Each 4 levels Increase pop of level 2 planets by 1
-	ModAttribute(PopulationLevel3Mod, Add, 0.34)	 	//Each 3 levels Increase pop of level 3 planets by 1
-	ModAttribute(PopulationLevel4Mod, Add, 0.17)   	//Each 2 levels Increase pop of level 4 planets by 1
-	ModAttribute(PopulationLevel5Mod, Add, 0.5)			//Each level Increase pop of level 5 planets by 1
-	ModAttribute(PopulationLevel6Mod, Add, 0.5)			//Each 2 levels increase pop of Level 6 Planets by 3
+	//check Rising Stars\scripts\server\objects\Planet.as
+	ModAttribute(PopulationLevel1Mod, Add, 0.125) //Each 8 levels Increase pop of level 1 planets by 1
+	ModAttribute(PopulationLevel2Mod, Add, 0.25) //Each 4 levels Increase pop of level 2 planets by 1
+	ModAttribute(PopulationLevel3Mod, Add, 0.34) //Each 3 levels Increase pop of level 3 planets by 1
+	ModAttribute(PopulationLevel4Mod, Add, 0.17) //Each 2 levels Increase pop of level 4 planets by 1
+	ModAttribute(PopulationLevel5Mod, Add, 0.5) //Each level Increase pop of level 5 planets by 1
+	ModAttribute(PopulationLevel6Mod, Add, 0.5) //Each 2 levels increase pop of Level 6 Planets by 3
+
+Technology: LifeInfiniteSociologyMech
+	Name: #INFINITE_SOCIETY
+	Description: #INFINITE_SOCIETY_DESC_MECH:0.1:10%:1:5:150k
+
+	Icon: ResourceIcon::8
+	Symbol: EditIcons::7
+	Color: #b63fff
+
+	Category: InfinitesLifeStyle
+	Class: Special
+
+	Point Cost: 150
+	Time Cost: 30
+
+	AddPointCostAttribute(InfinitePopTaken, 100)
+	AddTimeCostAttribute(InfinitePopTaken, 10)
+	ModAttribute(InfinitePopTaken, Add, 1)
+
+	ResetWhenUnlocked()
+
+	AddGlobalLoyalty(1)
+	ModDefenseReserve(5)
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.9) )
+	ModAttribute(TileDevelopmentFactor, Multiply, 1.10)
+	ModAttribute(CivBldConstructionRate, Multiply, 1.1)
+
+	AddPermanentIncome(150)

@@ -110,6 +110,20 @@ INFINITE_SOCIETY_DESC:<<
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
 
+INFINITE_SOCIETY_MONO: Social Studies
+INFINITE_SOCIETY_DESC_MECH:<<
+	[i][color=#aaa]A better understanding of our society and why it has developed into its current state allows us to better direct its evolution.[/color][/i]
+
+	Reduces the level decay rate of planets by $2. Also increases tile development and all construction speeds by $2.
+	Increases the loyalty of all planets by $3 and adds $4 Defense Reserve.
+
+	Increases the maximum population of planets depending on their level and this technology's current tech level:
+
+	Increases planet income by 5$
+
+	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
+>>
+
 GENIOCRACY_SHIELDUPGRADE: Subspace Deflectors
 GENIOCRACY_SHIELDUPGRADE_DESC: <<
 	[color=#aaa][i]New developments into shield technology allow us to shunt enemy weapons fire into subspace where they can't harm us. Unfortunately, the technology is currently incompatible with conventional plasma shields, and requires a great amount of power. More problematically, some incompetent lab tech managed to purge the database of any trace of plasma shield technology, so we'll have to develop it all over again.[/i][/color]
