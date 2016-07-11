@@ -103,6 +103,26 @@ S_MINER_HULL_DESC: <<
 	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
+S_JUGGERNAUT_HULL: Juggernaut Hull
+S_JUGGERNAUT_HULL_DESC: <<
+	A specialized hull designed for cointaning and stabilizing a large payload of explosives.
+
+	[img=Plus]Very resilient: High health and damage resistance.[/img]
+	[img=Plus]Allow the use of self destruct devices[/img]
+	[img=Plus]Low maintenace[/img]
+	[img=Minus]Cannot have weapons or support command.[/img]
+>>
+
+S_FORCEFIELD: Force Field
+S_FORCEFIELD_DESC: <<
+	Advanced manipulation of energy allow us to generate force fields without the bubble constrains of regular shields
+
+	[img=Plus]Allow to protect important parts[/img]
+	[img=Plus]Allow the use of self destruct devices[/img]
+	[img=Plus][/img]
+	[img=Minus]Very high energy usage[/img]
+>>
+
 TARGETINGSENSOR_DESC: <<
 	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
 
