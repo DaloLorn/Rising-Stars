@@ -1,0 +1,1 @@
+R_MISSILE_RANGE_DESC: Increases the range and speed of all missile-based weapons by $1.
