@@ -7,7 +7,7 @@ Resource: RahtaSulphate
 
 	Distribution: 0
 	Frequency: 0
-	Scalable: True
+	Class: Scalable
 	Limitless Level: True
 	Exportable: False
 	Icon: ResourceIconsSmall::62*#ff000088
