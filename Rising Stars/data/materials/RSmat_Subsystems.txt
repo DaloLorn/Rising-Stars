@@ -70,6 +70,19 @@ Material: Superstructure
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/superstructure.png
 
+Material: ArmorArt1
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/armor1.png
+Material: ArmorArt5
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/armor5.png
+Material: ArmorArt6
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/armor6.png
+Material: ArmorArt7
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/armor7.png
+
 // *********************************************************
 // **********************MODIFIERS**************************
 // *********************************************************
