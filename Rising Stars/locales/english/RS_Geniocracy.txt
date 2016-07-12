@@ -38,7 +38,8 @@ INFINITE_PROJECTILE_WEAPONS: Ballistics
 INFINITE_PROJECTILE_WEAPONS_DESC: <<
 	[i][color=#aaa]Development of new materials and propellants results in improvements to our projectile weapons, and slight improvements to our other weapons.[/color][/i]
 
-	Increases the damage output and range of projectile weapons by $1, and increases the damage output of all other weapons by $2. Also increases the damage output of planetary defenses and orbitals by $1.
+	Increases the damage output and range of projectile weapons by $1, and increases the damage output of all other weapons by $2. 
+	Increases the damage output of planetary defenses and orbitals by $3.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
@@ -48,6 +49,7 @@ INFINITE_MISSILE_WEAPONS_DESC: <<
 	[i][color=#aaa]Improved guidance systems, lightweight materials and explosives result in improvements to our missiles, and a slight boost to our other weapons.[/color][/i]
 
 	Increases the damage output and range of missile weapons by $1, and increases the damage output of all other weapons by $2.
+	Increases the damage output of planetary defenses and orbitals by $3.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
@@ -57,6 +59,7 @@ INFINITE_ENERGY_WEAPONS_DESC: <<
 	[i][color=#aaa]Development of new materials and focusing systems results in improvements to our beam weapons, with a slight boost to our other weapons.[/color][/i]
 
 	Increases the damage output and range of beam weapons by $1, and increases the damage output of all other weapons by $2.
+	Increases the damage output of planetary defenses and orbitals by $3.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>

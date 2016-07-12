@@ -1,6 +1,6 @@
 Technology: LifeInfiniteEnergyWeapons
 	Name: #INFINITE_ENERGY_WEAPONS
-	Description: #INFINITE_ENERGY_WEAPONS_DESC:9%:3%
+	Description: #INFINITE_ENERGY_WEAPONS_DESC:9%:3%:5%
 
 	Icon: TechIcons::26
 	Symbol: EditIcons::7
