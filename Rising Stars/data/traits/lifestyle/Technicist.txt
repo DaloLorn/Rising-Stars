@@ -25,7 +25,10 @@ Trait: Technicists
 
 	//ForbidSubsystem
 	ForbidSubsystem(SupportPlateArmor)
+	ForbidSubsystem(SupportCeramicArmor)
+	ForbidSubsystem(SupportReactiveArmor)
 	ForbidSubsystem(SupportAblativeArmor)
+	
 	ForbidSubsystem(ReactiveArmor)
 	ForbidSubsystem(AblativeArmor)
 	ForbidSubsystem(PlateArmor)
