@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMegaconstruction
 	Name: #INFINITE_MEGACONSTRUCTION
-	Description: #INFINITE_MEGACONSTRUCTION_DESC:20%
+	Description: #INFINITE_MEGACONSTRUCTION_DESC:20%:8%
 
 
 	Icon: GuiOrbitalIcons::24*#f88b9f
@@ -10,8 +10,8 @@ Technology: LifeInfiniteMegaconstruction
 	Category: InfinitesLifeStyle
 	Class: Keystone
 
-	Point Cost: 300
-	Time Cost: 50
+	Point Cost: 275
+	Time Cost:27
 
 	AddPointCostAttribute(InfiniteMegaTaken, 100)
 	AddTimeCostAttribute(InfiniteMegaTaken, 10)
@@ -20,4 +20,6 @@ Technology: LifeInfiniteMegaconstruction
 
 	ModAttribute(InfiniteMegaTaken, Add, 1)
 
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.92)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.92)
 	ModAttribute(OrbitalHealthMod, Multiply, 1.20)

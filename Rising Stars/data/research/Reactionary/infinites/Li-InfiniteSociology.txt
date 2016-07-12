@@ -18,8 +18,10 @@ Technology: LifeInfiniteSociology
 
 	ResetWhenUnlocked()
 
-	AddGlobalLoyalty(1)
+
 	ModDefenseReserve(5)
+	AddInfluenceStake(1)
+	
 	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.9) )
 	ModAttribute(TileDevelopmentFactor, Multiply, 1.10)
 	ModAttribute(CivBldConstructionRate, Multiply, 1.1)

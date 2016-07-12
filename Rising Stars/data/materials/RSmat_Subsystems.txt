@@ -104,3 +104,9 @@ Material: SecurityStation
 Material: ProgenitorArmor
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/armor4.png
+// *********************************************************
+// ******************OTHER SUBSYSTEMS*********************
+// *********************************************************
+Material: Shuttle
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/shuttle.png

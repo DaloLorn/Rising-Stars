@@ -27,3 +27,5 @@ Technology: LifeInfiniteMissileWeapons
 
 	AddModifier( tag/MissileBase::RangeFactor(1.05) )
 	AffectsTaggedSubsystems(MissileBase)
+
+	ModAttribute(StaticDamageFactor, Multiply, 1.05)

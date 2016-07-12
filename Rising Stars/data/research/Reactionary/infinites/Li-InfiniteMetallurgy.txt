@@ -1,6 +1,6 @@
 Technology: LifeInfiniteMetallurgy
 	Name: #INFINITE_METALLURGY
-	Description: #INFINITE_METALLURGY_DESC:2:10%:5%:8%:10
+	Description: #INFINITE_METALLURGY_DESC:2:10:8%
 
 	Icon: AffinityIcons::4
 	Symbol: EditIcons::7
@@ -17,9 +17,8 @@ Technology: LifeInfiniteMetallurgy
 
 	ResetWhenUnlocked()
 
-	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.90)
-	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.90)
-	ModAttribute(FactoryLaborMod, Add, 3)
+	
+	ModAttribute(FactoryLaborMod, Add, 2)
 	ModAttribute(InfiniteMetallurgyTaken, Add, 1)
 
 	

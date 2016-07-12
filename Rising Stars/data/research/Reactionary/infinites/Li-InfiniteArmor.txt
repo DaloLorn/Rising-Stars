@@ -18,7 +18,7 @@ Technology: LifeInfiniteArmor
 	ResetWhenUnlocked()
 
 	AddModifier(any::ArmorResistFactor(1.1))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.08))
+	AddModifier(ReactiveArmor::ImpactLevelFactor(1.1))
 	AddModifier(tag/IsArmor::HpFactor(1.1))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.10)
 	ModAttribute(InfiniteArmorTaken, Add, 1)

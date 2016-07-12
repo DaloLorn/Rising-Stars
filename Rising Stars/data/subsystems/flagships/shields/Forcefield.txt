@@ -30,6 +30,7 @@ Subsystem: Forcefield
 		Hex.BuildCost := 6.0 * HexSize
 		Hex.LaborCost := 1.5 * HexSize
 		Hex.MaintainCost := 4 * HexSize
+		Color: #00a4db
 
 	Module: Default
 		Sprite: Forcefield*#00a4db

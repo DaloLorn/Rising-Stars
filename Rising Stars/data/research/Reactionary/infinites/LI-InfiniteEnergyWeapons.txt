@@ -26,3 +26,6 @@ Technology: LifeInfiniteEnergyWeapons
 	AddModifier( tag/BeamBase::DamageFactor(1.06) )
 	AddModifier( tag/Weapon::DamageFactor(1.03) )
 	AffectsTaggedSubsystems(BeamBase)
+
+	
+	ModAttribute(StaticDamageFactor, Multiply, 1.05)
