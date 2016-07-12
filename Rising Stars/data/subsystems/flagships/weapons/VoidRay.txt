@@ -44,7 +44,7 @@ Subsystem: VoidRay
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 
-		Sprite: Laser::0*#32ff17
+		Sprite: AdaptiveLaser::0
 		DrawMode: 1
 
 		Hex.DamageResist := ShipSize / 64.0

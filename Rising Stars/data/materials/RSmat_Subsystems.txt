@@ -82,6 +82,16 @@ Material: ArmorArt6
 Material: ArmorArt7
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/armor7.png
+	
+// *********************************************************
+// **********************WEAPONS**************************
+// *********************************************************
+	
+SpriteSheet: AdaptiveLaser
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/laser6.png
+	Size: 234,180
+	Spacing: 2
 
 // *********************************************************
 // **********************MODIFIERS**************************
