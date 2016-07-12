@@ -16,7 +16,7 @@ TRAIT_PACIFISTS_DESC: <<|
 >>
 TRAIT_BERSERKERS: Berserkers
 TRAIT_BERSERKERS_DESC: <<|
-	[vspace=3/][img=ResourceIconsSmall::62*#f00]Starts with a Sulphate on their homeworld.[/img]  
+	[vspace=3/][img=ResourceIconsSmall::62*#ff000088]Starts with Sulphate Traces on their homeworld, providing half of the benefits of Sulphate.[/img]  
 	[vspace=3/][img=HexagonSubsystems::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img]  
 	[vspace=3/][img=StatusWar;22]Centuries of conflict have resulted in a 25% reduction in supply costs due to optimized weaponry.[/img]  
 	[vspace=3/][img=ResourceIcon::4*ff8888;22]Research pressure does not generate Research, and is instead processed into Labor and Defense.[/img]  

@@ -94,6 +94,7 @@ S_GUARDIANHULL: Guardian Hull
 S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
 S_HAULER_HULL: Hauler Hull
 S_MINER_HULL: Miner Hull
+S_PROGENITOR_ARMOR: Progenitor Armor
 
 S_MINER_HULL_DESC: <<
 	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
