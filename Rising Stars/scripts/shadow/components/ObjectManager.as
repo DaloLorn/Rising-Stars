@@ -219,15 +219,17 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	Object@ getStargate(Empire& emp, vec3d position, bool recursive) {
-		Lock lock(gateMutex);
 		Object@ best;
 		double bestDist = INFINITY;
-		for(uint i = 0, cnt = gates.length; i < cnt; ++i) {
-			Object@ gate = gates[i];
-			double d = gate.position.distanceToSQ(position);
-			if(d < bestDist) {
-				bestDist = d;
-				@best = gate;
+		{
+			Lock lock(gateMutex);
+			for(uint i = 0, cnt = gates.length; i < cnt; ++i) {
+				Object@ gate = gates[i];
+				double d = gate.position.distanceToSQ(position);
+				if(d < bestDist) {
+					bestDist = d;
+					@best = gate;
+				}
 			}
 		}
 		if(recursive) {
