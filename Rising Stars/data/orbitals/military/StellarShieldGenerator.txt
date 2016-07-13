@@ -11,8 +11,8 @@ Module: StellarShieldGenerator
 	Maintenance: 250
 	Labor Cost: 30
 
-	Health: 5000
-	Armor: 2500
+	Health: 6000
+	Armor: 6000
 
 	Model: Fling
 	Material: GenericPBR_Fling

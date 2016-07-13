@@ -11,8 +11,8 @@ Module: ShieldCharger
 	Maintenance: 100
 	Labor Cost: 10
 
-	Health: 4000
-	Armor: 1000
+	Health: 6000
+	Armor: 6000
 
 	Model: DefenseStation
 	Material: VolkurGenericPBR

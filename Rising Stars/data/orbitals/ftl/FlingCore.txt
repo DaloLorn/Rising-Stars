@@ -12,8 +12,8 @@ Module: FlingCore
 	Maintenance: 200
 	Labor Cost: 20
 
-	Health: 7500
-	Armor: 2500
+	Health: 10000
+	Armor: 4000
 
 	Model: Fling
 	Material: GenericPBR_Fling
