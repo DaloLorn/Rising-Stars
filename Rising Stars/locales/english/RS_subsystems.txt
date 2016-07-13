@@ -113,7 +113,7 @@ S_JUGGERNAUT_HULL_DESC: <<
 	[img=Plus]Low maintenace[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
-
+ERROR_MUST_HAVE_SELFDESTRUCT:Juggernaut Hull must have a Self Destruct Device.
 S_FORCEFIELD: Force Field
 S_FORCEFIELD_DESC: <<
 	Advanced manipulation of energy allow us to generate force fields without the bubble constrains of regular shields
