@@ -1,0 +1,40 @@
+Building: FTLBreeder
+	Name: #BLD_FTLBREEDER
+	Description: #BLD_FTLBREEDER_DESC_RS
+	Sprite: FTLStorage * #ff8080
+
+	Category: Production
+
+	Size: 2x3
+	Base Cost: 300
+	Tile Cost: 40
+	Base Maintenance: 80
+	Tile Maintenance: 30
+
+	RequireTrait(Mechanoid)
+	RequireNotTrait(Flux)
+	AddFTLIncome(0.35)
+	//TriggerConstructed(LosePopulation(1))  Intentionally removed.
+
+	ShowFTLValue(0.35, Suffix = #PER_SECOND)
+
+	
+Building: FTLBreederFLUX
+	Name: #BLD_FTLBREEDER
+	Description: #BLD_FTLBREEDER_DESC_RS
+	Sprite: FTLStorage * #ff8080
+
+	Category: Production
+
+	Size: 2x3
+	Base Cost: 300
+	Tile Cost: 40
+	Base Maintenance: 80
+	Tile Maintenance: 30
+
+	RequireTrait(Flux)
+
+	AddFTLIncome(0.5)
+	//TriggerConstructed(LosePopulation(1))
+
+	ShowFTLValue(0.5), Suffix = #PER_SECOND)
