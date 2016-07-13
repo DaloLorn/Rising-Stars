@@ -4,7 +4,7 @@ Subsystem: Forcefield
 	BaseColor: #00a4db
 	Elevation: 2
 
-	Tags: Category:Shields, NoWall, PassExterior
+	Tags: Category:Shields, NoWall, PassExterior,BadFiller
 	Tags: Defense, HasInternals, SecondaryDefense, ExternalSpace, HasInternals
 	Hull: Flagship, Station
 
