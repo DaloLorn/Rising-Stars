@@ -1,13 +1,15 @@
 Ability: TelescopeOre
 	Name: #ABL_TELESCOPE
-	Description: Grants vision over the targeted system for 3 minutes. Up to 30k units range.
+	Description: #ABL_TELESCOPEORE_DESC:40000
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
-	Energy Cost: 180
+
 
 	Target: targ = Object
 	Range: 40000
+	Cooldown: 180
+	Hotkey: T
 	TargetFilterRegion(targ)
 
 	ShowFTLValue(100)
