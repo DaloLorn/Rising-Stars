@@ -44,8 +44,7 @@ Subsystem: MatterDisruptor
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 
-		Sprite: WaveEmitter
-
+		Sprite: MatterDisruptor::0
 		Hex.DamageResist := ShipSize / 64.0
 		DrawMode: 1
 		Effect: DamageResist

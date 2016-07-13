@@ -93,6 +93,12 @@ SpriteSheet: AdaptiveLaser
 	Size: 234,180
 	Spacing: 2
 
+SpriteSheet: MatterDisruptor
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/matterdisruptor6.png
+	Size: 234,180
+	Spacing: 2
+
 // *********************************************************
 // **********************MODIFIERS**************************
 // *********************************************************
