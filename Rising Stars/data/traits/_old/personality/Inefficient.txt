@@ -6,6 +6,6 @@ Trait: Inefficient
 	Color: #ffaaaa
 	Icon: AttributeIcons::4
 
-	Gives Points: 1
+	Costs Points: 1
 
 	AddModifier( SupplyCostFactor(1.25) )

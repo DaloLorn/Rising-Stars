@@ -169,3 +169,9 @@ GlobalStat: SlipsteramOptimalDistance
 	Suffix: u
 
 	Variable: SlipstreamOptimalDistance
+	
+SubsystemStat: Size
+	Name: Size
+	Color: #e0ff00
+
+	Variable: Size

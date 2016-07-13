@@ -5,7 +5,6 @@ Subsystem: JuggernautHull
 	Tags: Applied:Hull, Category:Hulls, NoCore, CanUseSelfDestruct
 	Tags: HeraldsDLC
 	Tags: Ability:RammingSpeedAbil
-	//Have to fix this ability to self use atm is necesary to set target.
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #ff0724
