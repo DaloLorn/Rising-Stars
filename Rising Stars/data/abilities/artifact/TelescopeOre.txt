@@ -1,0 +1,15 @@
+Ability: TelescopeOre
+	Name: #ABL_TELESCOPE
+	Description: Grants vision over the targeted system for 3 minutes. Up to 30k units range.
+	Icon: VoteIcons::3
+	Activate Sound: telescope_activate
+
+	Energy Cost: 180
+
+	Target: targ = Object
+	Range: 40000
+	TargetFilterRegion(targ)
+
+	ShowFTLValue(100)
+	ConsumeFTL(100)
+	Trigger(targ, GrantRegionVision(Duration = 180))
