@@ -20,7 +20,7 @@ Subsystem: SupportAblativeArmor
 	Hex.BuildCost := 2.25 * HexSize
 	Hex.LaborCost := 0.325 * HexSize
 
-	DamageResist := ShipSize / 9.0
+	DamageResist := ShipSize / 7.0
 	Effect: ReduceDamage
 		ProjResist = DamageResist
 		EnergyResist = DamageResist

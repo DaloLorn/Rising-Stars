@@ -1,0 +1,36 @@
+Subsystem: SupportFerrofluidArmor
+	Name: #S_FERROFLUIDARMOR
+	Description: #S_FERROFLUIDARMOR_DESC
+	BaseColor: #878798
+	Picture: SubsystemButtonArt::0
+	Elevation: 1
+
+	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, SpecialCost
+	Tags: NoWall, Category:Armor, FauxExterior, ExternalSpace
+	Tags: PrimaryArmor
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	Hex.Resistance := 0.1
+	Hex.HP := 60 * HexSize
+	Hex.Mass := 1.5 * HexSize
+
+	Hex.BuildCost := 4.5 * HexSize
+	Hex.LaborCost := 0.525 * HexSize
+	
+	DamageResist := ShipSize / 11
+	
+	Effect: DistributeHealth
+	
+	Effect: ReduceDamage
+
+		ProjResist = DamageResist
+		ExplResist = 0
+		EnergyResist = 0
+		MinimumPercent = 1/6
+
+	Module: Default
+		Sprite: PlateArmor * #3b3d40

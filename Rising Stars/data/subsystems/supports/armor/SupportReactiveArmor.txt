@@ -10,7 +10,7 @@ Subsystem: SupportReactiveArmor
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	ImpactLevel := 29 * ShipSize/128
+	ImpactLevel := 60 * ShipSize/128
 	MinPct := 1/2
 
 	Hex.Resistance := 0.55

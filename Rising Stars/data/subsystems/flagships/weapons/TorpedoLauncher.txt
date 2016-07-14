@@ -12,14 +12,14 @@ Subsystem: TorpedoLauncher
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size * 3.33 + 1500
-	Damage := Size * 20.0
-	Reload := 20.0 * min(1.0 + Size/1024, 1.5)
+	Range := Size * 3.5 + 1500
+	Damage := Size * 30.0
+	Reload := 40 * min(1.0 + Size/1024, 1.5)
 	Speed := max(65, Range / 40)
 	Tracking := 0.8
 	Radius := 20.0 + (log(Size) / log(2) * 10.0)
-	SupplyCost := Size * 1.0
-	Hex.Mass := HexSize * 3
+	SupplyCost := Size * 1.333
+	Hex.Mass := HexSize * 5
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2

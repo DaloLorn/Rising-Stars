@@ -19,7 +19,7 @@ Subsystem: ProgenitorArmor
 	Hex.BuildCost := 10 * HexSize
 	Hex.MaintainCost := 10 * HexSize / ShipSize^0.5
 
-	DamageResist := ShipSize / 18
+	DamageResist := ShipSize / 16
 	Description: #S_PROGENITOR_ARMOR_DESC
 	PowerUse := 8 * Size
 	AddAdjacentModifier: AddHP(Hex.HP / 6.0)

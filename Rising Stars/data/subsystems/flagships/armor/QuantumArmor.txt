@@ -19,7 +19,7 @@ Subsystem: QuantumArmor
 	Hex.BuildCost := 10 * HexSize
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 
-	DamageResist := ShipSize / 30
+	DamageResist := ShipSize / 25
 	Description: #S_QUANTUM_ARMOR_DESC
 	PowerUse := 2 * Size
 	Requires:

@@ -13,16 +13,16 @@ Subsystem: Railgun
 	Size := HexSize * Hexes
 	
 	Range := (Size*2) + 525
-	Damage := Size * 3.5
-	Reload := 2.0 * min(1.0 + Size/512, 2.0)
+	Damage := Size * 3.25
+	Reload := 2.05 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
 	Spread := 0.0225 / max(Range / 600, 1)
 	Tracking := 0.8
 	FireArc := 0.5 * pi
-	Pierce := 1.2
+	Pierce := 1.0
 	SupplyCost := Size * 1.5
 	
-	Hex.HP := 24 * HexSize
+	Hex.HP := 27 * HexSize
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Hex.BuildCost := 0.75 * HexSize

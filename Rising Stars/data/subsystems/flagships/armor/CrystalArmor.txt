@@ -17,7 +17,7 @@ Subsystem: CrystalArmor
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	DamageResist := ShipSize / 16.0
+	DamageResist := ShipSize / 12.0
 
 	Hex.LaborCost := 0.4 * HexSize
 	Hex.BuildCost := 6.0  * HexSize

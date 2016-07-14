@@ -20,7 +20,7 @@ Subsystem: CeramicArmor
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
-	DamageResist := ShipSize / 18.0
+	DamageResist := ShipSize / 12.0
 
 	Effect: ReduceDamage
 		ProjResist = DamageResist * 0.8

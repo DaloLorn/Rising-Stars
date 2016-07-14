@@ -21,7 +21,7 @@ Subsystem: NeutronArmor
 	Hex.BuildCost := 8 * HexSize
 	Hex.MaintainCost := 0
 
-	DamageResist := ShipSize / 30
+	DamageResist := ShipSize / 25
 	Effect: DamageResist
 		Resist = DamageResist
 

@@ -1,7 +1,7 @@
 Subsystem: FerroFluidArmor
 	Name: #S_FERROFLUIDARMOR
 	Description: #S_FERROFLUIDARMOR_DESC
-	BaseColor: #4b4d50
+	BaseColor: #878798
 	Elevation: 1
 
 	Tags: LowMaint, Category:Armor, NoWall, PassExterior
@@ -22,7 +22,7 @@ Subsystem: FerroFluidArmor
 	Hex.LaborCost := 0.525 * HexSize
 	Hex.BuildCost := 3.25 * HexSize
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
-	DamageResist := Size / 20
+	DamageResist := ShipSize / 13.5
 	PowerUse := Size * 1
 	Requires:
 		Power = PowerUse
