@@ -1,0 +1,23 @@
+Material: RSArtifact
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+Material: RevCannon
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantCannon.png
+	
+
+Material: RevChassis
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantChassis.png
+
+Material: RevCore
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantCore.png	
+
+Material: RevEngine
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantEngine.png
