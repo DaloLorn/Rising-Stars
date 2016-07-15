@@ -6,5 +6,5 @@ Construction: DevelopSurface
 	Name: #C_TERRAFORMING
 	Icon: SequesteredSociety
 	
-	ConsumeCargo(Ore, 1000)
+	ConsumeCargo(Ore,500)
 	DevelopTiles(15)

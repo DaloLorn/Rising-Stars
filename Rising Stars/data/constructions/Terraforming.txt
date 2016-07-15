@@ -14,7 +14,7 @@ Construction: TerraformIN
 
 	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000, Allow Cancel = True)
 
-	AddSurfaceArea(Artificial, (10, 1), Separate = False, Developed = True, Vertical = True)
+	AddSurfaceArea(Artificial, (10, 1), Separate = False, Developed = False, Vertical = True)
 
 	RequireStatus(TerraformStacks)
 	RequireNotStatus(FloatingContinent)
@@ -34,7 +34,7 @@ Construction: Terraform
 	RequireNotStatus(FloatingContinent)
 	ConsumeCargo(Ore, 1000)
 
-	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = True, Vertical = True)
+	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = False, Vertical = True)
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))
 	//RequireUnlockTag(TerraformSurface)
