@@ -15,6 +15,7 @@ Subsystem: SupportHull
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
 	DummyForStR:=1000
+	DummyForRepair:=4
 
 	
 	Repair := (ShipSize / HexLimit) * 4

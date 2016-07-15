@@ -13,6 +13,15 @@ GlobalStat: HP
 		Secondary: HP
 
 		Variable: Repair
+		
+	GlobalStat: Repair
+		Name: In Combat Repair
+		Description: 
+		Color: #aaa
+		Secondary: HP
+
+		Variable: Repair
+		DivBy:DummyForRepair
 
 GlobalStat: DPS
 	Name: #S_DPS

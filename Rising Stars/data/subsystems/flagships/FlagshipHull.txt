@@ -12,7 +12,8 @@ Subsystem: FlagshipHull
 	TechMult := 1
 
 	DummyForStR:=1000
-	
+	DummyForRepair:=4
+
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
