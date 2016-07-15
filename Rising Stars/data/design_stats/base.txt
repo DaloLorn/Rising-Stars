@@ -14,7 +14,7 @@ GlobalStat: HP
 
 		Variable: Repair
 		
-	GlobalStat: Repair
+	GlobalStat: RepairCombat
 		Name: In Combat Repair
 		Description: 
 		Color: #aaa
