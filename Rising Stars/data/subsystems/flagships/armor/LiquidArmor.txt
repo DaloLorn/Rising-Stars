@@ -1,7 +1,7 @@
 Subsystem: LiquidArmor
 	Name: #S_LIQUIDARMOR
 	Description: #S_LIQUIDARMOR_DESC
-	BaseColor: #91692c
+	BaseColor: #916a41
 	Elevation: 1
 
 	Tags: LowMaint, Category:Armor, NoWall, FauxExterior

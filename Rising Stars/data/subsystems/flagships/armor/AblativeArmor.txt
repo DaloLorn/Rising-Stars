@@ -1,7 +1,7 @@
 Subsystem: AblativeArmor
 	Name: #ABLATIVEARMOR_NAME
 	Description: #ABLATIVEARMOR_DESC
-	BaseColor: #a9a9b9
+	BaseColor: #a9a9d2
 	Elevation: 1
 
 	Tags: Category:Armor

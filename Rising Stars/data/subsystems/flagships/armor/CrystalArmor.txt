@@ -1,7 +1,7 @@
 Subsystem: CrystalArmor
 	Name: #S_CRYSTALARMOR
 	Description: #S_CRYSTALARMOR_DESC
-	BaseColor: #ef45ff
+	BaseColor: #db8fff
 	Elevation: 2
 
 	Tags: Category:Armor, FauxExterior

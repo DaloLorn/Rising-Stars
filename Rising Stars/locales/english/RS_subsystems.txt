@@ -45,6 +45,67 @@ S_EXPLRESIST: Explosive Resistance
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
+NEUTRONARMOR_DESC: <<
+	Microscopic pellets of neutronium-doped metal are mixed with standard plate armor.
+
+	[img=Plus][b]Very[/b] high [b][color=#80ff80]health[/color][/b] with minor damage resist.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Minus]Extremely heavy.[/img]
+	[img=Minus]Expensive build cost with significant labor cost.[/img]
+>>
+PLATEARMOR_DESC: <<
+	Heavy, interlocked plates of metal that protect the ship from damage.
+
+	[img=Plus]High [b][color=#80ff80]health[/color][/b], and good density per hex and mass.[/img]
+	[img=Plus]Cheapest and simplest defensive option.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Minus]Heavy.[/img]
+>>
+S_PROGENITOR_ARMOR_DESC: <<
+	Good at everything, regenerates health, adds health to nearby hexes, combines effects of all three basic armors.
+
+	Very expensive with a huge maintenance cost.
+>>
+LASER_DESC: <<
+	A highly focused beam of light inflicts damage by burning holes through ship subsections.
+
+	[img=Plus]Accurate and instant beam lock-on, with constant damage.[/img]
+	[img=Plus]Low [b][color=#fefc61]supply cost[/color][/b].[/img]
+	[img=Minus]Ineffective against armor.[/img]
+	[img=Minus]Very limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Flagship class lasers have a direct hookup to the flagship's power core and can maintain a constant beam, but Support grade lasers must fire in pulses as their integrated capacitors cannot sustain a beam without sacrificing effective damage.
+>>
+RAILBATTERY_DESC: <<
+	A battery of magnetic cannons that fire relatively small projectiles at immense velocities.
+
+	[img=Plus]Rapid fire rate.[/img]
+	[img=Minus]Inaccurate projectiles.[/img]
+	[img=Minus]Limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Railguns can accurately target orbitals or stations from significantly further away than they can attempt to hit a maneuverable target.  This is currently not shown on the range display.[/img]
+>>
+RAILGUN_DESC: <<
+	A magnetic cannon that fires relatively small projectiles at immense velocities.
+
+	[img=Plus]High damage per hit.[/img]
+	[img=Minus]Inaccurate projectiles.[/img]
+	[img=Minus]Limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Support grade railguns do not have sophisticated enough target computers to recalibrate for stationary targets - their range is always the same.[/img]
+>>
+SUPPORTMISSILELAUNCHER_DESC: <<
+	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b] per shot.[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Slow fire rate.[/img]
+	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Support grade missile launchers do not support reconfigurable salvos or warheads, instead trading some range for dependable damage and rate of fire.[/img]
+>>
+
 S_MATTERDISRUPTOR: Matter Disruptor
 S_MATTERDISRUPTOR_DESC: <<
 	An energy weapon which abuses the gravitational attraction between the parts of its target to deal additional damage.
@@ -66,7 +127,7 @@ S_VOIDRAY_DESC: <<
 MISSILELAUNCHER_DESC: <<
 	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
 
-	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b] per shot.[/img]
 	[img=Plus]No firing arc limitations.[/img]
 	[img=Plus]Very effective at piercing armor.[/img]
 	[img=Minus]Slow fire rate.[/img]
@@ -197,9 +258,9 @@ S_ZPG_DESC: <<
 S_TORPEDOLAUNCHER_DESC: <<
 	Launches massive, slow-moving, guided bombs. These bombs explode in an area around their target.
 
-	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
-	[img=Plus]No firing arc limitations.[/img]
-	[img=Plus]Deals damage in an area.[/img]
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b] per shot.[/img]
+	[img=Plus]No firing arc limitations and extreme range.[/img]
+	[img=Plus]Deals damage in an area and disrupts ships with impact force.[/img]
 	[img=Plus]Low supply consumption.[/img]
 	[img=Minus]High power requirements.[/img]
 	[img=Minus]Very slow fire rate.[/img]
@@ -272,17 +333,22 @@ S_QUANTUM_ARMOR_DESC: <<
 
 	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
 	[img=Plus]Lower mass than most types of armor.[/img]
-	[img=Minus][i]Very[/i] expensive.[/img]
-	[img=Minus][i]Very[/i] high labor cost.[/img]
-	[img=Minus]Requires a small amount of maintenance and power.[/img]
+	[img=Minus][b]Very[/b] expensive.[/img]
+	[img=Minus][b]Very[/b] high labor cost.[/img]
+	[img=Minus]Requires a moderate amount of both maintenance and power.[/img]
 >>
 
 S_COMPOSITE_ARMOR_DESC: <<
 	A uniform, seamless coat of a highly resistant composite material.
 
-	[img=Plus]Reduces all incoming damage by a fixed percentage.[/img]
-	[img=MenuIcons::3;20]Just as heavy as Progenitor or Reactive Armor. Slightly tougher than Ablative, but weaker than Plate Armor.[/img]
-	[img=Minus]Requires a low amount of maintenance, and is twice as labor-intensive as - and slightly more expensive than - Plate Armor.[/img]
+	[img=Plus]Reduces all incoming damage by a fixed percentage depending on type:
+	Energy damage is reduced by 10%.
+	Kinetic damage is reduced by 20%.
+	Explosive damage is reduced by 35%.[/img]
+
+	[img=Plus]More effective hitpoints than Plate armor with much less mass.[/img]
+	[img=Plus]Resists armor penetration very well.[/img]
+	[img=Minus]Requires a low amount of maintenance, and is slower and much more costly to build than Plate Armor.[/img]
 >>
 
 S_SUPERSTRUCTURE: Structural Reinforcement
@@ -312,7 +378,7 @@ S_FERROFLUIDARMOR_DESC: <<
 	[img=Plus]Health flows from high health hexes to connected low health hexes to equalize density.[/img]
 	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
 	[img=Plus]Does not block weapon arcs or engine exhausts.[/img]
-	[img=Minus]Does not provide any Damage Resistance against Energy or Explosive damage.[/img]
+	[img=MenuIcons::3;20]Does not provide any Damage Resistance against Energy or Explosive damage.[/img]
 	[img=Minus]Heavier, more expensive and more complex than standard Liquid Armor, and cannot interact with it.[/img]
 >>
 NANOMESH_NAME: Nanomesh

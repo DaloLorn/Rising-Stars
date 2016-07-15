@@ -1,7 +1,7 @@
 Subsystem: NilingArmor
 	Name: #S_NILINGARMOR
 	Description: #S_NILINGARMOR_DESC
-	BaseColor: #9dffb9
+	BaseColor: #7fcf96
 	Elevation: 1
 
 	Tags: Category:Armor, FauxExterior, HeraldsDLC

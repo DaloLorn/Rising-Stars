@@ -1,7 +1,7 @@
 Subsystem: CeramicArmor
 	Name: #S_CERAMICARMOR
 	Description: #S_CERAMICARMOR_DESC
-	BaseColor: #a6661e
+	BaseColor: #d2b894
 	Elevation: 2
 
 	Tags: Category:Armor, FauxExterior

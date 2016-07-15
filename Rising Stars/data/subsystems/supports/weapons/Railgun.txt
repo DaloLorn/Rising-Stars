@@ -11,7 +11,7 @@ Subsystem: Railgun
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	
+
 	Range := (Size*2) + 525
 	Damage := Size * 3.25
 	Reload := 2.05 * min(1.0 + Size/512, 2.0)
@@ -21,17 +21,17 @@ Subsystem: Railgun
 	FireArc := 0.5 * pi
 	Pierce := 1.0
 	SupplyCost := Size * 1.5
-	
+
 	Hex.HP := 27 * HexSize
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Hex.BuildCost := 0.75 * HexSize
 	Hex.MaintainCost := 0
 	Hex.LaborCost := 0.07 * HexSize
-	
+
 	Requires:
 		Command = 1
-	
+
 	Module: Default
 
 	Module: Core

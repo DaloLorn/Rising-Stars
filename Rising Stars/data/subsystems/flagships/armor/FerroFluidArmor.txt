@@ -1,7 +1,7 @@
 Subsystem: FerroFluidArmor
 	Name: #S_FERROFLUIDARMOR
 	Description: #S_FERROFLUIDARMOR_DESC
-	BaseColor: #878798
+	BaseColor: #676775
 	Elevation: 1
 
 	Tags: LowMaint, Category:Armor, NoWall, PassExterior

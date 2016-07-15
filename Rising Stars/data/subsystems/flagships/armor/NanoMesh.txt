@@ -1,7 +1,7 @@
 Subsystem: NanoMesh
 	Name: #NANOMESH_NAME
 	Description: #NANOMESH_DESC
-	BaseColor: #878798
+	BaseColor: #676775
 	Elevation: 1
 
 	Tags: Category:Armor, NoWall, PassExterior

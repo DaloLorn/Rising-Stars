@@ -19,6 +19,8 @@ Subsystem: RocketPod
 	Tracking := 0.2
 	SupplyCost := Size * 10.0
 	Spread := 1.5
+	PodSize := 8
+	
 	out DPS := (Damage * PodSize) / (Reload * 2)
 	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
 
@@ -26,7 +28,6 @@ Subsystem: RocketPod
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
-	PodSize := 8
 	FireDelay := Reload / (PodSize * 2)
 	FireArc := 0.75 * pi
 	Requires:

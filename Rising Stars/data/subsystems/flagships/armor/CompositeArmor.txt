@@ -1,7 +1,7 @@
 Subsystem: CompositeArmor
 	Name: #S_COMPOSITE_ARMOR
 	Description: #S_COMPOSITE_ARMOR_DESC
-	BaseColor: #128cc1
+	BaseColor: #6eabbb
 	Elevation: 1
 
 	Tags: Category:Armor, FauxExterior, PrimaryArmor
@@ -25,7 +25,7 @@ Subsystem: CompositeArmor
 	Hex.Mass := 2.5 * HexSize
 
 	Hex.LaborCost := 0.6 * HexSize
-	Hex.BuildCost := 0.4 * HexSize
+	Hex.BuildCost := 3.5 * HexSize
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 
 

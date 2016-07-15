@@ -1,6 +1,6 @@
 Subsystem: QuantumArmor
 	Name: #S_QUANTUM_ARMOR
-	BaseColor: #898989
+	BaseColor: #8baa8b
 	Elevation: 1
 
 	Tags: Category:Armor

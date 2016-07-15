@@ -35,7 +35,7 @@ Subsystem: Forcefield
 	Module: Default
 		Sprite: Forcefield*#00a4db
 		Hex.HP := Capacity
-		Hex.Resistance := 1
+		Hex.Resistance := 99
 		Hex.Mass := 0
 
 		Hex.BuildCost := 2.0 * HexSize

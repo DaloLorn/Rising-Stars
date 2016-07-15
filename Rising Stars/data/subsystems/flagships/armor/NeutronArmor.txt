@@ -1,7 +1,7 @@
 Subsystem: NeutronArmor
 	Name: #NEUTRONARMOR_NAME
 	Description: #NEUTRONARMOR_DESC
-	BaseColor: #898989
+	BaseColor: #8baa8b
 	Elevation: 1
 
 	Tags: Category:Armor
