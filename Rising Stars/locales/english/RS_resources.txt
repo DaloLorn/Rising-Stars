@@ -133,7 +133,7 @@ RESOURCE_SHIPYARD_BLURB: <<
 RESOURCE_SHIPYARD_DESC: <<
 	An ancient shipyard of immense scale. While its purpose is unknown, you can repurpose its technology to upgrade your own ships' systems and build new ships.
 
-	Adds 16 Labor generation. Cannot be exported.
+	Adds 16 Labor generation. Can upgrade fleets, granting them +40% combat effectiveness. Cannot be exported.
 >>
 RESOURCE_INTEL_BLURB: <<
 	Provides various intelligence-related effects.

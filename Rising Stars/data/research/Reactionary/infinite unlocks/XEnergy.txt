@@ -61,7 +61,7 @@ Technology: XAntimatterGen
 
 Technology: XQuantumBattery
 	Name: #R_MOD_QUANTUM_BATTERY
-	Description: #R_MOD_QUANTUM_BATTERY_DESC:1200
+	Description: #R_MOD_QUANTUM_BATTERY_DESC
 
 	Category: Reactionary
 

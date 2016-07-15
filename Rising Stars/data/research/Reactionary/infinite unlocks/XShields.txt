@@ -19,8 +19,8 @@ Technology: XShieldGen
 
 
 Technology: XSupShieldGen
-	Name: Support Shields
-	Description: #R_SYS_SHIELDGEN_DESC
+	Name: #R_SUPPORT_SHIELDS
+	Description: #R_SYS_SUPSHIELD_DESC
 
 
 	Category: Reactionary
@@ -32,15 +32,15 @@ Technology: XSupShieldGen
 	Color: #2b2bce
 
 	UnlockSubsystem(SupShieldGen)
-	SkipOnUnlockedSubsystem(ShieldGen)
+	SkipOnUnlockedSubsystem(SupShieldGen)
 
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
 
 Technology: XShieldChargerOrbital
-	Name: Orbital Shield Charger
-	Description: R_ADV_SHIELD_DESC
+	Name: #R_SHIELDCHARGER
+	Description: #R_SHIELDCHARGER_DESC
 
 	Category: Reactionary
 	Icon: GuiOrbitalIcons::19
@@ -48,15 +48,15 @@ Technology: XShieldChargerOrbital
 	Color: #0010ff
 
 	UnlockTag(ShieldCharger)
-	UnlockSubsystem(CovariantShield)
+	SkipOnUnlockedTag(ShieldCharger)
 	SecondaryEnergyCost(800)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 3, #R_LIFESTYLE_REQ:Shield Modulation:3)
 
 
 
 Technology: XCovariantShield
-	Name: Covariant Shield
-	Description: R_ADV_SHIELD_DESC
+	Name: #S_COVARIANT_SHIELD
+	Description: #R_SYS_COVARIANTSHIELD_DESC
 
 	Category: Reactionary
 	Icon: TechIcons::6
@@ -64,6 +64,7 @@ Technology: XCovariantShield
 	Color: #e20dff
 
 	UnlockSubsystem(CovariantShield)
+	SkipOnUnlockedSubsystem(CovariantShield)
 	SecondaryEnergyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shield Modulation:1)
 
@@ -132,8 +133,8 @@ Technology: XDeflectorArray
 
 
 Technology: XStellarShieldOrbital
-	Name: Orbital Stellar Shield
-	Description: R_ADV_SHIELD_DESC
+	Name: #R_STELLAR_SHIELD
+	Description: R_STELLAR_SHIELD_DESC
 
 	Category: Reactionary
 	Icon: GuiOrbitalIcons::12
@@ -141,7 +142,7 @@ Technology: XStellarShieldOrbital
 	Color: #0630ff
 
 	UnlockTag(StellarShieldOrbital)
-	UnlockSubsystem(CovariantShield)
+	SkipOnUnlockedTag(StellarShieldOrbital)
 	SecondaryEnergyCost(1600)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shield Modulation:8)
 

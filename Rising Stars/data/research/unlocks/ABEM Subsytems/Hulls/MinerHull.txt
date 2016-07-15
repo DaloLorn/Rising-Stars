@@ -1,6 +1,6 @@
 Technology: MinerHull
-	Name: #S_MINER_HULL
-	Description: #S_MINER_HULL_DESC
+	Name: #R_MINER_HULL
+	Description: #R_MINER_HULL_DESC
 	Class: Unlock
 	Category: ABEM - Subsystems
 	DLC: Heralds

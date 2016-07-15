@@ -1,6 +1,6 @@
 Technology: MetropolisUpg
-	Name: Metropolis 
-	Description: Metropolis buildings give 2 additional Pressure Cap.
+	Name: #R_METROPOLIS_UPGRADE 
+	Description: #R_METROPOLIS_UPGRADE_DESC
 
 	Icon: Metropolis
 	Symbol: ResourceIcon::4

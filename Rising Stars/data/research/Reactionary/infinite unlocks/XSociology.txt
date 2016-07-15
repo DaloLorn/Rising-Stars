@@ -1,6 +1,6 @@
 Technology: XMegacity
 	Name: #R_BLD_MEGACITY
-	Description: #R_BLD_MEGACITY_DESC:16
+	Description: #R_BLD_MEGACITY_DESC
 	Category: Reactionary
 
 	Time Cost: 90
@@ -120,16 +120,13 @@ Technology: XLaboratories
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5 )
 	
 Technology: XSenate
-	Name: #F_SENATE_NAME
-	Description: #F_SENATE_DESC
-
-
+	Name: #R_BLD_SENATE_NAME
+	Description: #R_BLD_SENATE_DESC
 
 	Time Cost: 100
 
 	Icon: PoliticalStrengthIcon
 	Color: #00f3ff
-	Blurb:
 	Category: Reactionary
 
 

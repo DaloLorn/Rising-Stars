@@ -30,7 +30,7 @@ Subsystem: MissileLauncher
 		DefaultUnlock: True
 		Sprite: WarheadTube * #78a8bf
 		Name: Launch Tube
-		Description: Adds an additional missile to the salvo per tube added.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
+		Description: Adds an additional launch tube to the launcher, increasing the amount of missiles fired per salvo.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
 		PodSize := PodSize + 1
 		Hex.BuildCost := 2 * Hex.BuildCost
 		Hex.LaborCost := 5 * Hex.LaborCost

@@ -7,7 +7,7 @@ Ability: TelescopeOre
 
 
 	Target: targ = Object
-	Range: 40000
+	Range: 40000 * $FTL_MULT
 	Cooldown: 180
 	Hotkey: T
 	TargetFilterRegion(targ)

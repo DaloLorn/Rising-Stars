@@ -1,6 +1,7 @@
 Module: Telescope
-	Name: Telescope
-	Blurb: Have the ability to give vision over systems.Can move slowly.
+	Name: #ORB_TELESCOPE
+	Blurb: #ORB_TELESCOPE_BLURB
+	Description: #ORB_TELESCOPE_DESC
 
 	Icon: GuiOrbitalIcons::17
 	Strategic Icon: OrbitalIcons::17

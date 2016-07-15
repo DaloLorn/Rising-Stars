@@ -27,14 +27,14 @@ R_ADV_SHIELD_DESC: <<
 R_SYS_HYPERDRIVE_DESC: <<
 	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
 
-	Unlocks the Hyperdrive subsystem for use on flagships if it is not already available.
+	Unlocks the Hyperdrive subsystem for use on flagships.
 
 	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
 >>
 R_SYS_JUMPDRIVE_DESC: <<
 	[i][color=#aaa]A device capable of punching through subspace to instantaneously teleport a starship.[/color][/i]
 
-	Unlocks the Jumpdrive subsystem for use on flagships if it is not already available.
+	Unlocks the Jumpdrive subsystem for use on flagships.
 
 	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
 >>
@@ -49,7 +49,7 @@ R_SYS_QUANTUM_ARMOR: Quantum Armor
 R_SYS_QUANTUM_ARMOR_DESC: <<
 	[color=#aaa][i]After years of research, we have managed to improve upon Neutronium Armor. Most of this new armor's mass is stored outside our physical universe, only reappearing just before impact to withstand devastating blows without impairing mobility. Unfortunately, as this technology is applied to existing Neutronium Armor, the process is just as expensive as - and more difficult than - producing regular Neutronium Armor.[/i][/color]
 
-	Unlocks the Quantum Armor subsystem.
+	Unlocks the Quantum Armor subsystem for use on flagships.
 
 	[i][bbloc=#S_QUANTUM_ARMOR_DESC/][/i]
 >>
@@ -105,7 +105,7 @@ R_COMPOSITE_ARMOR: Composite Armor
 R_COMPOSITE_ARMOR_DESC: <<
 	[color=#aaa][i]Advances in composite materials allow us to make better armor.[/i][/color]
 
-	Unlocks Composite Armor for use on flagships.
+	Unlocks the Composite Armor subsystem for use on flagships.
 
 	[i][bbloc=#S_COMPOSITE_ARMOR_DESC/][/i]
 >>
@@ -121,4 +121,63 @@ R_SYS_NANOMESH_DESC: <<
 	[color=#aaa][i]Unlocks the Nanomesh subsystem for flagships and support ships.[/i][/color]
 
 	[bbloc=#NANOMESH_DESC/]
+>>
+R_SUPPORT_SHIELDS: Support Shield Generator
+R_SYS_SUPSHIELD_DESC: <<
+	[color=#aaa][i]Unlocks the Shield Generator subsystem for use on support ships.[/i][/color]
+
+	[bbloc=#S_SUPSHIELD_DESC/]
+
+	[color=#42b4bd][b]Alternate Unlock:[/b] Spend 500 energy.[/color]
+>>
+R_SYS_COVARIANTSHIELD_DESC: <<
+	[color=#aaa][i]New plasma containment methods allow for much greater amounts of energy to be deflected by a shield, at the cost of significantly lowering regeneration rates.[/i]
+	
+	Unlocks Covariant Shield Generators for use on flagships.
+
+	[i][bbloc=#S_COVARIANT_SHIELD_DESC/][/i]
+>>
+R_MATTERDISRUPTOR_DESC: <<
+	[color=#aaa][i]By disrupting the molecular bonds of enemy hulls with a concentrated burst of energy, we can heavily damage ships much larger than our own. The technology is not so useful against small craft, however.[/i][/color]
+	
+	Unlocks the Matter Disruptor.
+	
+	[i][bbloc=#S_MATTERDISRUPTOR_DESC/][/i]
+>>
+R_VOIDRAY_DESC: <<
+	[color=#aaa][i]Careful tuning of a laser beam can allow us to deal more damage to a target. Recent advances in computing and sensor technology have finally made it possible for such adjustments to be made on the fly.[/i][/color]
+	
+	Unlocks the Adaptive Laser.
+	
+	[i][bbloc=#S_VOIDRAY_DESC/][/i]
+>>
+R_STELLAR_SHIELD: Stellar Shielding
+R_STELLAR_SHIELD_DESC: <<
+	[color=#aaa][i]Advances in gravitational shielding allow us to protect entire stars from attack by graviton condensers.[/i][/color]
+	
+	Unlocks the Stellar Shield Generator orbital.
+	
+	[i][bbloc=#ORB_STELLAR_SHIELD_DESC/][/i]
+>>
+R_SHIELDCHARGER: External Shield Induction
+R_SHIELDCHARGER_DESC: <<
+	[color=#aaa][i]An improved understanding of how shield plasma behaves allows us to form shields on other objects from a considerable distance, provided that they are capable of subsequently maintaining the field.[/i][/color]
+
+	Unlocks the Power Transmitter orbital.
+
+	[i][bbloc=#ORB_SHIELD_CHARGER_DESC/][/i]
+>>
+R_BLD_SENATE_NAME: Governmental Centralization
+R_BLD_SENATE_DESC: <<
+	[color=#aaa][i]The development of methods to remove unnecessary bureaucracy and corruption in a government through a centralized oversight system.[/i][/color]
+
+	Unlocks the Centralized Coordination Complex building for construction on planets.
+>>
+R_MINER_HULL: Dedicated Mining Architecture
+R_MINER_HULL_DESC: <<
+	[color=#aaa][i]Streamlining various support craft, such as miners, allows them to be more effective at a reduced cost.[/i][/color]
+
+	Unlocks the Miner Hull subsystem for use on flagships.
+
+	[i][bbloc=#S_MINER_HULL_DESC/][/i]
 >>

@@ -1,6 +1,6 @@
 Technology: Senate
-	Name: #F_SENATE_NAME
-	Description: #F_SENATE_DESC
+	Name: #R_BLD_SENATE_NAME
+	Description: #R_BLD_SENATE_DESC
 	Class: Unlock
 
 	Point Cost: 1000
@@ -8,7 +8,6 @@ Technology: Senate
 
 	Icon: PoliticalStrengthIcon
 	Color: #00f3ff
-	Blurb:
 	Category: Buildings
 
 	UnlockTag(Senate)
@@ -16,7 +15,7 @@ Technology: Senate
 	SkipOnUnlockedTag(Senate)
 	SecondaryMoneyCost(1500)
 Technology: NylliSenate
-	Name: #F_SENATE_NAME
+	Name: #R_BLD_SENATE_NAME
 	Description: #R_ORB_SENATE_DESC
 	Class: Unlock
 	Point Cost: 1000

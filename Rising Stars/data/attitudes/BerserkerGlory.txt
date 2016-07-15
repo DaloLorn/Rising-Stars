@@ -17,12 +17,12 @@ Attitude: BerserkerGlory
 	
 	Level:
 		Description: #GLORY_BERSERKER_LVL1
-		Icon: SupportNayIcon
+		Icon: SupportNayIcon*#88ffff
 		ModEmpireAttribute(GloryFactor, Add, 4) // 500% Glory generation
 	
 	Level:
 		Description: #GLORY_BERSERKER_LVL2
-		Icon: StatusWar*#ff2222
+		Icon: StatusWar*#ff8888
 		Threshold: 1000
 		ModEmpireAttribute(GloryLevel, Add, 1)
 		ModEmpireAttribute(GloryFactor, Add, -1) // 400% Glory generation
@@ -30,7 +30,7 @@ Attitude: BerserkerGlory
 	Level:
 		Description: #GLORY_BERSERKER_LVL3
 		Threshold: 2000
-		Icon: StatusCeasefire*#ff2222
+		Icon: StatusCeasefire*#ff8888
 		ModEmpireAttribute(GloryLevel, Add, 1)
 		ModEmpireAttribute(GloryFactor, Add, -1) // 300% Glory generation
 	

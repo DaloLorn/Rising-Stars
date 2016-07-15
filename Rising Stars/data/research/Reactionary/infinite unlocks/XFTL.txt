@@ -61,6 +61,7 @@ Technology: XJumpdrive
 	UnlockSubsystem(Jumpdrive)
 
 	SecondaryFTLCost(1500)
+	NotSecondary(ReduceResearchPenalty(2000))
 
 
 Technology: XSS

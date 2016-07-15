@@ -1,6 +1,6 @@
 Technology: XCompositeArmor
 	Name: #S_COMPOSITE_ARMOR
-	Description: #S_COMPOSITE_ARMOR_DESC
+	Description: #R_COMPOSITE_ARMOR_DESC
 
 
 	Point Cost: 0
@@ -9,7 +9,6 @@ Technology: XCompositeArmor
 
 	Icon: CompositeArmor
 	Color: #676210
-	Description: #S_COMPOSITE_ARMOR_DESC
 	Category: Reactionary
 
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)
@@ -37,7 +36,7 @@ Technology: XNeutronArmor
 
 Technology: XQuantumArmor
 	Name: #S_QUANTUM_ARMOR
-	Description: #S_QUANTUM_ARMOR_DESC
+	Description: #R_SYS_QUANTUM_ARMOR_DESC
 
 	Point Cost: 0
 	Time Cost: 240
@@ -48,11 +47,9 @@ Technology: XQuantumArmor
 
 
 	UnlockSubsystem(QuantumArmor)
-	UnlockSubsystem(SupportQuantumArmor)
 
 	ModAttribute(ProgenitorTechProgress, Add, 5)
 	SkipOnUnlockedSubsystem(QuantumArmor)
-	SkipOnUnlockedSubsystem(SupportQuantumArmor)
 
 	SecondaryMoneyCost(2000)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 8, #R_LIFESTYLE_REQ:Armoring:8)

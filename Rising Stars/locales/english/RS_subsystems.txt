@@ -36,6 +36,10 @@ STT_SENSORRANGE: <<
 >>
 S_PLANETMININGRATE: Mining Rate
 STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
+S_REPAIR: Repair Rate
+STT_REPAIR: The amount of hitpoints the ship can repair per second while out of combat.
+S_REPAIR_COMBAT: In-Combat Repair Rate
+STT_REPAIR_COMBAT: The amount of hitpoints the ship can repair per second while in combat.
 S_SENSORMULT: Sensor Multiplier
 S_SENSORPRIORITY: Sensor Priority
 S_PROJRESIST: Projectile Resistance
@@ -51,12 +55,12 @@ NEUTRONARMOR_DESC: <<
 	[img=Plus][b]Very[/b] high [b][color=#80ff80]health[/color][/b] with minor damage resist.[/img]
 	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
 	[img=Minus]Extremely heavy.[/img]
-	[img=Minus]Expensive build cost with significant labor cost.[/img]
+	[img=Minus]Very high build cost with significant labor cost.[/img]
 >>
 PLATEARMOR_DESC: <<
 	Heavy, interlocked plates of metal that protect the ship from damage.
 
-	[img=Plus]High [b][color=#80ff80]health[/color][/b], and good density per hex and mass.[/img]
+	[img=Plus]High [b][color=#80ff80]health[/color][/b], and good health density per hex and mass.[/img]
 	[img=Plus]Cheapest and simplest defensive option.[/img]
 	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
 	[img=Minus]Heavy.[/img]
@@ -64,7 +68,7 @@ PLATEARMOR_DESC: <<
 S_PROGENITOR_ARMOR_DESC: <<
 	Good at everything, regenerates health, adds health to nearby hexes, combines effects of all three basic armors.
 
-	Very expensive with a huge maintenance cost.
+	Very expensive with a huge maintenance cost. What the hell, I can do this later.
 >>
 LASER_DESC: <<
 	A highly focused beam of light inflicts damage by burning holes through ship subsections.
@@ -74,7 +78,7 @@ LASER_DESC: <<
 	[img=Minus]Ineffective against armor.[/img]
 	[img=Minus]Very limited turret firing arc.[/img]
 
-	[img=MenuIcons::3;20]Flagship class lasers have a direct hookup to the flagship's power core and can maintain a constant beam, but Support grade lasers must fire in pulses as their integrated capacitors cannot sustain a beam without sacrificing effective damage.
+	[img=MenuIcons::3;20]Flagship-grade lasers have a direct connection to the flagship's power core and can maintain a constant beam, but support-grade lasers must fire in pulses as their integrated capacitors cannot sustain a beam capable of dealing damage.
 >>
 RAILBATTERY_DESC: <<
 	A battery of magnetic cannons that fire relatively small projectiles at immense velocities.
@@ -92,7 +96,7 @@ RAILGUN_DESC: <<
 	[img=Minus]Inaccurate projectiles.[/img]
 	[img=Minus]Limited turret firing arc.[/img]
 
-	[img=MenuIcons::3;20]Support grade railguns do not have sophisticated enough target computers to recalibrate for stationary targets - their range is always the same.[/img]
+	[img=MenuIcons::3;20]Support-grade railguns do not have the sophisticated targeting computers needed to recalibrate for stationary targets - their range is always the same.[/img]
 >>
 SUPPORTMISSILELAUNCHER_DESC: <<
 	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
@@ -103,7 +107,7 @@ SUPPORTMISSILELAUNCHER_DESC: <<
 	[img=Minus]Slow fire rate.[/img]
 	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
 
-	[img=MenuIcons::3;20]Support grade missile launchers do not support reconfigurable salvos or warheads, instead trading some range for dependable damage and rate of fire.[/img]
+	[img=MenuIcons::3;20]Support-grade missile launchers do not support reconfigurable salvos or warheads, instead trading some range for dependable damage and rate of fire.[/img]
 >>
 
 S_MATTERDISRUPTOR: Matter Disruptor
@@ -133,7 +137,7 @@ MISSILELAUNCHER_DESC: <<
 	[img=Minus]Slow fire rate.[/img]
 	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
 
-	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase alpha strike at the cost of porportionately longer salvo reload times.[/img]
+	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase burst damage at the cost of porportionately longer salvo reload times.[/img]
 >>
 
 S_HYPERLASER_DESC: <<
@@ -165,23 +169,23 @@ S_MINER_HULL_DESC: <<
 	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
-S_JUGGERNAUT_HULL: Juggernaut Hull
+S_JUGGERNAUT_HULL: Juggernaught Hull
 S_JUGGERNAUT_HULL_DESC: <<
-	A specialized hull designed for cointaning and stabilizing a large payload of explosives.
+	A specialized hull designed for containing and stabilizing a large payload of explosives.
 
-	[img=Plus]Very resilient: High health and damage resistance.[/img]
-	[img=Plus]Allow the use of self destruct devices[/img]
-	[img=Plus]Low maintenace[/img]
+	[img=Plus]High health and damage resistance.[/img]
+	[img=Plus]Allows the use of self-destruct devices.[/img]
+	[img=Plus]Low maintenance cost.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
-ERROR_MUST_HAVE_SELFDESTRUCT:Juggernaut Hull must have a Self Destruct Device.
+ERROR_MUST_HAVE_SELFDESTRUCT:Juggernaught Hull must have a Self-Destruct Device.
 S_FORCEFIELD: Force Field
 S_FORCEFIELD_DESC: <<
 	Advanced manipulation of energy allow us to generate force fields without the bubble constrains of regular shields
 
 	[img=Plus]Allow to protect important parts[/img]
 	[img=Plus]Allow the use of self destruct devices[/img]
-	[img=Plus][/img]
+	[img=Plus]Oh screw it, I can localize this later[/img]
 	[img=Minus]Very high energy usage[/img]
 >>
 
@@ -260,7 +264,7 @@ S_TORPEDOLAUNCHER_DESC: <<
 
 	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b] per shot.[/img]
 	[img=Plus]No firing arc limitations and extreme range.[/img]
-	[img=Plus]Deals damage in an area and disrupts ships with impact force.[/img]
+	[img=Plus]Deals damage in an area and scatters enemy formations.[/img]
 	[img=Plus]Low supply consumption.[/img]
 	[img=Minus]High power requirements.[/img]
 	[img=Minus]Very slow fire rate.[/img]
@@ -335,7 +339,7 @@ S_QUANTUM_ARMOR_DESC: <<
 	[img=Plus]Lower mass than most types of armor.[/img]
 	[img=Minus][b]Very[/b] expensive.[/img]
 	[img=Minus][b]Very[/b] high labor cost.[/img]
-	[img=Minus]Requires a moderate amount of both maintenance and power.[/img]
+	[img=Minus]Requires a moderate amount of maintenance and power.[/img]
 >>
 
 S_COMPOSITE_ARMOR_DESC: <<
@@ -346,9 +350,9 @@ S_COMPOSITE_ARMOR_DESC: <<
 	Kinetic damage is reduced by 20%.
 	Explosive damage is reduced by 35%.[/img]
 
-	[img=Plus]More effective hitpoints than Plate armor with much less mass.[/img]
+	[img=Plus]Tougher and lighter than Plate Armor.[/img]
 	[img=Plus]Resists armor penetration very well.[/img]
-	[img=Minus]Requires a low amount of maintenance, and is slower and much more costly to build than Plate Armor.[/img]
+	[img=Minus]Requires a low amount of maintenance, and is harder and much costlier to build than Plate Armor.[/img]
 >>
 
 S_SUPERSTRUCTURE: Structural Reinforcement
@@ -365,21 +369,21 @@ S_CERAMICARMOR_DESC: <<
 	An armor plate constructed with layers of heat-resistant ceramic tiles that can withstand significant thermal stress. While they are simple enough to replace they are impossible to properly repair in combat or without the aid of a dockyard.
 
 	[img=Plus]High [b][color=#c6c33a]damage resistance[/color][/b] against energy weapons.[/img]
-	[img=Plus]Moderate [b][color=#c6c33a]damage resistance[/color][/b] against other things.[/img]
+	[img=Plus]Moderate [b][color=#c6c33a]damage resistance[/color][/b] against non-energy weapons.[/img]
 	[img=Minus]Lower health than standard plating.[/img]
 	[img=Minus]Cannot be repaired.[/img]
 	[img=Minus]When a Ceramic Armor hex is destroyed, it is permanently removed from the ship.[/img]
 >>
 S_FERROFLUIDARMOR: Ferrofluid Armor
 S_FERROFLUIDARMOR_DESC: <<
-	A basin of liquid ferro-metal precisely controlled and suspended on the hull of the ship by an electromagnetic field. The ferro-metal absorbs impacts and spreads them evenly, filling any gaps that are created. The advanced electromagnetic field is configured to strongly repel traditional projectiles, and can draw back the ferro-metal to form firing ports when needed without exposing gun turrets to return fire.
+	A basin of liquid ferro-metal precisely controlled and suspended on the hull of the ship by an electromagnetic field. The ferro-metal absorbs impacts and spreads them evenly, filling any gaps that are created. The advanced electromagnetic field is configured to strongly repel traditional projectiles, and can draw back the ferro-metal to form firing ports when needed without exposing gun turrets to retaliatory fire.
 
 	[img=Plus]High [b][color=#80ff80]health[/color][/b].[/img]
 	[img=Plus]Health flows from high health hexes to connected low health hexes to equalize density.[/img]
 	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
 	[img=Plus]Does not block weapon arcs or engine exhausts.[/img]
-	[img=MenuIcons::3;20]Does not provide any Damage Resistance against Energy or Explosive damage.[/img]
-	[img=Minus]Heavier, more expensive and more complex than standard Liquid Armor, and cannot interact with it.[/img]
+	[img=MenuIcons::3;20]Does not provide any damage resistance against Energy or Explosive damage.[/img]
+	[img=Minus]Heavier, more expensive and more labor-intensive than standard Liquid Armor, and cannot interact with it.[/img]
 >>
 NANOMESH_NAME: Nanomesh
 NANOMESH_DESC: <<

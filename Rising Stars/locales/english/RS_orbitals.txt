@@ -26,3 +26,12 @@ ORB_EMBASSY_DESC: <<
 
 	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
 >>
+ORB_TELESCOPE: Subspace Telescope Array
+ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems. Mobile.
+ORB_TELESCOPE_DESC: <<
+	An array of advanced subspace telescopes, this facility can periodically consume FTL energy to obtain a real-time view of various star systems in its vicinity, and relocate itself to get a closer look.
+
+	Has the 'Telescope' ability. Can slowly move with an acceleration of 0.2 u/s^2.
+
+	[i][bbloc=#ABL_TELESCOPEORE_DESC/][/i]
+>>

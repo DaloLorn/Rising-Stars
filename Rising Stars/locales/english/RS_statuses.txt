@@ -20,3 +20,21 @@ STATUS_ENVOY_DESC: <<
 
 	Loyalty protection only takes effect if the planet's owner and the Envoy's owner are in an Alliance.
 >>
+STATUS_POWER_CELL_DESC: <<
+	Upgraded in an ancient shipyard.
+
+	Fleet effectiveness increased by 40%.
+>>
+STATUS_POWER_CELL: Ancient Retrofit
+STATUS_RAMMING_SPEED: Ramming Speed
+STATUS_RAMMING_SPEED_DESC: <<
+	This ship is diverting all power to engines in an attempt to deliver an explosive payload.
+
+	Adds 10 u/s^2 of acceleration. Lasts 25 seconds.
+>>
+STATUS_VOIDRAY: Laser Tuning
+STATUS_VOIDRAY_DESC: <<
+	An Adaptive Laser is dealing 2.5% more damage to this ship for every stack of Laser Tuning.
+	
+	Stacks up to 10 times.
+>>

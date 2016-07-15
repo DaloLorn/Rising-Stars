@@ -14,9 +14,10 @@ GlobalStat: Shield
 		Secondary: Shield
 
 		Variable: ShieldRegen
-GlobalStat: ShieldStrength
+		
+	GlobalStat: ShieldStrength
 		Name: Shield Strength
-		Description:Strength Only considering the Shields (Real strength will be the combined Shield Strength+Hull Strength)
+		Description: Predicted strength, only considering shield. (Real strength is Shield Strength and Hull Strength combined.)
 		Color: #aaa
 		Icon: TimeReal
 		Variable:ShieldCapacity

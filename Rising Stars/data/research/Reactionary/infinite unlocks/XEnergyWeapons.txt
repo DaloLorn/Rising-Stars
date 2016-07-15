@@ -89,7 +89,7 @@ Technology: XPulseBolt
 
 Technology: XVoidRay
 	Name: #S_VOIDRAY
-	Description: #S_VOIDRAY_DESC
+	Description: #R_VOIDRAY_DESC
 
 	Category: Reactionary
 	Time Cost: 120
@@ -110,10 +110,9 @@ Technology: XVoidRay
 
 Technology: XMatterDisruptor
 	Name: #S_MATTERDISRUPTOR
-	Class: Boost
 	Time Cost: 120
 	Icon: MatterDisruptor::2
-	Description: #S_MATTERDISRUPTOR_DESC
+	Description: #R_MATTERDISRUPTOR_DESC
 
 	Category: Reactionary
 

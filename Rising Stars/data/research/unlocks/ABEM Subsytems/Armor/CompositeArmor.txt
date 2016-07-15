@@ -7,7 +7,7 @@ Technology: CompositeArmor
 
 	Icon: CompositeArmor
 	Color: #676210
-	Description: #S_COMPOSITE_ARMOR_DESC
+	Description: #R_COMPOSITE_ARMOR_DESC
 	Category: ABEM - Subsystems
 
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)

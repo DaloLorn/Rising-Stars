@@ -19,8 +19,8 @@ Technology: XSuperstructureHull
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 3, #R_LIFESTYLE_REQ:Chassis Engineering:3)
 
 Technology: XMinerHull
-	Name: #S_MINER_HULL
-	Description: #S_MINER_HULL_DESC
+	Name: #R_MINER_HULL
+	Description: #R_MINER_HULL_DESC
 	Category: Reactionary
 	DLC: Heralds
 	DLC Replace: Health

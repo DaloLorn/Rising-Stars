@@ -6,7 +6,8 @@ Ability: SelfDestruct
 	SetInCombat()
 	Destroy()
 Ability: RammingSpeedAbil
-	Name: Ramming Speed
+	Name: #ABL_RAMMING_SPEED
+	Description: #ABL_RAMMING_SPEED_DESC
 	Icon: RammingSpeed
 	Cooldown: 140
 	Activate Sound: RedAlert

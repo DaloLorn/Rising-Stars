@@ -1,4 +1,5 @@
 Status: JRamSpeed
-	Name: Ramming
+	Name: #STATUS_RAMMING_SPEED
+	Description: #STATUS_RAMMING_SPEED_DESC
 	Icon: RammingSpeed
 	AddAccelerationBonus(10)

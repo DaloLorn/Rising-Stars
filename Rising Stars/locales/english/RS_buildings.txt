@@ -59,7 +59,7 @@ B_DEFENSEFACTORY: Command Center
 B_DEFENSEFACTORY_DESC: <<
 	A facility dedicated to the coordination of defensive forces across the planet.
 
-	Adds 2 Defense generation. Adds 128 support capacity. Adds 25 units of sensor range.
+	Adds 2 Defense generation. Adds 128 support capacity.
 >>
 B_FAKELVL1_RESEARCH: Research Complex
 B_FAKELVL1_RESEARCH_DESC: <<

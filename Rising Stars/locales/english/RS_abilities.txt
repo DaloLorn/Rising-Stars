@@ -33,3 +33,15 @@ ABL_TRANSFER_FLOATING_CONTINENT_DESC: <<
 
 	Floating continents impede the construction of subsurface habitats and cannot be placed on planets while such construction is taking place.
 >>
+ABL_OVERCHARGE_FLEET_DESC: <<
+	Increase the targeted fleet's effectiveness by 40%.
+
+	A fleet can only be upgraded once.
+>>
+ABL_OVERCHARGE_FLEET: Perform Ancient Retrofit
+ABL_RAMMING_SPEED: Ramming Speed
+ABL_RAMMING_SPEED_DESC: <<
+	Diverts all power to the ship's engines in an attempt to deliver its payload.
+
+	Adds 10 u/s^2 of acceleration. Lasts 25 seconds.
+>>

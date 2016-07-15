@@ -1,5 +1,5 @@
 Technology: MatterDisruptor
-	Name: #R_SYS_MATTERDISRUPTOR
+	Name: #S_MATTERDISRUPTOR
 	Class: Unlock
 	Point Cost: 700
 	Time Cost: 120

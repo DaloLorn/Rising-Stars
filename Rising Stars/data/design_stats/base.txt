@@ -15,8 +15,8 @@ GlobalStat: HP
 		Variable: Repair
 		
 	GlobalStat: RepairCombat
-		Name: In Combat Repair
-		Description: 
+		Name: #S_REPAIR_COMBAT
+		Description: #STT_REPAIR_COMBAT
 		Color: #aaa
 		Secondary: HP
 
@@ -26,7 +26,7 @@ GlobalStat: HP
 GlobalStat: DPS
 	Name: #S_DPS
 	Description: #STT_DPS
-	 AttributeIcons::3
+	AttributeIcons::3
 	Color: #ff8080
 
 	Variable: DPS
@@ -35,7 +35,7 @@ GlobalStat: DPS
 		
 GlobalStat: HullStrength
 		Name: Hull Strength
-		Description:Predicted strength, only considering the Hull hp (Real strength will be the combined Shield Strength+Hull Strength)
+		Description: Predicted strength, only considering hull health. (Real strength is Shield Strength and Hull Strength combined.)
 		Color: #aaa
 		Icon: TimeReal
 
@@ -180,7 +180,7 @@ GlobalStat: SlipsteramOptimalDistance
 	Variable: SlipstreamOptimalDistance
 	
 SubsystemStat: Size
-	Name: Size
+	Name: Subsystem Size
 	Color: #e0ff00
 
 	Variable: Size

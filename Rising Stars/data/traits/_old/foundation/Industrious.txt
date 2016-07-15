@@ -1,6 +1,6 @@
-Trait: IndustriousB
+Trait: Industrious
 	Name: #TRAIT_INDUSTRIOUS
-	Description: Increase civilian labor on homeworld by 10%
+	Description: #TRAIT_INDUSTRIOUS_DESC
 	Category: Foundation
 
 	Color: #aaffaa

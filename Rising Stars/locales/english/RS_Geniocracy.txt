@@ -1,5 +1,5 @@
 R_LIFESTYLE_REQ: Requires tech level $2 in $1
-TRAIT_GENIOCRACY_NAME:Government: Geniocracy
+TRAIT_GENIOCRACY_NAME: Government: Technocracy
 
 INFINITE_THRUST: Propulsion
 INFINITE_HEALTH: Materials Development
@@ -113,19 +113,15 @@ INFINITE_SOCIETY_DESC:<<
 	Level 6 - Increases population limit by 1 every level, and by another 1 every second level. (So, for example, tech level 1 will increase the population limit by 1, but tech level 2 will increase it by 2 for a total of 3. Tech level 3 will again increase the population limit by 1, tech level 4 will increase it by 2, etc.)
 	
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
+>>
 
-	>>
-
-INFINITE_SOCIETY_MONO: Social Studies
 INFINITE_SOCIETY_DESC_MECH:<<
 	[i][color=#aaa]A better understanding of our society and why it has developed into its current state allows us to better direct its evolution.[/color][/i]
 
 	Reduces the level decay rate of planets by $2. Also increases tile development and all construction speeds by $2.
 	Increases the loyalty of all planets by $3 and adds $4 Defense Reserve.
 
-	Increases the maximum population of planets depending on their level and this technology's current tech level:
-
-	Increases planet income by 5$
+	Increases empire income by §$5.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>
@@ -137,7 +133,7 @@ GENIOCRACY_SHIELDUPGRADE_DESC: <<
 	Doubles the power consumption of all shields, and increases their capacity and regeneration by $2 and $1, respectively.
 >>
 TRAIT_GENIOCRACY_DESC: <<
-	[vspace=6/][b][color=#0f0]Bonus:[/color][/b] [offset=140][color=#00ddff]Drastically different technology grid with infinite progression.Reduced research decay.[/color][/offset]
+	[vspace=6/][b][color=#0f0]Bonus:[/color][/b] [offset=140][color=#00ddff]Drastically different technology grid with infinite progression. Research efficiency decay reduced by 25%.[/color][/offset]
 	[vspace=6/][b][color=#f00]Starting Fleet:[/color][/b] [offset=140]1x [color=#f00]Damaged[/color] Battleship.[/offset]
 	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=140]5x Energy Clash, 1x Mall of the Galaxy, 1x Claim Artifact.[/offset]
 	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=140]Level 1 [color=#57bd13]Progressive[/color][/offset][/dlc]
