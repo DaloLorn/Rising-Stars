@@ -13,3 +13,5 @@ ABL_BOARDING_PARTY_DESC: <<
 ABL_PROTO_LEVEL3: Form Planet (Tier 3)
 ABL_PROTO_LEVEL3_DESC: Manipulate the planet's formation by expending a large amount of energy. The planet will produce a random tier 3 resource.
 ABL_TELESCOPEORE_DESC:Grants vision over the targeted system for 3 minutes. Up to $1 units range.
+ABL_REPAIR: Make Repairs
+ABL_REPAIR_DESC: Refits the ship, replacing damaged components to restore it to its original operational capacity.

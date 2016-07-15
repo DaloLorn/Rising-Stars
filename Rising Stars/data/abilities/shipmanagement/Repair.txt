@@ -1,6 +1,6 @@
 Ability: Repair
-	Name: Repair
-	Description: Repair the Ship
+	Name: #ABL_REPAIR
+	Description: #ABL_REPAIR_DESC
 	Icon: techConstruction*#00ff00
 	Energy Cost: 400
 	ConsumeMoney(600)

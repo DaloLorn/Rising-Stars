@@ -12,6 +12,7 @@ R_SYS_ZPG_DESC: <<
 
 	[i][bbloc=#S_ZPG_DESC/][/i]
 >>
+R_MISSILE_RANGE_DESC: Increases the range and speed of all missile-based weapons by $1.
 R_ENERGY_HURDLE_VERYLARGE: Energy Research
 R_ENERGY_HURDLE_INSANE: High-Energy Research
 R_ADV_SHIELD: Advanced Shield Manipulation

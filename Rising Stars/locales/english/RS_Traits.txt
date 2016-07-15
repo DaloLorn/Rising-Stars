@@ -5,7 +5,8 @@ TRAIT_TECHNICISTS_DESC: <<|
 	[vspace=3/][img=PlateArmor;22]Cannot research most armor types. Armor discovered from alternative sources will have halved health.[/img]
 	[vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
 >>
-
+TRAIT_INEFFICIENT_DESC: All weapons drain $1 supply when firing. 
+TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed. 
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<|
 	[vspace=3/][img=ResourceIconsSmall::61]Starts with an Allondium on their homeworld.[/img]

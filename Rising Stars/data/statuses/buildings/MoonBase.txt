@@ -1,0 +1,5 @@
+Status: MoonBase
+	Visible To: Nobody
+
+	AddMaxPopulation(2)
+	IfTrait(Mechanoid, AddPlanetIncome(100))
