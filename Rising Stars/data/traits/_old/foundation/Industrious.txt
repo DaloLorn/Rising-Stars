@@ -1,6 +1,6 @@
 Trait: Industrious
 	Name: #TRAIT_INDUSTRIOUS
-	Description: #TRAIT_INDUSTRIOUS_DESC
+	Description: #TRAIT_INDUSTRIOUS_DESC:10%
 	Category: Foundation
 
 	Color: #aaffaa

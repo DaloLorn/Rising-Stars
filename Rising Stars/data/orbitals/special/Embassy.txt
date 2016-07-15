@@ -2,8 +2,8 @@ Module: Embassy
 	Name: #ORB_EMBASSY
 	Blurb: #ORB_EMBASSY_BLURB
 	Description: #ORB_EMBASSY_DESC
-	Icon: GuiOrbitalIcons::0
-	Distant Icon: OrbitalIcons::0
+	Icon: GuiOrbitalIcons::15
+	Distant Icon: OrbitalIcons::15
 
 	Core: True
 	Standalone: True
@@ -17,7 +17,7 @@ Module: Embassy
 	Armor: 4000
 
 	Model: CommerceStation
-	Material: VolkurGenericPBR
+	Material: GenericPBR_CommerceStation
 
 	RequireTrait(Pacifists)
 

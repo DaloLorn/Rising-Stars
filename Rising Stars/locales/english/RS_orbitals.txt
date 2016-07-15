@@ -24,6 +24,8 @@ ORB_EMBASSY_DESC: <<
 
 	Diplomatic backlash gives you and your allies Leverage against anyone who would destroy the Embassy.
 
+	High levels of diplomatic activity in the Embassy grant 2 Influence Stake, and a 5% chance of receiving a random influence card every minute.
+
 	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
 >>
 ORB_TELESCOPE: Subspace Telescope Array

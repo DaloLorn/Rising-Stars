@@ -181,3 +181,7 @@ R_MINER_HULL_DESC: <<
 
 	[i][bbloc=#S_MINER_HULL_DESC/][/i]
 >>
+R_METROPOLIS_UPGRADE: Metropolitan Optimization
+R_METROPOLIS_UPGRADE_DESC: <<
+	Increases the amount of pressure capacity added by Metropolii by 2.
+>>
