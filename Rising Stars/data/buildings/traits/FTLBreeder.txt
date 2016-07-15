@@ -1,6 +1,6 @@
 Building: FTLBreeder
 	Name: #BLD_FTLBREEDER
-	Description: #BLD_FTLBREEDER_DESC_RS
+	Description: #BLD_FTLBREEDER_DESC
 	Sprite: FTLStorage * #ff8080
 
 	Category: Production
@@ -21,7 +21,7 @@ Building: FTLBreeder
 	
 Building: FTLBreederFLUX
 	Name: #BLD_FTLBREEDER
-	Description: #BLD_FTLBREEDER_DESC_RS
+	Description: #BLD_FTLBREEDER_DESC
 	Sprite: FTLStorage * #ff8080
 
 	Category: Production

@@ -98,9 +98,7 @@ B_FAKELVL2_DEFENSE_DESC: <<
 	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
 >>
 
-
-BLD_FTLBREEDER_DESC_RS: <<
-	A large reactor that uses FTL energy to excite and extract more FTL energy from the hyperfield, giving off radiation deadly to all organic life in the process.
-
+BLD_FTLBREEDER_DESC: <<
+	A large reactor that uses FTL energy to excite and extract more FTL energy from the hyperfield, giving off radiation hazardous to all organic life in the process.
 >>
 	

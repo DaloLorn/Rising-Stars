@@ -5,3 +5,34 @@ CONS_MOON_BASE_DESC: <<
 
 	Mechanoid races receive §100k additional income from each moon base they own.
 >>
+C_TERRAFORMING_DESC: <<
+	[color=#aaa][i]Modifying the climate or constructing the required support infrastructure to easily sustain large amounts of people or equipment within a certain area is usually a slow venture.
+	
+	An industrial-scale project sponsored by the empire can accelerate the process considerably, for a price.[/i][/color]
+	
+	Develops up to 15 randomly selected tiles.
+>>
+C_HABITATRING_DESC: <<
+	[color=#aaa][i]Constructing a large ring-shaped station encircling the planet provides more space for the construction of important infrastructure.[/i][/color]
+	
+	Adds a 4x8 chunk of fully-developed Artificial tiles to the planet. Can only be built once per planet.
+>>
+C_HABITATRING: Orbital Habitation Ring
+C_TERRAFORMING: Infrastructural Development
+C_SUBSURFACE_HABITATS: Subsurface Habitation Complex
+C_SUBSURFACE_NO_FLOATING_CONTINENT: [i]Subsurface habitats cannot be built while a Floating Continent is present on the planet surface. Move the Floating Continent to a different planet before attempting to construct them.[/i]
+C_SUBSURFACE_HABITATS_DESC: <<
+	[color=#aaa][i]Constructing an underground complex kilometers underneath the planet's surface provides more space for the construction of important infrastructure.[/i][/color]
+
+	Adds a 10x2 chunk of fully-developed Artificial tiles to the planet. Can only be built once per planet. Unlocks the 'Expand Subsurface Complex' construction.
+
+	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
+>>
+C_EXPAND_SUBSURFACE: Expand Subsurface Complex
+C_EXPAND_SUBSURFACE_DESC: <<
+	[color=#aaa][i]Expanding our subsurface habitats grants us even more space for the construction of important infrastructure.[/i][/color]
+
+	Adds a 10x1 chunk of fully-developed Artificial tiles to the planet. Subsequent subsurface habitat expansions will require increasingly large amounts of Ore and Labor to construct.
+
+	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
+>>

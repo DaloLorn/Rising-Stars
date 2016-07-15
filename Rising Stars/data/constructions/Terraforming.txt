@@ -1,37 +1,43 @@
 Construction: TerraformIN
-	Name: Terraform Planet Surface II
+	Name: #C_EXPAND_SUBSURFACE
 	Build Cost: 700
 	Labor Cost: 50
 	Icon: DesignationIcons::10
 	Category: Planetary Development
-	Description: Add 10  tiles to the planet
+	Description: #C_EXPAND_SUBSURFACE_DESC
 
 	//RequireUnlockTag(TerraformSurface)
 
 	OnStart(AddStatus(TerraformStacks))
+	OnStart(AddStatus(BuildingSubsurface))
 	AddLaborCostStatusCount(TerraformStacks, Multiply = 1.5)
 
 	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000, Allow Cancel = True)
 
-
-	AddSurfaceArea(Artificial, (1, 10), Separate = False, Developed = False)
-
+	AddSurfaceArea(Artificial, (10, 1), Separate = False, Developed = True, Vertical = True)
 
 	RequireStatus(TerraformStacks)
+	RequireNotStatus(FloatingContinent)
 	OnCancel(RemoveStatusInstance(TerraformStacks))
+	OnCancel(RemoveStatusInstance(BuildingSubsurface))
+	RemoveStatusInstance(BuildingSubsurface)
+	
 Construction: Terraform
-	Name: Terraform Planet Surface
+	Name: #C_SUBSURFACE_HABITATS
 	Icon: DesignationIcons::10
-	Description: Add 10  tiles to the planet
-
+	Description: #C_SUBSURFACE_HABITATS_DESC
 
 	Build Cost: 500
 	Labor Cost: 50
 	Category: Planetary Development
 	RequireNotStatus(TerraformStacks)
-	ConsumeCargo(Ore, 500)
+	RequireNotStatus(FloatingContinent)
+	ConsumeCargo(Ore, 1000)
 
-	AddSurfaceArea(Artificial, (1, 10), Separate = False, Developed = False)
+	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = True, Vertical = True)
 	OnStart(AddStatus(TerraformStacks))
+	OnStart(AddStatus(BuildingSubsurface))
 	//RequireUnlockTag(TerraformSurface)
 	OnCancel(RemoveStatusInstance(TerraformStacks))
+	OnCancel(RemoveStatusInstance(BuildingSubsurface))
+	RemoveStatusInstance(BuildingSubsurface)

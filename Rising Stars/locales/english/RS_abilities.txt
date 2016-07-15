@@ -12,6 +12,24 @@ ABL_BOARDING_PARTY_DESC: <<
 >>
 ABL_PROTO_LEVEL3: Form Planet (Tier 3)
 ABL_PROTO_LEVEL3_DESC: Manipulate the planet's formation by expending a large amount of energy. The planet will produce a random tier 3 resource.
-ABL_TELESCOPEORE_DESC:Grants vision over the targeted system for 3 minutes. Up to $1 units range.
+ABL_TELESCOPEORE_DESC: Grants vision over the targeted system for 3 minutes. Can only target systems up to $1 units away.
 ABL_REPAIR: Make Repairs
 ABL_REPAIR_DESC: Refits the ship, replacing damaged components to restore it to its original operational capacity.
+ABL_ADD_FLOATING_CONTINENT: Claim Floating Continent
+ABL_ADD_FLOATING_CONTINENT_DESC: <<
+	Claim the floating continent and attach it to one of your planets to build on.
+
+	For a cost of energy dependent on distance, the floating continent and all buildings on it can be moved to another one of your planets.
+
+	Floating continents impede the construction of subsurface habitats and cannot be placed on planets while such construction is taking place.
+>>
+ABL_TRANSFER_FLOATING_CONTINENT: Move Floating Continent
+ABL_TRANSFER_FLOATING_CONTINENT_DESC: <<
+	Move the floating continent and all buildings on it from this planet to another one of your planets.
+
+	The energy cost to move the floating continent is dependent on the distance between the two planets.
+
+	This ability cannot be activated while the planet the floating continent is currently on is under siege.
+
+	Floating continents impede the construction of subsurface habitats and cannot be placed on planets while such construction is taking place.
+>>

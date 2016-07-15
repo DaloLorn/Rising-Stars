@@ -1,9 +1,9 @@
 Construction: DevelopSurface
 	Labor Cost: 100
-	Description: Develop 15 tiles .
+	Description: #C_TERRAFORMING_DESC
 	Category: Planetary Development
 
-	Name: Develop Surface Tiles
+	Name: #C_TERRAFORMING
 	Icon: SequesteredSociety
 	
 	ConsumeCargo(Ore, 1000)
