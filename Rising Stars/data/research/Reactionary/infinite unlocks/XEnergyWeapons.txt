@@ -2,7 +2,7 @@
 Technology: XHyperLaser
 	Name: #R_SYS_HYPERLASER
 	Description: #R_SYS_HYPERLASER_DESC
-	
+
 	Category: Reactionary
 
 	Point Cost: 0
@@ -10,7 +10,7 @@ Technology: XHyperLaser
 
 	Icon: HyperdenseLaser::0
 	Color: #f9394d
-	
+
 	UnlockSubsystem(HyperLaser)
 	SkipOnUnlockedSubsystem(HyperLaser)
 
@@ -18,12 +18,12 @@ Technology: XHyperLaser
 
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 5, #R_LIFESTYLE_REQ:Beam Focusing:5)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
-	
-	
+
+
 Technology: XDisruptor
 	Name: #R_SYS_DISRUPTOR
 	Description: #R_SYS_DISRUPTOR_DESC
-	
+
 	Category: Reactionary
 
 	DLC: Heralds
@@ -34,7 +34,7 @@ Technology: XDisruptor
 
 	Icon: Laser::0
 	Color: #f0e5b5
-	
+
 	UnlockSubsystem(Disruptor)
 	SkipOnUnlockedSubsystem(Disruptor)
 
@@ -45,7 +45,7 @@ Technology: XDisruptor
 Technology: XSubspaceShredder
 	Name: #R_SYS_SUBSPACE_SHREDDER
 	Description: #R_SYS_SUBSPACE_SHREDDER_DESC
-	
+
 	Category: Reactionary
 
 	Point Cost: 0
@@ -56,7 +56,7 @@ Technology: XSubspaceShredder
 
 	Icon: MissileLauncher::0
 	Color: #ae6383
-	
+
 	UnlockSubsystem(SubspaceShredder)
 	SkipOnUnlockedSubsystem(SubspaceShredder)
 
@@ -67,7 +67,7 @@ Technology: XSubspaceShredder
 Technology: XPulseBolt
 	Name: #R_SYS_PULSE_BOLT
 	Description: #R_SYS_PULSE_BOLT_DESC
-	
+
 	Category: Reactionary
 
 	Point Cost: 0
@@ -78,62 +78,61 @@ Technology: XPulseBolt
 
 	Icon: HyperdenseLaser::0
 	Color: #7390db
-	
+
 	UnlockSubsystem(PulseBolt)
 	SkipOnUnlockedSubsystem(PulseBolt)
 
 	SecondaryEnergyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 9, #R_LIFESTYLE_REQ:Beam Focusing:9)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
-	
-	
-Technology: XVoidRay
-	Name: #R_VOIDRAY
-	Description: #R_VOIDRAY_DESC
 
-	Category: ABEM - Subsystems
+
+Technology: XVoidRay
+	Name: #S_VOIDRAY
+	Description: #S_VOIDRAY_DESC
+
+	Category: Reactionary
 	Time Cost: 120
-	Icon: Laser::2*#32ff17
+	Icon: AdaptiveLaser::2
 	Color: #ff0314
-	
-	
+
+
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	SkipOnUnlockedSubsystem(VoidRay)
-	
+
 	UnlockSubsystem(VoidRay)
-	
+
 	SecondaryMoneyCost(1500)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 10, #R_LIFESTYLE_REQ:Beam Focusing:10)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
-	
-	
+
+
 Technology: XMatterDisruptor
-	Name: #R_SYS_MATTERDISRUPTOR
-	Class: Unlock
-	Point Cost: 700
+	Name: #S_MATTERDISRUPTOR
+	Class: Boost
 	Time Cost: 120
-	Icon: WaveEmitter
-	Description: #R_MATTERDISRUPTOR_DESC
-	
-	Category: ABEM - Subsystems
+	Icon: MatterDisruptor::2
+	Description: #S_MATTERDISRUPTOR_DESC
+
+	Category: Reactionary
 
 	Color: #06c0ff
-	
+
 	SecondaryMoneyCost(1000)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 12, #R_LIFESTYLE_REQ:Beam Focusing:12)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
-	
+
 	SkipOnUnlockedSubsystem(MatterDisruptor)
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 	UnlockSubsystem(MatterDisruptor)
 
 
-///////////////////////////////////	
+///////////////////////////////////
 //ENERGY WEAPONS SPECIAL UPGRADES/////////////
-////////////////////////////////////	
-	
+////////////////////////////////////
+
 Technology: XBeamCycling
 	Name: #R_BEAM_CYCLING
 	Description: #R_BEAM_CYCLING_DESC:30%
@@ -141,9 +140,9 @@ Technology: XBeamCycling
 	Icon: Laser::3
 	Symbol: techCooling * #c680ff
 	Color: #80ffea
-	
+
 	Category: Reactionary
-	Class: Special Upgrades
+	Class: Boost
 
 	Point Cost: 750
 	Time Cost: 100
