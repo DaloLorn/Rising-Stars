@@ -428,8 +428,6 @@ class ProtectPlanet : GenericEffect {
 
 	void tick(Object& obj, any@ data, double time) const override {
 		uint mask = ~0;
-		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i)
-			mask &= getEmpire(i).mask;
 		if(obj.hasSurfaceComponent)
 			obj.protectFrom(mask);
 	}

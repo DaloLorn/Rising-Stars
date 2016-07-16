@@ -24,7 +24,7 @@ C_SUBSURFACE_NO_FLOATING_CONTINENT: [i]Subsurface habitats cannot be built while
 C_SUBSURFACE_HABITATS_DESC: <<
 	[color=#aaa][i]Constructing an underground complex kilometers underneath the planet's surface provides more space for the construction of important infrastructure.[/i][/color]
 
-	Adds a 10x2 chunk of fully-developed Artificial tiles to the planet. Can only be built once per planet. Unlocks the 'Expand Subsurface Complex' construction.
+	Adds a 10x2 chunk of undeveloped Artificial tiles to the planet. Can only be built once per planet. Unlocks the 'Expand Subsurface Complex' construction.
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>
@@ -32,7 +32,7 @@ C_EXPAND_SUBSURFACE: Expand Subsurface Complex
 C_EXPAND_SUBSURFACE_DESC: <<
 	[color=#aaa][i]Expanding our subsurface habitats grants us even more space for the construction of important infrastructure.[/i][/color]
 
-	Adds a 10x1 chunk of fully-developed Artificial tiles to the planet. Subsequent subsurface habitat expansions will require increasingly large amounts of Ore and Labor to construct.
+	Adds a 10x1 chunk of undeveloped Artificial tiles to the planet. Subsequent subsurface habitat expansions will require increasingly large amounts of Ore and Labor to construct.
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>

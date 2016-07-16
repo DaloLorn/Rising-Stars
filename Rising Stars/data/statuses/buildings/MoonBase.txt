@@ -2,4 +2,4 @@ Status: MoonBase
 	Visible To: Nobody
 
 	AddMaxPopulation(2)
-	IfHaveTrait(Mechanoid, AddPlanetIncome(100))
+	IfHaveTrait(Mechanoid, AddIncome(100))
