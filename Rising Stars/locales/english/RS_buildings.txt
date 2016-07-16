@@ -101,4 +101,8 @@ B_FAKELVL2_DEFENSE_DESC: <<
 BLD_FTLBREEDER_DESC: <<
 	A large reactor that uses FTL energy to excite and extract more FTL energy from the hyperfield, giving off radiation hazardous to all organic life in the process.
 >>
-	
+BLD_BARRACKS_DESC: <<
+	Adds 10 Defense Reserve to your global pool.
+
+	When your defense reserve is full, it can be deployed at any time to one of your planets to spawn defense ships.
+>>

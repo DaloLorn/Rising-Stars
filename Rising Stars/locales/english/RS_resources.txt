@@ -4,6 +4,11 @@ TECHNOFARM_NAME: Technofarm
 RESOURCE_SHIPYARD: Ancient Shipyard
 RESOURCE_RESEARCH: Research Center
 RESOURCE_HUBWORLD: Ancient Hubworld
+LOCAL_ASTEROID_FIELD_DESC: <<
+	Civilian labor generation is increased by 50%. Also adds [levels=$1;#ffb4b6]0/12/14/16/18/20/22[/levels] Pressure Capacity depending on planet level.
+
+	[color=#ff7070][b]Cannot be exported.[/b][/color]
+>>
 
 
 QUARTZ_BLURB: <<

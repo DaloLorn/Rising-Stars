@@ -32,7 +32,7 @@ C_EXPAND_SUBSURFACE: Expand Subsurface Complex
 C_EXPAND_SUBSURFACE_DESC: <<
 	[color=#aaa][i]Expanding our subsurface habitats grants us even more space for the construction of important infrastructure.[/i][/color]
 
-	Adds a 10x1 chunk of undeveloped Artificial tiles to the planet. Subsequent subsurface habitat expansions will require increasingly large amounts of Ore and Labor to construct.
+	Adds a 10x1 chunk of undeveloped Artificial tiles to the planet, attached to the Subsurface Habitation Complex. Subsequent subsurface habitat expansions will require increasingly large amounts of Ore and Labor to construct.
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>

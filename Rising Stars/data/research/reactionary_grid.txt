@@ -167,9 +167,9 @@ Grid: Reactionary
 	XFlingBeacons: 7,-11
 	XGateTech: 7,-9
 	XJumpdrive: 7,-7
-	XHyperdrive: 8,-7
 	XSS: 7,-5
 	HyperfieldSequencing: 5,-11
 	FTLJammerCombat: 3,-9
 	Obedience: -12,8
 	XPlanetaryEngine: 5,-4
+	XHyperdrive: 6,-5
