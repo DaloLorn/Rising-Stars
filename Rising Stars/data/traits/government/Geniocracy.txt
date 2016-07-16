@@ -27,4 +27,5 @@ Trait: Geniocracy
 	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XNeutronArmor, ImprovedLabs))
 	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XCrystalArmor, ImprovedLabs))
 	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XLiquidArmor, ImprovedLabs))
-	IfHaveTrait(Technicists, RemoveTechnologyNodes(XQuantumArmorArmor))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(XQuantumArmor))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(XFerrofluidArmor))

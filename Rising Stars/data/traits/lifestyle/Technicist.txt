@@ -55,15 +55,8 @@ Trait: Technicists
 	RemoveTechnologyNodes(FerroFluidArmor)
 
 	/////////////////////////////////////
-	///////// GENIOCRACY GRID//////////
+	///////// GENIOCRACY GRID IS SOLVED IN GENIOCRACY TRAIT//////////
 	/////////////////////////////////////
-	RemoveTechnologyNodes(XCompositeArmor)
-	RemoveTechnologyNodes(XNeutronArmor)
-	RemoveTechnologyNodes(XQuantumArmor)
-	RemoveTechnologyNodes(XLiquidArmor)
-	RemoveTechnologyNodes(XNanoMesh)
-	RemoveTechnologyNodes(XSysNilingArmor)
-	RemoveTechnologyNodes(XCrystalArmor)
 	
 	
 
