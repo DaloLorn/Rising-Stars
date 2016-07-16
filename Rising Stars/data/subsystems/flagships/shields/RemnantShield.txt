@@ -26,6 +26,7 @@ Subsystem: RemnantShield
 
 	Requires:
 		Command = 2
+		Power = PowerUse
 
 	Module: Core
 		// If we're not going to use new icons for Progenitor shields, we should -at least- make sure we use the same ones we used before.

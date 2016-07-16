@@ -29,6 +29,7 @@ Subsystem: CovariantShield
 
 	Requires:
 		Command = 1
+		Power = PowerUse
 
 	Module: Core
 		Sprite: CovariantShield
