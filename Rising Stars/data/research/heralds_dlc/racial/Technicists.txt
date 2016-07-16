@@ -6,4 +6,5 @@ Technology: ImprovedLabs
 	Symbol: ResourceIcon::4
 	Color: #8c4ec9
 	Point Cost: 500
+	Time Cost: 90
 	ModAttribute(ResearchProductionBoost, Add, 1)

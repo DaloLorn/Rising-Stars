@@ -115,6 +115,27 @@ Technology: XSysNilingArmor
 	SecondaryEnergyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 5, #R_LIFESTYLE_REQ:Armoring:5)
 
+Technology: XImprovedLabs
+	Name: #R_IMPROVEDLABS
+	Description: #R_IMPROVEDLABS_TECHNOCRACY_DESC
+	Category: Reactionary
+
+	DLC: Heralds
+	DLC Replace: Connector
+
+	Point Cost: 2000
+	Time Cost: 300
+
+	Icon: ResourceIcons::17
+	Symbol: ResourceIcon::4
+	Color: #8c4ec9
+	Class: BigUpgrade
+
+	ModAttribute(ResearchProductionBoost, Add, 4)
+	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armoring:4)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
+
 Technology: XCrystalArmor
 	Name: #R_SYS_CRYSTAL_ARMOR
 	Description: #R_SYS_CRYSTAL_ARMOR_DESC

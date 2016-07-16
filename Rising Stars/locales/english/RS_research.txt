@@ -44,6 +44,11 @@ R_IMPROVEDLABS_DESC: <<
 
 	Increases the Research generation of Tech Centers and Research Complexes by 0.1. This effectively reduces the penalty for allowing Universities to condense into Tech Centers by 20%.
 >>
+R_IMPROVEDLABS_TECHNOCRACY_DESC: <<
+	[i][color=#aaa]Developing and standardizing new methods of isolating experiments and dangerous samples allows more scientists to work in the same amount of space.[/color][/i]
+
+	Increases the Research generation of Tech Centers and Research Complexes by 0.4. This effectively reduces the penalty for allowing Universities to condense into Tech Centers by 80%.
+>>
 
 R_SYS_QUANTUM_ARMOR: Quantum Armor
 R_SYS_QUANTUM_ARMOR_DESC: <<
@@ -183,5 +188,5 @@ R_MINER_HULL_DESC: <<
 >>
 R_METROPOLIS_UPGRADE: Metropolitan Optimization
 R_METROPOLIS_UPGRADE_DESC: <<
-	Increases the amount of pressure capacity added by Metropolii by 2.
+	Increases the amount of pressure capacity added by Metropoles by 2.
 >>

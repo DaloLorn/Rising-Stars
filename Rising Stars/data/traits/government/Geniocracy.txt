@@ -23,9 +23,9 @@ Trait: Geniocracy
 	OnDLC(Heralds, GainAttitude(Progressive_Geniocracy, Level Up = 1))
 
 
-	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XCompositeArmor, ImprovedLabs))
-	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XNeutronArmor, ImprovedLabs))
-	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XCrystalArmor, ImprovedLabs))
-	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XLiquidArmor, ImprovedLabs))
+	IfHaveTrait(Technicists, ReplaceTechnologyNodes(XCompositeArmor, XImprovedLabs))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(XNeutronArmor))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(XCrystalArmor))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(XLiquidArmor))
 	IfHaveTrait(Technicists, RemoveTechnologyNodes(XQuantumArmor))
-	IfHaveTrait(Technicists, RemoveTechnologyNodes(XFerrofluidArmor))
+	IfHaveTrait(Technicists, RemoveTechnologyNodes(FerrofluidArmor))
