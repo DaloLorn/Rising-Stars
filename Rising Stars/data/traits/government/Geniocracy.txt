@@ -9,6 +9,7 @@ Trait: Geniocracy
 	Icon: techBallistics*#57bd13
 	Color: #57bd13
 	AI Support: False
+	DLC: Heralds
 
 
 
