@@ -4,7 +4,7 @@ Trait: Clumsy
 	Category: Personality
 	Order: 9
 
-	Color: #aaffaa
+	Color: #ffaaaa
 	Icon: AttributeIcons::0*#ff0000
 	Gives Points: 1
 	Conflict: Nimble
