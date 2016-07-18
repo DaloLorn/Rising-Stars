@@ -11,7 +11,7 @@ Resource: Ringworld
 
 	Small Icon: ResourceIconsSmall::105
 
-	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(SoilEnhanced, ABEM_hooks::ResourcelessRegenSurface(160, 8, Biome Count = 3))))))
+	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(160, 8, Biome Count = 3))))))
 
 	ForcePlanetType(Ringworld)
 	ForceUsefulSurface(0.6, Forest)

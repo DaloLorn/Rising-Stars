@@ -35,7 +35,9 @@ Module: TradeOutpost
 	AddStatus(StartingProtection, Duration = 90) #version>=94
 
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1)) #version>=147
-	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding()) #version>=147
+	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding()) #version>=147	
 
+	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
+	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
 	GiveTrade()
 	
