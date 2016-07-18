@@ -55,6 +55,8 @@ class InvasionMap : Map {
 		diff.addOption(locale::EASY, 0.25);
 		diff.addOption(locale::NORMAL, 0.5);
 		diff.addOption(locale::HARD, 1.0);
+		diff.addOption("Very Hard", 1.25);
+		diff.addOption("Nightmare", 1.50);
 		diff.set(0.5);
 
 		Description(locale::INVASION_MAP_TEXT, lines=2);
