@@ -231,7 +231,7 @@ class InvasionMap : Map {
 
 		//YOU WILL SIT IN THE CIRCLE AND SING KUMBAYA DAMNIT
 		// NO WE WILL NOT! TYRANT! DICTATOR! ... HYENA!
-		if(getSetting(M_AllowWar, 0.0) != 0.0) {
+		if(getSetting(M_AllowWar, 0.0) == 0.0) {
 			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 				Empire@ emp = getEmpire(i);
 				if(emp.major)
