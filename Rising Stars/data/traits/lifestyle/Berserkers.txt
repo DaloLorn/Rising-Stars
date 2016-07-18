@@ -5,7 +5,6 @@ Trait: Berserkers
 
 	Category: Lifestyle
 	Unique: Lifestyle
-	DLC: Heralds
 
 	Icon: TroopPods
 	Color: #ff0213
@@ -17,7 +16,7 @@ Trait: Berserkers
 	ModAttribute(SupportCardCostMod, Add, 2.0)
 	ModAttribute(ResearchFromKill, Add, 2)
 
-	UnlockSubsystem(TroopPods)
+	OnDLC(Heralds, UnlockSubsystem(TroopPods))
 
 	OnHomeworld(AddPlanetResource(RahtaSulphate))
 

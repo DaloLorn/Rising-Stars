@@ -41,7 +41,6 @@ Preset: Rahta
 	Lore: #RACE_BERSERKERS_LORE
 	Portrait: emp_portrait_berserker
 	Shipset: Gevron
-	DLC: Heralds
 	Hard: True
 	
 	Trait: Empire
@@ -79,7 +78,6 @@ Preset: Fasshi
 	Lore: #RACE_PACIFISTS_LORE
 	Portrait: emp_portrait_slug
 	Shipset: Volkur
-	DLC: Heralds
 	Hard: True
 	
 	Trait: Capitalism

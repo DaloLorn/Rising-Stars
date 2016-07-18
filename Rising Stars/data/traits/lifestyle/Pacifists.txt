@@ -5,7 +5,6 @@ Trait: Pacifists
 
 	Category: Lifestyle
 	Unique: Lifestyle
-	DLC: Heralds
 
 	Icon: CardIcons::6
 	Color: #00ffa4
@@ -14,7 +13,7 @@ Trait: Pacifists
 	AddStatusOwnedPlanets(Pacifists)
 
 	ModAttribute(FleetEfficiencyFactor, Add, -0.15)
-	UnlockSubsystem(BroadcastAntenna)
+	OnDLC(Heralds, UnlockSubsystem(BroadcastAntenna))
 	ReplaceTechnologyNodes(BroadcastAntenna, Science)
 	ABEM_glory::SetGloryMeter(PacifistGlory, 4)
 

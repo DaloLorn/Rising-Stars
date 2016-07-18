@@ -2,7 +2,7 @@
 	Description: <<
 		[i]The year is 714 AP. Amidst continuing conflict, alliances begin to form between the many rising empires inhabiting the galaxy. There are whispers of an ancient alien race, coming from a far away galaxy to conquer and eliminate all who would oppose them. But these whispers remain just that; whispers - and these whispers are being drowned out by war. A new, young race of warriors, hailing from the planet Rata'htat, has made its presence known to the galaxy as they launch their offensive, seeking the glory of war... and of victory...[/i]
 
-		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. A considerable amount of content will be unavailable or potentially malfunctioning if the expansion is not used.[/b]
+		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function (more or less), some content may be missing or malfunctioning.[/b]
 		
 		[b][h1]Current version: 1.0.1 (The Glory of War)[/h1][/b]	
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
