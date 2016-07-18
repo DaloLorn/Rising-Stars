@@ -189,6 +189,9 @@ class InvasionMap : Map {
 
 			Pirates.setHostile(emp, false);
 			emp.setHostile(Pirates, false);
+			
+			Creeps.setHostile(Pirates, false);
+			Pirates.setHostile(Creeps, false);
 
 			Invaders.setHostile(emp, true);
 			emp.setHostile(Invaders, true);
