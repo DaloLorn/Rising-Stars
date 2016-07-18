@@ -1,0 +1,22 @@
+Building: RecallBuilding
+	Name: #BLD_RECALL
+	Description: #BLD_RECALL_DESC
+	Sprite: cloack
+
+	Category: Military
+
+	Size: 5x5
+
+	Base Cost: 500
+	Tile Cost: 20
+
+	Build Affinity: Crystallic
+	Maintenance Affinity: Crystallic
+
+	Base Maintenance: 70
+	Tile Maintenance: 5
+
+	Build Time: 300
+
+	RequireUnlockTag(Recall)
+	GrantAbility(Recall)

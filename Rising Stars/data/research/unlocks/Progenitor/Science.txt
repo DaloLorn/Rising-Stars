@@ -1,0 +1,9 @@
+Technology: ProgenitorScience
+	Name: #R_PROGENITOR_SCIENCE
+	Icon: emp_portrait_cloak
+	Color: #aaaaaa
+	Description: #R_PROGENITOR_SCIENCE_DESC
+	Blurb:
+	Class: Keystone
+	RequireUnlockTag(ProgenitorTech)
+	AutoUnlockOnUnlockedTag(ProgenitorTech)

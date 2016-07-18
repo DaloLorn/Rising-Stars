@@ -1,0 +1,35 @@
+Resource: AncientHubworld
+	Name: #RESOURCE_HUBWORLD
+	Small Icon: emp_flag_flag7
+	Class: Scalable
+	Native Biome: Forest
+	Exportable: False
+	Artificial: True
+	Rarity: Unique
+	Unique: True
+	Frequency: 0
+	Icon: emp_flag_flag7
+	Blurb: #RESOURCE_HUBWORLD_BLURB
+	Description: #RESOURCE_HUBWORLD_DESC
+	Distribution: 0
+	Affinity: ALL
+
+	Limitless Level: True
+	IfLevel(6, OnEnable(NotifyAll(#EVT_NOTIFY_HUBWORLD, Description = #EVT_NOTIFY_HUBWORLD_DESC, Icon = TechIcons::45)))
+	IfLevel(6, UnlockTagWhileActive(ProgenitorTech))
+	IfLevel(5, GrantAbility(Recall))
+	IfLevel(1, AddStatus(FastResupply))
+	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(30, 20))))))
+	AddStatus(NoSurfaceRegen)
+	IfLevel(4, ProtectOtherPlanets())
+	IfLevel(3, AddRegionStatus(FastRecharge))
+	IfLevel(3, GiveGlobalTrade())
+	IfLevel(2, IsFlingBeacon())
+	IfLevel(2, IsGate())
+	IfLevel(1, AddFleetCommand(1024))
+	RepeatPlanetLevel(AddPressure(Research, 1), Base = 1)
+	RepeatPlanetLevel(AddPressure(Labor, 1), Base = 1)
+	RepeatPlanetLevel(AddPressure(Defense, 1), Base = 1)
+	RepeatPlanetLevel(AddPressure(Energy, 1), Base = 1)
+	RepeatPlanetLevel(AddPressure(Influence, 1), Base = 1)
+	RepeatPlanetLevel(AddPressure(Money, 1), Base = 1)

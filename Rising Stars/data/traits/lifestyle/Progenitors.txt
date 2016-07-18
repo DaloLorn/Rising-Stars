@@ -1,0 +1,26 @@
+Trait: Progenitors
+	Name: #TRAIT_PROGENITORS
+	Description: #TRAIT_PROGENITORS_DESC
+	Order: 11
+
+	Category: Lifestyle
+	Unique: Lifestyle
+
+	Icon: emp_portrait_mono * #aaffaa
+	Color: #884faa
+
+	AddStatusOwnedPlanets(Progenitors)
+	AddStatusOwnedFleets(ProgenitorFleet)
+
+	ABEM_races::EmpireOnEmpireAttributeGTE(ProgenitorTechProgress, 100, SendMessage(#EVT_PROGENITOR_BREAKTHROUGH_DESC, Title = #EVT_PROGENITOR_BREAKTHROUGH))
+	ABEM_races::EmpireOnEmpireAttributeGTE(ProgenitorTechProgress, 100, NotifyAll(#EVT_NOTIFY_PROGENITOR_BREAKTHROUGH, Description = #EVT_NOTIFY_PROGENITOR_BREAKTHROUGH_DESC, Icon = emp_portrait_cloak))
+	ABEM_races::EmpireOnEmpireAttributeGTE(ProgenitorTechProgress, 100, UnlockTag(ProgenitorTech))
+	ABEM_races::EmpireOnEmpireAttributeGTE(ProgenitorTechProgress, 100, ModAttribute(ProgenitorTechProgress, Add, -100000))
+
+	TriggerHomeworld(TerraformTo(Quartz))
+	OnHomeworld(AddPlanetResource(Cyllium))
+	OnHomeworld(AddPlanetResource(Soylent1))
+	OnHomeworld(AddPlanetResource(BuildingWater))
+
+
+	ABEM_races::AllyRemnants()

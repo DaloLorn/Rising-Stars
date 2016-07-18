@@ -1,0 +1,43 @@
+Effector: PiercingDrones
+	Value: Range
+	Value: Damage
+	Value: Reload
+	Value: FireDelay
+	Value: PodSize = 1
+	Value: Speed
+	Value: Tracking = 6
+	Value: SupplyCost = 0
+	Value: Pierce = 0
+	Value: DRResponse = 0
+	Value: DamageType = 3
+
+	Range: Range
+	Speed: Speed
+	Tracking: Tracking
+	Lifetime: Range / Speed
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital || isPlanet || isColonyShip || isCivilian || isFreighter) * 0.5)
+
+	EfficiencyMode: Reload Only
+	Activation: Magazine(FireDelay, PodSize, Reload)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	PhysicalType: Missile
+	GfxType: Sprite
+	GfxSize: 0.7
+	FireSfx: missile_launch
+	ImpactSfx: missile_impact
+	Color: ffff00ff
+	Trail: MissileTrail
+	TrailCol: ffff00ff, 00000000
+	Material: Missile
+	FirePitchVariance: 0.2
+	ImpactGfx: ImpactFlareRocket
+
+	Effect: UnspillableDamage
+		Amount = Damage
+		Pierce = Pierce
+		DRResponse = DRResponse
+		DamageType = DamageType

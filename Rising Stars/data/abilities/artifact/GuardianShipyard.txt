@@ -1,0 +1,39 @@
+Ability: ActivateGuardianShipyard
+	Name: #ABL_GUARDIAN_ACTIVATE
+	Description: #ABL_GUARDIAN_ACTIVATE_DESC
+	Energy Cost: 2500
+	Icon: techShipYard
+	NotifyAll(#EVT_GUARDIANSHIPYARD_ACTIVATED, Description = #EVT_GUARDIANSHIPYARD_ACTIVATED_DESC, Icon = techShipYard)
+	SpawnOrbital(GuardianShipyard, Free = True)
+
+Ability: BuildGuardian
+	Name: #ABL_GUARDIAN_BUILD
+	Description: #ABL_GUARDIAN_BUILD_DESC
+	Icon: HullIcons::1
+	Energy Cost: 2000
+	Cooldown: 900
+	RemoveStatus(GuardianShipyardActive)
+	ShareCooldown(FinishGuardianConstruction)
+	NotifyAll(#EVT_GUARDIANSHIPYARD_BUILDING, Description = #EVT_GUARDIANSHIPYARD_BUILDING_DESC, Icon = techShipYard)
+	AddStatus(GuardianShipyardBuilding)
+	ABEM_hooks::UserMustNotHaveStatus(GuardianShipyardBuilding)
+
+Ability: FinishGuardianConstruction
+	Name: #ABL_GUARDIAN_FINISH
+	Description: #ABL_GUARDIAN_FINISH_DESC
+	Icon: HullIcons::1
+	Energy Cost: 2000
+	Cooldown: 900
+	ShowFTLValue(1000, Name = FTL Cost)
+	ShowMoneyValue(5000, Name = Money Cost)
+	SpawnShip(Guardian, Design From = Creeps)
+	ConsumeFTL(1000)
+	ConsumeMoney(5000)
+	RemoveStatus(GuardianShipyardBuilding)
+	NotifyAll(#EVT_GUARDIANSHIPYARD_FINISHED, Description = #EVT_GUARDIANSHIPYARD_FINISHED_DESC, Icon = techShipYard)
+	AddStatus(GuardianShipyardActive)
+	UnlockTag(ProgenitorArmor)
+	UnlockTag(RemnantShield)
+	UnlockTag(ProgenitorComputer)
+	UnlockTag(PiercingDrones)
+	ABEM_hooks::UserMustNotHaveStatus(GuardianShipyardActive)

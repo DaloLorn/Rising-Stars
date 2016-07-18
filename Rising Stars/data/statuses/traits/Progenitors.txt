@@ -1,0 +1,15 @@
+Status: Progenitors
+	Visible To: Nobody
+
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Influence, -0.01), Base = 80, Per Gametime Bonus = -1)
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Money, -0.01), Base = 80, Per Gametime Bonus = -1)
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Research, -0.01), Base = 80, Per Gametime Bonus = -1)
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Defense, -0.01), Base = 80, Per Gametime Bonus = -1)
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Labor, -0.01), Base = 80, Per Gametime Bonus = -1)
+	ABEM_races::TimeBasedRepeat(ModCivResourceMult(Energy, -0.01), Base = 80, Per Gametime Bonus = -1)
+	GrantAbility(RemnantCommandCodes)
+
+Status: ProgenitorFleet
+	Visible To: Nobody
+
+	GrantAbility(RemnantCommandCodes)

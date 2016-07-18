@@ -1,0 +1,55 @@
+Effector: QuantumArtillery
+	Value: Range
+	Value: BaselineDamage = 2500
+	Value: Reload
+	Value: Speed
+	Value: Radius = 100
+	Value: Tracking = pi
+	Value: CapOnTarget = 1
+	Value: Spread = 0.05
+	Value: FireArc = pi
+	Value: TargetTolerance = 0
+	Value: FireTolerance = 0
+	Value: Pierce = 0.5
+	Value: SupplyCost = 0
+	Value: BaselineSize = 100
+	Value: MinRatio = 0.2
+	Value: MaxRatio = 15
+	Value: DamageType = 2
+
+	Range: Range
+	Speed: Speed
+	Tracking: Tracking
+	Lifetime: Range / Speed
+	CapTarget: CapOnTarget
+	Spread: Spread
+	FireArc: FireArc
+	FireTolerance: FireTolerance
+	TargetTolerance: TargetTolerance
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isOrbital || isPlanet || isShip * 0.5)
+
+	EfficiencyMode: Reload Partial
+	Activation: VariableTimed(Reload, 0)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	PhysicalType: Projectile
+		GfxType: Sprite
+		GfxSize: 15
+		FireSfx: railgun_fire
+		FireSfx: muon_fire
+		Material: RailgunEmit
+		Trail: RailTrail
+		TrailCol: ff0000ff, 00000000
+		ImpactGfx: ImpactFlare
+
+	Effect: QuantumArtillery
+		BaselineAmount = BaselineDamage
+		Radius = Radius
+		BaselineSize = BaselineSize
+		MinRatio = MinRatio
+		MaxRatio = MaxRatio
+		DamageType = DamageType
+		

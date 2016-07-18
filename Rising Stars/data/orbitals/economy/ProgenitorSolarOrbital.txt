@@ -1,0 +1,24 @@
+Module: ProgenitorSolarOrbital
+	Name: #ORB_PROGENITOR_SOLARORBITAL
+	Description: #ORB_PROGENITOR_SOLARORBITAL_DESC
+	Blurb: #ORB_PROGENITOR_SOLARORBITAL_BLURB
+	Icon: GuiOrbitalIcons::13
+	Distant Icon: OrbitalIcons::13
+
+	Build Cost: 400
+	Labor Cost: 15
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+
+	FacesOrbitCenter()
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+	RequireUnlockTag(ProgenitorSolarOrbital)
+
+	RequireUnlockTag(SolarOrbitalUnlock)
+	AddEnergyIncomeStarTemperature(0.5, 2.0)

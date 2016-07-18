@@ -1,0 +1,50 @@
+Anomaly: DerelictGuardian
+	Name: #A_GUARDIAN
+	Frequency: 0
+	Description: #A_GUARDIAN_UNSCANNED
+	Model: TyrantFlagLarge
+	Material: TyrantMedium
+	Narrative: #A_GUARDIAN_UNSCANNED
+	Option: Reactivate
+		Description: #A_GUARDIAN_REACTIVATE
+		Safe: False
+		Icon: Bridge
+		Result: 5%
+			NotifyAll(#A_GUARDIAN_NOTIFY_FIXED, Description = #A_GUARDIAN_NOTIFY_FIXED_DESC, Icon = SubsystemButtonArt::6)
+			UnlockTag(ProgenitorArmor)
+			UnlockTag(RemnantShield)
+			UnlockTag(ProgenitorComputer)
+			UnlockTag(PiercingDrones)
+			SendMessage(#A_GUARDIAN_FIXED)
+			SpawnDryDock(Guardian, Funding = 0.5, Progress = 0.2, Free = True)
+		Result: 95%
+			SendMessage(#A_GUARDIAN_EXPLODE)
+	Option: RemnantShields
+		Description: #A_GUARDIAN_SHIELD
+		Icon: TechIcons::35*#60ffff
+		NotifyAll(#A_GUARDIAN_NOTIFY_SHIELD, Description = #A_GUARDIAN_NOTIFY_SHIELD_DESC, Icon = TechIcons::35*#60ffff)
+		UnlockTag(RemnantShield)
+	Option: RemnantArmor
+		Description: #A_GUARDIAN_ARMOR
+		Icon: Armor4
+		NotifyAll(#A_GUARDIAN_NOTIFY_ARMOR, Description = #A_GUARDIAN_NOTIFY_ARMOR_DESC, Icon = TechIcons::20*#60ffff)
+		UnlockTag(ProgenitorArmor)
+	Option: RemnantComputers
+		Description: #A_GUARDIAN_COMPUTER
+		Icon: TechIcons::58
+		NotifyAll(#A_GUARDIAN_NOTIFY_COMPUTER, Description = #A_GUARDIAN_NOTIFY_COMPUTER_DESC, Icon = TechIcons::58)
+		UnlockTag(ProgenitorComputer)
+	Option: DroneWeapons
+		Description: #A_GUARDIAN_DRONE
+		Icon: HexagonSubsystems::9
+		NotifyAll(#A_GUARDIAN_NOTIFY_DRONE, Description = #A_GUARDIAN_NOTIFY_DRONE_DESC, Icon = HexagonSubsystems::9)
+		UnlockTag(PiercingDrones)
+	State: Initial
+		Narrative: #A_GUARDIAN_SCANNED
+		Choice: RemnantArmor
+		Choice: RemnantShields
+		Choice: RemnantComputers
+		Choice: DroneWeapons
+		Model: TyrantFlagLarge
+		Material: TyrantMedium
+		Choice: Reactivate

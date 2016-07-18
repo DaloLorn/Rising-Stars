@@ -1,0 +1,25 @@
+Subsystem: RecallDevice
+	Name: #S_RECALL
+	Description: #S_RECALL_DESC
+	BaseColor: #fff980
+	TypeColor: #fff980
+	Elevation: 3
+
+	Tags: HighMaint, Category:Equipment, HasInternals
+	Tags: Ability:Recall
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	Hex.Mass := HexSize
+
+	Hex.Resistance := 0.2
+	Hex.HP := 18 * HexSize
+
+	CostFactor := 0.2 / (Size / ShipSize)
+
+	Hex.BuildCost := 1.5 * HexSize
+	Requires:
+		Command = 1
+
+	Module: Core
+		Sprite: techFTL

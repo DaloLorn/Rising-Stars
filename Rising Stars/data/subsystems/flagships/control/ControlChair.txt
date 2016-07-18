@@ -1,0 +1,47 @@
+Subsystem: ControlChair
+	Name: #S_CONTROLCHAIR
+	Description: #S_CONTROLCHAIR_DESC
+	BaseColor: #c5f946
+	Picture: SubsystemButtonArt::8
+	Elevation: 4
+
+	Tags: BaseCost, Category:Control
+	Tags: Crewed, Control, ControlCore, HasInternals
+	Tags: NoBulkhead
+	Hull: Flagship, Station
+
+	EvaluationOrder: -10
+
+	Size := HexSize * Hexes
+	Crew := 1
+	Command := 1000
+	Prayer := Sum.RequirePrayer * 995
+
+	BoardingStrength := (0.5 * Crew) + (ShipSize / 20)
+
+
+	Hex.Resistance := 0.2
+	Hex.HP := 18 * HexSize
+	Hex.Mass := HexSize
+	Assert: Sum.ControlChairs == 1
+		Unique: True
+		Message: #ERROR_ONLY_ONE
+
+	ControlChairs := Hexes
+	PowerUse := 10 * Size
+	Requires:
+		Power = PowerUse
+	Effect: ABEMControlCore
+
+	Provides:
+		Crew = Crew
+		Command = Command
+
+	Module: Core
+		Sprite: ControlChair
+		Hex.HP := 2 * Hex.HP
+		Hex.Resistance := 0.35
+
+		Hex.BuildCost := 10 * Hex.BuildCost
+		Hex.Mass := 2.5 * Hex.Mass
+		Hex.MaintainCost := 0.5 * Hex.MaintainCost

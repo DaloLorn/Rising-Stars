@@ -1,0 +1,17 @@
+Ability: RemnantCommandCodes
+	Name: #ABL_PROGENITOR_COMMANDCODES
+	Description: #ABL_PROGENITOR_COMMANDCODES_DESC
+	Icon: techHyperfield
+
+	Cooldown: 5
+	Energy Cost: 500
+	Range: 1000
+	Target: targ = Object
+
+	Either(ABEM_hooks::TargetRequireCommand(targ), TargetFilterType(targ, Orbital))
+	ABEM_races::TargetFilterRemnants(targ)
+	TargetFilterNotStatus(targ, IsGuardian)
+	TargetFilterNotStatus(targ, SeedShip)
+	ABEM_races::CostFromSize(targ, 256)
+
+	ABEM_races::ConvertRemnants(targ)

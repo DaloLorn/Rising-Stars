@@ -1,0 +1,13 @@
+Artifact: GuardianShipyard
+	Name: #ART_GUARDIAN_INACTIVE
+	Description: #ART_GUARDIAN_INACTIVE_DESC
+	Icon: HullIcons::1
+	Strategic Icon: HullIcons::1
+	Model: Shipyard
+	Size: 50.0
+	Mass: 30000000000
+	Frequency: 0
+	Can Donate: False
+	Can Own: False
+	Ability: ActivateGuardianShipyard
+	Icon Size: 0.06

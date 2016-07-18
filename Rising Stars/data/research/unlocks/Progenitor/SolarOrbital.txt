@@ -1,0 +1,13 @@
+Technology: ProgenitorSolarOrbital
+	Icon: TechIcons::20
+	Description: #R_PROGENITOR_SOLARORBITAL_DESC
+	Name: #R_PROGENITOR_SOLARORBITAL
+	Point Cost: 1500
+	Time Cost: 180
+	Class: Unlock
+	Blurb:
+	Color: #1ddede
+	ModAttribute(ProgenitorTechProgress, Add, 10)
+	RequireUnlockTag(ProgenitorTech)
+	AutoUnlockOnUnlockedTag(ProgenitorSolarOrbital)
+	UnlockTag(ProgenitorSolarOrbital)

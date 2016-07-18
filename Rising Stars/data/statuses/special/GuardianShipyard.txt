@@ -1,0 +1,26 @@
+Status: GuardianShipyardActive
+	Name: #STATUS_GUARDIANSHIPYARD_ACTIVE
+	Description: #STATUS_GUARDIANSHIPYARD_ACTIVE_DESC
+	Icon: Factory
+	Unique: True
+	AllowLaborImport()
+	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Terraforming = True)
+	ArtifactOnDestroy(GuardianShipyard)
+	AddResearchIncome(15)
+	AddLaborIncome(Amount = 100)
+	AddLaborStorage(5000)
+
+Status: GuardianShipyardBuilding
+	Name: #STATUS_GUARDIANSHIPYARD_BUILDING
+	Description: #STATUS_GUARDIANSHIPYARD_BUILDING_DESC
+	Icon: Industrious
+	Unique: True
+	ShowFTLValue(2.5, Name = FTL Maintenance, Suffix = / s)
+	ShowEnergyValue(10, Name = Energy Maintenance, Apply Penalty = False)
+	ShowMoneyValue(2000, Name = Maintenance Cost)
+	FTLMaintenance(2.5)
+	EnergyMaintenance(Amount = 10)
+	AddMoneyIncome(-2000)
+	RemoveOnOwnerChange()
+	PersistentParticles(Slipstream)
+	ArtifactOnDestroy(GuardianShipyard)

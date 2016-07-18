@@ -1,0 +1,68 @@
+Subsystem: PiercingDrones
+	Name: #S_PIERCING_DRONES
+	Description: #S_PIERCING_DRONES_DESC
+	BaseColor: #f9ec03
+	Picture: SubsystemButtonArt::1
+	Elevation: 2
+
+	Tags: HighMaint
+	Tags: WeaponBase, MissileBase, Category:Weapons
+	Tags: ExteriorCore, Weapon, HasInternals, MainDPS, Homing
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	Range := Size + 700
+	Damage := 250
+	PodSize := round(Size)
+	Reload := 20 * (1.0 + Size/512)
+	Speed := max(120, Range / 6)
+	Tracking := 6.0
+	SupplyCost := Size * 6.0
+	out DPS := (Damage * PodSize) / (Reload * 2)
+	out SupplyDrain := SupplyCost / 2
+
+	Pierce := 0.2
+	DRResponse := 5
+	DamageType := 3
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+	Hex.LaborCost := 1 * HexSize
+	Hex.BuildCost := 2.5 * HexSize
+	PowerUse := 40 * Size
+	TypeColor: #f94694
+	Requires:
+		Command = 1
+
+	Module: Default
+
+	Assert: PodSize > 0
+		Message: #ERROR_DRONEWEAPON
+
+	Module: Core
+		Hex.HP := Hex.HP * 2
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.MaintainCost := 1.5 * Hex.MaintainCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: HexagonSubsystems::9
+
+		Hex.DamageResist := ShipSize / 64.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: PiercingDrones
+		Range = Range
+		Damage = Damage
+		FireDelay = Reload / PodSize
+		PodSize = PodSize
+		Reload = Reload
+		Speed = Speed
+		Tracking = Tracking
+		SupplyCost = SupplyCost * (Reload / PodSize)
+		Pierce = Pierce
+		DRResponse = DRResponse
+		DamageType = DamageType
+		EnergyCost = PowerUse * (Reload / PodSize)
+		ResourceResponse = 4
