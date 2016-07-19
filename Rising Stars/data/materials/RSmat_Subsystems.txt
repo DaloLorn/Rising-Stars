@@ -34,6 +34,12 @@ Material: CargoStorage
 Material: RSComputer
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/computer.png
+Material: ProgenitorComputer
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/progenitorcomputer.png
+Material: ControlChair
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/controlchair.png
 Material: FusionGen
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/fusiongen.png
@@ -47,6 +53,9 @@ Material: ShieldGen
 Material: CovariantShield
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/covariantshield.png
+Material: ProgenitorShield
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/progenitorshield.png
 Material: SupportShield
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/supportshield.png
@@ -69,6 +78,9 @@ Material: CompositeArmor
 Material: Superstructure
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/superstructure.png
+Material: ProgenitorArmor
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/armor4.png
 
 Material: ArmorArt1
 	Inherit: RSSubsystem
@@ -117,9 +129,6 @@ Material: BoardingParty
 Material: SecurityStation
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/securityparty.png
-Material: ProgenitorArmor
-	Inherit: RSSubsystem
-	Texture: data/images/subsystems/armor4.png
 // *********************************************************
 // ******************OTHER SUBSYSTEMS*********************
 // *********************************************************

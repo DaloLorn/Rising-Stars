@@ -6,7 +6,7 @@ Technology: XShipComputer
 	Point Cost: 500
 	Time Cost: 90
 
-	Icon: ComputerCore
+	Icon: RSComputer
 	Color: #ffa4a0
 
 	UnlockSubsystem(ShipComputer)

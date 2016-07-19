@@ -269,3 +269,25 @@ Grid: Heralds
 	Abundance: 9,-2
 	Obedience: 14,0
 	MetropolisUpg: 5,-1
+	ProgenitorScience: -19,-10
+	Connector: -20,-9
+	Connector: -19,-9
+	EnergyHurdle: -20,-10
+	EnergyHurdle: -20,-11
+	EnergyHurdle: -19,-11
+	InfluenceHurdle: -18,-10
+	FTLHurdle: -19,-8
+	Connector: -20,-7
+	Connector: -19,-7
+	Recall: -19,-6
+	ControlChair: -17,-10
+	EnergyHurdle: -16,-10
+	InfluenceHurdle: -17,-12
+	ProgenitorComputer: -16,-12
+	Connector: -16,-11
+	ProgenitorShield: -18,-12
+	ProgenitorSolarOrbital: -21,-10
+	ProgenitorArmor: -20,-12
+	EnergyHurdle: -20,-13
+	EnergyHurdle: -19,-13
+	PiercingDrones: -19,-14

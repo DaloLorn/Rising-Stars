@@ -1,12 +1,13 @@
 Technology: ProgenitorArmor
 	Name: #R_SYS_REMNANT_ARMOR
-	Icon: Armor4
+	Icon: ProgenitorArmor
 	Color: #39b0ff
 	Point Cost: 1500
 	Time Cost: 180
 	Class: Unlock
 	Blurb:
 	Description: #R_SYS_REMNANT_ARMOR_DESC
+	Category: ABEM - Progenitor
 	ModAttribute(ProgenitorTechProgress, Add, 15)
 	AutoUnlockOnUnlockedTag(ProgenitorArmor)
 	UnlockSubsystem(ProgenitorArmor)

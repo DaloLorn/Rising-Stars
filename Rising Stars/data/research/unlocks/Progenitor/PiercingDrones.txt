@@ -7,6 +7,7 @@ Technology: PiercingDrones
 	Class: Unlock
 	Blurb:
 	Color: #d3de07
+	Category: ABEM - Progenitor
 	ModAttribute(ProgenitorTechProgress, Add, 15)
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(PiercingDrones)

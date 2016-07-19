@@ -154,3 +154,25 @@ Grid: Base
 	ZeroPoint: -11,12
 	ImpAllHealth: -3,9
 	QuantumArmor: -2,10
+	ProgenitorScience: -17,-1
+	EnergyHurdle: -16,-2
+	EnergyHurdle: -17,-2
+	EnergyHurdle: -18,-1
+	InfluenceHurdle: -16,-1
+	Connector: -17,0
+	Connector: -16,0
+	ProgenitorShield: -16,-3
+	ProgenitorArmor: -18,-3
+	EnergyHurdle: -17,-4
+	EnergyHurdle: -16,-4
+	PiercingDrones: -17,-5
+	ControlChair: -15,-1
+	ProgenitorComputer: -14,-3
+	InfluenceHurdle: -15,-3
+	ProgenitorSolarOrbital: -19,-1
+	FTLHurdle: -17,1
+	Connector: -17,2
+	Connector: -16,2
+	Recall: -17,3
+	EnergyHurdle: -14,-1
+	Connector: -13,-2

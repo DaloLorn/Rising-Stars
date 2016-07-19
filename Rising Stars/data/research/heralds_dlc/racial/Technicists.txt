@@ -1,7 +1,7 @@
 Technology: ImprovedLabs
 	Name: #R_IMPROVEDLABS
 	Description: #R_IMPROVEDLABS_DESC
-	Category: ABEM - Racial Techs
+	Category: ABEM - Racial Replacements (DO NOT PLACE)
 	Icon: ResourceIcons::17
 	Symbol: ResourceIcon::4
 	Color: #8c4ec9

@@ -7,6 +7,7 @@ Technology: ProgenitorSolarOrbital
 	Class: Unlock
 	Blurb:
 	Color: #1ddede
+	Category: ABEM - Progenitor
 	ModAttribute(ProgenitorTechProgress, Add, 10)
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(ProgenitorSolarOrbital)
