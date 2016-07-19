@@ -30,10 +30,11 @@ Subsystem: PiercingDrones
 	Hex.Mass := HexSize
 	Hex.LaborCost := 1 * HexSize
 	Hex.BuildCost := 2.5 * HexSize
-	PowerUse := 40 * Size
+	PowerUse := 20 * Size
 	TypeColor: #f94694
 	Requires:
 		Command = 1
+		Power = PowerUse
 
 	Module: Default
 
@@ -64,5 +65,3 @@ Subsystem: PiercingDrones
 		Pierce = Pierce
 		DRResponse = DRResponse
 		DamageType = DamageType
-		EnergyCost = PowerUse * (Reload / PodSize)
-		ResourceResponse = 4
