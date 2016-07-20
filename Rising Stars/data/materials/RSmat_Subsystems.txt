@@ -132,6 +132,6 @@ Material: SecurityStation
 // *********************************************************
 // ******************OTHER SUBSYSTEMS*********************
 // *********************************************************
-Material: Shuttle
+Material: ABEMShuttle
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/shuttle.png

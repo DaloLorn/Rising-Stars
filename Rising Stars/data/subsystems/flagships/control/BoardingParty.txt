@@ -19,7 +19,7 @@ Subsystem: BoardingParty
 	Hex.HP := 36 * HexSize
 	Hex.Mass := HexSize
 	Module: Core
-		Sprite: Shuttle
+		Sprite: ABEMShuttle
 
 	Module: Default
 
