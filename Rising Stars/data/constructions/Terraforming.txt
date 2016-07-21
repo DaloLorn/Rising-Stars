@@ -21,7 +21,8 @@ Construction: TerraformIN
 	OnCancel(RemoveStatusInstance(TerraformStacks))
 	OnCancel(RemoveStatusInstance(BuildingSubsurface))
 	RemoveStatusInstance(BuildingSubsurface)
-	
+
+	RequireNotTrait(StarChildren)
 Construction: Terraform
 	Name: #C_SUBSURFACE_HABITATS
 	Icon: DesignationIcons::10
@@ -38,6 +39,7 @@ Construction: Terraform
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))
 	//RequireUnlockTag(TerraformSurface)
+	RequireNotTrait(StarChildren)
 	OnCancel(RemoveStatusInstance(TerraformStacks))
 	OnCancel(RemoveStatusInstance(BuildingSubsurface))
 	RemoveStatusInstance(BuildingSubsurface)

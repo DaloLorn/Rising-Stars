@@ -5,6 +5,7 @@ Construction: DevelopSurface
 
 	Name: #C_TERRAFORMING
 	Icon: SequesteredSociety
-	
+
+	RequireNotTrait(StarChildren)
 	ConsumeCargo(Ore,500)
 	DevelopTiles(15)
