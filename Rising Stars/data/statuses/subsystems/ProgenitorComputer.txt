@@ -1,0 +1,13 @@
+Status: ProgenitorComputer
+	Visible To: Nobody
+	Unique: True
+
+	AddStatusInitialCombat(ProgenitorCompBoost, Sys.Duration)
+
+Status: ProgenitorCompBoost
+	Name: #STATUS_COMPUTER_BOOST
+	Description: #STATUS_PROGENITOR_COMPUTER_BOOST_DESC
+	Icon: QuickbarIcons::6
+	Unique: True
+
+	ModFleetEffectivenessSubsystem(Sys.EfficiencyBoost)
