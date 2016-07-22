@@ -6,11 +6,13 @@ Building: FTLBreeder
 	Category: Production
 
 	Size: 2x3
-	Base Cost: 300
+	Base Cost: 75
 	Tile Cost: 40
-	Base Maintenance: 80
-	Tile Maintenance: 30
-
+	Base Maintenance: 40
+	Tile Maintenance: 10
+	
+	ConsumeCargo(Ore, 350)
+	
 	RequireTrait(Mechanoid)
 	RequireNotTrait(Flux)
 	AddFTLIncome(0.35)
@@ -27,11 +29,12 @@ Building: FTLBreederFLUX
 	Category: Production
 
 	Size: 2x3
-	Base Cost: 300
+	Base Cost: 75
 	Tile Cost: 40
-	Base Maintenance: 80
-	Tile Maintenance: 30
-
+	Base Maintenance: 40
+	Tile Maintenance: 10
+	ConsumeCargo(Ore, 500)
+	
 	RequireTrait(Flux)
 
 	AddFTLIncome(0.5)

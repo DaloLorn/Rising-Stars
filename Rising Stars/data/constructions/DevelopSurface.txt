@@ -1,11 +1,12 @@
 Construction: DevelopSurface
-	Labor Cost: 100
+	Labor Cost: 50
 	Description: #C_TERRAFORMING_DESC
 	Category: Planetary Development
 
 	Name: #C_TERRAFORMING
 	Icon: SequesteredSociety
 
+	RequirePlanet()
 	RequireNotTrait(StarChildren)
 	ConsumeCargo(Ore,500)
-	DevelopTiles(15)
+	DevelopTiles(20)

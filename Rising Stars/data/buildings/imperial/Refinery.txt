@@ -1,0 +1,19 @@
+Building: Refinery
+	Name: #BLD_REFINERY
+	Description: #BLD_REFINERY_DESC
+	Sprite: Refinery
+
+	Category: Infrastructure
+
+	Size: 1x2
+	Tile Cost: 50
+	Build Time: 150
+
+	Base Maintenance: 10
+	Tile Maintenance: 5
+
+	RequireNotTrait(Ancient)
+
+	ConsumeCargo(Ore, 200)
+	RequireNativePressure(Allow Money = False)
+	GiveNativePressure(1, Allow Money = False)

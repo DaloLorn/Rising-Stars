@@ -106,3 +106,11 @@ BLD_BARRACKS_DESC: <<
 
 	When your defense reserve is full, it can be deployed at any time to one of your planets to spawn defense ships.
 >>
+
+BLD_REFINERY_DESC: <<
+	Generates 1 pressure of the native resource's main pressure type.
+
+	The pressure is added on this planet only, and is not exported or removed when the native resource is exported.
+
+	[i]Cannot be built on planets without native pressure, or whose only pressure type is money.[/i]
+>>

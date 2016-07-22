@@ -7,7 +7,7 @@ Construction: TerraformIN
 	Description: #C_EXPAND_SUBSURFACE_DESC
 
 	//RequireUnlockTag(TerraformSurface)
-
+	RequirePlanet()
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))
 	AddLaborCostStatusCount(TerraformStacks, Multiply = 1.5)
@@ -34,7 +34,7 @@ Construction: Terraform
 	RequireNotStatus(TerraformStacks)
 	RequireNotStatus(FloatingContinent)
 	ConsumeCargo(Ore, 1000)
-
+	RequirePlanet()
 	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = False, Vertical = True)
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))
