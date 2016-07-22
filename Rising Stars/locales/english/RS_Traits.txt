@@ -1,3 +1,4 @@
+TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
 TRAIT_TECHNICISTS: Researchers
 TRAIT_TECHNICISTS_DESC: <<|
 	[vspace=3/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]
@@ -6,7 +7,7 @@ TRAIT_TECHNICISTS_DESC: <<|
 	[vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
 >>
 TRAIT_INEFFICIENT_DESC: All weapons drain $1 more supply when firing. 
-TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed.
+TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and 5 extra pressure cap.
 TRAIT_INDUSTRIOUS_DESC: Civilian labor generation on the homeworld is increased by $1.
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<|

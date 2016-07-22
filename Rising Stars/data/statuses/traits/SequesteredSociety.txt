@@ -1,0 +1,4 @@
+Status: SequesteredSociety
+	Name: SequesteredSociety
+	Visible To: Nobody
+	AddPressureCap(5)
