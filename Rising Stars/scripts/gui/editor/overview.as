@@ -20,6 +20,7 @@ class OverviewTab : Tab, QuestionDialogCallback {
 	GuiButton@ researchGridBtn;
 	GuiButton@ researchGridBtn2;
 	GuiButton@ researchGridBtn3;
+	GuiButton@ researchGridBtn4;
 	OverviewTab() {
 		super();
 		title = "Overview";
@@ -55,7 +56,10 @@ class OverviewTab : Tab, QuestionDialogCallback {
 		int y = ceil(double(fileClasses.length) / 3.0) * 50 + 42 + 50;
 		@researchGridBtn = GuiButton(this, Alignment(Left+412, Top+y, Width=250, Height=42), "Research Grid");
 		researchGridBtn.font = FT_Medium;
-
+		
+		@researchGridBtn4 = GuiButton(this, Alignment(Left+412, Top+y+50, Width=250, Height=42), "SubGrid (Progenitor)");
+		researchGridBtn4.font = FT_Medium;
+		
 		if(hasDLC("Heralds")) {
 			@researchGridBtn2 = GuiButton(this, Alignment(Left+712, Top+y, Width=250, Height=42), "Grid (Heralds)");
 			researchGridBtn2.font = FT_Medium;
@@ -133,6 +137,11 @@ class OverviewTab : Tab, QuestionDialogCallback {
 			
 			else if(evt.caller is researchGridBtn3) {
 				open(ResearchEditor("reactionary_grid.txt", "Reactionary"));
+				return true;
+			}
+			
+			else if(evt.caller is researchGridBtn4) {
+				open(ResearchEditor("progenitor.txt", "Progenitor"));
 				return true;
 			}
 			else for(uint i = 0, cnt = buttons.length; i < cnt; ++i) {
