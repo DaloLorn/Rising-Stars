@@ -9,7 +9,7 @@ Module: Telescope
 	Core: True
 	Standalone: True
 
-	Build Cost: 1000
+	Build Cost: 750
 	Labor Cost: 50
 	ConsumeCargo(Ore, 750)
 

@@ -66,7 +66,7 @@ Technology: XCovariantShield
 	UnlockSubsystem(CovariantShield)
 	SkipOnUnlockedSubsystem(CovariantShield)
 	SecondaryEnergyCost(1000)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shield Modulation:1)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
 
 Technology: XShieldHarmonizer
 	Name: #R_SYS_SHIELD_HARMONIZER
@@ -87,7 +87,7 @@ Technology: XShieldHarmonizer
 	SkipOnUnlockedSubsystem(ShieldHarmonizer)
 
 	SecondaryEnergyCost(1300)
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6, #R_LIFESTYLE_REQ:Shield Modulation:6)
 
 Technology: XShieldHardener
 	Name: #R_SYS_SHIELD_HARDENER
@@ -106,7 +106,7 @@ Technology: XShieldHardener
 
 	SecondaryEnergyCost(1400)
 
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5,#R_LIFESTYLE_REQ:Shield Modulation:5)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 7,#R_LIFESTYLE_REQ:Shield Modulation:7)
 
 
 Technology: XDeflectorArray
@@ -129,9 +129,10 @@ Technology: XDeflectorArray
 
 	SecondaryEnergyCost(1500)
 
-	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6,#R_LIFESTYLE_REQ:Shield Modulation:6)
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8,#R_LIFESTYLE_REQ:Shield Modulation:8)
 
 
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6,#R_LIFESTYLE_REQ:Energy Science:8)
 Technology: XStellarShieldOrbital
 	Name: #R_STELLAR_SHIELD
 	Description: R_STELLAR_SHIELD_DESC

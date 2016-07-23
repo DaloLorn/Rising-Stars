@@ -16,4 +16,4 @@ Building: Barracks
 	Build Time: 70
 
 	RequireNotTrait(Ancient)
-	AddDefenseReserve(+10)
+	AddDefenseReserve(+20)

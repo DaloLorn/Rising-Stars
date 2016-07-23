@@ -264,7 +264,6 @@ Grid: Heralds
 	FerroFluidArmor: 2,6
 	Tactics: 0,13
 	Warhead: 1,14
-	MinerHull: 10,6
 	Senate: 9,-1
 	Abundance: 9,-2
 	Obedience: 14,0
@@ -291,3 +290,4 @@ Grid: Heralds
 	EnergyHurdle: -20,-13
 	EnergyHurdle: -19,-13
 	PiercingDrones: -19,-14
+	MinerHull: -1,5

@@ -195,3 +195,4 @@ Grid: Reactionary
 	ProgenitorShield: -4,11
 	Connector: -4,12
 	InfluenceHurdle: -3,11
+	XMinerHull: -2,8

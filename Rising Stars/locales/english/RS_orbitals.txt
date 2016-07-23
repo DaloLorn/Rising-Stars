@@ -35,5 +35,5 @@ ORB_TELESCOPE_DESC: <<
 
 	Has the 'Telescope' ability. Can slowly move with an acceleration of 0.2 u/s^2.
 
-	[i][bbloc=#ABL_TELESCOPEORE_DESC/][/i]
+	[i][bbloc=#ABL_TELESCOPEORE_DESC:40000/][/i]
 >>

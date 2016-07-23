@@ -2,7 +2,7 @@ Trait: Manifest Destiny
 	Name: #TRAIT_MANIFEST_DESTINY
 	Description: #TRAIT_MANIFEST_DESTINY_DESC
 
-	Category: Military
+	Category: Personality
 
 	Costs Points: 1
 

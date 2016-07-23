@@ -3,11 +3,11 @@ Technology: XTargetSensor
 	Description: #R_MOD_TARGET_SENSOR_DESC
 	Category: Reactionary
 
-	Point Cost: 500
 	Time Cost: 90
 
 	Icon: SupportCommand * #00ff00
 	Color: #00ff00
 
+	SecondaryMoneyCost(500)
 	UnlockModule(TargetingSensor)
 	SkipOnUnlockedModule(TargetingSensor)

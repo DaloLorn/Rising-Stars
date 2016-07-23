@@ -87,7 +87,7 @@ Technology: XQuantumCompressor
 
 	Point Cost: 0
 	Time Cost: 120
-	SecondaryEnergyCost(1500)
+	SecondaryEnergyCost(1700)
 
 	Color: #69eaf2
 	Icon: QuantumCompressor
@@ -95,7 +95,7 @@ Technology: XQuantumCompressor
 	UnlockModule(QuantumCompressor)
 	SkipOnUnlockedModule(QuantumCompressor)
 
-	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy Science:7)
 
 Technology: XShieldedAntimatter
 	Name: #S_SHIELDED_AMGEN

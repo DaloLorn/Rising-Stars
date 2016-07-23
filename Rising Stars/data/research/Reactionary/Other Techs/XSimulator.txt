@@ -3,7 +3,6 @@ Technology: XSimulator
 	Description: #R_SYS_SIMULATOR_DESC
 	Category: Reactionary
 
-	Point Cost: 600
 	Time Cost: 120
 
 	Icon: Simulator
