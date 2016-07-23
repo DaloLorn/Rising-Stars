@@ -1,0 +1,38 @@
+Construction: OutpostArmor
+	Name: Outpost Armoring
+	Time Cost: 120
+	Icon: PlateArmor
+
+	Category: Outpost Upgrades
+	Description: Increases this Outpost Health
+	OnStart(AddStatus(OutpostArmorStacks))
+	OnCancel(RemoveStatusInstance(OutpostArmorStacks))
+	ConsumeCargoStatusCount(Ore, OutpostArmorStacks, 300)
+
+	RequireOnOrbital(TradeOutpost)
+
+Construction: OutpostDefense
+	Name: Outpost Defense
+	Time Cost: 120
+	Category: Outpost Upgrades
+	Icon: Fortified
+	Description: Increase this Outpost Defense Production by 4 and their Support Capacity by 256
+
+	OnCancel(RemoveStatusInstance(OutpostDefenseStacks))
+	OnStart(AddStatus(OutpostDefenseStacks))
+	ConsumeCargoStatusCount(Ore, OutpostArmorStacks, 300)
+
+	RequireOnOrbital(TradeOutpost)
+
+Construction: OutpostWeapons
+	Name: Outpost Weapons
+	Time Cost: 120
+	Category: Outpost Upgrades
+	Icon: techRocket
+	Description: Add a Missille Launcher to this Outpost.
+
+	OnCancel(RemoveStatusInstance(OutpostWeaponStacks))
+	OnStart(AddStatus(OutpostWeaponStacks))
+	ConsumeCargoStatusCount(Ore, OutpostArmorStacks, 300, Allow Cancel = True)
+
+	RequireOnOrbital(TradeOutpost)
