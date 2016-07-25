@@ -23,5 +23,5 @@ Subsystem: MinerHull
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 
-	Assert: Sum.SupportCapacity
+	Assert: Sum.SupportCapacity==0
 		Message: #ERROR_CANNOT_HAVE_SUPPORT
