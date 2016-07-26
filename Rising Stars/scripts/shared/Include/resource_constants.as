@@ -13,6 +13,6 @@ const double TILE_LABOR_RATE = 1.0 / 60.0;
 const double LABOR_ACHIEVE_THRESH = 200.0 * TILE_LABOR_RATE;
 
 //Labor's worth of support ships to build per minute with defense
-const double DEFENSE_LABOR_PM = 2.0;
+const double DEFENSE_LABOR_PM = 2.9;
 
 
