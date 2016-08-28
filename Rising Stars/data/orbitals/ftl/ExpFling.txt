@@ -1,0 +1,43 @@
+Module: EXP_FlingCore
+	Name: Experimental Fling Core
+	Blurb: #ORB_FLING_CORE_BLURB
+	Description: <<
+		Allows use of fling-based FTL near the beacon. 
+
+		Ships within 12,500 distance units of a fling beacon can be FTLed to anywhere in the galaxy. 
+
+		[b][color=#00c0ff]Experimntal Fling Beacons are prerequisite to build standard Fling Cores cost 500 FTL energy to construct, and 0.15 FTL/s in upkeep.[/color][/b]
+	>>
+	Icon: GuiOrbitalIcons::2
+
+	Standalone: True
+	Solid: False
+	Spin: 0
+
+	Build Cost: 1000
+	Maintenance: 125
+	Labor Cost: 500
+
+	Health: 50000
+	Armor:  50000
+
+	Model: Fling
+	Material: GenericPBR_Fling
+	Size: 32
+
+	Strategic Icon: OrbitalIcons::2
+	Icon Size: 0.04
+
+	Can Fling: False
+
+	IfNotFTLShortage(IsFlingBeacon())
+
+	RequireUnlockTag(HasTECH_Fling)
+
+	DisableOnFTLBlock()
+	BreakOrbitOnFTL()
+
+	AllowConstruction()
+	ConsumeCargo(Ore, 5000)
+	FTLMaintenance(0.15) 
+	ConsumeFTL(500) 

@@ -1,13 +1,18 @@
 Technology: GateTech
 	Name: #R_ORB_GATE
-	Icon: OrbitalIcons::1
-	Point Cost: 4000
-	Time Cost: 400
 	Description: #R_ORB_GATE_DESC
+	Icon: OrbitalIcons::1
+	
+	Point Cost: 2000
+	Time Cost: 200
+	
+	
 	Class: Unlock
 	Color: #00c0ff
 	Category: FTL
+	
+	
 	ModAttribute(ProgenitorTechProgress, Add, 5)
-	UnlockSubsystem(GateModule)
+	
+	UnlockTag(HasTECH_Gate)
 	SkipOnUnlockedSubsystem(GateModule)
-	SecondaryInfluenceCost(80)

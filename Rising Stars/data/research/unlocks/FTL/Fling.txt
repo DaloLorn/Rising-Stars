@@ -1,12 +1,13 @@
 Technology: FlingBeacons
 	Name: #R_ORB_FLING
 	Icon: OrbitalIcons::2
-	Point Cost: 4000
-	Time Cost: 400
+	Point Cost: 1000
+	Time Cost: 60
 	Description: #R_ORB_FLING_DESC
 	Class: Unlock
 	Color: #00c0ff
 	Category: FTL
+	SkipOnUnlockedTag(HasTECH_Fling)
 	ModAttribute(ProgenitorTechProgress, Add, 5)
-	SkipOnUnlockedTag(HasFling)
-	UnlockTag(HasFling)
+	SkipOnUnlockedTag(Has_Fling)
+	UnlockTag(HasTECH_Fling)

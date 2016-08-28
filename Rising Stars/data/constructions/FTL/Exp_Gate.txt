@@ -1,0 +1,11 @@
+Construction: EXP_GateUnlock
+	Name: Fling Beacon Miniaturization
+	Time Cost: 300
+	Description: Unlock the standard Fling Beacon Orbital
+	Icon: OrbitalIcons::2
+	RequireNotTrait(Gate)
+	RequireOnOrbital(EXP_GateCore)
+	ModAttribute(GateConst, Add, 1)
+	RequireAttributeLT(GateConst)
+	ConsumeFTL(200)
+	UnlockSubsystem(GateModule)
