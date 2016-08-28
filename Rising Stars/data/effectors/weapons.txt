@@ -57,7 +57,7 @@ Effector: Torpedo
 
 	TargetAlgorithm: SingleTarget
 	CanTarget: isEnemy && isDamageable
-	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
+	AutoTarget: isEnemy && (isShip || (isOrbital ) * 0.5)
 
 	Activation: VariableTimed(Reload, 0.025)
 	OnTrigger: combat::WeaponFire(SupplyCost)

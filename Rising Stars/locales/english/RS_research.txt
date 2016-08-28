@@ -61,7 +61,7 @@ R_SYS_QUANTUM_ARMOR_DESC: <<
 R_ORB_FLING_DESC: <<
 	[i][color=#aaa]A device capable of catapulting nearby vessels into hyperspace. The ships then proceed to exit from hyperspace under their own power.[/color][/i]
 
-	Unlocks the Fling Beacon orbital.
+	Unlocks the Experimental Fling Beacon orbital.
 
 	[i][bbloc=#ORB_FLING_CORE_DESC][/bbloc][/i]
 >>
