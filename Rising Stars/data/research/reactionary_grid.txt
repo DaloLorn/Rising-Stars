@@ -173,26 +173,27 @@ Grid: Reactionary
 	Obedience: -12,8
 	XPlanetaryEngine: 5,-4
 	XHyperdrive: 6,-5
-	ProgenitorScience: -10,19
-	Connector: -11,20
-	Connector: -10,20
-	FTLHurdle: -10,21
-	Connector: -11,22
-	Connector: -10,22
-	Recall: -10,23
+	ProgenitorScience: -11,20
+	Connector: -12,21
+	Connector: -11,21
+	FTLHurdle: -11,22
+	Connector: -12,23
+	Connector: -11,24
+	Recall: -11,24
+	EnergyHurdle: -12,20
+	EnergyHurdle: -12,19
 	EnergyHurdle: -11,19
-	EnergyHurdle: -11,18
-	EnergyHurdle: -10,18
-	InfluenceHurdle: -9,19
-	ControlChair: -8,19
-	ProgenitorArmor: -11,17
-	EnergyHurdle: -11,16
-	PiercingDrones: -10,15
-	ProgenitorSolarOrbital: -12,19
-	ProgenitorComputer: -7,17
-	EnergyHurdle: -8,18
-	EnergyHurdle: -9,15
-	ProgenitorShield: -9,16
-	Connector: -9,17
-	InfluenceHurdle: -8,16
+	InfluenceHurdle: -10,20
+	ControlChair: -9,20
+	ProgenitorArmor: -12,18
+	EnergyHurdle: -12,17
+	PiercingDrones: -11,16
+	ProgenitorSolarOrbital: -13,20
+	ProgenitorComputer: -8,18
+	ProgenitorShield: -10,18
 	XMinerHull: -2,8
+	EnergyHurdle: -11,17
+	EnergyHurdle: -8,20
+	Connector: -8,19
+	InfluenceHurdle: -9,18
+	Connector: -11,23
