@@ -7,6 +7,7 @@ import object_creation;
 import traits;
 import maps;
 from empire import Creeps, Pirates, majorEmpireCount, initEmpireDesigns;
+import void addModifierToEmpire(Empire@ emp, const string& spec) from "bonus_effects";
 
 #priority init 5000
 void init() {
@@ -38,6 +39,7 @@ void init() {
 		emp.TradeMask.value = emp.mask;
 		@emp.shipset = getShipset(settings.shipset);
 		emp.RaceName = settings.raceName;
+		emp.cheatLevel = 0;
 		if(emp.shipset is null || !emp.shipset.available)
 			@emp.shipset = getShipset(DEFAULT_SHIPSET);
 
@@ -74,6 +76,76 @@ void init() {
 
 			emp.addTrait(trait.id);
 		}
+	
+			//Apply generic AI cheats
+		if(settings.type != ET_Player) {
+			if(settings.cheatWealth > 0) {
+				double factor = settings.cheatWealth;
+				emp.modResearchRate(0.75 * factor);
+				emp.modTotalBudget(100 * factor);
+				emp.modEnergyIncome(0.5 * factor);
+				emp.modDefenseRate(1.0 * factor / 60.0);
+				emp.modInfluenceIncome(0.5 * factor);
+				emp.FactoryLaborMod += factor;
+				emp.PopulationGrowthFactor += 0.1 * factor;
+
+				emp.modFTLCapacity(125.0 * factor);
+				emp.modFTLIncome(0.5 * factor);
+
+				emp.cheatLevel += settings.cheatWealth / 10;
+			}
+			if(settings.cheatAbundance > 0) {
+				double factor = 1.0 + double(settings.cheatAbundance) * 0.5;
+				emp.MoneyGenerationFactor *= factor;
+				emp.LaborGenerationFactor *= factor;
+				emp.ResearchGenerationFactor *= factor;
+				emp.EnergyGenerationFactor *= factor;
+				emp.DefenseGenerationFactor *= factor;
+				emp.PopulationGrowthFactor *= factor;
+				emp.modInfluenceFactor(sqrt(factor) - 1.0);
+
+				emp.cheatLevel += settings.cheatAbundance;
+			}
+			if(settings.cheatStrength > 0) {
+				double factor = 1.0 + double(settings.cheatStrength) * 0.5;
+				factor = sqrt(factor);
+
+				addModifierToEmpire(emp, "HpFactor("+factor+")");
+				addModifierToEmpire(emp, "tag/Weapon::DamageFactor("+factor+")");
+
+				emp.cheatLevel += settings.cheatStrength;
+			}
+			if(settings.aiFlags & AIF_CheatPrivileged != 0) {
+				const Trait@ trait;
+				uint checked = 0;
+				for(uint j = 0, jcnt = getTraitCount(); j < jcnt; ++j) {
+					auto@ chk = getTrait(j);
+					if(chk.category is null || chk.category.ident != "Privilege")
+						continue;
+					if(chk.hasConflicts(settings.traits))
+						continue;
+
+					checked += 1;
+					if(randomd() < 1.0 / double(checked))
+						@trait = chk;
+				}
+
+				if(trait !is null) {
+					emp.addTrait(trait.id);
+				}
+				else {
+					error("Error: could not find privilege trait to add to AI "+emp.name);
+				}
+
+				emp.cheatLevel += 1;
+			}
+		}
+	
+	
+	
+	
+	
+	
 	}
 
 	//Create game empires
