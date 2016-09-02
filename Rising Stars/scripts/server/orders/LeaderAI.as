@@ -283,6 +283,9 @@ class LeaderAI : Component_LeaderAI, Savable {
 				}
 				@prev = ord;
 			}
+			if(order !is null)
+			firstOrder = order.type;		
+		
 		}
 
 		if(msg >= SV_0068)
@@ -1105,6 +1108,13 @@ class LeaderAI : Component_LeaderAI, Savable {
 			if(obj.hasMover && obj.isMoving)
 				obj.stopMoving();
 		}
+	
+		if(order !is null)
+ 			firstOrder = order.type;
+ 		else
+ 			firstOrder = OT_INVALID;
+	
+	
 	}
 	
 	void insertOrder(Object& obj, Order@ ord, uint index) {
@@ -1134,6 +1144,13 @@ class LeaderAI : Component_LeaderAI, Savable {
 		if(o.next !is null)
 			@o.next.prev = ord;
 		@o.next = ord;
+		
+		if(order !is null)
+ 			firstOrder = order.type;
+ 		else
+ 			firstOrder = OT_INVALID;
+		
+		
 	}
 
 	void addOrder(Object& obj, Order@ ord, bool append) {
@@ -1154,6 +1171,12 @@ class LeaderAI : Component_LeaderAI, Savable {
 			@last = last.next;
 		@last.next = ord;
 		@ord.prev = last;
+		if(order !is null)
+ 			firstOrder = order.type;
+ 		else
+			firstOrder = OT_INVALID;
+		
+		
 	}
 
 	void addStopOrder(Object& obj, bool append) {
@@ -1636,7 +1659,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 
 			//Handle construction of ordered ships
 			constructionTimer -= time;
-			if(constructionTimer <= 0) {
+			if(constructionTimer <= 0 && canGain) {
 				Region@ region = obj.region;
 				if(region !is null) {
 					//Handle new construction orders

@@ -98,7 +98,8 @@ restricted remote:
 	void resetLevelExperience(bool resetLevels = false);
 	void recalculateLevels(int prevSize, int newSize);
 	void convertRandomSupport(Object@ toLeader, Empire@ toEmpire, int maxSize);
-
+	void compEngageRange();
+	
 server:
 	safe uint get_SupplyGhost() const;
 	safe uint get_SupplyOrdered() const;

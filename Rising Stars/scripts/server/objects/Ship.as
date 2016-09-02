@@ -1497,7 +1497,8 @@ tidy class ShipScript {
 		}
 		ship.Supply = min(ship.Supply, ship.MaxSupply);
  		ship.Shield = min(ship.Shield, ship.MaxShield);
- 		barDelta = true;
+ 		ship.compEngageRange();
+		barDelta = true;
 	
 	}
 

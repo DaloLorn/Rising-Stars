@@ -25,7 +25,9 @@ import Tab@ get_ActiveTab() from "tabs.tabbar";
 import bool isGuiHovered() from "gui";
 import void pinObject(Tab@ _tab, Object@ obj, bool floating) from "tabs.GalaxyTab";
 import void zoomTabTo(Object@ obj) from "tabs.GalaxyTab";
-
+import void openOverlay(Object@ obj) from "tabs.GalaxyTab";
+import void openSupportOverlay(Object@ obj) from "tabs.GalaxyTab";
+ 
 set_int selectedIDs;
 array<Object@> selection;
 array<array<Object@>> groups(9);
@@ -644,8 +646,30 @@ void toggleFireArcs(bool pressed) {
 		SHOW_FIREARCS = !SHOW_FIREARCS;
 }
 
+void manage_obj(bool pressed) {
+ 	if(!pressed) {
+ 		if(selectedObject !is null)
+ 			openOverlay(selectedObject);
+ 		else if(hoveredObject !is null)
+ 			openOverlay(hoveredObject);
+ 	}
+}
+
+void manage_support(bool pressed) {
+	if(!pressed) {
+		if(selectedObject !is null)
+			openSupportOverlay(selectedObject);
+		else if(hoveredObject !is null)
+			openSupportOverlay(hoveredObject);
+	}
+}
+
+
 void init() {
 	addConsoleCommand("debug_cursor", DebugCursorCommand());
+	
+	keybinds::Global.addBind(KB_MANAGE, "manage_obj");
+ 	keybinds::Global.addBind(KB_MANAGE_SUPPORT, "manage_support");
 	keybinds::Global.addBind(KB_PIN, "pinObj");
 	keybinds::Global.addBind(KB_HOLD_POSITION, "holdPosition");
 	keybinds::Global.addBind(KB_PIN_FLOATING, "pinObjFloat");

@@ -1054,10 +1054,10 @@ final class RegionObjects : Component_RegionObjects, Savable {
 			if(pl.owner is owner && pl.SupplyUsed > 0 && pl.allowFillFrom)
 				dest.refreshSupportsFrom(pl, keepGhosts);
 		}
-		for(uint i = 0, cnt = shipyardList.length; i < cnt; ++i) {
-			auto@ yard = shipyardList[i];
-			if(yard.owner is owner && yard.SupplyUsed > 0 && yard.allowFillFrom)
-				dest.refreshSupportsFrom(yard, keepGhosts);
+		for(uint i = 0, cnt = orbitalList.length; i < cnt; ++i) {
+			auto@ obj = orbitalList[i];
+			if(obj.owner is owner && obj.SupplyUsed > 0 && obj.allowFillFrom)
+				dest.refreshSupportsFrom(obj, keepGhosts);
 		}
 	}
 
@@ -2112,12 +2112,12 @@ final class RegionObjects : Component_RegionObjects, Savable {
 			if(pl.supportCount > 0 && pl.SupplyUsed > pl.SupplySatellite && pl.allowFillFrom)
 				avSupMask |= owner.mask;
 		}
-		for(uint i = 0, cnt = shipyardList.length; i < cnt; ++i) {
-			auto@ yard = shipyardList[i];
-			Empire@ owner = yard.owner;
+		for(uint i = 0, cnt = orbitalList.length; i < cnt; ++i) {
+			auto@ obj = orbitalList[i];
+			Empire@ owner = obj.owner;
 			if(owner is null || !owner.valid)
 				continue;
-			if(yard.supportCount > 0 && yard.allowFillFrom)
+			if(obj.supportCount > 0 && obj.allowFillFrom)
 				avSupMask |= owner.mask;
 		}
 		region.AvailSupportMask = avSupMask;
