@@ -9,5 +9,5 @@ Technology: FlingBeacons
 	Category: FTL
 	SkipOnUnlockedTag(HasTECH_Fling)
 	ModAttribute(ProgenitorTechProgress, Add, 5)
-	SkipOnUnlockedTag(Has_Fling)
+	SkipOnUnlockedTag(HasFling)
 	UnlockTag(HasTECH_Fling)

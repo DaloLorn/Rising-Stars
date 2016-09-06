@@ -2,16 +2,17 @@ Status: OutpostArmorStacks
 	Name: Armor Upgrade
 	Collapses: True
 	Visible To: Nobody
+	RepeatStacks()
 	AddBonusHP(15000)
 Status: OutpostWeaponStacks
 	Name: Weapon Upgrade
 	Collapses: True
 	Visible To: Nobody
-	RepeatExtended(RecordBonusDPS(400), Multiply Attribute = StaticDamageFactor, Base = 20, Multiply Attribute = StaticDamageFactor)
-	RepeatExtended(AddTurret(Missile, Range=1000, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor)
+	RepeatStacks(RepeatExtended(RecordBonusDPS(25), Base = 20, Multiply Attribute = StaticDamageFactor))
+	RepeatStacks(RepeatExtended(AddTurret(Missile, Range=1000, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
 Status: OutpostDefenseStacks
 	Name: Defense Upgrade
 	Collapses: True
 	Visible To: Global
-	AddFleetCommand(256)
-	AddLocalDefense(4, Overflow Global = True)
+	RepeatStacks(AddFleetCommand(256))
+	RepeatStacks(AddLocalDefense(4, Overflow Global = True))

@@ -1,7 +1,7 @@
 Construction: EXP_GateUnlock
-	Name: Fling Beacon Miniaturization
+	Name: #C_GATE_UNLOCK
 	Time Cost: 300
-	Description: Unlock the standard Fling Beacon Orbital
+	Description: #C_GATE_UNLOCK_DESC
 	Icon: OrbitalIcons::2
 	RequireNotTrait(Gate)
 	RequireOnOrbital(EXP_GateCore)

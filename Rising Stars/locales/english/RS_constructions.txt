@@ -36,3 +36,37 @@ C_EXPAND_SUBSURFACE_DESC: <<
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>
+C_FLING_UNLOCK: Refined Beacon Architecture
+C_FLING_UNLOCK_DESC: <<
+	Use the data collected during the construction and use of this fling beacon to improve your beacon designs, allowing for smaller, cheaper fling beacons to be constructed.
+
+	Unlocks the Fling Beacon orbital.
+
+	[i][bbloc=#ORB_FLING_CORE_DESC/][/i]
+>>
+C_GATE_UNLOCK: Streamlined Wormhole Equations
+C_GATE_UNLOCK_DESC: <<
+	Use the data collected during the construction and use of this stargate to improve your gate designs, allowing for the easy construction of more customizable gates.
+
+	Unlocks the Gate subsystem for use on stations.
+
+	[i][bbloc=#S_GATE_MODULE_DESC/][/i]
+>>
+OUTPOST_ARMORING: Structural Enhancement
+OUTPOST_ARMORING_DESC: <<
+	Reinforce the orbital's frame and outer hull, allowing it to withstand more damage before critical failure.
+
+	Adds 15000 health. May be modified by upgrades that improve orbital health. Subsequent structural enhancement requires increasingly large amounts of Ore to perform.
+>>
+OUTPOST_DEFENSE: Refit Launch Bays
+OUTPOST_DEFENSE_DESC: <<
+	Perform a substantial retrofit of the orbital's hangar deck and docking ports, allowing it to support more vessels coming in or out at any given time. The additional traffic also encourages the civilian sector to assist with constructing additional defense ships.
+
+	Adds 256 support capacity and 4 Defense generation. Subsequent hangar refits require increasingly large amounts of Ore to perform.
+>>
+OUTPOST_WEAPONS: Install Swarm Missiles
+OUTPOST_WEAPONS_DESC: <<
+	Install a swarm missile launcher on the orbital's exterior, improving its ability to hold off raiders or interrupt enemy trade.
+
+	Adds 20 missile tubes, each firing one missile per second for a damage of 25 per missile. May be modified by upgrades that improve stationary defense weapons. Subsequent missile launchers require increasingly large amounts of Ore to install.
+>>

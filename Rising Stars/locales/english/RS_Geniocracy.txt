@@ -88,10 +88,10 @@ INFINITE_MEGACONSTRUCTION: Orbital Architecture
 INFINITE_MEGACONSTRUCTION_DESC: <<
 	[i][color=#aaa]Refinements to our architectural methods and structural design drastically improve the resilience of our space stations.[/color][/i]
 
-	Increases the [img=Plus;20/]  health of all orbitals by $1.
+	Increases the [img=Plus;20/] health of all orbitals by $1.
 	Reduces the labor and build cost of orbitals by $2.
 
-	Also increases the  the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Outpost[/b] orbitals.
+	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Outpost[/b] orbitals, and increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by 128 for each planet level.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>

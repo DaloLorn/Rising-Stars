@@ -5,6 +5,22 @@ ORB_SHIELD_CHARGER_DESC: <<
 	
 	Increases the out-of-combat shield recharge rate of all ships in the system by 25, plus 0.01% of the ships' shield capacity.
 >>
+ORB_EXPERIMENTAL_FLING: Experimental Fling Beacon
+ORB_EXPERIMENTAL_FLING_BLURB: Lets nearby ships use fling to FTL to anywhere in the galaxy. Can be used to conduct research into fling beacon technology.
+ORB_EXPERIMENTAL_FLING_DESC: <<|
+	This expensive, oversized research facility allows use of fling-based FTL in its vicinity.
+
+	Ships within 12,500 distance units of a fling beacon can be FTLed to anywhere in the galaxy. 
+
+	[b][color=#00c0ff]Experimental Fling Beacons are required to research standard Fling Beacons, cost 500 FTL energy to construct, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
+>>
+ORB_EXPERIMENTAL_GATE: Prototype Stargate
+ORB_EXPERIMENTAL_GATE_BLURB: Allows instantaneous travel to any other gate. Can be used to conduct research into gate technology.
+ORB_EXPERIMENTAL_GATE_DESC: <<|
+	This expensive, oversized research facility allows instantaneous travel to any other gate.
+
+	[b][color=#00c0ff]Prototype Stargates are required to research designable gates, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
+>>
 
 ORB_STELLAR_SHIELD: Stellar Shield Generator
 ORB_STELLAR_SHIELD_BLURB: Adds a powerful shield to all stars in the system.

@@ -63,14 +63,14 @@ R_ORB_FLING_DESC: <<
 
 	Unlocks the Experimental Fling Beacon orbital.
 
-	[i][bbloc=#ORB_FLING_CORE_DESC][/bbloc][/i]
+	[i][bbloc=#ORB_EXPERIMENTAL_FLING_DESC][/bbloc][/i]
 >>
 R_ORB_GATE_DESC: <<
 	[i][color=#aaa]A space station capable of maintaining a node in an artificial wormhole network. Each gate network operates on a slightly different frequency, so fleets cannot use gates belonging to other empires.[/color][/i]
 
-	Unlocks Gates.
+	Unlocks the Prototype Stargate orbital.
 
-	[i][bbloc=#S_GATE_MODULE_DESC][/bbloc][/i]
+	[i][bbloc=#ORB_EXPERIMENTAL_GATE_DESC][/bbloc][/i]
 >>
 R_SYS_SLIPSTREAM_DESC: <<
 	[i][color=#aaa]A device capable of penetrating subspace on a level far greater than - and considerably different from - conventional hyperdrives. 'Slipstream tears', while similar to wormholes, decay much more rapidly than known stable wormholes; with a bigger generator, the created rift will last longer.[/color][/i]
@@ -97,8 +97,8 @@ R_NYLLI_FOOD_DESC: <<
 	
 	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
 >>
-R_ORB_FLING: Fling Beacons
-R_ORB_GATE: Gate Technology
+R_ORB_FLING: Fling Studies
+R_ORB_GATE: Gate Construction
 R_SYS_HYPERDRIVE: Hyperdrive
 R_SYS_SLIPSTREAM: Slipstream
 R_SYS_JUMPDRIVE: Jumpdrive

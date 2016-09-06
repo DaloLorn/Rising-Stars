@@ -7,7 +7,7 @@ TRAIT_TECHNICISTS_DESC: <<|
 	[vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
 >>
 TRAIT_INEFFICIENT_DESC: All weapons drain $1 more supply when firing. 
-TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and 5 extra pressure cap.
+TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and has an additional 5 Pressure Capacity.
 TRAIT_INDUSTRIOUS_DESC: Civilian labor generation on the homeworld is increased by $1.
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<|
@@ -36,4 +36,13 @@ TRAIT_VERDANT_DESC: <<|
 	[vspace=3/][img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
 	[vspace=3/][img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
 	[vspace=3/][img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
+>>
+TRAIT_FLUX_DESC: <<
+	Your empire maintains an intricate flux field across all its systems to allow for instantaneous spatial translation.
+
+	Your ships instantly FTL to any system you have vision over. A fleet that has recently used the flux field cannot use it again immediately. Your ships are not able travel through deep space.
+
+	Ships cost FTL Energy to build.
+
+	You automatically gain vision over all systems within your trade range. You start the game with a free Subspace Telescope Array, and cannot research other FTL methods.
 >>

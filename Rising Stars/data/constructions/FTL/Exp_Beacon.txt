@@ -1,7 +1,7 @@
 Construction: EXP_FlingCoreUnlock
-	Name: Fling Beacon Miniaturization
+	Name: #C_FLING_UNLOCK
 	Time Cost: 300
-	Description: Unlock the standard Fling Beacon Orbital
+	Description: #C_FLING_UNLOCK_DESC
 	Icon: OrbitalIcons::2
 	RequireNotTrait(Fling)
 	RequireOnOrbital(EXP_FlingCore)
