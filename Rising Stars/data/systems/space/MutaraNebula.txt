@@ -1,5 +1,5 @@
 System: MutaraNebula
-	Frequency: 0.01 * $ANOMALY_SYSTEM_FREQ_MULT
+	Frequency: 0
 	
 	ExpandSystem(1000)
 	
@@ -16,6 +16,7 @@ System: MutaraNebula
 	MakeNebula(#c000df)
 	
 	AddRegionStatus(Mutara) // Disables shields. Also uses LimitedSight to heavily obscure sensors.
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
 	SetStaticSeeableRange(100*$SENSOR_RANGE_MULT)

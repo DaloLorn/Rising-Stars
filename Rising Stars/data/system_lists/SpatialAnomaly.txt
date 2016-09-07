@@ -1,0 +1,24 @@
+SystemList: SpatialAnomaly
+	System: CeruleanNebula
+	Frequency: 1
+
+	System: MetreonNebula
+	Frequency: 2
+
+	System: TachyonNebula
+	Frequency: 4
+
+	System: RadioactiveNebula
+	Frequency: 4
+
+	System: MetaphasicNebula
+	Frequency: 4
+
+	System: EconomicNebula
+	Frequency: 1
+
+	System: EmptySpace
+	Frequency: 2
+
+	System: Type1Nebula
+	Frequency: 4

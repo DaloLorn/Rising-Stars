@@ -1,5 +1,5 @@
 System: Type1Nebula
-	Frequency: 0.02 * $ANOMALY_SYSTEM_FREQ_MULT
+	Frequency: 0
 
 	ExpandSystem(1000)
 
@@ -16,6 +16,7 @@ System: Type1Nebula
 		MakeCreepCamp(Offset = 1200)
 
 	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 
 	NoRegionVision()
 	SetStaticSeeableRange(500*$SENSOR_RANGE_MULT)

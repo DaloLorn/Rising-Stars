@@ -1,5 +1,5 @@
 System: CeruleanNebula
-	Frequency: 0.005 * $ANOMALY_SYSTEM_FREQ_MULT
+	Frequency: 0
 	
 	ExpandSystem(1000)
 	
@@ -13,6 +13,7 @@ System: CeruleanNebula
 	MakeNebula(#80ffff)
 	
 	AddRegionStatus(Cerulean) // Disables shields, cloaking, FTL and weapons. Also slightly obscures sensors.
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
 	

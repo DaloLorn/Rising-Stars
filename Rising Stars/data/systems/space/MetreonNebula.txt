@@ -1,5 +1,5 @@
 System: MetreonNebula
-	Frequency: 0.01 * $ANOMALY_SYSTEM_FREQ_MULT
+	Frequency: 0
 	
 	ExpandSystem(1000)
 	
@@ -13,6 +13,7 @@ System: MetreonNebula
 	MakeNebula(#800000)
 	
 	AddRegionStatus(Metreon) // Damages shields over time. If shields fail, damages hull instead. Also obscures sensors somewhat.
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
 	SetStaticSeeableRange(750*$SENSOR_RANGE_MULT)

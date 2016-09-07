@@ -1,5 +1,5 @@
 System: TachyonNebula
-	Frequency: 0.02 * $ANOMALY_SYSTEM_FREQ_MULT
+	Frequency: 0
 	
 	ExpandSystem(1000)
 	
@@ -16,6 +16,7 @@ System: TachyonNebula
 	
 	AddRegionStatus(Tachyon) // Grants free FTL to ships leaving the system, somewhat obscures sight.
 	ABEM_nebulae::SetGlobalSystemFlag(TachyonNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
 	SetStaticSeeableRange(750*$SENSOR_RANGE_MULT)
