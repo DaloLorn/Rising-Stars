@@ -9,11 +9,11 @@ M_Bonus,
 
 #section all
 
-class PreciousClouds(4) : Map {
-	PreciousClouds(4)() {
+class PreciousClouds : Map {
+	PreciousClouds() {
 		super();
 
-name = "PreciousClouds(4)";
+name = "Precious Clouds (4)";
 description = "Resources are scarce within this sector of the galaxy; those who can reach and hold the rich nebula at its heart may take them all, but the Remnants do not part with these riches willingly...
 
 Designed for up to four players. Recommended configurations: 2v2, 1v1, 1v1v1v1";
