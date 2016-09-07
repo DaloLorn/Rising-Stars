@@ -1,9 +1,12 @@
 import systems;
+import system_flags;
 
+const int NEBULA_FLAG = getSystemFlag("IsNebula");
 tidy class TerritoryScript {
 	TerritoryNode@ node;
 	set_int inner;
 	set_int edges;
+	set_int nebulae;
 
 	bool regionDelta = false;
 	array<Region@> regions;
@@ -60,6 +63,10 @@ tidy class TerritoryScript {
 			node.addInner(region.id, region.position, region.radius);
 			inner.insert(region.id);
 
+			if(region.getSystemFlagAny(NEBULA_FLAG)) {
+				nebulae.insert(region.id);
+			}
+
 			if(edges.contains(region.id)) {
 				node.removeEdge(region.id);
 				edges.erase(region.id);
@@ -75,6 +82,12 @@ tidy class TerritoryScript {
 					continue;
 				if(edges.contains(other.object.id))
 					continue;
+
+				if(other.object.getSystemFlagAny(NEBULA_FLAG)) {
+					nebulae.insert(other.object.id);
+					add(obj, other.object);
+					continue;
+				}
 
 				edges.insert(other.object.id);
 				node.addEdge(other.object.id, other.position, other.radius);
@@ -151,8 +164,15 @@ tidy class TerritoryScript {
 			if(edges.contains(other.object.id))
 				continue;
 
-			edges.insert(other.object.id);
-			node.addEdge(other.object.id, other.position, other.radius);
+			if(other.object.getSystemFlagAny(NEBULA_FLAG)) {
+				nebulae.insert(other.object.id);
+				other.object.TradeMask |= obj.owner.mask;
+				add(obj, other.object);
+			}
+			else {
+				edges.insert(other.object.id);
+				node.addEdge(other.object.id, other.position, other.radius);
+			}
 		}
 	}
 
@@ -171,30 +191,40 @@ tidy class TerritoryScript {
 
 		//Remove edges from this region
 		SystemDesc@ desc = getSystem(region.SystemId);
-		bool isEdge = false;
+		bool isEdge = false, otherIsNebula = false;
 		for(uint i = 0, cnt = desc.adjacent.length; i < cnt; ++i) {
 			uint adj = desc.adjacent[i];
 			SystemDesc@ other = getSystem(adj);
+				
+			if(nebulae.contains(other.object.id))
+				otherIsNebula = true;
 
-			if(inner.contains(other.object.id))
+			if(!otherIsNebula && inner.contains(other.object.id))
 				isEdge = true;
-
-			if(!edges.contains(other.object.id))
-				continue;
 
 			bool found = false;
 			for(uint j = 0, jcnt = other.adjacent.length; j < jcnt; ++j) {
 				SystemDesc@ chk = getSystem(other.adjacent[j]);
-				if(inner.contains(chk.object.id)) {
+				if(inner.contains(chk.object.id) && !nebulae.contains(chk.object.id)) {
 					found = true;
 					break;
 				}
 			}
-
-			if(!found) {
-				edges.erase(other.object.id);
-				node.removeEdge(other.object.id);
+			
+			if(found)
+				continue;
+				
+			if(otherIsNebula) {
+				nebulae.erase(other.object.id);
+				remove(obj, other.object);
+				other.object.TradeMask &= ~obj.owner.mask;
 			}
+
+			if(!edges.contains(other.object.id))
+				continue;
+
+			edges.erase(other.object.id);
+			node.removeEdge(other.object.id);
 		}
 
 		//Check if this should be added back as an edge
