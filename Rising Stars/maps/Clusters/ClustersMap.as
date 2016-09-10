@@ -1,8 +1,12 @@
 #include "include/map.as"
+#section server
+import system_lists;
+#section all
 
 enum MapSetting {
 	M_SystemCount,
 	M_SystemSpacing,
+	M_NebulaFreq,
 	M_Flatten,
 };
 
@@ -34,6 +38,7 @@ class ClustersMap : Map {
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=20, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 	}
 
@@ -41,7 +46,12 @@ class ClustersMap : Map {
 	void placeSystems() {
 		uint systemCount = uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT));
 		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		bool hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
+		
+		auto@ anomalyList = getSystemList("SpatialAnomaly");
+		hasAnomalies = hasAnomalies && anomalyList !is null;
 
 		//Calculate amount of 'rooms'
 		uint roomCnt = max(ceil(pow(double(systemCount), 0.33)), double(max(estPlayerCount+1, 4)));
@@ -158,11 +168,21 @@ class ClustersMap : Map {
 				if(i != 0) {
 					if(hwInd == n)
 						addPossibleHomeworld(sys);
+					else if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 				}
 				else if(circle == 0) {
 					auto@ blackHole = getSystemType("CoreBlackhole");
 					if(blackHole !is null)
 						sys.systemType = int(blackHole.id);
+				}
+				else if(hasAnomalies && randomd() < nebulaFreq) {
+					auto@ anomaly = anomalyList.getRandomSystemType(this);
+					if(anomaly !is null)
+						sys.systemType = int(anomaly.id);
 				}
 
 				room.systems.insertLast(sys);
@@ -246,6 +266,11 @@ class ClustersMap : Map {
 					@last = sys;
 					if(x == 0)
 						@first = last;
+					if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 				}
 
 				//Find systems to link to

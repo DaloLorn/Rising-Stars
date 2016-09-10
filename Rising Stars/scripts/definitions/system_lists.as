@@ -1,4 +1,4 @@
-#priority init 1400
+#priority init 1549
 import hooks;
 import settings.map_lib;
 import map_systems;

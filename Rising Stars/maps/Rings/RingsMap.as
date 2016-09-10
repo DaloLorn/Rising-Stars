@@ -2,11 +2,13 @@
 
 #section server
 import util.map_util;
+import system_lists;
 #section all
 
 enum MapSetting {
 	M_SystemCount,
 	M_SystemSpacing,
+	M_NebulaFreq,
 	M_Flatten,
 };
 
@@ -28,6 +30,7 @@ class RingsMap : Map {
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=6, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 	}
 
@@ -37,7 +40,12 @@ class RingsMap : Map {
 
 		uint systemCount = uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT));
 		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		bool hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
+		
+		auto@ anomalyList = getSystemList("SpatialAnomaly");
+		hasAnomalies = hasAnomalies && anomalyList !is null;
 
 		uint ringCount = max(floor(pow(double(systemCount), 0.33)), 1.0);
 		uint sysPerRing = ceil(double(systemCount) / double(ringCount));
@@ -76,6 +84,11 @@ class RingsMap : Map {
 				}
 
 				auto@ sys = addSystem(sysPos);
+					if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 				regionGroup.addSystem(flatPos, spacing * 0.8);
 				angle += angleStep;
 			}

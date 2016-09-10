@@ -2,6 +2,7 @@
 
 #section server
 import saving;
+import system_lists;
 import map_loader;
 import util.design_designer;
 from empire import Creeps;
@@ -26,13 +27,23 @@ class Room {
 enum MapSetting {
 	M_SysCount,
 	M_SystemSpacing,
+	M_NebulaFreq,
 	M_Flatten,
 };
 
 const uint INITIAL_EXPANSE = 3;
 const double REMNANT_FACTOR = 2.0;
 
+#section server
+const SystemList@ anomalyList = getSystemList("SpatialAnomaly");
+#section all
+
 class ExpanseMap : Map {
+#section server
+	double nebulaFreq;
+	bool hasAnomalies;
+#section all
+	
 	ExpanseMap() {
 		super();
 
@@ -50,6 +61,7 @@ class ExpanseMap : Map {
 	void makeSettings() {
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Description(locale::EXPANSE_MAP_TEXT, lines=3);
 	}
 
@@ -72,7 +84,11 @@ class ExpanseMap : Map {
 
 		//Generate base clusters
 		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
+		
+		hasAnomalies = hasAnomalies && anomalyList !is null;
 
 		//Calculate amount of 'rooms'
 		uint players = estPlayerCount;
@@ -153,6 +169,11 @@ class ExpanseMap : Map {
 				SystemData@ sys = addSystem(pos, quality=quality);
 				if(circle == 0 && (i != 0 || roomCnt == estPlayerCount))
 					addPossibleHomeworld(sys);
+				else if(hasAnomalies && randomd() < nebulaFreq) {
+					auto@ anomaly = anomalyList.getRandomSystemType(this);
+					if(anomaly !is null)
+						sys.systemType = int(anomaly.id);
+				}
 				sys.assignGroup = i;
 
 				room.systems.insertLast(sys);
@@ -221,6 +242,11 @@ class ExpanseMap : Map {
 						pos.y += randomd(-spacing*0.5, spacing*0.5);
 
 					auto@ sys = addSystem(pos);
+					if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 					sys.assignGroup = i;
 
 					ExpanseSystem es;
@@ -268,6 +294,11 @@ class ExpanseMap : Map {
 					@last = sys;
 					if(x == 0)
 						@first = last;
+					if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 				}
 
 				//Find systems to link to
@@ -451,10 +482,17 @@ class ExpanseMap : Map {
 	void initSystem(ExpanseSystem@ es) {
 		auto@ desc = es.system;
 		const SystemType@ sysType;
-		do {
-			@sysType = getDistributedSystemType();
+		if(hasAnomalies && randomd() < nebulaFreq) {
+			auto@ anomaly = anomalyList.getRandomSystemType(this);
+			if(anomaly !is null)
+				@sysType = anomaly;
 		}
-		while(sysType.unique != SU_NonUnique);
+		else {
+			do {
+				@sysType = getDistributedSystemType();
+			}
+			while(sysType.unique != SU_NonUnique);
+		}
 
 		SystemData data;
 		data.index = es.system.index;

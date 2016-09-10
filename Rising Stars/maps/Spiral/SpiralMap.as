@@ -1,8 +1,12 @@
 #include "include/map.as"
+#section server
+import system_lists;
+#section all
 
 enum MapSetting {
 	M_SystemCount,
 	M_SystemSpacing,
+	M_NebulaFreq,
 	M_Flatten,
 };
 
@@ -31,6 +35,7 @@ class SpiralMap : Map {
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=4, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false);
 	}
 
@@ -42,7 +47,12 @@ class SpiralMap : Map {
 
 		const uint armCount = max(min(players, 6), 3);
 		const uint systemCount = max(uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT)), armCount + 1);
+		double nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		bool hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
+		
+		auto@ anomalyList = getSystemList("SpatialAnomaly");
+		hasAnomalies = hasAnomalies && anomalyList !is null;
 		
 		uint coreSystems = max(systemCount / 4, 1);
 		uint perArm = (systemCount - coreSystems) / armCount;
@@ -99,7 +109,12 @@ class SpiralMap : Map {
 				for(uint i = 0; i < ringSystems; ++i) {
 					double r = coreRingDist + randomd(-0.3, 0.0) * systemSpacing;
 					double ang = twopi * (double(i) + randomd(-0.25,0.25)) / double(ringSystems);
-					addSystem(vec3d(cos(ang) * r, randomd(-1.0, 1.0) * coreHeightVariation, sin(ang) * r), quality=100, canHaveHomeworld=false);
+					auto@ sys = addSystem(vec3d(cos(ang) * r, randomd(-1.0, 1.0) * coreHeightVariation, sin(ang) * r), quality=100, canHaveHomeworld=false);
+					if(hasAnomalies && randomd() < nebulaFreq) {
+						auto@ anomaly = anomalyList.getRandomSystemType(this);
+						if(anomaly !is null)
+							sys.systemType = int(anomaly.id);
+					}
 				}
 				
 				coreSystems -= ringSystems;
@@ -189,8 +204,13 @@ class SpiralMap : Map {
 					recent[ringInd++ % maxRing] = pos;
 				
 				pos.y = randomd(-heightVariation, heightVariation);
-				
-				arm.systems.insertLast(addSystem(pos));
+				auto@ sys = addSystem(pos);
+				if(hasAnomalies && randomd() < nebulaFreq) {
+					auto@ anomaly = anomalyList.getRandomSystemType(this);
+					if(anomaly !is null)
+						sys.systemType = int(anomaly.id);
+				}
+				arm.systems.insertLast(sys);
 			}
 			
 			for(uint j = 0, cnt = arm.homeworlds.length; j < cnt; ++j)

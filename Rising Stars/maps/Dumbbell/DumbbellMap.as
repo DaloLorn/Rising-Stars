@@ -1,13 +1,26 @@
 #include "include/map.as"
+#section server
+import system_lists;
+#section all
 
 enum MapSetting {
 	M_SystemCount,
 	M_SystemSpacing,
+	M_NebulaFreq,
 	M_Flatten,
 	M_Mirror,
 };
 
+#section server
+const SystemList@ anomalyList = getSystemList("SpatialAnomaly");
+#section all
+
 class DumbbellMap : Map {
+#section server
+	double nebulaFreq;
+	bool hasAnomalies;
+#section all
+	
 	DumbbellMap() {
 		super();
 
@@ -24,6 +37,7 @@ class DumbbellMap : Map {
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=10, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 		Toggle(locale::PERFECT_MIRROR, M_Mirror, false, halfWidth=true, tooltip=locale::TT_PERFECT_MIRROR);
 	}
@@ -32,8 +46,12 @@ class DumbbellMap : Map {
 	void placeSystems() {
 		uint systemCount = uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT));
 		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 		bool mirror = getSetting(M_Mirror, 0.0) != 0.0;
+		
+		hasAnomalies = hasAnomalies && anomalyList !is null;
 
 		//Calculate values
 		double bellSystems = ceil(double(systemCount) * 0.43);
@@ -54,7 +72,7 @@ class DumbbellMap : Map {
 				auto@ other = systemData[i];
 				vec3d pos = other.position;
 				pos.z = -pos.z;
-
+				
 				auto@ sys = addSystem(pos, mirrorSystem = other);
 
 				if(possibleHomeworlds.find(other) != -1)
@@ -90,6 +108,11 @@ class DumbbellMap : Map {
 				@centerMost = sys;
 				centerDist = d;
 			}
+			if(hasAnomalies && randomd() < nebulaFreq) {
+				auto@ anomaly = anomalyList.getRandomSystemType(this);
+				if(anomaly !is null)
+					sys.systemType = int(anomaly.id);
+			}
 		}
 
 		addPossibleHomeworld(centerMost);
@@ -114,7 +137,12 @@ class DumbbellMap : Map {
 				vec3d sysPos = pos;
 				if(!flatten)
 					sysPos.y += randomd(-spacing * 0.3, spacing * 0.3);
-				addSystem(sysPos, quality=quality);
+				auto@ sys = addSystem(sysPos, quality=quality);
+				if(hasAnomalies && randomd() < nebulaFreq) {
+					auto@ anomaly = anomalyList.getRandomSystemType(this);
+					if(anomaly !is null)
+						sys.systemType = int(anomaly.id);
+				}
 				pos.x += randomd(0.8, 1.5) * spacing;
 			}
 

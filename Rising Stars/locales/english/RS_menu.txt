@@ -10,7 +10,7 @@ OPTTT_THEME_LOOP: <<
 >>
 OPT_DISPLAY_SENSOR_RANGE: Display Sensor Range
 OPTTT_DISPLAY_SENSOR_RANGE: <<
-	When toggled on, selecting an object owned by your empire will always display its sensor range as a dim blue circle. Seeable range (if applicable) is displayed as a dim something circle. (Seriously, have to test this.)
+	When toggled on, selecting an object owned by your empire will always display its sensor range as a dim blue circle. Seeable range (if applicable) is displayed as a dim pinkish circle.
 
 	Displaying weapon range always displays the sensor and seeable ranges of objects owned by your empire, regardless of this setting.
 >>
@@ -19,9 +19,11 @@ ALLOW_WAR: Allow War
 VERY_HARD: Very Hard
 NIGHTMARE: Nightmare
 
-NG_ANOMALY_SYSTEM_OCCURANCE: Spatial Anomaly Occurrence
+NEBULA_FREQ: Spatial Anomaly Occurrence
 NGTT_ANOMALY_SYSTEM_OCCURANCE: <<
-	Multiplier to the base frequency at which anomalous systems (nebulae, empty space) occur in the universe. Does not affect black holes at all.
+	The frequency at which anomalous systems (nebulae, empty space) occur in this galaxy.
+
+	[b]WARNING: Setting this to maximum will cause all non-homeworld, non-unique systems (Orathi, galactic black hole) to be spatial anomalies. This will drastically affect gameplay within the galaxy, and is not recommended![/b]
 >>
 
 NG_BLACK_HOLE_OCCURANCE: Black Hole Occurrence
