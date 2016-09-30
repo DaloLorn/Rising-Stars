@@ -95,7 +95,7 @@ void init() {
 				emp.cheatLevel += settings.cheatWealth / 10;
 			}
 			if(settings.cheatAbundance > 0) {
-				double factor = 1.0 + double(settings.cheatAbundance) * 0.5;
+				double factor = 1.0 + double(settings.cheatAbundance) * 0.1;
 				emp.MoneyGenerationFactor *= factor;
 				emp.LaborGenerationFactor *= factor;
 				emp.ResearchGenerationFactor *= factor;
@@ -107,7 +107,7 @@ void init() {
 				emp.cheatLevel += settings.cheatAbundance;
 			}
 			if(settings.cheatStrength > 0) {
-				double factor = 1.0 + double(settings.cheatStrength) * 0.5;
+				double factor = 1.0 + double(settings.cheatStrength) * 0.1;
 				factor = sqrt(factor);
 
 				addModifierToEmpire(emp, "HpFactor("+factor+")");
