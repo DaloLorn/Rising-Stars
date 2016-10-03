@@ -1,0 +1,8 @@
+Effect: GenericDamage
+	Value: Amount
+	Value: Pierce
+	Value: DRResponse
+	Value: DamageType
+	Value: Spillable
+
+	End: ABEMCombat::GenericDamage

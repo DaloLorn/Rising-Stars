@@ -1,7 +1,0 @@
-Effect: UnspillableDamage
-	Value: Amount
-	Value: Pierce
-	Value: DRResponse
-	Value: DamageType
-
-	End: ABEMCombat::UnspillableDamage

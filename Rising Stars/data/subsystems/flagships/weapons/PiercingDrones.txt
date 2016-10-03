@@ -10,20 +10,25 @@ Subsystem: PiercingDrones
 	Tags: ExteriorCore, Weapon, HasInternals, MainDPS, Homing
 	Hull: Flagship, Station
 
+	Lifetime := 15
+
 	Size := HexSize * Hexes
 	Range := Size + 700
-	Damage := 250
+	Damage := 75
 	PodSize := round(Size)
-	Reload := 20 * (1.0 + Size/512)
+	Reload := 20 * max(1.0 + Size/512, 2.0)
 	Speed := max(120, Range / 6)
 	Tracking := 6.0
 	SupplyCost := Size * 6.0
-	out DPS := (Damage * PodSize) / (Reload * 2)
+
+	//DPS is an estimation
+	out DPS := Damage * 10 * PodSize / Lifetime
 	out SupplyDrain := SupplyCost / 2
 
 	Pierce := 0.2
 	DRResponse := 5
 	DamageType := 3
+	Spillable := 0
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
@@ -33,12 +38,12 @@ Subsystem: PiercingDrones
 	PowerUse := 20 * Size
 	TypeColor: #f94694
 	Requires:
-		Command = 1
+		Command = Hexes / 2
 		Power = PowerUse
 
 	Module: Default
 
-	Assert: PodSize > 0
+	Assert: PodSize > 0 && Size >= 1
 		Message: #ERROR_DRONEWEAPON
 
 	Module: Core
@@ -56,12 +61,14 @@ Subsystem: PiercingDrones
 	Effector: PiercingDrones
 		Range = Range
 		Damage = Damage
-		FireDelay = Reload / PodSize
+		FireDelay = min(0.5, Reload / PodSize)
 		PodSize = PodSize
 		Reload = Reload
 		Speed = Speed
 		Tracking = Tracking
+		Lifetime = Lifetime
 		SupplyCost = SupplyCost * (Reload / PodSize)
 		Pierce = Pierce
 		DRResponse = DRResponse
 		DamageType = DamageType
+		Spillable = 0

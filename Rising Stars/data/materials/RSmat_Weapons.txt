@@ -1,0 +1,7 @@
+Material: AncientDrone
+	Texture: data/images/sprites/ancientdrone.png
+	Lighting: No
+	DepthWrite: No
+	Culling: None
+	Blend: Add
+	Shader: ColorFlicker

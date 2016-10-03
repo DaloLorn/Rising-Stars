@@ -1,0 +1,43 @@
+Effector: EnergyBombs
+	Value: Range
+	Value: Damage
+	Value: Reload
+	Value: FireDelay
+	Value: PodSize = 5
+	Value: Speed
+	Value: Tracking
+	Value: Radius
+	Value: SupplyCost = 0
+	Value: Hits = 8
+	Value: Spread = 0.5
+	Value: CapOnTarget = 1
+	Value: FireArc = pi / 2
+
+	Range: Range
+	Speed: Speed
+	Tracking: Tracking
+	CapOnTarget: CapOnTarget
+	Lifetime: Range / Speed * 1.25
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital ) * 0.5)
+
+	Activation: Magazine(FireDelay, PodSize, Reload)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	PhysicalType: Projectile
+	GfxType: Sprite
+	GfxSize: 8.5
+	FireSfx: torpedo_launch
+	ImpactSfx: torpedo_impact
+	Trail: MissileTrail
+	TrailCol: 00000000, 00000000
+	Material: Torpedo
+	Spread: Spread
+	FireArc = FireArc
+
+	Effect: AreaExplDamage
+		Amount = Damage
+		Radius = Radius
+		Hits = Hits

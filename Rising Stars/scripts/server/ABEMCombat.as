@@ -475,7 +475,7 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 	return DE_Continue;
 }
 
-void UnspillableDamage(Event& evt, double Amount, double Pierce, double DRResponse, double DamageType) {
+void GenericDamage(Event& evt, double Amount, double Pierce, double DRResponse, double DamageType, double Spillable) {
 	DamageEvent dmg;
 	dmg.damage = Amount * double(evt.efficiency) * double(evt.partiality);
 	dmg.partiality = evt.partiality;
@@ -485,7 +485,7 @@ void UnspillableDamage(Event& evt, double Amount, double Pierce, double DRRespon
 	@dmg.obj = evt.obj;
 	@dmg.target = evt.target;
 	dmg.source_index = evt.source_index;
-	dmg.spillable = true;
+	dmg.spillable = Spillable != 0;
 	dmg.flags |= getDamageType(DamageType) | getDRResponse(DRResponse) | ReachedInternals;
 
 	evt.target.damage(dmg, -1.0, evt.direction);

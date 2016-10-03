@@ -1,3 +1,11 @@
 Sound: RedAlert
 	File: data/sounds/status/Red Alert.ogg
 	Volume: 0.25
+
+Sound: DOF_drone_fire1
+	File: data/sounds/weapons/missile_fire_drone_1.ogg
+	Volume: 1
+
+Sound: DOF_drone_fire2
+	File: data/sounds/weapons/missile_fire_drone_2.ogg
+	Volume: 1

@@ -5,16 +5,22 @@ Effector: PiercingDrones
 	Value: FireDelay
 	Value: PodSize = 1
 	Value: Speed
+	Value: Lifetime
 	Value: Tracking = 6
 	Value: SupplyCost = 0
 	Value: Pierce = 0
 	Value: DRResponse = 0
 	Value: DamageType = 3
+	Value: Spillable = 0
 
 	Range: Range
 	Speed: Speed
 	Tracking: Tracking
-	Lifetime: Range / Speed
+	Lifetime: Lifetime
+	CapOnTarget: 1
+
+	Pierces: True
+	RecoverTime: 0.25
 
 	TargetAlgorithm: SingleTarget
 	CanTarget: isEnemy && isDamageable
@@ -25,19 +31,24 @@ Effector: PiercingDrones
 	OnTrigger: combat::WeaponFire(SupplyCost)
 
 	PhysicalType: Missile
-	GfxType: Sprite
-	GfxSize: 0.7
-	FireSfx: missile_launch
-	ImpactSfx: missile_impact
-	Color: ffff00ff
-	Trail: MissileTrail
-	TrailCol: ffff00ff, 00000000
-	Material: Missile
-	FirePitchVariance: 0.2
-	ImpactGfx: ImpactFlareRocket
+		PhysicalSize: 0.75
+		GfxType: Sprite
+		GfxSize: 0.75
+		FireSfx: DOF_drone_fire1
+		FireSfx: DOF_drone_fire2
+		ImpactSfx: missile_impact
+		ImpactSfx: missile_impact_2
+		ImpactSfx: missile_impact_3
+		Color: f3ff00ff
+		Trail: MissileTrail
+		TrailCol: 00000000, 00000000
+		Material: AncientDrone
+		FirePitchVariance: 0.2
+		ImpactGfx: ImpactFlareRocket
 
-	Effect: UnspillableDamage
+	Effect: GenericDamage
 		Amount = Damage
 		Pierce = Pierce
 		DRResponse = DRResponse
 		DamageType = DamageType
+		Spillable = Spillable
