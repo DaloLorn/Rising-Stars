@@ -15,7 +15,7 @@ Subsystem: PiercingDrones
 	Size := HexSize * Hexes
 	Range := Size + 700
 	Damage := 75
-	PodSize := round(Size)
+	PodSize := floor(Size)
 	Reload := 20 * max(1.0 + Size/512, 2.0)
 	Speed := max(120, Range / 6)
 	Tracking := 6.0
@@ -43,7 +43,7 @@ Subsystem: PiercingDrones
 
 	Module: Default
 
-	Assert: PodSize > 0 && Size >= 1
+	Assert: PodSize > 0
 		Message: #ERROR_DRONEWEAPON
 
 	Module: Core
