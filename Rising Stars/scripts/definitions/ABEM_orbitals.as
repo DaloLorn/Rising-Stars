@@ -162,3 +162,29 @@ class ApplyToOwned : StatusHook {
 	}
 #section all
 }
+
+class ModifyOrbitalHealth : StatusHook {
+	Document doc("Adds or removes a certain amount of health and armor to the orbital affected by this status.");
+	Argument hpValue("Health", AT_Decimal, "10000", doc="Amount of health to add.");
+	Argument armorValue("Armor", AT_Decimal, "5000", doc="Amount of armor to add. Armor is listed under health, but has a certain amount of damage resistance. Armor is damaged before health.");
+	
+#section server
+	void onCreate(Object& obj, Status@ status, any@ data) override {
+		Orbital@ orb;
+		if(obj.isOrbital)
+			@orb = cast<Orbital>(obj);
+		else return;
+		orb.modMaxHealth(hpValue.decimal);
+		orb.modMaxArmor(armorValue.decimal);
+	}
+	
+	void onDestroy(Object& obj, Status@ status, any@ data) override {
+		Orbital@ orb;
+		if(obj.isOrbital)
+			@orb = cast<Orbital>(obj);
+		else return;
+		orb.modMaxHealth(-hpValue.decimal);
+		orb.modMaxArmor(-armorValue.decimal);
+	}
+#section all
+}

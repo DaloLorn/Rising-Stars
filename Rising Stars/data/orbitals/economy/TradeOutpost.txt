@@ -36,12 +36,12 @@ Module: TradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
+	AddStatus(OutpostArmorCost)
+	AddStatus(OutpostWeaponCost)
+	AddStatus(OutpostDefenseCost)
+
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
-
-	AddStatus(OutpostDefenseStacks)
-	AddStatus(OutpostWeaponStacks)
-	AddStatus(OutpostArmorStacks)
 	AllowConstruction()
 	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
 	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)

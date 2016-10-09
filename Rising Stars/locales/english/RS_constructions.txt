@@ -56,7 +56,7 @@ OUTPOST_ARMORING: Structural Enhancement
 OUTPOST_ARMORING_DESC: <<
 	Reinforce the orbital's frame and outer hull, allowing it to withstand more damage before critical failure.
 
-	Adds 15000 health. May be modified by upgrades that improve orbital health. Subsequent structural enhancement requires increasingly large amounts of Ore to perform.
+	Adds 10000 health and 5000 armor. May be modified by upgrades that improve orbital health. Subsequent structural enhancement requires increasingly large amounts of Ore to perform.
 >>
 OUTPOST_DEFENSE: Refit Launch Bays
 OUTPOST_DEFENSE_DESC: <<
@@ -68,5 +68,5 @@ OUTPOST_WEAPONS: Install Swarm Missiles
 OUTPOST_WEAPONS_DESC: <<
 	Install a swarm missile launcher on the orbital's exterior, improving its ability to hold off raiders or interrupt enemy trade.
 
-	Adds 20 missile tubes, each firing one missile per second for a damage of 25 per missile. May be modified by upgrades that improve stationary defense weapons. Subsequent missile launchers require increasingly large amounts of Ore to install.
+	Adds 10 missile tubes, each firing one missile per second for a damage of 50 per missile. May be modified by upgrades that improve stationary defense weapons. Subsequent missile launchers require increasingly large amounts of Ore to install.
 >>

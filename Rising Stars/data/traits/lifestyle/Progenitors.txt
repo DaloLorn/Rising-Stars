@@ -8,6 +8,7 @@ Trait: Progenitors
 
 	Icon: emp_portrait_mono * #aaffaa
 	Color: #884faa
+	Available: False
 
 	AddStatusOwnedPlanets(Progenitors)
 	AddStatusOwnedFleets(ProgenitorFleet)

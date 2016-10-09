@@ -5,9 +5,11 @@ Construction: OutpostArmor
 
 	Category: Outpost Upgrades
 	Description: #OUTPOST_ARMORING_DESC
-	OnStart(AddStatus(OutpostArmorStacks))
-	OnCancel(RemoveStatusInstance(OutpostArmorStacks))
-	ConsumeCargoStatusCount(Ore, OutpostArmorStacks, 300, Allow Cancel = True)
+
+	OnStart(AddStatus(OutpostArmorCost))
+	OnCancel(RemoveStatusInstance(OutpostArmorCost))
+	AddStatus(OutpostArmorStacks)
+	ConsumeCargoStatusCount(Ore, OutpostArmorCost, 300, Allow Cancel = True)
 
 	RequireOnOrbital(TradeOutpost)
 
@@ -18,9 +20,10 @@ Construction: OutpostDefense
 	Icon: Fortified
 	Description: #OUTPOST_DEFENSE_DESC
 
-	OnCancel(RemoveStatusInstance(OutpostDefenseStacks))
-	OnStart(AddStatus(OutpostDefenseStacks))
-	ConsumeCargoStatusCount(Ore, OutpostDefenseStacks, 300, Allow Cancel = True)
+	OnCancel(RemoveStatusInstance(OutpostDefenseCost))
+	OnStart(AddStatus(OutpostDefenseCost))
+	AddStatus(OutpostDefenseStacks)
+	ConsumeCargoStatusCount(Ore, OutpostDefenseCost, 300, Allow Cancel = True)
 
 	RequireOnOrbital(TradeOutpost)
 
@@ -31,8 +34,9 @@ Construction: OutpostWeapons
 	Icon: techRocket
 	Description: #OUTPOST_WEAPONS_DESC
 
-	OnCancel(RemoveStatusInstance(OutpostWeaponStacks))
-	OnStart(AddStatus(OutpostWeaponStacks))
-	ConsumeCargoStatusCount(Ore, OutpostWeaponStacks, 300, Allow Cancel = True)
+	OnCancel(RemoveStatusInstance(OutpostWeaponCost))
+	OnStart(AddStatus(OutpostWeaponCost))
+	AddStatus(OutpostWeaponStacks)
+	ConsumeCargoStatusCount(Ore, OutpostWeaponCost, 300, Allow Cancel = True)
 
 	RequireOnOrbital(TradeOutpost)

@@ -2,17 +2,27 @@ Status: OutpostArmorStacks
 	Name: Armor Upgrade
 	Collapses: True
 	Visible To: Nobody
-	RepeatStacks()
-	AddBonusHP(15000)
+	RepeatStacks(ABEM_orbitals::ModifyOrbitalHealth(10000, 5000))
 Status: OutpostWeaponStacks
 	Name: Weapon Upgrade
 	Collapses: True
 	Visible To: Nobody
 	RepeatStacks(RepeatExtended(RecordBonusDPS(25), Base = 20, Multiply Attribute = StaticDamageFactor))
-	RepeatStacks(RepeatExtended(AddTurret(Missile, Range=1000, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	RepeatStacks(RepeatExtended(AddTurret(Missile, Range=1000, Damage=50, Reload=1, Speed=150, Tracking=6), Base = 10, Multiply Attribute = StaticDamageFactor))
 Status: OutpostDefenseStacks
 	Name: Defense Upgrade
 	Collapses: True
-	Visible To: Global
+	Visible To: Nobody
 	RepeatStacks(AddFleetCommand(256))
 	RepeatStacks(AddLocalDefense(4, Overflow Global = True))
+
+
+Status: OutpostArmorCost
+	Collapses: True
+	Visible To: Nobody
+Status: OutpostWeaponCost
+	Collapses: True
+	Visible To: Nobody
+Status: OutpostDefenseCost
+	Collapses: True
+	Visible To: Nobody
