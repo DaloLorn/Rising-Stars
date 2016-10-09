@@ -21,6 +21,7 @@ tidy final class AbilityType {
 	int hotkey = 0;
 	bool empireDefault = false;
 	bool hideGlobal = false;
+	bool hiddenByDefault = false;
 	const SoundSource@ activateSound;
 
 	array<IAbilityHook@> hooks;
@@ -88,6 +89,7 @@ tidy class Ability : Serializable, Savable {
 	Object@ obj;
 	Object@ toggle;
 	bool disabled = false;
+	bool hidden = false;
 	double cooldown = 0.0;
 	array<any> data;
 	Targets targets;
@@ -97,6 +99,7 @@ tidy class Ability : Serializable, Savable {
 
 	Ability(const AbilityType@ type) {
 		@this.type = type;
+		hidden = type.hiddenByDefault;
 		data.length = type.hooks.length;
 		targets = Targets(type.targets);
 	}
@@ -192,6 +195,7 @@ tidy class Ability : Serializable, Savable {
 		else {
 			msg.write0();
 		}
+		msg << hidden;
 	}
 
 	void read(Message& msg) {
@@ -209,6 +213,7 @@ tidy class Ability : Serializable, Savable {
 			msg >> dsg;
 			@subsystem = dsg.subsystems[msg.read_uint()];
 		}
+		msg >> hidden;
 	}
 
 	void save(SaveFile& file) {
@@ -229,6 +234,7 @@ tidy class Ability : Serializable, Savable {
 		}
 		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].save(this, data[i], file);
+		file << hidden;
 	}
 
 	void load(SaveFile& file) {
@@ -255,6 +261,7 @@ tidy class Ability : Serializable, Savable {
 		}
 		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].load(this, data[i], file);
+		file >> hidden;
 	}
 
 	double getEnergyCost(const Targets@ targs = null) const {
@@ -491,6 +498,9 @@ void loadAbilities(const string& filename) {
 		}
 		else if(key.equals_nocase("Hide Global")) {
 			type.hideGlobal = toBool(value);
+		}
+		else if(key.equals_nocase("Hidden")) {
+			type.hiddenByDefault = toBool(value);
 		}
 		else if(key.equals_nocase("Empire Default")) {
 			type.empireDefault = toBool(value);

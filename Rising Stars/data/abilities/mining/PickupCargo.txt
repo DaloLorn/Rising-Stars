@@ -5,6 +5,7 @@ Ability: PickupCargo
 
 	Range: 100
 	Target: targ = Object
+	Hidden: True
 
 	TargetFilterCargoStorage(targ)
 	TargetFilterOwned(targ)
