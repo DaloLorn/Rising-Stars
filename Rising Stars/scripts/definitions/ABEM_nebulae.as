@@ -168,8 +168,7 @@ class DisableAbility : StatusHook {
 		const AbilityType@ type = getAbilityType(arg_type.str);
 		if(type !is null && obj.hasAbilities) {
 			int id = int(type.id);
-			if(cast<Abilities>(obj.get_Abilities()).getAbility(id) !is null)
-				obj.disableAbility(id);
+			obj.disableAbilityType(id);
 			data.store(@type);
 		}
 	}
@@ -179,8 +178,7 @@ class DisableAbility : StatusHook {
 		data.retrieve(@type);
 		if(type !is null && obj.hasAbilities) {
 			int id = int(type.id);
-			if(cast<Abilities>(obj.get_Abilities()).getAbility(id) !is null)
-				obj.enableAbility(id);
+			obj.enableAbilityType(id);
 		}
 	}
 	
@@ -189,8 +187,7 @@ class DisableAbility : StatusHook {
 		data.retrieve(@type);
 		if(type !is null && obj.hasAbilities) {
 			int id = int(type.id);
-			if(cast<Abilities>(obj.get_Abilities()).getAbility(id) !is null)
-				obj.disableAbility(id);
+			obj.disableAbilityType(id);
 		}
 		return true;
 	}

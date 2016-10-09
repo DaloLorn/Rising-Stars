@@ -5,6 +5,7 @@ Status: Cerulean
 
 	ABEM_nebulae::DisableShields()
 	ABEM_nebulae::DisableStatus(Cloaked)
+	ABEM_nebulae::DisableAbility(Cloak)
 	ForceHoldFire()
 	ABEM_nebulae::StatusBlockFTLSystem()
 	ABEM_sensors::AddSightModifier(200, 0.66)

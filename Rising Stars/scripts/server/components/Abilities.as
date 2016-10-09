@@ -152,6 +152,22 @@ class Abilities : Component_Abilities, Savable {
 			}
 		}
 	}
+	
+	void enableAbilityType(Object& obj, int typeId) {
+		for(uint i = 0, cnt = abilities.length; i < cnt; ++i) {
+			if(int(abilities[i].type.id) == typeId) {
+				disableAbility(obj, i);
+			}
+		}
+	}
+	
+	void disableAbilityType(Object& obj, int typeId) {
+		for(uint i = 0, cnt = abilities.length; i < cnt; ++i) {
+			if(int(abilities[i].type.id) == typeId) {
+				disableAbility(obj, i);
+			}
+		}
+	}
 
 	void abilityOwnerChange(Object& obj, Empire@ prevOwner, Empire@ newOwner) {
 		for(uint i = 0, cnt = abilities.length; i < cnt; ++i)

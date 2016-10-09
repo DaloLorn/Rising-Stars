@@ -25,6 +25,8 @@ server:
 	void setNeutralAbilities(bool value);
 	void setAbilityDestroy(bool value);
 	void setCooldownForType(int typeId, double cooldown);
+	void enableAbilityType(int typeId);
+	void disableAbilityType(int typeId);
 
 	int addAbility(uint id);
 	void createAbility(uint id);
