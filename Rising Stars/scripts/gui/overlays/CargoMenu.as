@@ -1,2043 +1,1006 @@
+import dialogs.InputDialog;
 import elements.BaseGuiElement;
-import elements.GuiSkinElement;
-import elements.GuiText;
-import elements.GuiSprite;
-import elements.GuiButton;
-import elements.GuiOverlay;
-import elements.GuiAccordion;
-import elements.GuiListbox;
-import elements.GuiProgressbar;
 import elements.GuiPanel;
-import elements.GuiMarkupText;
+import elements.GuiText;
+import elements.GuiButton;
+import elements.GuiSprite;
+import elements.GuiCheckbox;
+import elements.GuiSkinElement;
 import elements.GuiContextMenu;
-import elements.GuiCargoDisplay;
 import elements.MarkupTooltip;
-import constructible;
-import ship_groups;
-import buildings;
-import constructions;
-import orbitals;
-import targeting.PointTarget;
-import targeting.ObjectTarget;
-import systems;
-import cargo;
-from obj_selection import hoveredObject;
+import resources, ship_groups;
+import elements.Gui3DObject;
+#include "dialogs/include/UniqueDialogs.as"
+import obj_selection;
+import icons;
 from gui import animate_time;
-from overlays.ContextMenu import FinanceDryDock;
+from targeting.targeting import cancelTargeting;
+from targeting.MoveTarget import isExtendedMoveTarget;
 
-export ConstructionParent, ConstructionDisplay;
-export BuildElement;
+const int GROUP_WIDTH = 256;
+const int GROUP_SPACING = 32;
 
-const double ANIM1_TIME = 0.15;
-const double ANIM2_TIME = 0.001;
-const uint Q_HEIGHT = 250;
-const uint WIDTH = 500;
-interface ConstructionParent : IGuiElement {
-	void close();
-	void startBuild(const BuildingType@ type);
-	Object@ get_object();
-	Object@ get_slaved();
-	void triggerUpdate();
-};
+const int SUPPORT_PADDING = 12;
+const int SUPPORT_HEIGHT = 56;
+const int SUPPORT_WIDTH = GROUP_WIDTH - SUPPORT_PADDING * 2;
+const int SUPPORT_SPACING = 8;
+const int BAR_WIDTH = SUPPORT_WIDTH + SUPPORT_PADDING * 2 + 20;
+const vec2i addButtonSize = vec2i(180,32);
 
-class ConstructionOverlay : GuiOverlay, ConstructionParent {
-	ConstructionDisplay@ construction;
-	Object@ obj;
-	Object@ slave;
+const double ANIM_TIME = 0.15;
 
-	ConstructionOverlay(IGuiElement@ parent, Object@ obj) {
-		if(obj.isOrbital) {
-			Orbital@ orb = cast<Orbital>(obj);
-			if(orb.hasMaster()) {
-				@slave = obj;
-				@obj = orb.getMaster();
-			}
-		}
+from tabs.GalaxyTab import GalaxyOverlay;
+GalaxyOverlay@ createSupportOverlay(IGuiElement@ tab, Object@ obj, Object@ to, bool animate = true) {
+	return SupportOverlay(tab, obj, to, animate);
+}
 
-		@this.obj = obj;
-		super(parent);
+class SupportOverlay : GalaxyOverlay, BaseGuiElement {
+	Object@ leader;
 
-		@construction = ConstructionDisplay(this, vec2i(parent.size.width/2, parent.size.height),
-					Alignment(Right-0.5f-250, Top+20, Right-0.5f+250, Bottom-20));
-		construction.animate(ANIM1_TIME);
-	}
+	GroupDisplay@ main;
+	GroupDisplay@ secondary;
 
-	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
-			case GUI_Confirmed:
-				triggerUpdate();
-			break;
-		}
-		return GuiOverlay::onGuiEvent(evt);
-	}
+	SupportClass@[] selected;
+	vec2i dragStart;
+	bool leftDown = false;
+	bool rightDown = false;
+	bool dragging = false;
+	bool closing = false;
 
-	void startBuild(const BuildingType@ type) {
-	}
+	SupportClass@ clsHover;
+	GroupDisplay@ grpHover;
 
-	Object@ get_object() {
-		return obj;
-	}
+	SupportOverlay(IGuiElement@ parent, Object@ Leader, Object@ To, bool animate) {
+		@leader = Leader;
+		super(parent, Alignment(Left, Top, Right, Bottom));
 
-	Object@ get_slaved() {
-		return slave;
-	}
+		if(To !is null)
+			makeSecondary(To);
 
-	void triggerUpdate() {
-	}
+		@main = GroupDisplay(leader, this, 255);
+		Alignment align(Left+4, Top+34, Left+4+BAR_WIDTH, Bottom);
+		if(animate)
+			main.animate(align);
+		else
+			@main.alignment = align;
 
-	void update(double time) {
-		construction.update(time);
-	}
-};
-
-class DisplayBox : BaseGuiElement {
-	ConstructionParent@ overlay;
-	Alignment@ targetAlign;
-
-	DisplayBox(ConstructionParent@ ov, vec2i origin, Alignment@ target) {
-		@overlay = ov;
-		@targetAlign = target;
-		super(overlay, recti_area(origin, vec2i(1,1)));
-		visible = false;
 		updateAbsolutePosition();
+		bringToFront();
+		setGuiFocus(this);
 	}
 
-	void animate(double animTime = ANIM2_TIME) {
-		visible = true;
-		animate_time(this, targetAlign.resolve(overlay.size), animTime);
-	}
-
-	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
-			case GUI_Animation_Complete:
-				@alignment = targetAlign;
-				return true;
-		}
-		return BaseGuiElement::onGuiEvent(evt);
-	}
-
-	bool onMouseEvent(const MouseEvent& evt, IGuiElement@ source) override {
-		switch(evt.type) {
-			case MET_Button_Down:
-				if(evt.button == 0)
-					return true;
-			break;
-			case MET_Button_Up:
-				if(evt.button == 0)
-					return true;
-			break;
-		}
-
-		return BaseGuiElement::onMouseEvent(evt, source);
-	}
-
-	void remove() override {
-		@overlay = null;
-		BaseGuiElement::remove();
-	}
-
-	void update(double time) {
-	}
-
-	void draw() {
-		skin.draw(SS_OverlayBox, SF_Normal, AbsolutePosition, Color(0x888888ff));
-		BaseGuiElement::draw();
-	}
-};
-
-class ConstructionDisplay : DisplayBox {
-	Object@ obj;
-	Object@ slaved;
-
-	GuiSkinElement@ nameBox;
-	GuiText@ name;
-
-	GuiSkinElement@ laborBox;
-	GuiText@ labor;
-	GuiSprite@ laborIcon;
-
-	Constructible[] cons;
-	GuiSkinElement@ queueBox;
-	GuiPanel@ queue;
-
-	QueueItem@[] queueItems;
-	QueueItem@ draggingItem;
-	QueueItem@ hoveredItem;
-
-	GuiPanel@ buildPanel;
-	BaseGuiElement@ buttonBox;
-	GuiButton@ buildingsButton;
-	GuiButton@ orbitalsButton;
-	GuiButton@ shipsButton;
-	GuiButton@ modulesButton;
-	GuiButton@ constructionsButton;
-	GuiAccordion@ buildingsList;
-	GuiAccordion@ orbitalsList;
-	GuiAccordion@ shipsList;
-	GuiAccordion@ modulesList;
-	GuiAccordion@ constructionsList;
-
-	GuiProgressbar@ storageBox;
-	GuiButton@ repeatButton;
-	GuiButton@ drydockButton;
-
-	GuiCargoDisplay@ cargo;
-
-	bool hasBuildings = false;
-	bool hasOrbitals = false;
-	bool hasShips = false;
-	bool hasConstructions = false;
-	bool isBuildingFlagship = false;
-
-	ConstructionDisplay(ConstructionParent@ ov, vec2i origin, Alignment@ target) {
-		super(ov, origin, target);
-		@obj = ov.object;
-		@slaved = ov.slaved;
-
-		//Header
-		@nameBox = GuiSkinElement(this, Alignment(Left+8, Top+8, Left+0.5f-4, Top+42), SS_PlainOverlay);
-		@name = GuiText(nameBox, Alignment().padded(8, 0), locale::CONSTRUCTION);
-		name.font = FT_Medium;
-
-		@laborBox = GuiSkinElement(this, Alignment(Left+0.5f+4, Top+8, Right-8, Top+42), SS_PlainOverlay);
-		@laborIcon = GuiSprite(laborBox, Alignment(Left+8, Top+5, Width=24, Height=24));
-		laborIcon.desc = Sprite(spritesheet::ResourceIcon, 6);
-		@labor = GuiText(laborBox, Alignment(Left+40, Top, Right-8, Bottom));
-		labor.font = FT_Medium;
-
-		//Queue section
-		@queueBox = GuiSkinElement(this, Alignment(Left+8, Top+50, Right-8, Top+Q_HEIGHT), SS_QueueBackground);
-		GuiSkinElement bottomBar(queueBox, Alignment(Left+4, Bottom-34, Right-4, Bottom), SS_PlainBox);
-		@queue = GuiPanel(queueBox, Alignment(Left, Top, Right, Bottom-34));
-		@storageBox = GuiProgressbar(queueBox, recti_area(4, Q_HEIGHT-34-50, WIDTH-16-12-80, 34));
-		storageBox.visible = false;
-		storageBox.frontColor = Color(0x836000ff);
-		storageBox.backColor = Color(0xffffff80);
-		@cargo = GuiCargoDisplay(queueBox, recti_area((WIDTH-16)/2, Q_HEIGHT-34-50, (WIDTH-16)/2-12-80, 34));
-		cargo.visible = false;
-
-		@repeatButton = GuiButton(queueBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
-		repeatButton.style = SS_IconToggle;
-		repeatButton.color = Color(0x00ff00ff);
-		repeatButton.toggleButton = true;
-		repeatButton.setIcon(icons::Repeat);
-		setMarkupTooltip(repeatButton, locale::TT_REPEAT_QUEUE, width=300);
-
-		@drydockButton = GuiButton(queueBox, Alignment(Right-8-32-34, Bottom-32, Width=30, Height=30));
-		drydockButton.style = SS_IconButton;
-		drydockButton.color = Color(0x0080ffff);
-		drydockButton.setIcon(Sprite(spritesheet::GuiOrbitalIcons, 3, playerEmpire.color));
-		setMarkupTooltip(drydockButton, locale::TT_DRY_DOCK, width=300);
-
-		//Build panel buttons
-		@buttonBox = BaseGuiElement(this, Alignment(Left+8, Top+Q_HEIGHT+8, Right-8, Top+Q_HEIGHT+44));
-		@buildingsButton = GuiButton(buttonBox, Alignment(Left, Top, Left, Bottom));
-		buildingsButton.text = locale::BUILDINGS;
-		buildingsButton.toggleButton = true;
-		buildingsButton.disabled = true;
-		buildingsButton.style = SS_TabButton;
-		buildingsButton.buttonIcon = icons::Building;
-
-		@orbitalsButton = GuiButton(buttonBox, Alignment(Left, Top, Left, Bottom));
-		orbitalsButton.text = locale::ORBITALS;
-		orbitalsButton.toggleButton = true;
-		orbitalsButton.disabled = true;
-		orbitalsButton.style = SS_TabButton;
-		orbitalsButton.buttonIcon = icons::Orbital;
-
-		@shipsButton = GuiButton(buttonBox, Alignment(Left, Top, Left, Bottom));
-		shipsButton.text = locale::SHIPS;
-		shipsButton.toggleButton = true;
-		shipsButton.pressed = true;
-		shipsButton.disabled = true;
-		shipsButton.style = SS_TabButton;
-		shipsButton.buttonIcon = icons::Ship;
-
-		@modulesButton = GuiButton(buttonBox, Alignment(Left, Top, Left, Bottom));
-		modulesButton.text = locale::ORBITAL_MODULES;
-		modulesButton.toggleButton = true;
-		modulesButton.disabled = true;
-		modulesButton.visible = false;
-		modulesButton.style = SS_TabButton;
-
-		@constructionsButton = GuiButton(buttonBox, Alignment(Left, Top, Left, Bottom));
-		constructionsButton.text = locale::PROJECTS;
-		constructionsButton.toggleButton = true;
-		constructionsButton.disabled = true;
-		constructionsButton.style = SS_TabButton;
-		constructionsButton.buttonIcon = icons::Project;
-
-		//Build panel section
-		@buildPanel = GuiPanel(this, Alignment(Left+8, Top+Q_HEIGHT+44, Right-8, Bottom-8));
-		buildPanel.horizType = ST_Never;
-
-		@buildingsList = GuiAccordion(buildPanel, recti(0, 0, WIDTH-16, 50));
-		buildingsList.multiple = true;
-		buildingsList.clickableHeaders = false;
-		buildingsList.visible = false;
-
-		@orbitalsList = GuiAccordion(buildPanel, recti(0, 0, WIDTH-16, 50));
-		orbitalsList.multiple = true;
-		orbitalsList.clickableHeaders = false;
-		orbitalsList.visible = false;
-
-		@shipsList = GuiAccordion(buildPanel, recti(-1, 0, WIDTH-16, 50));
-		shipsList.multiple = true;
-		shipsList.clickableHeaders = false;
-
-		@modulesList = GuiAccordion(buildPanel, recti(-1, 0, WIDTH-16, 50));
-		modulesList.multiple = true;
-		modulesList.clickableHeaders = false;
-		modulesList.visible = false;
-
-		@constructionsList = GuiAccordion(buildPanel, recti(-1, 0, WIDTH-16, 50));
-		constructionsList.multiple = true;
-		constructionsList.clickableHeaders = false;
-		constructionsList.visible = false;
-
-		if(obj.isOrbital && !obj.hasConstruction) {
-			shipsList.visible = false;
-			shipsButton.pressed = false;
-			modulesList.visible = true;
-			modulesButton.pressed = true;
-		}
-
-		updateBuildList(true);
-	}
-
-	void draw() {
-		DisplayBox::draw();
-		if(draggingItem !is null) {
-			clearClip();
-			if(hoveredItem !is null) {
-				int y = hoveredItem.AbsolutePosition.topLeft.y;
-				bool moved = hoveredItem !is draggingItem;
-				if(mousePos.y > hoveredItem.AbsolutePosition.center.y) {
-					int ind = queueItems.find(hoveredItem) + 1;
-					if(ind >= 0 && uint(ind) < queueItems.length) {
-						y = queueItems[ind].AbsolutePosition.topLeft.y;
-						moved = true;
-					}
-					else if(queueItems[queueItems.length-1] !is draggingItem){
-						y = queueItems[queueItems.length-1].AbsolutePosition.botRight.y+4;
-						moved = true;
-					}
-				}
-				if(moved) {
-					drawLine(vec2i(queueBox.AbsolutePosition.topLeft.x, y),
-							vec2i(queueBox.AbsolutePosition.botRight.x, y),
-							Color(0xff8080ff), 3);
-				}
-			}
-			else if(queueItems.length != 0 && mousePos.y < queueItems[0].absolutePosition.botRight.y - 10) {
-				if(queueItems[0] !is draggingItem) {
-					int y = queueBox.AbsolutePosition.topLeft.y;
-					drawLine(vec2i(queueBox.AbsolutePosition.topLeft.x, y),
-							vec2i(queueBox.AbsolutePosition.botRight.x, y),
-							Color(0xff8080ff), 3);
-				}
+	void makeSecondary(Object@ obj) {
+		if(main !is null && obj is main.leader)
+			@obj = null;
+		if(secondary !is null) {
+			if(obj is null) {
+				secondary.remove();
+				@secondary = null;
 			}
 			else {
-				if(queueItems.length != 0 && queueItems[queueItems.length-1] !is draggingItem) {
-					int y = queueBox.AbsolutePosition.topLeft.y;
-					if(queueItems.length != 0)
-						y = queueItems[queueItems.length-1].AbsolutePosition.botRight.y+4;
-					drawLine(vec2i(queueBox.AbsolutePosition.topLeft.x, y),
-							vec2i(queueBox.AbsolutePosition.botRight.x, y),
-							Color(0xff8080ff), 3);
-				}
+				secondary.set(obj);
 			}
-			if(!mouseLeft)
-				@draggingItem = null;
-			else
-				draggingItem.draw(recti_area(mousePos - draggingItem.dragOffset, vec2i(500, 29)));
+		}
+		else if(obj !is null) {
+			@secondary = GroupDisplay(obj, this);
+			@secondary.alignment = Alignment(Left+2+BAR_WIDTH, Top+94, Left+2+BAR_WIDTH*2, Bottom-220);
+			secondary.sendToBack();
 		}
 	}
 
-	void updateAbsolutePosition() {
-		DisplayBox::updateAbsolutePosition();
-		if(shipsList !is null) {
-			if(buildPanel.vert.visible) {
-				shipsList.size = vec2i(buildPanel.size.width - 20, shipsList.size.height);
-				orbitalsList.size = vec2i(buildPanel.size.width - 20, orbitalsList.size.height);
-				buildingsList.size = vec2i(buildPanel.size.width - 20, buildingsList.size.height);
-				constructionsList.size = vec2i(buildPanel.size.width - 20, constructionsList.size.height);
-				modulesList.size = vec2i(buildPanel.size.width - 20, modulesList.size.height);
-			}
-			else {
-				shipsList.size = vec2i(buildPanel.size.width, shipsList.size.height);
-				orbitalsList.size = vec2i(buildPanel.size.width, orbitalsList.size.height);
-				buildingsList.size = vec2i(buildPanel.size.width, buildingsList.size.height);
-				constructionsList.size = vec2i(buildPanel.size.width, constructionsList.size.height);
-				modulesList.size = vec2i(buildPanel.size.width, modulesList.size.height);
+	GroupDisplay@ getHoveredGroup(vec2i absPos) {
+		if(main.absolutePosition.isWithin(absPos))
+			return main;
+		if(secondary !is null && secondary.absolutePosition.isWithin(absPos))
+			return secondary;
+		return null;
+	}
+
+	SupportClass@ getHoveredClass(vec2i absPos) {
+		GroupDisplay@ grp = getHoveredGroup(absPos);
+		if(grp !is null)
+			return grp.getHoveredClass(absPos);
+		return null;
+	}
+
+	bool isOpen() {
+		return parent !is null;
+	}
+
+	bool objectInteraction(Object& object, uint mouseButton, bool doubleClicked) {
+		return false;
+	}
+
+	void close() {
+		if(parent is null || closing)
+			return;
+		close(main);
+	}
+
+	void close(GroupDisplay@ disp) {
+		if(disp is main) {
+			main.animateClose();
+			closing = true;
+		}
+		else if(disp is secondary) {
+			secondary.remove();
+			@secondary = null;
+			deselect();
+		}
+	}
+
+	IGuiElement@ elementFromPosition(const vec2i& pos) {
+		if(dragging) {
+			//Cannot access inner elements while dragging,
+			//we handle all the drag and drop stuff ourselves
+			if(AbsoluteClipRect.isWithin(pos))
+				return this;
+			return null;
+		}
+		else {
+			return BaseGuiElement::elementFromPosition(pos);
+		}
+	}
+
+	void updateHover() {
+		@grpHover = getHoveredGroup(mousePos);
+		if(grpHover !is null)
+			@clsHover = grpHover.getHoveredClass(mousePos);
+		else
+			@clsHover = null;
+	}
+
+	void dropGroups() {
+		updateTimer = 0.1;
+
+		Object@ transferTo;
+		if(grpHover !is null)
+			@transferTo = grpHover.leader;
+		else
+			@transferTo = hoveredObject;
+		if(transferTo !is null && transferTo.owner.controlled && transferTo.hasLeaderAI) {
+			for(uint i = 0, cnt = selected.length; i < cnt; ++i) {
+				SupportClass@ cls = selected[i];
+				if(cls.disp.leader is transferTo || cls.disp is null)
+					continue;
+
+				uint amt = cls.dat.totalSize - cls.leaveAmount;
+				cls.disp.leader.transferSupports(cls.dat.dsg, amt, transferTo);
 			}
 		}
+
+		main.update();
+		if(secondary !is null)
+			secondary.update();
+		deselect();
 	}
 
 	void deselect() {
-		for(uint i = 0, cnt = buildingsList.items.length; i < cnt; ++i) {
-			GuiListbox@ list = cast<GuiListbox>(buildingsList.items[i]);
-			list.clearSelection();
+		for(uint i = 0, cnt = selected.length; i < cnt; ++i) {
+			selected[i].selected = false;
+			selected[i].leaveAmount = 0;
 		}
-		for(uint i = 0, cnt = orbitalsList.items.length; i < cnt; ++i) {
-			GuiListbox@ list = cast<GuiListbox>(orbitalsList.items[i]);
-			list.clearSelection();
-		}
-		for(uint i = 0, cnt = shipsList.items.length; i < cnt; ++i) {
-			GuiListbox@ list = cast<GuiListbox>(shipsList.items[i]);
-			list.clearSelection();
-		}
-		for(uint i = 0, cnt = modulesList.items.length; i < cnt; ++i) {
-			GuiListbox@ list = cast<GuiListbox>(modulesList.items[i]);
-			list.clearSelection();
-		}
-		for(uint i = 0, cnt = constructionsList.items.length; i < cnt; ++i) {
-			GuiListbox@ list = cast<GuiListbox>(constructionsList.items[i]);
-			list.clearSelection();
-		}
+		selected.length = 0;
 	}
 
-	void updateBuildList(bool full = false) {
-		if(full) {
-			buildingsList.clearSections();
-			constructionsList.clearSections();
-			orbitalsList.clearSections();
-			shipsList.clearSections();
-			modulesList.clearSections();
-			if(obj is null || obj.owner !is playerEmpire)
-				return;
-			if(obj.hasConstruction && obj.hasSurfaceComponent && obj.owner.ImperialBldConstructionRate > 0.001) {
-				array<GuiListbox@> cats;
-				array<string> catNames;
-
-				for(uint i = 0, cnt = getBuildingTypeCount(); i < cnt; ++i) {
-					const BuildingType@ type = getBuildingType(i);
-					if(type.civilian)
-						continue;
-					if(!type.canBuildOn(obj, ignoreState = true))
-						continue;
-
-					GuiListbox@ list;
-					for(uint n = 0, ncnt = cats.length; n < ncnt; ++n) {
-						if(catNames[n] == type.category) {
-							@list = cats[n];
-							break;
-						}
-					}
-
-					if(list is null) {
-						@list = GuiListbox(this, recti(0, 0, 100, 20));
-						list.style = SS_NULL;
-						list.itemHeight = 30;
-
-						MarkupTooltip tt(400, 0.f, true, true);
-						tt.Lazy = true;
-						tt.LazyUpdate = false;
-						tt.Padding = 4;
-						@list.tooltipObject = tt;
-
-						catNames.insertLast(type.category);
-						cats.insertLast(list);
-					}
-
-					list.addItem(BuildElement(this, type, obj));
-				}
-
-				for(uint i = 0, cnt = cats.length; i < cnt; ++i) {
-					auto@ list = cats[i];
-					list.sortDesc();
-
-					string title = localize("#BCAT_"+catNames[i]);
-					if(title[0] == '#')
-						title = catNames[i];
-
-					uint sec = buildingsList.addSection(title, list);
-					buildingsList.openSection(sec);
-					list.updateHover();
-				}
-
-				hasBuildings = true;
-				buildingsButton.disabled = false;
-			}
-			else {
-				hasBuildings = false;
-				buildingsButton.disabled = true;
-			}
-			if(obj.hasConstruction && obj.canBuildOrbitals) {
-				GuiListbox@ list = GuiListbox(this, recti(0, 0, 100, 20));
-				list.style = SS_NULL;
-				list.itemHeight = 30;
-
-				MarkupTooltip tt(400, 0.f, true, true);
-				tt.Lazy = true;
-				tt.LazyUpdate = false;
-				tt.Padding = 4;
-				@list.tooltipObject = tt;
-
-				auto@ drydock = getOrbitalModule("DryDock");
-				for(uint i = 0, cnt = getOrbitalModuleCount(); i < cnt; ++i) {
-					auto@ def = getOrbitalModule(i);
-					if(def is drydock)
-						continue;
-					if(def.canBuildBy(obj))
-						list.addItem(BuildElement(this, def, obj));
-				}
-				list.sortDesc();
-				uint sec = orbitalsList.addSection(locale::ORBITALS, list);
-				orbitalsList.openSection(sec);
-				addShipsToBuildList(orbitalsList, stations=true);
-				hasOrbitals = true;
-				orbitalsButton.disabled = false;
-				list.updateHover();
-			}
-			else {
-				hasOrbitals = false;
-				orbitalsButton.disabled = true;
-			}
-			if(obj.isOrbital && !cast<Orbital>(obj).isStandalone) {
-				GuiListbox@ list = GuiListbox(this, recti(0, 0, 100, 20));
-				list.style = SS_NULL;
-				list.itemHeight = 30;
-
-				MarkupTooltip tt(400, 0.f, true, true);
-				tt.Lazy = true;
-				tt.LazyUpdate = false;
-				tt.Padding = 4;
-				@list.tooltipObject = tt;
-
-				for(uint i = 0, cnt = getOrbitalModuleCount(); i < cnt; ++i) {
-					auto@ def = getOrbitalModule(i);
-					if(def.canBuildOn(cast<Orbital>(obj)))
-						list.addItem(BuildElement(this, def, obj));
-				}
-				list.sortDesc();
-				uint sec = modulesList.addSection(locale::ORBITAL_MODULES, list);
-				modulesList.openSection(sec);
-				modulesButton.disabled = false;
-				list.updateHover();
-			}
-			else {
-				modulesButton.disabled = true;
-			}
-			if(obj.hasConstruction && obj.canBuildShips) {
-				addShipsToBuildList(shipsList, stations=false);
-				hasShips = true;
-				shipsButton.disabled = false;
-			}
-			else {
-				hasShips = false;
-				shipsButton.disabled = true;
-			}
-			if(obj.hasConstruction) {
-				array<GuiListbox@> cats;
-				array<string> catNames;
-
-				for(uint i = 0, cnt = getConstructionTypeCount(); i < cnt; ++i) {
-					const ConstructionType@ type = getConstructionType(i);
-					if(!type.canBuild(obj, ignoreCost=true))
-						continue;
-
-					GuiListbox@ list;
-					for(uint n = 0, ncnt = cats.length; n < ncnt; ++n) {
-						if(catNames[n] == type.category) {
-							@list = cats[n];
-							break;
-						}
-					}
-
-					if(list is null) {
-						@list = GuiListbox(this, recti(0, 0, 100, 20));
-						list.style = SS_NULL;
-						list.itemHeight = 30;
-
-						MarkupTooltip tt(400, 0.f, true, true);
-						tt.Lazy = true;
-						tt.LazyUpdate = false;
-						tt.Padding = 4;
-						@list.tooltipObject = tt;
-
-						catNames.insertLast(type.category);
-						cats.insertLast(list);
-					}
-
-					list.addItem(BuildElement(this, type, obj));
-				}
-
-				for(uint i = 0, cnt = cats.length; i < cnt; ++i) {
-					auto@ list = cats[i];
-					list.sortDesc();
-
-					string title = localize("#BCAT_"+catNames[i]);
-					if(title[0] == '#')
-						title = catNames[i];
-
-					uint sec = constructionsList.addSection(title, list);
-					constructionsList.openSection(sec);
-					list.updateHover();
-				}
-
-				if(cats.length != 0) {
-					hasConstructions = true;
-					constructionsButton.disabled = false;
-				}
-				else {
-					hasConstructions = false;
-					constructionsButton.disabled = true;
-				}
-			}
-			else {
-				hasConstructions = false;
-				constructionsButton.disabled = true;
-			}
-			if(obj.laborIncome == 0 && hasConstructions && shipsButton.pressed) {
-				shipsList.visible = false;
-				shipsButton.pressed = false;
-				constructionsButton.pressed = true;
-				constructionsList.visible = true;
-			}
-			else if(shipsButton.disabled && shipsButton.pressed) {
-				shipsList.visible = false;
-				shipsButton.pressed = false;
-				if(!orbitalsButton.disabled) {
-					orbitalsButton.pressed = true;
-					orbitalsList.visible = true;
-				}
-				else if(!buildingsButton.disabled) {
-					buildingsButton.pressed = true;
-					buildingsList.visible = true;
-				}
-				else if(!constructionsButton.disabled) {
-					constructionsButton.pressed = true;
-					constructionsList.visible = true;
-				}
-			}
-		}
-		else {
-			for(uint i = 0, cnt = buildingsList.items.length; i < cnt; ++i) {
-				GuiListbox@ list = cast<GuiListbox>(buildingsList.items[i]);
-				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
-					GuiListElement@ ele = list.getItemElement(j);
-
-					if(cast<BuildElement>(ele) !is null)
-						cast<BuildElement>(ele).update(this);
-				}
-			}
-			for(uint i = 0, cnt = orbitalsList.items.length; i < cnt; ++i) {
-				GuiListbox@ list = cast<GuiListbox>(orbitalsList.items[i]);
-				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
-					GuiListElement@ ele = list.getItemElement(j);
-
-					if(cast<BuildElement>(ele) !is null)
-						cast<BuildElement>(ele).update(this);
-				}
-			}
-			for(uint i = 0, cnt = shipsList.items.length; i < cnt; ++i) {
-				GuiListbox@ list = cast<GuiListbox>(shipsList.items[i]);
-				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
-					GuiListElement@ ele = list.getItemElement(j);
-
-					if(cast<BuildElement>(ele) !is null)
-						cast<BuildElement>(ele).update(this);
-				}
-			}
-			for(uint i = 0, cnt = constructionsList.items.length; i < cnt; ++i) {
-				GuiListbox@ list = cast<GuiListbox>(constructionsList.items[i]);
-				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
-					GuiListElement@ ele = list.getItemElement(j);
-
-					if(cast<BuildElement>(ele) !is null)
-						cast<BuildElement>(ele).update(this);
-				}
-			}
-		}
-		updateAbsolutePosition();
-		gui_root.updateHover();
+	void select(SupportClass@ cls) {
+		cls.selected = true;
+		cls.leaveAmount = 0;
+		if(selected.find(cls) == -1)
+			selected.insertLast(cls);
 	}
 
-	void addShipsToBuildList(GuiAccordion@ acc, bool stations = false) {
-		//Add ship classes
-		ReadLock lock(playerEmpire.designMutex);
-		uint clsCount = playerEmpire.designClassCount;
-		for(uint i = 0; i < clsCount; ++i) {
-			const DesignClass@ cls = playerEmpire.getDesignClass(i);
-
-			//Check if we should display this class at all
-			bool hasShips = false;
-			for(uint j = 0, jcnt = cls.designCount; j < jcnt; ++j) {
-				const Design@ dsg = cls.designs[j];
-				if(dsg.obsolete)
-					continue;
-				if(dsg.hasTag(ST_Station) != stations)
-					continue;
-				if(dsg.hasTag(ST_Satellite))
-					continue;
-				hasShips = true;
-				break;
-			}
-
-			if(!hasShips)
-				continue;
-
-			//Create the box
-			GuiListbox@ list = GuiListbox(this, recti(0, 0, 100, 20));
-			list.style = SS_NULL;
-			list.itemHeight = 30;
-
-			MarkupTooltip tt(400, 0.f, true, true);
-			tt.Lazy = true;
-			tt.LazyUpdate = false;
-			tt.Padding = 4;
-			@list.tooltipObject = tt;
-
-			for(uint j = 0, jcnt = cls.designCount; j < jcnt; ++j) {
-				const Design@ dsg = cls.designs[j];
-				if(dsg.obsolete)
-					continue;
-				if(dsg.hasTag(ST_Station) != stations)
-					continue;
-				if(dsg.hasTag(ST_Satellite))
-					continue;
-				list.addItem(BuildElement(this, dsg, obj));
-			}
-			list.sortDesc();
-
-			uint sec = acc.addSection(cls.name, list);
-			acc.openSection(sec);
-			list.updateHover();
-		}
-
+	void deselect(SupportClass@ cls) {
+		cls.selected = false;
+		cls.leaveAmount = 0;
+		selected.remove(cls);
 	}
 
-	bool onMouseEvent(const MouseEvent& evt, IGuiElement@ source) override {
-		switch(evt.type) {
-			case MET_Button_Down:
-				if(source is queue && evt.button == 1)
-					return true;
-			break;
-			case MET_Button_Up:
-				if(evt.button == 0) {
-					if(draggingItem !is null) {
-						if(hoveredItem !is null) {
-							if(mousePos.y > hoveredItem.AbsolutePosition.center.y) {
-								int ind = queueItems.find(hoveredItem) + 1;
-								if(ind >= 0 && uint(ind) < queueItems.length) {
-									obj.moveConstruction(draggingItem.cons.id, queueItems[ind].cons.id);
-								}
-								else {
-									obj.moveConstruction(draggingItem.cons.id, -1);
-								}
-							}
-							else if(hoveredItem !is draggingItem) {
-								obj.moveConstruction(draggingItem.cons.id, hoveredItem.cons.id);
-							}
-						}
-						else if(queueItems.length != 0 && mousePos.y < queueItems[0].absolutePosition.botRight.y - 10) {
-							if(queueItems[0] !is draggingItem)
-								obj.moveConstruction(draggingItem.cons.id, queueItems[0].cons.id);
-						}
-						else {
-							if(queueItems.length != 0 && queueItems[queueItems.length-1] !is draggingItem)
-								obj.moveConstruction(draggingItem.cons.id, -1);
-						}
-						@draggingItem = null;
-						updateQueue();
-						updateTimer = 0.15;
-						return true;
-					}
-					if(source is queue)
-						selectQueue(null);
-					return true;
-				}
-				else if(evt.button == 1) {
-					if(source !is queue)
-						overlay.close();
-					return true;
-				}
-			break;
-		}
-
-		return DisplayBox::onMouseEvent(evt, source);
-	}
-
-
-	QueueItem@ selQueue;
-	void selectQueue(QueueItem@ it) {
-		@selQueue = it;
-	}
-
-	void updateQueue() {
-		if(obj.owner !is playerEmpire
-				|| !obj.hasConstruction) {
-			cons.length = 0;
-			return;
-		}
-		if(draggingItem !is null)
-			return;
-
-		cons.syncFrom(obj.getConstructionQueue());
-		uint oldCnt = queueItems.length;
-		uint newCnt = cons.length;
-
-		for(uint i = newCnt; i < oldCnt; ++i)
-			queueItems[i].remove();
-		queueItems.length = newCnt;
-
-		int selId = -1;
-		if(selQueue !is null)
-			selId = selQueue.cons.id;
-		@selQueue = null;
-
-		int y = 0;
-		isBuildingFlagship = false;
-		for(uint i = 0; i < newCnt; ++i) {
-			QueueItem@ ele = queueItems[i];
-			if(ele is null) {
-				@ele = QueueItem(queue, this);
-				@queueItems[i] = ele;
-			}
-
-			if(cons[i].dsg !is null)
-				isBuildingFlagship = true;
-
-			ele.first = i == 0;
-			ele.update(cons[i], obj);
-			ele.position = vec2i(0, y);
-			y += ele.size.height;
-
-			if(ele.cons.id == selId)
-				@selQueue = ele;
-		}
+	void pingUpdate() {
+		main.update();
+		if(secondary !is null)
+			secondary.update();
+		updateTimer = 0.15;
 	}
 
 	double updateTimer = 0.0;
-	double longTimer = 5.0;
-	void update(double time) override {
+	bool update(double time) {
+		if(closing)
+			return true;
+		if(selectedObject !is main.leader) {
+			if(selectedObject is null || !selectedObject.hasLeaderAI)
+				return false;
+			main.set(selectedObject);
+			if(secondary !is null) {
+				secondary.remove();
+				@secondary = null;
+			}
+		}
+
 		updateTimer -= time;
-		longTimer -= time;
 		if(updateTimer <= 0) {
-			updateTimer = randomd(0.1,0.9);
-
-			updateQueue();
-
-			if(longTimer <= 0) {
-				updateBuildList(true);
-				longTimer = 5.0;
+			main.update();
+			if(secondary !is null) {
+				secondary.update();
+				secondary.visible = !main.animating;
 			}
-			else {
-				if(obj.owner is playerEmpire) {
-					if(hasShips != obj.hasConstruction && obj.canBuildShips
-							|| hasOrbitals != obj.hasConstruction && obj.canBuildOrbitals
-							|| hasBuildings != obj.hasConstruction && obj.hasSurfaceComponent && obj.owner.ImperialBldConstructionRate > 0.01)
-						updateBuildList(true);
-					else
-						updateBuildList(false);
-				}
-			}
-
-			int btnCount = 0;
-			if(obj.hasConstruction) {
-				nameBox.visible = true;
-				laborBox.visible = true;
-				queueBox.visible = true;
-
-				buttonBox.alignment.top.pixels = Q_HEIGHT+8;
-				buttonBox.alignment.bottom.pixels = Q_HEIGHT+44;
-
-				if(obj.hasSurfaceComponent) {
-					buildingsButton.visible = true;
-					btnCount += 1;
-				}
-				else {
-					buildingsButton.visible = false;
-				}
-
-				shipsButton.visible = true;
-				orbitalsButton.visible = true;
-				btnCount += 2;
-			}
-			else {
-				nameBox.visible = false;
-				laborBox.visible = false;
-				queueBox.visible = false;
-
-				buttonBox.alignment.top.pixels = 8;
-				buttonBox.alignment.bottom.pixels = 44;
-				buildPanel.alignment.top.pixels = 44;
-
-				buildingsButton.visible = false;
-				shipsButton.visible = false;
-				orbitalsButton.visible = false;
-			}
-			/*if(obj.isOrbital) {*/
-			/*	modulesButton.visible = true;*/
-			/*	btnCount += 1;*/
-			/*}*/
-			/*else {*/
-				modulesButton.visible = false;
-			/*}*/
-			if(hasConstructions) {
-				constructionsButton.visible = true;
-				btnCount += 1;
-			}
-			else {
-				constructionsButton.visible = false;
-			}
-
-			if(btnCount <= 1) {
-				buttonBox.visible = false;
-				buildPanel.alignment.top.pixels = buttonBox.alignment.top.pixels;
-			}
-			else {
-				buttonBox.visible = true;
-				buildPanel.alignment.top.pixels = buttonBox.alignment.bottom.pixels;
-
-				float pos = 0.f, step = 1.f / float(btnCount);
-				if(modulesButton.visible) {
-					modulesButton.alignment.left.percent = pos;
-					pos += step;
-					modulesButton.alignment.right.percent = pos;
-				}
-				if(buildingsButton.visible) {
-					buildingsButton.alignment.left.percent = pos;
-					pos += step;
-					buildingsButton.alignment.right.percent = pos;
-				}
-				if(orbitalsButton.visible) {
-					orbitalsButton.alignment.left.percent = pos;
-					pos += step;
-					orbitalsButton.alignment.right.percent = pos;
-				}
-				if(shipsButton.visible) {
-					shipsButton.alignment.left.percent = pos;
-					pos += step;
-					shipsButton.alignment.right.percent = pos;
-				}
-				if(constructionsButton.visible) {
-					constructionsButton.alignment.left.percent = pos;
-					pos += step;
-					constructionsButton.alignment.right.percent = pos;
-				}
-			}
-
-			double curLabor = 0;
-			if(obj.owner is playerEmpire)
-				curLabor = obj.laborIncome;
-			labor.text = formatMinuteRate(curLabor, " "+locale::RESOURCE_LABOR);
-
-			double curStored = 0;
-			if(obj.owner is playerEmpire)
-				curStored = obj.currentLaborStored;
-			double storCap = 0;
-			if(obj.owner is playerEmpire)
-				storCap = obj.laborStorageCapacity;
-			if(obj.hasConstruction && (curStored > 0.001 || storCap > 0.001)) {
-				storageBox.visible = true;
-
-				float pct = 1.f;
-				if(storCap > 0)
-					pct = min(1.f, curStored / storCap);
-				storageBox.progress = pct;
-				storageBox.text = format(locale::STORED_LABOR, toString(curStored,0), toString(storCap,0));
-				cargo.rect = recti_area((WIDTH-16)/2, Q_HEIGHT-34-50, (WIDTH-16)/2-12-80, 34);
-			}
-			else {
-				storageBox.visible = false;
-				cargo.rect = recti_area(4, Q_HEIGHT-34-50, (WIDTH-8)-12-80, 34);
-			}
-
-			//Update cargo
-			cargo.visible = obj.hasCargo && obj.cargoTypes > 0;
-			if(cargo.visible) {
-				cargo.update(obj);
-				storageBox.size = vec2i((WIDTH-16)/2-8, 34);
-			}
-			else {
-				storageBox.size = vec2i(WIDTH-16-12-80, 34);
-			}
-
-			repeatButton.pressed = obj.owner is playerEmpire && obj.isRepeating;
-
-			auto@ drydock = getOrbitalModule("DryDock");
-			drydockButton.visible = obj.owner is playerEmpire && obj.canBuildShips && obj.canBuildOrbitals && drydock !is null && drydock.canBuildBy(obj);
-
-			updateAbsolutePosition();
-		}
-	}
-
-	void openDrydockMenu(Empire@ forEmp = playerEmpire) {
-		GuiContextMenu menu(mousePos);
-		menu.itemHeight = 36;
-		menu.flexWidth = false;
-		menu.width = 400;
-
-		uint cnt = playerEmpire.designCount;
-		for(uint i = 0; i < cnt; ++i) {
-			auto@ dsg = playerEmpire.designs[i];
-			if(dsg.obsolete || dsg.newer !is null || dsg.updated !is null)
-				continue;
-			if(dsg.hasTag(ST_Support))
-				continue;
-			if(dsg.hasTag(ST_Station))
-				continue;
-			if(dsg.hasTag(ST_Satellite))
-				continue;
-			menu.addOption(FlagshipDrydock(obj, dsg, forEmp));
+			updateTimer += 0.5;
 		}
 
-		menu.list.sortDesc();
-		menu.updateAbsolutePosition();
-	}
-
-	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
-			case GUI_Changed: {
-				GuiListbox@ list = cast<GuiListbox>(evt.caller);
-				if(list !is null && list.isChildOf(buildPanel)) {
-					if(obj.owner !is playerEmpire)
-						return true;
-
-					BuildElement@ ele = cast<BuildElement>(list.selectedItem);
-					if(ele !is null) {
-						if(ele.dsg !is null) {
-							if(ele.dsg.hasTag(ST_IsSupport)) {
-								if(!obj.canBuildShips)
-									return true;
-								int selCons = -1;
-								if(selQueue !is null)
-									selCons = selQueue.cons.id;
-								obj.addSupportShipConstruction(selCons, ele.dsg, shiftKey ? 1 : 10);
-							}
-							else if(ele.dsg.hasTag(ST_Station)) {
-								if(!obj.canBuildOrbitals)
-									return true;
-								list.clearSelection();
-								overlay.close();
-								targetPoint(OrbitalTarget(obj, null, ele.dsg, constructFrom=slaved));
-							}
-							else {
-								if(!obj.canBuildShips)
-									return true;
-								auto@ drydock = getOrbitalModule("DryDock");
-								bool canDrydock = obj.canBuildOrbitals && drydock !is null && drydock.canBuildBy(obj);
-								if(ctrlKey && canDrydock) {
-									FinanceDryDock(ele.dsg, obj);
-								}
-								else {
-									int cost = getBuildCost(ele.dsg, buildAt=obj);
-									if(!playerEmpire.canPay(cost) && canDrydock)
-										FinanceDryDock(ele.dsg, obj);
-									else
-										obj.buildFlagship(ele.dsg, constructFrom=slaved);
-								}
-							}
-							list.clearSelection();
-						}
-						else if(ele.orb !is null) {
-							if(ele.orb.isCore) {
-								if(!obj.canBuildOrbitals)
-									return true;
-								list.clearSelection();
-								overlay.close();
-								targetPoint(OrbitalTarget(obj, ele.orb, constructFrom=slaved));
-							}
-							else {
-								Orbital@ orb = cast<Orbital>(obj);
-								if(orb is null)
-									return true;
-								orb.buildModule(ele.orb.id);
-								updateTimer = 0.0;
-								longTimer = 0.0;
-								overlay.triggerUpdate();
-							}
-						}
-						else if(ele.building !is null) {
-							overlay.startBuild(ele.building);
-							list.clearSelection();
-						}
-						else if(ele.construction !is null) {
-							if(ele.construction.targets.length == 0) {
-								obj.buildConstruction(ele.construction.id);
-							}
-							else if(ele.construction.targets[0].type == TT_Object) {
-								targetObject(ConstructionTargetObject(obj, ele.construction));
-								overlay.close();
-							}
-							else if(ele.construction.targets[0].type == TT_Point) {
-								targetPoint(ConstructionTargetPoint(obj, ele.construction));
-								overlay.close();
-							}
-							list.clearSelection();
-						}
-
-						updateBuildList(true);
-						updateTimer = 0.0;
-					}
-				}
-			} break;
-			case GUI_Clicked:
-				if(evt.caller is repeatButton) {
-					obj.setRepeating(!obj.isRepeating);
-					return true;
-				}
-				else if(evt.caller is drydockButton) {
-					openDrydockMenu();
-					return true;
-				}
-				else if(cast<QueueItem>(evt.caller) !is null) {
-					updateTimer = 0.0;
-					return true;
-				}
-				else if(evt.caller is buildingsButton) {
-					buildingsButton.pressed = true;
-					buildingsList.visible = true;
-
-					orbitalsList.visible = false;
-					orbitalsButton.pressed = false;
-					shipsList.visible = false;
-					shipsButton.pressed = false;
-					modulesList.visible = false;
-					modulesButton.pressed = false;
-					constructionsList.visible = false;
-					constructionsButton.pressed = false;
-					updateAbsolutePosition();
-				}
-				else if(evt.caller is orbitalsButton) {
-					orbitalsButton.pressed = true;
-					orbitalsList.visible = true;
-
-					buildingsList.visible = false;
-					buildingsButton.pressed = false;
-					shipsList.visible = false;
-					shipsButton.pressed = false;
-					modulesList.visible = false;
-					modulesButton.pressed = false;
-					constructionsList.visible = false;
-					constructionsButton.pressed = false;
-					updateAbsolutePosition();
-				}
-				else if(evt.caller is shipsButton) {
-					shipsButton.pressed = true;
-					shipsList.visible = true;
-
-					orbitalsList.visible = false;
-					orbitalsButton.pressed = false;
-					buildingsList.visible = false;
-					buildingsButton.pressed = false;
-					modulesList.visible = false;
-					modulesButton.pressed = false;
-					constructionsList.visible = false;
-					constructionsButton.pressed = false;
-					updateAbsolutePosition();
-				}
-				else if(evt.caller is modulesButton) {
-					modulesButton.pressed = true;
-					modulesList.visible = true;
-
-					orbitalsList.visible = false;
-					orbitalsButton.pressed = false;
-					buildingsList.visible = false;
-					buildingsButton.pressed = false;
-					shipsList.visible = false;
-					shipsButton.pressed = false;
-					constructionsList.visible = false;
-					constructionsButton.pressed = false;
-					updateAbsolutePosition();
-				}
-				else if(evt.caller is constructionsButton) {
-					constructionsList.visible = true;
-					constructionsButton.pressed = true;
-
-					orbitalsList.visible = false;
-					orbitalsButton.pressed = false;
-					buildingsList.visible = false;
-					buildingsButton.pressed = false;
-					shipsList.visible = false;
-					shipsButton.pressed = false;
-					modulesList.visible = false;
-					modulesButton.pressed = false;
-					updateAbsolutePosition();
-				}
-			break;
-		}
-		return DisplayBox::onGuiEvent(evt);
-	}
-};
-
-class OrbitalTarget : PointTargeting {
-	Object@ obj;
-	Object@ constructFrom;
-	const OrbitalModule@ def;
-	const Design@ dsg;
-	bool wasShifted;
-
-	OrbitalTarget(Object@ obj, const OrbitalModule@ mod, const Design@ dsg = null, bool wasShifted = false, Object@ constructFrom = null) {
-		@this.obj = obj;
-		this.wasShifted = wasShifted;
-		@this.dsg = dsg;
-		@this.constructFrom = constructFrom;
-		@def = mod;
-		if(dsg !is null)
-			icon = dsg.icon;
-		else if(def.icon.valid)
-			icon = def.icon;
-		else
-			icon = icons::Labor;
-	}
-
-	bool valid(const vec3d& pos) override {
-		if(wasShifted && !shiftKey) {
-			cancelTargeting();
-			return false;
-		}
-		if(constructFrom !is null) {
-			if(!canBuildOrbital(constructFrom, pos, true))
-				return false;
-		}
-		else {
-			if(!canBuildOrbital(obj, pos, true))
-				return false;
-		}
-		if(def !is null) {
-			if(!def.canBuildBy(obj))
-				return false;
-			if(!def.canBuildAt(obj, pos))
-				return false;
-		}
 		return true;
 	}
 
-	void call(const vec3d& pos) override {
-		if(dsg !is null)
-			obj.buildStation(dsg, pos, frame=hoveredObject, constructFrom=constructFrom);
-		else
-			obj.buildOrbital(def.id, pos, frame=hoveredObject, constructFrom=constructFrom);
-		if(shiftKey)
-			targetPoint(OrbitalTarget(obj, def, dsg, true, constructFrom=constructFrom));
-	}
-
-	string message(const vec3d& pos, bool valid) {
-		if(dsg !is null)
-			return dsg.name;
-		return def.name;
-	}
-
-	string desc(const vec3d& pos, bool valid) {
-		if(valid) {
-			double laborCost = 0;
-			if(dsg !is null) {
-				laborCost = getLaborCost(dsg);
-				if(dsg.hasTag(ST_Station))
-					laborCost *= obj.owner.OrbitalLaborCostFactor;
-			}
-			else if(def !is null)
-				laborCost = def.laborCost * obj.owner.OrbitalLaborCostFactor;
-			double laborIncome = max(obj.laborIncome, 0.01);
-
-			Orbital@ orbFrame = cast<Orbital>(hoveredObject);
-			if(orbFrame !is null && orbFrame.getValue(OV_FRAME_Usable) == 0.0)
-				@orbFrame = null;
-			if(orbFrame !is null && orbFrame.owner !is obj.owner)
-				@orbFrame = null;
-
-			double penFact = 1.0;
-			if(orbFrame !is null) {
-				laborCost *= orbFrame.getValue(OV_FRAME_LaborFactor);
-				penFact = orbFrame.getValue(OV_FRAME_LaborPenaltyFactor);
-			}
-
-			TradePath path(obj.owner);
-			Region@ target = getRegion(pos);
-			if(target is null)
-				return "";
-			path.generate(getSystem(obj.region), getSystem(target));
-			laborCost *= 1.0 + config::ORBITAL_LABOR_COST_STEP * penFact * double(path.pathSize - 1);
-
-			return toString(laborCost,0)+" "+locale::RESOURCE_LABOR+", "+formatTime(laborCost / laborIncome);
-		}
-		Region@ reg = getRegion(pos);
-		if(reg is null)
-			return locale::OERR_SYSTEM;
-		if(reg.MemoryMask & obj.owner.mask == 0 && reg.VisionMask & obj.owner.visionMask == 0)
-			return locale::OERR_VISION;
-		if(def !is null) {
-			for(uint i = 0, cnt = def.hooks.length; i < cnt; ++i) {
-				if(!def.hooks[i].canBuildBy(obj) || !def.hooks[i].canBuildAt(obj, pos))
-					return def.hooks[i].getBuildError(obj, pos);
-			}
-		}
-		return locale::OERR_TRADE;
-	}
-};
-
-class ConstructionTargetPoint : PointTargeting {
-	Object@ obj;
-	const ConstructionType@ def;
-	Targets targets;
-	bool wasShifted = false;
-
-	ConstructionTargetPoint(Object@ obj, const ConstructionType@ type, bool wasShifted = false) {
-		@this.obj = obj;
-		@def = type;
-		targets = type.targets;
-		this.wasShifted = wasShifted;
-	}
-
-	bool valid(const vec3d& pos) override {
-		if(wasShifted && !shiftKey) {
-			cancelTargeting();
-			return false;
-		}
-		targets[0].filled = true;
-		targets[0].point = pos;
-		return def.canBuild(obj, targets);
-	}
-
-	void call(const vec3d& pos) override {
-		obj.buildConstruction(def.id, pointTarg=pos);
-		if(shiftKey)
-			targetPoint(ConstructionTargetPoint(obj, def, wasShifted=true));
-	}
-
-	string message(const vec3d& pos, bool valid) {
-		return def.name;
-	}
-
-	string desc(const vec3d& pos, bool valid) {
-		if(valid)
-			return def.formatCosts(obj, targets);
-		return def.getTargetError(obj, targets);
-	}
-};
-
-class ConstructionTargetObject : ObjectTargeting {
-	Object@ obj;
-	const ConstructionType@ def;
-	Targets targets;
-	bool wasShifted = false;
-
-	ConstructionTargetObject(Object@ obj, const ConstructionType@ type, bool wasShifted = false) {
-		@this.obj = obj;
-		@def = type;
-		targets = type.targets;
-		this.wasShifted = wasShifted;
-	}
-
-	bool valid(Object@ target) override {
-		if(wasShifted && !shiftKey) {
-			cancelTargeting();
-			return false;
-		}
-		targets[0].filled = true;
-		@targets[0].obj = target;
-		return def.canBuild(obj, targets);
-	}
-
-	void call(Object@ target) override {
-		obj.buildConstruction(def.id, objTarg=target);
-		if(shiftKey)
-			targetObject(ConstructionTargetObject(obj, def, wasShifted=true));
-	}
-
-	string message(Object@ target, bool valid) {
-		return def.name;
-	}
-
-	string desc(Object@ target, bool valid) {
-		if(valid)
-			return def.formatCosts(obj, targets);
-		return def.getTargetError(obj, targets);
-	}
-};
-
-const string slashStr("/");
-class BuildElement : GuiListElement {
-	const Design@ dsg;
-	const OrbitalModule@ orb;
-	const BuildingType@ building;
-	const ConstructionType@ construction;
-	Object@ buildAt;
-	Color color;
-	string nameText;
-	string costText;
-	string maintainText;
-	string ttText;
-	string timeText;
-	string laborText;
-	string energyText;
-	Sprite icon;
-	Color nameColor;
-	Color iconColor = colors::White;
-	bool isSupport = false;
-	bool incomplete = false;
-	array<Sprite> extraIcons;
-	array<string> extraCosts;
-
-
-	BuildElement(ConstructionDisplay@ disp, const Design@ Dsg, Object@ at) {
-		@dsg = Dsg;
-		@buildAt = at;
-		update(disp);
-	}
-
-	BuildElement(ConstructionDisplay@ disp, const OrbitalModule@ Orb, Object@ at) {
-		@orb = Orb;
-		@buildAt = at;
-		update(disp);
-	}
-
-	BuildElement(ConstructionDisplay@ disp, const BuildingType@ Type, Object@ at) {
-		@building = Type;
-		@buildAt = at;
-		update(disp);
-	}
-
-	BuildElement(ConstructionDisplay@ disp, const ConstructionType@ Type, Object@ at) {
-		@construction = Type;
-		@buildAt = at;
-		update(disp);
-	}
-
-	string get_tooltipText() {
-		return ttText;
-	}
-
-	int opCmp(const GuiListElement@ other) const {
-		const BuildElement@ be = cast<const BuildElement@>(other);
-		if(be is null)
-			return 0;
-		if(dsg !is null) {
-			if(be.dsg is null)
-				return 0;
-			if(dsg.size > be.dsg.size)
-				return 1;
-			if(dsg.size < be.dsg.size)
-				return -1;
-		}
-		else if(orb !is null) {
-			if(orb.totalRequirementCount > be.orb.totalRequirementCount)
-				return 1;
-			if(orb.totalRequirementCount < be.orb.totalRequirementCount)
-				return -1;
-			if(orb.buildCost > be.orb.buildCost)
-				return 1;
-			if(orb.buildCost < be.orb.buildCost)
-				return -1;
-		}
-		else if(building !is null) {
-			if(building.laborCost > be.building.laborCost)
-				return -1;
-			if(building.laborCost < be.building.laborCost)
-				return 1;
-			if(building.buildCostEst > be.building.buildCostEst)
-				return 1;
-			if(building.buildCostEst < be.building.buildCostEst)
-				return -1;
-			if(building.maintainCostEst > be.building.maintainCostEst)
-				return 1;
-			if(building.maintainCostEst < be.building.maintainCostEst)
-				return -1;
-		}
-		return 0;
-	}
-
-	void update(ConstructionDisplay@ disp) {
-		int build = 0, maintain = 0;
-		double labor = 0, time = 0, energy = 0;
-		bool hasError = false, hasWarning = false;
-		extraIcons.length = 0;
-		extraCosts.length = 0;
-
-		if(dsg !is null) {
-			nameText = dsg.name+" ("+toString(dsg.size, 0)+")";
-			ttText = "";
-			getBuildCost(dsg, build, maintain, labor, -1, buildAt);
-			icon = dsg.icon;
-
-			double multiply = 1.0;
-			if(dsg.hasTag(ST_Support)) {
-				build *= 10;
-				maintain *= 10;
-				labor *= 10;
-				multiply = 10.0;
-				isSupport = true;
-				iconColor = dsg.color;
-			}
-			else if(dsg.hasTag(ST_Station)) {
-				labor *= buildAt.owner.OrbitalLaborCostFactor;
-				build *= buildAt.owner.OrbitalBuildCostFactor;
-			}
-			else {
-				isSupport = false;
-				iconColor = dsg.dullColor;
-			}
-
-			for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; ++i) {
-				auto@ cargo = getCargoType(i);
-				if(int(cargo.variable) == -1)
-					continue;
-				double amt = dsg.total(cargo.variable) * multiply;
-				if(amt > 0) {
-					extraIcons.insertLast(cargo.icon);
-					extraCosts.insertLast(standardize(amt, true));
-					if(buildAt is null || !buildAt.hasCargo || buildAt.getCargoStored(cargo.id) < amt)
-						hasError = true;
-				}
-			}
-
-			{
-				double energyCost = dsg.total(SV_EnergyBuildCost);
-				if(energyCost > 0) {
-					extraIcons.insertLast(icons::Energy);
-					extraCosts.insertLast(standardize(energyCost, true));
-					if(buildAt is null || buildAt.owner.EnergyStored < energyCost)
-						hasError = true;
-				}
-			}
-
-			{
-				int influenceCost = dsg.total(SV_InfluenceBuildCost);
-				if(influenceCost > 0) {
-					extraIcons.insertLast(icons::Influence);
-					extraCosts.insertLast(toString(influenceCost, 0));
-					if(buildAt is null || buildAt.owner.Influence < influenceCost)
-						hasError = true;
-				}
-			}
-
-			{
-				double ftlCost = dsg.total(SV_FTLBuildCost);
-				if(ftlCost > 0) {
-					extraIcons.insertLast(icons::FTL);
-					extraCosts.insertLast(standardize(ftlCost, true));
-					if(buildAt is null || buildAt.owner.FTLStored < ftlCost)
-						hasError = true;
-				}
-			}
-		}
-		else if(orb !is null) {
-			color = Color(0xffffffff);
-			nameText = orb.name;
-			ttText = orb.getTooltip();
-			build = orb.buildCost;
-			build *= buildAt.constructionCostMod;
-			build *= buildAt.owner.OrbitalBuildCostFactor;
-			labor = orb.laborCost;
-			labor *= buildAt.owner.OrbitalLaborCostFactor;
-			maintain = orb.maintenance;
-			energy = 0;
-			icon = orb.icon;
-			isSupport = false;
-
-			if(!orb.canBuildBy(buildAt, ignoreCost=false))
-				hasError = true;
-
-			Sprite exIcon; string exCost;
-			for(uint i = 0, cnt = orb.hooks.length; i < cnt; ++i) {
-				if(orb.hooks[i].getCost(buildAt, exCost, exIcon)) {
-					extraCosts.insertLast(exCost);
-					extraIcons.insertLast(exIcon);
-				}
-			}
-		}
-		else if(building !is null) {
-			nameText = building.name;
-			build = building.buildCostEst * buildAt.owner.BuildingCostFactor;
-			build *= buildAt.constructionCostMod;
-			maintain = building.maintainCostEst;
-			if(building.laborCost > 0)
-				labor = building.laborCost;
-			else
-				time = building.getBuildTime(buildAt) / (buildAt.buildingConstructRate * buildAt.owner.BuildingConstructRate * buildAt.owner.ImperialBldConstructionRate);
-			icon = building.sprite;
-			iconColor = colors::White;
-			isSupport = false;
-
-			ttText = building.getTooltip(valueObject=buildAt, isOption=true);
-
-			if(!building.canBuildOn(buildAt))
-				hasError = true;
-
-			Sprite exIcon; string exCost;
-			for(uint i = 0, cnt = building.hooks.length; i < cnt; ++i) {
-				if(building.hooks[i].getCost(buildAt, exCost, exIcon)) {
-					extraCosts.insertLast(exCost);
-					extraIcons.insertLast(exIcon);
-				}
-			}
-		}
-		else if(construction !is null) {
-			nameText = construction.name;
-			build = construction.getBuildCost(buildAt);
-			maintain = construction.getMaintainCost(buildAt);
-			labor = construction.getLaborCost(buildAt);
-			time = construction.getTimeCost(buildAt);
-			icon = construction.icon;
-			iconColor = colors::White;
-			isSupport = false;
-			ttText = construction.formatTooltip(buildAt);
-
-			if(!construction.canBuild(buildAt, null))
-				hasError = true;
-
-			Sprite exIcon; string exCost;
-			for(uint i = 0, cnt = construction.hooks.length; i < cnt; ++i) {
-				if(construction.hooks[i].getCost(buildAt, construction, null, exCost, exIcon)) {
-					extraCosts.insertLast(exCost);
-					extraIcons.insertLast(exIcon);
-				}
-			}
-		}
-
-		int borrow = build - playerEmpire.RemainingBudget;
-		if(build > 0 && borrow > 0) {
-			if(ttText.length != 0)
-				ttText += "\n\n";
-			if(playerEmpire.canBorrow(borrow)) {
-				hasWarning = true;
-				double rate = playerEmpire.BorrowRate;
-				ttText += format(locale::NEED_BORROW,
-					formatMoney(borrow), formatMoney(ceil(double(borrow) * rate)));
-			}
-			else {
-				hasError = true;
-				ttText += "[color=#f00]"+locale::CANNOT_BORROW+"[/color]";
-			}
-		}
-
-		if(isSupport && !disp.isBuildingFlagship)
-			nameColor = Color(0x999999ff);
-		else if(hasError)
-			nameColor = Color(0xff0000ff);
-		else if(hasWarning)
-			nameColor = Color(0xfdff00ff);
-		else if(incomplete)
-			nameColor = Color(0x999999ff);
-		else
-			nameColor = Color(0xffffffff);
-
-		if(build != 0 || maintain != 0)
-			costText = formatMoney(build);
-		else
-			costText.resize(0);
-		if(maintain == 0)
-			maintainText.resize(0);
-		else
-			maintainText = formatMoney(maintain);
-		if(energy != 0)
-			energyText = formatRate(energy);
-		else
-			energyText.resize(0);
-
-		if(labor != 0) {
-			laborText = standardize(labor, true);
-			if(isSupport)
-				timeText = formatTimeRate(labor, buildAt.laborIncome*(float(buildAt.supportBuildSpeed)/100.f));
-			else
-				timeText = formatTimeRate(labor, buildAt.laborIncome);
-		}
-		else if(time != 0) {
-			laborText = "";
-			timeText = formatTime(time);
-		}
-		else {
-			laborText = "";
-			timeText = "";
-		}
-	}
-
-	void draw(GuiListbox@ ele, uint flags, const recti& pos) override {
-		const Font@ font = ele.skin.getFont(ele.TextFont);
-		const Font@ smallFont = ele.skin.getFont(FT_Small);
-
-		//Background element
-		ele.skin.draw(SS_BuildElement, flags, pos);
-
-		//Icon
-		int x = 4;
-		if(icon.valid) {
-			int isize = min(icon.size.width, 28);
-			recti ipos = recti_area(vec2i(x,(30-isize)/2)+pos.topLeft, vec2i(isize, isize));
-			if(dsg !is null && isSupport) {
-				spritesheet::ResourceIconsSmallMods.draw(0, ipos.padded(-1));
-				icon.draw(ipos.padded(3), iconColor);
-			}
-			else {
-				icon.draw(ipos.aspectAligned(icon.aspect), iconColor);
-			}
-			x += isize+8;
-		}
-
-		//Time
-		int tx = x;
-		x = pos.width-2;
-
-		//Labor
-		if(laborText.length != 0) {
-			if((costText.length == 0 && extraCosts.length < 4) || extraCosts.length == 0)
-				x -= 120;
-			else
-				x -= 60;
-			icons::Labor.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
-					horizAlign=0.0, vertAlign=0.5,
-					text=laborText, ellipsis=locale::ELLIPSIS, color=colors::White);
-
-			if(timeText.length != 0 && ((costText.length == 0 && extraCosts.length < 4) || extraCosts.length == 0)) {
-				font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
-						horizAlign=1.0, vertAlign=0.5,
-						text=timeText, ellipsis=locale::ELLIPSIS, color=colors::White);
-			}
-		}
-		else if(timeText.length != 0) {
-			x -= 120;
-			spritesheet::ContextIcons.draw(1, recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(57, 30)),
-					horizAlign=0.0, vertAlign=0.5,
-					text=timeText, ellipsis=locale::ELLIPSIS, color=colors::White);
-		}
-
-		//Cost
-		if(energyText.length != 0) {
-			x -= 90;
-			icons::Energy.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(62, 30)),
-					horizAlign=0.0, vertAlign=0.5,
-					text=energyText, ellipsis=locale::ELLIPSIS, color=colors::White);
-		}
-
-		if(costText.length != 0) {
-			if(maintainText.length != 0) {
-				x -= 135;
-				icons::Money.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-				font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
-						horizAlign=0.0, vertAlign=0.5,
-						text=costText, ellipsis=locale::ELLIPSIS, color=colors::White);
-				font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
-						horizAlign=0.5, vertAlign=0.5,
-						text=slashStr, ellipsis=locale::ELLIPSIS, color=colors::White);
-				font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
-						horizAlign=1.0, vertAlign=0.5,
-						text=maintainText, ellipsis=locale::ELLIPSIS, color=colors::White);
-			}
-			else {
-				x -= 90;
-				icons::Money.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-				font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(62, 30)),
-						horizAlign=0.0, vertAlign=0.5,
-						text=costText, ellipsis=locale::ELLIPSIS, color=colors::White);
-			}
-		}
-
-		for(uint i = 0, cnt = extraCosts.length; i < cnt; ++i) {
-			x -= 60;
-			extraIcons[i].draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
-			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(32, 32)),
-					horizAlign=0.0, vertAlign=0.5,
-					text=extraCosts[i], ellipsis=locale::SHORT_ELLIPSIS, color=colors::White);
-		}
-
-		//Requirements
-		if(orb !is null) {
-			x = pos.width - 246;
-			int cx = x;
-			for(uint i = 0; i < TR_COUNT; ++i) {
-				for(uint n = 0, ncnt = orb.affinities[i]; n < ncnt; ++n) {
-					getTileResourceSprite(i).draw(
-						recti_area(vec2i(cx, 3)+pos.topLeft, vec2i(24, 24)));
-					cx += 24;
-				}
-			}
-			for(uint i = 0, cnt = orb.requirements.length; i < cnt; ++i) {
-				orb.requirements[i].icon.draw(
-					recti_area(vec2i(cx, 3)+pos.topLeft, vec2i(24, 24)));
-				cx += 24;
-			}
-		}
-
-		//Name
-		font.draw(pos=pos.padded(tx, 0, ((pos.width-2) - x), 0), vertAlign=0.5,
-				text=nameText, ellipsis=locale::ELLIPSIS, color=nameColor);
-	}
-};
-
-class QueueItem : BaseGuiElement {
-	ConstructionDisplay@ display;
-	Object@ obj;
-	Constructible cons;
-	Color color;
-	string name;
-	string timeText;
-	float pct;
-	bool first = false;
-	SupportItem@[] supportItems;
-	GuiButton@ cancelButton;
-
-	vec2i dragStart;
-	vec2i dragOffset;
-	bool leftHeld = false;
-
-	QueueItem(BaseGuiElement@ parent, ConstructionDisplay@ disp) {
-		@display = disp;
-		super(parent, recti(0, 0, 100, 32));
-		updateAbsolutePosition();
-
-		@cancelButton = GuiButton(this, Alignment(Right-32, Top+6, Right-5, Top+32));
-		cancelButton.color = colors::Red;
-		cancelButton.style = SS_IconButton;
-		cancelButton.setIcon(icons::Remove);
-		cancelButton.tooltip = locale::CANCEL_CONSTRUCTION;
-	}
-
-	void remove() override {
-		BaseGuiElement::remove();
-		@display = null;
-	}
-
-	void update(Constructible@ Cons, Object@ Obj) {
-		@obj = Obj;
-		cons = Cons;
-
-		//Update construction data
-		name = cons.name;
-		if(cons.dsg !is null) {
-			name += " ("+toString(cons.dsg.size, 0)+")";
-			color = cons.dsg.dullColor;
-		}
-
-		double eta = cons.getETA(obj);
-		if(eta == INFINITY)
-			timeText = toString(cons.progress*100.f, 0.f)+"/"+toString(cons.percentage*100.f, 0.f)+"%";
-		else
-			timeText = formatTime(eta);
-		pct = cons.progress;
-
-		//Update support groups
-		uint oldCnt = supportItems.length;
-		uint newCnt = cons.groups.length;
-
-		for(uint i = newCnt; i < oldCnt; ++i)
-			supportItems[i].remove();
-		supportItems.length = newCnt;
-
-		int y = 32;
-		for(uint i = 0; i < newCnt; ++i) {
-			SupportItem@ ele = supportItems[i];
-			if(ele is null) {
-				@ele = SupportItem(this);
-				@supportItems[i] = ele;
-			}
-
-			ele.update(cons.groups[i]);
-			ele.position = vec2i(0, y);
-			y += ele.size.height;
-		}
-
-		size = vec2i(size.width, y);
-	}
-
-	void updateAbsolutePosition() override {
-		int w = parent.size.width;
-		GuiPanel@ pn = cast<GuiPanel>(parent);
-		if(pn !is null && pn.vert.visible)
-			w -= 20;
-		size = vec2i(w, size.height);
-		BaseGuiElement::updateAbsolutePosition();
-	}
-
-	bool onGuiEvent(const GuiEvent& evt) {
-		if(evt.type == GUI_Mouse_Entered && display !is null) {
-			@display.hoveredItem = this;
-		}
-		if(evt.type == GUI_Mouse_Left && display !is null) {
-			if(!isAncestorOf(evt.caller) && display.hoveredItem is this)
-				@display.hoveredItem = null;
-		}
-		if(evt.caller is cancelButton && evt.type == GUI_Clicked) {
-			obj.cancelConstruction(cons.id);
-			emitClicked();
-			return true;
-		}
-		return BaseGuiElement::onGuiEvent(evt);
-	}
-
-	bool onMouseEvent(const MouseEvent& event, IGuiElement@ caller) override {
-		if(display is null)
-			return true;
+	bool onMouseEvent(const MouseEvent& event, IGuiElement@ source) {
 		if(event.type == MET_Button_Down) {
 			if(event.button == 0) {
-				leftHeld = true;
+				dragging = false;
+				leftDown = true;
 				dragStart = mousePos;
-				dragOffset = mousePos - absolutePosition.topLeft;
+
+				if(clsHover !is null) {
+					if(ctrlKey) {
+						if(clsHover.selected)
+							deselect(clsHover);
+						else
+							select(clsHover);
+						leftDown = false;
+					}
+					else {
+						if(!shiftKey)
+							deselect();
+						select(clsHover);
+					}
+				}
+				else {
+					deselect();
+				}
+			}
+			else if(event.button == 1) {
+				if(!leftDown)
+					dragStart = mousePos;
+				rightDown = true;
+				return false;
+			}
+		}
+		else if(event.type == MET_Moved) {
+			updateHover();
+			if(!dragging && leftDown && mousePos.distanceTo(dragStart) > 3 && selected.length != 0) {
+				bool selSats = false;
+				for(uint i = 0, cnt = selected.length; i < cnt; ++i)  {
+					if(selected[i].dat.dsg.hasTag(ST_Satellite)) {
+						selSats = true;
+						break;
+					}
+				}
+				if(!selSats) {
+					dragging = true;
+					for(uint i = 0, cnt = selected.length; i < cnt; ++i) {
+						if(shiftKey)
+							selected[i].leaveAmount = selected[i].dat.totalSize - selected[i].dat.amount;
+						else
+							selected[i].leaveAmount = 0;
+					}
+				}
+			}
+			if(dragging) {
+			}
+		}
+		else if(event.type == MET_Scrolled) {
+			for(uint i = 0, cnt = selected.length; i < cnt; ++i) {
+				SupportClass@ cls = selected[i];
+
+				int y = event.y;
+				if(shiftKey)
+					y *= 10;
+				cls.leaveAmount = clamp(cls.leaveAmount - y, 0, cls.dat.totalSize);
 			}
 			return true;
 		}
-		if(event.type == MET_Moved){ 
-			if(leftHeld) {
-				if(dragStart.distanceTo(mousePos) > 5) {
-					leftHeld = false;
-					@display.draggingItem = this;
-				}
-				return true;
-			}
-		}
-		if(event.type == MET_Button_Up) {
+		else if(event.type == MET_Button_Up) {
 			if(event.button == 0) {
-				if(leftHeld) {
-					leftHeld = false;
-					if(cons.dsg !is null)
-						display.selectQueue(this);
-					else
-						display.selectQueue(null);
+				leftDown = false;
+				if(dragging) {
+					dropGroups();
+					dragging = false;
 					return true;
 				}
 			}
 			else if(event.button == 1) {
-				if(caller is this) {
-					obj.cancelConstruction(cons.id);
+				rightDown = false;
+				if(mousePos.distanceTo(dragStart) < 5 && !isExtendedMoveTarget() && hoveredObject is null) {
+					close(main);
+					cancelTargeting();
+					return true;
 				}
-				else {
-					SupportItem@ it = cast<SupportItem>(caller);
-					if(it !is null)
-						obj.removeSupportShipConstruction(cons.id, it.dat.dsg, shiftKey ? it.dat.totalSize : 10);
-				}
-				emitClicked();
-				return true;
 			}
 		}
-		return BaseGuiElement::onMouseEvent(event, caller);
+		return BaseGuiElement::onMouseEvent(event, source);
 	}
 
-	void draw(const recti& absPos) {
-		const Font@ font = skin.getFont(FT_Normal);
-
-		//Left panel (icon/size)
-		skin.draw(SS_Field, SF_Normal, recti_area(
-			absPos.topLeft, vec2i(38, 29)));
-
-		if(cons.dsg !is null) {
-			cons.dsg.icon.draw(recti_area(
-				absPos.topLeft + vec2i(5, 0), vec2i(29, 29)), color);
+	bool onKeyEvent(const KeyboardEvent& event, IGuiElement@ source) override {
+		switch(event.type) {
+			case KET_Key_Down:
+				if(event.key == KEY_ESC)
+					return true;
+			break;
+			case KET_Key_Up:
+				if(event.key == KEY_ESC) {
+					close(main);
+					return true;
+				}
+			break;
 		}
-		else {
-			Sprite icon = cons.icon;
-			icon.draw(recti_area(
-				absPos.topLeft + vec2i(5, 0), vec2i(29, 29)).aspectAligned(icon.aspect));
-		}
+		return BaseGuiElement::onKeyEvent(event, source);
+	}
 
-		//Middle panel (progress/name)
-		recti midBar = recti_area(absPos.topLeft + vec2i(40, 0), vec2i(absPos.width - 142, 29));
-		skin.draw(SS_Field, SF_Normal, midBar);
-
-		int w = (1.f - pct) * float(midBar.width - 4);
-		drawRectangle(midBar.padded(2, 2, 2+w, 2), Color(0x474545aa));
-
-		Color textColor(0xffffffff);
-		if(!cons.started) {
-			if(first)
-				textColor = Color(0xff0000ff);
-			else
-				textColor = Color(0x999999ff);
-		}
-		font.draw(pos=midBar.padded(7, 0), text=name, color=textColor,
-				horizAlign=0.0, vertAlign=0.5, stroke=colors::Black);
-
-		//vec2i nameSize = font.getDimension(name);
-		//drawResources(skin, absPos.topLeft + vec2i(80+nameSize.x, 3), cost, supplyCost);
-
-		//Right panel (eta)
-		skin.draw(SS_Field, SF_Normal, recti_area(
-			absPos.botRight - vec2i(100, 29), vec2i(100, 29)));
-
-		font.draw(pos=recti_area(absPos.botRight - vec2i(100, 29), vec2i(64, 29)),
-				text=timeText, horizAlign=1.0, vertAlign=0.5, stroke=colors::Black);
+	bool get_isRoot() const override {
+		return getHoveredGroup(mousePos) is null;
 	}
 
 	void draw() override {
-		//Selected box
-		if(display.selQueue is this)
-			drawRectangle(AbsolutePosition, Color(0x00808080));
-
-		recti absPos = recti_area(AbsolutePosition.topLeft+vec2i(4,3), vec2i(AbsolutePosition.size.width-8, 29));
-		draw(absPos);
-
 		BaseGuiElement::draw();
+
+		if(dragging) {
+			vec2i dragDiff = mousePos - dragStart;
+			for(uint i = 0, cnt = selected.length; i < cnt; ++i)
+				selected[i].drawAt(selected[i].absolutePosition.topLeft + dragDiff, true);
+		}
 	}
 };
 
-class SupportItem : BaseGuiElement {
-	QueueItem@ item;
-	GroupData dat;
+class GroupDisplay : BaseGuiElement {
+	SupportOverlay@ overlay;
+	Object@ leader;
+	Alignment@ targPos;
+	bool animating = false;
+	bool closing = false;
 
-	SupportItem(QueueItem@ parent) {
-		@item = parent;
-		super(parent, recti(0, 0, 100, 20));
-		updateAbsolutePosition();
+	//Group leader display
+	GuiSkinElement@ capBG;
+	GuiText@ capText;
+	GuiText@ groupSize;
+
+	//List of support groups
+	GuiPanel@ listPanel;
+	SupportClass@[] classes;
+	GroupData[] groupData;
+
+	//Action buttons
+	GuiButton@ addButton;
+	GuiButton@ rebuyButton;
+	GuiButton@ clearButton;
+	GuiCheckbox@ autoBuy;
+	GuiCheckbox@ autoFill;
+	GuiCheckbox@ allowFillFrom;
+
+	GroupDisplay(Object@ obj, SupportOverlay@ Overlay, int offset = 0) {
+		@leader = obj;
+		@overlay = Overlay;
+
+		super(overlay, recti());
+
+		@capBG = GuiSkinElement(this, Alignment(Left, Top, Right-22, Top+50), SS_FullTitle);
+
+		@capText = GuiText(this, Alignment(Left+12, Top+8, Right-12, Top+24), locale::SUPPORT_CAPACITY);
+		capText.font = FT_Bold;
+
+		@groupSize = GuiText(this, Alignment(Left+4, Top+20, Right-32, Top+48));
+		groupSize.horizAlign = 1.0;
+
+		@listPanel = GuiPanel(this, Alignment(Left+SUPPORT_PADDING, Top+55, Right-SUPPORT_PADDING, Bottom-offset-108));
+
+		@addButton = GuiButton(this, recti(0, 0, 180, 32), locale::ADD_SUPPORTS);
+		addButton.tooltip = locale::CREATE_SUPPORT_SHIPS;
+		addButton.buttonIcon = icons::Add;
+
+		@rebuyButton = GuiButton(this, Alignment(Left+4, Bottom-offset-60, Left+0.5f-15, Bottom-offset-30), locale::REBUY_GHOSTS);
+		setMarkupTooltip(rebuyButton, locale::TT_REBUY_GHOSTS);
+		rebuyButton.color = colors::Money;
+		rebuyButton.setIcon(icons::Money);
+		@clearButton = GuiButton(this, Alignment(Left+0.5f-6, Bottom-offset-60, Right-25, Bottom-offset-30), locale::CLEAR_GHOSTS);
+		clearButton.color = colors::Red;
+		clearButton.setIcon(icons::Remove);
+		setMarkupTooltip(clearButton, locale::TT_CLEAR_GHOSTS);
+
+		@autoFill = GuiCheckbox(this, Alignment(Left+8, Bottom-offset-29, Left+0.5f-15, Bottom-offset-3), locale::AUTO_FILL_SUPPORTS);
+		setMarkupTooltip(autoFill, locale::TT_AUTO_FILL_SUPPORTS);
+		@autoBuy = GuiCheckbox(this, Alignment(Left+0.5f-5+3, Bottom-offset-29, Right-25, Bottom-offset-3), locale::AUTO_BUY_SUPPORTS);
+		setMarkupTooltip(autoBuy, locale::TT_AUTO_BUY_SUPPORTS);
+		@allowFillFrom = GuiCheckbox(this, Alignment(Left+8, Bottom-offset-29, Left+0.5f-15, Bottom-offset-3), locale::ALLOW_FILL_FROM_SUPPORTS);
+		setMarkupTooltip(allowFillFrom, locale::TT_ALLOW_FILL_FROM_SUPPORTS);
+
+		update();
 	}
 
-	void updateAbsolutePosition() override {
-		size = vec2i(parent.size.width, 20);
-		BaseGuiElement::updateAbsolutePosition();
-	}
-
-	void update(GroupData@ Dat) {
-		dat = Dat;
-	}
-
-	void remove() override {
-		@item = null;
+	void remove() {
+		@overlay = null;
 		BaseGuiElement::remove();
 	}
 
-	void draw(const recti& absPos) {
-		skin.draw(SS_Field, SF_Normal, absPos);
-
-		recti ipos = recti_area(absPos.topLeft+vec2i(8, 2), vec2i(16, 16));
-		spritesheet::ResourceIconsSmallMods.draw(0, ipos);
-		dat.dsg.icon.draw(ipos.padded(2), dat.dsg.color);
-
-		skin.draw(FT_Normal, absPos.topLeft+vec2i(32, 3), dat.dsg.name);
-		skin.draw(FT_Normal, absPos.topLeft+vec2i(180, 3), toString(dat.amount)+"x");
-		skin.draw(FT_Normal, absPos.topLeft+vec2i(260, 3), format("(+$1x)", toString(dat.ordered)), Color(0x80ff80ff));
+	void set(Object@ obj) {
+		@leader = obj;
+		update();
 	}
 
-	void draw() override {
-		recti absPos = AbsolutePosition.padded(72, 0, 76, 0);
-		draw(absPos);
+	SupportClass@ getHoveredClass(vec2i absPos) {
+		for(uint i = 0, cnt = classes.length; i < cnt; ++i) {
+			if(classes[i].absolutePosition.isWithin(absPos))
+				return classes[i];
+		}
+		return null;
+	}
+
+	void update() {
+		groupData.syncFrom(leader.getSupportGroups());
+
+		//Remove old buttons
+		uint newCnt = groupData.length;
+		uint oldCnt = classes.length;
+
+		for(uint i = newCnt; i < oldCnt; ++i) {
+			classes[i].remove();
+			@classes[i] = null;
+		}
+
+		//Update current buttons
+		classes.length = newCnt;
+		int y = SUPPORT_SPACING;
+		for(uint i = 0; i < newCnt; ++i) {
+			if(classes[i] is null)
+				@classes[i] = SupportClass(this);
+
+			SupportClass@ cls = classes[i];
+			cls.set(groupData[i]);
+			cls.position = vec2i(0, y);
+			y += SUPPORT_HEIGHT + SUPPORT_SPACING;
+		}
+
+		//Update action button position
+		if(y + 36 > listPanel.size.height)
+			y = listPanel.rect.botRight.y + 14;
+		else
+			y += 55;
+		addButton.position = vec2i((GROUP_WIDTH - addButton.size.width) / 2, y);
+
+		//Update group size
+		uint size = 0;
+		Ship@ leaderShip = cast<Ship>(leader);
+		if(leaderShip !is null)
+			size = leaderShip.blueprint.design.size;
+
+		int supUsed = leader.SupplyUsed;
+		int supCap = leader.SupplyCapacity;
+		groupSize.text = toString(supUsed) + " / "
+							+ toString(supCap);
+		if(supUsed >= supCap)
+			capBG.color = colors::Red;
+		else if(float(supUsed) >= float(supCap) * 0.9f)
+			capBG.color = Color(0xff8000ff);
+		else
+			capBG.color = colors::White;
+		addButton.disabled = supUsed >= supCap;
+
+		//Update controls
+		autoFill.visible = !leader.isPlanet && !leader.isOrbital;
+		allowFillFrom.visible = !autoFill.visible;
+		autoBuy.visible = true;
+		rebuyButton.visible = !leader.isPlanet;
+		clearButton.visible = !leader.isPlanet;
+		autoBuy.checked = leader.autoBuySupports;
+
+		if(autoFill.visible) {
+			autoFill.checked = leader.autoFillSupports;
+
+			int cost = 0;
+			for(uint i = 0; i < newCnt; ++i) {
+				auto@ dat = groupData[i];
+				if(dat.ghost > 0)
+					cost += getBuildCost(dat.dsg) * dat.ghost;
+			}
+
+			rebuyButton.disabled = cost == 0 || !playerEmpire.canPay(cost);
+			clearButton.disabled = cost == 0;
+			rebuyButton.text = format(locale::REBUY_GHOSTS, formatMoney(cost));
+		}
+		else {
+			allowFillFrom.checked = leader.allowFillFrom;
+		}
+	}
+
+	void draw() {
+		uint flags = SF_Normal;
+		recti pos = AbsolutePosition;
+		if(!listPanel.vert.visible)
+			pos.botRight.x -= 20;
+		skin.draw(SS_GroupPanel, flags, pos);
+		BaseGuiElement::draw();
+	}
+
+	void animate(Alignment@ pos) {
+		@targPos = pos;
+		@alignment = null;
+		recti endPos = targPos.resolve(parent.size);
+		rect = endPos + vec2i(0, endPos.height);
+		animate_time(this, endPos, ANIM_TIME);
+		animating = true;
+		if(overlay.secondary !is null)
+			overlay.secondary.visible = false;
+	}
+
+	void animateClose() {
+		if(parent is null || overlay is null)
+			return;
+		@alignment = null;
+		recti endPos = rect + vec2i(0, rect.height);
+		animate_time(this, endPos, ANIM_TIME);
+		animating = true;
+		closing = true;
+		if(overlay.secondary !is null)
+			overlay.secondary.visible = false;
+	}
+
+	bool onMouseEvent(const MouseEvent& event, IGuiElement@ source) override {
+		if(event.type == MET_Button_Down) {
+			if(event.button == 1) {
+				return true;
+			}
+		}
+		else if(event.type == MET_Button_Up) {
+			if(event.button == 1) {
+				overlay.close(this);
+				return true;
+			}
+		}
+		return BaseGuiElement::onMouseEvent(event, source);
+	}
+
+	bool onGuiEvent(const GuiEvent& evt) {
+		if(evt.type == GUI_Clicked) {
+			if(evt.caller is addButton) {
+				CreateSupportDialog dlg(overlay, leader, null, 10);
+				addDialog(D_SupportAmount, dlg);
+				return true;
+			}
+			if(evt.caller is clearButton) {
+				leader.clearAllGhosts();
+				overlay.pingUpdate();
+				return true;
+			}
+			if(evt.caller is rebuyButton) {
+				leader.rebuildAllGhosts();
+				overlay.pingUpdate();
+				return true;
+			}
+		}
+		else if(evt.type == GUI_Changed) {
+			if(evt.caller is autoFill) {
+				leader.autoFillSupports = autoFill.checked;
+				return true;
+			}
+			if(evt.caller is autoBuy) {
+				leader.autoBuySupports = autoBuy.checked;
+				return true;
+			}
+			if(evt.caller is allowFillFrom) {
+				leader.allowFillFrom = allowFillFrom.checked;
+				return true;
+			}
+		}
+		else if(evt.type == GUI_Animation_Complete) {
+			animating = false;
+			if(closing) {
+				if(overlay !is null)
+					overlay.remove();
+			}
+			else {
+				@alignment = targPos;
+				if(overlay.secondary !is null)
+					overlay.secondary.visible = true;
+			}
+			return true;
+		}
+		return BaseGuiElement::onGuiEvent(evt);
+	}
+};
+
+class SupportClass : BaseGuiElement {
+	GroupDisplay@ disp;
+	GroupData@ dat;
+	bool selected = false;
+	uint leaveAmount = 0;
+
+	GuiButton@ addButton;
+	GuiButton@ removeButton;
+
+	SupportClass(GroupDisplay@ d) {
+		@disp = d;
+		super(disp.listPanel, recti(0, 0, SUPPORT_WIDTH, SUPPORT_HEIGHT));
+
+		@addButton = GuiButton(this, Alignment(Right-40, Top, Right, Top+0.5f));
+		addButton.tooltip = locale::CREATE_SUPPORT_SHIPS;
+		addButton.color = colors::Green;
+		addButton.visible = false;
+		addButton.setIcon(icons::Add);
+
+		@removeButton = GuiButton(this, Alignment(Right-40, Top+0.5f, Right, Bottom));
+		removeButton.tooltip = locale::SCUTTLE_SUPPORT_SHIPS;
+		removeButton.color = colors::Red;
+		removeButton.setIcon(icons::Minus);
+		removeButton.visible = false;
+	}
+
+	void remove() {
+		@disp = null;
+		BaseGuiElement::remove();
+	}
+
+	void set(GroupData@ data) {
+		@dat = data;
+	}
+
+	void drawAt(const vec2i& absPos, bool dragging) {
+		recti pos = recti_area(absPos, size);
+
+		uint flags = SF_Normal;
+		if(disp !is null && disp.overlay.clsHover is this)
+			flags |= SF_Hovered;
+		if(selected)
+			flags |= SF_Active;
+
+		uint tot = dat.totalSize;
+		uint amount = dat.amount;
+		uint ghost = dat.ghost;
+		uint ordered = dat.ordered;
+
+		if(dragging) {
+			tot = dat.totalSize - leaveAmount;
+
+			//Calculate proportions to take
+			uint lv = leaveAmount;
+			uint take = min(ordered, lv);
+			lv -= take;
+			ordered -= take;
+
+			take = min(ghost, lv);
+			lv -= take;
+			ghost -= take;
+
+			take = min(amount, lv);
+			lv -= take;
+			amount -= take;
+		}
+		else if(disp.overlay.dragging && selected) {
+			tot = leaveAmount;
+
+			//Calculate proportions to leave
+			uint lv = leaveAmount;
+			uint take = min(ghost, lv);
+			lv -= take;
+			ghost = take;
+
+			take = min(ordered, lv);
+			lv -= take;
+			ordered = take;
+
+			take = min(amount, lv);
+			lv -= take;
+			amount= take;
+		}
+
+		skin.draw(SS_PatternBox, flags, pos, dat.dsg.color);
+		if(disp !is null && disp.overlay.clsHover is this && !dragging)
+			skin.draw(SS_SubtleGlow, SF_Normal, pos, dat.dsg.color);
+
+		Color col;
+		col = dat.dsg.color;
+		col.a = 0x80;
+		dat.dsg.icon.draw(recti_area(pos.topLeft+vec2i(4,0), vec2i(pos.height, pos.height)), col);
+
+		const Font@ normal = skin.getFont(FT_Normal);
+		normal.draw(pos=recti_area(pos.topLeft + vec2i(pos.height+6, 6), vec2i(pos.width-pos.height-12, 22)), text=formatShipName(dat.dsg), stroke=colors::Black);
+
+		const Font@ bold = skin.getFont(FT_Bold);
+		bold.draw(pos=recti_area(pos.topLeft + vec2i(pos.height+12, 28), vec2i(60, 22)), text=toString(amount)+"x", stroke=colors::Black);
+
+		if(ordered > 0)
+			normal.draw(pos=recti_area(pos.topLeft + vec2i(pos.height+82, 28), vec2i(60, 22)), text="(+"+toString(ordered)+"x)", stroke=colors::Black, color=Color(0x80ff80ff));
+		if(ghost > 0)
+			normal.draw(pos=recti_area(pos.topLeft + vec2i(pos.height+132, 28), vec2i(60, 22)), text="(-"+toString(ghost)+"x)", stroke=colors::Black, color=Color(0xff8080ff));
+	}
+
+	bool onGuiEvent(const GuiEvent& evt) {
+		if(evt.type == GUI_Clicked) {
+			if(evt.caller is addButton) {
+
+				GuiContextMenu menu(mousePos);
+
+				uint canBuild = uint(double(disp.leader.SupplyAvailable) / dat.dsg.size);
+				uint max = canBuild + dat.ghost;
+				if(max > 0)
+					menu.addOption(OrderSupports(disp.leader, dat.dsg, max));
+				if(dat.ghost > 0 && dat.ghost < max)
+					menu.addOption(OrderSupports(disp.leader, dat.dsg, dat.ghost));
+				uint maxMoney = floor(double(playerEmpire.RemainingBudget) / double(getBuildCost(dat.dsg)));
+				if(maxMoney < max && maxMoney != dat.ghost)
+					menu.addOption(OrderSupports(disp.leader, dat.dsg, maxMoney));
+				if(max > 10 && maxMoney > 10)
+					menu.addOption(OrderSupports(disp.leader, dat.dsg, 10));
+				if(max > 1 && maxMoney > 1)
+					menu.addOption(OrderSupports(disp.leader, dat.dsg, 1));
+
+				uint orderAmt = 10;
+				if(dat.ghost != 0)
+					orderAmt = dat.ghost;
+				if(orderAmt > max)
+					orderAmt = max;
+				menu.addOption(CustomSupportOrder(disp.overlay, disp.leader, dat.dsg, orderAmt));
+				menu.finalize();
+
+				return true;
+			}
+			else if(evt.caller is removeButton) {
+				InputDialog@ dialog = InputDialog(ScuttleSupports(this), disp.overlay);
+				dialog.addTitle(locale::SCUTTLE_SUPPORT_SHIPS);
+				dialog.accept.text = locale::REMOVE;
+
+				uint defAmount = 0;
+				if(dat.ghost > 0)
+					defAmount = dat.ghost;
+				if(dat.ordered > 0)
+					defAmount = dat.ordered;
+				dialog.addSpinboxInput(locale::AMOUNT, defAmount, 10.0, 1.0, dat.totalSize, 0);
+
+				addDialog(D_SupportAmount, dialog);
+				dialog.focusInput();
+			}
+		}
+		return BaseGuiElement::onGuiEvent(evt);
+	}
+
+	void draw() {
+		drawAt(AbsolutePosition.topLeft, false);
+
+		bool hover = disp !is null && !disp.overlay.dragging && disp.overlay.clsHover is this;
+		addButton.visible = hover && (disp.leader.SupplyAvailable >= uint(dat.dsg.size) || dat.ghost > 0);
+		removeButton.visible = hover;
 
 		BaseGuiElement::draw();
 	}
 };
 
-class FlagshipDrydock : GuiMarkupContextOption {
+class OrderSupports : GuiContextOption {
+	Object@ forObject;
 	const Design@ dsg;
-	Empire@ forEmpire;
-	Object@ fromObj;
+	uint amount;
+	int build = 0;
+	int maintain = 0;
 
-	FlagshipDrydock(Object@ obj, const Design@ dsg, Empire@ emp = playerEmpire) {
+	OrderSupports(Object@ forObject, const Design@ dsg, uint amount) {
+		double labor = 0;
+		getBuildCost(dsg, this.build, maintain, labor, amount);
+
+		this.amount = amount;
+		@this.forObject = forObject;
 		@this.dsg = dsg;
-		@this.forEmpire = emp;
-		@this.fromObj = obj;
-		super(format("[offset=10][color=$5][b]$2[/b][/color] [offset=260]([loc=SIZE/] $3)[/offset][/offset]",
-				toString(dsg.color),
-				dsg.name,
-				standardize(dsg.size, true),
-				getSpriteDesc(dsg.icon),
-				toString(dsg.color.interpolate(colors::White, 0.5))),
-				FT_Subtitle);
-		icon = dsg.icon;
-		icon.color = dsg.color;
+
+		string text = format(locale::ORDER_SUPPORT_COUNT, toString(amount), dsg.name);
+		text += " ("+formatMoney(this.build, maintain)+")";
+		super(text);
 	}
 
 	void call(GuiContextMenu@ menu) {
-		FinanceDryDock(dsg, fromObj);
+		if(dsg !is null && amount > 0)
+			forObject.orderSupports(dsg, amount);
 	}
 
-	int opCmp(const GuiListElement@ other) const {
-		auto@ cmp = cast<const FlagshipDrydock@>(other);
-		if(cmp.dsg.size < dsg.size)
-			return 1;
-		if(cmp.dsg.size > dsg.size)
-			return -1;
-		return 0;
+	void draw(GuiListbox@ ele, uint flags, const recti& absPos) override {
+		if(!playerEmpire.canPay(this.build))
+			drawRectangle(absPos, Color(0xff900040));
+		GuiContextOption::draw(ele, flags, absPos);
+	}
+};
+
+class CustomSupportOrder : GuiContextOption {
+	SupportOverlay@ overlay;
+	Object@ forObject;
+	const Design@ dsg;
+	uint amount;
+
+	CustomSupportOrder(SupportOverlay@ overlay, Object@ forObject, const Design@ dsg, uint amount) {
+		this.amount = amount;
+		@this.forObject = forObject;
+		@this.dsg = dsg;
+		@this.overlay = overlay;
+
+		super(locale::ORDER_SUPPORT_CUSTOM);
+	}
+
+	void call(GuiContextMenu@ menu) {
+		CreateSupportDialog dlg(overlay, forObject, dsg, amount);
+		addDialog(D_SupportAmount, dlg);
+	}
+};
+
+enum Dialogs {
+	D_SupportAmount,
+};
+
+class ScuttleSupports : InputDialogCallback {
+	Object@ at;
+	const Design@ dsg;
+
+	ScuttleSupports(SupportClass@ cls) {
+		@at = cls.disp.leader;
+		@dsg = cls.dat.dsg;
+	}
+
+	void inputCallback(InputDialog@ dialog, bool accepted) {
+		if(accepted) {
+			double amt = dialog.getSpinboxInput(0);
+			at.scuttleSupports(dsg, round(amt));
+		}
+	}
+};
+
+class CreateSupportDialog : Dialog {
+	array<const Design@> designs;
+	const Design@ dsg;
+	Object@ forObject;
+
+	GuiText@ designLabel;
+	GuiListbox@ designList;
+
+	GuiText@ amountLabel;
+	GuiSpinbox@ amountBox;
+
+	GuiText@ costLabel;
+	GuiText@ costText;
+
+	GuiButton@ accept;
+	GuiButton@ cancel;
+
+	CreateSupportDialog(SupportOverlay@ overlay, Object@ obj, const Design@ design = null, int defaultNum = 10) {
+		@dsg = design;
+		@forObject = obj;
+		super(overlay);
+
+		addTitle(locale::ADD_SUPPORTS);
+		width = 700;
+
+		int y = 32;
+
+		//Show list of designs
+		if(dsg is null) {
+			@designLabel = GuiText(bg, recti(12, y, width / 3 - 6, y+22), locale::ORDER_SUPPORT_DESIGN);
+			designLabel.font = FT_Bold;
+			@designList = GuiListbox(bg, recti(width / 3 + 6, y, width - 12, y+222));
+			designList.required = true;
+			designList.itemHeight = 40;
+			designList.tabIndex = 0;
+			designList.style = SS_PlainBox;
+
+			{
+				ReadLock lck(playerEmpire.designMutex);
+				uint cnt = playerEmpire.designCount;
+				designs.reserve(cnt);
+				designs.length = 0;
+				for(uint i = 0; i < cnt; ++i) {
+					const Design@ other = playerEmpire.designs[i];
+					if(other.obsolete || other.newest() !is other)
+						continue;
+					if(other.hasTag(ST_Support) || (obj.canHaveSatellites && other.hasTag(ST_Satellite))) {
+						designList.addItem(GuiListText(formatShipName(other), other.icon * other.color));
+						designs.insertLast(other);
+					}
+				}
+			}
+
+			y += 232;
+			height += 232;
+		}
+
+		//Show spinbox
+		@amountLabel = GuiText(bg, recti(12, y, width / 3 - 6, y+22), locale::ORDER_SUPPORT_AMOUNT);
+		amountLabel.font = FT_Bold;
+		@amountBox = GuiSpinbox(bg, recti(width / 3 + 6, y, width - 12, y+22), double(defaultNum));
+		amountBox.tabIndex = 1;
+		amountBox.min = 0;
+		amountBox.decimals = 0;
+		amountBox.step = 10.0;
+
+		y += 32;
+		height += 28;
+
+		//Show cost
+		@costLabel = GuiText(bg, recti(12, y, width / 3 - 6, y+22), locale::ORDER_SUPPORT_COST);
+		costLabel.font = FT_Bold;
+		@costText = GuiText(bg, recti(width / 3 + 6, y, width - 12, y+22));
+		costText.font = FT_Medium;
+
+		height += 32;
+
+		@accept = GuiButton(bg, recti());
+		accept.text = locale::BUILD;
+		accept.tabIndex = 2;
+		@accept.callback = this;
+
+		@cancel = GuiButton(bg, recti());
+		cancel.text = locale::CANCEL;
+		cancel.tabIndex = 3;
+		@cancel.callback = this;
+
+		alignAcceptButtons(accept, cancel);
+		updateCost();
+	}
+
+	const Design@ get_currentDesign() {
+		if(dsg is null && designList.selected != -1)
+			return designs[designList.selected];
+		return dsg;
+	}
+
+	void updateCost() {
+		const Design@ cur = currentDesign;
+		if(cur !is null) {
+			double canBuild = double(forObject.SupplyAvailable) / cur.size;
+			canBuild += forObject.getGhostCount(cur);
+			amountBox.maximum = floor(canBuild);
+
+			int build = 0, maintain = 0;
+			double time = 0.0;
+			getBuildCost(cur, build, maintain, time, amountBox.value);
+
+			costText.text = formatMoney(build)+" / "+formatMoney(maintain);
+			if(playerEmpire.RemainingBudget >= build) {
+				costText.color = Color(0xffffffff);
+				accept.disabled = false;
+			}
+			else if(playerEmpire.canPay(build)) {
+				costText.color = Color(0xfdff00ff);
+				accept.disabled = false;
+			}
+			else {
+				costText.color = Color(0xff0000ff);
+				accept.disabled = true;
+			}
+		}
+		else
+			costText.text = "";
+	}
+
+	void close() {
+		close(false);
+	}
+
+	void close(bool accepted) {
+		if(accepted) {
+			@dsg = currentDesign;
+			int amount = ceil(amountBox.value);
+			if(dsg !is null && amount > 0)
+				forObject.orderSupports(dsg, amount);
+		}
+		Dialog::close();
+	}
+
+	void confirmDialog() {
+		close(true);
+	}
+
+	bool onGuiEvent(const GuiEvent& event) {
+		if(Closed)
+			return false;
+		if(event.type == GUI_Clicked && (event.caller is accept || event.caller is cancel)) {
+			close(event.caller is accept);
+			return true;
+		}
+		else if(event.type == GUI_Changed && (event.caller is amountBox || event.caller is designList)) {
+			updateCost();
+			return true;
+		}
+		else if(event.type == GUI_Confirmed) {
+			close(true);
+			return true;
+		}
+		return Dialog::onGuiEvent(event);
 	}
 };

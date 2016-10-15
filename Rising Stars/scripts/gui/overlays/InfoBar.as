@@ -571,7 +571,7 @@ class ActionBar : BaseGuiElement {
 
 		for(uint i = 0, cnt = abilities.length; i < cnt; ++i) {
 			Ability@ abl = abilities[i];
-			if(abl.disabled)
+			if(abl.disabled || abl.hidden)
 				continue;
 
 			string option = format(locale::ABILITY_TRIGGER, abl.type.name);
