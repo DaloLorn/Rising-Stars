@@ -1,4 +1,13 @@
 STATUS_STELLAR_SHIELD: Shielded
+NEBULA_CERULEAN: Sicutmarian Nebula
+NEBULA_ECONOMIC: Pretiosian Nebula
+EMPTY_SPACE: Empty Space
+NEBULA_METAPHASIC: Metaphasic Nebula
+NEBULA_METREON: Metreon Nebula
+NEBULA_MUTARA: Mutara-class Nebula
+NEBULA_RADIOACTIVE: Radioactive Nebula
+NEBULA_TACHYON: Tachyon Nebula
+NEBULA_TYPE1: Interstellar Gas Cloud
 STATUS_FAST_RECHARGE: Shield Recharge
 STATUS_FAST_RECHARGE_DESC: <<
 	Is receiving power from a Power Transmitter.
