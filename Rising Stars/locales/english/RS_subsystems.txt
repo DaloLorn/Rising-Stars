@@ -37,15 +37,15 @@ STT_SENSORRANGE: <<
 >>
 S_STRENGTH: Base Combat Strength
 STT_STRENGTH: <<
-	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Defensive Strength' and 'Damage / Second' statistics, respectively, represent these values, and are multiplied with each other to arrive at this figure.)
+	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Toughness' and 'Damage / Second' statistics, respectively, represent these values.)
 
 	This is not necessarily an accurate value - other factors such as battle damage, lack of supply, or flagship naming can alter a ship's Combat Strength - however it can still be a useful baseline.
 >>
-S_HULLSTRENGTH: Base Defensive Strength 
+S_HULLSTRENGTH: Base Toughness
 STT_HULLSTRENGTH: <<
 	How well the ship should withstand hostile attacks. This is based on a variety of factors such as repair rate, shield strength and hull strength - regardless, major design flaws such as exposed control cores may cause this value to be drastically higher than it realistically should be.
 
-	This is not necessarily an accurate value - various effects that alter the ship's maximum health can change its Defensive Strength. 
+	This is not necessarily an accurate value - various effects that alter the ship's maximum health can change its Toughness. 
 >>
 S_PLANETMININGRATE: Mining Rate
 STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
