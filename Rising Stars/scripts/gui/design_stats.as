@@ -165,6 +165,9 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 			continue;
 		bool has = false;
 		double val = 0;
+		double used = -1.0;
+		double div = 0;
+		double mult = 0;
 		switch(stat.customFormula) {
 			case CSF_HPStrength:
 				double ShieldBehaviorMod = 1.0;
@@ -178,16 +181,15 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 			case CSF_None:
 			default:
 				val = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.variable, stat.aggregate);
-				double used = -1.0;
 				if(stat.usedVariable != -1)
 					used = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.usedVariable, stat.aggregate);
 				if(stat.divVar != -1) {
-					double div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
+					div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
 					if(div != 0.0)
 						val /= div;
 				}
 				if(stat.multVar != -1) {
-					double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
+					mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
 					val *= mult;
 				}
 				break;
