@@ -504,8 +504,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
 			//DOF
-			double DestroyerMod = 1.0;
-			if (bp.design.hasSubsystem(subsystem::DestroyerHull)) DestroyerMod = 1.5;
+			double DestroyerMod = bp.design.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
 			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)));
 			
 			dps = ship.DPS * bp.shipEffectiveness;

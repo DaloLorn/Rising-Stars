@@ -21,9 +21,10 @@ Subsystem: SupportCrystalArmor
 	Hex.LaborCost := 0.4 * HexSize
 	
 	DamageResist := ShipSize / 9.0
+	EnergyResist := DamageResist * 3.0
 	Effect: ReduceDamage
 		ProjResist = DamageResist
-		EnergyResist = DamageResist * 3.0
+		EnergyResist = EnergyResist
 		ExplResist = DamageResist
 
 	Effect: SingleUseHexes

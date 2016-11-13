@@ -3,6 +3,7 @@
 // *********************************************************
 
 SC_Armor:[hspace=4/][img=PlateArmor;32x32/][hspace=6/]  [color=#6e7371]Armor[/color]
+SC_Defense:[bbloc=#SC_Shields/]
 SC_Power:[hspace=4/][img=DesignationIcons::2;32x32/][hspace=6/]  [color=#6e7371]Power and Supply[/color]
 SC_Manufacturing:[hspace=4/][img=ResourceIcon::6;32x32/][hspace=6/]  [color=#6e7371]Manufacturing[/color]
 SC_Shields:[hspace=4/][img=ShieldGen;32x32/][hspace=6/]  [color=#0A50F5]Shields[/color]
@@ -36,17 +37,15 @@ STT_SENSORRANGE: <<
 >>
 S_STRENGTH: Base Combat Strength
 STT_STRENGTH: <<
-	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Defensive Strength' and 'DPS' statistics, respectively, represent these values, and are multiplied with each other to arrive at this figure.)
+	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Defensive Strength' and 'Damage / Second' statistics, respectively, represent these values, and are multiplied with each other to arrive at this figure.)
 
-	This is not necessarily an accurate value - other factors such as damage, lack of supply, or flagship naming can improve a ship's Combat Strength - however it can still be a useful baseline.
+	This is not necessarily an accurate value - other factors such as battle damage, lack of supply, or flagship naming can alter a ship's Combat Strength - however it can still be a useful baseline.
 >>
 S_HULLSTRENGTH: Base Defensive Strength
 STT_HULLSTRENGTH: <<
 	How well the ship should withstand hostile attacks. This is based on a variety of factors such as repair rate, shield strength and hull strength - regardless, major design flaws such as exposed control cores may cause this value to be drastically higher than it realistically should be.
 
-	This is not necessarily an accurate value - various effects that alter the ship's maximum health can improve its Defensive Strength. 
-
-	Support ships with the 'Shield' behavior will contribute 110% of their Defensive Strength to their fleet's strength calculations.
+	This is not necessarily an accurate value - various effects that alter the ship's maximum health can change its Defensive Strength. 
 >>
 S_PLANETMININGRATE: Mining Rate
 STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
@@ -347,11 +346,7 @@ S_QUANTUM_ARMOR_DESC: <<
 S_COMPOSITE_ARMOR_DESC: <<
 	A uniform, seamless coat of a highly resistant composite material.
 
-	[img=Plus]Reduces all incoming damage by a fixed percentage depending on type:
-	Energy damage is reduced by 10%.
-	Kinetic damage is reduced by 20%.
-	Explosive damage is reduced by 35%.[/img]
-
+	[img=Plus]Reduces all incoming damage by a fixed percentage depending on type.[/img]
 	[img=Plus]Tougher and lighter than Plate Armor.[/img]
 	[img=Plus]Resists armor penetration very well.[/img]
 	[img=Minus]Requires a low amount of maintenance, and is harder and much costlier to build than Plate Armor.[/img]
@@ -359,9 +354,8 @@ S_COMPOSITE_ARMOR_DESC: <<
 
 S_SUPERSTRUCTURE: Structural Reinforcement
 S_SUPERSTRUCTURE_DESC: <<
-	Light-weight metal scaffolding to give structure and definition to the ship.  Somewhat more resistant to damage than most other components, but not as protective per-weight as actual armor.
+	Light-weight metal scaffolding to give structure and definition to the ship. Can prevent some amount of damage to internal components, but not as protective per-weight as actual armor.
 
-	[img=Plus]Slightly resists and reduces incoming damage.[/img]
 	[img=Plus]Structural Reinforcement on the outside of the ship does not use up interior space.[/img]
 	[img=Plus]Cheap and lightweight.[/img]
 	[img=Minus][b][color=#f00]Very low[/color] [color=#80ff80]health[/color][/b].[/img]
@@ -376,6 +370,7 @@ S_CERAMICARMOR_DESC: <<
 	[img=Minus]Cannot be repaired.[/img]
 	[img=Minus]When a Ceramic Armor hex is destroyed, it is permanently removed from the ship.[/img]
 >>
+
 S_FERROFLUIDARMOR: Ferrofluid Armor
 S_FERROFLUIDARMOR_DESC: <<
 	A basin of liquid ferro-metal precisely controlled and suspended on the hull of the ship by an electromagnetic field. The ferro-metal absorbs impacts and spreads them evenly, filling any gaps that are created. The advanced electromagnetic field is configured to strongly repel traditional projectiles, and can draw back the ferro-metal to form firing ports when needed without exposing gun turrets to retaliatory fire.

@@ -38,15 +38,18 @@ GlobalStat: Strength
 		Description: #STT_STRENGTH
 		Color: #aaa
 		Icon: AttributeIcons::3
+		AllowZero: True
 
-		Variable: Strength
+		CustomFormula: Strength
 
 	GlobalStat: HullStrength
 		Name: #S_HULLSTRENGTH
 		Description: #STT_HULLSTRENGTH
 		Color: #aaa
+		AllowZero: True
+		Secondary: Strength
 
-		Variable: HullStrength
+		CustomFormula: HPStrength
 		
 	
 GlobalStat: SupplyCap

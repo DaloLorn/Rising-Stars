@@ -25,10 +25,6 @@ Subsystem: SatelliteHull
 	TechMult := 1.5
 
 	HullStrengthMult := 1
-	HPStrength := (Sum.HP + (Sum.Repair/3.0 * pow(max(log10(Sum.Repair/3.0), 0.0), 2)) * (1.0+log10(ShipSize)*0.1) * HullStrengthMult + ((1.0 + max(log10(Sum.ShieldRegen)*2.0, 1.0) * Sum.ShieldCapacity / (1.0 - Sum.Chance)
-	DPSStrength := Sum.DPS 
-
-	Strength := HPStrength * DPSStrength
 
 	Hex.LaborCost := 0.07 * ShipSize
 	Hex.BuildCost := 0.75 * ShipSize
