@@ -41,7 +41,7 @@ STT_STRENGTH: <<
 
 	This is not necessarily an accurate value - other factors such as battle damage, lack of supply, or flagship naming can alter a ship's Combat Strength - however it can still be a useful baseline.
 >>
-S_HULLSTRENGTH: Base Defensive Strength
+S_HULLSTRENGTH: Base Defensive Strength 
 STT_HULLSTRENGTH: <<
 	How well the ship should withstand hostile attacks. This is based on a variety of factors such as repair rate, shield strength and hull strength - regardless, major design flaws such as exposed control cores may cause this value to be drastically higher than it realistically should be.
 
