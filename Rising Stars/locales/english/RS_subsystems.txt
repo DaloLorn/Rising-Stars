@@ -34,6 +34,20 @@ STT_SENSORRANGE: <<
 	
 	This does not necessarily have to be the actual range of the ship's sensors, but it might provide a good idea of how big that range will be.
 >>
+S_STRENGTH: Base Combat Strength
+STT_STRENGTH: <<
+	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Defensive Strength' and 'DPS' statistics, respectively, represent these values, and are multiplied with each other to arrive at this figure.)
+
+	This is not necessarily an accurate value - other factors such as damage, lack of supply, or flagship naming can improve a ship's Combat Strength - however it can still be a useful baseline.
+>>
+S_HULLSTRENGTH: Base Defensive Strength
+STT_HULLSTRENGTH: <<
+	How well the ship should withstand hostile attacks. This is based on a variety of factors such as repair rate, shield strength and hull strength - regardless, major design flaws such as exposed control cores may cause this value to be drastically higher than it realistically should be.
+
+	This is not necessarily an accurate value - various effects that alter the ship's maximum health can improve its Defensive Strength. 
+
+	Support ships with the 'Shield' behavior will contribute 110% of their Defensive Strength to their fleet's strength calculations.
+>>
 S_PLANETMININGRATE: Mining Rate
 STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
 S_REPAIR: Repair Rate
@@ -212,23 +226,11 @@ S_CARRIER_HULL_DESC: <<
 	A hull specifically designed to control and maintain a large fleet of support ships.
 
 	[img=Plus]Doubles any support capacity.[/img]
-	[img=Plus]Doubles all health.[/img]
+	[img=Plus]Doubles all health and shield capacity.[/img]
 	[img=Plus]Increases supply capacity by 50%.[/img]
 	[img=Minus]Cannot have any weapons on the flagship.[/img]
 	[img=Minus]Less internal space available.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
->>
-
-S_DESTROYER_HULL_DESC: <<
-	A hull optimized to fit many different weapon turrets at the cost of being unable to field a support fleet.
-
-	[img=Plus]Increases all health by 200%, and increases armor damage resistance by 100%.[/img]
-	[img=Plus]Decreases mass by 50%.[/img]
-	[img=Plus]Increases repair rate by 200%.[/img]
-	[img=Plus]More internal space available.[/img]
-	[img=Minus]Cannot have any support command on the flagship.[/img]
-	[img=Minus]Weapon range reduced by 30%.[/img]
-	[img=MenuIcons::3;20][i][color=#aaa]Destroyer Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
 
 S_SHIELDED_AMGEN_DESC: <<

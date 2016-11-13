@@ -13,6 +13,12 @@ Subsystem: RemnantHull
 	Repair := (ShipSize / HexLimit) * 16
 	TechMult := 4
 
+	HullStrengthMult := 1
+	HPStrength := (Sum.HP + (Sum.Repair/3.0 * pow(max(log10(Sum.Repair/3.0), 0.0), 2)) * (1.0+log10(ShipSize)*0.1) * HullStrengthMult + ((1.0 + max(log10(Sum.ShieldRegen)*2.0, 1.0) * Sum.ShieldCapacity / (1.0 - Sum.Chance)
+	DPSStrength := Sum.DPS 
+
+	Strength := HPStrength * DPSStrength
+
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)
 	AddShipModifier: SpreadFactor(1.5)
@@ -31,6 +37,12 @@ Subsystem: RemnantSupportHull
 	BaseHexLimit := 40
 	Ship.HexSize := ShipSize / HexLimit
 
+	HullStrengthMult := 1
+	HPStrength := (Sum.HP + (Sum.Repair/3.0 * pow(max(log10(Sum.Repair/3.0), 0.0), 2)) * (1.0+log10(ShipSize)*0.1) * HullStrengthMult + ((1.0 + max(log10(Sum.ShieldRegen)*2.0, 1.0) * Sum.ShieldCapacity / (1.0 - Sum.Chance)
+	DPSStrength := Sum.DPS 
+
+	Strength := HPStrength * DPSStrength
+
 	Repair := (ShipSize / HexLimit) * 16
 	TechMult = 1.5
 
@@ -48,6 +60,12 @@ Subsystem: SpecialRemnantHull
 	GridHeight := 23
 	Repair := HexSize * 16
 	TechMult := 3
+
+	HullStrengthMult := 1
+	HPStrength := (Sum.HP + (Sum.Repair/3.0 * pow(max(log10(Sum.Repair/3.0), 0.0), 2)) * (1.0+log10(ShipSize)*0.1) * HullStrengthMult + ((1.0 + max(log10(Sum.ShieldRegen)*2.0, 1.0) * Sum.ShieldCapacity / (1.0 - Sum.Chance)
+	DPSStrength := Sum.DPS 
+
+	Strength := HPStrength * DPSStrength
 
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)
