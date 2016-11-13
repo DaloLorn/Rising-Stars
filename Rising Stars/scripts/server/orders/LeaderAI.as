@@ -27,7 +27,7 @@ import design_settings;
 import empire;
 import ABEM_data;
 
-class ActiveConstruction {
+tidy class ActiveConstruction {
 	uint id;
 	const Design@ dsg;
 	Object@ shipyard;
@@ -45,7 +45,7 @@ class ActiveConstruction {
 	}
 };
 
-class Formation : Savable {
+tidy class Formation : Savable {
 	void save(SaveFile& file) {}
 	void load(SaveFile& file) {}
 	void reset(double minRad, double maxRad) {}
@@ -76,7 +76,7 @@ class SightModifier : Savable {
 //Factor of new design cost as minimum for retrofit
 const double RETROFIT_MIN_PCT = 0.3;
 
-class LeaderAI : Component_LeaderAI, Savable {
+tidy class LeaderAI : Component_LeaderAI, Savable {
 	Order@ order;
 	bool orderDelta = false;
 	uint firstOrder = OT_INVALID;
@@ -284,8 +284,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 				@prev = ord;
 			}
 			if(order !is null)
-			firstOrder = order.type;		
-		
+				firstOrder = order.type;
 		}
 
 		if(msg >= SV_0068)
@@ -496,15 +495,25 @@ class LeaderAI : Component_LeaderAI, Savable {
 	void updateFleetStrength(Object& obj) {
 		double hp = 0.0, dps = 0.0, maxHP = 0.0, maxDPS = 0.0;
 		
+		//DOF
+		double ShieldBehaviorMod = 1.0;
+		
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			auto@ bp = ship.blueprint;
 
-			hp = bp.currentHP * bp.hpFactor + ship.Shield;
+			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
+			//DOF
+			double DestroyerMod = 1.0;
+			if (bp.design.hasSubsystem(subsystem::DestroyerHull)) DestroyerMod = 1.5;
+			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)));
+			
 			dps = ship.DPS * bp.shipEffectiveness;
-						
-			//double shieldRegen = design.total(SV_ShieldRegen);
-			maxHP = bp.design.totalHP - bp.removedHP + 2*ship.MaxShield;//Mod to add shield reg*60
+
+			//maxHP = bp.design.totalHP - bp.removedHP + ship.MaxShield;
+			//DOF
+			maxHP = (bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0,1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)));
+
 			maxDPS = ship.MaxDPS;
 		}
 		if(obj.isOrbital) {
@@ -519,9 +528,17 @@ class LeaderAI : Component_LeaderAI, Savable {
 			Ship@ ship = cast<Ship>(supports[i]);
 			if(ship !is null) {
 				auto@ bp = ship.blueprint;
-				hp += bp.currentHP * bp.hpFactor + ship.Shield;
+				//hp += bp.currentHP * bp.hpFactor + ship.Shield;
+				//DOF
+				ShieldBehaviorMod = 1.0;
+				auto@ settings = cast<const DesignSettings>(bp.design.settings);
+				if (settings !is null && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
+				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
+
 				dps += ship.DPS * bp.shipEffectiveness;
-				maxHP += bp.design.totalHP - bp.removedHP + ship.MaxShield;
+				//maxHP += bp.design.totalHP - bp.removedHP + ship.MaxShield;
+				//DOF
+				maxHP += ((bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
 				maxDPS += ship.MaxDPS;
 			}
 		}
@@ -838,7 +855,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 		}
 
 		//Try to find enemies in the bound area
-		if(autoMode != AM_HoldPosition && obj.hasMover && !obj.hasOrbit && obj.getLockedOrbit() is null && (engagementRange >= 0 || supports.length > 0) && (!obj.isShip || !cast<Ship>(obj).getHoldFire())) {
+		if((autoMode != AM_HoldPosition && autoMode != AM_HoldFire) && obj.hasMover && !obj.hasOrbit && obj.getLockedOrbit() is null && (engagementRange >= 0 || supports.length > 0) && (!obj.isShip || !cast<Ship>(obj).getHoldFire())) {
 			Object@ target;
 			if(autoMode == AM_RegionBound) {
 				Region@ reg = obj.region;
@@ -968,19 +985,33 @@ class LeaderAI : Component_LeaderAI, Savable {
 		return pos;
 	}
 
-	void setHoldPosition(bool hold) {
+	void setHoldPosition(Object& obj, bool hold) {
 		if(hold)
-			autoMode = AM_HoldPosition;
+			setAutoMode(obj, AM_HoldPosition);
 		else
-			autoMode = AM_AreaBound;
+			setAutoMode(obj, AM_AreaBound);
 	}
 
 	uint getAutoMode() {
 		return uint(autoMode);
 	}
 
-	void setAutoMode(uint type) {
+	void setAutoMode(Object& obj, uint type) {
+		if(type == uint(autoMode))
+			return;
+
+		if(autoMode == AM_HoldFire) {
+			Ship@ ship = cast<Ship>(obj);
+			if(ship !is null)
+				ship.setHoldFire(false);
+		}
 		autoMode = AutoMode(type);
+		if(autoMode == AM_HoldFire) {
+			Ship@ ship = cast<Ship>(obj);
+			if(ship !is null)
+				ship.setHoldFire(true);
+		}
+
 		orderDelta = true;
 	}
 
@@ -992,7 +1023,10 @@ class LeaderAI : Component_LeaderAI, Savable {
 		Ship@ ship = cast<Ship>(obj);
 		if(ship is null)
 			return;
-		if(engageType == ER_FlagshipMax) {
+		if(engageType == ER_RaidingOnly) {
+			engagementRange = RaidRange;
+		}
+		else if(engageType == ER_FlagshipMax) {
 			engagementRange = ship.maxEngagementRange * 0.95;
 		}
 		else if(engageType == ER_FlagshipMin) {
@@ -1073,6 +1107,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 			
 			Order@ chain = null;
 			@order = null;
+			firstOrder = OT_INVALID;
 		
 			while(cur !is null) {
 				Order@ next = cur.next;
@@ -1108,13 +1143,10 @@ class LeaderAI : Component_LeaderAI, Savable {
 			if(obj.hasMover && obj.isMoving)
 				obj.stopMoving();
 		}
-	
 		if(order !is null)
- 			firstOrder = order.type;
- 		else
- 			firstOrder = OT_INVALID;
-	
-	
+			firstOrder = order.type;
+		else
+			firstOrder = OT_INVALID;
 	}
 	
 	void insertOrder(Object& obj, Order@ ord, uint index) {
@@ -1144,13 +1176,11 @@ class LeaderAI : Component_LeaderAI, Savable {
 		if(o.next !is null)
 			@o.next.prev = ord;
 		@o.next = ord;
-		
+
 		if(order !is null)
- 			firstOrder = order.type;
- 		else
- 			firstOrder = OT_INVALID;
-		
-		
+			firstOrder = order.type;
+		else
+			firstOrder = OT_INVALID;
 	}
 
 	void addOrder(Object& obj, Order@ ord, bool append) {
@@ -1171,12 +1201,11 @@ class LeaderAI : Component_LeaderAI, Savable {
 			@last = last.next;
 		@last.next = ord;
 		@ord.prev = last;
+
 		if(order !is null)
- 			firstOrder = order.type;
- 		else
+			firstOrder = order.type;
+		else
 			firstOrder = OT_INVALID;
-		
-		
 	}
 
 	void addStopOrder(Object& obj, bool append) {
@@ -1195,12 +1224,18 @@ class LeaderAI : Component_LeaderAI, Savable {
 	}
 
 	void addAttackOrder(Object& obj, Object& target, bool append) {
-		addOrder(obj, AttackOrder(target, engagementRange), append);
+		double range = engagementRange;
+		if(autoMode == AM_HoldFire)
+			setAutoMode(obj, AM_HoldPosition);
+		addOrder(obj, AttackOrder(target, range), append);
 		obj.wake();
 	}
 
 	void addAttackOrder(Object& obj, Object& target, vec3d bindPos, double bindDist, bool closeIn, bool append) {
-		addOrder(obj, AttackOrder(target, engagementRange, bindPos, bindDist, closeIn), append);
+		double range = engagementRange;
+		if(autoMode == AM_HoldFire)
+			setAutoMode(obj, AM_HoldPosition);
+		addOrder(obj, AttackOrder(target, range, bindPos, bindDist, closeIn), append);
 		obj.wake();
 	}
 
@@ -1365,6 +1400,10 @@ class LeaderAI : Component_LeaderAI, Savable {
 
 			Ship@ ship = cast<Ship>(obj);
 			needExperience = ship.blueprint.design.size * config::EXPERIENCE_BASE_AMOUNT;
+
+			const Design@ dsg = ship.blueprint.design;
+			if(dsg !is null && !dsg.hasTag(ST_Weapon) && dsg.total(SV_SupportCapacity) > 0)
+				engageType = ER_RaidingOnly;
 		}
 		else {
 			needExperience = INFINITY;
@@ -1975,6 +2014,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 				ghostDPS -= double(dat.ghost) * dat.dsg.total(SV_DPS);
 				supplyGhost -= dat.ghost * dat.dsg.size;
 				dat.ghost = 0;
+				delta = true;
 			}
 		}
 	}
@@ -2288,6 +2328,8 @@ class LeaderAI : Component_LeaderAI, Savable {
 
 	void modRaidRange(double value) {
 		RaidRange += value;
+		if(engageType == ER_RaidingOnly)
+			engagementRange = RaidRange;
 	}
 
 	Object@ getAttackTarget() {
@@ -2833,7 +2875,7 @@ class LeaderAI : Component_LeaderAI, Savable {
 	}
 };
 
-final class IntersperseFormation : Formation, Savable {
+tidy class IntersperseFormation : Formation, Savable {
 	double minRad, maxRad;
 	double angle, step;
 	double radius, start;

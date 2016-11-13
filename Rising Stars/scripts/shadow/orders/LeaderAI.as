@@ -2,6 +2,9 @@ import ship_groups;
 import orders;
 import resources;
 
+//DOF
+import design_settings;
+
 //Factor of new design cost as minimum for retrofit
 const double RETROFIT_MIN_PCT = 0.3;
 
@@ -271,15 +274,24 @@ tidy class LeaderAI : Component_LeaderAI {
 	
 	void updateFleetStrength(Object& obj) {
 		double hp = 0.0, dps = 0.0, maxHP = 0.0, maxDPS = 0.0;
+
+		//DOF
+		double ShieldBehaviorMod = 1.0;
 		
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			auto@ bp = ship.blueprint;
 
-			hp = bp.currentHP * bp.hpFactor + ship.Shield;
+			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
+			//DOF
+			double DestroyerMod = 1.0;
+			if (bp.design.hasSubsystem(subsystem::DestroyerHull)) DestroyerMod = 1.5;
+			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/ship.MaxShield));
 			dps = ship.DPS * bp.shipEffectiveness;
 			
-			maxHP = bp.design.totalHP + ship.MaxShield;
+			//maxHP = bp.design.totalHP + ship.MaxShield;
+			//DOF
+			maxHP = (bp.design.totalHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) *DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0,1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)));
 			maxDPS = ship.MaxDPS;
 		}
 		if(obj.isOrbital) {
@@ -297,9 +309,16 @@ tidy class LeaderAI : Component_LeaderAI {
 				const Design@ dsg = bp.design;
 				if(dsg is null)
 					continue;
-				hp += bp.currentHP * bp.hpFactor + ship.Shield;
+				//hp += bp.currentHP * bp.hpFactor + ship.Shield;
+				//DOF
+				ShieldBehaviorMod = 1.0;
+				auto@ settings = cast<const DesignSettings>(bp.design.settings);
+				if (settings !is null && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
+				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/ship.MaxShield))) * ShieldBehaviorMod;
 				dps += ship.DPS * bp.shipEffectiveness;
-				maxHP += dsg.totalHP + ship.MaxShield;
+				//maxHP += dsg.totalHP + ship.MaxShield;
+				//DOF
+				maxHP += ((bp.design.totalHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
 				maxDPS += ship.MaxDPS;
 			}
 		}
