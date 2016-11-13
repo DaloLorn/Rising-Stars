@@ -155,6 +155,13 @@ namespace design_stats {
 	::DesignStat@[] globalStats;
 };
 
+double calculateHPStrength(const Design@ dsg) {
+	double ShieldBehaviorMod = 1.0;
+	auto@ settings = cast<const DesignSettings>(dsg.settings);
+	if (settings !is null && dsg.hasTag(ST_Support) && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
+	return ((dsg.totalHP + (dsg.total(SV_Repair) / 3.0 * pow(max(log10(dsg.total(SV_Repair)/3.0), 0.0), 2))) * (1.0 + log10(dsg.size) * 0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen))*2.0, 1.0)) * dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_Chance)))) * ShieldBehaviorMod;
+}
+
 DesignStats@ getDesignStats(const Design@ dsg) {
 	DesignStats stats;
 
@@ -166,15 +173,12 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 		bool has = false;
 		double val = 0;
 		double used = -1.0;
-		double ShieldBehaviorMod = 1.0;
-		auto@ settings = cast<const DesignSettings>(dsg.settings);
 		switch(stat.customFormula) {
 			case CSF_Strength:
-				val *= dsg.total(SV_DPS); // Just multiply CSF_HPStrength results by the ship's DPS.
-				// Deliberately omitted 'break' because of shared code with CSF_HPStrength.
+				val = calculateHPStrength(dsg) * dsg.total(SV_DPS);
+				break;
 			case CSF_HPStrength:
-				if (settings !is null && dsg.hasTag(ST_Support) && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-				val = ((dsg.totalHP + (dsg.total(SV_Repair) / 3.0 * pow(max(log10(dsg.total(SV_Repair)/3.0), 0.0), 2))) * (1.0 + log10(dsg.size) * 0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen))*2.0, 1.0)) * dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_Chance)))) * ShieldBehaviorMod;
+				val = calculateHPStrength(dsg);
 				break;
 			case CSF_None:
 			default:
