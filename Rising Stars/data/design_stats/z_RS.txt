@@ -1,0 +1,194 @@
+GlobalStat: CombatSupplyRegen
+		Name: #S_COMBATSUPPLYREGEN
+		Description: #STT_COMBATSUPPLYREGEN
+		Color: #aaa
+		Secondary: SupplyCap
+		Suffix: /s
+
+		Variable: CombatSupplyRate
+		
+GlobalStat: BoardingDefense
+			Name: #S_BOARDTOTAL
+			Description: #STT_BOARDTOTAL
+			Icon: Bridge
+			Color: #ff8000
+			Secondary: Control
+			
+			Variable: BoardingStrength
+			
+GlobalStat: DefenseGeneration
+	Name: #S_DEFENSEGENERATION
+	Description: #STT_DEFENSEGENERATION
+	Icon: DesignationIcons::3
+	Color: #aaaaaa
+
+	Variable: Defense
+
+GlobalStat: ResearchGeneration
+	Name: #S_RESEARCHGENERATION
+	Description: #STT_RESEARCHGENERATION
+	Icon: DesignationIcons::5
+	Color: #00c0ff
+	Suffix: /s
+
+	Variable: Research
+
+GlobalStat: SensorRange
+	Name: #S_SENSORRANGE
+	Description: #STT_SENSORRANGE
+	Icon: TechIcons::1
+	Color: #9ed6ff
+	Suffix: u
+
+	Variable: SensorRange
+
+GlobalStat: PlanetMiningRate
+	Name: #S_PLANETMININGRATE
+	Description: #STT_PLANETMININGRATE
+	Icon: TractorGun::0 * #91692c
+	Color: #a1692c
+	Suffix: #PER_SECOND
+
+	Variable: PlanetMiningRate
+	
+// *************************************
+// ******SUBSYSTEM-SPECIFIC STATS*******
+// *************************************
+
+SubsystemStat: ProjResist
+	Name: #S_PROJRESIST
+	Icon: DesignationIcons::16
+	Color: #aaaaaa
+
+	Variable: ProjResist
+
+SubsystemStat: CompProjResist
+	Name: #S_PROJRESIST
+	Icon: AttributeIcons::4
+	Color: #aaaaaa
+	Suffix: %
+
+	Variable: DummyProjResist
+
+SubsystemStat: CompEnergyResist
+	Name: #S_ENERGYRESIST
+	Icon: DesignationIcons::2
+	Color: #aaaaaa
+	Suffix: %
+
+	Variable: DummyEnergyResist
+	
+SubsystemStat: CompExplResist
+	Name: #S_EXPLRESIST
+	Icon: ResourceIconsSmall::134
+	Color: #aaaaaa
+	Suffix: %
+
+	Variable: DummyExplosiveResist
+
+SubsystemStat: CrystalEnergyResist
+	Name: #S_ENERGYRESIST
+	Icon: DesignationIcons::2
+	Color: #aaaaaa
+
+	Variable: CrystalEnergyResist
+	
+SubsystemStat: CrystalExplResist
+	Name: #S_EXPLRESIST
+	Icon: ResourceIconsSmall::134
+	Color: #aaaaaa
+
+	Variable: CrystalExplResist
+
+SubsystemStat: ChannelPercentage
+	Name: #S_CHANNELPERCENTAGE
+	Description: #STT_CHANNELPERCENTAGE
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: %
+
+	Variable: RechargePct
+
+SubsystemStat: BoardingSubsys
+	Name: #S_BOARDSUBSYS
+	Description: #STT_BOARDSUBSYS
+	Icon: Bridge
+	Color: #ff8000
+	
+	Variable: BoardingStrength
+
+SubsystemStat: HullHealing
+	Name: #S_HULLHEALING
+	Icon: Plus
+	Color: #00ff00
+	Suffix: /s
+
+	Variable: HullHealing
+
+SubsystemStat: ShieldHealing
+	Name: #S_SHIELDHEALING
+	Icon: Plus * #00a0ff
+	Color: #00a0ff
+	Suffix: /s
+
+	Variable: ShieldHealing
+
+SubsystemStat: ShieldTransfer
+	Name: #S_SHIELDTRANSFER
+	Icon: ResourceIcon::5 * #429cff
+	Color: #00a0ff
+	Suffix: /s
+
+	Variable: ShieldTransferRate
+
+SubsystemStat: SupplyTransfer
+	Name: #S_SUPPLYTRANSFER
+	Icon: AttributeIcons::4
+	Color: #f3fc61
+	Suffix: /s
+
+	Variable: SupplyTransferRate
+
+SubsystemStat: DefensiveMatrix
+	Name: #S_DEFENSIVEMATRIX
+	Icon: ResourceIcon::5 * #429cff
+	Color: #00a0ff
+
+	Variable: DefensiveMatrixHP
+
+SubsystemStat: PodSize
+	Name: #S_PODSIZE
+	Icon: RocketPod::2
+	Color: #aaaaaa
+	Suffix: projectiles
+
+	Variable: PodSize
+
+SubsystemStat: SensorRange
+	Name: #S_SENSORRANGE
+	Icon: TechIcons::1
+	Color: #9ed6ff
+	Suffix: u
+
+	Variable: SensorRange
+
+SubsystemStat: SensorMult
+	Name: #S_SENSORMULT
+	Icon: TechIcons::1
+	Color: #9ed6ff
+	Suffix: %
+
+	Variable: DummySensorMult
+
+SubsystemStat: SensorPriority
+	Name: #S_SENSORPRIORITY
+	Icon: TechIcons::1
+	Color: #9ed6ff
+	
+	Variable: SensorPriority
+
+// *************************************
+// *********HEX-SPECIFIC STATS**********
+// *************************************
+
+// NONE AVAILABLE AT THE MOMENT.
