@@ -1,0 +1,42 @@
+Effector: PlasmaTorpedo
+	Value: Range
+	Value: Damage
+	Value: Reload
+	Value: Speed
+	Value: Tracking
+	Value: Radius
+	Value: SupplyCost = 0
+	Value: Hits = 8
+	Value: Spillable = 1
+	Value: DamageType = 2
+	Value: DRResponse = 0
+	
+
+	Range: Range
+	Speed: Speed
+	Tracking: Tracking
+	Lifetime: Range / Speed * 1.25
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital ) * 0.5)
+
+	Activation: VariableTimed(Reload, 0.025)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	PhysicalType: Missile
+	GfxType: Sprite
+	GfxSize: 8.5
+	FireSfx: torpedo_launch
+	ImpactSfx: torpedo_impact
+	Trail: MissileTrail
+	TrailCol: ffffff00, 00000000
+	Material: Torpedo
+
+	Effect: AreaDamage
+		Amount = Damage
+		Radius = Radius
+		Hits = Hits
+		Spillable = Spillable
+		DamageType = DamageType
+		DRResponse = DRResponse

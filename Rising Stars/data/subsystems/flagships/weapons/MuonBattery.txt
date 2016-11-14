@@ -12,14 +12,14 @@ Subsystem: MuonBattery
 
 	Size := HexSize * Hexes
 	
-	Range := Size + 400
-	Damage := Size * 0.49
-	Reload := 0.2 * min(1.0 + Size/512, 2.0)
+	Range := Size + 480
+	Damage := Size * 1
+	Reload := 0.8 * min(1.0 + Size/512, 2.0)
 	Speed := max(90, Range / 16)
-	Spread := 0.035 / max(Range / 600, 1)
-	Tracking := 0.4
+	Spread := 0.01 / max(Range / 600, 1)
+	Tracking := 0.8
 	FireArc := 1.5
-	Pierce := 1.15
+	Pierce := 3
 	SupplyCost := Size * 1.5
 	PowerUse := 3.5 * Size
 	
@@ -41,7 +41,7 @@ Subsystem: MuonBattery
 		Sprite: Railgun::0
 		DrawMode: 1
 
-		Hex.DamageResist := ShipSize / 64.0
+		Hex.DamageResist := ShipSize / 48.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 

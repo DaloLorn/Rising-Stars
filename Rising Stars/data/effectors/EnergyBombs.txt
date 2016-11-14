@@ -12,6 +12,9 @@ Effector: EnergyBombs
 	Value: Spread = 0.5
 	Value: CapOnTarget = 1
 	Value: FireArc = pi / 2
+	Value: Spillable = 1
+	Value: DamageType = 2
+	Value: DRResponse = 0
 
 	Range: Range
 	Speed: Speed
@@ -37,7 +40,10 @@ Effector: EnergyBombs
 	Spread: Spread
 	FireArc = FireArc
 
-	Effect: AreaExplDamage
+	Effect: AreaDamage
 		Amount = Damage
 		Radius = Radius
 		Hits = Hits
+		Spillable = Spillable
+		DamageType = DamageType
+		DRResponse = DRResponse

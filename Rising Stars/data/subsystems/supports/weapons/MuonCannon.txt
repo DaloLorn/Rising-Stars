@@ -6,7 +6,7 @@ Subsystem: MuonCannon
 	Elevation: 2
 
 	Tags: WeaponBase, ProjBase, Rotatable, HexLimitArc, Category:Weapons
-	Tags: ExteriorCore, Weapon, IsProjWeapon, IsRailgun, HasInternals
+	Tags: ExteriorCore, Weapon, IsProjWeapon, IsRailgun, HasInternals, Disabled, BadFiller
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes

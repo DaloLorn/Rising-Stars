@@ -13,7 +13,6 @@ Subsystem: TorpedoLauncher
 
 	Size := HexSize * Hexes
 	Range := Size * 3.5 + 1500
-	Damage := Size * 30.0
 	Reload := 40 * min(1.0 + Size/1024, 1.5)
 	Speed := max(65, Range / 40)
 	Tracking := 0.8
@@ -21,12 +20,21 @@ Subsystem: TorpedoLauncher
 	SupplyCost := Size * 1.333
 	Hex.Mass := HexSize * 5
 
+	// If the DoT is enabled, then design stats must report 50% more damage than before, and the damage type must be twice as large as before.
+	BaseDamage := Size * 30.0
+	Damage := BaseDamage * if(HasDoT > 0, 1.5, 1.0)
+	DamageType = 2 * if(HasDoT > 0, 2, 1)
+	HasDoT := 0
+
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 
 	PowerUse := Size * 7
 	Modifier: AoERadiusFactor(Factor)
 		Radius := Radius * Factor
+
+	Modifier: SetDoTActive(Factor)
+		HasDoT := Factor
 
 	Requires:
 		Command = 1
@@ -46,11 +54,12 @@ Subsystem: TorpedoLauncher
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 
-	Effector: Torpedo
+	Effector: PlasmaTorpedo
 		Range = Range
-		Damage = Damage
+		Damage = BaseDamage
 		Reload = Reload
 		Speed = Speed
 		Tracking = Tracking
 		Radius = Radius
 		SupplyCost = SupplyCost * Reload
+		DamageType = DamageType

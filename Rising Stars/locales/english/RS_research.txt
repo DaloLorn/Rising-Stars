@@ -23,7 +23,22 @@ R_ADV_SHIELD_DESC: <<
 
 	Unlocks the Power Transmitter and Stellar Shield Generator orbitals, and the Covariant Shield Generator subsystem for use on flagships.
 >>
+R_SYS_MUON_CANNON: Muon Projectors
+R_SYS_MUON_CANNON_DESC: <<
+	[color=#aaa][i]Unlocks the Muon Battery subsystem for use on flagships.
 
+	Additionally, upgrades support ship railguns with a low-grade muon projector, increasing their accuracy, armor penetration and damage.[/i][/color]
+
+	[bbloc=#MUONBATTERY_DESC/]
+>>
+R_SYS_PLASMA_THROWER: Cohesive Plasma Projection
+R_SYS_PLASMA_THROWER_DESC: <<
+	[color=#aaa][i]Unlocks the Plasma Thrower weapon for flagships and support ships.
+
+	Additionally, improves the plasma mixture used by torpedo launchers, causing them to deal an additional 50% damage over a period of 10 seconds after impact. This is represented in design stats as a flat damage boost.[/i][/color]
+
+	[bbloc=#S_PLASMATHROWER_DESC/]
+>>
 R_SYS_HYPERDRIVE_DESC: <<
 	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
 
