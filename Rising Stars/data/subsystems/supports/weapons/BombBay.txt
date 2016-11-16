@@ -1,15 +1,14 @@
 Subsystem: BombBay
 	Name: #S_BOMBBAY
 	Description: #S_BOMBBAY_DESC
-	BaseColor: #f94694
-	TypeColor: #f94694
+	BaseColor: #7946f9
+	TypeColor: #7946f9
 	Picture: SubsystemButtonArt::1
 	Elevation: 2
 
-	Tags: BaseCost
 	Tags: WeaponBase, MissileBase, Category:Weapons, Rotatable, HexLimitArc
 	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
-	Hull: Support
+	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
 	Range := Size + 500
@@ -21,13 +20,16 @@ Subsystem: BombBay
 	SupplyCost := Size * 6.0
 	Spread := 1
 	PodSize := 5
-	
+
 	out DPS := (Damage * PodSize) / (Reload * 2)
 	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
+
+	Hex.BuildCost := 0.75 * HexSize
+	Hex.LaborCost := 0.07 * HexSize
 
 	FireDelay := Reload / (PodSize * 2)
 	FireArc := 0.5
@@ -41,7 +43,7 @@ Subsystem: BombBay
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 
-		Sprite: RocketPod::0
+		Sprite: Warhead::0
 		DrawMode: 1
 
 		Hex.DamageResist := ShipSize / 28.0
@@ -60,5 +62,3 @@ Subsystem: BombBay
 		SupplyCost = SupplyCost * (Reload / PodSize)
 		FireArc = FireArc
 		Spread = Spread
-		
-		

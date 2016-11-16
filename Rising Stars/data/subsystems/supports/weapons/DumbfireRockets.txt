@@ -13,7 +13,7 @@ Subsystem: DumbfireRockets
 
 	Size := HexSize * Hexes
 	Range := Size + 50
-	Damage := Size * 10.0
+	Damage := Size * 5.0
 	Reload := 15 * min(1.0 + Size/512, 2.0)
 	Speed := max(140, Range / 12)
 	Tracking := 0.8
@@ -27,6 +27,9 @@ Subsystem: DumbfireRockets
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
+
+	Hex.BuildCost := 0.75 * HexSize
+	Hex.LaborCost := 0.07 * HexSize
 
 	FireDelay := Reload / (PodSize * 4)
 	FireArc := 0.75 * pi
