@@ -47,3 +47,7 @@ STATUS_VOIDRAY_DESC: <<
 	
 	Stacks up to 10 times.
 >>
+STATUS_DAMAGED: Damaged
+STATUS_DAMAGED_DESC: <<
+	This vessel was accidentally damaged in a scientific experiment and will operate at significantly reduced effectiveness until it is repaired.
+>>

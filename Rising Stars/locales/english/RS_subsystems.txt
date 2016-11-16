@@ -200,7 +200,27 @@ SUPPORTMISSILELAUNCHER_DESC: <<
 
 	[img=MenuIcons::3;20]Support-grade missile launchers do not support reconfigurable salvos or warheads, instead trading some range for dependable damage and rate of fire.[/img]
 >>
+S_DUMBFIREROCKETS: Dumbfire Rockets
+S_DUMBFIREROCKETS_DESC: <<
+	A rack of short-range rockets designed to be launched in a strafing run against large targets.
 
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Must reload after each volley.[/img]
+	[img=Minus][b]Very[/b] short range. Long reload time.[/img]
+	[img=Minus]High [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Recommended for use with the 'Bomber' support behavior and a moderate amount of Ammo Storage.[/img]
+>>
+
+S_ROCKETPOD_DESC: <<
+	A concealed tube of rockets rapidly extends, launches a volley of short range rockets, and receeds to reload.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Must reload after several shots.[/img]
+	[img=Minus]High [b][color=#fefc61]supply cost[/color][/b].[/img]
+>>
 S_MATTERDISRUPTOR: Matter Disruptor
 S_MATTERDISRUPTOR_DESC: <<
 	An energy weapon which abuses the gravitational attraction between the parts of its target to deal additional damage.
@@ -347,6 +367,20 @@ S_TORPEDOLAUNCHER_DESC: <<
 	[img=Minus]High power requirements.[/img]
 	[img=Minus]Very slow fire rate.[/img]
 	[img=Minus]Very low [b][color=#ff8080]DPS[/color][/b].[/img]
+>>
+
+S_BOMBBAY: Energy Bomb Launcher
+S_BOMBBAY_DESC: <<
+	Generates and launches a salvo of highly unstable energy bombs. These bombs explode in an area around their target.
+
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Deals damage in a large area and scatters enemy formations.[/img]
+	[img=Plus]Fires multiple projectiles per salvo.[/img]
+	[img=Minus]Very low accuracy.[/img]
+	[img=Minus]Extremely slow fire rate.[/img]
+	[img=Minus]Low [b][color=#ff8080]DPS[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Recommended for use with the 'Bomber' support behavior and a moderate amount of Ammo Storage.[/img]
 >>
 
 SUPPORTSUPPLY_DESC: <<
