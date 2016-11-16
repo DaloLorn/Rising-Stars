@@ -1,0 +1,41 @@
+Effector: DumbfireRockets
+	Value: Range
+	Value: Damage
+	Value: Reload
+	Value: FireDelay
+	Value: PodSize = 1
+	Value: Speed
+	Value: Tracking = 6
+	Value: SupplyCost = 0
+	Value: Spread = 0.5
+	Value: FireArc = 0.5
+
+	Range: Range
+	Speed: Speed
+	Tracking: Tracking
+	Lifetime: Range / Speed
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
+
+	EfficiencyMode: Reload Only
+	Activation: Magazine(FireDelay, PodSize, Reload)
+	OnTrigger: combat::WeaponFire(SupplyCost)
+
+	PhysicalType: Projectile
+	GfxType: Sprite
+	GfxSize: 1.5
+	FireSfx: rocket
+	ImpactSfx: rocket_impact
+	ImpactSfx: rocket_impact_2
+	ImpactSfx: rocket_impact_3
+	Trail: MissileTrail
+	TrailCol: 99220000, 00000000
+	Material: Missile
+	ImpactGfx: ImpactFlareRocket
+	FireArc: FireArc
+	Spread: Spread
+
+	Effect: ExplDamage
+		Amount = Damage
