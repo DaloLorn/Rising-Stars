@@ -23,7 +23,7 @@ Subsystem: TorpedoLauncher
 	// If the DoT is enabled, then design stats must report 50% more damage than before, and the damage type must be twice as large as before.
 	BaseDamage := Size * 30.0
 	Damage := BaseDamage * if(HasDoT > 0, 1.5, 1.0)
-	DamageType = 2 * if(HasDoT > 0, 2, 1)
+	DamageType := 2 * if(HasDoT > 0, 2, 1)
 	HasDoT := 0
 
 	Hex.HP := 18 * HexSize

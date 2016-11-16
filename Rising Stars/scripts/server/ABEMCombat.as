@@ -340,7 +340,7 @@ void AreaDamage(Event& evt, double Amount, double Radius, double Hits, double Sp
 			if(DamageType > 3 && DamageType != 7)
 			// Divide by 2 to get half of the torpedo's damage,
 			// then divide by the 10-second duration so you don't wind up dealing 5 times the torpedo's damage in DoTs.
-				ApplyAreaDoT(evt, target, dir, dmg/20.0, 10.0); 
+				ApplyAreaDoT(evt, target, dir, dmg.damage/20.0, 10.0); 
 		}
 	}
 }
