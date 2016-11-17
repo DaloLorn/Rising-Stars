@@ -27,7 +27,7 @@ Subsystem: PiercingDrones
 
 	Pierce := 0.2
 	DRResponse := 5
-	DamageType := 3
+	DamageType := 2
 	Spillable := 0
 
 	Hex.HP := 18 * HexSize
@@ -71,4 +71,4 @@ Subsystem: PiercingDrones
 		Pierce = Pierce
 		DRResponse = DRResponse
 		DamageType = DamageType
-		Spillable = 0
+		Spillable = Spillable
