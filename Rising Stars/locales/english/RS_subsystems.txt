@@ -69,6 +69,7 @@ S_REPAIR: Repair Rate
 STT_REPAIR: The amount of hitpoints the ship can repair per second while out of combat.
 S_REPAIR_COMBAT: In-Combat Repair Rate
 STT_REPAIR_COMBAT: The amount of hitpoints the ship can repair per second while in combat.
+S_REGENPERSECOND: Regeneration Rate
 S_SENSORMULT: Sensor Multiplier
 S_SENSORPRIORITY: Sensor Priority
 S_PROJRESIST: Projectile Resistance
@@ -116,17 +117,19 @@ S_RECALL_DESC: <<
 	[img=MenuIcons::3;20]The larger the Recall Device is, the less energy is consumed.[/img]
 	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
 >>
-S_DRONEWEAPON: Boring Drone Launcher
-S_DRONEWEAPON_DESC: <<
+S_PIERCING_DRONES: Piercing Drone Launcher
+S_PIERCING_DRONES_DESC: <<
 	Launches a series of nimble drones which use their speed and a superheated plasma shield to bore through the hull of their target, bypassing enemy shielding along the way.
 
-	[img=MenuIcons::3;20]Each drone deals 250 damage.[/img]
+	[img=MenuIcons::3;20]Each drone deals 75 damage.[/img]
 	[img=MenuIcons::3;20]Instead of increasing drone damage, a bigger launcher will be capable of launching larger quantities of drones with each salvo.[/img]
 	[img=Plus]Bypasses all damage resistance and shields.
-		[vspace=3/][img=MenuIcons::3;20]Shield Hardeners will still have a chance to block a drone completely, though.[/img][/img]
-	[img=Minus]Expensive.[/img]
+		[vspace=3/][img=MenuIcons::3;20]Shield Hardeners will still have a chance to block a drone collision, though.[/img][/img]
+	[img=Minus]Fragile and expensive.[/img]
 	[img=Minus]Takes a lot of time to reload.[/img]
 	[img=Minus]Requires Power to run.[/img]
+	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the drones.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Drones have a limited lifetime before their power source fails and a new drone needs to be launched. The closer a drone is fired to its target, the more time it will have to assault enemy ships, increasing its effective damage output.[/color][/i][/img]
 >>
 S_PROGENITORCOMPUTER: Progenitor Control Computer
 S_PROGENITORCOMPUTER_DESC: <<
@@ -157,9 +160,13 @@ PLATEARMOR_DESC: <<
 	[img=Minus]Heavy.[/img]
 >>
 S_PROGENITOR_ARMOR_DESC: <<
-	Good at everything, regenerates health, adds health to nearby hexes, combines effects of all three basic armors.
+	Incredibly advanced Progenitor armor. Lighter than Crystalline Armor and just as tough.
 
-	Very expensive with a huge maintenance cost. What the hell, I can do this later.
+	[img=Plus]Damage hits exceeding the [b][color=#c33ac6]damage threshold[/color][/b] are reduced significantly.[/img]
+	[img=Plus]Increases the [b][color=#80ff80]health[/color][/b] of surrounding hexes. Resists damage and is impervious to armor penetration.[/img]
+	[img=Plus]Each hex regenerates health regardless of the availability of Supply.[/img]
+	[img=MenuIcons::3;20]The most formidable armor in the known universe, effective against most weapons.[/img]
+	[img=Minus]Very expensive with an extreme maintenance cost, and requires a lot of Power.[/img]
 >>
 LASER_DESC: <<
 	A highly focused beam of light inflicts damage by burning holes through ship subsections.
@@ -442,7 +449,6 @@ S_CRYSTAL_ARMOR: Crystalline Armor
 S_NANO_ARMOR: Nanite Armor
 S_POWERED_ARMOR: Powered Armor
 S_QUANTUM_ARMOR: Quantum Armor
-S_REMNANT_ARMOR: Progenitor Armor
 
 S_QUANTUM_ARMOR_DESC: <<
 	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.

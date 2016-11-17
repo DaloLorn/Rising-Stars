@@ -21,6 +21,34 @@ ORB_EXPERIMENTAL_GATE_DESC: <<|
 
 	[b][color=#00c0ff]Prototype Stargates are required to research designable gates, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
 >>
+ORB_GUARDIAN: Guardian Facility
+ORB_GUARDIAN_BLURB: Acts as a Research-generating super-shipyard, or constructs a powerful Guardian.
+ORB_GUARDIAN_DESC: <<
+	An ancient shipyard of tremendous scale used to construct Guardians, the so-called 'Guardian Facility' is as valuable as the knowledge on the nearby Hubworld.
+
+	The advanced nature of the facility's matter fabricators and the phase shifting it uses to store finished components produce an immense quantity of Research. The technology itself allows the facility to construct anything as if it were a planet, import Labor from other planets, generate 100 Labor per minute and store 5000 Labor. It cannot, however, be used to export Labor to other shipyards.
+
+	The sheer size of the facility makes it impossible to move through conventional means, while its phasing technology causes complications when attempting to use FTL systems to propel it. Additionally, automated security systems of considerable complexity prevent boarding parties from making any progress while attacking it.
+
+	If damaged severely enough, the Guardian Facility will shut down and phase-shift; while its location is no longer a mystery, it will have to be reactivated and repaired again.
+>>
+
+ORB_PROGENITOR_SOLARORBITAL_BLURB: Generates energy per second relative to the temperature of the system's star. Requires no maintenance.
+ORB_PROGENITOR_SOLARORBITAL_DESC: <<
+	Generates extra energy per second. The higher the temperature of the star of the system it's in, the more energy is generated. Generates more energy than a regular Solar Engine. Requires no maintenance.
+
+	Only one Solar Engine of any kind may be constructed per system.
+>>
+ORB_PROGENITOR_SOLARORBITAL: Advanced Solar Engine
+ORB_RECALL_BLURB: Uses Energy to Recall allied flagships and orbitals to its location.
+ORB_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a nearby location and any allied object in the universe.
+
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;22]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
 
 ORB_STELLAR_SHIELD: Stellar Shield Generator
 ORB_STELLAR_SHIELD_BLURB: Adds a powerful shield to all stars in the system.

@@ -12,10 +12,10 @@ Subsystem: ShieldGen
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	ShieldCapacity := Size * 80
-	ShieldRegen := Size * 1.3
+	ShieldCapacity := Size * 70
+	ShieldRegen := Size * 1
 	ShieldHexes := Hexes
-	PowerUse := 20 * Size
+	PowerUse := 15 * Size
 
 	Hex.Resistance := 0.5
 	Hex.HP := 6 * HexSize
@@ -23,8 +23,8 @@ Subsystem: ShieldGen
 
 	Effect: ShieldDamage
 	
-	Hex.LaborCost := 0.5 * HexSize
-	Hex.BuildCost := 0.1 * HexSize
+	Hex.LaborCost := 1 * HexSize
+	Hex.BuildCost := 0.5 * HexSize
 	Hex.MaintainCost := 1 * HexSize
 	
 	Requires:

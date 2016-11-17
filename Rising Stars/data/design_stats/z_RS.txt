@@ -187,6 +187,14 @@ SubsystemStat: SensorPriority
 	
 	Variable: SensorPriority
 
+SubsystemStat: RegenPerSecond
+	Name: #S_REGENPERSECOND
+	Icon: AttributeIcons::6 * #22ff22
+	Color: #22ff22
+	Suffix: /s
+
+	Variable: RegenPerSecond
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************

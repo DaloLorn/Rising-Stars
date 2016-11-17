@@ -53,6 +53,77 @@ R_SYS_JUMPDRIVE_DESC: <<
 
 	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
 >>
+R_SYS_PROGENITOR_SHIELD_DESC: <<
+	[i][color=#aaa]Investigation of Progenitor shield matrices yields tremendous insights into shielding technology.[/color][/i]
+	
+	Unlocks the Progenitor Shield Generator for use on flagships.
+	
+	[i][bbloc=#S_REMNANTSHIELD_DESC/][/i]
+>>
+R_SYS_PROGENITOR_ARMOR_DESC: <<
+	[i][color=#aaa]Research into Progenitor material sciences quickly reveals a new way of developing incredibly resilient armor.[/color][/i]
+	
+	Unlocks Progenitor Armor for use on flagships.
+	
+	[i][bbloc=#S_PROGENITOR_ARMOR_DESC/][/i]
+>>
+R_SYS_REMNANT_ARMOR: Progenitor Armoring
+R_PROGENITOR_SCIENCE: Progenitor Knowledge
+R_SYS_REMNANTSHIELD: Progenitor Shield Technology
+R_PROGENITOR_SCIENCE_DESC: <<
+	[i][color=#aaa]Recent discoveries pertaining to the Progenitors allow us to further our horizons beyond anything we could ever have dreamed of.[/color][/i]
+>>
+R_SYS_DRONEWEAPON: Piercing Drones
+R_SYS_DRONEWEAPON_DESC: <<
+	[color=#aaa][i]Research into Progenitor weapons technology unravels the mysteries of the Guardians' devastating arsenals.[/i][/color]
+
+	Unlocks the Piercing Drone Launcher for use on flagships.
+
+	[i][bbloc=#S_PIERCING_DRONES_DESC/][/i]
+>>
+R_SYS_CONTROLCHAIR: Neural Interfacing
+R_SYS_CONTROLCHAIR_DESC: <<
+	[color=#aaa][i]Detailed understanding of Progenitor neural interfaces allows entire starships to be commanded by a mere thought.[/i][/color]
+
+	Unlocks the Neural Interface Chair for use on flagships.
+
+	[i][bbloc=#S_CONTROLCHAIR_DESC/][/i] 
+>>
+R_SYS_PROGENITORCOMPUTER: Progenitor Computing
+R_SYS_PROGENITORCOMPUTER_DESC: <<
+	[color=#aaa][i]Investigation of Progenitor computer systems yields massive improvements to our ships' control computers.[/i][/color]
+
+	Unlocks the Progenitor Control Computer for use on flagships.
+
+	[i][bbloc=#S_PROGENITORCOMPUTER_DESC/][/i]
+>>
+R_PROGENITOR_SOLARORBITAL: Advanced Solar Harnessing
+R_PROGENITOR_SOLARORBITAL_DESC: <<
+	[color=#aaa][i]The discovery of Progenitor blueprints for a Solar Engine increases the quality of our own versions of the device.[/i][/color]
+
+	Converts all Solar Engines into Advanced Solar Engines, which require no maintenance and produce more energy.
+
+	[i][bbloc=#ORB_PROGENITOR_SOLARORBITAL_DESC/][/i]
+>>
+R_RECALL: Targeted Wormhole Generation
+R_RECALL_DESC: <<
+	[color=#aaa][i]New ways of hyperfield manipulation spurred on by recent discoveries about the Progenitors.[/i][/color]
+
+	Unlocks the Recall Device for use on flagships, and the Recall Facility for construction on planets.
+
+	[i]Recall: 
+
+	[bbloc=#ABL_RECALL_DESC/][/i]
+>>
+R_NYLLIRECALL_DESC: <<
+	[color=#aaa][i]New ways of hyperfield manipulation spurred on by recent discoveries about the Progenitors.[/i][/color]
+
+	Unlocks the Recall Device for use on flagships, and the Recall Facility orbital.
+
+	[i]Recall: 
+
+	[bbloc=#ABL_RECALL_DESC/][/i]
+>>
 R_IMPROVEDLABS: Containment Protocols
 R_IMPROVEDLABS_DESC: <<
 	[i][color=#aaa]Developing and standardizing new methods of isolating experiments and dangerous samples allows more scientists to work in the same amount of space.[/color][/i]

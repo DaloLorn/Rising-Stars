@@ -54,7 +54,15 @@ F_POWERPLANT_DESC: <<
 	Provides Energy generation equivalent to 10 pressure.
 >>
 
+BLD_RECALL: Recall Facility
+BLD_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a location in orbit and any allied object in the universe.
 
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;20]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
 B_DEFENSEFACTORY: Command Center
 B_DEFENSEFACTORY_DESC: <<
 	A facility dedicated to the coordination of defensive forces across the planet.

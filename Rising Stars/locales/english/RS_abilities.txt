@@ -2,6 +2,13 @@ ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
 ABL_SCUTTLEDERELICT_DESC: <<
 	Sends a demolition crew to plant charges on the target derelict. The remains of the target ship are destroyed.
 >>
+ABL_PROGENITOR_COMMANDCODES: Override Remnant Programming
+ABL_PROGENITOR_COMMANDCODES_DESC: <<
+	Using our command codes, we can access the control computers of Keeper fleets, overriding the ancient directives programmed by our ancestors so that they do our bidding.
+	
+	Properly reactivating the fleets will require some energy, though, and we do not have the codes for the great Guardians that watch over the Hubworlds.
+>>
+ABL_RECALL: Recall
 ABL_BOARDING_PARTY: Send Boarding Party
 ABL_BOARDING_PARTY_DESC: <<
 	Transports a boarding party to the target object, initiating a boarding action.
@@ -10,6 +17,7 @@ ABL_BOARDING_PARTY_DESC: <<
 	
 	Only one boarding action can be running on an object at any given time, and Verdant-owned objects cannot be boarded. Boarding actions cannot be initiated by ships which are already being boarded. Asteroids and orbitals always have 100 boarding strength.
 >>
+ABL_RECALL_DESC: Opens a wormhole engulfing the target allied object and immediately depositing it in close proximity to the recalling object.
 ABL_PROTO_LEVEL3: Form Planet (Tier 3)
 ABL_PROTO_LEVEL3_DESC: Manipulate the planet's formation by expending a large amount of energy. The planet will produce a random tier 3 resource.
 ABL_TELESCOPEORE_DESC: Grants vision over the targeted system for 3 minutes. Can only target systems up to $1 units away.
@@ -44,4 +52,36 @@ ABL_RAMMING_SPEED_DESC: <<
 	Diverts all power to the ship's engines in an attempt to deliver its payload.
 
 	Adds 10 u/s^2 of acceleration. Lasts 25 seconds.
+>>
+ABL_GUARDIAN_ACTIVATE: Activate Guardian Facility
+ABL_GUARDIAN_ACTIVATE_DESC: <<
+	Reactivate the shipyard, reaping many benefits but undoubtedly incurring the wrath of all but your most loyal allies and the blindest of fools.
+
+	While active, the Guardian Facility's immense and ancient matter fabrication facilities can construct anything as if it were a planet, store up to 5000 Labor, generate 100 Labor per minute, produce 15 Research per second, and import Labor from other planets without any penalties. Alternatively, it can begin construction of a new Guardian.
+
+	Unfortunately, while the facility does contain the blueprints required to construct a Guardian, they, just like any unfinished parts of the ship, are inaccessible. Learning how it works will have to be done when and if such a ship is completed.
+
+	Upon sustaining critical damage for any reason, the Guardian Facility will revert to its deactivated state.
+
+	[b][color=#f00]WARNING: Other empires will be immediately notified of the facility's reactivation, and are likely to launch an assault![/color][/b]
+>>
+ABL_GUARDIAN_BUILD: Commence Guardian Construction
+ABL_GUARDIAN_BUILD_DESC: <<
+	Uses the ancient blueprints stored in the facility's databanks to construct the components for a powerful Remnant Guardian. This construction project will take a substantial amount of time and resources, and we will not be able to use the facility for any other purpose.
+
+	Building a Guardian takes a minimum of 15 minutes, during which the Guardian Facility will no longer be able to use or store Labor, stop generating Research, and consume 10 Energy per second, 2.5 FTL Crystals per second, and incur a maintenance of §2M per budget cycle.
+
+	Once ready, the Guardian's construction will require a bulk payment of 2000 Energy, 1000 FTL Crystals and §5M to finalize.
+
+	[b][color=#f00]WARNING: Losing the Guardian Facility for any reason while construction is in progress will cancel the project without refunding any spent resources! Aside from this, there is no way of canceling construction of a Guardian, so be absolutely certain you want to do it!
+
+	Additionally, other empires will be immediately notified when construction begins, and are likely to launch an assault![/color][/b]
+>>
+ABL_GUARDIAN_FINISH: Finalize Guardian Construction
+ABL_GUARDIAN_FINISH_DESC: <<
+	Assembles a Guardian from previously constructed modules. At this stage, if the galaxy has not already surrendered to you, it probably will; only the mythical 'Revenant' could reliably take on the combined forces of a Guardian and the rest of your empire.
+
+	Furthermore, analysis of the completed ship will yield insights into its advanced technology, allowing us to design our own ships based on the Guardian's equipment.
+
+	Other empires will be notified of the project's completion, and the Guardian Facility will resume normal operation.
 >>
