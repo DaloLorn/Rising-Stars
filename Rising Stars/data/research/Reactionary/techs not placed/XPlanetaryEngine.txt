@@ -11,3 +11,5 @@ Technology: XPlanetaryEngine
 
 	UnlockTag(PlanetaryEngineUnlock)
 	SkipOnUnlockedTag(PlanetaryEngineUnlock)
+
+	ModAttribute(ProgenitorTechProgress, Add, 5)

@@ -14,3 +14,5 @@ Technology: SpinalMountHull
 	SkipOnUnlockedSubsystem(SpinalMountHull)
 
 	SecondaryMoneyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

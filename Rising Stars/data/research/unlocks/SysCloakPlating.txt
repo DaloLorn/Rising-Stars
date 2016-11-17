@@ -11,3 +11,4 @@ Technology: SysCloakPlating
 	
 	UnlockSubsystem(CloakPlating)
 	SkipOnUnlockedSubsystem(CloakPlating)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

@@ -17,3 +17,5 @@ Technology: PulseBolt
 	SkipOnUnlockedSubsystem(PulseBolt)
 
 	SecondaryEnergyCost(1500)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

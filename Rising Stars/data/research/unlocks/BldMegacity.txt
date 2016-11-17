@@ -13,3 +13,4 @@ Technology: BldMegacity
 	SkipOnUnlockedTag(MegacityUnlock)
 
 	SecondaryInfluenceCost(16)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

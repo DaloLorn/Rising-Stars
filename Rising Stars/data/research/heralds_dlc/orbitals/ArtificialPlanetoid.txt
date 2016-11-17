@@ -12,3 +12,4 @@ Technology: ArtificialPlanetoid
 	
 	UnlockTag(ArtificialPlanetoidUnlock)
 	SkipOnUnlockedTag(ArtificialPlanetoidUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

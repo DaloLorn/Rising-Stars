@@ -12,3 +12,4 @@ Technology: QuantumBattery
 	
 	UnlockModule(QuantumBattery)
 	SkipOnUnlockedModule(QuantumBattery)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

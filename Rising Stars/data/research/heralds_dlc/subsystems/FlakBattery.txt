@@ -17,3 +17,5 @@ Technology: FlakBattery
 	SkipOnUnlockedSubsystem(FlakBattery)
 
 	SecondaryEnergyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

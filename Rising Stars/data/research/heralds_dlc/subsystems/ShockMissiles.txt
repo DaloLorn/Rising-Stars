@@ -17,3 +17,5 @@ Technology: ShockMissiles
 	SkipOnUnlockedSubsystem(ShockMissiles)
 
 	SecondaryMoneyCost(750)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

@@ -13,3 +13,5 @@ Technology: SysShieldHardener
 	SkipOnUnlockedSubsystem(ShieldHardener)
 
 	SecondaryEnergyCost(750)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

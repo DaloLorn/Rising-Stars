@@ -27,3 +27,6 @@ Trait: Gate
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/gate))
+
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	ModAttribute(GateConst, Add, 1)

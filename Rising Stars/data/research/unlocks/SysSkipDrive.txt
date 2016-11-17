@@ -11,3 +11,5 @@ Technology: SysSkipDrive
 	
 	UnlockSubsystem(SkipDrive)
 	SkipOnUnlockedSubsystem(SkipDrive)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

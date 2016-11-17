@@ -18,6 +18,7 @@ Technology: XHyperLaser
 
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 5, #R_LIFESTYLE_REQ:Beam Focusing:5)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 
 Technology: XDisruptor
@@ -41,6 +42,7 @@ Technology: XDisruptor
 	SecondaryFTLCost(250)
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Beam Focusing:7)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
+	ModAttribute(ProgenitorTechProgress, Add, 2)
 
 Technology: XSubspaceShredder
 	Name: #R_SYS_SUBSPACE_SHREDDER
@@ -63,6 +65,7 @@ Technology: XSubspaceShredder
 	SecondaryMoneyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 8, #R_LIFESTYLE_REQ:Beam Focusing:8)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XPulseBolt
 	Name: #R_SYS_PULSE_BOLT
@@ -85,6 +88,7 @@ Technology: XPulseBolt
 	SecondaryEnergyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 9, #R_LIFESTYLE_REQ:Beam Focusing:9)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6, #R_LIFESTYLE_REQ:Energy Science:6)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 
 Technology: XVoidRay

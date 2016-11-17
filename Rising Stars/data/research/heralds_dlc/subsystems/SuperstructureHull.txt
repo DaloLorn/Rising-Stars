@@ -17,3 +17,5 @@ Technology: SuperstructureHull
 	SkipOnUnlockedSubsystem(SuperstructureHull)
 
 	SecondaryMoneyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

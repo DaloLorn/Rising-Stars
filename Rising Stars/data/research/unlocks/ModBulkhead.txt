@@ -13,3 +13,4 @@ Technology: ModBulkhead
 	SkipOnUnlockedModule(Bulkhead)
 
 	SecondaryMoneyCost(750)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

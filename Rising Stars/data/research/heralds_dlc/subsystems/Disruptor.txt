@@ -17,3 +17,4 @@ Technology: Disruptor
 	SkipOnUnlockedSubsystem(Disruptor)
 
 	SecondaryFTLCost(250)
+	ModAttribute(ProgenitorTechProgress, Add, 2)

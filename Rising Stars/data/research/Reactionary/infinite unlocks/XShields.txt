@@ -16,6 +16,7 @@ Technology: XShieldGen
 
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 1, #R_LIFESTYLE_REQ:Shield Modulation:1)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 
 Technology: XSupShieldGen
@@ -37,6 +38,7 @@ Technology: XSupShieldGen
 	SecondaryEnergyCost(700)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XShieldChargerOrbital
 	Name: #R_SHIELDCHARGER
@@ -51,6 +53,7 @@ Technology: XShieldChargerOrbital
 	SkipOnUnlockedTag(ShieldCharger)
 	SecondaryEnergyCost(800)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 3, #R_LIFESTYLE_REQ:Shield Modulation:3)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 
 
@@ -67,6 +70,7 @@ Technology: XCovariantShield
 	SkipOnUnlockedSubsystem(CovariantShield)
 	SecondaryEnergyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
+	ModAttribute(ProgenitorTechProgress, Add, 2)
 
 Technology: XShieldHarmonizer
 	Name: #R_SYS_SHIELD_HARMONIZER
@@ -88,6 +92,7 @@ Technology: XShieldHarmonizer
 
 	SecondaryEnergyCost(1300)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6, #R_LIFESTYLE_REQ:Shield Modulation:6)
+	ModAttribute(ProgenitorTechProgress, Add, 3)
 
 Technology: XShieldHardener
 	Name: #R_SYS_SHIELD_HARDENER
@@ -107,6 +112,7 @@ Technology: XShieldHardener
 	SecondaryEnergyCost(1400)
 
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 7,#R_LIFESTYLE_REQ:Shield Modulation:7)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 
 Technology: XDeflectorArray
@@ -133,6 +139,7 @@ Technology: XDeflectorArray
 
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6,#R_LIFESTYLE_REQ:Energy Science:8)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 Technology: XStellarShieldOrbital
 	Name: #R_STELLAR_SHIELD
 	Description: R_STELLAR_SHIELD_DESC
@@ -146,6 +153,7 @@ Technology: XStellarShieldOrbital
 	SkipOnUnlockedTag(StellarShieldOrbital)
 	SecondaryEnergyCost(1600)
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 8, #R_LIFESTYLE_REQ:Shield Modulation:8)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XShieldUpgrade
 	Name: #GENIOCRACY_SHIELDUPGRADE

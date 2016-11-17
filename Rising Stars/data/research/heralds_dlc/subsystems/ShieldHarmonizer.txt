@@ -17,3 +17,5 @@ Technology: ShieldHarmonizer
 	SkipOnUnlockedSubsystem(ShieldHarmonizer)
 
 	SecondaryEnergyCost(1500)
+
+	ModAttribute(ProgenitorTechProgress, Add, 3)

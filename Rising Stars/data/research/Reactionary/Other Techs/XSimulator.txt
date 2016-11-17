@@ -12,3 +12,5 @@ Technology: XSimulator
 	SkipOnUnlockedSubsystem(Simulator)
 
 	SecondaryInfluenceCost(10)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2)

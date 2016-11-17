@@ -17,3 +17,5 @@ Technology: SubspaceShredder
 	SkipOnUnlockedSubsystem(SubspaceShredder)
 
 	SecondaryMoneyCost(1500)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

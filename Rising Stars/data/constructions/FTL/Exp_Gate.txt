@@ -6,6 +6,7 @@ Construction: EXP_GateUnlock
 	RequireNotTrait(Gate)
 	RequireOnOrbital(EXP_GateCore)
 	ModAttribute(GateConst, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	RequireAttributeLT(GateConst)
 	ConsumeFTL(200)
 	UnlockSubsystem(GateModule)

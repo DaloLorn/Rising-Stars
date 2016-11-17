@@ -12,3 +12,5 @@ Technology: GravitonCondenser
 	
 	UnlockSubsystem(GravitonCondenser)
 	SkipOnUnlockedSubsystem(GravitonCondenser)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2)

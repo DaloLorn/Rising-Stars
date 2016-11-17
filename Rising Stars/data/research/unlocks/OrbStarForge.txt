@@ -11,3 +11,4 @@ Technology: OrbStarForge
 	
 	UnlockTag(StarForgeUnlock)
 	SkipOnUnlockedTag(StarForgeUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 10)

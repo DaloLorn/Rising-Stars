@@ -14,6 +14,7 @@ Technology: XRingHabitat
 	SecondaryMoneyCost(1000)
 
 	RequireEmpireAttributeGTE(InfiniteMegaTaken, 3, #R_LIFESTYLE_REQ:Orbital Architecture:3)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 Technology: XArtificialPlanetoid
 	Name: #R_ORB_ARTIFICIAL_PLANETOID
@@ -34,6 +35,7 @@ Technology: XArtificialPlanetoid
 
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 4, #R_LIFESTYLE_REQ:Shield Modulation:4)
 	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 5, #R_LIFESTYLE_REQ:Metallurgy:5)
+	ModAttribute(ProgenitorTechProgress, Add, 5)
 Technology: XStarForge
 	Name: #R_ORB_STARFORGE
 	Description: #R_ORB_STARFORGE_DESC
@@ -52,6 +54,7 @@ Technology: XStarForge
 	RequireEmpireAttributeGTE(InfiniteMegaTaken, 4, #R_LIFESTYLE_REQ:Orbital Architecture:4)
 
 	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 5, #R_LIFESTYLE_REQ:Metallurgy:5)
+	ModAttribute(ProgenitorTechProgress, Add, 10)
 Technology: XRingworld
 	Name: #R_ORB_RINGWORLD
 	Description: #R_ORB_RINGWORLD_DESC
@@ -71,6 +74,7 @@ Technology: XRingworld
 
 	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 5, #R_LIFESTYLE_REQ:Shield Modulation:5)
 	RequireEmpireAttributeGTE(InfiniteMetallurgyTaken, 7, #R_LIFESTYLE_REQ:Metallurgy:7)
+	ModAttribute(ProgenitorTechProgress, Add, 10)
 Technology: XVacuumTelescope
 	Name: #R_ORB_VACUUM_TELESCOPE
 	Description: #R_ORB_VACUUM_TELESCOPE_DESC
@@ -86,3 +90,4 @@ Technology: XVacuumTelescope
 	UnlockTag(VacuumTelescopeUnlock)
 	SkipOnUnlockedTag(VacuumTelescopeUnlock)
 	RequireEmpireAttributeGTE(InfiniteMegaTaken, 4, #R_LIFESTYLE_REQ:Orbital Architecture:4)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

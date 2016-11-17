@@ -11,3 +11,5 @@ Technology: SysTitanHull
 	
 	UnlockSubsystem(TitanHull)
 	SkipOnUnlockedSubsystem(TitanHull)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

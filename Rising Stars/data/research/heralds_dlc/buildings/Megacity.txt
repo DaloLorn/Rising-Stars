@@ -9,6 +9,7 @@ Technology: Megacity
 
 	Icon: Megacity
 	Color: #00f3ff
-	
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 	UnlockTag(MegacityUnlock)
 	SkipOnUnlockedTag(MegacityUnlock)

@@ -13,6 +13,7 @@ Technology: XMegacity
 	SkipOnUnlockedTag(MegacityUnlock)
 	
 	RequireEmpireAttributeGTE(InfinitePopTaken, 3, #R_LIFESTYLE_REQ:Social Studies:3)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XTroopPods
 	Name: #R_SYS_TROOP_PODS
@@ -31,6 +32,7 @@ Technology: XTroopPods
 	UnlockSubsystem(TroopPods)
 	SkipOnUnlockedSubsystem(TroopPods)
 	RequireEmpireAttributeGTE(InfinitePopTaken, 4, #R_LIFESTYLE_REQ:Social Studies:4)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	
 Technology: XBroadcastAntenna
 	Name: #R_SYS_BROADCAST_ANTENNA
@@ -51,6 +53,7 @@ Technology: XBroadcastAntenna
 
 	SecondaryInfluenceCost(10)
 RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
+	ModAttribute(ProgenitorTechProgress, Add, 0.25)
 
 Technology: XWealth
 	Name: #R_WEALTH
@@ -135,3 +138,4 @@ Technology: XSenate
 	SkipOnUnlockedTag(Senate)
 	SecondaryInfluenceCost(15)
 	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

@@ -18,3 +18,4 @@ Technology: CrystalArmor
 	SkipOnUnlockedSubsystem(CrystalArmor)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

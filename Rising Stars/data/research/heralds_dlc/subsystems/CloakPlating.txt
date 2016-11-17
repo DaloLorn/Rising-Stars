@@ -14,3 +14,5 @@ Technology: CloakPlating
 	SkipOnUnlockedSubsystem(CloakPlating)
 
 	SecondaryEnergyCost(750)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

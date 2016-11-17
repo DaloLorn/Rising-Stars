@@ -15,3 +15,5 @@ Technology: ShieldGen
 	SkipOnUnlockedSubsystem(ShieldGen)
 
 	SecondaryEnergyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

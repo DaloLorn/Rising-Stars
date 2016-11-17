@@ -13,3 +13,4 @@ Technology: ModTargetSensor
 	SkipOnUnlockedModule(TargetingSensor)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

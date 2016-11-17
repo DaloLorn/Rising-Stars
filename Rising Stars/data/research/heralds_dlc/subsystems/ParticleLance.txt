@@ -17,3 +17,5 @@ Technology: ParticleLance
 	SkipOnUnlockedSubsystem(ParticleLance)
 
 	SecondaryFTLCost(250)
+
+	ModAttribute(ProgenitorTechProgress, Add, 3)

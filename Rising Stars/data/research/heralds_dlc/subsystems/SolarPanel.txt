@@ -14,3 +14,5 @@ Technology: SolarPanel
 	SkipOnUnlockedSubsystem(SolarPanel)
 
 	SecondaryInfluenceCost(15)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

@@ -13,3 +13,4 @@ Technology: ModQuantumBattery
 	SkipOnUnlockedModule(QuantumBattery)
 
 	SecondaryEnergyCost(1200)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

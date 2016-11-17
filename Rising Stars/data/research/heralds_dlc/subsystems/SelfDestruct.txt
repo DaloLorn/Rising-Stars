@@ -14,3 +14,5 @@ Technology: SelfDestruct
 	SkipOnUnlockedSubsystem(SelfDestruct)
 
 	SecondaryEnergyCost(1500)
+
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

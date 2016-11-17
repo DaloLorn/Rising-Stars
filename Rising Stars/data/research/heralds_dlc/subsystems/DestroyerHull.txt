@@ -17,3 +17,5 @@ Technology: DestroyerHull
 	SkipOnUnlockedSubsystem(DestroyerHull)
 
 	SecondaryMoneyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

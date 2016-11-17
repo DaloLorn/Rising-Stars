@@ -11,3 +11,4 @@ Technology: BldPlanetaryEngine
 	
 	UnlockTag(PlanetaryEngineUnlock)
 	SkipOnUnlockedTag(PlanetaryEngineUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

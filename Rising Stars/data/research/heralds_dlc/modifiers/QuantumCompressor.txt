@@ -12,3 +12,4 @@ Technology: QuantumCompressor
 	
 	UnlockModule(QuantumCompressor)
 	SkipOnUnlockedModule(QuantumCompressor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

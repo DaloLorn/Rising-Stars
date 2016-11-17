@@ -11,3 +11,4 @@ Technology: OrbVacuumTelescope
 	
 	UnlockTag(VacuumTelescopeUnlock)
 	SkipOnUnlockedTag(VacuumTelescopeUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

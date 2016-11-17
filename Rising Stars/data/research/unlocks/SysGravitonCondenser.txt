@@ -13,3 +13,4 @@ Technology: SysGravitonCondenser
 	SkipOnUnlockedSubsystem(GravitonCondenser)
 
 	SecondaryEnergyCost(1500)
+	ModAttribute(ProgenitorTechProgress, Add, 2)

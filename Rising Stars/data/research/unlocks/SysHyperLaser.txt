@@ -13,3 +13,4 @@ Technology: SysHyperLaser
 	SkipOnUnlockedSubsystem(HyperLaser)
 
 	SecondaryMoneyCost(2000)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

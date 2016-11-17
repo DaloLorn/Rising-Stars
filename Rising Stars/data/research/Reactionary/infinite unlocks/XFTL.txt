@@ -8,7 +8,7 @@ Technology: XFlingBeacons
 
 	Color: #00c0ff
 	Category: Reactionary
-	ModAttribute(ProgenitorTechProgress, Add, 5)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	SkipOnUnlockedTag(HasFling)
 	UnlockTag(HasTECH_Fling)
 
@@ -23,7 +23,7 @@ Technology: XGateTech
 
 	Color: #00c0ff
 	Category: Reactionary
-	ModAttribute(ProgenitorTechProgress, Add, 5)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	SkipOnUnlockedSubsystem(GateModule)
 
 	NotSecondary(ReduceResearchPenalty(2000))

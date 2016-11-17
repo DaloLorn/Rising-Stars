@@ -13,3 +13,4 @@ Technology: SysEmergencySupplies
 	SkipOnUnlockedSubsystem(EmergencySupplies)
 
 	SecondaryEnergyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 2)

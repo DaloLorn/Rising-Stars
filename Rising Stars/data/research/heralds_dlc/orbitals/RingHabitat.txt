@@ -12,3 +12,4 @@ Technology: RingHabitat
 	
 	UnlockTag(RingHabitatUnlock)
 	SkipOnUnlockedTag(RingHabitatUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

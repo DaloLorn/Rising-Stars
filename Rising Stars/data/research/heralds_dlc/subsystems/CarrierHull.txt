@@ -17,3 +17,4 @@ Technology: CarrierHull
 	SkipOnUnlockedSubsystem(CarrierHull)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

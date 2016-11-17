@@ -12,3 +12,4 @@ Technology: Bulkhead
 	
 	UnlockModule(Bulkhead)
 	SkipOnUnlockedModule(Bulkhead)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

@@ -13,3 +13,4 @@ Technology: SysGravityEngine
 	SkipOnUnlockedSubsystem(GravityEngine)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

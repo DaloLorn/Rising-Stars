@@ -18,3 +18,5 @@ Technology: NanoMesh
 	SkipOnUnlockedSubsystem(NanoMesh)
 
 	SecondaryInfluenceCost(12)
+
+	ModAttribute(ProgenitorTechProgress, Add, 3)

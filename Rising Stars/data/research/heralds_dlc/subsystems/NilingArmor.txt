@@ -17,3 +17,5 @@ Technology: SysNilingArmor
 	SkipOnUnlockedSubsystem(NilingArmor)
 
 	SecondaryEnergyCost(1500)
+
+	ModAttribute(ProgenitorTechProgress, Add, 4)

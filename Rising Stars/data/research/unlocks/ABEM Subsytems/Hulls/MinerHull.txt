@@ -16,3 +16,4 @@ Technology: MinerHull
 	SkipOnUnlockedSubsystem(MinerHull)
 
 	SecondaryMoneyCost(700)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

@@ -15,3 +15,5 @@ Technology: TroopPods
 	
 	UnlockSubsystem(TroopPods)
 	SkipOnUnlockedSubsystem(TroopPods)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

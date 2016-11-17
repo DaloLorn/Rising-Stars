@@ -11,3 +11,4 @@ Technology: OrbArtificialPlanetoid
 	
 	UnlockTag(ArtificialPlanetoidUnlock)
 	SkipOnUnlockedTag(ArtificialPlanetoidUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

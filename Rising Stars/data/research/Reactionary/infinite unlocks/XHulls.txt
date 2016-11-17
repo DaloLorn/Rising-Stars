@@ -17,6 +17,7 @@ Technology: XSuperstructureHull
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 3, #R_LIFESTYLE_REQ:Chassis Engineering:3)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XMinerHull
 	Name: #R_MINER_HULL
@@ -37,6 +38,7 @@ Technology: XMinerHull
 	SecondaryMoneyCost(500)
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 2, #R_LIFESTYLE_REQ:Chassis Engineering:2)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 
 Technology: XSpinalMountHull
@@ -56,6 +58,7 @@ Technology: XSpinalMountHull
 	SecondaryMoneyCost(1000)
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 4, #R_LIFESTYLE_REQ:Chassis Engineering:4)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 Technology: XCarrierHull
 	Name: #R_SYS_CARRIER_HULL
@@ -77,6 +80,7 @@ Technology: XCarrierHull
 	SecondaryMoneyCost(1000)
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 4, #R_LIFESTYLE_REQ:Chassis Engineering:4)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 
 Technology: XDestroyerHull
@@ -99,6 +103,7 @@ Technology: XDestroyerHull
 	SecondaryMoneyCost(1500)
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 5, #R_LIFESTYLE_REQ:Chassis Engineering:5)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 
 
@@ -121,6 +126,7 @@ Technology: XTitanHull
 
 	SecondaryEnergyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 5, #R_LIFESTYLE_REQ:Chassis Engineering:5)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XColossusHull
 	Name: #R_SYS_COLOSSUS_HULL
@@ -144,3 +150,4 @@ Technology: XColossusHull
 	SkipOnUnlockedSubsystem(ColossusHull)
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 6, #R_LIFESTYLE_REQ:Chassis Engineering:6)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

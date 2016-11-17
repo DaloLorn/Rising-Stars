@@ -14,3 +14,4 @@ Technology: SysLiquidArmor
 	SkipOnUnlockedSubsystem(LiquidArmor)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

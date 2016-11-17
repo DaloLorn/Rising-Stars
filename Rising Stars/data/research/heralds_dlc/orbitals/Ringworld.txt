@@ -12,3 +12,5 @@ Technology: Ringworld
 	
 	UnlockTag(RingworldUnlock)
 	SkipOnUnlockedTag(RingworldUnlock)
+
+	ModAttribute(ProgenitorTechProgress, Add, 10)

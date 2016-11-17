@@ -17,3 +17,4 @@ Technology: DeflectorArray
 	SkipOnUnlockedSubsystem(DeflectorArray)
 
 	SecondaryEnergyCost(1500)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

@@ -17,6 +17,7 @@ Technology: XSolarPanel
 
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 3, #R_LIFESTYLE_REQ:Energy Science:3 )
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XEmergencySupplies
 	Name: #R_SYS_EMERGENCY_SUPPLIES
@@ -35,6 +36,7 @@ Technology: XEmergencySupplies
 
 	SecondaryEnergyCost(800)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
+	ModAttribute(ProgenitorTechProgress, Add, 2)
 
 
 
@@ -55,6 +57,7 @@ Technology: XAntimatterGen
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
 	SecondaryEnergyCost(1300)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 
 
@@ -76,6 +79,7 @@ Technology: XQuantumBattery
 	SkipOnUnlockedModule(QuantumBattery)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 6,#R_LIFESTYLE_REQ:Energy Science:6 )
+	ModAttribute(ProgenitorTechProgress, Add, 5)
 
 
 Technology: XQuantumCompressor
@@ -96,6 +100,7 @@ Technology: XQuantumCompressor
 	SkipOnUnlockedModule(QuantumCompressor)
 
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 7, #R_LIFESTYLE_REQ:Energy Science:7)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XShieldedAntimatter
 	Name: #S_SHIELDED_AMGEN

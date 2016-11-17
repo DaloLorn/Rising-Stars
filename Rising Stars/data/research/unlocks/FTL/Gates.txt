@@ -12,7 +12,7 @@ Technology: GateTech
 	Category: FTL
 	
 	
-	ModAttribute(ProgenitorTechProgress, Add, 5)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	
 	UnlockTag(HasTECH_Gate)
 	SkipOnUnlockedSubsystem(GateModule)

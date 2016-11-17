@@ -11,3 +11,4 @@ Technology: SysIonCannon
 	
 	UnlockSubsystem(IonCannon)
 	SkipOnUnlockedSubsystem(IonCannon)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

@@ -17,3 +17,5 @@ Technology: FleetComputer
 	SkipOnUnlockedSubsystem(FleetComputer)
 
 	SecondaryEnergyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

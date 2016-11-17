@@ -17,3 +17,4 @@ Technology: BroadcastAntenna
 	SkipOnUnlockedSubsystem(BroadcastAntenna)
 
 	SecondaryInfluenceCost(10)
+	ModAttribute(ProgenitorTechProgress, Add, 0.25)

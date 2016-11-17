@@ -14,6 +14,7 @@ Technology: AugmentReload
 	SkipOnUnlockedModule(AugmentReload)
 
 	SecondaryMoneyCost(500)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)
 
 Technology: AugmentDamage
 	Name: #R_MOD_AUGMENT_DAMAGE
@@ -29,6 +30,7 @@ Technology: AugmentDamage
 	
 	UnlockModule(AugmentDamage)
 	SkipOnUnlockedModule(AugmentDamage)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)
 
 Technology: AugmentSupply
 	Name: #R_MOD_AUGMENT_SUPPLY
@@ -44,3 +46,4 @@ Technology: AugmentSupply
 	
 	UnlockModule(AugmentSupply)
 	SkipOnUnlockedModule(AugmentSupply)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

@@ -12,3 +12,4 @@ Technology: StarForge
 	
 	UnlockTag(StarForgeUnlock)
 	SkipOnUnlockedTag(StarForgeUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 10)

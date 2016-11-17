@@ -9,4 +9,5 @@ Technology: AdvancedShielding
 	UnlockTag(ShieldCharger)
 	UnlockTag(StellarShieldOrbital)
 	UnlockSubsystem(CovariantShield)
+	ModAttribute(ProgenitorTechProgress, Add, 5)
 	SecondaryEnergyCost(1500)
