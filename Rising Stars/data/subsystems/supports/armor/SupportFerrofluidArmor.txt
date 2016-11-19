@@ -6,7 +6,7 @@ Subsystem: SupportFerrofluidArmor
 	Elevation: 1
 
 	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, SpecialCost
-	Tags: NoWall, Category:Armor, FauxExterior, ExternalSpace
+	Tags: NoWall, Category:Armor, PassExterior, ExternalSpace
 	Tags: PrimaryArmor
 	Hull: Support, Satellite
 
