@@ -186,7 +186,7 @@ class NewGame : BaseGuiElement {
 		@mapList = GuiListbox(mapPanel,
 			Alignment(Left+4, Top+34, Right-4, Bottom-4));
 		mapList.itemStyle = SS_DropdownListItem;
-		mapList.itemHeight = 100;
+		mapList.itemHeight = 125;
 
 		updateMapList();
 
