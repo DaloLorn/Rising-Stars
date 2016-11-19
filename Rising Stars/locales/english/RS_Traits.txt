@@ -29,7 +29,14 @@ TRAIT_BERSERKERS_DESC: <<|
 	[vspace=3/][img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity. Support ships attached to planets can always raid.[/img]  
 	[dlc=Heralds][vspace=3/][img=TroopPods;22]Troop Pods are available from the beginning of the game.[/img][/dlc]
 >>
-
+TRAIT_PROGENITORS: Progenitor Race
+TRAIT_PROGENITORS_DESC: <<|
+  [vspace=3/][img=ResourceIconsSmall::60][img=ResourceIconsSmall::63]Starts with a Quartz and a Cyllium on their homeworld.
+  [vspace=3/][img=Plantation;22]Homeworld cannot export its food or water.[/img]
+  [vspace=3/][img=BuildingSprites::0;22]All civilian resource generation is reduced by 80%. Production slowly returns to normal over the first 80 minutes of the game.[/img]
+  [vspace=3/][img=techHyperfield;22]Cannot attack or be attacked by Remnant ships, but can use the Override Remnant Programming ability to take control of non-Guardian Remnant fleets.[/img]
+  [vspace=3/][img=ResourceIcon::4;22]Researching enough technologies allows access to Progenitor tech tree, opening up powerful new techs without the need for a level 6 Ancient Hubworld.[/img]
+>>
 TRAIT_VERDANT: Verdant
 TRAIT_VERDANT_DESC: <<|
 	[vspace=3/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
