@@ -1,0 +1,22 @@
+Camp: BlackHoleCamp
+	Frequency: 0
+
+	Ship: Guardian [Remnant Guardian]
+	Ship: 5x Remnant Lecythos
+	Ship: 10x Remnant Vastabat
+	Ship: 20x Remnant Equites
+	Ship: 40x Remnant Direptor
+	Ship: 100x Remnant Raptor
+
+
+	Region Status: BlockedColonization
+	Remnant Status: FastResupply
+	Remnant Status: Overcharged
+	Region Status: InterdictFTL
+	Remnant Status: RemnantGuardian
+	Pickup: BlackHole
+		Physical Size: 1
+		Name: #PICKUP_GUARDIAN
+		Description: #PICKUP_GUARDIAN_DESC
+		SendMessage(#EVT_GUARDIANSHIPYARD_FOUND_DESC, Title = #EVT_GUARDIANSHIPYARD_FOUND)
+		SpawnArtifact(GuardianShipyard, true)
