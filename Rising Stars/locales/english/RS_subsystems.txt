@@ -217,7 +217,7 @@ S_DUMBFIREROCKETS_DESC: <<
 	[img=Minus][b]Very[/b] short range. Long reload time.[/img]
 	[img=Minus]High [b][color=#fefc61]supply cost[/color][/b].[/img]
 
-	[img=MenuIcons::3;20]Recommended for use with the 'Bomber' support behavior and a moderate amount of Ammo Storage.[/img]
+	[img=MenuIcons::3;20]Recommended for use with the 'Brawler' support behavior and a moderate amount of Ammo Storage.[/img]
 >>
 
 S_ROCKETPOD_DESC: <<
@@ -387,7 +387,7 @@ S_BOMBBAY_DESC: <<
 	[img=Minus]Extremely slow fire rate.[/img]
 	[img=Minus]Low [b][color=#ff8080]DPS[/color][/b].[/img]
 
-	[img=MenuIcons::3;20]Recommended for use with the 'Bomber' support behavior and a moderate amount of Ammo Storage.[/img]
+	[img=MenuIcons::3;20]Recommended for use with the 'Brawler' support behavior and a moderate amount of Ammo Storage.[/img]
 >>
 
 SUPPORTSUPPLY_DESC: <<

@@ -17,11 +17,11 @@ Subsystem: BombBay
 	Radius := 30 + (log(Size) / log(2) * 10)
 	Speed := max(40, range / 40)
 	Tracking := 0.8
-	SupplyCost := Size * 6.0
+	SupplyCost := Size * 3.0
 	Spread := 1
 	PodSize := 5
 
-	out DPS := (Damage * PodSize) / (Reload * 2)
+	out DPS := (Damage * PodSize) / (Reload + (FireDelay * PodSize))
 	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
 
 	Hex.HP := 18 * HexSize
@@ -31,7 +31,7 @@ Subsystem: BombBay
 	Hex.BuildCost := 0.75 * HexSize
 	Hex.LaborCost := 0.07 * HexSize
 
-	FireDelay := Reload / (PodSize * 2)
+	FireDelay := Reload / (PodSize * 15)
 	FireArc := 0.5
 	Requires:
 		Command = 1

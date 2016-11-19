@@ -12,6 +12,7 @@ Effector: PiercingDrones
 	Value: DRResponse = 0
 	Value: DamageType = 3
 	Value: Spillable = 0
+	Value: Spread
 
 	Range: Range
 	Speed: Speed
@@ -34,8 +35,7 @@ Effector: PiercingDrones
 		PhysicalSize: 0.75
 		GfxType: Sprite
 		GfxSize: 0.75
-		FireSfx: DOF_drone_fire1
-		FireSfx: DOF_drone_fire2
+		FireSfx: RS_drone_fire2
 		ImpactSfx: missile_impact
 		ImpactSfx: missile_impact_2
 		ImpactSfx: missile_impact_3
@@ -43,8 +43,9 @@ Effector: PiercingDrones
 		Trail: MissileTrail
 		TrailCol: 00000000, 00000000
 		Material: AncientDrone
-		FirePitchVariance: 0.2
+		FirePitchVariance: 0.25
 		ImpactGfx: ImpactFlareRocket
+		Spread: Spread
 
 	Effect: GenericDamage
 		Amount = Damage

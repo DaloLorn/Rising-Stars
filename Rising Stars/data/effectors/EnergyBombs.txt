@@ -31,8 +31,9 @@ Effector: EnergyBombs
 
 	PhysicalType: Projectile
 	GfxType: Sprite
-	GfxSize: 8.5
-	FireSfx: torpedo_launch
+	GfxSize: 4
+	FireSfx: DOF_drone_fire1
+	FireSfx: DOF_drone_fire2
 	ImpactSfx: torpedo_impact
 	Trail: MissileTrail
 	TrailCol: 00000000, 00000000

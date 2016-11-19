@@ -23,9 +23,6 @@ Subsystem: ShieldHarmonizer
 	Hex.BuildCost := 1.25 * HexSize
 	Hex.LaborCost := 0.10 * HexSize
 	
-	Assert:TagCount.IsShield == 0
-		Message: Shields and S.Harmonizer cannot be used at the same time.
-	
 	Requires:
 		Command = 1
 
