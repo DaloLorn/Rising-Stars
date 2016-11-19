@@ -1,18 +1,20 @@
 	Name: Rising Stars
 	Description: <<
-		[i]The year is 714 AP. Amidst continuing conflict, alliances begin to form between the many rising empires inhabiting the galaxy. There are whispers of an ancient alien race, coming from a far away galaxy to conquer and eliminate all who would oppose them. But these whispers remain just that; whispers - and these whispers are being drowned out by war. A new, young race of warriors, hailing from the planet Rata'htat, has made its presence known to the galaxy as they launch their offensive, seeking the glory of war... and of victory...[/i]
+		[i]Lore TBA[/i]
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function (more or less), some content may be missing or malfunctioning.[/b]
 
-		[b][h1]Current version: 1.0.2 (The Glory of War)[/h1][/b]
+		[b][h1]Current version: 1.1.0 (Return of the Ulthaar)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
-		[*]Three new lifestyles with various pros and cons[list]
+		[*]Four new lifestyles with various pros and cons[list]
 		[*]Berserkers, exemplified by the warlike Rahta race[list]
 		[*][i]Be the finest warriors in the galaxy, but be wary of galactic peace, for your internal strife will cripple you[/i][/list]
 		[*]Pacifists, such as the telepathic Fasshi[list]
 		[*][i]Peace is a means and a purpose to your people, but war disturbs them greatly[/i][/list]
 		[*]Researchers, exemplified by the determined Alipha[list]
 		[*][i]Stop the impending Overlord invasion through the power of superior technology[/i][/list]
+		[*]Progenitors, represented by the ancient, recently reawakened Ulthaar[list]
+		[*][i]Rebuild your broken civilization and awaken the Remnants to reclaim your heritage[/i][/list]
 		[/list]
 		[*]An alternative tech grid available to the Technocracy government, taking the infinite progression techs from Wake of the Heralds to their logical extreme
 		[*]More than a dozen new subsystems, including Ferrofluid Armor, Miner Hulls, Covariant Shield Generators, and Singularity Cores
@@ -20,6 +22,11 @@
 		[*]Several new orbitals - Stellar Shield Generators, Power Transmitters, Subspace Telescope Arrays, and others
 		[*]Several new buildings, including Command Centers and Centralized Coordination Complexes
 		[*]Increased control over the way the game plays, with settings such as First Contact Mode, Research Effectiveness Decay, and more being changeable during game configuration
+		[*]New gameplay mechanics:[list]
+			[*]Derelicts - [i]flagships not using Sinew now have a chance of being disabled rather than destroyed when they lose all their Control, depending on how badly damaged they are[/i]
+			[*]Stellar phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
+			[/list]
+		[*]New maps
 		[/list]
 
 		Full patch notes can be found in the forums.

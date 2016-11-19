@@ -142,6 +142,21 @@ Preset: First
 	Trait: Ancient
 	Trait: Workshop
 
+Preset: Progenitors
+	Name: #RACE_PROGENITORS
+	Tagline: #RACE_PROGENITORS_TAGLINE
+	Lore: #RACE_PROGENITORS_LORE
+	Portrait: emp_portrait_cloak
+	Shipset: Progenitor
+	Hard: True
+	
+	Trait: Communism
+	Trait: Gate
+	Trait: Progenitors
+	Trait: Poor
+	Trait: Innovative
+	Trait: Workshop
+
 Preset: Alipha
 	Name: #RACE_TECHNICISTS
 	Tagline: #RACE_TECHNICISTS_TAGLINE

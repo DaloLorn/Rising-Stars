@@ -67,14 +67,21 @@ R_SYS_PROGENITOR_ARMOR_DESC: <<
 	
 	[i][bbloc=#S_PROGENITOR_ARMOR_DESC/][/i]
 >>
-R_SYS_REMNANT_ARMOR: Progenitor Armoring
+R_SYS_PROGENITOR_ARMOR: Progenitor Armoring
 R_PROGENITOR_SCIENCE: Progenitor Knowledge
 R_SYS_REMNANTSHIELD: Progenitor Shield Technology
 R_PROGENITOR_SCIENCE_DESC: <<
 	[i][color=#aaa]Recent discoveries pertaining to the Progenitors allow us to further our horizons beyond anything we could ever have dreamed of.[/color][/i]
 >>
-R_SYS_DRONEWEAPON: Piercing Drones
-R_SYS_DRONEWEAPON_DESC: <<
+R_SYS_REMNANTSHIELD_DESC: <<
+	[i][color=#aaa]Investigation of Progenitor shield matrices yields tremendous insights into shielding technology.[/color][/i]
+	
+	Unlocks the Progenitor Shield Generator for use on flagships.
+	
+	[i][bbloc=#S_REMNANTSHIELD_DESC/][/i]
+>>
+R_SYS_PIERCING_DRONES: Piercing Drones
+R_SYS_PIERCING_DRONES_DESC: <<
 	[color=#aaa][i]Research into Progenitor weapons technology unravels the mysteries of the Guardians' devastating arsenals.[/i][/color]
 
 	Unlocks the Piercing Drone Launcher for use on flagships.
