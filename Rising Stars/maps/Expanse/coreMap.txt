@@ -30,6 +30,8 @@ System: Orathi
 		AddPlanetResource(Water)
 		AddPlanetResource(Fruit)
 
+	MakeCreepCamp(BlackHole)
+
 	ExpandSystem(1000)
 
 	MakeAsteroid()
