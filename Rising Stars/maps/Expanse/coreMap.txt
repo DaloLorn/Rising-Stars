@@ -30,7 +30,7 @@ System: Orathi
 		AddPlanetResource(Water)
 		AddPlanetResource(Fruit)
 
-	MakeCreepCamp(BlackHole)
+	MakeCreepCamp(BlackHoleCamp)
 
 	ExpandSystem(1000)
 
