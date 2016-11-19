@@ -15,7 +15,7 @@ Subsystem: BombBay
 	Damage := Size * 30
 	Reload := 60 * min(1.0 + Size/512, 5/3)
 	Radius := 30 + (log(Size) / log(2) * 10)
-	Speed := max(40, range / 40)
+	Speed := max(40, Range / 40)
 	Tracking := 0.8
 	SupplyCost := Size * 3.0
 	Spread := 1

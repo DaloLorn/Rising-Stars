@@ -2,4 +2,4 @@ Status: IsGuardian
 	Visible To: Nobody
 Status: RemnantGuardian
 	Visible To: Nobody
-	OnDisable(SpawnAnomaly(Type = BlackHole))
+	OnDisable(SpawnAnomaly(Type = DerelictGuardian))

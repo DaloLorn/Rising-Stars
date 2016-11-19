@@ -6,9 +6,9 @@ Trait: Progenitors
 	Category: Lifestyle
 	Unique: Lifestyle
 
-	Icon: emp_portrait_mono * #aaffaa
+	Icon: ProgenitorComputer
 	Color: #884faa
-	Available: False
+	AI Support: False
 
 	AddStatusOwnedPlanets(Progenitors)
 	AddStatusOwnedFleets(ProgenitorFleet)
