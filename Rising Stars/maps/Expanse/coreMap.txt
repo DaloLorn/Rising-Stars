@@ -14,6 +14,7 @@ System: Orathi
 		AddPlanetResource(Grain)
 		AddPlanetResource(Oil)
 		AddPlanetResource(AncientCity)
+		AddPlanetResource(AncientHubworld)
 
 		SpawnBuilding(Factory, (4, 3))
 		SpawnBuilding(Factory, (9, 6))

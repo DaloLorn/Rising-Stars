@@ -22,3 +22,6 @@ SystemList: SpatialAnomaly
 
 	System: Type1Nebula
 	Frequency: 4
+
+	System: BlackHole
+	Frequency: 0.5

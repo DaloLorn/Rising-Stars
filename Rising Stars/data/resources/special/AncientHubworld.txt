@@ -1,6 +1,6 @@
 Resource: AncientHubworld
 	Name: #RESOURCE_HUBWORLD
-	Small Icon: emp_flag_flag7
+	Icon: emp_flag_flag07
 	Class: Scalable
 	Native Biome: Forest
 	Exportable: False
@@ -8,7 +8,7 @@ Resource: AncientHubworld
 	Rarity: Unique
 	Unique: True
 	Frequency: 0
-	Icon: emp_flag_flag7
+	Icon: emp_flag_flag07
 	Blurb: #RESOURCE_HUBWORLD_BLURB
 	Description: #RESOURCE_HUBWORLD_DESC
 	Distribution: 0
