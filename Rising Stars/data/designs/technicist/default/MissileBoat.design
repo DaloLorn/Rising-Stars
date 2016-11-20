@@ -2,7 +2,7 @@
 	"__VERSION__": 1,
 	"name": "MissileBoat",
 	"size": 2,
-	"hull": "$1Small",
+	"hull": "$1Tiny",
 	"type": "Support",
 	"gridWidth": 19,
 	"gridHeight": 16,

@@ -1,6 +1,6 @@
 {
 	"__VERSION__": 1,
-	"name": "Rift Generator ",
+	"name": "Rift Generator",
 	"size": 128,
 	"hull": "$1Station",
 	"type": "Station",
