@@ -51,3 +51,4 @@ STATUS_DAMAGED: Damaged
 STATUS_DAMAGED_DESC: <<
 	This vessel was accidentally damaged in a scientific experiment and will operate at significantly reduced effectiveness until it is repaired.
 >>
+STATUS_PROGENITOR_COMPUTER_BOOST_DESC: Heavy computation done by the Progenitor-designed control computer aboard the flagship is significantly increasing this fleet's efficiency and combat strength for the first 60 seconds of any combat.

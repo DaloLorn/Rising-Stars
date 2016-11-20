@@ -6,6 +6,7 @@ import status_effects;
 import ability_effects;
 #section server
 import ABEMCombat;
+from map_effects import makeCreepCamp;
 #section all
 import systems;
 import influence;
@@ -1524,3 +1525,115 @@ class ResourcelessRegenSurface : GenericEffect, TriggerableGeneric {
 	}
 #section all
 }
+
+tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
+	BonusEffect@ hook;
+
+	Document doc("Trigger a bonus effect whenever an empire attribute increases by a certain threshold. This variant of the hook will not ignore the first instance when an attribute has been increased, causing issues as reported in http://steamcommunity.com/app/282590/discussions/0/217691032439349400/#c208684375424164302 - however, it is theoretically possible that other bugs may occur. Use with caution.");
+	Argument attribute(AT_EmpAttribute, doc="Attribute to check.");
+	Argument hookID("Hook", AT_Hook, "bonus_effects::BonusEffect");
+	Argument threshold(AT_Decimal, "1.0", doc="Trigger the effect every time the empire attribute has increased by this amount.");
+
+	bool instantiate() override {
+		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
+		if(hook is null) {
+			error("PreciseTriggerOnAttributeIncrease(): could not find inner hook: "+escape(hookID.str));
+			return false;
+		}
+		return EmpireEffect::instantiate();
+	}
+
+#section server
+	void enable(Empire& emp, any@ data) const override {
+		double amount = emp.getAttribute(attribute.integer);
+		data.store(amount);
+	}
+
+	void tick(Object& obj, any@ data, double tick) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+
+		double newAmount = 0;
+		if(obj.owner !is null)
+			newAmount = obj.owner.getAttribute(attribute.integer);
+
+		while(newAmount >= curAmount + threshold.decimal) {
+			if(hook !is null)
+				hook.activate(obj, obj.owner);
+			curAmount += threshold.decimal;
+		}
+
+		data.store(curAmount);
+	}
+
+	void tick(Empire& emp, any@ data, double tick) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+
+		double newAmount = emp.getAttribute(attribute.integer);
+
+		while(newAmount >= curAmount + threshold.decimal) {
+			if(hook !is null)
+				hook.activate(null, emp);
+			curAmount += threshold.decimal;
+		}
+
+		data.store(curAmount);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		double amount = 0;
+		if(newOwner !is null)
+			amount = newOwner.getAttribute(attribute.integer);
+		data.store(amount);
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+		file << curAmount;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		double curAmount = 0;
+		file >> curAmount;
+		data.store(curAmount);
+	}
+#section all
+};
+
+class ForceMakeCreepCamp : MapHook {
+	Document doc("Creates a creep camp in the system, even if Remnant occurrence is set to zero.");
+	Argument campID("Type", AT_Custom, "distributed", doc="Type of camp to create.");
+	Argument offset(AT_Decimal, "0", doc="Minimum offset from the edge of the system to the camp.");
+	const CampType@ campType;
+
+	MakeCreepCamp() {
+		argument("Type", AT_Custom, "distributed");
+	}
+
+	bool instantiate() {
+		if(!arguments[0].str.equals_nocase("distributed")) {
+			@campType = getCreepCamp(arguments[0].str);
+			if(campType is null) {
+				error(" Error: Could not find creep camp type: '"+escape(arguments[0].str)+"'");
+				return false;
+			}
+		}
+		return MapHook::instantiate();
+	}
+
+#section server
+	void postTrigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
+
+		const CampType@ type = campType;
+		if(type is null)
+			@type = getDistributedCreepCamp();
+
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
+		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
+
+		makeCreepCamp(pos, type, system.object);
+	}
+#section all
+};
