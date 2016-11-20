@@ -1601,39 +1601,3 @@ tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
 	}
 #section all
 };
-
-class ForceMakeCreepCamp : MapHook {
-	Document doc("Creates a creep camp in the system, even if Remnant occurrence is set to zero.");
-	Argument campID("Type", AT_Custom, "distributed", doc="Type of camp to create.");
-	Argument offset(AT_Decimal, "0", doc="Minimum offset from the edge of the system to the camp.");
-	const CampType@ campType;
-
-	MakeCreepCamp() {
-		argument("Type", AT_Custom, "distributed");
-	}
-
-	bool instantiate() {
-		if(!arguments[0].str.equals_nocase("distributed")) {
-			@campType = getCreepCamp(arguments[0].str);
-			if(campType is null) {
-				error(" Error: Could not find creep camp type: '"+escape(arguments[0].str)+"'");
-				return false;
-			}
-		}
-		return MapHook::instantiate();
-	}
-
-#section server
-	void postTrigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-
-		const CampType@ type = campType;
-		if(type is null)
-			@type = getDistributedCreepCamp();
-
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
-		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
-
-		makeCreepCamp(pos, type, system.object);
-	}
-#section all
-};
