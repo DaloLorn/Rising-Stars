@@ -237,7 +237,7 @@ void getDesignMesh(Empire@ owner, const Design& design, MeshDesc& mesh) {
 			else if(design.hasSubsystem(subsystem::MiningLaser))
 				@skin = ss.getSkin("Miner");
 		}
-		if(design.hasTag(ST_Gate) && design.hasTag(ST_Station))
+		if(design.hasTag(ST_Gate) && design.hasTag(ST_Station) && !design.hasTag(ST_GateHull))
 			@skin = ss.getSkin("Gate");
 	}
 

@@ -331,7 +331,13 @@ class DesignSet {
 			string hullName = format(desc.hullName, emp.shipset.ident);
 			@desc.hull = getHullDefinition(hullName);
 			if(desc.hull is null) {
-				hullName = format("$1FlagTiny", emp.shipset.ident);
+				switch(desc.type) {
+					case "Flagship": hullName = format("$1FlagTiny", emp.shipset.ident); break;
+					case "Support": hullName = format("$1Tiny", emp.shipset.ident); break;
+					case "Station": hullName = format("$1Station", emp.shipset.ident); break;
+					case "Satellite": hullName = format("$1Satellite", emp.shipset.ident); break;
+					default: hullName = format("$1FlagTiny", emp.shipset.ident); break;
+				}
 				@desc.hull = getHullDefinition(hullName);
 
 				if(desc.hull is null) {
@@ -340,7 +346,13 @@ class DesignSet {
 						@desc.hull = getHullDefinition(hullName);
 						if(desc.hull is null) {
 							if(desc.hull is null)
-								@desc.hull = getHullDefinition("VolkurFlagTiny");
+								switch(desc.type) {
+									case "Flagship": @desc.hull = getHullDefinition("VolkurFlagTiny"); break;
+									case "Support": @desc.hull = getHullDefinition("VolkurTiny"); break;
+									case "Station": @desc.hull = getHullDefinition("GevronStation"); break;
+									case "Satellite": @desc.hull = getHullDefinition("GevronSatellite"); break;
+									default: @desc.hull = getHullDefinition("VolkurFlagTiny"); break;
+								}
 						}
 					}
 					if(desc.hull is null)
