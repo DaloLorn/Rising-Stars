@@ -1,3 +1,5 @@
+/*
+
 import menus;
 import saving;
 import dialogs.MessageDialog;
@@ -8,12 +10,19 @@ import settings.game_settings;
 from irc_window import LinkableMarkupText;
 import icons;
 
-class ModAction : MenuAction {
-	Mod@ mod;
+class Scenario {
+	bool forCurrentVersion = false; // Is this a valid scenario in this version of the game?
+	bool enabled = false; // Is this scenario accessible at this time?
+	
+	
+}
+
+class ScenarioAction : MenuAction {
+	Scenario@ mod;
 	DynamicTexture@ tex;
 	bool prevEnabled;
 
-	ModAction(Mod@ mod, DynamicTexture@ tex) {
+	ScenarioAction(Scenario@ mod, DynamicTexture@ tex) {
 		super(Sprite(tex.material), mod.name, 0);
 		@this.mod = mod;
 		@this.tex = tex;
@@ -51,7 +60,7 @@ class ModAction : MenuAction {
 		}
 	}
 
-	int opCmp(const ModAction@ other) const {
+	int opCmp(const ScenarioAction@ other) const {
 		if(mod.isNew && !other.mod.isNew)
 			return -1;
 		if(other.mod.isNew && !mod.isNew)
@@ -65,15 +74,15 @@ class ModAction : MenuAction {
 };
 
 bool inOpenPage = false;
-class ModsMenu : MenuBox, IInputDialogCallback {
-	ModBox box;
+class ScenarioMenu : MenuBox, IInputDialogCallback {
+	ScenarioBox box;
 	int prevSelected = -1;
-	array<ModAction@> actions;
+	array<ScenarioAction@> actions;
 
 	GuiButton@ newButton;
 	GuiButton@ editButton;
 
-	ModsMenu() {
+	ScenarioMenu() {
 		super();
 		items.alignment.bottom.pixels = 40;
 		@newButton = GuiButton(this, Alignment(Left+0.5f-202, Bottom-35, Width=200, Height=30), locale::NEW_MOD);
@@ -107,7 +116,7 @@ class ModsMenu : MenuBox, IInputDialogCallback {
 			if(fileExists(path_join(mod.abspath, "logo.png")))
 				tex.load(path_join(mod.abspath, "logo.png"));
 
-			ModAction action(mod, tex);
+			ScenarioAction action(mod, tex);
 			actions.insertLast(action);
 		}
 		actions.sortAsc();
@@ -183,7 +192,7 @@ class ModsMenu : MenuBox, IInputDialogCallback {
 			else if(event.caller is editButton) {
 				if(items.selected < 1 || uint(items.selected-1) >= actions.length)
 					return true;
-				Mod@ mod = actions[items.selected-1].mod;
+				Scenario@ mod = actions[items.selected-1].mod;
 				editMod(mod.name);
 				return true;
 			}
@@ -237,14 +246,14 @@ class ModsMenu : MenuBox, IInputDialogCallback {
 	}
 };
 
-class ModBox : DescBox {
-	Mod@ mod;
+class ScenarioBox : DescBox {
+	Scenario@ mod;
 	GuiPanel@ descPanel;
 	GuiSprite@ picture;
 	GuiMarkupText@ description;
 	GuiButton@ toggleButton;
 
-	ModBox() {
+	ScenarioBox() {
 		super();
 
 		@picture = GuiSprite(this, Alignment(Left, Top+44, Right, Top+244));
@@ -261,7 +270,7 @@ class ModBox : DescBox {
 		updateAbsolutePosition();
 	}
 
-	void update(Mod@ mod, const Material@ mat = null) {
+	void update(Scenario@ mod, const Material@ mat = null) {
 		@this.mod = mod;
 		title.text = mod.name;
 		if(mat !is null)
@@ -336,10 +345,10 @@ class ModBox : DescBox {
 };
 
 class ModEnable : QuestionDialogCallback {
-	ModBox@ menu;
-	Mod@ mod;
+	ScenarioBox@ menu;
+	Scenario@ mod;
 
-	ModEnable(ModBox@ menu, Mod@ mod) {
+	ModEnable(ScenarioBox@ menu, Scenario@ mod) {
 		@this.menu = menu;
 		@this.mod = mod;
 	}
@@ -355,16 +364,7 @@ class ModEnable : QuestionDialogCallback {
 };
 
 void init() {
-	@mods_menu = ModsMenu();
+	@scenario_menu = ScenarioMenu();
 }
 
-void postInit() {
-	for(uint i = 0, cnt = modCount; i < cnt; ++i) {
-		if(getMod(i).isNew) {
-			inOpenPage = true;
-			switchToMenu(mods_menu, snap=true);
-			showDescBox(cast<ModsMenu>(mods_menu).box);
-			mods_menu.updateAbsolutePosition();
-		}
-	}
-}
+*/
