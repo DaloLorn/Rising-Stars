@@ -1,0 +1,29 @@
+Material: RSIconSet
+	Alpha: True
+	Lighting: False
+	DepthWrite: Off
+	DepthTest: NoDepthTest
+
+Material: DiffVeryEasy
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_0.png
+
+Material: DiffEasy
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_1.png
+
+Material: DiffNormal
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_2.png
+
+Material: DiffHard
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_3.png
+
+Material: DiffVeryHard
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_4.png
+
+Material: DiffNightmare
+	Inherit: RSIconSet
+	Texture: data/images/planet_level_5.png

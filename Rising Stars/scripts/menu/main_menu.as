@@ -55,7 +55,7 @@ class MainMenu : MenuBox {
 			items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 8), locale::END_GAME, MA_EndGame));
 		
 		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 3), locale::TUTORIAL, MA_Tutorial));
-		//items.addItem(MenuAction(Sprite(material::TabPlanets), locale::CAMPAIGN, MA_Campaign));
+		items.addItem(MenuAction(Sprite(material::TabPlanets), locale::CAMPAIGN, MA_Campaign));
 		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 0), locale::NEW_GAME, MA_NewGame));
 		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 1), locale::LOAD_GAME, MA_LoadGame));
 		
