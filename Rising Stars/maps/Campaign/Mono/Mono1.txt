@@ -1,0 +1,21 @@
+System: Arith
+	Position: (0, 0, 0)
+
+	MakeStar(Temperature = 6700, Radius = 70)
+		BonusHealth(20000000000)
+
+	MakePlanet(Unobtanium, Radius = 10, Grid Size = (18, 11), Conditions = False, Moons = False)
+		Rename(Node-00)
+		BonusHealth(5000000000)
+		AddResource(Labor, +1)
+		OnPlanet(AddIncome(130))
+		OnPlanet(AddPressureCap(2))
+		NoNeedPopulationForLevel()
+		ForceUsefulSurface(0.8, Forest)
+
+	MakePlanet(Iron, Conditions = False, Moons = False)
+		MakeMoon()
+	ExpandSystem(20)
+
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 6000)
+	MakeAsteroid(Resource = AsteroidFTL)
