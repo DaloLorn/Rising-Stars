@@ -417,6 +417,10 @@ final class AI : AIController, Savable {
 			@ftl = add(createSlipstream());
 		else if(empire.hasTrait(getTraitID("Jumpdrive")))
 			@ftl = add(createJumpdrive());
+		/* Not implemented yet.
+		else if(empire.hasTrait(getTraitID("Flux")))
+			@ftl = add(createFlux());
+		*/
 
 		//Make racial component
 		if(empire.hasTrait(getTraitID("Verdant")))
@@ -433,6 +437,16 @@ final class AI : AIController, Savable {
 			@race = add(createDevout());
 		else if(empire.hasTrait(getTraitID("Ancient")))
 			@race = add(createAncient());
+		/* Not implemented yet.
+		else if(empire.hasTrait(getTraitID("Technicists")))
+			@race = add(createResearchers());
+		else if(empire.hasTrait(getTraitID("Progenitors")))
+			@race = add(createProgenitors());
+		else if(empire.hasTrait(getTraitID("Berserkers")))
+			@race = add(createBerserkers());
+		else if(empire.hasTrait(getTraitID("Pacifists")))
+			@race = add(createPacifists());
+		*/
 
 		//Misc components
 		if(hasInvasionMap() || addedComponents & AC_Invasion != 0) {
