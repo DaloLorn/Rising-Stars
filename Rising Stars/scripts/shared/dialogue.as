@@ -8,6 +8,13 @@ class Dialogue : Serializable {
 	string proceedText;
 	Sprite icon;
 	array<Objective@> objectives;
+	
+	bool inheritTitle = true; // UI automatically assigns title of previous prompt. I NEED THIS SO MUCH.
+	bool inheritLeftSpeaker = true; // UI automatically assigns left speaker of previous prompt. (Usually the 'player' character, like Unit-00 in the Mono prologue.)
+	bool inheritRightSpeaker = true; // UI automatically assigns right speaker of previous prompt.
+	
+	Sprite portraitLeft, portraitRight;
+	string nameLeft, nameRight;
 
 	//pass is called at the start of the page, even if skipping/loading through it
 	DialogueAction@ pass;
@@ -29,11 +36,19 @@ class Dialogue : Serializable {
 		_add();
 	}
 
-	Dialogue(const string& ident) {
-		this.title = localize("#"+ident+"_TITLE");
+	Dialogue(const string& ident, bool inheritTitle = true) {
+		this.inheritTitle = inheritTitle;
+		if(!inheritTitle)
+			this.title = localize("#"+ident+"_TITLE");
 		this.text = localize("#"+ident+"_TEXT");
 		addObjectives(ident);
 		_add();
+	}
+	
+	Dialogue& setSpeakerInheritances(bool left, bool right) {
+		inheritLeftSpeaker = left;
+		inheritRightSpeaker = right;
+		return this;
 	}
 
 	Dialogue& proceedWith(const string& text) {
@@ -43,6 +58,18 @@ class Dialogue : Serializable {
 
 	Dialogue& onPass(DialogueAction@ act) {
 		@pass = act;
+		return this;
+	}
+	
+	Dialogue& setSpeaker(const Sprite& icon = null, const string& text = "", bool left = false) {
+		if(left) {
+			portraitLeft = icon;
+			nameLeft = text;
+		}
+		else {
+			portraitRight = icon;
+			nameRight = text;
+		}
 		return this;
 	}
 

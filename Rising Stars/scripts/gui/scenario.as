@@ -113,6 +113,20 @@ class ScenarioWindow : GuiDraggable {
 		}
 		GuiDraggable::updateAbsolutePosition();
 	}
+	
+	void processDialogueInheritance() {
+		if(newDialogue.inheritTitle) {
+			newDialogue.title = dialogue.title;
+		}
+		if(newDialogue.inheritLeftSpeaker) {
+			newDialogue.portraitLeft = dialogue.portraitLeft;
+			newDialogue.nameLeft = dialogue.nameLeft;
+		}
+		if(newDialogue.inheritRightSpeaker) {
+			newDialogue.portraitRight = dialogue.portraitRight;
+			newDialogue.nameRight = dialogue.nameRight;
+		}
+	}
 
 	void update() {
 		if(!hasDialogue()) {
@@ -129,6 +143,7 @@ class ScenarioWindow : GuiDraggable {
 		}
 		if(newObjective.id != objective.id) {
 			if(flashTimer >= FLASH_TIME || objective.id == -1 || !objBG.visible) {
+				processDialogueInheritance();
 				objective = newObjective;
 				dialogue = newDialogue;
 				flashTimer = -1.0;
@@ -143,6 +158,7 @@ class ScenarioWindow : GuiDraggable {
 				toggleExpand();
 		}
 		else {
+			processDialogueInheritance();
 			objective = newObjective;
 			dialogue = newDialogue;
 		}
