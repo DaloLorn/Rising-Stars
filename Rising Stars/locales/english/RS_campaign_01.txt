@@ -26,7 +26,7 @@ CAMPAIGN_MONO_01_DESC: <<
 	[i][color=#888]Difficulty: Very Easy[/color][/i]
 >>
 
-CHARNAME_MONO: [img=emp_portrait_mono;50][i][b]$1[/b][/i][/img]
+CHARNAME_MONO: [img=emp_portrait_mono;100][i][b]$1[/b][/i][/img]
 MONO1_INTRO_TITLE: Introduction
 MONO1_INTRO_TEXT: <<
 	It has been forty-two years since Unit-00 crashed on Arith Prime.
@@ -47,7 +47,7 @@ MONO1_INTRO2_TEXT: <<
 >>
 MONO1_INTRO3_TITLE: Introduction
 MONO1_INTRO3_TEXT: <<
-	[right][bbloc=#CHARNAME_MONO:Unit-3682/][/right]
+	[right]Unit-3682 [img=emp_portrait_mono;100/][/right]
 
 	Testing.
 >>

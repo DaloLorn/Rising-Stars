@@ -57,6 +57,7 @@ class Mono1 : Map {
 		config::ENABLE_DREAD_PIRATE = 0.0;
 		config::ENABLE_INFLUENCE_EVENTS = 0.0;
 		config::START_EXPLORED_MAP = 1.0;
+		config::IS_SCENARIO = 1.0;
 	}
 	
 	const SystemDesc@ arith;
@@ -83,10 +84,12 @@ class Mono1 : Map {
 	}
 	
 	void initDialogue() {
-		Dialogue("MONO1_INTRO")
+		Dialogue("MONO1_INTRO", false)
 			.onPass(GUIAction("Mono1.Mono1::HideGUI"));
-		Dialogue("MONO1_INTRO2");
-		Dialogue("MONO1_INTRO3");
+		Dialogue("MONO1_INTRO2")
+			.setSpeaker(Sprite(material::emp_portrait_mono), "Unit-00", true);
+		Dialogue("MONO1_INTRO3")
+			.setSpeaker(Sprite(material::emp_portrait_mono), "Unit-3682");
 		//Dialogue("")
 	}
 	

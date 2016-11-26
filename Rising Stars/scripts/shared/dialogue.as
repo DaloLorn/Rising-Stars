@@ -15,6 +15,8 @@ class Dialogue : Serializable {
 	
 	Sprite portraitLeft, portraitRight;
 	string nameLeft, nameRight;
+	
+	bool currentSpeakerIsLeft;
 
 	//pass is called at the start of the page, even if skipping/loading through it
 	DialogueAction@ pass;
@@ -36,8 +38,9 @@ class Dialogue : Serializable {
 		_add();
 	}
 
-	Dialogue(const string& ident, bool inheritTitle = true) {
+	Dialogue(const string& ident, bool currentSpeakerIsLeft = true, bool inheritTitle = true) {
 		this.inheritTitle = inheritTitle;
+		this.currentSpeakerIsLeft = currentSpeakerIsLeft;
 		if(!inheritTitle)
 			this.title = localize("#"+ident+"_TITLE");
 		this.text = localize("#"+ident+"_TEXT");

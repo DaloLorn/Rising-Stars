@@ -23,6 +23,9 @@ class ScenarioWindow : GuiDraggable {
 	Dialogue dialogue;
 	Dialogue newDialogue;
 	GuiMarkupText@ dialogueBox;
+	
+	GuiBackgroundPanel@ leftSpeakerBox;
+	GuiBackgroundPanel@ rightSpeakerBox;
 
 	Objective objective;
 	Objective newObjective;
@@ -34,21 +37,27 @@ class ScenarioWindow : GuiDraggable {
 	double flashTimer = -1.0;
 
 	ScenarioWindow() {
-		super(null, recti(0,0,550,280));
-		@bg = GuiBackgroundPanel(this, Alignment_Fill());
+		super(null, recti(0,0,850,280));
+		@bg = GuiBackgroundPanel(this, Alignment(Left+150, Top, Right-150, Bottom));
 		bg.titleColor = Color(0xb3fe00ff);
 		bg.titleStyle = SS_FullTitle;
+		
+		@leftSpeakerBox = GuiBackgroundPanel(this, Alignment(Left, Top, Left+150, Top-150));
+		leftSpeakerBox.pictureColor = Color(0xffffffff);
+		
+		@rightSpeakerBox = GuiBackgroundPanel(this, Alignment(Right-150, Top, Right, Top-150));
+		rightSpeakerBox.pictureColor = Color(0xffffffff);
 
-		@dialogueBox = GuiMarkupText(this, recti());
+		@dialogueBox = GuiMarkupText(bg, recti());
 
-		@minButton = GuiButton(this, Alignment(Right-30, Top+2, Right-4, Top+28));
+		@minButton = GuiButton(bg, Alignment(Right-30, Top+2, Right-4, Top+28));
 		minButton.color = Color(0xff8080ff);
 		minButton.setIcon(Sprite(material::Minus));
 
-		@objBG = GuiSkinElement(this, Alignment(Left+8, Top+188, Right-8, Bottom-8), SS_PlainBox);
+		@objBG = GuiSkinElement(bg, Alignment(Left+8, Top+188, Right-8, Bottom-8), SS_PlainBox);
 		@objBox = GuiMarkupText(objBG, Alignment(Left+4, Top+4, Right-4, Bottom-4));
 
-		@nextButton = GuiButton(this, Alignment(Right-92, Bottom-36, Right-2, Bottom-2), locale::NEXT);
+		@nextButton = GuiButton(bg, Alignment(Right-92, Bottom-36, Right-2, Bottom-2), locale::NEXT);
 
 		updateAbsolutePosition();
 	}
@@ -75,10 +84,10 @@ class ScenarioWindow : GuiDraggable {
 			minButton.setIcon(Sprite(material::Minus));
 
 			recti pos;
-			if(rect == prevSmallPos && prevBigPos.width != 0)
+			if(rect == prevSmallPos && prevBigPos.width > 150)
 				pos = prevBigPos;
 			else
-				pos = recti_area(vec2i(rect.topLeft.x, max(rect.botRight.y-280, 0)), vec2i(550, 280));
+				pos = recti_area(vec2i(rect.topLeft.x+150, max(rect.botRight.y-280, 0)), vec2i(700, 280));
 
 			animate_time(this, pos, 0.2);
 			prevBigPos = pos;
@@ -89,16 +98,18 @@ class ScenarioWindow : GuiDraggable {
 			minButton.setIcon(Sprite(material::Plus));
 
 			recti pos;
-			if(rect == prevBigPos && prevSmallPos.width != 0)
+			if(rect == prevBigPos && prevSmallPos.width > 150)
 				pos = prevSmallPos;
 			else
-				pos = recti_area(vec2i(rect.topLeft.x, max(rect.botRight.y-32, 0)), vec2i(550, 32));
+				pos = recti_area(vec2i(rect.topLeft.x+150, max(rect.botRight.y-32, 0)), vec2i(700, 32));
 
 			animate_time(this, pos, 0.2);
 			prevSmallPos = pos;
 			prevBigPos = rect;
 		}
-
+		
+		leftSpeakerBox.visible = expanded && leftSpeakerBox.picture.valid;
+		rightSpeakerBox.visible = expanded && rightSpeakerBox.picture.valid;
 		dialogueBox.visible = expanded;
 		objBG.visible = expanded;
 		objBox.visible = expanded;
@@ -107,14 +118,17 @@ class ScenarioWindow : GuiDraggable {
 
 	void updateAbsolutePosition() override {
 		if(screenSize != prevScreenSize) {
-			rect = recti_area(vec2i((screenSize.width - 550) / 2,
-						screenSize.height - size.height - 12), vec2i(550, size.height));
+			rect = recti_area(vec2i((screenSize.width - 850) / 2,
+						screenSize.height - size.height - 12), vec2i(850, size.height));
 			prevScreenSize = screenSize;
 		}
 		GuiDraggable::updateAbsolutePosition();
 	}
 	
 	void processDialogueInheritance() {
+		if(dialogue is null)
+			return;
+			
 		if(newDialogue.inheritTitle) {
 			newDialogue.title = dialogue.title;
 		}
@@ -165,6 +179,24 @@ class ScenarioWindow : GuiDraggable {
 
 		bg.title = dialogue.title;
 		dialogueBox.text = dialogue.text;
+		
+		leftSpeakerBox.picture = dialogue.portraitLeft;
+		leftSpeakerBox.title = dialogue.nameLeft;
+		
+		rightSpeakerBox.picture = dialogue.portraitRight;
+		rightSpeakerBox.title = dialogue.nameRight;
+		
+		if(dialogue.currentSpeakerIsLeft) {
+			leftSpeakerBox.titleColor = colors::Red;
+			rightSpeakerBox.titleColor = Color(0xffffffff);
+		}
+		else {
+			rightSpeakerBox.titleColor = colors::Red;
+			leftSpeakerBox.titleColor = Color(0xffffffff);		
+		}
+		
+		leftSpeakerBox.visible = expanded && leftSpeakerBox.picture.valid;
+		rightSpeakerBox.visible = expanded && rightSpeakerBox.picture.valid;
 
 		if(objective.title.length != 0) {
 			objBG.visible = expanded;
