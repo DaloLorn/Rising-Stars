@@ -4143,6 +4143,7 @@ class AddStatusToOrbitingPlanet : GenericEffect {
 	Argument set_origin_object(AT_Boolean, "False", doc="Whether to record the object triggering this hook into the origin object field of the resulting status. If not set, any hooks that refer to Origin Object cannot not apply. Status effects with different origin objects set do not collapse into stacks.");
 	Argument only_owned(AT_Boolean, "False", doc="Only apply the status if the planet is owned by this owner.");
 	Argument allow_space(AT_Boolean, "False", doc="Also allow planets owned by space to receive this status.");
+	Argument allow_quarantined(AT_Boolean, "False", doc="Also allow quarantined planets to receive this status.");
 
 #section server
 	void enable(Object& obj, any@ data) const override {
@@ -4168,7 +4169,16 @@ class AddStatusToOrbitingPlanet : GenericEffect {
 					@newObj = null;
 				}
 			}
+			
+			
 		}
+		
+		if(newObj !is null && newObj.hasSurfaceComponent) {
+			if(newObj.quarantined && !allow_quarantined.boolean) {
+				@newObj = null;
+			}
+		}
+		
 		if(newObj !is prevObj) {
 			Empire@ origEmp = null;
 			if(set_origin_empire.boolean)
@@ -4222,7 +4232,7 @@ class MatchOrbitingOwner : GenericEffect {
 #section server
 	void tick(Object& obj, any@ data, double time) const override {
 		Planet@ orbit = cast<Planet>(obj.getOrbitingAround());
-		if(orbit is null || !orbit.valid) {
+		if((orbit is null || !orbit.valid) && destroy_none.boolean) {
 			obj.destroy();
 			return;
 		}
@@ -4248,7 +4258,7 @@ class DestroyIfNotAroundOwnedPlanet : GenericEffect {
 		}
 
 		if(orbit.owner !is obj.owner) {
-			if(do_colonize.boolean && !orbit.owner.valid)
+			if(do_colonize.boolean && !orbit.owner.valid && !orbit.quarantined)
 				@orbit.owner = obj.owner;
 			else
 				obj.destroy();
