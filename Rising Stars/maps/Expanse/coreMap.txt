@@ -6,7 +6,7 @@ System: Orathi
 	ExpandSystem(500)
 	TriggerRegion(SetSystemAssignGroup(-2))
 
-	MakePlanet(AncientCity, Radius = 24, Conditions = False)
+	MakePlanet(AncientHubworld, Radius = 24, Conditions = False)
 		Rename(Orathi Prime)
 
 		AddPlanetResource(Water)
@@ -14,7 +14,7 @@ System: Orathi
 		AddPlanetResource(Grain)
 		AddPlanetResource(Oil)
 		AddPlanetResource(AncientCity)
-		AddPlanetResource(AncientHubworld)
+		AddPlanetResource(AncientCity)
 
 		SpawnBuilding(Factory, (4, 3))
 		SpawnBuilding(Factory, (9, 6))
@@ -29,8 +29,6 @@ System: Orathi
 	MakePlanet(RandomLevel:1, Radius = 16, Conditions = False)
 		AddPlanetResource(Water)
 		AddPlanetResource(Fruit)
-
-	MakeCreepCamp(BlackHoleCamp)
 
 	ExpandSystem(1000)
 

@@ -26,6 +26,7 @@ Resource: AncientHubworld
 	IfLevel(3, GiveGlobalTrade())
 	IfLevel(2, IsFlingBeacon())
 	IfLevel(2, IsGate())
+	IfLevel(2, SetSystemFlag(JumpdriveSafety))
 	IfLevel(1, AddFleetCommand(1024))
 	RepeatPlanetLevel(AddPressure(Research, 1), Base = 1)
 	RepeatPlanetLevel(AddPressure(Labor, 1), Base = 1)

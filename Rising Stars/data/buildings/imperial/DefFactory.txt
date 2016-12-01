@@ -14,3 +14,4 @@ Building: DefenseFactory
 	//ABEM_sensors::AddSightModifier(AddedRange = 25)
 	AddResource(Defense, 2)
 	AddFleetCommand(128)
+	RequireNotTrait(Ancient)

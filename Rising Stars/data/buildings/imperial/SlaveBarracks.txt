@@ -24,5 +24,6 @@ Building: SlaveBarracks
 	PerPopulationAddResource(1.5, Labor)
 	ModLocalLoyalty(-3)
 	AddLaborStorage(50)
+	RequireNotTrait(Ancient)
 	
 	RequireUnlockTag(Slave Barracks)
