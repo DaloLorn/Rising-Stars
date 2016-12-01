@@ -1,0 +1,18 @@
+Technology: xFTLCost
+	Name: #R_FTL_COST
+	Description: #R_FTL_COST_DESC:25%
+
+	Icon: ResourceIcon::3
+	Symbol: techPhaseHarmonics * #00c0ff
+	Color: #00c0ff
+
+	Category: Reactionary
+	Class: BigUpgrade
+
+	Point Cost: 750
+	Time Cost: 100
+
+	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 5, #R_LIFESTYLE_REQ:Propulsion:5)
+	ReduceResearchPenalty(750)
+	ModAttribute(FTLCostFactor, Multiply, 0.75)

@@ -1,0 +1,18 @@
+Technology: XCloakPlating
+	Name: #R_SYS_CLOAKPLATING
+	Description: #R_SYS_CLOAKPLATING_DESC
+	Category: Reactionary
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: PlateArmor * #5188e6a0
+	Color: #5188e6
+
+	UnlockSubsystem(CloakPlating)
+	SkipOnUnlockedSubsystem(CloakPlating)
+
+	SecondaryEnergyCost(1000)
+
+	RequireEmpireAttributeGTE(InfiniteShieldsTaken, 6, #R_LIFESTYLE_REQ:Shield Modulation:6)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
