@@ -151,3 +151,17 @@ Technology: XColossusHull
 
 	RequireEmpireAttributeGTE(InfiniteChassisTaken, 6, #R_LIFESTYLE_REQ:Chassis Engineering:6)
 	ModAttribute(ProgenitorTechProgress, Add, 5)
+Technology: XJuggernautHull
+	Name: #R_SYS_JUGGERNAUT_HULL
+	Description: #R_SYS_JUGGERNAUT_HULL_DESC
+	Category: Reactionary
+	Point Cost: 600
+	Time Cost: 120
+	Icon: HullSubsystems::5
+	Color: #ff0623
+	RequireEmpireAttributeGTE(InfiniteMissileTech, 8,#R_LIFESTYLE_REQ:Rocketry:8 )
+	ModAttribute(ProgenitorTechProgress, Add, 0.75)
+	UnlockSubsystem(SelfDestruct)
+	SecondaryEnergyCost(1000)
+	SkipOnUnlockedSubsystem(JuggernautHull)
+	UnlockSubsystem(JuggernautHull)

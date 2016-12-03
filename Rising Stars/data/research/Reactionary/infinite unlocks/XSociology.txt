@@ -11,7 +11,7 @@ Technology: XMegacity
 	SecondaryMoneyCost(1200)
 	UnlockTag(MegacityUnlock)
 	SkipOnUnlockedTag(MegacityUnlock)
-	
+
 	RequireEmpireAttributeGTE(InfinitePopTaken, 3, #R_LIFESTYLE_REQ:Social Studies:3)
 	ModAttribute(ProgenitorTechProgress, Add, 1)
 
@@ -33,7 +33,7 @@ Technology: XTroopPods
 	SkipOnUnlockedSubsystem(TroopPods)
 	RequireEmpireAttributeGTE(InfinitePopTaken, 4, #R_LIFESTYLE_REQ:Social Studies:4)
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
-	
+
 Technology: XBroadcastAntenna
 	Name: #R_SYS_BROADCAST_ANTENNA
 	Description: #R_SYS_BROADCAST_ANTENNA_DESC
@@ -52,7 +52,7 @@ Technology: XBroadcastAntenna
 	SkipOnUnlockedSubsystem(BroadcastAntenna)
 
 	SecondaryInfluenceCost(10)
-RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ:Social Studies:5)
+RequireEmpireAttributeGTE(InfinitePopTaken, 5, #R_LIFESTYLE_REQ: Social Studies:5)
 	ModAttribute(ProgenitorTechProgress, Add, 0.25)
 
 Technology: XWealth
@@ -103,6 +103,7 @@ Technology: XAbundance
 
 	SecondaryInfluenceCost(20)
 
+	RequireEmpireAttributeGTE(InfinitePopTaken, 4, #R_LIFESTYLE_REQ:Social Studies:4)
 Technology: XLaboratories
 	Name: #R_LABORATORIES
 	Description: #R_LABORATORIES_DESC:2
@@ -118,10 +119,10 @@ Technology: XLaboratories
 
 	SecondaryEnergyCost(2000)
 	ModAttribute(ResearchComplexExtraPressure, Add, 2)
-	
+
 	RequireEmpireAttributeGTE(InfinitePopTaken, 7, #R_LIFESTYLE_REQ:Social Studies:7)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5 )
-	
+
 Technology: XSenate
 	Name: #R_BLD_SENATE_NAME
 	Description: #R_BLD_SENATE_DESC
