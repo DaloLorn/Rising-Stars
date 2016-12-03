@@ -8,6 +8,7 @@ Resource: AncientHubworld
 	Rarity: Unique
 	Unique: True
 	Frequency: 0
+	Display Weight: 100
 	Icon: emp_flag_flag07
 	Blurb: #RESOURCE_HUBWORLD_BLURB
 	Description: #RESOURCE_HUBWORLD_DESC
