@@ -64,15 +64,8 @@ void init() {
 	//Show the version
 	@version = GuiText(null, Alignment(Right-1000, Bottom-20, Right-4, Bottom));
 	version.horizAlign = 1.0;
-	version.text = "Mod: " + MOD_VERSION;
-	version.color = Color(0xaaaaaaaa);
-	// Check if mod is compatible with current game version, spew out alarming colors and errors if not
-	//if(!MOD_SUPPORTS_VERSION) {
-	if(!checkSupported()) {
-		version.color = Color(0xff0000ff);
-		//version.text += "(UNSUPPORTED VERSION)";
-		version.text = version.text + " (UNSUPPORTED VERSION)";
-	}
+	version.color = Color(0xff0000ff);
+	version.text = "WARNING: Unsupported Workshop version of Rising Stars detected.";
 
 	//Create container
 	@menu_container = MenuContainer();
@@ -142,6 +135,8 @@ void init() {
 			message(locale::DOF_MISSING_OTHER);
 		}*/
 	}
+
+	message("Rising Stars has recently migrated to a new Workshop item. Your current version of the mod is no longer supported; please proceed to the Steam Workshop and subscribe to the new upload, then disable the 'Rising Stars (old)' mod, and finally enable the 'Rising Stars' mod to continue playing.\n\nFor the sake of savegame compatibility, you can still save and load games - however, starting a new game of any kind is no longer possible. The Rising Stars development team (or, at the very least, the person writing this message) apologizes for the inconvenience.");
 }
 
 void tick(double time) {

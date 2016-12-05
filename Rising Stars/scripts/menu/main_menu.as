@@ -54,9 +54,9 @@ class MainMenu : MenuBox {
 		else if(game_running)
 			items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 8), locale::END_GAME, MA_EndGame));
 		
-		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 3), locale::TUTORIAL, MA_Tutorial));
+		//items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 3), locale::TUTORIAL, MA_Tutorial));
 		//items.addItem(MenuAction(Sprite(material::TabPlanets), locale::CAMPAIGN, MA_Campaign));
-		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 0), locale::NEW_GAME, MA_NewGame));
+		//items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 0), locale::NEW_GAME, MA_NewGame));
 		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 1), locale::LOAD_GAME, MA_LoadGame));
 		
 		if(game_running && !mpClient)
@@ -64,8 +64,8 @@ class MainMenu : MenuBox {
 		items.addItem(MenuAction(Sprite(spritesheet::ResourceIconsSmall, 46), locale::MODS_MENU, MA_Mods));
 		if(!game_running && !STEAM_EQUIV_BUILD)
 			items.addItem(MenuAction(icons::Refresh, locale::CHECK_FOR_UPDATES, MA_Update));
-		items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 4), locale::MULTIPLAYER, MA_Multiplayer));
-		items.addItem(MenuAction(Sprite(material::TabDesigns), locale::SANDBOX, MA_Sandbox));
+		//items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 4), locale::MULTIPLAYER, MA_Multiplayer));
+		//items.addItem(MenuAction(Sprite(material::TabDesigns), locale::SANDBOX, MA_Sandbox));
 		if(IRC.running)
 			items.addItem(MenuAction(Sprite(spritesheet::MenuIcons, 5), locale::CLOSE_IRC, MA_CloseIRC));
 		else
