@@ -6,10 +6,6 @@ Color: #C82020
 Color: #FF8020
 	Background: emp_bg_orange
 
-// Ulthaar
-Color: #ff9d0a
-	Background: emp_bg_orange
-
 //Yellow
 Color: #FFE140
 	Background: emp_bg_yellow
@@ -65,3 +61,7 @@ Color: #F0F0F0
 //Black
 Color: #303030
 	Background: emp_bg_purple
+
+// Ulthaar
+Color: #ff9d0a
+	Background: emp_bg_orange
