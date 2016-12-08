@@ -505,7 +505,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
 			//DOF
 			double DestroyerMod = bp.design.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
-			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1)));
+			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1.0)));
 			
 			dps = ship.DPS * bp.shipEffectiveness;
 
@@ -532,7 +532,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 				ShieldBehaviorMod = 1.0;
 				auto@ settings = cast<const DesignSettings>(bp.design.settings);
 				if (settings !is null && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1)))) * ShieldBehaviorMod;
+				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1.0)))) * ShieldBehaviorMod;
 
 				dps += ship.DPS * bp.shipEffectiveness;
 				//maxHP += bp.design.totalHP - bp.removedHP + ship.MaxShield;
