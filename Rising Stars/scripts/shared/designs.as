@@ -247,7 +247,7 @@ void getDesignMesh(Empire@ owner, const Design& design, MeshDesc& mesh) {
 	}
 	else if(design.hasTag(ST_Gate) && design.hasTag(ST_Station) && !design.hasTag(ST_GateHull)) {
 		@mesh.model = model::Warpgate;
-		@mesh.material = material::VolkurGenericPBR;
+		@mesh.material = material::GenericPBR_Gate;
 	}
 	else {
 		@mesh.model = design.hull.model;
