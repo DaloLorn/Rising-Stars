@@ -2,8 +2,8 @@ Anomaly: DerelictGuardian
 	Name: #A_GUARDIAN
 	Frequency: 0
 	Description: #A_GUARDIAN_UNSCANNED
-	Model: TyrantFlagLarge
-	Material: TyrantMedium
+	Model: TyrantFlagMedium
+	Material: TyrantPBRAdvanced
 	Narrative: #A_GUARDIAN_UNSCANNED
 	Option: Reactivate
 		Description: #A_GUARDIAN_REACTIVATE
@@ -45,6 +45,6 @@ Anomaly: DerelictGuardian
 		Choice: RemnantShields
 		Choice: RemnantComputers
 		Choice: DroneWeapons
-		Model: TyrantFlagLarge
-		Material: TyrantMedium
+		Model: TyrantFlagMedium
+		Material: TyrantPBRAdvanced
 		Choice: Reactivate
