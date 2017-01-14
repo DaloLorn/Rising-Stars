@@ -1023,7 +1023,7 @@ Tab@ createEditorTab(const string& file) {
 }
 
 array<string> fileClasses = {"statuses",      "abilities",      "anomalies",      "artifacts",      "influence",      "research",      "resources",      "buildings",      "biomes",      "creeps",      "orbitals",      "traits",      "subsystems",      "effectors",      "materials",      "sounds",      "constructions",      "random_events",      "cargo",      "attitudes"};
-array<string> fileFolders = {"data/statuses", "data/abilities", "data/anomalies", "data/artifacts", "data/influence", "data/research", "data/resources", "data/buildings", "data/biomes", "data/creeps", "data/orbitals", "data/traits", "data/subsystems", "data/effectors", "data/materials", "data/sounds", "data/constructions", "data/random_events", "data/cargo", "data/attitudes"};
+array<string> fileFolders = {"data/statuses", "data/abilities", "data/anomalies", "data/artifacts", "data/influence", "data/research/rising_stars", "data/resources", "data/buildings", "data/biomes", "data/creeps", "data/orbitals", "data/traits", "data/subsystems", "data/effectors", "data/materials", "data/sounds", "data/constructions", "data/random_events", "data/cargo", "data/attitudes"};
 array<string> fileTypes   = {"StatusFile",    "AbilityFile",    "AnomalyFile",    "ArtifactFile",   "InfluenceFile",  "ResearchFile",  "ResourceFile",   "BuildingFile",   "BiomeFile",   "CreepFile",   "OrbitalFile",   "TraitFile",   "SubsystemFile",   "EffectorFile",   "MaterialFile",   "SoundFile",   "ConstructionFile",   "EventFile",          "CargoFile",  "AttitudeFile"};
 
 class ModEditorCommand : ConsoleCommand {

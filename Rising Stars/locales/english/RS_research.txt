@@ -5,6 +5,12 @@ R_SYS_SHIELDED_AMGEN_DESC: <<
 	[bbloc=#S_SHIELDED_AMGEN_DESC/]
 >>
 
+R_CONNECTOR_DLC: <<
+	This node once contained an item dependent on a piece of DLC content such as the Wake of the Heralds expansion.
+
+	Functionally, it is identical to a 'LINK' node - this description is only here to assure you that this is most likely not a bug.
+>>
+
 R_SYS_ZPG_DESC: <<
 	[color=#aaa][i]Massive breakthroughs in physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
 

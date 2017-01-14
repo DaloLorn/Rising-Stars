@@ -144,10 +144,7 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 
 	void initResearch(Empire& emp) {
 		WriteLock lock(mtx);
-		if(hasDLC("Heralds"))
-			@grid = getTechnologyGridSpec("Heralds").create();
-		else
-			@grid = getTechnologyGridSpec("Base").create();
+		@grid = getTechnologyGridSpec("RisingStars").create();
 		tagUnlocks.length = getUnlockTagCount();
 		for(uint i = 0, cnt = tagUnlocks.length; i < cnt; ++i)
 			tagUnlocks[i] = 0;

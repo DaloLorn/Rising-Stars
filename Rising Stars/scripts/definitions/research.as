@@ -549,6 +549,8 @@ tidy final class TechnologyGridSpec {
 					auto@ otherType = getTechnology(n.type.dlcReplace);
 					if(otherType !is null)
 						@n.type = otherType;
+					else
+						@n.type = getTechnology("DLCConnector");
 				}
 			}
 
@@ -985,7 +987,7 @@ void loadResearch(const string& filename) {
 }
 
 void preInit() {
-	FileList list("data/research", "*.txt", true);
+	FileList list("data/research/rising_stars", "*.txt", true);
 	for(uint i = 0, cnt = list.length; i < cnt; ++i)
 		loadResearch(list.path[i]);
 }

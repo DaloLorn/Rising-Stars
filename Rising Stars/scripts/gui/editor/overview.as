@@ -18,9 +18,6 @@ class OverviewTab : Tab, QuestionDialogCallback {
 	array<GuiButton@> buttons;
 
 	GuiButton@ researchGridBtn;
-	GuiButton@ researchGridBtn2;
-	GuiButton@ researchGridBtn3;
-	GuiButton@ researchGridBtn4;
 	OverviewTab() {
 		super();
 		title = "Overview";
@@ -56,18 +53,6 @@ class OverviewTab : Tab, QuestionDialogCallback {
 		int y = ceil(double(fileClasses.length) / 3.0) * 50 + 42 + 50;
 		@researchGridBtn = GuiButton(this, Alignment(Left+412, Top+y, Width=250, Height=42), "Research Grid");
 		researchGridBtn.font = FT_Medium;
-		
-		@researchGridBtn4 = GuiButton(this, Alignment(Left+412, Top+y+50, Width=250, Height=42), "SubGrid (Progenitor)");
-		researchGridBtn4.font = FT_Medium;
-		
-		if(hasDLC("Heralds")) {
-			@researchGridBtn2 = GuiButton(this, Alignment(Left+712, Top+y, Width=250, Height=42), "Grid (Heralds)");
-			researchGridBtn2.font = FT_Medium;
-			
-			@researchGridBtn3 = GuiButton(this, Alignment(Left+1012, Top+y, Width=250, Height=42), "Grid (Reactionary)");
-			researchGridBtn3.font = FT_Medium;
-		
-		}
 
 		updateAbsolutePosition();
 	}
@@ -127,21 +112,7 @@ class OverviewTab : Tab, QuestionDialogCallback {
 				question("Are you sure you wish to delete "+selFile+" from the mod? This cannot be undone.\n\nIf the file consisted of changes to a base mod file, deleting the file from your mod will revert the changes back to the original version.", this);
 			}
 			else if(evt.caller is researchGridBtn) {
-				open(ResearchEditor("base_grid.txt", "Base"));
-				return true;
-			}
-			else if(evt.caller is researchGridBtn2) {
-				open(ResearchEditor("heralds_grid.txt", "Heralds"));
-				return true;
-			}
-			
-			else if(evt.caller is researchGridBtn3) {
-				open(ResearchEditor("reactionary_grid.txt", "Reactionary"));
-				return true;
-			}
-			
-			else if(evt.caller is researchGridBtn4) {
-				open(ResearchEditor("progenitor.txt", "Progenitor"));
+				open(ResearchEditor("rising_stars_grid.txt", "RisingStars"));
 				return true;
 			}
 			else for(uint i = 0, cnt = buttons.length; i < cnt; ++i) {

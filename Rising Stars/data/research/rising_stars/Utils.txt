@@ -1,0 +1,12 @@
+Technology: Connector
+	Name: LINK
+	Category: Grid Utils
+	Class: Special
+	AutomaticallyUnlocks()
+
+Technology: DLCConnector
+	Name: LINK
+	Description: #R_CONNECTOR_DLC
+	Category: Grid Utils
+	Class: Special
+	AutomaticallyUnlocks()
