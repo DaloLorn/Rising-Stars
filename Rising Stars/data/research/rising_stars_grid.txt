@@ -1,2 +1,0 @@
-Grid: RisingStars
-	Science: 0,0
