@@ -6,7 +6,7 @@ Technology: FireRate
 	Icon: techCooling * #c680ff
 	Color: #c680ff
 
-	Category: Basic Upgrades
+	Category: Minor Upgrades
 	Class: Boost
 
 	Point Cost: 450
@@ -25,7 +25,7 @@ Technology: FireRate2
 	Icon: techCooling * #c680ff
 	Color: #c680ff
 
-	Category: Basic Upgrades
+	Category: Medium Upgrades
 	Class: Upgrade
 
 	Point Cost: 750

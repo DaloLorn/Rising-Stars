@@ -1,3 +1,28 @@
+R_CAT_MILITARY_DESC: <<
+	[color=#aaa][i]The art of permanently removing an opponent. Or, well, semi-permanently. Or just not getting removed by the opponent.[/i][/color]
+>>
+R_CAT_ENERGY_DESC: <<
+	[color=#aaa][i]How to produce power out of thin air. No, seriously![/i][/color]
+>>
+R_CAT_PLANET_DESC: <<
+	[color=#aaa][i]Building... building... please come back in a few decades, my liege.[/i][/color]
+>>
+R_CAT_POLITICS_DESC: <<
+	[color=#aaa][i]I will not let this Republic that has stood for a thousand years be split in two! (Also known as the art of saying very little with as many words as possible.)[/i][/color]
+>>
+R_CAT_INDUSTRY_DESC: <<
+	[color=#aaa][i]Discovering a method for building galaxy-sized starships, one star at a time.[/i][/color]
+>>
+R_CAT_PROPULSION_DESC: <<
+	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous--- AAAAARGH![/i][/color]
+>>
+R_CAT_MILITARY: Military Research
+R_CAT_ENERGY: Energy Science
+R_CAT_PLANET: Planetary Development
+R_CAT_POLITICS: Political Science
+R_CAT_INDUSTRY: Industry
+R_CAT_PROPULSION: Dynamics
+
 R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
 R_SYS_SHIELDED_AMGEN_DESC: <<
 	[color=#aaa][i]New advances in shield compacting unlock the Shielded Antimatter Generator subsystem.[/i][/color]
@@ -277,6 +302,11 @@ R_BLD_SENATE_DESC: <<
 
 	Unlocks the Centralized Coordination Complex building for construction on planets.
 >>
+R_ORB_SENATE_DESC: <<
+	[color=#aaa][i]The development of methods to remove unnecessary bureaucracy and corruption in a government through a centralized oversight system.[/i][/color]
+
+	Unlocks the Centralized Coordination Complex orbital.
+>>
 R_MINER_HULL: Dedicated Mining Architecture
 R_MINER_HULL_DESC: <<
 	[color=#aaa][i]Streamlining various support craft, such as miners, allows them to be more effective at a reduced cost.[/i][/color]
@@ -288,4 +318,8 @@ R_MINER_HULL_DESC: <<
 R_METROPOLIS_UPGRADE: Metropolitan Optimization
 R_METROPOLIS_UPGRADE_DESC: <<
 	Increases the amount of pressure capacity added by Metropoles by 2.
+>>
+
+R_SPEC_DISCLAIMER: <<
+	[b]This is a specialization tech. Researching this will convert [color=#f00]$1[/color] nodes into link nodes, locking away their benefits for the rest of the game. Choose wisely.[/b]
 >>

@@ -6,7 +6,7 @@ Technology: SupportCap
 	Icon: techOrganization*#00cffe
 	Color: #00cffe
 
-	Category: Basic Upgrades
+	Category: Minor Upgrades
 	Class: Boost
 
 	Point Cost: 350
@@ -22,7 +22,7 @@ Technology: SupportCap2
 	Icon: techOrganization*#00cffe
 	Color: #00cffe
 
-	Category: Basic Upgrades
+	Category: Medium Upgrades
 	Class: Upgrade
 
 	Point Cost: 500

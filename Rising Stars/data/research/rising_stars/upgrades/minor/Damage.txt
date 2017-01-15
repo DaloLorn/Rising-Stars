@@ -6,7 +6,7 @@ Technology: Damage
 	Icon: techImpact * #ff8000
 	Color: #ff8000
 
-	Category: Basic Upgrades
+	Category: Minor Upgrades
 	Class: Boost
 
 	Point Cost: 500
@@ -23,7 +23,7 @@ Technology: Damage2
 	Icon: techImpact2*#ffff00
 	Color: #ff8000
 
-	Category: Basic Upgrades
+	Category: Medium Upgrades
 	Class: Upgrade
 
 	Point Cost: 850

@@ -8,5 +8,73 @@ Technology: DLCConnector
 	Name: LINK
 	Description: #R_CONNECTOR_DLC
 	Category: Racial/DLC Replacements (DO NOT PLACE)
-	Class: Special
+	Class: Secret
 	AutomaticallyUnlocks()
+
+Technology: CatMilitaryResearch
+	Name: #R_CAT_MILITARY
+	Icon: MilitaryStrengthIcon
+	Class: Keystone
+	Description: #R_CAT_MILITARY_DESC
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+
+Technology: CatEnergyScience
+	Name: #R_CAT_ENERGY
+	Description: #R_CAT_ENERGY_DESC
+	Icon: DesignationIcons::2
+	Class: Keystone
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+
+Technology: CatPlanetaryDevelopment
+	Name: #R_CAT_PLANET
+	Description: #R_CAT_PLANET_DESC
+	Class: Keystone
+	Icon: PlanetImage
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+
+Technology: CatPoliticalScience
+	Name: #R_CAT_POLITICS
+	Description: #R_CAT_POLITICS_DESC
+	Icon: DesignationIcons::1
+	Class: Keystone
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+
+Technology: CatIndustry
+	Name: #R_CAT_INDUSTRY
+	Description: #R_CAT_INDUSTRY_DESC
+	Class: Keystone
+	Icon: ResourceIcon::6
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+
+Technology: CatPropulsion
+	Name: #R_CAT_PROPULSION
+	Description: #R_CAT_PROPULSION_DESC
+	Class: Keystone
+	Icon: ActionBarIcons::6
+	Default Unlock: True
+	Category: Grid Utils
+	AutomaticallyUnlocks()
+Technology: FillerNode
+	Name: Filler (Minor)
+	Description: Put a minor level 1 upgrade here during the next grid pass.
+	Blurb: Put a minor upgrade here
+	Category: Grid Utils
+	Icon: PlanetIcon0
+	Symbol: MenuIcons::8
+Technology: FillerNode2
+	Name: Filler (Medium)
+	Blurb: Put a medium upgrade here
+	Description: Put a minor level 2 or a medium upgrade here during the next grid pass.
+	Category: Grid Utils
+	Symbol: MenuIcons::8
+	Icon: PlanetIcon1
