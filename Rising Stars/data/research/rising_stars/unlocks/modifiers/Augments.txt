@@ -9,7 +9,7 @@ Technology: AugmentReload
 
 	Color: #ffff00
 	Icon: SupportCommand * #ffff00
-	
+
 	UnlockModule(AugmentReload)
 	SkipOnUnlockedModule(AugmentReload)
 
@@ -19,7 +19,7 @@ Technology: AugmentReload
 Technology: AugmentDamage
 	Name: #R_MOD_AUGMENT_DAMAGE
 	Description: #R_MOD_AUGMENT_DAMAGE_DESC
-	Class: Unlock
+	Class: Special
 	Category: Modifiers
 
 	Point Cost: 500
@@ -27,7 +27,7 @@ Technology: AugmentDamage
 
 	Color: #ff8080
 	Icon: SupportCommand * #ff8080
-	
+
 	UnlockModule(AugmentDamage)
 	SkipOnUnlockedModule(AugmentDamage)
 	ModAttribute(ProgenitorTechProgress, Add, 0.2)
@@ -43,7 +43,7 @@ Technology: AugmentSupply
 
 	Color: #8080ff
 	Icon: SupportCommand * #8080ff
-	
+
 	UnlockModule(AugmentSupply)
 	SkipOnUnlockedModule(AugmentSupply)
 	ModAttribute(ProgenitorTechProgress, Add, 0.2)

@@ -7,7 +7,7 @@ Technology: Recall
 	Class: Unlock
 	Blurb:
 	Color: #bc12de
-	Category: ABEM - Progenitor
+	Category: Progenitor
 	UnlockTag(Recall)
 	ModAttribute(ProgenitorTechProgress, Add, 15)
 	RequireUnlockTag(ProgenitorTech)
@@ -19,10 +19,10 @@ Technology: NylliRecall
 	Name: #R_RECALL
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Special
 	Blurb:
 	Color: #bc12de
-	Category: ABEM - Racial Replacements (DO NOT PLACE)
+	Category: Racial/DLC Replacements (DO NOT PLACE)
 	UnlockTag(Recall)
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(Recall)

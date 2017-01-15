@@ -3,14 +3,14 @@ Technology: MatterDisruptor
 	Class: Unlock
 	Point Cost: 700
 	Time Cost: 120
-	Icon: WaveEmitter
+	Icon: MatterDisruptor::2
 	Description: #R_MATTERDISRUPTOR_DESC
-	
-	Category: ABEM - Subsystems
+
+	Category: Weapons
 
 	Color: #06c0ff
-	
-	
+
+
 	SkipOnUnlockedSubsystem(MatterDisruptor)
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 	UnlockSubsystem(MatterDisruptor)

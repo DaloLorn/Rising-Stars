@@ -7,7 +7,7 @@ Technology: ProgenitorArmor
 	Class: Unlock
 	Blurb:
 	Description: #R_SYS_PROGENITOR_ARMOR_DESC
-	Category: ABEM - Progenitor
+	Category: Progenitor
 	ModAttribute(ProgenitorTechProgress, Add, 15)
 	AutoUnlockOnUnlockedTag(ProgenitorArmor)
 	UnlockSubsystem(ProgenitorArmor)

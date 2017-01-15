@@ -8,7 +8,8 @@ Technology: Bulkhead
 
 	Icon: HexagonSubsystems::0 * #cf00ff
 	Color: #eda1ff
-	
+	Category: Modifiers
+
 	UnlockModule(Bulkhead)
 	SkipOnUnlockedModule(Bulkhead)
 

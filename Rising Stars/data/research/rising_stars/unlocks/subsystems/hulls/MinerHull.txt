@@ -2,7 +2,7 @@ Technology: MinerHull
 	Name: #R_MINER_HULL
 	Description: #R_MINER_HULL_DESC
 	Class: Unlock
-	Category: ABEM - Subsystems
+	Category: Hulls
 	DLC: Heralds
 	DLC Replace: Health
 

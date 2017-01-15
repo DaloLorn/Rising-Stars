@@ -7,6 +7,6 @@ Technology: Connector
 Technology: DLCConnector
 	Name: LINK
 	Description: #R_CONNECTOR_DLC
-	Category: Grid Utils
+	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Class: Special
 	AutomaticallyUnlocks()

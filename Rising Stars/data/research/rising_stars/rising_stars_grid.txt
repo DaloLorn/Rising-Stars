@@ -1,2 +1,33 @@
 Grid: RisingStars
 	Science: 0,0
+	Connector: -1,-1
+	Connector: -1,-2
+	Connector: -1,0
+	Connector: -1,1
+	Connector: 0,1
+	Connector: 1,0
+	Connector: 0,-1
+	Connector: -2,0
+	Connector: -1,2
+	Connector: 1,2
+	Connector: 2,0
+	Connector: 1,-2
+	ProgenitorScience: -19,15
+	EnergyHurdle: -18,14
+	EnergyHurdle: -19,14
+	EnergyHurdle: -20,15
+	Connector: -19,16
+	Connector: -18,16
+	ProgenitorSolarOrbital: -21,15
+	ProgenitorArmor: -20,13
+	EnergyHurdle: -19,12
+	PiercingDrones: -19,11
+	EnergyHurdle: -18,12
+	ProgenitorShield: -18,13
+	Connector: -19,18
+	Connector: -18,18
+	Recall: -19,19
+	ControlChair: -17,15
+	EnergyHurdle: -16,15
+	Connector: -15,14
+	ProgenitorComputer: -16,13

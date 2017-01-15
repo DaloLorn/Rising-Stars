@@ -19,12 +19,11 @@ Technology: Senate
 Technology: NylliSenate
 	Name: #R_BLD_SENATE_NAME
 	Description: #R_ORB_SENATE_DESC
-	Class: Unlock
 	Point Cost: 1000
 	Time Cost: 100
 	Icon: PoliticalStrengthIcon
 	Color: #00f3ff
-	Category: Buildings
+	Category: Racial/DLC Replacements (DO NOT PLACE)
 	SecondaryMoneyCost(1500)
 	SkipOnUnlockedTag(NylliSenate)
 	UnlockTag(NylliSenate)

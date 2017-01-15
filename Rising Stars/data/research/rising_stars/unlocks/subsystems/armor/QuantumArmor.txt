@@ -1,14 +1,14 @@
 Technology: QuantumArmor
 	Name: #S_QUANTUM_ARMOR
 	Class: Unlock
-	
+
 	Point Cost: 0
 	Time Cost: 240
 
 	Icon: QuantumArmor
 	Color: #449944
 	Description: #R_SYS_QUANTUM_ARMOR_DESC
-	Category: ABEM - Subsystems
+	Category: Armor
 
 	UnlockSubsystem(QuantumArmor)
 

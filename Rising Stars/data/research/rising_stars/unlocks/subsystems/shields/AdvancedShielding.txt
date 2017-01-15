@@ -1,5 +1,5 @@
 Technology: AdvancedShielding
-	Category: ABEM - Subsystems
+	Category: Shields
 	Name: #R_ADV_SHIELD
 	Description: R_ADV_SHIELD_DESC
 	Icon: TechIcons::6

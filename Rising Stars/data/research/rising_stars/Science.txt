@@ -6,3 +6,4 @@ Technology: Science
 	Color: #aaaaaa
 
 	Default Unlock: True
+	Category: Grid Utils
