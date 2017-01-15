@@ -922,7 +922,7 @@ class ResearchEditor : ResearchTab {
 			techs.length = 0;
 			grid.nodes.length = 0;
 
-			const string fname = resolve("data/research/"+filename);
+			const string fname = resolve("data/research/rising_stars/"+filename);
 			ReadFile file(fname, true);
 			while(file++) {
 				if(file.key != "Grid") {
@@ -982,7 +982,7 @@ class ResearchEditor : ResearchTab {
 	}
 
 	void save() {
-		const string fname = path_join(topMod.abspath, "data/research/"+filename);
+		const string fname = path_join(topMod.abspath, "data/research/rising_stars/"+filename);
 		ensureFile(fname);
 		WriteFile file(fname);
 		file.writeKeyValue("Grid", identifier);
@@ -1164,14 +1164,8 @@ class ResearchEditorCommand : ConsoleCommand {
 		string fname, ident;
 
 		if(args.length == 0) {
-			if(hasDLC("Heralds")) {
-				fname = "heralds_grid.txt";
-				ident = "Heralds";
-			}
-			else {
-				fname = "base_grid.txt";
-				ident = "Base";
-			}
+			fname = "rising_stars_grid.txt";
+			ident = "RisingStars";
 		}
 		else {;
 			array<string> params = args.split(" ");

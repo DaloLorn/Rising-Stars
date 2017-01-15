@@ -271,7 +271,7 @@ class ArtifactFile : FileDef {
 			field("Icon Size", AT_Decimal, "0.02", doc="Size of the artifact's distant icon.");
 			field("Model", AT_Model, "Artifact", doc="Model for the artifact.");
 			field("Material", AT_Material, "VolkurGenericPBR", doc="Model material for the artifact.");
-			field("Physical Size", AT_Decimal, "5.0", doc="Physical size of the artifact in the world.");
+			field("Size", AT_Decimal, "5.0", doc="Physical size of the artifact in the world.");
 			field("Mass", AT_Decimal, "300", doc="Mass of the artifact. Affects tractor beams.");
 			field("Frequency", AT_Decimal, "1", doc="How often this artifact appears, relative to other artifacts' frequency.");
 			field("Time Frequency", AT_Decimal, "0", doc="Increase to the artifact's base frequency for every 20 minutes of game time that passes.");
@@ -394,7 +394,7 @@ class ResearchFile : FileDef {
 	}
 
 	void onChange() {
-		loadCompletions(techCompletions, "data/research", "Technology");
+		loadCompletions(techCompletions, "data/research/rising_stars", "Technology");
 	}
 };
 
@@ -449,6 +449,7 @@ class ResourceFile : FileDef {
 			field("Cargo Worth", AT_Integer, "0", doc="How much money killing a cargo ship is worth per unit of resource. Civilian ships carry multiple units of a resource, dependent on their type and size of ship.");
 			field("Artificial", AT_Boolean, "False", doc="Whether this is considered an 'artificial' resource and not affected by terraforming.");
 			field("Exportable", AT_Boolean, "True", doc="Whether this resource can be exported from its original planet, or is static on its source.");
+			field("Stealable", AT_Boolean, "True", doc="Whether this resource can be stolen by the StealResources hook - like in the 'Harvest Planet' Bluuhbi ability.");
 			field("Unique", AT_Boolean, "False", doc="A unique resource can only be generated in one system in the entire universe.");
 			field("Require Contestation", AT_Decimal, "0", doc="If nonzero, this resource type can only spawn in systems with a minimum contestation value. Contestation is an abstract number based on how many empires are close enough to potentially contest the system.");
 			field("Mode", AT_Selection, "Normal", doc="How this resource affects planet levelup. Universal resources (Drugs) can count as any other resource. Universal Unique resources only work once per planet.").setOptions(resourceModes);
@@ -605,6 +606,10 @@ class OrbitalFile : FileDef {
 			field("Can Fling", AT_Boolean, "True", doc="Whether this orbital can be FTLed with fling.");
 			field("Health", AT_Decimal, "0", doc="The orbital's base maximum health.");
 			field("Armor", AT_Decimal, "0", doc="The orbital's base maximum armor. Armor is additional health on top of base health that has damage reduction.");
+			field("Shield Capacity", AT_Decimal, "0", doc="The orbital's base shield capacity."); 
+			field("Shield Regeneration", AT_Decimal, "0", doc="The orbital's base shield regeneration."); 
+			field("Always Regenerate Shields", AT_Boolean, "False", doc="Whether the orbital regenerates its shields even when disabled."); 
+			field("Immune To Radiation", AT_Boolean, "False", doc="Whether the orbital is affected by the control loss aspect of things such as Radiation Nebulae."); 
 			field("Size", AT_Decimal, "10", doc="The physical size of the orbital in the world.");
 			field("Mass", AT_Decimal, "-1", doc="The physical mass of the orbital (used in tractoring). Set to -1 to auto-calculate based on Size.");
 			field("Model", AT_Model, "", doc="Model for the orbital.");
