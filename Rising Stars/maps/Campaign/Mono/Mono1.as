@@ -84,11 +84,11 @@ class Mono1 : Map {
 	}
 	
 	void initDialogue() {
-		Dialogue("MONO1_INTRO", false)
+		Dialogue("MONO1_INTRO", false, false)
 			.onPass(GUIAction("Mono1.Mono1::HideGUI"));
 		Dialogue("MONO1_INTRO2")
 			.setSpeaker(Sprite(material::emp_portrait_mono), "Unit-00", true);
-		Dialogue("MONO1_INTRO3")
+		Dialogue("MONO1_INTRO3", false)
 			.setSpeaker(Sprite(material::emp_portrait_mono), "Unit-3682");
 		//Dialogue("")
 	}

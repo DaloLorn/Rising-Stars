@@ -10,8 +10,8 @@ class Dialogue : Serializable {
 	array<Objective@> objectives;
 	
 	bool inheritTitle = true; // UI automatically assigns title of previous prompt. I NEED THIS SO MUCH.
-	bool inheritLeftSpeaker = true; // UI automatically assigns left speaker of previous prompt. (Usually the 'player' character, like Unit-00 in the Mono prologue.)
-	bool inheritRightSpeaker = true; // UI automatically assigns right speaker of previous prompt.
+	bool inheritLeftSpeaker = true; // UI automatically assigns left speaker of previous prompt. (Usually an allied or 'player' character, like Unit-00 in the Mono prologue.)
+	bool inheritRightSpeaker = true; // UI automatically assigns right speaker of previous prompt. (Usually an enemy, or an allied non-'player' character, like Unit-3682 or the Remnant Core in the Mono prologue.)
 	
 	Sprite portraitLeft, portraitRight;
 	string nameLeft, nameRight;
@@ -68,10 +68,13 @@ class Dialogue : Serializable {
 		if(left) {
 			portraitLeft = icon;
 			nameLeft = text;
+			inheritLeftSpeaker = false;
 		}
 		else {
 			portraitRight = icon;
 			nameRight = text;
+			inheritRightSpeaker = false;
+			currentSpeakerIsLeft = false;
 		}
 		return this;
 	}
@@ -130,15 +133,33 @@ class Dialogue : Serializable {
 	}
 
 	void write(Message& msg) {
-		msg << title << text << proceedText;
+		msg << text << proceedText;
 		msg << getSpriteDesc(icon);
 		msg.writeSmall(objectives.length);
 		for(uint i = 0, cnt = objectives.length; i < cnt; ++i)
 			msg << objectives[i];
+
+		msg << inheritTitle;
+		if(!inheritTitle)
+			msg << title;
+
+		msg << inheritLeftSpeaker;
+		if(!inheritLeftSpeaker) {
+			msg << getSpriteDesc(portraitLeft);
+			msg << nameLeft;
+		}
+
+		msg << inheritRightSpeaker;
+		if(!inheritRightSpeaker) {
+			msg << getSpriteDesc(portraitRight);
+			msg << nameRight;
+		}
+
+		msg << currentSpeakerIsLeft;
 	}
 
 	void read(Message& msg) {
-		msg >> title >> text >> proceedText;
+		msg >> text >> proceedText;
 		string desc;
 		msg >> desc;
 		icon = getSprite(desc);
@@ -154,6 +175,25 @@ class Dialogue : Serializable {
 				@objectives[i] = obj;
 			}
 		}
+		msg >> inheritTitle;
+		if(!inheritTitle)
+			msg >> title;
+
+		msg >> inheritLeftSpeaker;
+		if(!inheritLeftSpeaker) {
+			msg >> desc;
+			portraitLeft = getSprite(desc);
+			msg >> nameLeft;
+		}
+
+		msg >> inheritRightSpeaker;
+		if(!inheritRightSpeaker) {
+			msg >> desc;
+			portraitRight = getSprite(desc);
+			msg >> nameRight;
+		}
+
+		msg >> currentSpeakerIsLeft;
 	}
 };
 
