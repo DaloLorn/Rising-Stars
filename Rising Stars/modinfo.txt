@@ -1,5 +1,7 @@
-	Name: Rising Stars
+	Name: Rising Stars (MIGRATION IN PROGRESS)
 	Description: <<
+		[b]NOTE: The mod is currently undergoing a migration from its previous Workshop download. There will be a few metadata updates in the following days; the mod's version is still 1.0.2, there are no changes.[/b]
+
 		[i]The year is 714 AP. Amidst continuing conflict, alliances begin to form between the many rising empires inhabiting the galaxy. There are whispers of an ancient alien race, coming from a far away galaxy to conquer and eliminate all who would oppose them. But these whispers remain just that; whispers - and these whispers are being drowned out by war. A new, young race of warriors, hailing from the planet Rata'htat, has made its presence known to the galaxy as they launch their offensive, seeking the glory of war... and of victory...[/i]
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function (more or less), some content may be missing or malfunctioning.[/b]
@@ -24,10 +26,10 @@
 
 		Full patch notes can be found in the forums.
 		[h1][b]Links[/b][/h1]
-		[b]Rising Stars on GitHub:[/b] https://github.com/Alarcarr/Rising-Star
+		[b]Rising Stars on GitHub:[/b] https://github.com/DaloLorn/Rising-Stars
 		[b]Rising Stars on ModDB:[/b] http://moddb.com/mods/alternate-balance-expansion-mod
-		[b]Rising Stars wiki:[/b] https://github.com/Alarcarr/Rising-Star/wiki
-		[b]Rising Stars forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/355873534
+		[b]Rising Stars wiki:[/b] https://github.com/DaloLorn/Rising-Stars/wiki
+		[b]Rising Stars forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/812827373
 		[b]Rising Stars Discord chat:[/b] https://discord.gg/sUJKJDc
 		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/359543542244242419/
 		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
