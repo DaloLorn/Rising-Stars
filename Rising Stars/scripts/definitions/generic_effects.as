@@ -19,6 +19,7 @@ import planet_types;
 #section server
 import object_creation;
 from components.ObjectManager import getDefenseDesign;
+from object_stats import ObjectStatType, getObjectStat;
 #section all
 
 //ModSupportBuildSpeed(<Percentage>)
@@ -5548,6 +5549,196 @@ class ModConstructionHPBonusAttribute : GenericEffect {
 		double amt = 0;
 		file >> amt;
 		data.store(amt);
+	}
+#section all
+};
+
+class ModObjectStat : GenericEffect {
+	Document doc("Modify a stat of the object this is called on while the effect is active.");
+	Argument stat(AT_ObjectStat, doc="Stat to modify. Type anything and a new stat with that name will be created. Adding # in the name indicates the stat is integral, adding & in the name indicates the stat is server-only.");
+	Argument mode(AT_ObjectStatMode, doc="The way to modify the stat.");
+	Argument value(AT_Decimal, doc="The value to modify the stat by.");
+	Argument for_empire(AT_Boolean, "False", doc="If set, the stat is modified only inside the triggering empire's context, instead of for the object globally.");
+
+#section server
+	const ObjectStatType@ objStat;
+
+	bool instantiate() override {
+		if(!GenericEffect::instantiate())
+			return false;
+		@objStat = getObjectStat(stat.str);
+		return true;
+	}
+
+	void enable(Object& obj, any@ data) const override {
+		if(objStat is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.mod(obj, emp, mode.integer, value.decimal);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		if(objStat is null)
+			return;
+
+		if(for_empire.boolean) {
+			objStat.reverse(obj, prevOwner, mode.integer, value.decimal);
+			objStat.mod(obj, newOwner, mode.integer, value.decimal);
+		}
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(objStat is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.reverse(obj, emp, mode.integer, value.decimal);
+	}
+#section all
+};
+
+class ModRegionStat : GenericEffect {
+	Document doc("Modify a stat of the region this is in.");
+	Argument stat(AT_ObjectStat, doc="Stat to modify. Type anything and a new stat with that name will be created. Adding # in the name indicates the stat is integral, adding & in the name indicates the stat is server-only.");
+	Argument mode(AT_ObjectStatMode, doc="The way to modify the stat.");
+	Argument value(AT_Decimal, doc="The value to modify the stat by.");
+	Argument for_empire(AT_Boolean, "False", doc="If set, the stat is modified only inside the triggering empire's context, instead of for the object globally.");
+
+#section server
+	const ObjectStatType@ objStat;
+
+	bool instantiate() override {
+		if(!GenericEffect::instantiate())
+			return false;
+		@objStat = getObjectStat(stat.str);
+		return true;
+	}
+
+	void enable(Object& obj, any@ data) const override {
+		if(objStat is null)
+			return;
+
+		Region@ reg = obj.region;
+		if(reg is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.mod(reg, emp, mode.integer, value.decimal);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		if(objStat is null)
+			return;
+
+		if(for_empire.boolean) {
+			Region@ reg = obj.region;
+			if(reg is null)
+				return;
+
+			objStat.reverse(reg, prevOwner, mode.integer, value.decimal);
+			objStat.mod(reg, newOwner, mode.integer, value.decimal);
+		}
+	}
+
+	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const {
+		if(objStat is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		if(fromRegion !is null)
+			objStat.reverse(fromRegion, emp, mode.integer, value.decimal);
+		if(toRegion !is null)
+			objStat.mod(toRegion, emp, mode.integer, value.decimal);
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(objStat is null)
+			return;
+
+		Region@ reg = obj.region;
+		if(reg is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.reverse(reg, emp, mode.integer, value.decimal);
+	}
+#section all
+};
+
+class GenerateObjectStat : GenericEffect {
+	Document doc("Generate an amount of an object stat per second while this effect is active.");
+	Argument stat(AT_ObjectStat, doc="Stat to modify. Type anything and a new stat with that name will be created. Adding & in the name indicates the stat is server-only.");
+	Argument per_second(AT_Decimal, doc="The value to add to the stat per second.");
+	Argument for_empire(AT_Boolean, "False", doc="If set, the stat is modified only inside the triggering empire's context, instead of for the object globally.");
+
+#section server
+	const ObjectStatType@ objStat;
+
+	bool instantiate() override {
+		if(!GenericEffect::instantiate())
+			return false;
+		@objStat = getObjectStat(stat.str);
+		return true;
+	}
+
+	void tick(Object& obj, any@ data, double time) const override {
+		if(objStat is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.mod(obj, emp, OSM_Add, per_second.decimal * time);
+	}
+#section all
+};
+
+class GenerateRegionStat : GenericEffect {
+	Document doc("Generate an amount of a stat per second on the region this object is in while this effect is active.");
+	Argument stat(AT_ObjectStat, doc="Stat to modify. Type anything and a new stat with that name will be created. Adding & in the name indicates the stat is server-only.");
+	Argument per_second(AT_Decimal, doc="The value to add to the stat per second.");
+	Argument for_empire(AT_Boolean, "False", doc="If set, the stat is modified only inside the triggering empire's context, instead of for the object globally.");
+
+#section server
+	const ObjectStatType@ objStat;
+
+	bool instantiate() override {
+		if(!GenericEffect::instantiate())
+			return false;
+		@objStat = getObjectStat(stat.str);
+		return true;
+	}
+
+	void tick(Object& obj, any@ data, double time) const override {
+		if(objStat is null)
+			return;
+
+		Region@ reg = obj.region;
+		if(reg is null)
+			return;
+
+		Empire@ emp = obj.owner;
+		if(!for_empire.boolean)
+			@emp = null;
+
+		objStat.mod(reg, emp, OSM_Add, per_second.decimal * time);
 	}
 #section all
 };

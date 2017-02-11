@@ -25,7 +25,7 @@ const double TRADE_TIMER = 3.0 * 60.0;
 const double STATION_TRADES = 6.0;
 const double CIVILIAN_LIMIT_POW = 0.85;
 
-final class RegionObjects : Component_RegionObjects, Savable {
+tidy class RegionObjects : Component_RegionObjects, Savable {
 	SystemDesc@ system;
 	Star@[] starList;
 	Object@[] objectList;
@@ -34,6 +34,8 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	Orbital@[] orbitalList;
 	Asteroid@[] asteroidList;
 	Anomaly@[] anomalyList;
+	Pickup@[] pickupList;
+	Artifact@[] artifactList;
 	Object@[] resourceHolders;
 	RegionEffect@[] effects;
 	int nextEffectId = 1;
@@ -44,6 +46,13 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	float combatTimer = 60.0;
 	double StarTemperature = 0;
 	double StarRadius = 0;
+
+	PlanetBucket planetBucket;
+	PickupBucket pickupBucket;
+	AsteroidBucket asteroidBucket;
+	ArtifactBucket artifactBucket;
+	AnomalyBucket anomalyBucket;
+	StarBucket starBucket;
 	
 	double PeriodicUpdate = 0.0;
 	double PeriodicTime = 0.0;
@@ -88,8 +97,11 @@ final class RegionObjects : Component_RegionObjects, Savable {
 		uint cnt = 0;
 		msg >> cnt;
 		starList.length = cnt;
-		for(uint i = 0; i < cnt; ++i)
+		for(uint i = 0; i < cnt; ++i) {
 			msg >> starList[i];
+			if(starList[i] !is null)
+				starBucket.add(starList[i]);
+		}
 
 		msg >> cnt;
 		objectList.length = cnt;
@@ -98,8 +110,11 @@ final class RegionObjects : Component_RegionObjects, Savable {
 
 		msg >> cnt;
 		planetList.length = cnt;
-		for(uint i = 0; i < cnt; ++i)
+		for(uint i = 0; i < cnt; ++i) {
 			msg >> planetList[i];
+			if(planetList[i] !is null)
+				planetBucket.add(planetList[i]);
+		}
 
 		msg >> cnt;
 		orbitalList.length = cnt;
@@ -108,14 +123,38 @@ final class RegionObjects : Component_RegionObjects, Savable {
 
 		msg >> cnt;
 		asteroidList.length = cnt;
-		for(uint i = 0; i < cnt; ++i)
+		for(uint i = 0; i < cnt; ++i) {
 			msg >> asteroidList[i];
+			if(asteroidList[i] !is null)
+				asteroidBucket.add(asteroidList[i]);
+		}
 
 		if(msg >= SV_0039) {
 			msg >> cnt;
 			anomalyList.length = cnt;
-			for(uint i = 0; i < cnt; ++i)
+			for(uint i = 0; i < cnt; ++i) {
 				msg >> anomalyList[i];
+				if(anomalyList[i] !is null)
+					anomalyBucket.add(anomalyList[i]);
+			}
+		}
+
+		if(msg >= SV_0163) {
+			msg >> cnt;
+			artifactList.length = cnt;
+			for(uint i = 0; i < cnt; ++i) {
+				msg >> artifactList[i];
+				if(artifactList[i] !is null)
+					artifactBucket.add(artifactList[i]);
+			}
+
+			msg >> cnt;
+			pickupList.length = cnt;
+			for(uint i = 0; i < cnt; ++i) {
+				msg >> pickupList[i];
+				if(pickupList[i] !is null)
+					pickupBucket.add(pickupList[i]);
+			}
 		}
 
 		msg >> cnt;
@@ -218,6 +257,16 @@ final class RegionObjects : Component_RegionObjects, Savable {
 		msg << cnt;
 		for(uint i = 0; i < cnt; ++i)
 			msg << anomalyList[i];
+
+		cnt = artifactList.length;
+		msg << cnt;
+		for(uint i = 0; i < cnt; ++i)
+			msg << artifactList[i];
+
+		cnt = pickupList.length;
+		msg << cnt;
+		for(uint i = 0; i < cnt; ++i)
+			msg << pickupList[i];
 
 		cnt = shipyardList.length;
 		msg << cnt;
@@ -952,33 +1001,33 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	uint get_planetCount() const {
-		return planetList.length;
+		return planetBucket.length;
 	}
 
 	Planet@ get_planets(uint index) const {
-		if(index >= planetList.length)
+		if(index >= planetBucket.length)
 			return null;
-		return planetList[index];
+		return planetBucket[index];
 	}
 
 	uint get_anomalyCount() const {
-		return anomalyList.length;
+		return anomalyBucket.length;
 	}
 
 	Anomaly@ get_anomalies(uint index) const {
-		if(index >= anomalyList.length)
+		if(index >= anomalyBucket.length)
 			return null;
-		return anomalyList[index];
+		return anomalyBucket[index];
 	}
 
 	uint get_asteroidCount() const {
-		return asteroidList.length;
+		return asteroidBucket.length;
 	}
 
 	Asteroid@ get_asteroids(uint index) const {
-		if(index >= asteroidList.length)
+		if(index >= asteroidBucket.length)
 			return null;
-		return asteroidList[index];
+		return asteroidBucket[index];
 	}
 
 	void castOnRandomAsteroid(Object@ obj, int ablId) {
@@ -1379,13 +1428,13 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	uint get_starCount() const {
-		return starList.length;
+		return starBucket.length;
 	}
 
 	Star@ get_stars(uint index) const {
-		if(index >= starList.length)
+		if(index >= starBucket.length)
 			return null;
-		return starList[index];
+		return starBucket[index];
 	}
 
 	double get_starTemperature() const {
@@ -1397,32 +1446,28 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	void getPlanets() {
-		for(uint i = 0, cnt = planetList.length; i < cnt; ++i)
-			yield(planetList[i]);
+		for(uint i = 0, cnt = planetBucket.length; i < cnt; ++i)
+			yield(planetBucket[i]);
 	}
 
 	void getPickups() {
-		for(uint i = 0, cnt = objectList.length; i < cnt; ++i) {
-			if(objectList[i].isPickup)
-				yield(objectList[i]);
-		}
+		for(uint i = 0, cnt = pickupBucket.length; i < cnt; ++i)
+			yield(pickupBucket[i]);
 	}
 
 	void getAsteroids() {
-		for(uint i = 0, cnt = asteroidList.length; i < cnt; ++i)
-			yield(asteroidList[i]);
+		for(uint i = 0, cnt = asteroidBucket.length; i < cnt; ++i)
+			yield(asteroidBucket[i]);
 	}
 
 	void getAnomalies() {
-		for(uint i = 0, cnt = anomalyList.length; i < cnt; ++i)
-			yield(anomalyList[i]);
+		for(uint i = 0, cnt = anomalyBucket.length; i < cnt; ++i)
+			yield(anomalyBucket[i]);
 	}
 
 	void getArtifacts() {
-		for(uint i = 0, cnt = objectList.length; i < cnt; ++i) {
-			if(objectList[i].isArtifact)
-				yield(objectList[i]);
-		}
+		for(uint i = 0, cnt = artifactBucket.length; i < cnt; ++i)
+			yield(artifactBucket[i]);
 	}
 
 	int getStrength(Empire@ emp) const {
@@ -1685,54 +1730,76 @@ final class RegionObjects : Component_RegionObjects, Savable {
 				eff.disable(region, obj);
 		}
 
-		Ship@ ship = cast<Ship>(obj);
-		if(ship !is null) {
-			auto@ dsg = ship.blueprint.design;
-			if(obj.owner !is null && obj.owner.valid && ship.hasLeaderAI) {
-				int value = round(dsg.size);
-				strengths[obj.owner.index] -= value;
+		switch(obj.type)
+		{
+			case OT_Ship:
+			{
+				Ship@ ship = cast<Ship>(obj);
+				auto@ dsg = ship.blueprint.design;
+				if(obj.owner !is null && obj.owner.valid && ship.hasLeaderAI) {
+					int value = round(dsg.size);
+					strengths[obj.owner.index] -= value;
+				}
+				calculateShips(region);
 			}
-			calculateShips(region);
-		}
-		else {
-			Planet@ pl = cast<Planet>(obj);
-			if(pl !is null) {
+			break;
+			case OT_Planet:
+			{
+				Planet@ pl = cast<Planet>(obj);
 				planetList.remove(pl);
+				planetBucket.remove(pl);
 				if(obj.owner !is null && obj.owner.valid)
 					planetCounts[obj.owner.index] -= 1;
 				calculatePlanets(region);
 			}
-			else {
-				//Remove from stars
+			break;
+			case OT_Star:
+			{
 				Star@ star = cast<Star>(obj);
-				if(star !is null) {
-					starList.remove(star);
-					StarTemperature -= star.temperature;
-					if(starList.length != 0)
-						StarRadius = starList[0].radius;
-					else
-						StarRadius = 0;
-				}
-				else {
-					Orbital@ orbital = cast<Orbital>(obj);
-					if(orbital !is null) {
-						orbitalList.remove(orbital);
-						calculateTradeAccess(region);
-					}
-					else {
-						Asteroid@ roid = cast<Asteroid>(obj);
-						if(roid !is null) {
-							asteroidList.remove(roid);
-						}
-						else {
-							Anomaly@ anomaly = cast<Anomaly>(obj);
-							if(anomaly !is null) {
-								anomalyList.remove(anomaly);
-							}
-						}
-					}
-				}
+				starList.remove(star);
+				starBucket.remove(star);
+				StarTemperature -= star.temperature;
+				if(starList.length != 0)
+					StarRadius = starList[0].radius;
+				else
+					StarRadius = 0;
 			}
+			break;
+			case OT_Orbital:
+			{
+				Orbital@ orbital = cast<Orbital>(obj);
+				orbitalList.remove(orbital);
+				calculateTradeAccess(region);
+			}
+			break;
+			case OT_Asteroid:
+			{
+				Asteroid@ roid = cast<Asteroid>(obj);
+				asteroidList.remove(roid);
+				asteroidBucket.remove(roid);
+			}
+			break;
+			case OT_Anomaly:
+			{
+				Anomaly@ anomaly = cast<Anomaly>(obj);
+				anomalyList.remove(anomaly);
+				anomalyBucket.remove(anomaly);
+			}
+			break;
+			case OT_Pickup:
+			{
+				Pickup@ pickup = cast<Pickup>(obj);
+				pickupList.remove(pickup);
+				pickupBucket.remove(pickup);
+			}
+			break;
+			case OT_Artifact:
+			{
+				Artifact@ artifact = cast<Artifact>(obj);
+				artifactList.remove(artifact);
+				artifactBucket.remove(artifact);
+			}
+			break;
 		}
 
 		//Handle shipyards
@@ -1751,58 +1818,81 @@ final class RegionObjects : Component_RegionObjects, Savable {
 
 	void enterRegion(Object& thisObj, Object& obj) {
 		Region@ region = cast<Region>(thisObj);
-		Ship@ ship = cast<Ship>(obj);
-		if(ship !is null) {
-			if(obj.owner !is null && obj.owner.valid && ship.hasLeaderAI) {
-				auto@ dsg = ship.blueprint.design;
-				if(dsg !is null) {
-					int value = round(dsg.size);
-					strengths[obj.owner.index] += value;
+		switch(obj.type)
+		{
+			case OT_Ship:
+			{
+				Ship@ ship = cast<Ship>(obj);
+				if(obj.owner !is null && obj.owner.valid && ship.hasLeaderAI) {
+					auto@ dsg = ship.blueprint.design;
+					if(dsg !is null) {
+						int value = round(dsg.size);
+						strengths[obj.owner.index] += value;
+					}
 				}
+				calculateShips(region);
 			}
-			calculateShips(region);
-		}
-		else {
-			Planet@ pl = cast<Planet>(obj);
-			if(pl !is null) {
+			break;
+			case OT_Planet:
+			{
+				Planet@ pl = cast<Planet>(obj);
 				planetList.insertLast(pl);
+				planetBucket.add(pl);
 				if(obj.owner !is null && obj.owner.valid)
 					planetCounts[obj.owner.index] += 1;
 				calculatePlanets(region);
 			}
-			else {
+			break;
+			case OT_Star:
+			{
 				Star@ star = cast<Star>(obj);
-				if(star !is null) {
-					starList.insertLast(star);
-					StarTemperature += star.temperature;
-					if(starList.length != 0)
-						StarRadius = starList[0].radius;
-					else
-						StarRadius = 0;
-				}
-				else {
-					Orbital@ orbital = cast<Orbital>(obj);
-					if(orbital !is null) {
-						orbitalList.insertLast(orbital);
-						/*int value = orbital.MilitaryValue;*/
-						/*if(obj.owner !is null && obj.owner.valid)*/
-						/*	strengths[obj.owner.index] += value;*/
-						calculateTradeAccess(region);
-					}
-					else {
-						Asteroid@ roid = cast<Asteroid>(obj);
-						if(roid !is null) {
-							asteroidList.insertLast(roid);
-						}
-						else {
-							Anomaly@ anomaly = cast<Anomaly>(obj);
-							if(anomaly !is null) {
-								anomalyList.insertLast(anomaly);
-							}
-						}
-					}
-				}
+				starList.insertLast(star);
+				starBucket.add(star);
+				StarTemperature += star.temperature;
+				if(starList.length != 0)
+					StarRadius = starList[0].radius;
+				else
+					StarRadius = 0;
 			}
+			break;
+			case OT_Orbital:
+			{
+				Orbital@ orbital = cast<Orbital>(obj);
+				orbitalList.insertLast(orbital);
+				/*int value = orbital.MilitaryValue;*/
+				/*if(obj.owner !is null && obj.owner.valid)*/
+				/*	strengths[obj.owner.index] += value;*/
+				calculateTradeAccess(region);
+			}
+			break;
+			case OT_Asteroid:
+			{
+				Asteroid@ roid = cast<Asteroid>(obj);
+				asteroidList.insertLast(roid);
+				asteroidBucket.add(roid);
+			}
+			break;
+			case OT_Anomaly:
+			{
+				Anomaly@ anomaly = cast<Anomaly>(obj);
+				anomalyList.insertLast(anomaly);
+				anomalyBucket.add(anomaly);
+			}
+			break;
+			case OT_Pickup:
+			{
+				Pickup@ pickup = cast<Pickup>(obj);
+				pickupList.insertLast(pickup);
+				pickupBucket.add(pickup);
+			}
+			break;
+			case OT_Artifact:
+			{
+				Artifact@ artifact = cast<Artifact>(obj);
+				artifactList.insertLast(artifact);
+				artifactBucket.add(artifact);
+			}
+			break;
 		}
 
 		//Add to all objects
@@ -2255,7 +2345,7 @@ final class RegionObjects : Component_RegionObjects, Savable {
 	}
 };
 
-final class IconRing {
+tidy class IconRing {
 	int level = 0;
 	array<Object@> objects;
 	array<Node@> nodes;
