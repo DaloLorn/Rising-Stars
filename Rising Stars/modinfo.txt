@@ -31,12 +31,12 @@
 
 		Full patch notes can be found in the forums.
 		[h1][b]Links[/b][/h1]
-		[b]Rising Stars on GitHub:[/b] https://github.com/Alarcarr/Rising-Star
+		[b]Rising Stars on GitHub:[/b] https://github.com/DaloLorn/Rising-Stars
 		[b]Rising Stars on ModDB:[/b] http://moddb.com/mods/alternate-balance-expansion-mod
-		[b]Rising Stars wiki:[/b] https://github.com/Alarcarr/Rising-Star/wiki
-		[b]Rising Stars forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/355873534
+		[b]Rising Stars wiki:[/b] https://github.com/DaloLorn/Rising-Stars/wiki
+		[b]Rising Stars forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/812827373
 		[b]Rising Stars Discord chat:[/b] https://discord.gg/sUJKJDc
-		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/359543542244242419/
-		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/355873534/483367798498792160/
+		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/812827373/133256959375172954/
+		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/812827373/133256959375200731/
 	>>
 	Compatibility: 200
