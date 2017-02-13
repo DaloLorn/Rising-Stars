@@ -1,7 +1,7 @@
 Material: RSIconSet
 	Alpha: True
 	Lighting: False
-	DepthWrite: Off
+	DepthWrite: False
 	DepthTest: NoDepthTest
 
 Material: DiffVeryEasy
@@ -27,3 +27,12 @@ Material: DiffVeryHard
 Material: DiffNightmare
 	Inherit: RSIconSet
 	Texture: data/images/planet_level_5.png
+
+Material: GreenScreen
+	Lighting: False
+	Mipmap: No
+	DepthTest: NoDepthTest
+	Culling: None
+	DepthWrite: False
+	Diffuse: #00ff00
+	Texture: data/images/greenscreen.png

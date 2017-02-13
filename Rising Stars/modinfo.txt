@@ -1,6 +1,8 @@
 	Name: Rising Stars
 	Description: <<
-		[i]Lore TBA[/i]
+		[i]The year is 718 AP. The galaxy is fractured - divided between those who would unite it under a flag of peace, and those who would conquer it for themselves. There are those who do not care about the conflicts of today. Some seek their creator. Others hear and recognize the rumors: tales of massive rings encircling entire stars; of a shadow lurking beyond the galaxy, waiting, biding its time.
+
+		There is one rumor, however, that holds everyone's attention. The return of the Ulthaar - former lords of the galaxy - brings with it many questions. Why have they come? What power do they possess? And most importantly... [b]what will they do?[/b][/i]
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function (more or less), some content may be missing or malfunctioning.[/b]
 
@@ -26,7 +28,9 @@
 			[*]Derelicts - [i]flagships not using Sinew now have a chance of being disabled rather than destroyed when they lose all their Control, depending on how badly damaged they are[/i]
 			[*]Stellar phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
 			[/list]
-		[*]New maps
+		[*]New maps:[list]
+			[*]Precious Clouds - [i]4-player map; race to rule the rich nebulae at the heart of this small sector[/i]
+		[/list]
 		[/list]
 
 		Full patch notes can be found in the forums.
