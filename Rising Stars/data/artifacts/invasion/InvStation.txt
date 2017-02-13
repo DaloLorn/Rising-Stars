@@ -1,0 +1,13 @@
+Artifact: InvStation
+	Name: #INV_ART_STATION
+	Description: #INV_ART_STATION_DESC
+
+	Frequency: 0
+	Tag: Invasion
+
+	Ability: InvStation
+	Ability: InvStationPlus
+
+	AI: ActivateOnRemnantStation(4.0)
+	Icon: SingularityCore*#ff7777
+	Strategic Icon: SingularityCore*#ff7777

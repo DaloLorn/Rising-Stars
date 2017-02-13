@@ -16,3 +16,4 @@ Artifact: RevenantEngine
 
 	AI: RevenantPart()
 	Icon Size: 0.04
+	Icon: RevEngine

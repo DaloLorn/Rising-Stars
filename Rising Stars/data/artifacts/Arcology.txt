@@ -1,0 +1,20 @@
+Artifact: Arcology
+	Name: #ART_ARCOLOGY
+	Description: #ART_ARCOLOGY_DESC
+	Frequency: 0.5
+	Natural: True
+
+	Ability: DevelopPlanet
+
+	AI: ActivateOnBestPlanet(5.0)
+	Icon: Arcology
+	Strategic Icon: Arcology
+
+Artifact: NatureDevice
+	Name: #ART_ARCOLOGY
+	Description: #ART_ARCOLOGY_DESC
+	Frequency: 0
+
+	Ability: DevelopPlanet
+	Icon: Arcology
+	Strategic Icon: Arcology
