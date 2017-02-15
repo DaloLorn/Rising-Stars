@@ -1,0 +1,30 @@
+Technology: SupportSupplyUse
+	Name: #R_IMP_SUPPORT_SUPPLY_USE
+	Blurb: #R_IMP_SUPPORT_SUPPLY_USE_BLURB:10%
+	Description: #R_IMP_SUPPORT_SUPPLY_USE_DESC:10%
+
+	Icon: ActionBarIcons::2
+	Color: #fefc61
+
+	Point Cost: 500
+	Time Cost: 60
+	Class: Boost
+	Category: Minor Upgrades
+	Symbol: AttributeIcons::4
+
+	AddModifier( tag/Weapon,hull/Support::SupplyCostFactor(0.9) )
+
+Technology: SupportSupplyUse2
+	Name: #R_IMP_SUPPORT_SUPPLY_USE2
+	Blurb: #R_IMP_SUPPORT_SUPPLY_USE_BLURB:20%
+	Description: #R_IMP_SUPPORT_SUPPLY_USE_DESC:20%
+
+	Icon: ActionBarIcons::2
+	Color: #fefc61
+
+	Point Cost: 800
+	Time Cost: 80
+	Category: Medium Upgrades
+	Symbol: AttributeIcons::4
+
+	AddModifier( tag/Weapon,hull/Support::SupplyCostFactor(0.8) )

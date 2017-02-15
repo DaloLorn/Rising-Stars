@@ -1,0 +1,28 @@
+Technology: SupplyRegen
+	Name: #R_IMP_SUPPLY_REGEN
+	Blurb: #R_IMP_SUPPLY_REGEN_BLURB:20%
+	Description: #R_IMP_SUPPLY_REGEN_DESC:20%
+
+	Icon: techResupply*#fe4040
+	Color: #fefc61
+
+	Point Cost: 400
+	Time Cost: 60
+	Class: Boost
+	Category: Minor Upgrades
+
+	AddModifier( SupplyRateFactor(1.2) )
+
+Technology: SupplyRegen2
+	Name: #R_IMP_SUPPLY_REGEN2
+	Blurb: #R_IMP_SUPPLY_REGEN_BLURB:40%
+	Description: #R_IMP_SUPPLY_REGEN_DESC:40%
+
+	Icon: techResupply*#fe4040
+	Color: #fefc61
+
+	Point Cost: 800
+	Time Cost: 80
+	Category: Medium Upgrades
+
+	AddModifier( SupplyRateFactor(1.4) )

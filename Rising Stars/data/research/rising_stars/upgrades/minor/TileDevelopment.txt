@@ -1,0 +1,28 @@
+Technology: TileDevelopment
+	Name: #R_IMP_TILE_DEVELOPMENT
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:20%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:20%
+
+	Icon: DesignationIcons::10
+	Color: #a46c2f
+
+	Point Cost: 600
+	Time Cost: 60
+	Class: Boost
+	Category: Minor Upgrades
+
+	ModAttribute(TileDevelopmentFactor, Multiply, 1.2)
+
+Technology: TileDevelopment2
+	Name: #R_IMP_TILE_DEVELOPMENT2
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:40%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:40%
+
+	Icon: DesignationIcons::10
+	Color: #a46c2f
+
+	Point Cost: 900
+	Time Cost: 80
+	Category: Medium Upgrades
+
+	ModAttribute(TileDevelopmentFactor, Multiply, 1.4)

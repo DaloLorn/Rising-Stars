@@ -1,10 +1,10 @@
 Technology: MetropolisUpg
-	Name: #R_METROPOLIS_UPGRADE 
+	Name: #R_METROPOLIS_UPGRADE
 	Description: #R_METROPOLIS_UPGRADE_DESC
 
 	Icon: Metropolis
-	Symbol: ResourceIcon::4
-	Color: #8c4ec9
+	Symbol: SupplyIcon
+	Color: #b0d16a
 
 	Category: Special Upgrades
 	Class: BigUpgrade

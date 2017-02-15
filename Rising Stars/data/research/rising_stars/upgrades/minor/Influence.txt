@@ -1,0 +1,28 @@
+Technology: InfluenceIncome
+	Name: #R_DEV_INFLUENCE_INCOME
+	Description: #R_DEV_INFLUENCE_INCOME_DESC:3
+
+	Point Cost: 1000
+	Time Cost: 80
+
+	Icon: ResourceIcon::1
+	Color: #0087c7
+	Category: Medium Upgrades
+	Blurb: #R_DEV_INFLUENCE_INCOME_BLURB:3
+
+	AddInfluenceStake(3)
+
+Technology: InfluenceIncome2
+	Name: #R_DEV_INFLUENCE_INCOME2
+	Description: #R_DEV_INFLUENCE_INCOME_DESC:6
+
+	Point Cost: 1500
+	Time Cost: 120
+
+	Icon: ResourceIcon::1
+	Color: #0087c7
+	Class: BigUpgrade
+	Category: Special Upgrades
+	Blurb: #R_DEV_INFLUENCE_INCOME_BLURB:6
+
+	AddInfluenceStake(6)

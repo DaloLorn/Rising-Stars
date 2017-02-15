@@ -1,0 +1,16 @@
+Technology: FTL
+	Name: #R_DEV_FTL_INCOME
+	Blurb: #R_DEV_FTL_INCOME_BLURB:0.5
+	Description: #R_DEV_FTL_INCOME_DESC:0.5
+
+	Icon: ResourceIcon::3
+	Color: #00c0ff
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+	Symbol: ResourceIcons::22
+
+	AddFTLIncome(0.5)

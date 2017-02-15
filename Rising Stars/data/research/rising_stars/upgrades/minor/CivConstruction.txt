@@ -1,0 +1,30 @@
+Technology: CivConstruction
+	Name: #R_IMP_CIV_CONSTRUCT
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:20%
+	Description: #R_IMP_CIV_CONSTRUCT_DESC:20%
+
+	Icon: techConstruction*#3accae
+	Color: #3accae
+
+	Point Cost: 500
+	Time Cost: 100
+	Class: Boost
+	Category: Minor Upgrades
+	Symbol: BuildingSprites::0
+
+	ModAttribute(CivBldConstructionRate, Multiply, 1.2)
+
+Technology: CivConstruction2
+	Name: #R_IMP_CIV_CONSTRUCT2
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:40%
+	Description: #R_IMP_CIV_CONSTRUCT_DESC:40%
+
+	Icon: techConstruction*#3accae
+	Color: #3accae
+
+	Point Cost: 800
+	Time Cost: 140
+	Category: Medium Upgrades
+	Symbol: BuildingSprites::0
+
+	ModAttribute(CivBldConstructionRate, Multiply, 1.4)

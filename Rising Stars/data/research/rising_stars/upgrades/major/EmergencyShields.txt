@@ -1,0 +1,13 @@
+Technology: KeyEmergencyShields
+	Name: #R_KEY_EMERGENCY_SHIELDS
+	Description: #R_KEY_EMERGENCY_SHIELDS_DESC
+	Class: BigUpgrade
+
+	Point Cost: 1200
+	Time Cost: 100
+
+	Icon: FissionReactor
+	Color: #b88b00
+	Category: Special Upgrades
+
+	AddModifier(EmergencySupplies::AddHaveStatus(1.0))
