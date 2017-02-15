@@ -43,56 +43,51 @@ Grid: RisingStars
 	CatPlanetaryDevelopment: -2,-4
 	CatPropulsion: -2,4
 	CatEnergyScience: 2,4
-	FillerNode: 2,5
-	FillerNode: -3,5
-	FillerNode: -5,0
+	Energy: 2,5
+	Thrust: -3,5
+	SupportCap: -5,0
 	FillerNode: -3,-5
 	FillerNode: 5,0
-	FillerNode: -6,1
-	FillerNode: -6,-1
-	FillerNode: -4,5
-	FillerNode: -2,6
-	FillerNode: 2,6
-	FillerNode: 3,5
-	FillerNode: 2,-5
+	InfluenceIncome: -6,1
+	InfluenceIncome: -6,-1
+	Health: -4,5
+	AoERadius: -2,6
+	SupplyStorage: 2,6
+	Damage: 3,5
+	FactoryLabor: 2,-5
 	FillerNode: 2,-6
 	FillerNode: 3,-5
 	FillerNode: 5,-1
 	FillerNode: 5,1
-	FillerNode: -5,5
-	FillerNode2: -6,5
+	Thrust: -5,5
+	Thrust2: -6,5
 	GravityEngine: -7,5
-	FillerNode2: -8,5
+	Thrust2: -8,5
 	GravitonChanneling: -9,5
 	EnergyHurdle: -7,6
 	Connector: -8,7
 	VacuumTelescope: -10,5
-	FillerNode: -9,6
+	Health: -9,6
 	Connector: -9,7
 	Connector: -4,6
-	FillerNode2: -4,7
-	FillerNode: -3,7
+	FireRate2: -4,7
+	FTLStorage: -3,7
 	FTLHurdle: -4,8
-	FillerNode2: -5,9
+	FTL: -5,9
 	Connector: -4,9
-	FillerNode2: -3,10
+	FTLStorage: -3,10
 	Hyperdrive: -5,10
 	Jumpdrive: -3,11
-	FillerNode2: -5,11
-	FillerNode2: -3,12
+	FTLStorage: -5,11
+	FTL: -3,12
 	FTLHurdle: -6,11
-	Connector: -6,12
-	FlingBeacons: -6,13
+	FTLHurdle: -6,12
 	SS: -4,12
 	FTLHurdle: -2,12
 	Connector: -2,13
 	Connector: -2,14
-	FTLHurdle: -3,14
-	FillerNode2: -5,13
+	FTLStorage: -5,13
 	Connector: -4,14
-	GateTech: -5,15
-	FTLHurdle: -6,14
-	Connector: -6,15
 	FillerNode: 1,-6
 	FillerNode: -2,-6
 	FillerNode: -4,-5
@@ -100,10 +95,35 @@ Grid: RisingStars
 	DefenseSatellite: -1,-5
 	FillerNode: 0,-5
 	Connector: 1,6
-	FillerNode2: -1,6
+	SupportSupplyUse2: -1,6
 	SolarSatellite: 0,5
 	Connector: 0,6
-	FTLHurdle: -6,9
 	FTLHurdle: -6,10
 	FTLHurdle: -2,10
 	FTLHurdle: -2,11
+	FTLStorage: -6,9
+	SkipDrive: -6,8
+	Connector: -5,15
+	FTLHurdle: -3,14
+	GateTech: -5,16
+	FlingBeacons: -7,13
+	FTL: -7,12
+	FTLCost: -8,12
+	Connector: -6,16
+	Connector: -7,14
+	Connector: -7,16
+	FTLStorage: -8,15
+	Connector: -5,14
+	FTLHurdle: -6,14
+	HyperfieldSequencing: -5,12
+	InfluenceHurdle: -6,0
+	Senate: -7,0
+	InfluenceHurdle: -8,-2
+	Connector: -8,-1
+	Obedience: -9,-3
+	Connector: -8,0
+	InfluenceHurdle: -9,0
+	Prosperity: -10,0
+	Connector: -8,1
+	InfluenceHurdle: -8,2
+	InfluenceIncome2: -9,2
