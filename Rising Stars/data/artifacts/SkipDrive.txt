@@ -1,0 +1,8 @@
+Artifact: SkipDrive
+	Name: #ART_SKIP_DRIVE
+	Description: #ART_SKIP_DRIVE_DESC
+	Frequency: 0.5
+
+	Ability: EquipSkipDrive
+	Icon: TechIcons::41
+	Strategic Icon: TechIcons::41

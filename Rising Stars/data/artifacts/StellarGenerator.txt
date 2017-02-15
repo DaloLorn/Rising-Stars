@@ -1,0 +1,12 @@
+Artifact: StellarGenerator
+	Name: #ART_STELLAR_GENERATOR
+	Description: #ART_STELLAR_GENERATOR_DESC
+	Frequency: 0.25
+
+	Model: ArtifactAdvanced
+
+	Ability: GenerateStar
+
+	AI: ActivateNearOwnedSystem(2.0)
+	Icon: FusionGen
+	Strategic Icon: FusionGen

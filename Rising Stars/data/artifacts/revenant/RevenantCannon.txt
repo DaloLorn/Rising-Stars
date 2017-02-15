@@ -16,3 +16,4 @@ Artifact: RevenantCannon
 
 	AI: RevenantPart()
 	Icon Size: 0.04
+	Icon: RevCannon

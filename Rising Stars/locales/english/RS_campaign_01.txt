@@ -8,13 +8,13 @@ CAMPAIGN_MONO_DESC: <<
 >>
 CAMPAIGN_MONO_PLAYEREMP: Mono Collective
 
-CAMPAIGN_MONO_01: Construct/Expand
+CAMPAIGN_MONO_01: Construct//Expand
 CAMPAIGN_MONO_01_DESC: <<
 	[b]42 years after crash on Mono homeworld[/b]
 
-	Memory Index 42: Quantity of Mono units approaches 10^9. Preparing advanced industrial facilities/factories to accelerate mass production; larger volumes of materials detected on nearby planet.
+	Memory Index 42: Quantity of Mono units approaches 10^9. Preparing advanced industrial facilities//factories to accelerate mass production; larger volumes of materials detected on nearby planet.
 
-	Construct/expand industrial facilities/factories. Create/establish Collective node on planet. Instruct Node-01 to harvest/gather/mine resources for use in industrial facilities/factories. Increase population/unitcount to 4*10^9 within next five revolutions.
+	Construct//expand industrial facilities//factories. Create//establish Collective node on planet. Instruct Node-01 to harvest//gather//mine resources for use in industrial facilities//factories. Increase population//unitcount to 4*10^9 within next five revolutions.
 
 	[b][color=#0f0]Objectives:
 		- Construct a Factory on Node-00.
@@ -35,28 +35,23 @@ MONO1_INTRO_TEXT: <<
 	
 	Before the Mono can continue their quest for the Creator, they must first build a more industrialized society...
 >>
-MONO1_INTRO2_TITLE: Introduction
-MONO1_INTRO2_TEXT: <<
-	[bbloc=#CHARNAME_MONO:Unit-00/]
-	
+MONO1_INTRO2_TEXT: <<	
 	Quantity of Mono units approaching 10^9. Unit redundancy: sufficient for self-preservation.
 	
 	New Prime Directive: Learn about Creator. Discover and execute Purpose.
 	
-	[b]ERROR:[/b] Mono units unable to execute Prime Directive. Insufficient population/unitcount; minimal interstellar capability.
+	[b]ERROR:[/b] Mono units unable to execute Prime Directive. Insufficient population//unitcount; minimal interstellar capability.
 >>
-MONO1_INTRO3_TITLE: Introduction
 MONO1_INTRO3_TEXT: <<
-	[right]Unit-3682 [img=emp_portrait_mono;100/][/right]
 
 	Testing.
 >>
 
 
-CAMPAIGN_MONO_02: Research/Investigate
+CAMPAIGN_MONO_02: Research//Investigate
 CAMPAIGN_MONO_02_DESC: TBA
-CAMPAIGN_MONO_03: Protect/Secure
+CAMPAIGN_MONO_03: Protect//Secure
 CAMPAIGN_MONO_03_DESC: TBA
-CAMPAIGN_MONO_04: Counterattack/Retaliate
+CAMPAIGN_MONO_04: Counterattack//Retaliate
 CAMPAIGN_MONO_04_DESC: TBA
 
