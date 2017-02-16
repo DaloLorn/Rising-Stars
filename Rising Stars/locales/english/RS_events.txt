@@ -1,4 +1,4 @@
-EVT_NOTIFY_HUBWORLD: Progenitor Archives Reactivated on [color=$4]$3[/color]!
+﻿EVT_NOTIFY_HUBWORLD: Progenitor Archives Reactivated on [color=$4]$3[/color]!
 EVT_NOTIFY_HUBWORLD_DESC: The [color=$2]$1[/color] have reactivated a Progenitor archive on [color=$4]$3[/color]! Tremendous knowledge is just a step away from their scientists!
 EVT_NOTIFY_PROGENITOR_BREAKTHROUGH: Progenitor Resurgence
 EVT_NOTIFY_PROGENITOR_BREAKTHROUGH_DESC: The [color=$2]$1[/color] have begun rediscovering their most advanced technology!

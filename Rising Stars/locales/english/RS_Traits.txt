@@ -1,4 +1,4 @@
-TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
+﻿TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
 TRAIT_TECHNICISTS: Researchers
 TRAIT_TECHNICISTS_DESC: <<|
 	[vspace=6/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]

@@ -1,4 +1,4 @@
-ANOMALY_NEUTRONPLATE_LIQUID: <<
+﻿ANOMALY_NEUTRONPLATE_LIQUID: <<
 	Analyze the fragment as a whole, yielding new insights into low-temperature metallurgy and liquid metals.
 
 	[right][b][color=#96d196]Decrease all armor maintenance costs by $1%.

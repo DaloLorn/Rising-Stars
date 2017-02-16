@@ -1,4 +1,4 @@
-R_LIFESTYLE_REQ: Requires tech level $2 in $1
+﻿R_LIFESTYLE_REQ: Requires tech level $2 in $1
 TRAIT_GENIOCRACY_NAME: Government: Technocracy
 
 INFINITE_THRUST: Propulsion
@@ -122,7 +122,7 @@ INFINITE_SOCIETY_DESC_MECH:<<
 	Reduces the level decay rate of planets by $2. Also increases tile development and all construction speeds by $2.
 	Increases the loyalty of all planets by $3 and adds $4 Defense Reserve.
 
-	Increases empire income by �$5.
+	Increases empire income by §$5.
 
 	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
 >>

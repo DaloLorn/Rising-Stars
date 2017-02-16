@@ -1,4 +1,4 @@
-PICKUP_CRYS: Crystallurgical Knowledge
+﻿PICKUP_CRYS: Crystallurgical Knowledge
 PICKUP_CRYS_DESC: Unlocks the Crystalline Armor subsystem.
 
 PICKUP_DISRUPTOR: Disruptor Stash

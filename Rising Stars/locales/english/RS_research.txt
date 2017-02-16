@@ -1,4 +1,4 @@
-R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
+﻿R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
 R_SYS_SHIELDED_AMGEN_DESC: <<
 	[color=#aaa][i]New advances in shield compacting unlock the Shielded Antimatter Generator subsystem.[/i][/color]
 

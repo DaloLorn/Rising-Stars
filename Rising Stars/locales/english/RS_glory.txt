@@ -1,4 +1,4 @@
-GLORY_MAXIMUM: $1 is at maximum level.
+﻿GLORY_MAXIMUM: $1 is at maximum level.
 
 GLORY_PACIFIST: Comfort
 GLORY_PACIFIST_PROGRESS: Accumulate [b]$1 Comfort[/b] by avoiding combat and casualties.
