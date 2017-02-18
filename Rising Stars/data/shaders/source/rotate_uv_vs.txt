@@ -1,0 +1,35 @@
+#version 120
+uniform float offset;
+uniform float cycle;
+varying vec2 uv;
+const float twopi = 6.2828;
+
+float random( float f ) {
+	return fract(sin(dot(vec2(f, -f) ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
+vec2 rotator(vec2 rotate, float rate)
+{
+    return vec2(dot(rotate,  vec2(cos(rate),  -sin(rate))), dot(rotate,  vec2(sin(rate),  cos(rate))));
+}
+
+void main() {
+	uv = gl_MultiTexCoord0.xy;
+	uv.x = uv.x - 0.5;
+	uv.y = uv.y - 0.5;
+	float rng = 6.28*offset;//(10 * offset);//40 * random(offset * cycle);
+	if(offset < 0.5)
+	{
+		rng = rng  + (15*twopi*random(cycle));
+	}
+	else
+	{
+		rng = rng  - (15*twopi*random(cycle));
+	}
+	uv = rotator(uv, rng);
+	uv.x = uv.x + 0.5;
+	uv.y = uv.y + 0.5;
+	gl_Position = ftransform();
+	gl_FrontColor = gl_Color;
+	gl_BackColor = gl_Color;
+}
