@@ -16,3 +16,4 @@ Artifact: RevenantChassis
 
 	AI: RevenantPart()
 	Icon Size: 0.04
+	Icon: RevChassis

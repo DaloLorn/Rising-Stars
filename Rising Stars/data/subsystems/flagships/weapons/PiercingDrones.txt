@@ -20,6 +20,7 @@ Subsystem: PiercingDrones
 	Speed := max(120, Range / 6)
 	Tracking := 6.0
 	SupplyCost := Size * 6.0
+	Spread := 0.6
 
 	//DPS is an estimation
 	out DPS := Damage * 10 * PodSize / Lifetime
@@ -27,7 +28,7 @@ Subsystem: PiercingDrones
 
 	Pierce := 0.2
 	DRResponse := 5
-	DamageType := 3
+	DamageType := 2
 	Spillable := 0
 
 	Hex.HP := 18 * HexSize
@@ -71,4 +72,5 @@ Subsystem: PiercingDrones
 		Pierce = Pierce
 		DRResponse = DRResponse
 		DamageType = DamageType
-		Spillable = 0
+		Spillable = Spillable
+		Spread = Spread

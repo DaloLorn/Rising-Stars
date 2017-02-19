@@ -1,4 +1,5 @@
 #priority init 10
+import design_settings;
 
 enum StatType {
 	ST_Hex,
@@ -21,6 +22,12 @@ enum StatDisplayMode {
 	SDM_Short,
 };
 
+enum CustomStatFormula {
+	CSF_None,
+	CSF_HPStrength,
+	CSF_Strength,
+};
+
 class DesignStat {
 	uint index = 0;
 	string ident;
@@ -30,6 +37,7 @@ class DesignStat {
 	Sprite icon;
 	Color color;
 	StatDisplayMode display = SDM_Normal;
+	CustomStatFormula customFormula = CSF_None;
 
 	int reqTag = -1;
 	int secondary = -1;
@@ -44,6 +52,8 @@ class DesignStat {
 	SysVariableType multType;
 	int divVar = -1;
 	int multVar = -1;
+
+	bool outputZero = false;
 
 	int importance;
 
@@ -145,6 +155,13 @@ namespace design_stats {
 	::DesignStat@[] globalStats;
 };
 
+double calculateHPStrength(const Design@ dsg) {
+	double ShieldBehaviorMod = 1.0;
+	auto@ settings = cast<const DesignSettings>(dsg.settings);
+	if (settings !is null && dsg.hasTag(ST_Support) && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
+	return ((dsg.totalHP + (dsg.total(SV_Repair) / 3.0 * pow(max(log10(dsg.total(SV_Repair)/3.0), 0.0), 2))) * (1.0 + log10(dsg.size) * 0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen))*2.0, 1.0)) * dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_Chance)))) * ShieldBehaviorMod;
+}
+
 DesignStats@ getDesignStats(const Design@ dsg) {
 	DesignStats stats;
 
@@ -154,21 +171,33 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 		if(stat.reqTag != -1 && !dsg.hasTag(SubsystemTag(stat.reqTag)))
 			continue;
 		bool has = false;
-		double val = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.variable, stat.aggregate);
+		double val = 0;
 		double used = -1.0;
-		if(stat.usedVariable != -1)
-			used = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.usedVariable, stat.aggregate);
-		if(stat.divVar != -1) {
-			double div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
-			if(div != 0.0)
-				val /= div;
-		}
-		if(stat.multVar != -1) {
-			double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
-			val *= mult;
+		switch(stat.customFormula) {
+			case CSF_Strength:
+				val = calculateHPStrength(dsg) * dsg.total(SV_DPS) * 0.001;
+				break;
+			case CSF_HPStrength:
+				val = calculateHPStrength(dsg);
+				break;
+			case CSF_None:
+			default:
+				val = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.variable, stat.aggregate);
+				if(stat.usedVariable != -1)
+					used = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.usedVariable, stat.aggregate);
+				if(stat.divVar != -1) {
+					double div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
+					if(div != 0.0)
+						val /= div;
+				}
+				if(stat.multVar != -1) {
+					double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
+					val *= mult;
+				}
+				break;
 		}
 
-		if(val != 0.0) {
+		if(val != 0.0 || stat.outputZero) {
 			stats.stats.insertLast(stat);
 			stats.values.insertLast(val);
 			stats.used.insertLast(used);
@@ -310,6 +339,20 @@ void loadStats(const string& filename) {
 		}
 		else if(key == "RequireTag") {
 			stat.reqTag = getSubsystemTag(value);
+		}
+		else if(key.equals_nocase("AllowZero")) {
+			stat.outputZero = toBool(value);
+		}
+		else if(key.equals_nocase("CustomFormula")) {
+			if(value.equals_nocase("None")) {
+				stat.customFormula = CSF_None;
+			}
+			else if(value.equals_nocase("Strength")) {
+				stat.customFormula = CSF_Strength;
+			}
+			else if(value.equals_nocase("HPStrength")) {
+				stat.customFormula = CSF_HPStrength;
+			}
 		}
 		else if(key == "Secondary") {
 			int sec = -1;

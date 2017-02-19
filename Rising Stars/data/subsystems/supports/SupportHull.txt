@@ -17,6 +17,7 @@ Subsystem: SupportHull
 	DummyForStR:=1000
 	DummyForRepair:=4
 
+	HullStrengthMult := 1
 	
 	Repair := (ShipSize / HexLimit) * 4
 	TechMult := 0.75

@@ -1,6 +1,6 @@
 {
 	"__VERSION__": 1,
-	"name": "SlipStream Station",
+	"name": "Slipstream Station",
 	"size": 128,
 	"hull": "$1Station",
 	"type": "Station",

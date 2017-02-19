@@ -18,13 +18,14 @@ Subsystem: CrystalArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	DamageResist := ShipSize / 12.0
+	EnergyResist := DamageResist * 4.0
 
 	Hex.LaborCost := 0.4 * HexSize
 	Hex.BuildCost := 6.0  * HexSize
 	Hex.MaintainCost := 0
 	Effect: ReduceDamage
 		ProjResist = DamageResist
-		EnergyResist = DamageResist * 4.0
+		EnergyResist = EnergyResist
 		ExplResist = DamageResist
 		MinimumPercent = 1/6
 

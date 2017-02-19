@@ -18,6 +18,7 @@ Technology: XBoosterEngine
 	SecondaryEnergyCost(1000)
 
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 2, #R_LIFESTYLE_REQ:Propulsion:2)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)
 
 Technology: XSkipDrive
 	Name: #R_SYS_SKIP_DRIVE
@@ -35,6 +36,7 @@ Technology: XSkipDrive
 	SkipOnUnlockedSubsystem(SkipDrive)
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 4, #R_LIFESTYLE_REQ:Propulsion:4)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4 ,#R_LIFESTYLE_REQ:Energy Science:4)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XRamjet
 	Name: #R_SYS_RAMJET
@@ -54,6 +56,7 @@ Technology: XRamjet
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 5,#R_LIFESTYLE_REQ:Propulsion:5)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 	
 Technology: XGravityEngine
 	Name: #R_SYS_GRAVITY_ENGINE
@@ -73,6 +76,7 @@ Technology: XGravityEngine
 	
 	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5 ,#R_LIFESTYLE_REQ:Energy Science:5)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 	
 Technology: XGravitonChanneling
 	Name: #R_GRAVITON_CHANNELING

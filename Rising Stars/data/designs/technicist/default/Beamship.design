@@ -2,7 +2,7 @@
 	"__VERSION__": 1,
 	"name": "Beamship",
 	"size": 4,
-	"hull": "$1Medium",
+	"hull": "$1Tiny",
 	"type": "Support",
 	"gridWidth": 19,
 	"gridHeight": 16,

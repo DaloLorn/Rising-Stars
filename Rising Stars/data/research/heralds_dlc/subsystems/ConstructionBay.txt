@@ -14,3 +14,5 @@ Technology: ConstructionBay
 	SkipOnUnlockedSubsystem(ConstructionBay)
 
 	SecondaryMoneyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

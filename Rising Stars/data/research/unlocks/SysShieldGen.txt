@@ -14,3 +14,5 @@ Technology: SysShieldGen
 	SkipOnUnlockedSubsystem(ShieldGen)
 
 	SecondaryEnergyCost(750)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

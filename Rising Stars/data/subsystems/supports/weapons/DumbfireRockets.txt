@@ -1,0 +1,62 @@
+Subsystem: DumbfireRockets
+	Name: #S_DUMBFIREROCKETS
+	Description: #S_DUMBFIREROCKETS_DESC
+	BaseColor: #f94694
+	TypeColor: #f94694
+	Picture: SubsystemButtonArt::1
+	Elevation: 2
+
+	Tags: WeaponBase, MissileBase, Category:Weapons, Rotatable, HexLimitArc
+	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
+	Hull: Support
+
+	Size := HexSize * Hexes
+	Range := Size + 150
+	Damage := Size * 5.0
+	Reload := 15 * min(1.0 + Size/512, 2.0)
+	Speed := max(140, Range / 12)
+	Tracking := 1.6
+	SupplyCost := Size * 6.0
+	Spread := 0.08
+	PodSize := 8
+	
+	out DPS := (Damage * PodSize) / (Reload + FireDelay * PodSize)
+	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+
+	Hex.BuildCost := 0.75 * HexSize
+	Hex.LaborCost := 0.07 * HexSize
+
+	FireDelay := Reload / (PodSize * 6)
+	FireArc := 0.75 * pi
+	Requires:
+		Command = 1
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 3
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: RocketPod::0
+		DrawMode: 1
+
+		Hex.DamageResist := ShipSize / 28.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: DumbfireRockets
+		Range = Range
+		Damage = Damage
+		FireDelay = FireDelay
+		PodSize = PodSize
+		Reload = Reload + (FireDelay * PodSize)
+		Speed = Speed
+		Tracking = Tracking
+		SupplyCost = SupplyCost * (Reload / PodSize)
+		FireArc = FireArc
+		Spread = Spread

@@ -205,3 +205,6 @@ ANOMALY_SYSTEM_FREQ_MULT: 0
 
 //Multiplier to FTL-related stats (FTL storage, FTL generation rate, FTL per crystal)
 FTL_MULT: 1.000
+
+//Special config variable to disable starter setup for various races.
+IS_SCENARIO: 0

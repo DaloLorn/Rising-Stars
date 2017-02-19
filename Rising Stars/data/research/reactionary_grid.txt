@@ -33,7 +33,6 @@ Grid: Reactionary
 	XShieldHarmonizer: -7,-7
 	XShieldHardener: -8,-7
 	LifeInfiniteChassis: 2,1
-	XAugmentReload: 3,3
 	XDestroyerHull: 6,0
 	Connector: 3,1
 	XCarrierHull: 4,0
@@ -51,11 +50,9 @@ Grid: Reactionary
 	Connector: 0,-6
 	Connector: 1,-5
 	XGravityEngine: 2,-4
-	Connector: 3,-6
 	Connector: -1,-7
 	Connector: -1,-8
 	GravitonChanneling: 1,-3
-	Connector: 2,-6
 	Connector: -1,-9
 	Connector: 2,2
 	Connector: 1,3
@@ -103,10 +100,9 @@ Grid: Reactionary
 	XTroopPods: -11,8
 	XProsperity: -11,10
 	XSenate: -11,6
-	XMegacity: -11,9
 	Wealth: -10,6
 	XBroadcastAntenna: -10,7
-	Connector: -10,9
+	XMegacity: -10,9
 	XLaboratories: -12,10
 	LifeInfiniteSociology: -8,8
 	Science: -7,8
@@ -127,8 +123,6 @@ Grid: Reactionary
 	XBulkhead: -1,6
 	Connector: -1,5
 	Connector: -2,6
-	XConstructionBay: -3,5
-	XOreProcessor: -4,5
 	XDefenseSatellite: -1,7
 	XSolarPanel: -7,-2
 	Connector: -3,7
@@ -142,22 +136,15 @@ Grid: Reactionary
 	Connector: 2,-12
 	MissileRange: 2,-11
 	Connector: 2,-13
-	Connector: 3,-14
-	XBoosterEngine: 3,-5
+	XAugmentSupply: 3,-14
 	Connector: 5,5
 	Connector: 5,6
 	Connector: 4,7
 	XShipComputer: 5,1
 	XHydroponicsSatellite: 7,7
-	XShockMissiles: 4,-14
-	XWarhead: 2,-15
 	XGravitonCondenser: -11,3
-	FlareBomb: -13,-4
-	XIonCannon: -12,-4
-	Connector: 3,-7
-	XRamjet: 4,-4
 	XSkipDrive: 4,-8
-	Connector: 5,-8
+	xFTLCost: 5,-8
 	Connector: 5,-9
 	Connector: 6,-10
 	Connector: 5,-7
@@ -171,7 +158,6 @@ Grid: Reactionary
 	HyperfieldSequencing: 5,-11
 	FTLJammerCombat: 3,-9
 	Obedience: -12,8
-	XPlanetaryEngine: 5,-4
 	XHyperdrive: 6,-5
 	ProgenitorScience: -11,20
 	Connector: -12,21
@@ -197,3 +183,27 @@ Grid: Reactionary
 	Connector: -8,19
 	InfluenceHurdle: -9,18
 	Connector: -11,23
+	XConstructionBay: -3,5
+	XOreProcessor: -4,5
+	XAugmentReload: 3,3
+	XSuperstructureHull: -2,9
+	Connector: 4,-14
+	FlareBomb: -13,-4
+	XIonCannon: -12,-4
+	XCloakPlating: -12,-5
+	Connector: 2,-16
+	XJuggernautHull: 2,-17
+	XWarhead: 1,-16
+	Connector: 2,-15
+	XShockMissiles: 4,-13
+	Connector: -3,8
+	XStationMaintenance: -4,9
+	Connector: 2,-6
+	Connector: 3,-6
+	Connector: 4,-7
+	Connector: 4,-6
+	XPlanetaryEngine: 5,-4
+	XRamjet: 4,-4
+	XBoosterEngine: 3,-5
+	XAbundance: -11,9
+	XPlasmaThrower: -6,3

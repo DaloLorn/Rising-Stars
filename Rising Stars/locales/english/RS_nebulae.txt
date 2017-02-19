@@ -1,4 +1,4 @@
-EMPTY_SPACE_DESC: <<
+﻿EMPTY_SPACE_DESC: <<
 	Slight gravitational anomalies caused by subspace eddies in this sector have pulled in a variety of interesting objects into an otherwise featureless region of space.
 	
 	Some interesting side-effects of the subspace anomalies are that shields are formed a bit more effectively, and the gravitational anomalies they create are attracted to massive objects. This manifests itself as a 5% boost to shield regeneration and a 25% boost to sensor range.

@@ -1,0 +1,13 @@
+Artifact: InvSystem
+	Name: #INV_ART_SYSTEM
+	Description: #INV_ART_SYSTEM_DESC
+
+	Frequency: 0
+	Tag: Invasion
+
+	Ability: InvSystem
+	Ability: InvSystemPlus
+
+	AI: ActivateNearOwnedSystem(2.0)
+	Icon: FusionGen*#ff7777
+	Strategic Icon: FusionGen*#ff7777

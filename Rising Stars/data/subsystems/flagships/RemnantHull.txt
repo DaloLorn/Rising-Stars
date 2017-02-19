@@ -13,6 +13,8 @@ Subsystem: RemnantHull
 	Repair := (ShipSize / HexLimit) * 16
 	TechMult := 4
 
+	HullStrengthMult := 1
+
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)
 	AddShipModifier: SpreadFactor(1.5)
@@ -31,6 +33,8 @@ Subsystem: RemnantSupportHull
 	BaseHexLimit := 40
 	Ship.HexSize := ShipSize / HexLimit
 
+	HullStrengthMult := 1
+
 	Repair := (ShipSize / HexLimit) * 16
 	TechMult = 1.5
 
@@ -48,6 +52,8 @@ Subsystem: SpecialRemnantHull
 	GridHeight := 23
 	Repair := HexSize * 16
 	TechMult := 3
+
+	HullStrengthMult := 1
 
 	AddShipModifier: HpFactor(1.5)
 	AddShipModifier: DamageFactor(0.9)

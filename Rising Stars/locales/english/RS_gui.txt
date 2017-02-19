@@ -1,0 +1,12 @@
+﻿TT_SHIP_STRENGTH: <<
+	[font=Medium]Fleet Combat Strength[/font]
+	An estimate indicator of the fleet's overall combat strength. Fleets with more strength are more likely to win. Fleet efficiency increases overall DPS and strength.
+
+	[b]Current Strength[/b] [offset=230]$1[/offset]
+	[b]Original Strength[/b] [offset=230]$2[/offset]
+
+	[b]Current Fleet Total Toughness[/b] [offset=230]$3[/offset]
+	[b]Current Fleet Total DPS[/b] [offset=230]$4/sec[/offset]
+
+	[b]Fleet Efficiency[/b] [offset=230]$5[/offset]
+>>

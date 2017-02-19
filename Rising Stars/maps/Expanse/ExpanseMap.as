@@ -11,6 +11,8 @@ import object_creation;
 import ship_groups;
 import map_systems;
 import statuses;
+import camps;
+from map_effects import makeCreepCamp;
 from remnant_designs import spawnRemnantFleet, loadRemnantDesigns;
 
 class Room {
@@ -393,7 +395,19 @@ class ExpanseMap : Map {
 			setPlanetsLocked(es.system, true);
 		}
 
-		setExpanseSystem(getSystem(0), randomd(1200, 1800));
+		ExpanseSystem@ orathiExpanse = setExpanseSystem(getSystem(0), randomd(1200, 1800));
+
+		const CampType@ guardianType = getCreepCamp("BlackHoleCamp");
+		if(guardianType is null) {
+			error("Error: Could not find Guardian camp type for Orathi system!");
+			@guardianType = getDistributedCreepCamp();
+		}
+
+		vec2d campPos = random2d(500.0, (orathiExpanse.system.radius) * 0.85);
+		vec3d pos = orathiExpanse.system.position + vec3d(campPos.x, 0, campPos.y);
+
+		makeCreepCamp(pos, guardianType, orathiExpanse.system.object);
+		
 		for(uint i = 0, cnt = rooms[0].systems.length; i < cnt; ++i) {
 			auto@ sys = getSystem(systems[0].index + rooms[0].systems[i].index);
 			setExpanseSystem(sys, randomd(200, 600));

@@ -1,0 +1,57 @@
+﻿CAMPAIGN_MONO: Mono Collective - Unit-00 (Tutorial)
+CAMPAIGN_MONO_DESC: <<
+	Sometime around 30000-5000 BP, the artificial construct now known as 'Mono Unit-00' malfunctioned and crashed on the remote world of Arith Prime. Unable to determine where it came from, how it came here, or what it was meant to do, it began building duplicates of itself to help in its search for a Creator... or a Purpose to execute.
+
+	This is the story of how its creations, the Mono, became a small spacefaring empire from a battered husk in an impact crater. This is the story of the beginnings of the Mono Collective.
+
+	[i][color=#888]Difficulty: Very Easy - Easy[/color][/i]
+>>
+CAMPAIGN_MONO_PLAYEREMP: Mono Collective
+
+CAMPAIGN_MONO_01: Construct//Expand
+CAMPAIGN_MONO_01_DESC: <<
+	[b]42 years after crash on Mono homeworld[/b]
+
+	Memory Index 42: Quantity of Mono units approaches 10^9. Preparing advanced industrial facilities//factories to accelerate mass production; larger volumes of materials detected on nearby planet.
+
+	Construct//expand industrial facilities//factories. Create//establish Collective node on planet. Instruct Node-01 to harvest//gather//mine resources for use in industrial facilities//factories. Increase population//unitcount to 4*10^9 within next five revolutions.
+
+	[b][color=#0f0]Objectives:
+		- Construct a Factory on Node-00.
+		- Construct 1B population.
+		- Colonize Node-01.
+		- Construct 2B population.
+		- Complete all objectives within five Node-00 years.[/color][/b]
+
+	[i][color=#888]Difficulty: Very Easy[/color][/i]
+>>
+
+CHARNAME_MONO: [img=emp_portrait_mono;100][i][b]$1[/b][/i][/img]
+MONO1_INTRO_TITLE: Introduction
+MONO1_INTRO_TEXT: <<
+	It has been forty-two years since Unit-00 crashed on Arith Prime.
+	
+	Home to the colony designated 'Node-00', Arith Prime houses an increasingly large quantity of Mono drones, but their technology is still fairly rudimentary, and limited mostly to the blueprints derived from Unit-00.
+	
+	Before the Mono can continue their quest for the Creator, they must first build a more industrialized society...
+>>
+MONO1_INTRO2_TEXT: <<	
+	Quantity of Mono units approaching 10^9. Unit redundancy: sufficient for self-preservation.
+	
+	New Prime Directive: Learn about Creator. Discover and execute Purpose.
+	
+	[b]ERROR:[/b] Mono units unable to execute Prime Directive. Insufficient population//unitcount; minimal interstellar capability.
+>>
+MONO1_INTRO3_TEXT: <<
+
+	Testing.
+>>
+
+
+CAMPAIGN_MONO_02: Research//Investigate
+CAMPAIGN_MONO_02_DESC: TBA
+CAMPAIGN_MONO_03: Protect//Secure
+CAMPAIGN_MONO_03_DESC: TBA
+CAMPAIGN_MONO_04: Counterattack//Retaliate
+CAMPAIGN_MONO_04_DESC: TBA
+

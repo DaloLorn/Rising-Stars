@@ -1,0 +1,54 @@
+// ***********************
+// MONO CAMPAIGN - Unit-00
+// ***********************
+
+// Witness the early expansion of the Mono and learn their ins and outs.
+
+Scenario: MonoCampaign
+	Name: #CAMPAIGN_MONO
+	Description: #CAMPAIGN_MONO_DESC
+	Icon: emp_portrait_mono
+	// TODO: Take screenshots of campaign once I get that far, and use that for the picture.
+	Picture: emp_portrait_mono
+
+	Scenario: Mono1
+		Name: #CAMPAIGN_MONO_01
+		Description: #CAMPAIGN_MONO_01_DESC
+		Icon: DiffVeryEasy
+		// TODO: Read above.
+		Picture: emp_portrait_mono
+
+		// TODO: Make a non-broken scenario instead of stealing the thoroughly broken vanilla one.
+		// Needless to say, we can't actually unlock later missions yet.
+		Map: Campaign.Mono.Mono1
+		Parent: MonoCampaign
+
+	Scenario: Mono2
+		Name: #CAMPAIGN_MONO_02
+		Description: #CAMPAIGN_MONO_02_DESC
+		Icon: DiffVeryEasy
+		Picture: emp_portrait_mono
+
+		Map: Campaign.Mono.Mono1
+		Parent: MonoCampaign
+		Dependency: Mono1
+
+	Scenario: Mono3
+		Name: #CAMPAIGN_MONO_03
+		Description: #CAMPAIGN_MONO_03_DESC
+		Icon: DiffEasy
+		Picture: emp_portrait_mono
+
+		Map: Campaign.Mono.Mono1
+		Parent: MonoCampaign
+		Dependency: Mono2
+
+	Scenario: Mono4
+		Name: #CAMPAIGN_MONO_04
+		Description: #CAMPAIGN_MONO_04_DESC
+		Icon: DiffEasy
+		Picture: emp_portrait_mono
+
+		Map: Campaign.Mono.Mono1
+		Parent: MonoCampaign
+		Dependency: Mono3

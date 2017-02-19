@@ -13,3 +13,5 @@ Technology: SysNeutronArmor
 	SkipOnUnlockedSubsystem(NeutronArmor)
 
 	SecondaryMoneyCost(2000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

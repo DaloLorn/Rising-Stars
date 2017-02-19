@@ -18,3 +18,4 @@ Technology: JuggernautHull
 
 	SecondaryEnergyCost(1000)
 	UnlockSubsystem(SelfDestruct)
+	ModAttribute(ProgenitorTechProgress, Add, 0.75)

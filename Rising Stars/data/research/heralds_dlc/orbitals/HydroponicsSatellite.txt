@@ -13,3 +13,4 @@ Technology: HydroponicsSatellite
 	SecondaryInfluenceCost(10)
 	UnlockTag(HydroponicsSatelliteUnlock)
 	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

@@ -8,5 +8,6 @@ Construction: DevelopSurface
 
 	RequirePlanet()
 	RequireNotTrait(StarChildren)
+	RequireNotTrait(Ancient)
 	ConsumeCargo(Ore,500)
 	DevelopTiles(20)

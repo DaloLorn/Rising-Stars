@@ -1,4 +1,4 @@
-BLD_LABORCAMP: Xenomanufacturing Center
+﻿BLD_LABORCAMP: Xenomanufacturing Center
 BLD_SLAVECAMP: Xenoindustrial Sector
 BLD_LABORCAMP_DESC: <<
 	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
@@ -54,7 +54,15 @@ F_POWERPLANT_DESC: <<
 	Provides Energy generation equivalent to 10 pressure.
 >>
 
+BLD_RECALL: Recall Facility
+BLD_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a location in orbit and any allied object in the universe.
 
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;20]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
 B_DEFENSEFACTORY: Command Center
 B_DEFENSEFACTORY_DESC: <<
 	A facility dedicated to the coordination of defensive forces across the planet.
@@ -113,4 +121,16 @@ BLD_REFINERY_DESC: <<
 	The pressure is added on this planet only, and is not exported or removed when the native resource is exported.
 
 	[i]Cannot be built on planets without native pressure, or whose only pressure type is money.[/i]
+>>
+COND_ANCIENT_CANNON: Ancient Planetary Defenses
+COND_ANCIENT_CANNON_DESC: <<|
+	An ancient defense system of immense power is located on the surface, inactive but usable.
+>>
+BLD_ANCIENT_CANNON: Ancient Gravitational Collapser
+BLD_ANCIENT_CANNON_DESC: <<|
+	A reactivated ancient weapon of considerable firepower.
+
+	If operational, fires a projectile every 10 seconds, dealing between 500 and 37500 damage to all targets within 50 units of the explosion, depending on their size. Size 100 ships will take 2500 damage per hit, size 20 or smaller will take 500 damage per hit, size 1500 or larger will take 37500 damage per hit.
+
+	If the planet is under siege and has no defenses remaining in orbit, the weapon is deactivated.
 >>

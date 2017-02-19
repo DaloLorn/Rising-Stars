@@ -2,7 +2,7 @@
 	"__VERSION__": 1,
 	"name": "Battleship",
 	"size": 200,
-	"hull": "$1FlagLarge",
+	"hull": "$1FlagTiny",
 	"type": "Flagship",
 	"gridWidth": 28,
 	"gridHeight": 23,

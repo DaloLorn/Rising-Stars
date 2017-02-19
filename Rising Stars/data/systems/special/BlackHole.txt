@@ -1,0 +1,12 @@
+System: BlackHole
+	Frequency: 0
+
+	MakeBlackhole(Radius = 20.0)
+	
+	RepeatModified(1, $PLANET_FREQUENCY)
+		MakePlanet(Orbit Spacing = 600:800)
+	MakeAsteroidBelt(6)
+	RepeatModified(1, $PLANET_FREQUENCY)
+		MakePlanet(Orbit Spacing = 800:1000)
+	MakePlanet(AncientHubworld, Grid Size = (26, 15), Conditions = False)
+	ForceMakeCreepCamp(BlackHoleCamp)

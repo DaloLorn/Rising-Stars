@@ -13,3 +13,4 @@ Technology: DefenseSatellite
 	SecondaryMoneyCost(500)
 	UnlockTag(DefenseSatelliteUnlock)
 	SkipOnUnlockedTag(DefenseSatelliteUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

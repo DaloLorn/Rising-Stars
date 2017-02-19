@@ -1,6 +1,6 @@
 Resource: AncientHubworld
 	Name: #RESOURCE_HUBWORLD
-	Small Icon: emp_flag_flag7
+	Icon: emp_flag_flag07
 	Class: Scalable
 	Native Biome: Forest
 	Exportable: False
@@ -8,7 +8,8 @@ Resource: AncientHubworld
 	Rarity: Unique
 	Unique: True
 	Frequency: 0
-	Icon: emp_flag_flag7
+	Display Weight: 100
+	Icon: emp_flag_flag07
 	Blurb: #RESOURCE_HUBWORLD_BLURB
 	Description: #RESOURCE_HUBWORLD_DESC
 	Distribution: 0
@@ -26,6 +27,7 @@ Resource: AncientHubworld
 	IfLevel(3, GiveGlobalTrade())
 	IfLevel(2, IsFlingBeacon())
 	IfLevel(2, IsGate())
+	IfLevel(2, SetSystemFlag(JumpdriveSafety))
 	IfLevel(1, AddFleetCommand(1024))
 	RepeatPlanetLevel(AddPressure(Research, 1), Base = 1)
 	RepeatPlanetLevel(AddPressure(Labor, 1), Base = 1)

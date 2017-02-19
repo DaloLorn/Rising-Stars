@@ -9,13 +9,13 @@ Technology: XMuonCannon
 	Icon: Railgun::2
 	Color: #8f2399
 
-	UnlockSubsystem(MuonCannon)
-	SkipOnUnlockedSubsystem(MuonCannon)
+	SkipOnUnlockedSubsystem(MuonBattery)
 
 	UnlockSubsystem(MuonBattery)
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteProjTech, 4, #R_LIFESTYLE_REQ:Ballistics:4)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XFlakBattery
 	Name: #R_SYS_FLAK_BATTERY
@@ -36,6 +36,7 @@ Technology: XFlakBattery
 
 	SecondaryEnergyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteProjTech, 6, #R_LIFESTYLE_REQ:Ballistics:6)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 
 
@@ -63,6 +64,7 @@ Technology: XPlasmaThrower
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 3, #R_LIFESTYLE_REQ:Beam Focusing:3)
 	RequireEmpireAttributeGTE(InfiniteProjTech, 5, #R_LIFESTYLE_REQ:Ballistics:5)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 4, #R_LIFESTYLE_REQ:Energy Science:4)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 Technology: XParticleLance
 	Name: #R_SYS_PARTICLELANCE
@@ -86,6 +88,7 @@ Technology: XParticleLance
 	RequireEmpireAttributeGTE(InfiniteEnergyWeaponsTech, 7, #R_LIFESTYLE_REQ:Beam Focusing:7)
 	RequireEmpireAttributeGTE(InfiniteProjTech, 5, #R_LIFESTYLE_REQ:Ballistics:5)
 	RequireEmpireAttributeGTE(InfiniteEnergyTaken, 5, #R_LIFESTYLE_REQ:Energy Science:5)
+	ModAttribute(ProgenitorTechProgress, Add, 3)
 
 
 ///////////////////////////////////////

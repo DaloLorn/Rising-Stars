@@ -17,3 +17,4 @@ Technology: DroneLauncher
 	SkipOnUnlockedSubsystem(DroneLauncher)
 
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

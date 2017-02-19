@@ -1,41 +1,48 @@
-TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
+﻿TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
 TRAIT_TECHNICISTS: Researchers
 TRAIT_TECHNICISTS_DESC: <<|
-	[vspace=3/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]
-	[vspace=3/][img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide twice as much shield capacity to flagships.[/img]
-	[vspace=3/][img=PlateArmor;22]Cannot research most armor types. Armor discovered from alternative sources will have halved health.[/img]
-	[vspace=3/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
+	[vspace=6/][img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 90%, and shield regeneration is increased by 45%.[/img]
+	[vspace=6/][img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide twice as much shield capacity to flagships.[/img]
+	[vspace=6/][img=PlateArmor;22]Cannot research most armor types. Armor discovered from alternative sources will have halved health.[/img]
+	[vspace=6/][img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
 >>
 TRAIT_INEFFICIENT_DESC: All weapons drain $1 more supply when firing. 
 TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and has an additional 5 Pressure Capacity.
 TRAIT_INDUSTRIOUS_DESC: Civilian labor generation on the homeworld is increased by $1.
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<|
-	[vspace=3/][img=ResourceIconsSmall::61]Starts with an Allondium on their homeworld.[/img]
-	[vspace=3/][img=ThumbsUp;22]Maintaining a high level of Comfort by avoiding combat, planet loss and casualties bestows various benefits - failing to do so weakens the empire through civil unrest.[/img]
-	[vspace=3/][img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
-	[vspace=3/][img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
-	[dlc=Heralds][vspace=3/][img=Antenna;22]Broadcast Antennae are available from the beginning of the game.[/img][/dlc]
+	[vspace=6/][img=ResourceIconsSmall::61;22]Starts with an Allondium on their homeworld.[/img]
+	[vspace=6/][img=ThumbsUp;22]Maintaining a high level of Comfort by avoiding combat, planet loss and casualties bestows various benefits - failing to do so weakens the empire through cvil unrest.[/img]
+	[vspace=6/][img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
+	[vspace=6/][img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
+	[dlc=Heralds][vspace=6/][img=Antenna;22]Broadcast Antennae are available from the beginning of the game.[/img][/dlc]
 >>
 TRAIT_BERSERKERS: Berserkers
 TRAIT_BERSERKERS_DESC: <<|
-	[vspace=3/][img=ResourceIconsSmall::62*#ff000088]Starts with Sulphate Traces on their homeworld, providing half of the benefits of Sulphate.[/img]  
-	[vspace=3/][img=HexagonSubsystems::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img]  
-	[vspace=3/][img=StatusWar;22]Centuries of conflict have resulted in a 25% reduction in supply costs due to optimized weaponry.[/img]  
-	[vspace=3/][img=ResourceIcon::4*ff8888;22]Research pressure does not generate Research, and is instead processed into Labor and Defense.[/img]  
-	[vspace=3/][img=SystemUnderAttack;22]Fighting, conquering or destroying enemies generates Glory, unifying the clans and granting various benefits - failing to do so weakens the empire through internal strife.[/img]  
-	[vspace=3/][img=ResourceIcon::4;22]Destroying enemy objects gives Research dependent on their type and Labor cost.[/img]  
-	[vspace=3/][img=ThumbsDown;22]The Influence cost of playing support cards during a vote is increased by 2, while the cost of starting a vote is increased by 4.[/img]  
-	[vspace=3/][img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity. Support ships attached to planets can always raid.[/img]  
-	[dlc=Heralds][vspace=3/][img=TroopPods;22]Troop Pods are available from the beginning of the game.[/img][/dlc]
+	[vspace=6/][img=ResourceIconsSmall::62*#ff000088;22]Starts with Sulphate Traces on their homeworld, providing half of the benefits of Sulphate.[/img]  
+	[vspace=6/][img=HexagonSubsystems::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img]  
+	[vspace=6/][img=StatusWar;22]Centuries of conflict have resulted in a 25% reduction in supply costs due to optimized weaponry.[/img]  
+	[vspace=6/][img=ResourceIcon::4*ff8888;22]Research pressure does not generate Research, and is instead processed into Labor and Defense.[/img]  
+	[vspace=6/][img=SystemUnderAttack;22]Fighting, conquering or destroying enemies generates Glory, unifying the clans and granting various benefits - failing to do so weakens the empire through internal strife.[/img]  
+	[vspace=6/][img=ResourceIcon::4;22]Destroying enemy objects gives Research dependent on their type and Labor cost.[/img]  
+	[vspace=6/][img=ThumbsDown;22]The Influence cost of playing support cards during a vote is increased by 2, while the cost of starting a vote is increased by 4.[/img]  
+	[vspace=6/][img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity. Support ships attached to planets can always raid.[/img]  
+	[dlc=Heralds][vspace=6/][img=TroopPods;22]Troop Pods are available from the beginning of the game.[/img][/dlc]
 >>
-
+TRAIT_PROGENITORS: Progenitor Race
+TRAIT_PROGENITORS_DESC: <<|
+  [vspace=6/][img=ResourceIconsSmall::60;22][img=ResourceIconsSmall::63;22]Starts with a Quartz and a Cyllium on their homeworld.[/img][/img]
+  [vspace=6/][img=Plantation;22]Homeworld cannot export its food or water.[/img]
+  [vspace=6/][img=BuildingSprites::0;22]All civilian resource generation is reduced by 80%. Production slowly returns to normal over the first 80 minutes of the game.[/img]
+  [vspace=6/][img=techHyperfield;22]Cannot attack or be attacked by Remnant ships, but can use the Override Remnant Programming ability to take control of non-Guardian Remnant fleets.[/img]
+  [vspace=6/][img=ResourceIcon::4;22]Researching enough technologies allows access to Progenitor tech tree, opening up powerful new techs without the need for a level 6 Ancient Hubworld.[/img]
+>>
 TRAIT_VERDANT: Verdant
 TRAIT_VERDANT_DESC: <<|
-	[vspace=3/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
-	[vspace=3/][img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
-	[vspace=3/][img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
-	[vspace=3/][img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
+	[vspace=6/][img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
+	[vspace=6/][img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
+	[vspace=6/][img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
+	[vspace=6/][img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
 >>
 TRAIT_FLUX_DESC: <<
 	Your empire maintains an intricate flux field across all its systems to allow for instantaneous spatial translation.

@@ -33,6 +33,7 @@ Technology: XNeutronArmor
 
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armoring:4)
 	SecondaryMoneyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XQuantumArmor
 	Name: #S_QUANTUM_ARMOR
@@ -73,6 +74,7 @@ Technology: XLiquidArmor
 	SecondaryInfluenceCost(10)
 
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 3, #R_LIFESTYLE_REQ:Armoring:3)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 Technology: XNanoMesh
 	Name: #R_SYS_NANOMESH
@@ -94,6 +96,7 @@ Technology: XNanoMesh
 
 	SecondaryInfluenceCost(12)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 4, #R_LIFESTYLE_REQ:Armoring:4)
+	ModAttribute(ProgenitorTechProgress, Add, 3)
 
 Technology: XSysNilingArmor
 	Name: #R_SYS_NILINGARMOR
@@ -114,6 +117,7 @@ Technology: XSysNilingArmor
 
 	SecondaryEnergyCost(1500)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 5, #R_LIFESTYLE_REQ:Armoring:5)
+	ModAttribute(ProgenitorTechProgress, Add, 4)
 
 Technology: XImprovedLabs
 	Name: #R_IMPROVEDLABS
@@ -156,3 +160,4 @@ Technology: XCrystalArmor
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteArmorTaken, 6, #R_LIFESTYLE_REQ:Armoring:6)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

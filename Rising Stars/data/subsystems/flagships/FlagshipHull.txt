@@ -17,6 +17,8 @@ Subsystem: FlagshipHull
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
+	HullStrengthMult := 1
+
 	Repair := (ShipSize / HexLimit) * 8
 
 	Hex.LaborCost := 0.1 * ShipSize
@@ -40,7 +42,7 @@ Subsystem: FlagshipHull
 
 	HasFTLCost := 0
 	FTLBuildCost := 0
-	AddPostModifier: AddFTLBuildCost(if(HasFTLCost, ShipSize*2.0, 0)))
+	AddPostModifier: AddFTLBuildCost(if(HasFTLCost, ShipSize*0.65, 0)))
 
 	Modifier: IncreaseHexLimit(Hexes)
 		HexLimit := HexLimit + Hexes

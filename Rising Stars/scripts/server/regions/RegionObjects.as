@@ -2239,8 +2239,11 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			updatePlane(region);
 
 			if(system.donateVision) {
-				if(config::LEGACY_EXPLORATION_MODE == 0)
+				if(config::LEGACY_EXPLORATION_MODE == 0) {
 					region.DonateVisionMask = donateMask;
+					for(uint i = 0, cnt = planetList.length; i < cnt; ++i) 
+						planetList[i].memoryMask |= mask;
+				}
 				else
 					region.DonateVisionMask = mask;
 			}

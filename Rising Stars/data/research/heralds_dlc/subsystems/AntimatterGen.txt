@@ -14,3 +14,4 @@ Technology: AntimatterGen
 	SkipOnUnlockedSubsystem(AntimatterGen)
 
 	SecondaryEnergyCost(1000)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

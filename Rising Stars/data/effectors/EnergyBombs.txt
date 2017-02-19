@@ -12,6 +12,9 @@ Effector: EnergyBombs
 	Value: Spread = 0.5
 	Value: CapOnTarget = 1
 	Value: FireArc = pi / 2
+	Value: Spillable = 1
+	Value: DamageType = 2
+	Value: DRResponse = 0
 
 	Range: Range
 	Speed: Speed
@@ -28,8 +31,9 @@ Effector: EnergyBombs
 
 	PhysicalType: Projectile
 	GfxType: Sprite
-	GfxSize: 8.5
-	FireSfx: torpedo_launch
+	GfxSize: 4
+	FireSfx: DOF_drone_fire1
+	FireSfx: DOF_drone_fire2
 	ImpactSfx: torpedo_impact
 	Trail: MissileTrail
 	TrailCol: 00000000, 00000000
@@ -37,7 +41,10 @@ Effector: EnergyBombs
 	Spread: Spread
 	FireArc = FireArc
 
-	Effect: AreaExplDamage
+	Effect: AreaDamage
 		Amount = Damage
 		Radius = Radius
 		Hits = Hits
+		Spillable = Spillable
+		DamageType = DamageType
+		DRResponse = DRResponse

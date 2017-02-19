@@ -13,3 +13,5 @@ Technology: SysShipComupter
 	SkipOnUnlockedSubsystem(ShipComputer)
 
 	SecondaryEnergyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

@@ -1,0 +1,67 @@
+//Red
+Color: #C82020
+	Background: emp_bg_reddish
+
+//Orange
+Color: #FF8020
+	Background: emp_bg_orange
+
+//Yellow
+Color: #FFE140
+	Background: emp_bg_yellow
+
+//Green
+Color: #40C820
+	Background: emp_bg_green
+
+//Cyan
+Color: #20E1C8
+	Background: emp_bg_teal
+
+//Blue
+Color: #2040C8
+	Background: emp_bg_blue
+
+//Magenta
+Color: #C820E1
+	Background: emp_bg_pink
+
+//Brown
+Color: #644628
+	Background: emp_bg_tan
+
+//Dark Green
+Color: #196432
+	Background: emp_bg_green
+
+//Purple
+Color: #642890
+	Background: emp_bg_purple
+
+//Tan
+Color: #C8A480
+	Background: emp_bg_tan
+
+//Light Green
+Color: #C8F064
+	Background: emp_bg_green
+
+//Light Blue
+Color: #6490F0
+	Background: emp_bg_blue
+
+//Pink
+Color: #F080C8
+	Background: emp_bg_pink
+
+//White
+Color: #F0F0F0
+	Background: emp_bg_teal
+
+//Black
+Color: #303030
+	Background: emp_bg_purple
+
+// Ulthaar
+Color: #ff9d0a
+	Background: emp_bg_orange

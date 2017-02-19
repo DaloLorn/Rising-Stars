@@ -6,6 +6,7 @@ import status_effects;
 import ability_effects;
 #section server
 import ABEMCombat;
+from map_effects import makeCreepCamp;
 #section all
 import systems;
 import influence;
@@ -1524,3 +1525,79 @@ class ResourcelessRegenSurface : GenericEffect, TriggerableGeneric {
 	}
 #section all
 }
+
+tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
+	BonusEffect@ hook;
+
+	Document doc("Trigger a bonus effect whenever an empire attribute increases by a certain threshold. This variant of the hook will not ignore the first instance when an attribute has been increased, causing issues as reported in http://steamcommunity.com/app/282590/discussions/0/217691032439349400/#c208684375424164302 - however, it is theoretically possible that other bugs may occur. Use with caution.");
+	Argument attribute(AT_EmpAttribute, doc="Attribute to check.");
+	Argument hookID("Hook", AT_Hook, "bonus_effects::BonusEffect");
+	Argument threshold(AT_Decimal, "1.0", doc="Trigger the effect every time the empire attribute has increased by this amount.");
+
+	bool instantiate() override {
+		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
+		if(hook is null) {
+			error("PreciseTriggerOnAttributeIncrease(): could not find inner hook: "+escape(hookID.str));
+			return false;
+		}
+		return EmpireEffect::instantiate();
+	}
+
+#section server
+	void enable(Empire& emp, any@ data) const override {
+		double amount = emp.getAttribute(attribute.integer);
+		data.store(amount);
+	}
+
+	void tick(Object& obj, any@ data, double tick) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+
+		double newAmount = 0;
+		if(obj.owner !is null)
+			newAmount = obj.owner.getAttribute(attribute.integer);
+
+		while(newAmount >= curAmount + threshold.decimal) {
+			if(hook !is null)
+				hook.activate(obj, obj.owner);
+			curAmount += threshold.decimal;
+		}
+
+		data.store(curAmount);
+	}
+
+	void tick(Empire& emp, any@ data, double tick) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+
+		double newAmount = emp.getAttribute(attribute.integer);
+
+		while(newAmount >= curAmount + threshold.decimal) {
+			if(hook !is null)
+				hook.activate(null, emp);
+			curAmount += threshold.decimal;
+		}
+
+		data.store(curAmount);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		double amount = 0;
+		if(newOwner !is null)
+			amount = newOwner.getAttribute(attribute.integer);
+		data.store(amount);
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		double curAmount = 0;
+		data.retrieve(curAmount);
+		file << curAmount;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		double curAmount = 0;
+		file >> curAmount;
+		data.store(curAmount);
+	}
+#section all
+};

@@ -17,6 +17,7 @@ Technology: XDroneLauncher
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteMissileTech, 5,#R_LIFESTYLE_REQ:Rocketry:5 )
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 
 
@@ -40,6 +41,7 @@ Technology: XShockMissiles
 
 	SecondaryMoneyCost(750)
 	RequireEmpireAttributeGTE(InfiniteMissileTech, 6,#R_LIFESTYLE_REQ:Rocketry:6 )
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 Technology: XWarhead
 	Name: #R_SYS_WARHEAD
@@ -56,8 +58,10 @@ Technology: XWarhead
 	DLC Replace: SupportCap
 
 	UnlockSubsystem(Warhead)
+	SecondaryMoneyCost(1500)
 	SkipOnUnlockedSubsystem(Warhead)
 	RequireEmpireAttributeGTE(InfiniteMissileTech, 8,#R_LIFESTYLE_REQ:Rocketry:8 )
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 ///////////////////////////////////
 //MISILE SPECIAL UPGRADES/////////////
 ////////////////////////////////////

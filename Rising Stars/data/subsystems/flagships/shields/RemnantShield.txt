@@ -11,16 +11,16 @@ Subsystem: RemnantShield
 
 	Size := HexSize * Hexes
 	ShieldCapacity := Size * 220
-	ShieldRegen := Size * 1.3
+	ShieldRegen := Size * 1.25
 	ShieldHexes := Hexes
 	PowerUse := 40*Size
 
 	Hex.Resistance := 0.5
-	Hex.HP := 12 * HexSize
-	Hex.Mass := 1 * HexSize
-	Hex.LaborCost := 1 * HexSize
+	Hex.HP := 6 * HexSize
+	Hex.Mass := 1.2 * HexSize
+	Hex.LaborCost := 2 * HexSize
 	Hex.BuildCost := 1 * HexSize
-	Hex.MaintainCost := 2.5 * HexSize
+	Hex.MaintainCost := 2 * HexSize
 
 	Effect: ABEMShieldDamage
 

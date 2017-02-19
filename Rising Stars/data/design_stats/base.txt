@@ -1,4 +1,4 @@
-GlobalStat: HP
+﻿GlobalStat: HP
 	Name: #S_HP
 	Description: #STT_HP
 	Icon: AttributeIcons::6
@@ -33,17 +33,24 @@ GlobalStat: DPS
 //Until we have something to add stats!	
 
 		
-GlobalStat: HullStrength
-		Name: Hull Strength
-		Description: Predicted strength, only considering hull health. (Real strength is Shield Strength and Hull Strength combined.)
+GlobalStat: Strength
+		Name: #S_STRENGTH
+		Description: #STT_STRENGTH
 		Color: #aaa
-		Icon: TimeReal
+		Icon: AttributeIcons::3
+		AllowZero: True
 
-		Variable: Hex.HP
-		MultBy: DPS
-		DivBy:DummyForStR
+		CustomFormula: Strength
 
-	
+	GlobalStat: HullStrength
+		Name: #S_HULLSTRENGTH
+		Description: #STT_HULLSTRENGTH
+		Color: #aaa
+		AllowZero: True
+		Secondary: Strength
+
+		CustomFormula: HPStrength
+		
 	
 GlobalStat: SupplyCap
 	Name: #S_SUPPLYCAP

@@ -10,7 +10,7 @@ System: RadioactiveNebula
 	Repeat(2:5)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
 	Repeat(1:3)
-		MakeAsteroid(Cargo = Ore, Cargo Amount = 0:1000, Resource = Uranium)
+		MakeAsteroid(Resource = Uranium)
 	
 	Repeat(0:3)
 		MakeCreepCamp(Offset = 1200)

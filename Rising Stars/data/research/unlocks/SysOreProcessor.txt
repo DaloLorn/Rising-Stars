@@ -11,3 +11,5 @@ Technology: SysOreProcessor
 
 	UnlockSubsystem(OreProcessor)
 	SkipOnUnlockedSubsystem(OreProcessor)
+
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

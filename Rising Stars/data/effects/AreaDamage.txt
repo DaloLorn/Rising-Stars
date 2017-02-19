@@ -1,0 +1,9 @@
+Effect: AreaDamage
+	Value: Amount
+	Value: Radius
+	Value: Hits = 4
+	Value: Spillable = 1
+	Value: DamageType = 2
+	Value: DRResponse = 0
+
+	End: ABEMCombat::AreaDamage

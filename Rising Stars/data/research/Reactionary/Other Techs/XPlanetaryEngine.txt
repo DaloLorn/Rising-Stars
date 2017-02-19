@@ -1,0 +1,16 @@
+Technology: XPlanetaryEngine
+	Name: #R_BLD_PLANET_ENGINE
+	Description: #R_BLD_PLANET_ENGINE_DESC
+	Category: Reactionary
+
+	Point Cost: 2000
+	Time Cost: 180
+
+	Icon: HexagonSubsystems::10
+	Color: #00f3ff
+
+	UnlockTag(PlanetaryEngineUnlock)
+	SkipOnUnlockedTag(PlanetaryEngineUnlock)
+
+	RequireEmpireAttributeGTE(InfiniteThrustTaken, 6, #R_LIFESTYLE_REQ:Propulsion:6)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

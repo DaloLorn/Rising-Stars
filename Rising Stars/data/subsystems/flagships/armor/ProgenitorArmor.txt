@@ -12,7 +12,7 @@ Subsystem: ProgenitorArmor
 
 	Size := HexSize * Hexes
 
-	Hex.Resistance := 0.5
+	Hex.Resistance := 1
 	Hex.HP := 200 * HexSize
 	Hex.Mass := 2.5 * HexSize
 	Hex.LaborCost := 3 * HexSize

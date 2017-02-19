@@ -1,4 +1,4 @@
-Hull: ProgenitorFlagSmall
+Hull: ProgenitorFlagTiny
 	Name: Battlecruiser
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -10,7 +10,7 @@ Hull: ProgenitorFlagSmall
 	MinSize: 16
 	Subsystem: FlagshipHull
 
-Hull: ProgenitorFlagMedium
+Hull: ProgenitorFlagSmall
 	Name: Battleship
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -22,7 +22,7 @@ Hull: ProgenitorFlagMedium
 	MinSize: 32
 	Subsystem: FlagshipHull
 
-Hull: ProgenitorFlagLarge
+Hull: ProgenitorFlagMedium
 	Name: Dreadnought
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -34,7 +34,7 @@ Hull: ProgenitorFlagLarge
 	MinSize: 64
 	Subsystem: FlagshipHull
 
-Hull: ProgenitorFlagVeryLarge
+Hull: ProgenitorFlagLarge
 	Name: Titan
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -46,7 +46,7 @@ Hull: ProgenitorFlagVeryLarge
 	MinSize: 128
 	Subsystem: FlagshipHull
 
-Hull: ProgenitorFlagHuge
+Hull: ProgenitorFlagVeryLarge
 	Name: Colossus
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -71,7 +71,7 @@ Hull: ProgenitorSeedShip
 	Tags: Flagship
 	MinSize: 16
 
-Hull: ProgenitorSmall
+Hull: ProgenitorTiny
 	Name: Frigate
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0
@@ -82,7 +82,7 @@ Hull: ProgenitorSmall
 	Tags: Support
 	Subsystem: SupportHull
 
-Hull: ProgenitorMedium
+Hull: ProgenitorSmall
 	Name: Destroyer
 	Background: VolkurBlueprint
 	BackgroundScale: 1.0

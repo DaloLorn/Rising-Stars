@@ -1,0 +1,14 @@
+Subsystem: GuardianHull
+	Name: #S_GUARDIANHULL
+	Description: #S_GUARDIANHULL_DESC
+
+	Tags: Applied:Hull, Category:Hulls, NoCore
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #a702cc
+
+	Module: Default
+		Sprite: DesignationIcons::16
+		DrawMode: 3
+
+	Hook: AddStatus(IsGuardian)

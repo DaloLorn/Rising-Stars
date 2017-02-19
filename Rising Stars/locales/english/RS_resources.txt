@@ -1,4 +1,4 @@
-PARADISE_NAME: Tropical Paradise
+ï»¿PARADISE_NAME: Tropical Paradise
 RESOURCE_INTEL: Intelligence Hub
 TECHNOFARM_NAME: Technofarm
 RESOURCE_SHIPYARD: Ancient Shipyard
@@ -8,6 +8,27 @@ LOCAL_ASTEROID_FIELD_DESC: <<
 	Civilian labor generation is increased by 50%. Also adds [levels=$1;#ffb4b6]0/12/14/16/18/20/22[/levels] Pressure Capacity depending on planet level.
 
 	[color=#ff7070][b]Cannot be exported.[/b][/color]
+>>
+RESOURCE_HUBWORLD_BLURB: <<
+	Generates [levels=$1;#ffb4b6]1/2/3/4/5/6/7[/levels] pressure of every kind.
+	Provides various buffs as it levels up, culminating in access to the Progenitor tech tree at level 6. Cannot be exported.
+>>
+RESOURCE_HUBWORLD_DESC: <<
+	A sort of galactic hub, this planet's immense surface is littered with all sorts of ancient technology; indeed, considering its advanced defensive fleet, this world may have been home to the ancient race that built the automated warships known as the 'Remnants'.
+
+	Exploring the ruins adds [levels=$1;#ffb4b6]1/2/3/4/5/6/7[/levels] pressure of every kind, based on the planet's level.
+
+	An advanced defense coordination system allows the planet to support an additional 1024 support ships and act as a Supply Depot once reactivated at level 1.
+
+	A unique wormhole generator on the planet's surface and an incredibly advanced planetary fling beacon allow the planet to tie into the empire's gate network as well as send fleets out into any location in the galaxy at incredible speeds once reactivated at level 2. Furthermore, the planet's systems act as a jump beacon, allowing jumpdrives to safely reach it from any distance.
+
+	A series of shield projectors in the upper atmosphere allows the planet to act as a Power Transmitter, while the wormhole generator is repaired and opened for civilian use, allowing the planet to trade with any other gate or Commerce Station in the empire at level 3.
+
+	At level 4, the planet's shield projectors are restored to full capacity, allowing it to protect all other planets in the system from loyalty loss.
+
+	The wormhole generator is brought to full capacity at level 5, allowing any of the empire's fleets in the galaxy to be instantly transported to the Hubworld.
+
+	At level 6, the ancient archives on the planet are brought back online, unlocking access to the Progenitor tech tree for as long as the archives are active.
 >>
 
 
@@ -98,7 +119,7 @@ PLAINS_DESC: <<
 
 	Tile development speed is increased by [levels=$1;#ffb4b6]100%/150%/200%/250%/300%/350%/400%[/levels].
 
-	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]§50k/§150k/§300k/§500k/§750k/§1.1M/§2M[/levels].
+	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]Â§50k/Â§150k/Â§300k/Â§500k/Â§750k/Â§1.1M/Â§2M[/levels].
 >>
 RINGWORLD_DESC: <<
 	An enormous ring constructed around a system's star, with habitable space on the inner surface of the ring, facing the star.

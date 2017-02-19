@@ -10,7 +10,7 @@ System: EconomicNebula
 	Repeat(0:3)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
 	Repeat(2:5)
-		MakeAsteroid(Cargo = Ore, Cargo Amount = 250:3000, Resource = NativeGold:RareMetals)
+		MakeAsteroid(Resource = NativeGold:RareMetals)
 	Repeat(1:3)
 		MakeCreepCamp(Offset = 700)
 		

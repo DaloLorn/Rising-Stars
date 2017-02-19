@@ -13,3 +13,5 @@ Technology: SolarSatellite
 	SecondaryEnergyCost(650)
 	UnlockTag(SolarSatelliteUnlock)
 	SkipOnUnlockedTag(SolarSatelliteUnlock)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)

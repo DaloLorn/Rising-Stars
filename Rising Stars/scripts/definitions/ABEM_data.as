@@ -13,10 +13,29 @@ enum ABEMVictoryTypes {
 	VType_Vanguard = 2,
 };
 
+enum RSParticleSystem {
+	PS_None = 1,
+	PS_TorpExplosionRed = 2,
+}
+
+// Let's face it, we probably aren't going to need this... but if we do, it could come in handy.
+const string getRSParticleSystem(int index) {
+	switch(index) {
+		case PS_TorpExplosionRed:
+			return "TorpExplosionRed";
+		case PS_None:
+			return "";
+		default:
+			error("Invalid particle system index in function getRSParticleSystem: "+index); return "";
+	}
+	error("Unknown error has occurred in getRSParticleSystem.");
+	return "";
+}
+
 const StatusType@ getABEMStatus(int index) {
 	switch(index) {
 		case SType_VoidRay: // This status hasn't been ported because we haven't restored Adaptive Lasers to the mod.
-		//	return getStatusType("VoidRay"); 
+			return getStatusType("VoidRay");
 		case SType_FiringMeleeRailguns:
 			return getStatusType("FiringRailgunsCloseIn");
 		default:

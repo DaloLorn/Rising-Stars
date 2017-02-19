@@ -17,3 +17,4 @@ Technology: BoosterEngine
 	SkipOnUnlockedSubsystem(BoosterEngine)
 
 	SecondaryEnergyCost(750)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

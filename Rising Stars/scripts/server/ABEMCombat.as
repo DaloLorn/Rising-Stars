@@ -12,11 +12,15 @@ int getDamageType(double type) {
 	int iType = int(type);
 	switch(iType) {
 		case 1: 
+		case 4: // The duplicate cases are for applying a DoT effect. Only implemented for AreaDamage.
 			return DT_Projectile;
-		case 2: 
+		case 2:
+		case 5:
 			return DT_Energy;
 		case 3:
+		case 6:
 			return DT_Explosive;
+		case 7:
 		default: return DT_Generic;
 	}
 	return DT_Generic;
@@ -68,7 +72,7 @@ void ABEMControlDestroyed(Event& evt) {
 
 	//Make sure we still have a bridge or something with control up
 	if(!ship.blueprint.hasTagActive(ST_ControlCore)) {
-		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates || (invaderID != -1 && ship.hasStatusEffect(invaderID)))
+		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates || (invaderID != -1 && ship.hasStatusEffect(invaderID)) || ship.blueprint.hasTagActive(ST_SelfDestruct))
 			ship.destroy();
 		else {
 			double chance = ship.blueprint.currentHP / ship.blueprint.design.totalHP;
@@ -284,6 +288,74 @@ void ObjectAreaExplDamage(Object& obj, double Amount, double Radius, double Hits
 			target.damage(dmg, -1.0, dir);
 		}
 	}
+}
+
+void AreaDamage(Event& evt, double Amount, double Radius, double Hits, double Spillable, double DamageType, double DRResponse) {
+	Object@ targ = evt.target !is null ? evt.target : evt.obj;
+
+	vec3d center = targ.position + evt.impact.normalize(targ.radius);
+	array<Object@>@ objs = findInBox(center - vec3d(Radius), center + vec3d(Radius), evt.obj.owner.hostileMask);
+
+	playParticleSystem("TorpExplosionRed", center, quaterniond(), Radius / 3.0, targ.visibleMask);
+
+	uint hits = round(Hits);
+	double maxDSq = Radius * Radius;
+	
+	int flags = getDamageType(DamageType) | getDRResponse(DRResponse);
+	bool spillable = Spillable != 0;
+	
+	for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
+		Object@ target = objs[i];
+		vec3d off = target.position - center;
+		double dist = off.length - target.radius;
+		if(dist > Radius)
+			continue;
+		
+		double deal = Amount;
+		if(dist > 0.0)
+			deal *= 1.0 - (dist / Radius);
+		
+		//Rock the boat
+		if(target.hasMover) {
+			double amplitude = deal * 0.2 / (target.radius * target.radius);
+			target.impulse(off.normalize(min(amplitude,8.0)));
+			target.rotate(quaterniond_fromAxisAngle(off.cross(off.cross(target.rotation * vec3d_front())).normalize(), (randomi(0,1) == 0 ? 1.0 : -1.0) * atan(amplitude * 0.2) * 2.0));
+		}
+		
+		DamageEvent dmg;
+		@dmg.obj = evt.obj;
+		@dmg.target = target;
+		dmg.source_index = evt.source_index;
+		dmg.flags |= flags;
+		dmg.impact = off.normalized(target.radius);
+		dmg.spillable = spillable;
+		
+		vec2d dir = vec2d(off.x, off.z).normalized();
+
+		for(uint n = 0; n < hits; ++n) {
+			dmg.partiality = evt.partiality / double(hits);
+			dmg.damage = deal * double(evt.efficiency) * double(dmg.partiality);
+
+			target.damage(dmg, -1.0, dir);
+			if(DamageType > 3 && DamageType != 7)
+			// Divide by 2 to get half of the torpedo's damage,
+			// then divide by the 10-second duration so you don't wind up dealing 5 times the torpedo's damage in DoTs.
+				ApplyAreaDoT(evt, target, dir, dmg.damage/20.0, 10.0); 
+		}
+	}
+}
+
+// Built for use in AreaDamage. Don't try to use it as a standalone effect.
+void ApplyAreaDoT(Event& evt, Object@ target, vec2d dir, double DPS, double Duration) {
+	TimedEffect te(ET_DamageOverTime, Duration);
+	te.effect.value0 = DPS * double(evt.efficiency) * double(evt.partiality);
+	@te.event.obj = evt.obj;
+	@te.event.target = target;
+	te.event.partiality = evt.partiality;
+	te.event.source_index = evt.source_index;
+	te.event.custom1 = dir.radians();
+
+	evt.target.addTimedEffect(te);
 }
 
 void IncreasingDamage(Event& evt, double Amount, double Status, double StatusMultiplier, double StatusAmount, double StatusIncrement, double DamageType) {

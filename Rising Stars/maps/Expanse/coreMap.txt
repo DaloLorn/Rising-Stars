@@ -6,13 +6,14 @@ System: Orathi
 	ExpandSystem(500)
 	TriggerRegion(SetSystemAssignGroup(-2))
 
-	MakePlanet(AncientCity, Radius = 24, Conditions = False)
+	MakePlanet(AncientHubworld, Radius = 24, Conditions = False)
 		Rename(Orathi Prime)
 
 		AddPlanetResource(Water)
 		AddPlanetResource(Grain)
 		AddPlanetResource(Grain)
 		AddPlanetResource(Oil)
+		AddPlanetResource(AncientCity)
 		AddPlanetResource(AncientCity)
 
 		SpawnBuilding(Factory, (4, 3))

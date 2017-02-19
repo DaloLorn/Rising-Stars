@@ -1,4 +1,4 @@
-OPT_AUTO_IRC: Automatically Connect to IRC
+﻿OPT_AUTO_IRC: Automatically Connect to IRC
 OPTTT_AUTO_IRC: When toggled on, the game will automatically connect to the IRC and join the #starruler and #abem channels when started.
 OPT_MTE: Use Multiple Themes
 OPTTT_MTE: <<
@@ -154,4 +154,12 @@ DOF_MISSING_OTHER: <<
 	[bbloc=#DOF_MISSING_BASE/]
 
 	You can download the library from dolynick's website at [b]http://www.olynick.net/sr2/mods/DOFShipsetCommonLibrary.zip[/b].
+>>
+
+CAMPAIGN: Campaign
+SCENARIO_NOT_COMPLETED: <<
+	You have not yet completed some of the prerequisite campaigns or scenarios:
+>>
+NOT_A_SCENARIO: <<
+	[i][color=#888]This is a campaign item, and is only here for categorization and description purposes. You cannot play this; try one of the scenarios directly underneath.[/color][/i]
 >>

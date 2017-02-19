@@ -1,6 +1,6 @@
 {
 	"__VERSION__": 1,
-	"name": "SlipStream Generator",
+	"name": "Slipstream Generator",
 	"size": 128,
 	"hull": "$1FlagTiny",
 	"type": "Flagship",

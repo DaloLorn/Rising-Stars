@@ -1,0 +1,3 @@
+﻿VERB_PICKUP_GUARDIAN: Move in closer to the $1
+PICKUP_GUARDIAN: Unidentified Progenitor Device
+PICKUP_GUARDIAN_DESC: Insufficient data exists to determine this object's function. Perhaps it should be investigated...

@@ -19,6 +19,8 @@ Subsystem: StationHull
 	Repair := (ShipSize / HexLimit) * 8
 	TechMult := 2
 
+	HullStrengthMult := 1
+
 	OnCheckErrors: designs::checkGlobalDesign
 
 	Hex.LaborCost := 0.1 * 0.5 * ShipSize

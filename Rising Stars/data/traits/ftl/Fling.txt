@@ -22,4 +22,6 @@ Trait: Fling
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 
 	UnlockTag(HasFling)
+	ModAttribute(FlingBeaconConst, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	SpawnOrbital(FlingCore, Free = True)

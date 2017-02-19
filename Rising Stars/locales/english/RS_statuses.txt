@@ -1,4 +1,13 @@
-STATUS_STELLAR_SHIELD: Shielded
+﻿STATUS_STELLAR_SHIELD: Shielded
+NEBULA_CERULEAN: Sicutmarian Nebula
+NEBULA_ECONOMIC: Pretiosian Nebula
+EMPTY_SPACE: Empty Space
+NEBULA_METAPHASIC: Metaphasic Nebula
+NEBULA_METREON: Metreon Nebula
+NEBULA_MUTARA: Mutara-class Nebula
+NEBULA_RADIOACTIVE: Radioactive Nebula
+NEBULA_TACHYON: Tachyon Nebula
+NEBULA_TYPE1: Interstellar Gas Cloud
 STATUS_FAST_RECHARGE: Shield Recharge
 STATUS_FAST_RECHARGE_DESC: <<
 	Is receiving power from a Power Transmitter.
@@ -38,3 +47,8 @@ STATUS_VOIDRAY_DESC: <<
 	
 	Stacks up to 10 times.
 >>
+STATUS_DAMAGED: Damaged
+STATUS_DAMAGED_DESC: <<
+	This vessel was accidentally damaged in a scientific experiment and will operate at significantly reduced effectiveness until it is repaired.
+>>
+STATUS_PROGENITOR_COMPUTER_BOOST_DESC: Heavy computation done by the Progenitor-designed control computer aboard the flagship is significantly increasing this fleet's efficiency and combat strength for the first 60 seconds of any combat.

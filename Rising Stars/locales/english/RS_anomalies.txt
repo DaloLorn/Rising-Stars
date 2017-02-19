@@ -1,4 +1,4 @@
-ANOMALY_NEUTRONPLATE_LIQUID: <<
+﻿ANOMALY_NEUTRONPLATE_LIQUID: <<
 	Analyze the fragment as a whole, yielding new insights into low-temperature metallurgy and liquid metals.
 
 	[right][b][color=#96d196]Decrease all armor maintenance costs by $1%.
@@ -9,3 +9,42 @@ ANOMALY_NEUTRONPLATE_SOLID: <<
 	[right][b][color=#80ff80]Decrease all armor Labor costs by $1%.
 	Unlock[/color] [template=subsys_ref;NeutronArmor/][/b][/right]
 >>
+A_GUARDIAN_UNSCANNED: The Remnant flagship has been crippled. Sensors indicate that the ship is no longer operational - a boarding party is en route to secure the ship and take it for our own uses.
+A_GUARDIAN_SCANNED: <<
+	The four-man boarding party encounters little resistance from the remains of the ship's automated crew. Eventually, they find their way to the main computer core.
+
+	The team's scientist accesses the core. After a few minutes, he determines that the ship's computers have one final failsafe installed to safeguard against capture; if they attempt to take control of the ship, it will trigger a self-destruct mechanism.
+
+	However, the scientists on your fleet's flagship are convinced that the boarders can download schematics for some of the flagship's advanced technology onto a data module fast enough to escape the explosion. They can't take all of the data, but enough can be retrieved to reverse-engineer its shields, its armor, its weapons or its computer core.
+
+	The scientist who first accessed the core has another idea, though. He believes that he can deactivate the self-destruct device, allowing you to repair the mothership [i]and[/i] get [i]all[/i] of its advanced technology. Your advisors are certain that this will end in disaster, but [i]if[/i] it works, the rewards could drastically outweigh the risks.
+>>
+A_GUARDIAN_REACTIVATE: <<
+	Get your fleet to a safe distance from the flagship and try to disable the self-destruct device.
+
+	[color=#f00][b]NOTE: This is an extremely hazardous option. You may lose your chance at getting the flagship's advanced technology.[/b][/color]
+>>
+A_GUARDIAN_EXPLODE: <<
+	The scientist on the ship fails to keep up with the self-destruct system, and the ship explodes in a massive fireball. Fortunately, none of your ships were close enough to be damaged, but you lost your chance to get its advanced technology - and four good people along with it.
+>>
+A_GUARDIAN_FIXED: <<
+	The self-destruct mechanism is fast, but your science officer is faster. Quick thinking and even quicker reprogramming soon deactivates the self-destruct device moments before it detonates. With the ship secured, the team proceeds to download all the data in the computer core and deactivate the ship until it can be repaired.
+
+	It was a risky venture, but it paid off in the end. However, the other empires know of your success - if you are to reactivate the ship, you must protect it carefully from hostile forces, and it will take quite a bit of effort to restore it to its full potential.
+>>
+A_GUARDIAN_NOTIFY_FIXED: Guardian Reactivated!
+A_GUARDIAN_NOTIFY_FIXED_DESC: A Guardian has been salvaged by the [color=$2]$1[/color] along with all of its advanced technology! Destroy the Guardian to set them back at least a little!
+A_GUARDIAN_NOTIFY_ARMOR: Progenitor Armor Salvaged!
+A_GUARDIAN_NOTIFY_ARMOR_DESC: Progenitor armor technology has been salvaged from a Guardian by the [color=$2]$1[/color]!
+A_GUARDIAN_NOTIFY_SHIELD: Progenitor Shielding Salvaged!
+A_GUARDIAN_NOTIFY_SHIELD_DESC: Progenitor shield technology has been salvaged from a Guardian by the [color=$2]$1[/color]!
+A_GUARDIAN_NOTIFY_COMPUTER: Progenitor Computers Salvaged!
+A_GUARDIAN_NOTIFY_COMPUTER_DESC: Progenitor computer technology has been salvaged from a Guardian by the [color=$2]$1[/color]!
+A_GUARDIAN_NOTIFY_DRONE: Progenitor Weapons Salvaged!
+A_GUARDIAN_NOTIFY_DRONE_DESC: Progenitor weapons technology has been salvaged from a Guardian by the [color=$2]$1[/color]!
+A_GUARDIAN: Crippled Remnant Guardian
+A_GUARDIAN_SHIELD: Download the schematics for the flagship's advanced shields.
+A_GUARDIAN_ARMOR: Download the data on the flagship's advanced armor.
+A_GUARDIAN_COMPUTER: Download the schematics for the flagship's radiation-resistant computer core.
+A_GUARDIAN_DRONE: Download the data on the flagship's powerful drone weapons.
+A_ERROR_DESC: If you see this, there is something terribly wrong with this anomaly. Contact one of the Rising Stars developers and tell them how you caused this text to appear.

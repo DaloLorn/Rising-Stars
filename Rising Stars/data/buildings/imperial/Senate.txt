@@ -18,5 +18,6 @@ Building: Senate
 
 	ConflictBuilding(SlaveBarracks)
 	TriggerConstructed(ModAttribute(SenateCount, Add, 2))
-	RequireAttributeLT(Senate, Value = 2)
+	RequireAttributeLT(SenateCount, Value = 2)
 	RequireUnlockTag(Senate)
+	RequireNotTrait(Ancient)

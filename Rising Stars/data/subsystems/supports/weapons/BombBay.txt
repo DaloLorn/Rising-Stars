@@ -1,0 +1,64 @@
+Subsystem: BombBay
+	Name: #S_BOMBBAY
+	Description: #S_BOMBBAY_DESC
+	BaseColor: #7946f9
+	TypeColor: #7946f9
+	Picture: SubsystemButtonArt::1
+	Elevation: 2
+
+	Tags: WeaponBase, MissileBase, Category:Weapons, Rotatable, HexLimitArc
+	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+	Range := Size + 500
+	Damage := Size * 30
+	Reload := 60 * min(1.0 + Size/512, 5/3)
+	Radius := 30 + (log(Size) / log(2) * 10)
+	Speed := max(40, Range / 40)
+	Tracking := 0.8
+	SupplyCost := Size * 3.0
+	Spread := 1
+	PodSize := 5
+
+	out DPS := (Damage * PodSize) / (Reload + (FireDelay * PodSize))
+	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+
+	Hex.BuildCost := 0.75 * HexSize
+	Hex.LaborCost := 0.07 * HexSize
+
+	FireDelay := Reload / (PodSize * 15)
+	FireArc := 0.5
+	Requires:
+		Command = 1
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 3
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: Warhead::0
+		DrawMode: 1
+
+		Hex.DamageResist := ShipSize / 28.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: EnergyBombs
+		Range = Range
+		Damage = Damage
+		FireDelay = FireDelay
+		PodSize = PodSize
+		Reload = Reload + (FireDelay * PodSize)
+		Speed = Speed
+		Tracking = Tracking
+		Radius = Radius
+		SupplyCost = SupplyCost * (Reload / PodSize)
+		FireArc = FireArc
+		Spread = Spread

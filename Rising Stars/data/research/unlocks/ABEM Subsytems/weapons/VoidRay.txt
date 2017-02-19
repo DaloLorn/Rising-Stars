@@ -1,5 +1,5 @@
 Technology: VoidRay
-	Name: #S_VOIDRAY
+	Name: #R_VOIDRAY
 	Class: Unlock
 	Point Cost: 800
 
