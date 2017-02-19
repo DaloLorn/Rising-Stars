@@ -1,9 +1,9 @@
-CONS_MOON_BASE_DESC: <<
+﻿CONS_MOON_BASE_DESC: <<
 	Construct a large amount of infrastructure on one of the planet's moons, making more area available for placing buildings and increasing the maximum population of the planet by 2.
 
 	Only one moon base may be constructed for every moon present in orbit of the planet.
 
-	Mechanoid races receive �100k additional income from each moon base they own.
+	Mechanoid races receive §100k additional income from each moon base they own.
 >>
 C_TERRAFORMING_DESC: <<
 	[color=#aaa][i]Modifying the climate or constructing the required support infrastructure to easily sustain large amounts of people or equipment within a certain area is usually a slow venture.

@@ -12,7 +12,7 @@ Technology: XAugmentReload
 	SkipOnUnlockedModule(AugmentReload)
 
 	SecondaryMoneyCost(500)
-	ModAttribute(ProgenitorTechProgress, Add, 5)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)
 
 Technology: XAugmentDamage
 	Name: #R_MOD_AUGMENT_DAMAGE
@@ -25,6 +25,7 @@ Technology: XAugmentDamage
 	Icon: SupportCommand * #ffff00
 
 	UnlockModule(AugmentDamage)
+	SecondaryMoneyCost(600)
 	SkipOnUnlockedModule(AugmentDamage)
 	ModAttribute(ProgenitorTechProgress, Add, 0.2)
 

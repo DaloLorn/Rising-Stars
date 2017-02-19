@@ -4,4 +4,4 @@ Material: AncientDrone
 	DepthWrite: No
 	Culling: None
 	Blend: Add
-	Shader: ColorFlicker
+	Shader: BeamGlowDrone

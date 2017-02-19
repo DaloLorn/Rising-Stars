@@ -1,0 +1,22 @@
+Shader: BeamGlowPlasma
+	Vertex: data/shaders/source/base_uv_vs.txt
+	Fragment: data/shaders/source/beam_glow_ps.txt
+	
+	Variable: float offset = 0.85
+	Variable: tex texture = 0
+	
+Shader: BeamGlowDrone
+	Vertex: data/shaders/source/flicker_vs.txt
+	Fragment: data/shaders/source/beam_glow_ps.txt
+	
+	Variable: float offset = 0.5
+	Variable: tex texture = 0
+
+Shader: TestRotate
+	Vertex: data/shaders/source/rotate_uv_vs.txt
+	Fragment: data/shaders/source/colored_glow_ps.txt
+	
+	Variable: tex texture = 0
+	Variable: vec4 color = node_color
+	Variable: float offset = unique
+	Variable: float cycle = game_time_cycle 5

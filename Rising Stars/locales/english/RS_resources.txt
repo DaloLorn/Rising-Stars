@@ -1,4 +1,4 @@
-PARADISE_NAME: Tropical Paradise
+ï»¿PARADISE_NAME: Tropical Paradise
 RESOURCE_INTEL: Intelligence Hub
 TECHNOFARM_NAME: Technofarm
 RESOURCE_SHIPYARD: Ancient Shipyard
@@ -119,7 +119,7 @@ PLAINS_DESC: <<
 
 	Tile development speed is increased by [levels=$1;#ffb4b6]100%/150%/200%/250%/300%/350%/400%[/levels].
 
-	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]§50k/§150k/§300k/§500k/§750k/§1.1M/§2M[/levels].
+	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]Â§50k/Â§150k/Â§300k/Â§500k/Â§750k/Â§1.1M/Â§2M[/levels].
 >>
 RINGWORLD_DESC: <<
 	An enormous ring constructed around a system's star, with habitable space on the inner surface of the ring, facing the star.

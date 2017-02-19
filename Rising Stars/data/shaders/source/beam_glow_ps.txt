@@ -1,0 +1,31 @@
+#version 120
+varying vec2 uv;
+uniform float xcenter;
+uniform sampler2D texture;
+
+void main() {
+	vec3 sample = texture2D(texture,uv).rgb;
+	
+	//Center the y progression of glow around 0.5
+	if(uv.y > 0.5)
+	{
+		sample = sample * (1.5 - (uv.y - 0.5));
+	}
+	else
+	{
+		sample = sample * (0.5 + (uv.y/0.5));
+	}
+	
+	//Center the x progression of glow around the xcenter
+	if(uv.x > xcenter)
+	{
+		sample = sample * (1.5 - (uv.x - xcenter));
+	}
+	else
+	{
+		sample = sample * (0.5 + (uv.x/xcenter));
+	}
+	
+	gl_FragColor.rgb = ((sample - vec3(0.5)) * 2.0 + gl_Color.rgb) * gl_Color.a;
+	gl_FragColor.a = 0.0;
+}

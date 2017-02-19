@@ -302,16 +302,16 @@ class KillCrew : StatusHook {
 	Argument damagepct("Shield Damage Percent", AT_Decimal, "0.001", doc="Percentage of shield capacity drained in addition to Shield Damage. Defaults to 0.001 (0.1% of shield capacity).");
 	Argument duration("Time", AT_Decimal, "300.0", doc="Amount of time before object becomes a derelict.");
 	
-	void onCreate(Object& obj, Status@ status, any@ data) override {
-		double timeLeft = duration.decimal;
-		data.store(timeLeft);
-	}
-	
 	bool shouldApply(Empire@ emp, Region@ region, Object@ obj) const override {
 		return emp !is defaultEmpire;
 	}
 	
 #section server
+	void onCreate(Object& obj, Status@ status, any@ data) override {
+		double timeLeft = duration.decimal;
+		data.store(timeLeft);
+	}
+
 	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
 		double timeLeft = 0;
 		data.retrieve(timeLeft);

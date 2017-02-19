@@ -1,4 +1,4 @@
-STATUS_STELLAR_SHIELD: Shielded
+﻿STATUS_STELLAR_SHIELD: Shielded
 NEBULA_CERULEAN: Sicutmarian Nebula
 NEBULA_ECONOMIC: Pretiosian Nebula
 EMPTY_SPACE: Empty Space

@@ -1,4 +1,4 @@
-BLD_LABORCAMP: Xenomanufacturing Center
+﻿BLD_LABORCAMP: Xenomanufacturing Center
 BLD_SLAVECAMP: Xenoindustrial Sector
 BLD_LABORCAMP_DESC: <<
 	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
