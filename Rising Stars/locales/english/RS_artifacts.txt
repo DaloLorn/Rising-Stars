@@ -1,0 +1,4 @@
+ART_GUARDIAN_INACTIVE: Guardian Facility (Dormant)
+ART_GUARDIAN_INACTIVE_DESC: <<
+	This battered, immense phase-shifted facility appears to have been the place where the Guardian was constructed. If repaired and reactivated, it could be an incredibly valuable industrial and technological resource.
+>>
