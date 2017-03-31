@@ -5,6 +5,8 @@ import saving;
 import region_effects.ZealotRegion;
 import notifications;
 import statuses;
+import system_flags;
+import macronebula;
 from resources import getLaborCost;
 from cargo import hasDesignCosts;
 from settings.game_settings import gameSettings;
@@ -80,6 +82,9 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	double tradeTimer = 0.0;
 	array<Civilian@> tradeStations;
 	uint HaveStationsMask = 0;
+	
+	Macronebula@ macronebula = null;
+	bool isNebulaSystem = false;
 
 	array<uint> regionStatusTypes;
 	array<double> regionStatusTimers;
@@ -342,7 +347,44 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			StarRadius = starList[0].radius;
 		else
 			StarRadius = 0;
+			
+		if(region.getSystemFlagAny(NEBULA_FLAG)) {
+			isNebulaSystem = true;
+			initMacronebula(region);
+		}
 	}
+	
+	bool get_isNebula(Object& obj) {
+		return isNebulaSystem;
+	}
+	
+	Macronebula@ get_macronebula(Object& obj) {
+		return macronebula;
+	}
+	
+	void initMacronebula(Region& region) {
+		if(macronebula is null) {
+			@macronebula = Macronebula();
+			macronebula.nebulae.insertLast(other);
+		}
+			
+		for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
+			Region@ other = getSystem(system.adjacent[i]).object;
+			if(other.getSystemFlagAny(NEBULA_FLAG) && macronebula.nebulae.find(other) < 0) {
+				other.setMacronebula(macronebula);
+				macronebula.nebulae.insertLast(other);
+			}
+			else if(!other.getSystemFlagAny(NEBULA_FLAG) && macronebula.edges.find(other) < 0) {
+				macronebula.edges.insertLast(other);
+			}
+		}
+	}
+	
+	void setMacronebula(Object& obj, Macronebula& nebula) {
+		Region@ region = cast<Region>(obj);
+		@macronebula = nebula;
+	}
+	
 #section all
 	void addShipDebris(vec3d position, uint count = 1) {
 		if(plane !is null)
