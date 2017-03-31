@@ -97,4 +97,8 @@ server:
 	void grantExperience(Empire@ toEmpire, double amount, bool combatOnly = false);
 
 	void regionPostLoad();
+
+	safe bool get_isNebula();
+	Macronebula@ get_macronebula();
+	void setMacronebula(Macronebula& nebula);
 };
