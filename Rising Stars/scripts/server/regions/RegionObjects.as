@@ -350,11 +350,15 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			
 		if(region.getSystemFlagAny(NEBULA_FLAG)) {
 			isNebulaSystem = true;
-			initMacronebula(region);
+			region.initMacronebula();
 		}
 	}
 	
 	bool get_isNebula(Object& obj) {
+		Region@ region = cast<Region>(obj);
+		bool verification = region.getSystemFlagAny(NEBULA_FLAG);
+		if(verification != isNebulaSystem)
+			isNebulaSystem = verification;
 		return isNebulaSystem;
 	}
 	
@@ -362,7 +366,9 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		return macronebula;
 	}
 	
-	void initMacronebula(Region& region) {
+	void initMacronebula(Object& obj) {
+		Region@ region = cast<Region>(obj);
+		
 		if(macronebula is null) {
 			@macronebula = Macronebula();
 			macronebula.nebulae.insertLast(other);
@@ -372,7 +378,6 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			Region@ other = getSystem(system.adjacent[i]).object;
 			if(other.getSystemFlagAny(NEBULA_FLAG) && macronebula.nebulae.find(other) < 0) {
 				other.setMacronebula(macronebula);
-				macronebula.nebulae.insertLast(other);
 			}
 			else if(!other.getSystemFlagAny(NEBULA_FLAG) && macronebula.edges.find(other) < 0) {
 				macronebula.edges.insertLast(other);
@@ -383,6 +388,8 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	void setMacronebula(Object& obj, Macronebula& nebula) {
 		Region@ region = cast<Region>(obj);
 		@macronebula = nebula;
+		macronebula.nebulae.insertLast(region);
+		region.initMacronebula();
 	}
 	
 #section all
