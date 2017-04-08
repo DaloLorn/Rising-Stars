@@ -7,6 +7,7 @@ import settings.map_lib;
 import settings.game_settings;
 import statuses;
 import planet_types;
+import ABEM_data;
 from empire import Creeps, majorEmpireCount;
 import Artifact@ makeArtifact(SystemDesc@ system, uint type = uint(-1)) from "map_effects";
 import void createWormhole(SystemDesc@ from, SystemDesc@ to) from "objects.Oddity";
@@ -220,7 +221,7 @@ class MapGeneration {
 		
 		for(uint i = 0, cnt = systems.length; i < cnt; ++i) {
 			SystemDesc@ sys = systems[i];
-			if(sys.object.isNebula && sys.object.region.macronebula is null) {
+			if(sys.object.isNebula && sys.object.macronebula is null) {
 				sys.object.initMacronebula();
 			}
 		}
