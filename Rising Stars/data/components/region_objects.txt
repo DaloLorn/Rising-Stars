@@ -100,6 +100,6 @@ server:
 
 	safe bool get_isNebula();
 	Macronebula@ get_macronebula();
-	void setMacronebula(Macronebula& nebula);
-	void initMacronebula();
+	relocking void setMacronebula(Macronebula& nebula);
+	relocking void initMacronebula();
 };
