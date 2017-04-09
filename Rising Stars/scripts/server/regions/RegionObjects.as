@@ -6,7 +6,7 @@ import region_effects.ZealotRegion;
 import notifications;
 import statuses;
 import system_flags;
-import ABEM_data;
+import macronebula;
 from resources import getLaborCost;
 from cargo import hasDesignCosts;
 from settings.game_settings import gameSettings;
@@ -370,22 +370,17 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		Region@ region = cast<Region>(obj);
 		
 		if(macronebula is null) {
-			ObjectDesc desc = ObjectDesc();
-			desc.type = OT_Macronebula;
-			desc.flags |= objNoPhysics;
-			desc.position = vec3d();
-			@desc.owner = defaultEmpire;
-			@macronebula = cast<Macronebula>(makeObject(desc));
-			macronebula.addNebula(region);
+			@macronebula = Macronebula();
+			macronebula.nebulae.insertLast(other);
 		}
 			
 		for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
 			Region@ other = getSystem(system.adjacent[i]).object;
-			if(other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsNebula(other)) {
+			if(other.getSystemFlagAny(NEBULA_FLAG) && macronebula.nebulae.find(other) < 0) {
 				other.setMacronebula(macronebula);
 			}
-			else if(!other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsEdge(other)) {
-				macronebula.addEdge(other);
+			else if(!other.getSystemFlagAny(NEBULA_FLAG) && macronebula.edges.find(other) < 0) {
+				macronebula.edges.insertLast(other);
 			}
 		}
 	}
@@ -393,7 +388,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	void setMacronebula(Object& obj, Macronebula& nebula) {
 		Region@ region = cast<Region>(obj);
 		@macronebula = nebula;
-		macronebula.addNebula(region);
+		macronebula.nebulae.insertLast(region);
 		region.initMacronebula();
 	}
 	

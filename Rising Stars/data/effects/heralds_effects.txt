@@ -34,7 +34,7 @@ Effect: WarheadExpl
 	Value: Damage
 	Value: Radius
 
-	End: ABEMCombat::ABEMWarheadExpl
+	End: heralds_combat::ABEMWarheadExpl
 
 Effect: ApplyDoT
 	Value: DPS = 0

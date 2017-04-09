@@ -249,24 +249,8 @@ local:
 	Region@ getRegion(uint i) const;
 
 server:
-	relocking void add(Region@ region);
-	relocking void remove(Region@ region);
-}
-
-Macronebula : objects.Macronebula::MacronebulaScript {
-server:
-	safe uint get_id();
-	safe Region@ get_nebulae(uint index);
-	safe Region@ get_edges(uint index);
-	bool containsNebula(Region@ region);
-	bool containsEdge(Region@ region);
-	safe uint get_nebulaCount();
-	safe uint get_edgeCount();
-
-	void addNebula(Region@ region);
-	void removeNebula(uint index); // Presumably we won't need to delete anything from a macronebula, but what the hell.
-	void addEdge(Region@ region);
-	void removeEdge(uint index);
+	void add(Region@ region);
+	void remove(Region@ region);
 }
 
 Pickup : objects.Pickup::PickupScript {
