@@ -6,7 +6,7 @@
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function (more or less), some content may be missing or malfunctioning.[/b]
 
-		[b][h1]Current version: 1.1.0 (Return of the Ulthaar)[/h1][/b]
+		[b][h1]Current version: 1.1.1 (Return of the Ulthaar)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
 		[*]Four new lifestyles with various pros and cons[list]
 		[*]Berserkers, exemplified by the warlike Rahta race[list]

@@ -63,7 +63,7 @@ class ExpanseMap : Map {
 	void makeSettings() {
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
-		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
+//		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Description(locale::EXPANSE_MAP_TEXT, lines=3);
 	}
 
@@ -86,8 +86,9 @@ class ExpanseMap : Map {
 
 		//Generate base clusters
 		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
-		nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
-		hasAnomalies = nebulaFreq > 0.0;
+		//nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
+		//hasAnomalies = nebulaFreq > 0.0;
+		hasAnomalies = false;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 		
 		hasAnomalies = hasAnomalies && anomalyList !is null;

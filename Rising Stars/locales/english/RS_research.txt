@@ -279,6 +279,14 @@ R_MINER_HULL_DESC: <<
 
 	[i][bbloc=#S_MINER_HULL_DESC/][/i]
 >>
+R_SYS_JUGGERNAUT_HULL: Volatile Payload Delivery
+R_SYS_JUGGERNAUT_HULL_DESC: <<
+	[color=#aaa][i]Historically, ships have sometimes been ignited or packed full of explosives and sailed into enemy fleets with devastating effects. Now, we have developed a way to do it in space![/i][/color]
+
+	Unlocks the Bombship Hull subsystem for use on flagships.
+
+	[i][bbloc=#S_JUGGERNAUT_HULL_DESC/][/i]
+>>
 R_METROPOLIS_UPGRADE: Metropolitan Optimization
 R_METROPOLIS_UPGRADE_DESC: <<
 	Increases the amount of pressure capacity added by Metropoles by 2.
