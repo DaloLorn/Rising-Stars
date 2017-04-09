@@ -114,6 +114,7 @@ tidy class TerritoryScript {
 	
 	void addNebula(Territory& obj, Macronebula@ macronebula) {
 		nebulae.insert(macronebula.id);
+		macronebula.claimMacronebula(obj);
 		
 		for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; ++i) {
 			Region@ nebula = macronebula.nebulae[i];
@@ -153,6 +154,7 @@ tidy class TerritoryScript {
 	
 	void removeNebula(Territory& obj, Macronebula@ macronebula) {
 		nebulae.erase(macronebula.id);
+		macronebula.unclaimMacronebula(obj);
 		
 		removeNebulaEdges(obj, macronebula);
 		
@@ -214,6 +216,8 @@ tidy class TerritoryScript {
 	}
 
 	void add(Territory& obj, Region@ region) {
+		if(inner.contains(region.id) // Presumably this is a nebula that we already owned, transitioning from a now-removed macronebula.
+			return;
 		if(obj.owner is playerEmpire || region.VisionMask & playerEmpire.visionMask != 0) {
 			node.addInner(region.id, region.position, region.radius);
 		}
