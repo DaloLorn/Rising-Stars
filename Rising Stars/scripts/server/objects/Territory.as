@@ -67,7 +67,6 @@ tidy class TerritoryScript {
 				region.initMacronebula();
 
 			if(region.macronebula !is null && !nebulae.contains(region.macronebula.id)) {
-				//print("PostLoad: Adding macronebula " + region.macronebula.id);
 				addNebula(obj, region.macronebula);
 			}
 
@@ -86,12 +85,9 @@ tidy class TerritoryScript {
 					continue;
 				if(edges.contains(other.object.id))
 					continue;
-					
-				if(other.object.isNebula && other.object.macronebula is null)
-					other.object.initMacronebula();
 
 				if(other.object.macronebula !is null && !nebulae.contains(other.object.macronebula.id)) {
-					//print("PostLoad: Adding adjacent macronebula " + other.object.macronebula.id);
+					nebulae.insert(other.object.macronebula.id);
 					addNebula(obj, other.object.macronebula);
 					continue;
 				}
@@ -117,7 +113,6 @@ tidy class TerritoryScript {
 		
 		for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; ++i) {
 			Region@ nebula = macronebula.nebulae[i];
-			//print("Adding nebula ID " + nebula.SystemId + " from macronebula ID " + macronebula.id + " to empire ID " + obj.owner.id + " (" + obj.owner.name + ").");
 			nebula.TradeMask |= obj.owner.mask;
 			add(obj, nebula);
 		}
@@ -128,10 +123,8 @@ tidy class TerritoryScript {
 	void addNebulaEdges(Territory& obj, Macronebula@ macronebula) {
 		for(uint i = 0, cnt = macronebula.edgeCount; i < cnt; ++i) {
 			Region@ edge = macronebula.edges[i];
-			//print("Checking if edge " + i + " is owned...");
 			if(inner.contains(edge.id) || edges.contains(edge.id))
 				continue; // Oops, this edge is already part of our territory... moving on.
-			//print("Adding unowned edge ID " + edge.SystemId + " from macronebula ID " + macronebula.id + " to empire ID " + obj.owner.id + " (" + obj.owner.name + ").");
 			edges.insert(edge.id);
 			node.addEdge(edge.id, edge.position, edge.radius);
 		}
@@ -143,7 +136,7 @@ tidy class TerritoryScript {
 	
 		for(uint i = 0, cnt = macronebula.edgeCount; i < cnt; ++i) {
 			Region@ edge = macronebula.edges[i];
-			SystemDesc@ desc = getSystem(edge.SystemId);
+			SystemDesc@ desc = getSystem(edge.SystemId)
 			if(inner.contains(edge.id)) {
 				return false; // At least one of the macronebula's edges is still owned by the empire.
 			}
@@ -280,17 +273,17 @@ tidy class TerritoryScript {
 			
 			// This isn't necessarily true, but if we're not adjacent to -any- nebulae,
 			// then we want to ignore this condition, so...
-			bool adjacentNebulaIsUnowned = false;
+			bool adjacentToOwnedNebula = true;
 			
 			if(other.object.macronebula !is null) {
 				// We have already removed this system from the 'inner' list,
 				// and if no other edges are on that list we will know we can remove the nebula.
-				adjacentNebulaIsUnowned = canRemoveNebula(obj, other.object.macronebula); 
-				if(adjacentNebulaIsUnowned)
+				adjacentToOwnedNebula = canRemoveNebula(obj, other.object.macronebula); 
+				if(!adjacentToOwnedNebula)
 					removeNebula(obj, other.object.macronebula);
 			}
 
-			if(inner.contains(other.object.id) && !adjacentNebulaIsUnowned)
+			if(inner.contains(other.object.id) && adjacentToOwnedNebula)
 				isEdge = true;
 
 			if(!edges.contains(other.object.id))

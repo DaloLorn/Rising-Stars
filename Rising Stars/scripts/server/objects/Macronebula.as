@@ -2,7 +2,7 @@ import systems;
 import system_flags;
 from ABEM_data import NEBULA_FLAG;
 
-uint macronebulaCount = 0;
+uint macronebulaCount = UINT_MAX;
 
 tidy class MacronebulaScript {
 	uint idInternal;

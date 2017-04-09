@@ -394,7 +394,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		Region@ region = cast<Region>(obj);
 		@macronebula = nebula;
 		macronebula.addNebula(region);
-		initMacronebula(obj);
+		region.initMacronebula();
 	}
 	
 #section all
