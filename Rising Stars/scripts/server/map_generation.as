@@ -224,6 +224,9 @@ class MapGeneration {
 			if(sys.object.isNebula && sys.object.macronebula is null) {
 				sys.object.initMacronebula();
 			}
+			//print("System " + i + " is nebula? " + sys.object.isNebula + ". Has non-null macronebula? " + (sys.object.macronebula !is null));
+			//if(sys.object.macronebula !is null)
+			//	print("Macronebula ID for system " + i + " is " + sys.object.macronebula.id);
 		}
 
 		//Generate the galaxy gas
