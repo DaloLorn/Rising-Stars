@@ -1,5 +1,4 @@
 import statuses;
-import system_flags;
 import util.formatting;
 
 // For use in effects using statuses.
@@ -8,8 +7,6 @@ enum ABEMStatusTypes {
 	SType_VoidRay = 1,
 	SType_FiringMeleeRailguns = 2,
 };
-
-const int NEBULA_FLAG = getSystemFlag("IsNebula");
 
 enum ABEMVictoryTypes {
 	VType_Standard = 1,
