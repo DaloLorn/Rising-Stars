@@ -431,7 +431,7 @@ class ExpanseMap : Map {
 				bool defended = false;
 				for(uint n = 0, ncnt = es.defenders.length; n < ncnt; ++n) {
 					auto@ defender = es.defenders[n];
-					if(defender !is null && defender.valid && defender.owner is Creeps) {
+					if(defender !is null && defender.valid) {
 						defended = true;
 						break;
 					}
