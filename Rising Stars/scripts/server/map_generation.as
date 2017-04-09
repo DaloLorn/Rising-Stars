@@ -217,13 +217,6 @@ class MapGeneration {
 
 		//Generate everything that was placed
 		generateSystems();
-		
-		for(uint i = 0, cnt = systems.length; i < cnt; ++i) {
-			SystemDesc@ sys = systems[i];
-			if(sys.object.isNebula && sys.object.region.macronebula is null) {
-				sys.object.initMacronebula();
-			}
-		}
 
 		//Generate the galaxy gas
 		prepGalaxyGas(max(rightExtent.x - leftExtent.x, rightExtent.y - leftExtent.y));

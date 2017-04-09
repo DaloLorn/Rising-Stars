@@ -62,12 +62,9 @@ tidy class TerritoryScript {
 			Region@ region = regions[i];
 			node.addInner(region.id, region.position, region.radius);
 			inner.insert(region.id);
-			
-			if(region.getSystemFlagAny(NEBULA_FLAG))
-				region.initMacronebula();
 
-			if(region.macronebula !is null && !nebulae.contains(region.macronebula.id)) {
-				addNebula(obj, region.macronebula);
+			if(region.getSystemFlagAny(NEBULA_FLAG) && !nebulae.contains(region.macronebula.id)) {
+				addNebula(region.macronebula);
 			}
 
 			if(edges.contains(region.id)) {
@@ -161,7 +158,7 @@ tidy class TerritoryScript {
 			SystemDesc@ desc = getSystem(edge.SystemId);
 			bool found = false;
 			for(uint j = 0, jcnt = desc.adjacent.length; j < jcnt; ++j) {
-				SystemDesc@ chk = desc.adjacent[j];
+				SystemDesc@ chk = desc.adjacent[i];
 				if(chk.object.macronebula !is macronebula && inner.contains(chk.object.id)) {
 					found = true;
 					break;
