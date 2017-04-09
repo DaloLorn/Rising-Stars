@@ -2,7 +2,7 @@ Anomaly: DerelictGuardian
 	Name: #A_GUARDIAN
 	Frequency: 0
 	Description: #A_GUARDIAN_UNSCANNED
-	Model: TyrantFlagshipMedium
+	Model: TyrantFlagMedium
 	Material: TyrantPBRAdvanced
 	Narrative: #A_GUARDIAN_UNSCANNED
 	Option: Reactivate
