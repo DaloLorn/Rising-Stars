@@ -8,6 +8,7 @@ tidy class MacronebulaScript {
 	uint idInternal;
 	array<Region@> nebulae;
 	array<Region@> edges;
+	array<Territory@> territories;
 
 	MacronebulaScript() {
 		idInternal = macronebulaCount++;
@@ -47,19 +48,52 @@ tidy class MacronebulaScript {
 
 	void addNebula(Region@ region) {
 		nebulae.insertLast(region);
+		for(uint i = 0, cnt = territories.length; i < cnt; ++i) {
+			territories[i].add(region);
+		}
+	}
+	
+	void claimMacronebula(Territory@ territory) {
+		territories.insertLast(territory);
+	}
+	
+	void unclaimMacronebula(Territory@ territory) {
+		int index = territories.find(territory);
+		if(index >= 0) {
+			territories.removeAt(index);
+		}
 	}
 
 	void removeNebula(uint index) {
 		if(index < nebulae.length)
 			nebulae.removeAt(index);
 	}
+	
+	void removeNebulaSpecific(Region@ region) {
+		int index = nebulae.find(region);
+		if(index >= 0)
+		{
+			nebulae.removeAt(index);
+		}
+	}
 
-	void addEdge(Region@ region) {
+	void addEdge(Macronebula& obj, Region@ region) {
 		edges.insertLast(region);
+		for(uint i = 0, cnt = territories.length; i < cnt; ++i) {
+			territories[i].addNebulaEdges(region, obj);
+		}
 	}
 
 	void removeEdge(uint index) {
 		if(index < edges.length)
 			edges.removeAt(index);
+	}
+	
+	void removeEdgeSpecific(Region@ region) {
+		int index = edges.find(region);
+		if(index >= 0)
+		{
+			edges.removeAt(index);
+		}
 	}
 }

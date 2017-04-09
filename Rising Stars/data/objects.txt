@@ -264,9 +264,13 @@ server:
 	safe uint get_edgeCount();
 
 	void addNebula(Region@ region);
+	void claimMacronebula(Territory@ territory);
+	void unclaimMacronebula(Territory@ territory);
 	void removeNebula(uint index); // Presumably we won't need to delete anything from a macronebula, but what the hell.
+	void removeNebulaSpecific(Region@ region);
 	void addEdge(Region@ region);
 	void removeEdge(uint index);
+	void removeEdgeSpecific(Region@ region);
 }
 
 Pickup : objects.Pickup::PickupScript {
