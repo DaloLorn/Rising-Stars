@@ -216,7 +216,7 @@ tidy class TerritoryScript {
 	}
 
 	void add(Territory& obj, Region@ region) {
-		if(inner.contains(region.id) // Presumably this is a nebula that we already owned, transitioning from a now-removed macronebula.
+		if(inner.contains(region.id)) // Presumably this is a nebula that we already owned, transitioning from a now-removed macronebula.
 			return;
 		if(obj.owner is playerEmpire || region.VisionMask & playerEmpire.visionMask != 0) {
 			node.addInner(region.id, region.position, region.radius);

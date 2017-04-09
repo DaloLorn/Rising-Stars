@@ -287,14 +287,18 @@ S_MINER_HULL_DESC: <<
 	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
-S_JUGGERNAUT_HULL: Juggernaught Hull
+S_JUGGERNAUT_HULL: Bombship Hull
 S_JUGGERNAUT_HULL_DESC: <<
-	A specialized hull designed for containing and stabilizing a large payload of explosives.
+	A specialized hull designed for containing and stabilizing a large payload of extremely volatile explosives.
 
-	[img=Plus]High health and damage resistance.[/img]
-	[img=Plus]Allows the use of self-destruct devices.[/img]
-	[img=Plus]Low maintenance cost.[/img]
+	[img=Plus]Increases health by 1200%, and boosts armor damage resistance by 50%.[/img]
+	[img=AntimatterReactor;20;#ff0000]Allows and requires the use of a Self-Destruct Device.[/img]
+	[img=Plus]Halved maintenance cost.[/img]
+	[img=Minus]Increases mass by 500%, but increases turn thrust by only 300%.[/img]
+	[img=Minus]Increases Labor cost by 400%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
+	[img=Minus]Significantly reduced hex count.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Bombship Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
 S_FORCEFIELD: Force Field
 S_FORCEFIELD_DESC: <<
