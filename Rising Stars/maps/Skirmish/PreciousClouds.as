@@ -25,7 +25,6 @@ sortIndex = 1000;
 #section client
 void makeSettings() {
 Number("Scale", M_SystemSpacing, 1, decimals=0, step=1, min=1, halfWidth=true);
-	Description("[i]" + description +"[/i]", lines=3);
 }
 
 #section server

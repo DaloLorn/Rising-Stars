@@ -249,7 +249,6 @@ local:
 	Region@ getRegion(uint i) const;
 
 server:
-	void addNebulaEdges(Macronebula@ macronebula);
 	relocking void add(Region@ region);
 	relocking void remove(Region@ region);
 }

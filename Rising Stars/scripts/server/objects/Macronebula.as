@@ -80,7 +80,7 @@ tidy class MacronebulaScript {
 	void addEdge(Macronebula& obj, Region@ region) {
 		edges.insertLast(region);
 		for(uint i = 0, cnt = territories.length; i < cnt; ++i) {
-			territories[i].addNebulaEdges(obj);
+			territories[i].addNebulaEdges(region, obj);
 		}
 	}
 
