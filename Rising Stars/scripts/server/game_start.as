@@ -735,16 +735,6 @@ class SystemGenerator : IsolateHook {
 
 		if(hook !is null)
 			hook.call(desc);
-		
-		// Refresh macronebula data on all adjacent systems.
-		// We're calling this after the SystemGenerateHook because the Expanse uses a SystemGenerateHook 
-		// to do system generation as opposed to using SystemGenerator's own code.
-		for(uint i = 0, cnt = desc.adjacent.length; i < cnt; ++i) {
-			SystemDesc@ other = getSystem(desc.adjacent[i]);
-			if(other.object.macronebula !is null) {
-				other.object.initMacronebula();
-			}
-		}
 
 		//Notify clients of changes
 		refreshClientSystems(CURRENT_PLAYER);
