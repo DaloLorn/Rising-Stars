@@ -1,5 +1,6 @@
 export PathNode;
 import saving;
+import ftl;
 
 final class PathNode : Serializable, Savable {
 	Object@ pathEntry;
@@ -252,6 +253,13 @@ double getPathETA(const vec3d& startPos, const vec3d& endPos, double accel, arra
 
 const double SQRT_2 = sqrt(2.0);
 uint doPathing(array<Oddity@>& gates, Empire@ emp, const vec3d& from, const vec3d& to, uint index, array<PathNode@>@ path, double& eta, double accel) {
+	// This is a very dirty way of handling things, but it -should- ensure 
+	// that the navicomputer prefers gates for in-system flight
+	// while avoiding them for outbound maneuvering... until something drastic happens, like changing the scale of star systems.
+	double avgSystemDiameter = 2500 * config::SYSTEM_SIZE; // Rough estimate of the diameter of a small star system.
+	if(emp.HasFlux != 0 && from.distanceToSQ(to) > avgSystemDiameter*avgSystemDiameter)
+		return 0; // Gates? Where we're going, we don't need gates.
+
 	//Check which gate jump makes this journey shorter by the most
 	Oddity@ shortest;
 	Object@ shortestGateIn; Object@ shortestGateOut;
