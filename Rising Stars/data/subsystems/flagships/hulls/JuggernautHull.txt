@@ -2,7 +2,7 @@ Subsystem: JuggernautHull
 	Name: #S_JUGGERNAUT_HULL
 	Description: #S_JUGGERNAUT_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, CanUseSelfDestruct
+	Tags: Applied:Hull, Category:Hulls, NoCore, Ability:SelfDestruct
 	Tags: HeraldsDLC
 	Tags: Ability:RammingSpeedAbil
 	Hull: Flagship
@@ -20,7 +20,9 @@ Subsystem: JuggernautHull
 	AddShipModifier: TechMultFactor(1)
 	AddShipModifier: LaborCostFactor(4)
 	AddShipModifier: MaintCostFactor(0.5)
-	
+	AddShipModifier: tag/SelfDestruct::DamageFactor(3)
+	AddShipModifier: tag/SelfDestruct::RadiusFactor(4)
+
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 
@@ -30,7 +32,7 @@ Subsystem: JuggernautHull
 	Assert: Sum.SupportCapacity == 0
 		Message: #ERROR_CANNOT_HAVE_SUPPORT
 
-	Assert: TagCount.SelfDestruct == 1
+	Assert: TagCount.SelfDestruct >= 1
 		Message: #ERROR_MUST_HAVE_SELFDESTRUCT
 
 	//Rescue the idea if needed

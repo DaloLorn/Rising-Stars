@@ -46,8 +46,8 @@ Grid: RisingStars
 	Energy: 2,5
 	Thrust: -3,5
 	SupportCap: -5,0
-	FillerNode: -3,-5
-	FillerNode: 5,0
+	Construction: -3,-5
+	Defense: 5,0
 	InfluenceIncome: -6,1
 	InfluenceIncome: -6,-1
 	Health: -4,5
@@ -55,8 +55,8 @@ Grid: RisingStars
 	SupplyStorage: 2,6
 	Damage: 3,5
 	FactoryLabor: 2,-5
-	FillerNode: 2,-6
-	FillerNode: 3,-5
+	Health: 2,-6
+	Repair: 3,-5
 	FillerNode: 5,-1
 	FillerNode: 5,1
 	Thrust: -5,5
@@ -67,8 +67,8 @@ Grid: RisingStars
 	EnergyHurdle: -7,6
 	Connector: -8,7
 	VacuumTelescope: -10,5
-	Health: -9,6
-	Connector: -9,7
+	Connector: -9,6
+	Health: -9,7
 	Connector: -4,6
 	FireRate2: -4,7
 	FTLStorage: -3,7
@@ -88,16 +88,12 @@ Grid: RisingStars
 	Connector: -2,14
 	FTLStorage: -5,13
 	Connector: -4,14
-	FillerNode: 1,-6
-	FillerNode: -2,-6
-	FillerNode: -4,-5
-	FillerNode2: -1,-6
+	OrbitalConstruction: 1,-6
+	ImpDecaySpeed: -2,-6
+	PlanetSupport2: -1,-6
 	DefenseSatellite: -1,-5
-	FillerNode: 0,-5
-	Connector: 1,6
+	ArmorHealth: 0,-5
 	SupportSupplyUse2: -1,6
-	SolarSatellite: 0,5
-	Connector: 0,6
 	FTLHurdle: -6,10
 	FTLHurdle: -2,10
 	FTLHurdle: -2,11
@@ -127,3 +123,76 @@ Grid: RisingStars
 	Connector: -8,1
 	InfluenceHurdle: -8,2
 	InfluenceIncome2: -9,2
+	Wealth: -10,-2
+	InfluenceHurdle: -11,-1
+	InfluenceHurdle: -10,-3
+	Thrust: -9,8
+	BoosterEngine: -10,8
+	SupplyRegen: -1,7
+	SolarSatellite: 1,9
+	CivConstruction: 1,6
+	EnergyHurdle: 2,7
+	Connector: 2,8
+	EnergyHurdle: -1,9
+	Connector: -1,8
+	Connector: 0,9
+	Range2: 1,8
+	SolarPanel: 0,7
+	Ramjet: 0,4
+	Connector: -1,5
+	EnergyHurdle: 0,5
+	TileDevelopment: -4,-5
+	CivConstruction: -5,-5
+	Construction2: -5,-6
+	HydroponicsSatellite: -5,-4
+	Megacity: -6,-7
+	PlanetSupport: -3,-7
+	Connector: -3,-8
+	Connector: -11,5
+	Connector: -11,7
+	InfiniteThrust: -11,6
+	EnergyHurdle: -3,-9
+	InfluenceHurdle: -4,-8
+	MetropolisUpg: -5,-8
+	ImpDecaySpeed: -6,-9
+	Health: -5,-10
+	Laboratories: -2,-10
+	FTLJammerCombat: -9,13
+	FTLHurdle: -8,14
+	ImpDecaySpeed2: -7,-9
+	Connector: -3,-10
+	SupportCap: -4,-11
+	FTLHurdle: -4,-12
+	Connector: -5,-11
+	PlanetaryEngine: -5,-13
+	EnergyHurdle2: -5,-14
+	FTLHurdle: -6,-14
+	TileDevelopment2: -7,-14
+	ArtificialPlanetoid: -8,-14
+	Spire: -5,-9
+	FTLHurdle: -9,-9
+	EnergyHurdle3: -9,-10
+	Health2: -9,-14
+	FTLHurdle: -10,-13
+	Ringworld: -10,-12
+	EnergyHurdle2: -10,-11
+	ArtificialMoon: -7,-13
+	StationMaintenance: -8,-9
+	Abundance: -6,-10
+	InfluenceHurdle: -3,-12
+	BuildCost: -3,-13
+	ArmorDR: 1,-7
+	InfluenceHurdle: -7,-7
+	Connector: -7,-6
+	BroadcastAntenna: -8,-4
+	InfluenceHurdle: -8,-5
+	Bulkhead: 1,-8
+	FactoryLabor2: 1,-9
+	Connector: 0,-8
+	EnergyHurdle: -1,-9
+	CompositeArmor: 2,-10
+	Connector: 0,-10
+	EnergyHurdle: 0,-11
+	Connector: 1,-12
+	Health: 2,-11
+	OrbitalConstruction2: 2,-7

@@ -85,3 +85,5 @@ ABL_GUARDIAN_FINISH_DESC: <<
 
 	Other empires will be notified of the project's completion, and the Guardian Facility will resume normal operation.
 >>
+ABL_SELF_DESTRUCT: Initiate Self-Destruct
+ABL_SELF_DESTRUCT_DESC: Activate the self-destruct device contained on this ship, detonating the ship in a fiery inferno.
