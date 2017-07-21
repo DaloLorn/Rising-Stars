@@ -1,7 +1,7 @@
 import systems;
 import system_flags;
+import ABEM_data;
 
-const int NEBULA_FLAG = getSystemFlag("IsNebula");
 tidy class TerritoryScript {
 	TerritoryNode@ node;
 	set_int inner;
@@ -62,9 +62,13 @@ tidy class TerritoryScript {
 			Region@ region = regions[i];
 			node.addInner(region.id, region.position, region.radius);
 			inner.insert(region.id);
+			
+			if(region.isNebula && region.macronebula is null)
+				region.initMacronebula();
 
-			if(region.getSystemFlagAny(NEBULA_FLAG)) {
-				nebulae.insert(region.id);
+			if(region.macronebula !is null && !nebulae.contains(region.macronebula.id)) {
+				//print("PostLoad: Adding macronebula " + region.macronebula.id);
+				addNebula(obj, region.macronebula);
 			}
 
 			if(edges.contains(region.id)) {
@@ -82,15 +86,19 @@ tidy class TerritoryScript {
 					continue;
 				if(edges.contains(other.object.id))
 					continue;
+					
+				if(other.object.isNebula && other.object.macronebula is null)
+					other.object.initMacronebula();
 
-				if(other.object.getSystemFlagAny(NEBULA_FLAG)) {
-					nebulae.insert(other.object.id);
-					add(obj, other.object);
+				if(other.object.macronebula !is null && !nebulae.contains(other.object.macronebula.id)) {
+					//print("PostLoad: Adding adjacent macronebula " + other.object.macronebula.id);
+					addNebula(obj, other.object.macronebula);
 					continue;
 				}
-
-				edges.insert(other.object.id);
-				node.addEdge(other.object.id, other.position, other.radius);
+				else {
+					edges.insert(other.object.id);
+					node.addEdge(other.object.id, other.position, other.radius);
+				}
 			}
 		}
 
@@ -101,6 +109,78 @@ tidy class TerritoryScript {
 				node.removeInner(region.id);
 			else
 				node.addInner(region.id, region.position, region.radius);
+		}
+	}
+	
+	void addNebula(Territory& obj, Macronebula@ macronebula) {
+		nebulae.insert(macronebula.id);
+		macronebula.claimMacronebula(obj);
+		
+		for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; ++i) {
+			Region@ nebula = macronebula.nebulae[i];
+			//print("Adding nebula ID " + nebula.SystemId + " from macronebula ID " + macronebula.id + " to empire ID " + obj.owner.id + " (" + obj.owner.name + ").");
+			nebula.TradeMask |= obj.owner.mask;
+			add(obj, nebula);
+		}
+		
+		addNebulaEdges(obj, macronebula);
+	}
+	
+	void addNebulaEdges(Territory& obj, Macronebula@ macronebula) {
+		for(uint i = 0, cnt = macronebula.edgeCount; i < cnt; ++i) {
+			Region@ edge = macronebula.edges[i];
+			//print("Checking if edge " + i + " is owned...");
+			if(inner.contains(edge.id) || edges.contains(edge.id))
+				continue; // Oops, this edge is already part of our territory... moving on.
+			//print("Adding unowned edge ID " + edge.SystemId + " from macronebula ID " + macronebula.id + " to empire ID " + obj.owner.id + " (" + obj.owner.name + ").");
+			edges.insert(edge.id);
+			node.addEdge(edge.id, edge.position, edge.radius);
+		}
+	}
+	
+	bool canRemoveNebula(Territory& obj, Macronebula@ macronebula) {
+		if(!nebulae.contains(macronebula.id))
+			return true; // We have already removed this nebula after an earlier canRemoveNebula() call, don't bother...
+	
+		for(uint i = 0, cnt = macronebula.edgeCount; i < cnt; ++i) {
+			Region@ edge = macronebula.edges[i];
+			SystemDesc@ desc = getSystem(edge.SystemId);
+			if(inner.contains(edge.id)) {
+				return false; // At least one of the macronebula's edges is still owned by the empire.
+			}
+		}
+		return true; // None of the macronebula's edges are owned by the empire, we can safely wipe it out.
+	}
+	
+	void removeNebula(Territory& obj, Macronebula@ macronebula) {
+		nebulae.erase(macronebula.id);
+		macronebula.unclaimMacronebula(obj);
+		
+		removeNebulaEdges(obj, macronebula);
+		
+		for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; ++i) {
+			Region@ nebula = macronebula.nebulae[i];
+			nebula.TradeMask &= ~obj.owner.mask;
+			remove(obj, nebula);
+		}
+	}
+	
+	void removeNebulaEdges(Territory& obj, Macronebula@ macronebula) {
+		for(uint i = 0, cnt = macronebula.edgeCount; i < cnt; ++i) {
+			Region@ edge = macronebula.edges[i];
+			SystemDesc@ desc = getSystem(edge.SystemId);
+			bool found = false;
+			for(uint j = 0, jcnt = desc.adjacent.length; j < jcnt; ++j) {
+				SystemDesc@ chk = getSystem(desc.adjacent[j]);
+				if(chk.object.macronebula !is macronebula && inner.contains(chk.object.id)) {
+					found = true;
+					break;
+				}
+			}
+			if(!found) {
+				edges.erase(edge.id);
+				node.removeEdge(edge.id);
+			}
 		}
 	}
 
@@ -136,6 +216,8 @@ tidy class TerritoryScript {
 	}
 
 	void add(Territory& obj, Region@ region) {
+		if(inner.contains(region.id)) // Presumably this is a nebula that we already owned, transitioning from a now-removed macronebula.
+			return;
 		if(obj.owner is playerEmpire || region.VisionMask & playerEmpire.visionMask != 0) {
 			node.addInner(region.id, region.position, region.radius);
 		}
@@ -152,6 +234,10 @@ tidy class TerritoryScript {
 			node.removeEdge(region.id);
 			edges.erase(region.id);
 		}
+		
+		if(region.macronebula !is null) {
+			return; // Add the macronebula's edges through a more streamlined function.
+		}
 
 		//Add edges from this region
 		SystemDesc@ desc = getSystem(region.SystemId);
@@ -164,12 +250,9 @@ tidy class TerritoryScript {
 			if(edges.contains(other.object.id))
 				continue;
 
-			if(other.object.getSystemFlagAny(NEBULA_FLAG)) {
-				nebulae.insert(other.object.id);
-				other.object.TradeMask |= obj.owner.mask;
-				add(obj, other.object);
-			}
-			else {
+			if(other.object.macronebula !is null && !nebulae.contains(other.object.macronebula.id))
+				addNebula(obj, other.object.macronebula);
+			else { // addNebula() will add this edge as well, no need to worry.
 				edges.insert(other.object.id);
 				node.addEdge(other.object.id, other.position, other.radius);
 			}
@@ -188,43 +271,48 @@ tidy class TerritoryScript {
 		inner.erase(region.id);
 		regions.remove(region);
 		regionDelta = true;
+		
+		if(region.macronebula !is null)
+			return; // Remove the macronebula's edges through a more streamlined function. The macronebula itself can never be a territory edge, so the rest of this is irrelevant.
 
 		//Remove edges from this region
 		SystemDesc@ desc = getSystem(region.SystemId);
-		bool isEdge = false, otherIsNebula = false;
+		bool isEdge = false;
 		for(uint i = 0, cnt = desc.adjacent.length; i < cnt; ++i) {
 			uint adj = desc.adjacent[i];
 			SystemDesc@ other = getSystem(adj);
-				
-			if(nebulae.contains(other.object.id))
-				otherIsNebula = true;
-
-			if(!otherIsNebula && inner.contains(other.object.id))
-				isEdge = true;
-
-			bool found = false;
-			for(uint j = 0, jcnt = other.adjacent.length; j < jcnt; ++j) {
-				SystemDesc@ chk = getSystem(other.adjacent[j]);
-				if(inner.contains(chk.object.id) && !nebulae.contains(chk.object.id)) {
-					found = true;
-					break;
-				}
-			}
 			
-			if(found)
-				continue;
-				
-			if(otherIsNebula) {
-				nebulae.erase(other.object.id);
-				remove(obj, other.object);
-				other.object.TradeMask &= ~obj.owner.mask;
+			// This isn't necessarily true, but if we're not adjacent to -any- nebulae,
+			// then we want to ignore this condition, so...
+			bool adjacentNebulaIsUnowned = false;
+			
+			if(other.object.macronebula !is null) {
+				// We have already removed this system from the 'inner' list,
+				// and if no other edges are on that list we will know we can remove the nebula.
+				adjacentNebulaIsUnowned = canRemoveNebula(obj, other.object.macronebula); 
+				if(adjacentNebulaIsUnowned)
+					removeNebula(obj, other.object.macronebula);
 			}
+
+			if(inner.contains(other.object.id) && !adjacentNebulaIsUnowned)
+				isEdge = true;
 
 			if(!edges.contains(other.object.id))
 				continue;
 
-			edges.erase(other.object.id);
-			node.removeEdge(other.object.id);
+			bool found = false;
+			for(uint j = 0, jcnt = other.adjacent.length; j < jcnt; ++j) {
+				SystemDesc@ chk = getSystem(other.adjacent[j]);
+				if(inner.contains(chk.object.id)) {
+					found = true;
+					break;
+				}
+			}
+
+			if(!found) {
+				edges.erase(other.object.id);
+				node.removeEdge(other.object.id);
+			}
 		}
 
 		//Check if this should be added back as an edge

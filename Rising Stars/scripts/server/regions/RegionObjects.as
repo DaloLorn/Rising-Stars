@@ -5,6 +5,8 @@ import saving;
 import region_effects.ZealotRegion;
 import notifications;
 import statuses;
+import system_flags;
+import ABEM_data;
 from resources import getLaborCost;
 from cargo import hasDesignCosts;
 from settings.game_settings import gameSettings;
@@ -80,6 +82,9 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	double tradeTimer = 0.0;
 	array<Civilian@> tradeStations;
 	uint HaveStationsMask = 0;
+	
+	Macronebula@ macronebula = null;
+	bool isNebulaSystem = false;
 
 	array<uint> regionStatusTypes;
 	array<double> regionStatusTimers;
@@ -342,7 +347,56 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			StarRadius = starList[0].radius;
 		else
 			StarRadius = 0;
+			
+		if(region.getSystemFlagAny(NEBULA_FLAG)) {
+			isNebulaSystem = true;
+			region.initMacronebula();
+		}
 	}
+	
+	bool get_isNebula(Object& obj) {
+		Region@ region = cast<Region>(obj);
+		bool verification = region.getSystemFlagAny(NEBULA_FLAG);
+		if(verification != isNebulaSystem)
+			isNebulaSystem = verification;
+		return isNebulaSystem;
+	}
+	
+	Macronebula@ get_macronebula(Object& obj) {
+		return macronebula;
+	}
+	
+	void initMacronebula(Object& obj) {
+		Region@ region = cast<Region>(obj);
+		
+		if(macronebula is null) {
+			ObjectDesc desc = ObjectDesc();
+			desc.type = OT_Macronebula;
+			desc.flags |= objNoPhysics;
+			desc.position = vec3d();
+			@desc.owner = defaultEmpire;
+			@macronebula = cast<Macronebula>(makeObject(desc));
+			macronebula.addNebula(region);
+		}
+			
+		for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
+			Region@ other = getSystem(system.adjacent[i]).object;
+			if(other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsNebula(other)) {
+				other.setMacronebula(macronebula);
+			}
+			else if(!other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsEdge(other)) {
+				macronebula.addEdge(other);
+			}
+		}
+	}
+	
+	void setMacronebula(Object& obj, Macronebula& nebula) {
+		Region@ region = cast<Region>(obj);
+		@macronebula = nebula;
+		macronebula.addNebula(region);
+		initMacronebula(obj);
+	}
+	
 #section all
 	void addShipDebris(vec3d position, uint count = 1) {
 		if(plane !is null)
