@@ -11,3 +11,6 @@ Technology: Jumpdrive
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 	SkipOnUnlockedSubsystem(Jumpdrive)
 	UnlockSubsystem(ExperimentalJumpdrive)
+
+	DLC: Heralds
+	DLC Replace: DLCConnector

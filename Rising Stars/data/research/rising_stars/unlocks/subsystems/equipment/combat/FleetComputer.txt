@@ -8,7 +8,7 @@ Technology: FleetComputer
 	Time Cost: 120
 
 	DLC: Heralds
-	DLC Replace: SupportCap
+	DLC Replace: DLCConnector
 
 	Icon: FleetComputer
 	Color: #ca5700

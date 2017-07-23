@@ -5,7 +5,7 @@ Technology: NilingArmor
 	Category: Armor
 
 	DLC: Heralds
-	DLC Replace: ArmorHealth
+	DLC Replace: DLCConnector
 
 	Point Cost: 1000
 	Time Cost: 180

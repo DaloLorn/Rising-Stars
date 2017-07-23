@@ -5,7 +5,7 @@ Technology: CrystalArmor
 	Category: Armor
 
 	DLC: Heralds
-	DLC Replace: ArmorHealth2
+	DLC Replace: DLCConnector
 
 	Point Cost: 500
 	Time Cost: 90

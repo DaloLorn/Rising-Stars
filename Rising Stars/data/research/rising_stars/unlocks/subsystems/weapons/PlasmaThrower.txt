@@ -8,7 +8,7 @@ Technology: PlasmaThrower
 	Time Cost: 120
 
 	DLC: Heralds
-	DLC Replace: Damage
+	DLC Replace: DLCConnector
 
 	Icon: RocketPod::0
 	Color: #ce815a

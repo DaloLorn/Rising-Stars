@@ -3,8 +3,6 @@ Technology: MinerHull
 	Description: #R_MINER_HULL_DESC
 	Class: Unlock
 	Category: Hulls
-	DLC: Heralds
-	DLC Replace: Health
 
 	Point Cost: 600
 	Time Cost: 120

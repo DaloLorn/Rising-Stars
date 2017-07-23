@@ -8,7 +8,7 @@ Technology: SuperstructureHull
 	Time Cost: 120
 
 	DLC: Heralds
-	DLC Replace: Health
+	DLC Replace: DLCConnector
 
 	Icon: HullSubsystems::3
 	Color: #cc6a3a

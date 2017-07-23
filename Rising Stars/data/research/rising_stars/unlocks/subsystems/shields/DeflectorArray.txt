@@ -5,7 +5,7 @@ Technology: DeflectorArray
 	Category: Shields
 
 	DLC: Heralds
-	DLC Replace: ShieldCap2
+	DLC Replace: DLCConnector
 
 	Point Cost: 600
 	Time Cost: 120

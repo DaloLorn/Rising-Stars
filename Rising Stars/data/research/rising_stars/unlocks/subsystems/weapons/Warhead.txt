@@ -11,7 +11,7 @@ Technology: Warhead
 	Color: #df123d
 
 	DLC: Heralds
-	DLC Replace: SupportCap
+	DLC Replace: DLCConnector
 
 	UnlockSubsystem(Warhead)
 	SkipOnUnlockedSubsystem(Warhead)

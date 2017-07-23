@@ -8,7 +8,7 @@ Technology: PulseBolt
 	Time Cost: 120
 
 	DLC: Heralds
-	DLC Replace: Damage
+	DLC Replace: DLCConnector
 
 	Icon: HyperdenseLaser::0
 	Color: #7390db

@@ -8,7 +8,7 @@ Technology: Ramjet
 	Time Cost: 120
 
 	DLC: Heralds
-	DLC Replace: Thrust
+	DLC Replace: DLCConnector
 
 	Icon: ResearchIcons::0
 	Color: #629b26

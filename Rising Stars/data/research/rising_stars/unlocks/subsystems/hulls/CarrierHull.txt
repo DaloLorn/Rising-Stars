@@ -5,7 +5,7 @@ Technology: CarrierHull
 	Category: Hulls
 
 	DLC: Heralds
-	DLC Replace: Health
+	DLC Replace: DLCConnector
 
 	Point Cost: 600
 	Time Cost: 120

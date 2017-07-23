@@ -4,9 +4,6 @@ Technology: JuggernautHull
 	Class: Unlock
 	Category: Hulls
 
-	DLC: Heralds
-	DLC Replace: Health
-
 	Point Cost: 600
 	Time Cost: 120
 
@@ -17,5 +14,4 @@ Technology: JuggernautHull
 	SkipOnUnlockedSubsystem(JuggernautHull)
 
 	SecondaryEnergyCost(1000)
-	UnlockSubsystem(SelfDestruct)
 	ModAttribute(ProgenitorTechProgress, Add, 0.75)

@@ -10,9 +10,6 @@ Technology: TitanHull
 	Icon: DesignationIcons::16
 	Color: #cc6a3a
 
-	DLC: Heralds
-	DLC Replace: Health
-
 	UnlockSubsystem(TitanHull)
 	SkipOnUnlockedSubsystem(TitanHull)
 

@@ -5,7 +5,7 @@ Technology: BroadcastAntenna
 	Category: Equipment - Support
 
 	DLC: Heralds
-	DLC Replace: Thrust
+	DLC Replace: DLCConnector
 
 	Point Cost: 300
 	Time Cost: 120

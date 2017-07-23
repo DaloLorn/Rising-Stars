@@ -5,7 +5,7 @@ Technology: ParticleLance
 	Category: Weapons
 
 	DLC: Heralds
-	DLC Replace: Damage
+	DLC Replace: DLCConnector
 
 	Point Cost: 500
 	Time Cost: 90

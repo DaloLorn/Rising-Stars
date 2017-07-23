@@ -8,7 +8,7 @@ Technology: NanoMesh
 	Time Cost: 90
 
 	DLC: Heralds
-	DLC Replace: ArmorHealth
+	DLC Replace: DLCConnector
 
 	Icon: NanoMesh
 	Color: #a9a9a9

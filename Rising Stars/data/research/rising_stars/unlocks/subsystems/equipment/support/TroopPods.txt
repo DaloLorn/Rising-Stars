@@ -11,7 +11,7 @@ Technology: TroopPods
 	Color: #dd3b4e
 
 	DLC: Heralds
-	DLC Replace: SupportCap
+	DLC Replace: DLCConnector
 
 	UnlockSubsystem(TroopPods)
 	SkipOnUnlockedSubsystem(TroopPods)
