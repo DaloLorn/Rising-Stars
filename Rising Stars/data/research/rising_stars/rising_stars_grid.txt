@@ -272,14 +272,13 @@ Grid: RisingStars
 	ShieldCap: 5,15
 	ShieldHarmonizer: 5,16
 	ShieldedAntimatter: 7,16
-	Connector: 3,11
-	Connector: 3,12
-	Connector: 2,13
+	EnergyHurdle3: 3,11
+	EnergyStorage: 3,12
+	PowerGeneration: 2,13
 	FireRate2: 2,14
 	ShieldReg: 1,15
 	Connector: 0,13
 	Connector: 0,14
-	GravitonCondenser: 1,16
 	FTLHurdle: -1,15
 	Connector: 0,16
 	ShieldCap2: 2,15
@@ -287,10 +286,117 @@ Grid: RisingStars
 	CarrierHull: 6,2
 	Damage: 6,0
 	DestroyerHull: 6,-2
-	Connector: 6,3
 	AoERadius: 6,4
 	SupportSupplyUse: 4,5
 	SupplyRegen: 5,5
 	EnergyHurdle: 5,7
 	Connector: 4,7
 	Connector: 6,6
+	Connector: 5,3
+	SupportCap: 7,2
+	Support: 7,3
+	SupportSupplyUse2: 8,4
+	Repair: 8,5
+	SupportCap2: 9,4
+	Range2: 3,13
+	ShockMissiles: 9,5
+	Support2: 10,4
+	SupportDamage2: 11,4
+	Damage: 11,5
+	Defense: 12,4
+	Support3: 12,5
+	PulseBolt: 13,4
+	Health2: 2,12
+	NilingArmor: 1,11
+	Tactics: 7,0
+	ShipComputer: 8,0
+	FlagHealth: 6,-3
+	Flagship: 7,-4
+	SupplyUse2: 8,-4
+	FireRate: 8,-5
+	Repair2: 9,-4
+	FlakBattery: 9,-5
+	Flagship2: 10,-4
+	ProjTracking: 11,-4
+	EnergyHurdle: 6,-5
+	Connector: 6,-6
+	FlagDamage: 11,-5
+	AoERadius2: 12,-4
+	DroneLauncher: 12,-5
+	FleetComputer: 11,6
+	Energy: 7,17
+	EmergencySupplies: 7,18
+	IonCannon: 4,14
+	Flagship3: 13,-4
+	Tactics: 8,-1
+	Damage2: 9,0
+	KeyRailgunKnockback: 8,1
+	AoERadius: 9,1
+	PlasmaThrower: 10,2
+	Connector: 10,0
+	Connector: 14,-4
+	FlagDamage2: 14,-5
+	ParticleLance: 14,-6
+	Health: 11,0
+	Range2: 13,6
+	ShieldCap2: 7,19
+	Connector: 8,19
+	EnergyHurdle2: 9,18
+	Connector: 9,17
+	FTLHurdle: 10,16
+	Connector: 10,15
+	Connector: 12,14
+	SubspaceShredder: 12,7
+	SupportCap: 13,7
+	Health: 14,6
+	Connector: 1,16
+	AugmentReload: 3,10
+	TargetSensor: 9,-1
+	FireRate: 11,1
+	Range: 11,-1
+	AugmentSupply: 12,0
+	SupplyRegen2: 13,0
+	Support4: 14,7
+	SupportSize: 15,8
+	InfiniteSupport: 15,7
+	ShieldReg2: 9,13
+	DeflectorArray: 10,13
+	EnergyHurdle3: 11,14
+	BeamCycling: 13,-1
+	Repair: 14,0
+	MissileRange: -7,4
+	AugmentDamage: 13,1
+	AoERadius2: 14,2
+	SelfDestruct: 14,3
+	Thrust2: 15,3
+	ArmorHealth: 14,-1
+	TroopPods: 15,-2
+	Tactics: 16,4
+	JuggernautHull: 17,4
+	Damage2: 0,17
+	FTL: 0,18
+	FTL: -1,18
+	FTLStorage: -1,19
+	QuantumCompressor: 0,20
+	Energy: 3,17
+	QuantumBattery: 4,18
+	FlagDamage: 1,18
+	Disruptor: 1,19
+	DroneCount: 15,-5
+	FlagHealth2: 15,-6
+	Flagship4: 15,-7
+	SpinalMountHull: 15,0
+	Warhead: 16,2
+	HyperLaser: 16,0
+	MuonCannon: 12,-2
+	VoidRay: 10,-2
+	MatterDisruptor: 12,2
+	CloakPlating: 5,12
+	Connector: -2,18
+	GravitonCondenser: -3,17
+	FlareBomb: -3,18
+	FactoryLabor2: -2,-17
+	StarForge: -2,-18
+	KeyEmergencyShields: 8,20
+	Damage2: 16,-7
+	InfiniteDamage: 17,-8
