@@ -13,7 +13,7 @@ Trait: Slipstream
 
 	IfNotHaveTrait(Technicists,LoadDesigns(default) ,LoadDesigns(technicist/default))
 	IfNotHaveTrait(Technicists,LoadDesigns(not_hyperdrive) ,LoadDesigns(technicist/not_hyperdrive))
-	
+
 	LoadDesigns(slipstream)
 
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
@@ -28,4 +28,6 @@ Trait: Slipstream
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/slipstream))
 
+	ModAttribute(SlipstreamConst, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	IfNotHaveTrait(StarChildren, SpawnShip(Slipstream Generator))

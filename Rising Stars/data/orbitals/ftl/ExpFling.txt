@@ -2,7 +2,7 @@ Module: EXP_FlingCore
 	Name: #ORB_EXPERIMENTAL_FLING
 	Blurb: #ORB_EXPERIMENTAL_FLING_BLURB
 	Description: #ORB_EXPERIMENTAL_FLING_DESC
-	Icon: GuiOrbitalIcons::2
+	Icon: GuiOrbitalIcons::2*#aa77aa
 
 	Standalone: True
 	Solid: False
@@ -13,7 +13,7 @@ Module: EXP_FlingCore
 	Labor Cost: 500
 
 	Health: 50000
-	Armor:  50000
+	Armor: 50000
 
 	Model: Fling
 	Material: GenericPBR_Fling
@@ -33,5 +33,5 @@ Module: EXP_FlingCore
 
 	AllowConstruction()
 	ConsumeCargo(Ore, 5000)
-	FTLMaintenance(0.15) 
-	ConsumeFTL(500) 
+	FTLMaintenance(0.15)
+	ConsumeFTL(500)

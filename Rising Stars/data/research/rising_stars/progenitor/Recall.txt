@@ -19,7 +19,7 @@ Technology: NylliRecall
 	Name: #R_RECALL
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Special
+	Class: Unlock
 	Blurb:
 	Color: #bc12de
 	Category: Racial/DLC Replacements (DO NOT PLACE)

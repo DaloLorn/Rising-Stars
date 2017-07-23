@@ -1,0 +1,40 @@
+Subsystem: ExperimentalHyperdrive
+	Name: #S_EXPERIMENTAL_HYPERDRIVE
+	Description: #S_EXPERIMENTAL_HYPERDRIVE_DESC
+	BaseColor: #a767ad
+	TypeColor: #a767ad
+	Picture: SubsystemButtonArt::10
+	Elevation: 0
+
+	Tags: BaseCost, Category:FTL
+	Tags: Engine, Hyperdrive, HasInternals, Hyperengine, BadFiller
+	Hull: Flagship
+
+	Size := HexSize * Hexes
+	HyperdriveSpeed := 1600.0 * Size / ShipSize
+	Hex.Mass := HexSize * 2
+
+	Hex.Resistance := 0.2
+	Hex.HP := 12 * HexSize
+	Hook: AddStatus(HasPrototypeHyperdrive)
+	Assert: TagCount.Hyperdrive == 1
+		Unique: True
+		Message: #ERROR_PROTOTYPE_HYPERDRIVE
+	Assert: Size >= 500
+		Message: #ERROR_MIN_SIZE:$1:500
+		Unique: True
+
+	Requires:
+		Command = 4
+
+	Modifier: SpeedFactor(factor)
+		HyperdriveSpeed := HyperdriveSpeed * factor
+
+	Module: Default
+
+	Module: Core
+		Sprite: HexagonSubsystems::10*#aa77aa
+		Hex.BuildCost := 800
+		Hex.LaborCost := 300
+		Hex.MaintainCost := 100
+		Hex.OreCost := 5000

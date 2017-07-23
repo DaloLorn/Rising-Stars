@@ -52,6 +52,30 @@ C_GATE_UNLOCK_DESC: <<
 
 	[i][bbloc=#S_GATE_MODULE_DESC/][/i]
 >>
+C_HYPERDRIVE_UNLOCK: Hyperdrive Optimization
+C_HYPERDRIVE_UNLOCK_DESC: <<
+	Use the data collected during the construction and use of this ship's hyperdrive to improve your hyperdrive designs, allowing for easier construction of better hyperdrives.
+
+	Unlocks the Hyperdrive subsystem.
+
+	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
+>>
+C_JUMPDRIVE_UNLOCK: Simplified Jump Calculations
+C_JUMPDRIVE_UNLOCK_DESC: <<
+	Use the data collected during the construction and use of this ship's jumpdrive to improve your jumpdrive designs, allowing for easier construction of better jumpdrives.
+
+	Unlocks the Jumpdrive subsystem.
+
+	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
+>>
+C_SLIPSTREAM_UNLOCK: Efficient Subspace Penetration
+C_SLIPSTREAM_UNLOCK_DESC: <<
+	Use the data collected during the construction and use of this ship's slipstream generator to improve your generator designs, allowing for easier construction of better slipstream generators.
+
+	Unlocks the Slipstream Generator subsystem.
+
+	[i][bbloc=#S_SLIPSTREAM_GENERATOR_DESC/][/i]
+>>
 OUTPOST_ARMORING: Structural Enhancement
 OUTPOST_ARMORING_DESC: <<
 	Reinforce the orbital's frame and outer hull, allowing it to withstand more damage before critical failure.

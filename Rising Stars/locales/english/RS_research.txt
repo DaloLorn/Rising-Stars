@@ -1,3 +1,4 @@
+RESEARCH_REQ_BUILDLIQUIDARMOR: Construct at least $2 units of Liquid Armor across all your ships. ( $1 / $2 )
 R_CAT_MILITARY_DESC: <<
 	[color=#aaa][i]The art of permanently removing an opponent. Or, well, semi-permanently. Or just not getting removed by the opponent.[/i][/color]
 >>
@@ -73,16 +74,16 @@ R_SYS_PLASMA_THROWER_DESC: <<
 R_SYS_HYPERDRIVE_DESC: <<
 	[i][color=#aaa]A device capable of opening a window into - or out of - hyperspace.[/color][/i]
 
-	Unlocks the Hyperdrive subsystem for use on flagships.
+	Unlocks the Prototype Hyperdrive subsystem for use on flagships.
 
-	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
+	[i][bbloc=#S_EXPERIMENTAL_HYPERDRIVE_DESC/][/i]
 >>
 R_SYS_JUMPDRIVE_DESC: <<
 	[i][color=#aaa]A device capable of punching through subspace to instantaneously teleport a starship.[/color][/i]
 
-	Unlocks the Jumpdrive subsystem for use on flagships.
+	Unlocks the Prototype Jumpdrive subsystem for use on flagships.
 
-	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
+	[i][bbloc=#S_EXPERIMENTAL_JUMPDRIVE_DESC/][/i]
 >>
 R_SYS_PROGENITOR_SHIELD_DESC: <<
 	[i][color=#aaa]Investigation of Progenitor shield matrices yields tremendous insights into shielding technology.[/color][/i]
@@ -149,8 +150,7 @@ R_RECALL_DESC: <<
 
 	Unlocks the Recall Device for use on flagships, and the Recall Facility for construction on planets.
 
-	[i]Recall: 
-
+	[i][img=ActionBarIcons::7]Recall:[/img]
 	[bbloc=#ABL_RECALL_DESC/][/i]
 >>
 R_NYLLIRECALL_DESC: <<
@@ -158,8 +158,7 @@ R_NYLLIRECALL_DESC: <<
 
 	Unlocks the Recall Device for use on flagships, and the Recall Facility orbital.
 
-	[i]Recall: 
-
+	[i][img=ActionBarIcons::7]Recall:[/img]
 	[bbloc=#ABL_RECALL_DESC/][/i]
 >>
 R_IMPROVEDLABS: Containment Protocols
@@ -199,9 +198,9 @@ R_ORB_GATE_DESC: <<
 R_SYS_SLIPSTREAM_DESC: <<
 	[i][color=#aaa]A device capable of penetrating subspace on a level far greater than - and considerably different from - conventional hyperdrives. 'Slipstream tears', while similar to wormholes, decay much more rapidly than known stable wormholes; with a bigger generator, the created rift will last longer.[/color][/i]
 
-	Unlocks the Slipstream Generator subsystem.
+	Unlocks the Prototype Slipstream Generator subsystem.
 
-	[i][bbloc=#S_SLIPSTREAM_GENERATOR_DESC/][/i]
+	[i][bbloc=#S_EXPERIMENTAL_SLIPSTREAM_DESC/][/i]
 >>
 R_BOARDING_PARTY_DESC: <<
 	[color=#aaa][i]Recent studies of old science fiction have taught us the value of capturing enemy ships intact. To that end, we have started designing boarding pods for our flagships to launch.[/i][/color]
@@ -223,9 +222,9 @@ R_NYLLI_FOOD_DESC: <<
 >>
 R_ORB_FLING: Fling Studies
 R_ORB_GATE: Gate Construction
-R_SYS_HYPERDRIVE: Hyperdrive
-R_SYS_SLIPSTREAM: Slipstream
-R_SYS_JUMPDRIVE: Jumpdrive
+R_SYS_HYPERDRIVE: Hyperdrive Theory
+R_SYS_SLIPSTREAM: Slipstream Induction
+R_SYS_JUMPDRIVE: Jumpdrive Experiments
 
 
 R_LINK: LINK

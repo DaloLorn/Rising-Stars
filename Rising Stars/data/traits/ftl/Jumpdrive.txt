@@ -22,5 +22,7 @@ Trait: Jumpdrive
 	IfHaveTrait(Devout, LoadDesigns(devout/default))
 	IfHaveTrait(Devout, LoadDesigns(devout/jumpdrive))
 
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	ModAttribute(JumpdriveConst, Add, 1)
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/jumpdrive))

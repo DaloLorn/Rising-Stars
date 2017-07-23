@@ -98,6 +98,23 @@ STT_CHANNELPERCENTAGE: <<
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
+S_EXPERIMENTAL_HYPERDRIVE: Prototype Hyperdrive
+S_EXPERIMENTAL_HYPERDRIVE_DESC: This bulky, expensive prototype allows for slow hyperdrive navigation, and can be used to develop standard hyperdrives. The larger the hyperdrive the faster the FTL speed.
+S_EXPERIMENTAL_JUMPDRIVE: Prototype Jumpdrive
+S_EXPERIMENTAL_JUMPDRIVE_DESC: <<
+	Allows the ship to make subspace jumps to other locations within range. Larger jump drive subsystems allow for larger safe jump distances.
+
+	Jumping outside of safe jump range is possible, but can cause damage to the ship and may drop the ship at an location away from the intended destination.
+
+	Jumpdrives require a large amount of [b]Control[/b] for the jump calculations.
+
+	This experimental jumpdrive is bulky, expensive and inefficient, but can be used to develop standard jumpdrives.
+>>
+S_EXPERIMENTAL_SLIPSTREAM: Prototype Slipstream Generator
+S_EXPERIMENTAL_SLIPSTREAM_DESC: This bulky, expensive and inefficient prototype grants the ability to generate slipstream portals and research standard slipstream generators.
+ERROR_PROTOTYPE_HYPERDRIVE: Ships carrying a Prototype Hyperdrive cannot have more than one Hyperdrive subsystem.
+ERROR_PROTOTYPE_JUMPDRIVE: Ships carrying a Prototype Jumpdrive cannot have more than one Jumpdrive subsystem.
+ERROR_PROTOTYPE_SLIPSTREAM: Ships carrying a Prototype Slipstream Generator cannot have more than one Slipstream Generator subsystem.
 S_CONTROLCHAIR: Neural Interface Chair
 S_CONTROLCHAIR_DESC: <<
 	A neural interface linked into all the ship's systems allows a single officer to single-handedly control massive battlecruisers whilst sitting in a comfortable chair.

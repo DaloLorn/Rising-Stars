@@ -1,0 +1,36 @@
+Subsystem: ExperimentalJumpdrive
+	Name: #S_EXPERIMENTAL_JUMPDRIVE
+	Description: #S_EXPERIMENTAL_JUMPDRIVE_DESC
+	BaseColor: #67ad85
+	TypeColor: #67ad85
+	Elevation: 0
+
+	Tags: BaseCost, Category:FTL
+	Tags: Engine, Jumpdrive, HasInternals, Hyperengine, BadFiller
+	Hull: Flagship
+
+	Size := HexSize * Hexes
+	Hex.Mass := HexSize * 2
+
+	Hex.Resistance := 0.2
+	Hex.HP := 12 * HexSize
+
+	JumpRange := 85000 * Size / ShipSize
+	Assert: Size >= 500
+		Message: #ERROR_MIN_SIZE:$1:500
+	Assert: TagCount.Jumpdrive == 1
+		Unique: True
+		Message: #ERROR_PROTOTYPE_JUMPDRIVE
+
+	Hook: AddStatus(HasPrototypeJumpdrive)
+	Requires:
+		Command = max(floor(Hexes / 3), 1) * 4
+
+	Module: Default
+
+	Module: Core
+		Sprite: Jumpdrive*#aa77aa
+		Hex.BuildCost := 800
+		Hex.LaborCost := 300
+		Hex.MaintainCost := 100
+		Hex.OreCost := 5000

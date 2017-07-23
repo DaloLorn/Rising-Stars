@@ -1,0 +1,9 @@
+Status: HasPrototypeHyperdrive
+	Visible To: Nobody
+	AllowConstruction()
+Status: HasPrototypeSlipstream
+	Visible To: Nobody
+	AllowConstruction()
+Status: HasPrototypeJumpdrive
+	Visible To: Nobody
+	AllowConstruction()

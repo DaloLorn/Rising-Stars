@@ -23,6 +23,7 @@ Subsystem: LiquidArmor
 	Hex.BuildCost := 3 * HexSize
 
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
+	Hook: OnEnable(ModAttribute(EmpireLiquidArmorSize, Add, Size))
 	Module: Default
 
 		Sprite: PlateArmor * #91692c

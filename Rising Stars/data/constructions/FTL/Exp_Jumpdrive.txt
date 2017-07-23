@@ -1,0 +1,13 @@
+Construction: EXP_JumpdriveUnlock
+	Time Cost: 300
+	Description: #C_JUMPDRIVE_UNLOCK_DESC
+	Name: #C_JUMPDRIVE_UNLOCK
+	Icon: Jumpdrive
+	RequireAttributeLT(HasFlux)
+	UnlockSubsystem(Jumpdrive)
+	ConsumeFTL(200)
+	RequireAttributeLT(JumpdriveConst)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	ModAttribute(JumpdriveConst, Add, 1)
+	RequireStatus(HasPrototypeJumpdrive)
+	RequireNotTrait(Jumpdrive)

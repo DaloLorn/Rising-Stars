@@ -1,0 +1,13 @@
+Construction: EXP_HyperdriveUnlock
+	Time Cost: 300
+	Description: #C_HYPERDRIVE_UNLOCK_DESC
+	Name: #C_HYPERDRIVE_UNLOCK
+	Icon: TechIcons::34
+	RequireAttributeLT(HasFlux)
+	UnlockSubsystem(Hyperdrive)
+	ConsumeFTL(200)
+	RequireAttributeLT(HyperdriveConst)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	ModAttribute(HyperdriveConst, Add, 1)
+	RequireStatus(HasPrototypeHyperdrive)
+	RequireNotTrait(Hyperdrive)

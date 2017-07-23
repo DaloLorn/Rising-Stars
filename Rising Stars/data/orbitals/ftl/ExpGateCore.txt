@@ -2,7 +2,7 @@ Module: EXP_GateCore
 	Name: #ORB_EXPERIMENTAL_GATE
 	Blurb: #ORB_EXPERIMENTAL_GATE_BLURB
 	Description: #ORB_EXPERIMENTAL_GATE_DESC
-	Icon: GuiOrbitalIcons::1
+	Icon: GuiOrbitalIcons::1*#aa77aa
 
 	Standalone: True
 	Solid: False

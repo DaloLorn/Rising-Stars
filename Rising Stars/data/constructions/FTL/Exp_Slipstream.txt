@@ -1,0 +1,13 @@
+Construction: EXP_SlipstreamUnlock
+	Time Cost: 300
+	Description: #C_SLIPSTREAM_UNLOCK_DESC
+	Name: #C_SLIPSTREAM_UNLOCK
+	Icon: TechIcons::57
+	RequireAttributeLT(HasFlux)
+	UnlockSubsystem(Slipstream)
+	ConsumeFTL(200)
+	RequireAttributeLT(SlipstreamConst)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	ModAttribute(SlipstreamConst, Add, 1)
+	RequireStatus(HasPrototypeSlipstream)
+	RequireNotTrait(Slipstream)

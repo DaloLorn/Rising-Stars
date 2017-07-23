@@ -1,7 +1,7 @@
 Technology: FlingBeacons
 	Name: #R_ORB_FLING
 	Icon: OrbitalIcons::2
-	Point Cost: 1000
+	Point Cost: 1500
 	Time Cost: 60
 	Description: #R_ORB_FLING_DESC
 	Class: Unlock

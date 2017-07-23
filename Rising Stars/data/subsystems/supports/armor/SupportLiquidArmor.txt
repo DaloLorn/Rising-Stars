@@ -11,6 +11,7 @@ Subsystem: SupportLiquidArmor
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
+	Hook: OnEnable(ModAttribute(EmpireLiquidArmorSize, Add, Size))
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
