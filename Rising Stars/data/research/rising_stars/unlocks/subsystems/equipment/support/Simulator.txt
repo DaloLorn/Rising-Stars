@@ -13,6 +13,9 @@ Technology: Simulator
 	UnlockSubsystem(Simulator)
 	SkipOnUnlockedSubsystem(Simulator)
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	SecondaryInfluenceCost(10)
 
 	ModAttribute(ProgenitorTechProgress, Add, 2)

@@ -10,6 +10,9 @@ Technology: SpinalMountHull
 	Icon: HullSubsystems::2
 	Color: #8edcef
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	UnlockSubsystem(SpinalMountHull)
 	SkipOnUnlockedSubsystem(SpinalMountHull)
 

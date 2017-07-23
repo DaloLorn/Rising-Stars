@@ -4,6 +4,9 @@ Technology: RingHabitat
 	Class: Unlock
 	Category: Satellites
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	Point Cost: 600
 	Time Cost: 120
 

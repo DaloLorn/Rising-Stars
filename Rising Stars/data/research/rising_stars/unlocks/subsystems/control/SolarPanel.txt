@@ -13,6 +13,9 @@ Technology: SolarPanel
 	UnlockSubsystem(SolarPanel)
 	SkipOnUnlockedSubsystem(SolarPanel)
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	SecondaryInfluenceCost(15)
 
 	ModAttribute(ProgenitorTechProgress, Add, 1)

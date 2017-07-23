@@ -4,6 +4,9 @@ Technology: DefenseSatellite
 	Class: Unlock
 	Category: Satellites
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	Point Cost: 275
 	Time Cost: 90
 

@@ -4,6 +4,9 @@ Technology: SolarSatellite
 	Class: Unlock
 	Category: Satellites
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	Point Cost: 250
 	Time Cost: 90
 

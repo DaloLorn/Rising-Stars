@@ -4,6 +4,9 @@ Technology: QuantumCompressor
 	Class: Unlock
 	Category: Modifiers
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	Point Cost: 600
 	Time Cost: 120
 

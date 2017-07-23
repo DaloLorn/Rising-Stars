@@ -4,6 +4,9 @@ Technology: HydroponicsSatellite
 	Class: Unlock
 	Category: Satellites
 
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
 	Point Cost: 150
 	Time Cost: 90
 
