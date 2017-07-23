@@ -41,15 +41,15 @@ Effector: MatterDisruptor
 		MinRatio = MinRatio
 		MaxRatio = MaxRatio
 		DamageType = DamageType
-		
-		
+
+
 
 	PhysicalType: Projectile
-		GfxType: Sprite
-		GfxSize: 4.5
-		FireSfx: railgun_fire
-		FireSfx: muon_fire
-		Material: RailgunEmit
-		Trail: RailTrail
-		TrailCol: 88ffffff, 00000000
-		ImpactGfx: ImpactFlareRailTurquise
+	GfxType: Line
+	GfxSize: 7
+	FireSfx: railgun_fire
+	FireSfx: muon_fire
+	Material: RailgunEmit
+	Trail: RailTrail
+	TrailCol: 1bffffff, 00000000
+	ImpactGfx: ImpactFlareRailTurquise

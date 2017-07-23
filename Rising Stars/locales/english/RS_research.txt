@@ -1,3 +1,5 @@
+R_SYS_MATTERDISRUPTOR: Matter Disruption
+R_VOIDRAY: Adaptive Frequency Modulation
 RESEARCH_REQ_BUILDLIQUIDARMOR: Construct at least $2 units of Liquid Armor across all your ships. ( $1 / $2 )
 R_CAT_MILITARY_DESC: <<
 	[color=#aaa][i]The art of permanently removing an opponent. Or, well, semi-permanently. Or just not getting removed by the opponent.[/i][/color]

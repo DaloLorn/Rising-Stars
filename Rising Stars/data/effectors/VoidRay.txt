@@ -21,7 +21,7 @@ Effector: VoidRay
 	CanTarget: isEnemy && isDamageable
 	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
 
-	EfficiencyMode: Normal
+	EfficiencyMode: Duration Partial
 	Activation: VariableTimed(Duration+Cooldown, 0.25)
 	OnTrigger: combat::WeaponFire(SupplyCost)
 
@@ -32,16 +32,18 @@ Effector: VoidRay
 		StatusAmount = StatusAmount
 		StatusIncrement = StatusIncrement
 		DamageType = DamageType
-		
 
-	GfxSize: 1
+
+	GfxSize: 0.5
 	FirePitchVariance: 0.06
 	FireSfx: laser_fire
 	Material: Laser
 	ImpactGfx: ImpactFlareLaserRed
 	TrailCol: ff3300aa, ff33ffaa
 	PhysicalType: Beam
-	Color: #1dff0c
+	FireSfx: laser_fire_2
+	FireSfx: laser_fire_3
+	FireSfx: laser_fire_4
 
 	Skin: Skin1
 		ImpactGfx: ImpactFlareLaserGold

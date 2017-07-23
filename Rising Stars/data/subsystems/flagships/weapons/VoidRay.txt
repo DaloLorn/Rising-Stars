@@ -12,14 +12,14 @@ Subsystem: VoidRay
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	BeamDPS := 3 * Size
-	Duration := 6
-	Cooldown := 6 * (1.0 + Size/512)
+	BeamDPS := 1.8 * Size
+	Duration := 7
+	Cooldown := 0.01
 	Range := Size + 450
 	Tracking := 0.5
-	SupplyCost := Size * 0.75
-	FireArc := 0.25 * pi
-	PowerUse := 5 * Size
+	SupplyCost := Size * 0.5
+	FireArc := 0.1666 * pi
+	PowerUse := 7 * Size
 	Multiplier := 0.05
 	Amount := 0
 	StatusIncrement := 1
@@ -40,7 +40,7 @@ Subsystem: VoidRay
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 2
+		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

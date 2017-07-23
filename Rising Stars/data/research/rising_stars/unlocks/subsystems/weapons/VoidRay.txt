@@ -1,7 +1,7 @@
 Technology: VoidRay
 	Name: #R_VOIDRAY
 	Class: Unlock
-	Point Cost: 800
+	Point Cost: 500
 
 	Category: Weapons
 

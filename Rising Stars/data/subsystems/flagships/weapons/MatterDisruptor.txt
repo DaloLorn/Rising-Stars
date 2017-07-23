@@ -13,12 +13,12 @@ Subsystem: MatterDisruptor
 
 	Size := HexSize * Hexes
 
-	Range := Size + 500
-	Damage := Size * 3.2
-	Reload := 2 * (1.0 + Size/512)
+	Range := (Size * 2) + 600
+	Damage := Size * 16.25
+	Reload := 10.5 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
-	Spread := 0.035 / max(Range / 600, 1)
-	Tracking := 0.4
+	Spread := 0.030 / max(Range / 900, 1)
+	Tracking := 0.8 / min(1.0 + Size/512, 2.0)
 	FireArc := 1.5
 	SupplyCost := Size * 1.5
 	PowerUse := 2.5 * Size
@@ -29,8 +29,8 @@ Subsystem: MatterDisruptor
 
 	DamageType := 2 // Read scripts/server/ABEMCombat.as before changing this.
 
-	Hex.HP := 18 * HexSize
-	Hex.Resistance := 0.2
+	Hex.HP := 27 * HexSize
+	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 
 	Requires:
@@ -40,12 +40,12 @@ Subsystem: MatterDisruptor
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 2
+		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 
 		Sprite: MatterDisruptor::0
-		Hex.DamageResist := ShipSize / 64.0
+		Hex.DamageResist := ShipSize / 48.0
 		DrawMode: 1
 		Effect: DamageResist
 			Resist = Hex.DamageResist
@@ -59,7 +59,7 @@ Subsystem: MatterDisruptor
 		Spread = Spread
 		FireArc = FireArc
 		TargetTolerance = max(pi,FireArc + pi/4)
-		FireTolerance = Spread * 3
+		FireTolerance = Spread * 2
 		SupplyCost = SupplyCost * Reload
 		CapOnTarget = 24
 		SizeMultiplier = SizeMultiplier
