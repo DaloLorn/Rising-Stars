@@ -37,6 +37,10 @@ R_CONNECTOR_DLC: <<
 	Functionally, it is identical to a 'LINK' node - this description is only here to assure you that this is most likely not a bug.
 >>
 
+R_KEY_EMERGENCY_SHIELDS_DESC: Doubles the duration of the shield regeneration buff provided by the "Emergency Supplies" subsystem.
+R_KEY_EMERGENCY_SHIELDS: Improved Plasma Harnessing
+
+
 R_SYS_ZPG_DESC: <<
 	[color=#aaa][i]Massive breakthroughs in physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
 

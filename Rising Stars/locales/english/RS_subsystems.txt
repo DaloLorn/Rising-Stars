@@ -124,6 +124,16 @@ S_CONTROLCHAIR_DESC: <<
 	[img=Minus]Does not repair the ship at all.[/img]
 	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
 >>
+S_EMERGENCY_SUPPLIES_DESC: <<
+	An output node for the Empire's energy. Allows supplies to be produced instantly anywhere in the galaxy, at great cost.
+
+	An interesting side-effect of the process is that it releases a substantial quantity of plasma, similar to the kind used by most shield systems. This plasma discharge can be harnessed to rapidly regenerate the ship's shields.
+
+	[img=AttributeIcons::4;22]Immediately generates supplies.[/img]
+	[img=ShieldImpactLarge*#8888ff;22]Regenerates 1% of the ship's shield capacity each second for a brief period after activation.[/img]
+	[img=Minus]Costs energy.[/img]
+	[img=Minus]30 Second Cooldown.[/img]
+>>
 S_RECALL: Recall Device
 S_RECALL_DESC: <<
 	A hyperfield manipulator designed to open a wormhole between a nearby location and any allied object in the universe.

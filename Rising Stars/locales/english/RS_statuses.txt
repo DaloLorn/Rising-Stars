@@ -9,6 +9,7 @@ NEBULA_RADIOACTIVE: Radioactive Nebula
 NEBULA_TACHYON: Tachyon Nebula
 NEBULA_TYPE1: Interstellar Gas Cloud
 STATUS_FAST_RECHARGE: Shield Recharge
+STATUS_EMERGENCY_SHIELDS_DESC: This ship is experiencing temporarily boosted shield regeneration due to activating an "Emergency Supplies" subsystem.
 STATUS_FAST_RECHARGE_DESC: <<
 	Is receiving power from a Power Transmitter.
 
