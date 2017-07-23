@@ -19,7 +19,7 @@ Technology: AugmentReload
 Technology: AugmentDamage
 	Name: #R_MOD_AUGMENT_DAMAGE
 	Description: #R_MOD_AUGMENT_DAMAGE_DESC
-	Class: Special
+	Class: Unlock
 	Category: Modifiers
 
 	Point Cost: 500

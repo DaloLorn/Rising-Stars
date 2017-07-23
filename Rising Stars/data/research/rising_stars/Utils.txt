@@ -85,4 +85,5 @@ Technology: SpecConnector
 	Point Cost: 1
 	Time Cost: 1
 	Color: #ff0000
+	Category: Racial/DLC Replacements (DO NOT PLACE)
 	AutomaticallyUnlocks()

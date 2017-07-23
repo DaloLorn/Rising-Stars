@@ -13,7 +13,7 @@ Technology: Health
 	Time Cost: 60
 
 	AddModifier(HpFactor(1.1))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.1))
+	AddModifier(ImpactLevelFactor(1.1))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.2)
 
 Technology: Health2
@@ -31,5 +31,5 @@ Technology: Health2
 	Time Cost: 80
 
 	AddModifier( HpFactor(1.2) )
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.2))
+	AddModifier(ImpactLevelFactor(1.2))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.5)

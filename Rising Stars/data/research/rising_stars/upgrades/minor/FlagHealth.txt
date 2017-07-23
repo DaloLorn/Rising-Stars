@@ -12,8 +12,8 @@ Technology: FlagHealth
 	Point Cost: 500
 	Time Cost: 60
 
-	AddModifier(HpFactor(1.25))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.25))
+	AddModifier(hull/Flagship::HpFactor(1.25))
+	AddModifier(hull/Flagship::ImpactLevelFactor(1.25))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.25)
 
 Technology: FlagHealth2
@@ -30,6 +30,6 @@ Technology: FlagHealth2
 	Point Cost: 600
 	Time Cost: 80
 
-	AddModifier( HpFactor(1.5) )
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.5))
+	AddModifier( hull/Flagship::HpFactor(1.5) )
+	AddModifier(hull/Flagship::ImpactLevelFactor(1.5))
 	ModAttribute(OrbitalHealthMod, Multiply, 1.5)
