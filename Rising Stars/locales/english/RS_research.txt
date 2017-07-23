@@ -334,3 +334,73 @@ R_METROPOLIS_UPGRADE_DESC: <<
 R_SPEC_DISCLAIMER: <<
 	[b]This is a specialization tech. Researching this will convert [color=#f00]$1[/color] nodes into link nodes, locking away their benefits for the rest of the game. Choose wisely.[/b]
 >>
+
+R_SPEC_FLAGSHIP1_DESC: <<
+	[color=#aaa][i]Encouraging the empire's industrial machine to develop parts for flagships makes their construction cheaper, at the cost of making high-quality support ships more expensive.[/i][/color]
+
+	Reduces the construction cost of flagships by 10%, but increases the cost of building support ships by 5%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Carrier Development/]
+>>
+R_SPEC_SUPPORT1_DESC: <<
+	[color=#aaa][i]Encouraging the empire's industrial machine to develop parts for support ships makes their construction cheaper, at the cost of making high-quality flagships more expensive.[/i][/color]
+
+	Reduces the construction cost of support ships by 10%, but increases the cost of building flagships by 5%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Battleship Development/]
+>>
+R_SPEC_FLAGSHIP2_DESC: <<
+	[color=#aaa][i]Removing some of the fragile components required to coordinate large fleets makes flagship maintenance cheaper and easier, though the flagship's C&C capabilities are reduced as a result.[/i][/color]
+
+	Reduces the maintenance cost of flagships by 10%, but decreases their Support Capacity by 20%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Small Arms Development/]
+>>
+R_SPEC_SUPPORT2_DESC: <<
+	[color=#aaa][i]Refocusing the empire's weapon production towards the smaller armaments required by support ships increases their quality, but the quality of flagship weapons suffers because of this.[/i][/color]
+
+	Increases the damage of support weapons by 10%, but reduces the damage of flagship weapons by 10% as well.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Battleships/]
+>>
+R_SPEC_FLAGSHIP3_DESC: <<
+	[color=#aaa][i]Specialized manufacturing processes allow for the faster construction of flagships. This comes at a cost to the speed at which support ships are built, though.[/i][/color]
+
+	Reduces the Labor cost of flagships by 10%, but increases the Labor cost of building support ships by 15%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Targeting Sensor Shunt/]
+>>
+R_SPEC_SUPPORT3_DESC: <<
+	[color=#aaa][i]Feeding sensor telemetry from a flagship to its support fleet increases the range at which the fleet can accurately fire at a target. However, the required sensor configuration is inadequate for the flagship's own weapons, and the sensors on support ships are only good enough to take advantage of the flagship's help.[/i][/color]
+
+	Increases the range of support weapons by 10%, but reduces the range of flagship weapons by 10% as well.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Battleship Manufacturing/]
+>>
+R_SPEC_FLAGSHIP4_DESC: <<
+	[color=#aaa][i]A better understanding of the structural weaknesses of flagships and their shields allows us to reinforce those weak spots, increasing the endurance of the ship as a whole.[/i][/color]
+
+	Increases the health and shield capacity of flagships by 10%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Support Ship Manufacturing/]
+>>
+R_SPEC_SUPPORT4_DESC: <<
+	[color=#aaa][i]New insights into the requirements of support ships allow for less or cheaper materials to be used to achieve the same effects, essentially increasing the rate at which they can be mass-produced.[/i][/color]
+
+	Reduces the Labor cost of support ships by 30%, and the construction cost by 10%.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Reinforced Architecture/]
+>>
+R_SPEC_FLAGSHIP1: Battleship Development
+R_SPEC_FLAGSHIP2: Streamlined Battleships
+R_SPEC_FLAGSHIP3: Battleship Manufacturing
+R_SPEC_FLAGSHIP4: Reinforced Architecture
+R_SPEC_SUPPORT1: Carrier Development
+R_SPEC_SUPPORT2: Small Arms Development
+R_SPEC_SUPPORT3: Targeting Sensor Shunt
+R_SPEC_SUPPORT4: Support Ship Manufacturing
+R_CONNECTOR_SPECIALIZATION: <<
+	This node once contained a specialization item, but was deactivated when a different specialization node was researched..
+
+	Functionally, it is identical to a 'LINK' node - this description is only here to assure you that this is most likely not a bug.
+>>
