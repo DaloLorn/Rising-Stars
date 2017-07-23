@@ -8,16 +8,16 @@ Technology: DLCConnector
 	Name: LINK
 	Description: #R_CONNECTOR_DLC
 	Category: Racial/DLC Replacements (DO NOT PLACE)
-	Class: Secret
+	Class: Unlock
 	AutomaticallyUnlocks()
 
 Technology: CatMilitaryResearch
 	Name: #R_CAT_MILITARY
 	Icon: MilitaryStrengthIcon
-	Class: Keystone
 	Description: #R_CAT_MILITARY_DESC
 	Default Unlock: True
 	Category: Grid Utils
+	Class: Keystone
 	AutomaticallyUnlocks()
 
 Technology: CatEnergyScience
@@ -59,10 +59,10 @@ Technology: CatIndustry
 Technology: CatPropulsion
 	Name: #R_CAT_PROPULSION
 	Description: #R_CAT_PROPULSION_DESC
-	Class: Keystone
 	Icon: ActionBarIcons::6
 	Default Unlock: True
 	Category: Grid Utils
+	Class: Keystone
 	AutomaticallyUnlocks()
 Technology: FillerNode
 	Name: Filler (Minor)
@@ -78,3 +78,11 @@ Technology: FillerNode2
 	Category: Grid Utils
 	Symbol: MenuIcons::8
 	Icon: PlanetIcon1
+Technology: SpecConnector
+	Name: LINK
+	Class: Unlock
+	Description: #R_CONNECTOR_SPECIALIZATION
+	Point Cost: 1
+	Time Cost: 1
+	Color: #ff0000
+	AutomaticallyUnlocks()

@@ -57,8 +57,8 @@ Grid: RisingStars
 	FactoryLabor: 2,-5
 	Health: 2,-6
 	Repair: 3,-5
-	FillerNode: 5,-1
-	FillerNode: 5,1
+	SupportDamage: 5,-1
+	FlagDamage: 5,1
 	Thrust: -5,5
 	Thrust2: -6,5
 	GravityEngine: -7,5
@@ -136,7 +136,7 @@ Grid: RisingStars
 	EnergyHurdle: -1,9
 	Connector: -1,8
 	Connector: 0,9
-	Range2: 1,8
+	OrbitalConstruction: 1,8
 	SolarPanel: 0,7
 	Ramjet: 0,4
 	Connector: -1,5
@@ -173,7 +173,6 @@ Grid: RisingStars
 	FTLHurdle: -9,-9
 	EnergyHurdle3: -9,-10
 	Health2: -9,-14
-	FTLHurdle: -10,-13
 	Ringworld: -10,-12
 	EnergyHurdle2: -10,-11
 	ArtificialMoon: -7,-13
@@ -188,11 +187,110 @@ Grid: RisingStars
 	InfluenceHurdle: -8,-5
 	Bulkhead: 1,-8
 	FactoryLabor2: 1,-9
-	Connector: 0,-8
-	EnergyHurdle: -1,-9
 	CompositeArmor: 2,-10
-	Connector: 0,-10
-	EnergyHurdle: 0,-11
-	Connector: 1,-12
 	Health: 2,-11
-	OrbitalConstruction2: 2,-7
+	FactoryLabor: 2,-7
+	Connector: 0,-8
+	OrbitalConstruction2: -1,-9
+	ConstructionBay: 0,-10
+	MinerHull: -1,-11
+	Connector: 0,-7
+	RingHabitat: -10,-14
+	FTLHurdle: -11,-13
+	Connector: -1,11
+	EnergyHurdle2: 0,12
+	SupportCap: 3,6
+	Health2: 3,7
+	AntimatterGen: 4,8
+	ShieldReg: 4,9
+	FireRate: 4,10
+	ShieldCap: 5,10
+	ShieldGen: 6,10
+	EnergyHurdle: 6,9
+	Connector: 7,9
+	LiquidArmor: 3,-8
+	Health: 4,-6
+	FactoryLabor2: 3,-9
+	FerrofluidArmor: 4,-9
+	Health: 4,-10
+	Connector: 0,-11
+	FactoryLabor: -1,-12
+	PlanetSupport: 1,-12
+	Connector: -1,-13
+	Connector: 0,-14
+	OreProcessor: 1,-13
+	Connector: 1,-14
+	Construction2: 0,-15
+	SuperstructureHull: 1,-16
+	Connector: 0,-16
+	FactoryLabor: -1,-16
+	InfluenceHurdle: -18,15
+	InfluenceHurdle: -17,13
+	FTLHurdle: -19,17
+	Health: -2,-15
+	OrbitalConstruction: -2,-14
+	InfluenceHurdle: -2,-12
+	ArmorHealth2: 3,-11
+	Repair2: 5,-6
+	NanoMesh: 5,-7
+	ArmorHealth: 4,-12
+	Health2: 3,-13
+	CrystalArmor: 3,-14
+	ArmorDR: 4,-13
+	ArmorHealth: 5,-14
+	NeutronArmor: 5,-15
+	ArmorHealth2: 6,-15
+	QuantumArmor: 7,-15
+	ArmorDR2: 3,-15
+	ArmorHealth: 5,-16
+	InfiniteHealth: 4,-16
+	ShieldReg: 6,11
+	ShieldCap2: 7,11
+	Connector: 8,11
+	ShieldReg: 8,12
+	ShieldHardener: 8,13
+	ShieldReg2: 9,11
+	Connector: 8,9
+	EnergyHurdle2: 9,9
+	Connector: 10,10
+	FTLHurdle: 10,11
+	AdvancedShielding: 11,11
+	FactoryLabor: 1,-17
+	ArmorDR2: 2,-17
+	TitanHull: 3,-17
+	FTLHurdle: 6,-8
+	EnergyHurdle: 6,-10
+	Connector: 6,-9
+	Connector: 5,-10
+	ColossusHull: 3,-18
+	KeyEmergencyShields: 12,12
+	InfiniteShields: 12,13
+	Connector: 6,12
+	ShieldCap: 5,13
+	Connector: 6,14
+	ShieldReg: 6,15
+	ShieldCap: 5,15
+	ShieldHarmonizer: 5,16
+	ShieldedAntimatter: 7,16
+	Connector: 3,11
+	Connector: 3,12
+	Connector: 2,13
+	FireRate2: 2,14
+	ShieldReg: 1,15
+	Connector: 0,13
+	Connector: 0,14
+	GravitonCondenser: 1,16
+	FTLHurdle: -1,15
+	Connector: 0,16
+	ShieldCap2: 2,15
+	ZeroPoint: 3,16
+	CarrierHull: 6,2
+	Damage: 6,0
+	DestroyerHull: 6,-2
+	Connector: 6,3
+	AoERadius: 6,4
+	SupportSupplyUse: 4,5
+	SupplyRegen: 5,5
+	EnergyHurdle: 5,7
+	Connector: 4,7
+	Connector: 6,6

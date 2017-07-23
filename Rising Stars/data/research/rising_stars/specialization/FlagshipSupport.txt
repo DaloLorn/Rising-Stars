@@ -1,0 +1,122 @@
+Technology: Flagship
+	Name: #R_SPEC_FLAGSHIP1
+	Icon: OrbitalIcons::3
+	Color: #ff0021
+	Description: #R_SPEC_FLAGSHIP1_DESC
+	Time Cost: 60
+	Point Cost: 1
+	Symbol: techMilitia*ff0021
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	AddModifier(hull/Support::BuildCostFactor(1.05))
+	AddModifier( hull/Flagship::BuildCostFactor(0.90) )
+
+	ReplaceTechnologyNodes(Support, SpecConnector)
+Technology: Flagship2
+	Name: #R_SPEC_FLAGSHIP2
+	Icon: techEconomics*#ff0021
+	Color: #ff0021
+	Description: #R_SPEC_FLAGSHIP2_DESC
+	Time Cost: 120
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	Symbol: techMilitia*#ff0021
+	SecondaryMoneyCost(1)
+	AddModifier(hull/Flagship::SupportCapacityFactor(0.80))
+	AddModifier(hull/Flagship::MaintCostFactor(0.90) )
+
+	ReplaceTechnologyNodes(Support2, SpecConnector)
+Technology: Flagship3
+	Name: #R_SPEC_FLAGSHIP3
+	Icon: Factory
+	Color: #ff0021
+	Description: #R_SPEC_FLAGSHIP3_DESC
+	Time Cost: 240
+	Point Cost: 1
+	Class: Unlock
+	Symbol: techMilitia*#ff0021
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	AddModifier(hull/Support::LaborCostFactor(1.15))
+	AddModifier( hull/Flagship::LaborCostFactor(0.90) )
+
+	ReplaceTechnologyNodes(Support3, SpecConnector)
+Technology: Flagship4
+	Name: #R_SPEC_FLAGSHIP4
+	Icon: Fortified
+	Color: #ff0021
+	Description: #R_SPEC_FLAGSHIP4_DESC
+	Time Cost: 300
+	Point Cost: 1
+	Class: Unlock
+	Symbol: techMilitia*#ff0021
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	AddModifier(hull/Flagship::HpFactor(1.1))
+	AddModifier( hull/Flagship::ShieldCapacityFactor(1.1))
+
+
+	ReplaceTechnologyNodes(Support4, SpecConnector)
+Technology: Support
+	Name: #R_SPEC_SUPPORT1
+	Icon: OrbitalIcons::5
+	Description: #R_SPEC_SUPPORT1_DESC
+	Point Cost: 1
+	Time Cost: 60
+	Class: Unlock
+	Color: #ff8f0f
+	Symbol: techMilitia*#ff8f0f
+	Category: Specializations
+	AddModifier( hull/Flagship::BuildCostFactor(1.05) )
+	AddModifier(hull/Support::BuildCostFactor(0.90))
+
+
+	ReplaceTechnologyNodes(Flagship, SpecConnector)
+
+	SecondaryMoneyCost(1)
+Technology: Support2
+	Name: #R_SPEC_SUPPORT2
+	Icon: ParticleLance::3*#ff8f0f
+	Description: #R_SPEC_SUPPORT2_DESC
+	Point Cost: 1
+	Time Cost: 180
+	Color: #ff8f0f
+	Class: Unlock
+	Category: Specializations
+	Symbol: techMilitia*#ff8f0f
+	AddModifier( hull/Flagship::DamageFactor(0.9) )
+	AddModifier(hull/Support::DamageFactor(1.1))
+
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(Flagship2, SpecConnector)
+Technology: Support3
+	Name: #R_SPEC_SUPPORT3
+	Icon: techTargeting*#ff8f0f
+	Description: #R_SPEC_SUPPORT3_DESC
+	Point Cost: 1
+	Class: Unlock
+	Time Cost: 240
+	Color: #ff8f0f
+	Category: Specializations
+	Symbol: techMilitia*#ff8f0f
+	AddModifier(hull/Support::RangeFactor(1.10))
+	AddModifier(hull/Flagship::RangeFactor(0.9))
+
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(Flagship3, SpecConnector)
+Technology: Support4
+	Name: #R_SPEC_SUPPORT4
+	Icon: techOrganization*#ff8f0f
+	Description: #R_SPEC_SUPPORT4_DESC
+	Point Cost: 1
+	Class: Unlock
+	Time Cost: 300
+	Color: #ff8f0f
+	Category: Specializations
+	Symbol: techMilitia*#ff8f0f
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(Flagship4, SpecConnector)
+	AddModifier(hull/Support::LaborCostFactor(0.7))
+	AddModifier(hull/Support::BuildCostFactor(0.90))
