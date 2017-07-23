@@ -14,7 +14,6 @@ Trait: Pacifists
 
 	ModAttribute(FleetEfficiencyFactor, Add, -0.15)
 	OnDLC(Heralds, UnlockSubsystem(BroadcastAntenna))
-	ReplaceTechnologyNodes(BroadcastAntenna, Science)
 	ABEM_glory::SetGloryMeter(PacifistGlory, 4)
 
 	OnHomeworld(AddPlanetResource(Allondium))

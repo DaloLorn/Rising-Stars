@@ -45,7 +45,7 @@ Trait: Technicists
 
 	////ARMOR BANS
 	
-	RemoveTechnologyNodes(CompositeArmor)
+	ReplaceTechnologyNodes(CompositeArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(NeutronArmor, ImprovedLabs)
@@ -53,10 +53,6 @@ Trait: Technicists
 	
 	///SECRET ARMOR BAN
 	RemoveTechnologyNodes(FerroFluidArmor)
-
-	/////////////////////////////////////
-	///////// GENIOCRACY GRID IS SOLVED IN GENIOCRACY TRAIT//////////
-	/////////////////////////////////////
 	
 	
 

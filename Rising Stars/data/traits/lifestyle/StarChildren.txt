@@ -59,9 +59,5 @@ Trait: StarChildren
 	ReplaceTechnologyNodes(Megacity, HabitatUpgrade)
 	ReplaceTechnologyNodes(PlanetaryEngine, HabitatUpgrade)
 	ReplaceTechnologyNodes(Population, HabitatUpgrade)
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((-3,1), HabitatUpgrade))
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((-1,4), HabitatUpgrade))
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((-1,11), HabitatUpgrade))
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((-8,11), HabitatUpgrade))
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((5,-12), HabitatUpgrade))
-	OnDLC(Heralds, ReplaceTechnologyNodeAt((7,1), HabitatUpgrade))
+
+	ReplaceTechnologyNodes(Senate, NylliSenate)
