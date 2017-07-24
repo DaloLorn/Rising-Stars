@@ -6,7 +6,7 @@ Subsystem: ProgenitorComputer
 	Elevation: 4
 
 	Tags: BaseCost, Category:Control
-	Tags: Control, ControlCore, HasInternals, RemnantComputer
+	Tags: Control, ControlCore, HasInternals, RemnantComputer, BoardingDefense
 	Hull: Flagship, Station
 
 	EvaluationOrder: -10

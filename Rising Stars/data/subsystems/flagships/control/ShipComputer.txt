@@ -6,7 +6,7 @@ Subsystem: ShipComputer
 	Elevation: 4
 
 	Tags: BaseCost, Category:Control, BadFiller
-	Tags: Control, ControlCore, HasInternals, Important
+	Tags: Control, ControlCore, HasInternals, Important, BoardingDefense
 	Hull: Flagship, Station
 
 	EvaluationOrder: -10

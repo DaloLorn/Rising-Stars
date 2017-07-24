@@ -69,11 +69,16 @@ bool FireIfNotStatus(const Effector& efftr, Object& obj, Object& target, float& 
 void ABEMControlDestroyed(Event& evt) {
 	Ship@ ship = cast<Ship>(evt.obj);
 	int invaderID = getStatusID("IsInvader");
+	int boardingParty = getStatusID("BoardingParty");
 
 	//Make sure we still have a bridge or something with control up
 	if(!ship.blueprint.hasTagActive(ST_ControlCore)) {
 		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates || (invaderID != -1 && ship.hasStatusEffect(invaderID)) || ship.blueprint.hasTagActive(ST_SelfDestruct))
 			ship.destroy();
+		else if (ship.hasStatusEffect(boardingParty)) {
+			ship.grantDestructionRewards();
+			@ship.owner = defaultEmpire;
+		}
 		else {
 			double chance = ship.blueprint.currentHP / ship.blueprint.design.totalHP;
 			if(randomd() < chance) {

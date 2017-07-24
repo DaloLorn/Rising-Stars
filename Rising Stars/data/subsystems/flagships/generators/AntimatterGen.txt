@@ -5,7 +5,7 @@ Subsystem: AntimatterGen
 	Elevation: 1
 
 	Tags: IsReactor, Category:Power
-	Tags: Important, HasInternals
+	Tags: Important, HasInternals, Volatile
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes

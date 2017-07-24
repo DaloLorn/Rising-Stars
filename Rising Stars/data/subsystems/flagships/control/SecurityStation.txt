@@ -6,7 +6,7 @@ Subsystem: SecurityStation
 	Elevation: 5
 
 	Tags: BaseCost, NonContiguous,Category:Equipment, NoCore, DefaultUnlock
-	Tags: ExteriorCore
+	Tags: ExteriorCore, SecuritySystem, BoardingDefense
 	Tags: HasInternals
 	Hull: Flagship, Station
 

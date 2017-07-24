@@ -3,7 +3,14 @@ Status: BoardingParty
 	Description: #STATUS_BOARDED_DESC
 	Visible To: Everybody
 	Unique: True
-	Icon: CrewQuarters*#9686ff
+	Icon: BoardingParty
 	Color: #ff1010
 
-	ABEM_hooks::Boarders(BoardingStrength, 200, 100)
+	ABEM_boarding::BoardShip(BoardingStrength, BoardingStrength, 400, 100)
+
+Status: BoardingPartyTroops
+	Name: #STATUS_BOARDING_TROOPS
+	Description: #STATUS_BOARDING_TROOPS_DESC
+	Icon: BoardingParty
+	Visible To: Everybody
+	Collapses: True

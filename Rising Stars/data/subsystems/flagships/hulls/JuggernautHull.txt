@@ -2,7 +2,7 @@ Subsystem: JuggernautHull
 	Name: #S_JUGGERNAUT_HULL
 	Description: #S_JUGGERNAUT_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, Ability:SelfDestruct
+	Tags: Applied:Hull, Category:Hulls, NoCore, IsAppliedSubsystem, Ability:SelfDestruct
 	Tags: HeraldsDLC
 	Tags: Ability:RammingSpeedAbil
 	Hull: Flagship

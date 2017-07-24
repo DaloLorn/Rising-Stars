@@ -5,7 +5,7 @@ Subsystem: AncientCore
 	
 	Tags: BaseCost, Category:Control, HeraldsDLC, BadFiller, RaceSpecial
 	Tags: Crewed, Control, ControlCore, HasInternals, Important
-	Tags: NoBulkhead
+	Tags: NoBulkhead, BoardingDefense
 	Hull: Flagship, Station
 	
 	EvaluationOrder: -10

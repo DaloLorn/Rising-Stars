@@ -7,7 +7,7 @@ Subsystem: CrewControl
 	
 	Tags: BaseCost, Category:Control, BadFiller
 	Tags: DefaultUnlock, Crewed, Control, ControlCore, HasInternals
-	Tags: NoBulkhead, Important
+	Tags: NoBulkhead, Important, BoardingDefense
 	Hull: Flagship, Station
 	
 	EvaluationOrder: -10

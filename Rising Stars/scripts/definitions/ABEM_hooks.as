@@ -323,7 +323,7 @@ class DisplayStatus : StatusHook {
 	#section all
 };
 
-class BoardingData {
+/*class BoardingData {
 	double boarders;
 	double defenders;
 	double originalboarders;
@@ -433,7 +433,7 @@ class Boarders : StatusHook {
 		file >> info.originaldefenders;
 	}
 	#section all
-};
+};*/
 
 class TransferSupplyFromSubsystem : AbilityHook {
 	Document doc("Gives supplies to its target while draining its own supplies, with a rate determined by a subsystem value. If the caster is not a ship, the default transfer rate is used instead, and the supply rate is irrelevant.");

@@ -7,7 +7,7 @@ Subsystem: ControlChair
 
 	Tags: BaseCost, Category:Control
 	Tags: Crewed, Control, ControlCore, HasInternals
-	Tags: NoBulkhead
+	Tags: NoBulkhead, BoardingDefense
 	Hull: Flagship, Station
 
 	EvaluationOrder: -10

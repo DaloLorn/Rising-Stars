@@ -2,7 +2,7 @@ Subsystem: DestroyerHull
 	Name: #S_DESTROYER_HULL
 	Description: #S_DESTROYER_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: Applied:Hull, Category:Hulls, NoCore, IsAppliedSubsystem
 	Tags: HeraldsDLC
 	Hull: Flagship
 	EvaluationOrder: -200
