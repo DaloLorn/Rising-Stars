@@ -34,29 +34,16 @@ Trait: StarChildren
 	TriggerHomeworld(SpawnShip(Mothership, Override Disable Starting = True, Set Home = True))
 	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
 
-	ReplaceTechnologyNodes(ImpFactoryLabor, ImpMothershipLabor)
-	ReplaceTechnologyNodes(ImpFactoryLabor2, ImpMothershipLabor2)
-
-	ReplaceTechnologyNodes(ImpTileDevelopment, ImpMothershipLabor)
-	ReplaceTechnologyNodes(ImpTileDevelopment2, ImpMothershipLabor2)
-
-	ReplaceTechnologyNodes(ImpCivConstructionRate, ImpHabitat)
-	ReplaceTechnologyNodes(ImpCivConstructionRate2, ImpHabitat)
-
-	ReplaceTechnologyNodes(ImpImpConstructionRate, ImpHabitat)
-	ReplaceTechnologyNodes(ImpImpConstructionRate2, ImpHabitat)
-
-	ReplaceTechnologyNodes(ImpPlanetDamage, ImpHabitat)
-	ReplaceTechnologyNodes(ImpPlanetDamage2, ImpHabitat)
-
-	ReplaceTechnologyNodes(BldMegacity, ImpHabitat)
-	ReplaceTechnologyNodes(BldPlanetaryEngine, ImpHabitat)
-	ReplaceTechnologyNodes(RingHabitat, ImpHabitat)
+	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
 	
 	ReplaceTechnologyNodes(FactoryLabor, MothershipLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, MothershipLabor2)
 	ReplaceTechnologyNodes(Construction, HabitatUpgrade)
+	ReplaceTechnologyNodes(Construction2, HabitatUpgrade)
+	ReplaceTechnologyNodes(CivConstruction, HabitatUpgrade)
+	ReplaceTechnologyNodes(CivConstruction2, HabitatUpgrade)
 	ReplaceTechnologyNodes(Megacity, HabitatUpgrade)
+	ReplaceTechnologyNodes(MetropolisUpg, HabitatUpgrade)
 	ReplaceTechnologyNodes(PlanetaryEngine, HabitatUpgrade)
 	ReplaceTechnologyNodes(Population, HabitatUpgrade)
 

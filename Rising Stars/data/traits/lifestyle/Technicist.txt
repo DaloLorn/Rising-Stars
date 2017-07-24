@@ -52,7 +52,7 @@ Trait: Technicists
 	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
 	
 	///SECRET ARMOR BAN
-	RemoveTechnologyNodes(FerroFluidArmor)
+	RemoveTechnologyNodes(FerrofluidArmor)
 	
 	
 

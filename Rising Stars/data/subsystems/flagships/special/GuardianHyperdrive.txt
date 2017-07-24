@@ -7,7 +7,7 @@ Subsystem: GuardianHyperdrive
 	Elevation: 0
 	
 	Tags: BaseCost, Category:FTL
-	Tags: Engine, Hyperdrive, HasInternals, Hyperengine, BadFiller, Disabled
+	Tags: Engine, Hyperdrive, HasInternals, Hyperengine, BadFiller, Disabled, DontList
 	Hull: Flagship
 	
 	Size := HexSize * Hexes
