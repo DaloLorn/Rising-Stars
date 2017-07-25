@@ -36,4 +36,3 @@ Subsystem: BoardingParty
 
 	Module: Default
 		Sprite: BoardingParty
-

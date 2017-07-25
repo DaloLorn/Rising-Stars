@@ -3,7 +3,7 @@ Technology: ShieldedAntimatter
 	Class: Unlock
 
 	Time Cost: 180
-	Point Cost: 0
+	Point Cost: 750
 
 
 
@@ -14,5 +14,5 @@ Technology: ShieldedAntimatter
 	Symbol: ResourceIcon::2
 	ModAttribute(ProgenitorTechProgress, Add, 5)
 	UnlockSubsystem(ShieldedAntimatter)
-	SecondaryEnergyCost(500)
+	SecondaryEnergyCost(1250)
 	SkipOnUnlockedSubsystem(ShieldedAntimatter)

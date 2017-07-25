@@ -15,4 +15,4 @@ Technology: SelfDestruct
 
 	SecondaryEnergyCost(1500)
 
-	ModAttribute(ProgenitorTechProgress, Add, 0.5)
+	ModAttribute(ProgenitorTechProgress, Add, 1.25)

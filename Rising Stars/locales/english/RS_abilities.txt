@@ -1,4 +1,4 @@
-﻿ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
+ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
 ABL_SCUTTLEDERELICT_DESC: <<
 	Sends a demolition crew to plant charges on the target derelict. The remains of the target ship are destroyed.
 >>
@@ -12,10 +12,10 @@ ABL_RECALL: Recall
 ABL_BOARDING_PARTY: Send Boarding Party
 ABL_BOARDING_PARTY_DESC: <<
 	Transports a boarding party to the target object, initiating a boarding action.
-	
-	Boarding takes between 10 (overwhelming force on either side) and 100 (completely equal numbers) seconds to complete. If the defenders are defeated, control of the object is immediately transferred to the attacking empire. If not, nothing happens.
-	
-	Only one boarding action can be running on an object at any given time, and Verdant-owned objects cannot be boarded. Boarding actions cannot be initiated by ships which are already being boarded. Asteroids and orbitals always have 100 boarding strength.
+
+	Boarding parties periodically damage the target, gradually losing troops depending on the target's boarding defense. If the target sustains critical damage and does not have a functioning Self-Destruct Device, it will become neutral for a period dependent on how many troops survived the boarding action, then transfer control to your empire.
+
+	Only one boarding action can be running on an object at any given time, and Verdant-owned objects cannot be boarded. Boarding actions cannot be initiated by ships which are already being boarded. Orbitals always have a boarding defense of 100.
 >>
 ABL_RECALL_DESC: Opens a wormhole engulfing the target allied object and immediately depositing it in close proximity to the recalling object.
 ABL_PROTO_LEVEL3: Form Planet (Tier 3)

@@ -1,7 +1,7 @@
 Ability: BoardingParty
 	Name: #ABL_BOARDING_PARTY
 	Description: #ABL_BOARDING_PARTY_DESC
-	Icon: BoardingParty
+	Icon: ABEMShuttle
 
 	Range: 300
 	Hotkey: B

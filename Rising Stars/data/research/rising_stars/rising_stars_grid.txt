@@ -57,8 +57,8 @@ Grid: RisingStars
 	FactoryLabor: 2,-5
 	Health: 2,-6
 	Repair: 3,-5
-	SupportDamage: 5,-1
-	FlagDamage: 5,1
+	FlagDamage: 5,-1
+	SupportDamage: 5,1
 	Thrust: -5,5
 	Thrust2: -6,5
 	GravityEngine: -7,5
@@ -204,10 +204,7 @@ Grid: RisingStars
 	AntimatterGen: 4,8
 	ShieldReg: 4,9
 	FireRate: 4,10
-	ShieldCap: 5,10
-	ShieldGen: 6,10
-	EnergyHurdle: 6,9
-	Connector: 7,9
+	ShieldGen: 6,9
 	LiquidArmor: 3,-8
 	Health: 4,-6
 	FactoryLabor2: 3,-9
@@ -244,7 +241,7 @@ Grid: RisingStars
 	ArmorDR2: 3,-15
 	ArmorHealth: 5,-16
 	InfiniteHealth: 4,-16
-	ShieldReg: 6,11
+	Connector: 6,11
 	ShieldCap2: 7,11
 	Connector: 8,11
 	ShieldReg: 8,12
@@ -290,7 +287,6 @@ Grid: RisingStars
 	SupportSupplyUse: 4,5
 	SupplyRegen: 5,5
 	EnergyHurdle: 5,7
-	Connector: 4,7
 	Connector: 6,6
 	Connector: 5,3
 	SupportCap: 7,2
@@ -400,3 +396,8 @@ Grid: RisingStars
 	KeyEmergencyShields: 8,20
 	Damage2: 16,-7
 	InfiniteDamage: 17,-8
+	ShieldCap: 5,9
+	BoardingParty: 8,-2
+	Connector: 6,8
+	ShieldReg: 7,10
+	EnergyHurdle: 7,9

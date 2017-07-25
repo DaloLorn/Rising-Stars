@@ -26,8 +26,9 @@ ERROR_RESEARCHLAB: Research Lab must be at least size 15. Add more hexes to the 
 ERROR_FTLJAMMER: The FTL Jammer must be at least size 100. Increase the jammer's hex count or the station's size.
 ERROR_MAX_SIZE: $1 has a maximum size of $2.
 ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones. Increase the launcher's hex count or the ship's size.
-ERROR_MUST_HAVE_SELFDESTRUCT: Juggernaught Hull must have a Self-Destruct Device.
+ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
+ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -98,6 +99,23 @@ STT_CHANNELPERCENTAGE: <<
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
+CREWCONTROL_DESC: <<
+	A bridge, crew quarters, and other facilities for a crew to command a vessel.
+
+	[img=ActionBarIcons::0;22;#00ff80]Provides [b][color=#00ff80]Control[/color][/b] to operate other subsystems.[/img]
+	[img=Plus]Slowly repairs the vessel.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+SHIPCOMPUTER_DESC: <<
+	An autonomous computer capable of controlling numerous ship systems.
+
+	[img=ActionBarIcons::0;22;#00ff80]Provides a lot of [b][color=#00ff80]Control[/color][/b] to operate other subsystems.[/img]
+	[img=QuickbarIcons::6;22]For the first 30 seconds of any combat, the strength of the entire fleet is boosted by a percentage dependent on the size of the Control Computer.[/img]
+	[img=Plus]Slowly repairs the vessel.[/img]
+	[img=Minus]Requires power to run.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+
 S_EXPERIMENTAL_HYPERDRIVE: Prototype Hyperdrive
 S_EXPERIMENTAL_HYPERDRIVE_DESC: This bulky, expensive prototype allows for slow hyperdrive navigation, and can be used to develop standard hyperdrives. The larger the hyperdrive the faster the FTL speed.
 S_EXPERIMENTAL_JUMPDRIVE: Prototype Jumpdrive
@@ -458,18 +476,19 @@ S_SUPSHIELD_DESC: <<
 S_BOARDING_PARTY_DESC: <<
 	Contains all the equipment required to send boarding parties onto an object in space, and attempt to capture it.
 
-	[img=Plus]Allows a ship to attempt to capture enemy flagships, orbitals, or asteroid mines.[/img]
-	[img=Plus]Can also be used for defense against boarders, or to take control of derelict ships.[/img]
-	[img=Minus]Only one boarding party can attempt to capture an object at any given moment.[/img]
-	[img=Minus]Can take between 10 to 100 seconds to complete, and has a high cooldown.[/img]
-	[img=MenuIcons::3;20]Objects belonging to a Verdant race cannot be boarded.[/img]
+	[img=Plus]Allows a ship to send boarding parties to capture enemy flagships and orbitals, or to take control of derelicts.[/img]
+	[img=Plus]Boarding party deals damage to random subsystems throughout the target ship until all troops are lost or the ship has been critically damaged.[/img]
+	[img=Minus]Boarding parties must be trained manually from a planet with labor, and only one batch of troops can be taken at a time. Only one boarding party may attempt to capture a ship at any given time.[/img]
+	[img=Minus]Large quantities of [b][color=#00ff80]Control[/color][/b] are required to coordinate the boarding party.[/img]
+	[img=Minus]Depending on how many boarders survive the battle, captured ships may take up to 30 minutes to become operational.[/img]
+	[img=MenuIcons::3;20]Ships belonging to a Verdant race cannot be boarded.[/img]
 >>
 S_SECURITY_STATION: Security Station
 S_SECURITY_STATION_DESC: <<
 	Defensive installations designed to prevent ship capture by boarding parties.
 
-	[img=Plus]Is twice as effective at boarding defense than a Boarding Party hex.[/img]
-	[img=Minus]Cannot be used for boarding offense.[/img]
+	[img=Plus]Boarding parties will attack this before any other subsystem.[/img]
+	[img=Plus]Increases the speed at which enemy boarding parties are defeated.[/img]
 >>
 
 // *********************************************************
@@ -540,9 +559,10 @@ NANOMESH_DESC: <<
 	[img=Minus]The nanomesh itself has no health.[/img]
 >>
 S_SELF_DESTRUCT_DESC: <<
-	A massive warhead designed to detonate when the host vessel becomes unstable.
+	A massive warhead designed to detonate when the host vessel is critically damaged or captured.
 
 	[img=Plus]Deals extreme damage in a large area when the ship is destroyed.[/img]
+	[img=MenuIcons::3;22]If this subsystem is active when the ship is captured or disabled, the ship will explode.[/img]
 	[img=Minus]You die.[/img]
 >>
 S_SELF_DESTRUCT: Self-Destruct Device

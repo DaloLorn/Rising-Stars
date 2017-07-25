@@ -92,7 +92,7 @@ class BoardShip : StatusHook {
 			if(sys.type.hasTag(ST_NoWall) || sys.type.hasTag(ST_IsArmor) || sys.type.hasTag(ST_ExternalSpace) || sys.type.hasTag(ST_FauxExterior) || sys.type.hasTag(ST_PassExterior)) // This should prevent attacks against all armor, sensors and Solar Panels.
 				continue;
 				
-			if(sys.type.hasTag(ST_IsAppliedSubsystem)) // This should prevent attacks against applied subsystems, because the game does not prevent this already. >.<
+			if(sys.type.hasTag(ST_Applied)) // This should prevent attacks against applied subsystems.
 				continue;
 				
 			if(blueprint.getSysStatus(index).status != ES_Active) // This should prevent attacks against disabled subsystems.

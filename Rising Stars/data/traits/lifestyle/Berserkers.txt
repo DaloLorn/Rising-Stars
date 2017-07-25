@@ -6,7 +6,7 @@ Trait: Berserkers
 	Category: Lifestyle
 	Unique: Lifestyle
 
-	Icon: TroopPods
+	Icon: BoardingParty
 	Color: #ff0213
 	AI Support: False
 
@@ -20,6 +20,7 @@ Trait: Berserkers
 
 	OnHomeworld(AddPlanetResource(RahtaSulphate))
 
+	UnlockSubsystem(BoardingParty)
 	ABEM_glory::SetGloryMeter(BerserkerGlory, Level Up = 5)
 	AddModifier(SupportCapacityFactor(0.5))
 	AddModifier(SupplyCostFactor(0.75))

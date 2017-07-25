@@ -1,0 +1,14 @@
+Technology: BoardingParty
+	Name: #R_BOARDING_PARTY
+	Description: #R_BOARDING_PARTY_DESC
+	Class: Unlock
+	Category: Equipment - Combat
+	Symbol: ABEMShuttle
+	Color: #ff4827
+	Icon: BoardingParty
+	Point Cost: 750
+	Time Cost: 120
+	SecondaryInfluenceCost(12)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
+	SkipOnUnlockedSubsystem(BoardingParty)
+	UnlockSubsystem(BoardingParty)

@@ -2,7 +2,7 @@ Subsystem: TitanHull
 	Name: #S_TITAN_HULL
 	Description: #S_TITAN_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, IsAppliedSubsystem
+	Tags: Applied:Hull, Category:Hulls, NoCore
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #cc6a3a

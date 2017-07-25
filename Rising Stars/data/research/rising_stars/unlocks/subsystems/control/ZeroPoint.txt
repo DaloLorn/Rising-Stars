@@ -8,10 +8,10 @@ Technology: ZeroPoint
 	Symbol: ResourceIcon::2
 
 
-	Point Cost: 0
+	Point Cost: 1000
 	Time Cost: 180
 
 	ModAttribute(ProgenitorTechProgress, Add, 10)
 	SkipOnUnlockedSubsystem(ZeroPoint)
-	SecondaryEnergyCost(500)
+	SecondaryEnergyCost(1750)
 	UnlockSubsystem(ZeroPoint)

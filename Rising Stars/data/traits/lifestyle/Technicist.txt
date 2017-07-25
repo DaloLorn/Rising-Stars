@@ -28,7 +28,7 @@ Trait: Technicists
 	ForbidSubsystem(SupportCeramicArmor)
 	ForbidSubsystem(SupportReactiveArmor)
 	ForbidSubsystem(SupportAblativeArmor)
-	
+
 	ForbidSubsystem(ReactiveArmor)
 	ForbidSubsystem(AblativeArmor)
 	ForbidSubsystem(PlateArmor)
@@ -37,22 +37,19 @@ Trait: Technicists
 	//Grid Replacements
 
 	//Armor for HP
-	
+
 	ReplaceTechnologyNodes(ArmorHealth2, Health2)
 	ReplaceTechnologyNodes(ArmorHealth, Health)
 	ReplaceTechnologyNodes(ShieldGen, Science)
 
 
 	////ARMOR BANS
-	
+
 	ReplaceTechnologyNodes(CompositeArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(NeutronArmor, ImprovedLabs)
 	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
-	
+
 	///SECRET ARMOR BAN
 	RemoveTechnologyNodes(FerrofluidArmor)
-	
-	
-

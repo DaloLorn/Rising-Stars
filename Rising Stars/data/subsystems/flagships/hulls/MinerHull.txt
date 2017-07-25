@@ -2,7 +2,7 @@ Subsystem: MinerHull
 	Name: #S_MINER_HULL
 	Description: #S_MINER_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, IsAppliedSubsystem
+	Tags: Applied:Hull, Category:Hulls, NoCore
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #7000cc
@@ -15,11 +15,13 @@ Subsystem: MinerHull
 	AddShipModifier: SupplyCapacityFactor(0.1)
 	AddShipModifier: MiningRateFactor(1.25)
 	AddShipModifier: CargoStorageFactor(1.25)
+	Assert: TagCount.Boarders == 0
+		Message: #ERROR_CANNOT_BOARD
 
 	Module: Default
 		Sprite: HullSubsystems::6
 		DrawMode: 3
-	
+
 	Assert: TagCount.Weapon == 0
 		Message: #ERROR_CANNOT_HAVE_WEAPONS
 

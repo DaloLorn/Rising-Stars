@@ -2,7 +2,7 @@ Subsystem: SuperstructureHull
 	Name: #S_SUPERSTRUCTURE_HULL
 	Description: #S_SUPERSTRUCTURE_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, IsAppliedSubsystem
+	Tags: Applied:Hull, Category:Hulls, NoCore
 	Tags: HeraldsDLC
 	Hull: Flagship, Station
 	EvaluationOrder: -200

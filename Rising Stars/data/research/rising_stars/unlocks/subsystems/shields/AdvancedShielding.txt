@@ -1,11 +1,12 @@
 Technology: AdvancedShielding
 	Category: Shields
 	Name: #R_ADV_SHIELD
-	Description: R_ADV_SHIELD_DESC
+	Description: #R_ADV_SHIELD_DESC
 	Icon: TechIcons::6
-	Time Cost: 120
+	Time Cost: 180
 	Class: Unlock
 	Color: #e20dff
+	Point Cost: 1000
 	UnlockTag(ShieldCharger)
 	UnlockTag(StellarShieldOrbital)
 	UnlockSubsystem(CovariantShield)

@@ -16,7 +16,7 @@ Subsystem: SecurityStation
 	BoardingStrength := floor(80 * Size)
 
 	Hex.Resistance := 0.2
-	Hex.HP := 36 * HexSize
+	Hex.HP := 72 * HexSize
 	Hex.Mass := HexSize
 	Module: Default
 		Sprite: SecurityStation
