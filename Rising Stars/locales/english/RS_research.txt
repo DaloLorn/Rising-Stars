@@ -334,7 +334,7 @@ R_METROPOLIS_UPGRADE_DESC: <<
 >>
 
 R_SPEC_DISCLAIMER: <<
-	[b]This is a specialization tech. Researching this will convert [color=#f00]$1[/color] nodes into link nodes, locking away their benefits for the rest of the game. Choose wisely.[/b]
+	[b]This is a specialization tech. Researching this will convert any research nodes containing the [color=#f00]$1[/color] tech into link nodes, locking away their benefits for the rest of the game. Choose wisely.[/b]
 >>
 
 R_SPEC_FLAGSHIP1_DESC: <<
@@ -402,7 +402,7 @@ R_SPEC_SUPPORT2: Small Arms Development
 R_SPEC_SUPPORT3: Targeting Sensor Shunt
 R_SPEC_SUPPORT4: Support Ship Manufacturing
 R_CONNECTOR_SPECIALIZATION: <<
-	This node once contained a specialization item, but was deactivated when a different specialization node was researched..
+	This node once contained a specialization item, but was deactivated when a different specialization node was researched.
 
 	Functionally, it is identical to a 'LINK' node - this description is only here to assure you that this is most likely not a bug.
 >>

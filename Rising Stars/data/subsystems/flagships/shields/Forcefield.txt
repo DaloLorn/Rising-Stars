@@ -5,7 +5,7 @@ Subsystem: Forcefield
 	Elevation: 2
 
 	Tags: Category:Shields, NoWall, PassExterior,BadFiller
-	Tags: Defense, HasInternals, SecondaryDefense, ExternalSpace, HasInternals
+	// Tags: Defense, HasInternals, SecondaryDefense, ExternalSpace
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes

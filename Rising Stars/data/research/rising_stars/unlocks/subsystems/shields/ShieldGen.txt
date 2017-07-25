@@ -8,7 +8,7 @@ Technology: ShieldGen
 	Point Cost: 500
 	Time Cost: 90
 
-	Icon: FissionReactor
+	Icon: ShieldGen
 	Color: #2b2bce
 
 	UnlockSubsystem(ShieldGen)

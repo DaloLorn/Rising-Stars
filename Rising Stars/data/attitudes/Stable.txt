@@ -6,7 +6,6 @@ Attitude: Stable
 
 	ProgressFromAttribute(Level3Planets, Monotonic = False)
 	Conflict(Progressive)
-	Conflict(Progressive_Geniocracy)
 
 	Level:
 		Description: #ATT_STABLE_L1

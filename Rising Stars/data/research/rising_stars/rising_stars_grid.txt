@@ -263,7 +263,7 @@ Grid: RisingStars
 	Connector: 6,-9
 	Connector: 5,-10
 	ColossusHull: 3,-18
-	KeyEmergencyShields: 12,12
+	Connector: 12,12
 	InfiniteShields: 12,13
 	Connector: 6,12
 	ShieldCap: 5,13
@@ -272,7 +272,7 @@ Grid: RisingStars
 	ShieldCap: 5,15
 	ShieldHarmonizer: 5,16
 	ShieldedAntimatter: 7,16
-	EnergyHurdle3: 3,11
+	EnergyHurdle2: 3,11
 	EnergyStorage: 3,12
 	PowerGeneration: 2,13
 	FireRate2: 2,14

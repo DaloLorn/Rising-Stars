@@ -6,7 +6,6 @@ Attitude: Progressive
 
 	ProgressFromAttribute(ResearchUnlocksDone)
 	Conflict(Stable)
-	Conflict(Progressive_Geniocracy)
 	
 	Level:
 		Description: #ATT_PROGRESSIVE_L1

@@ -21,13 +21,14 @@ Technology: EnergyHurdle2
 	Icon: ResourceIcon::2*#bbbbbb
 	Symbol: QuickbarIcons::3
 	Color: #ff0000
+	Class: Boost
 
 	Category: Hurdles
 
 	Point Cost: 0
 	Time Cost: 80
 
-	SecondaryEnergyCost(2200)
+	SecondaryEnergyCost(2000)
 
 Technology: EnergyHurdle3
 	Name: #R_ENERGY_HURDLE_INSANE
