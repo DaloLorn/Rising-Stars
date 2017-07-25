@@ -13,6 +13,8 @@ Technology: ShieldGen
 
 	UnlockSubsystem(ShieldGen)
 	SkipOnUnlockedSubsystem(ShieldGen)
+	UnlockSubsystem(SupShieldGen)
+	SkipOnUnlockedSubsystem(SupShieldGen)
 
 	SecondaryEnergyCost(1000)
 

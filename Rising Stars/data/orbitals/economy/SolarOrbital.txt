@@ -4,6 +4,7 @@ Module: SolarOrbital
 	Blurb: #ORB_SOLAR_ORBITAL_BLURB
 	Icon: GuiOrbitalIcons::13
 	Distant Icon: OrbitalIcons::13
+	Icon Size: 0.01
 
 	Build Cost: 400
 	Maintenance: 25

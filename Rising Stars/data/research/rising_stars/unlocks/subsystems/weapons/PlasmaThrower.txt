@@ -16,6 +16,7 @@ Technology: PlasmaThrower
 	UnlockSubsystem(PlasmaThrower)
 	UnlockSubsystem(SupportPlasmaThrower)
 	SkipOnUnlockedSubsystem(PlasmaThrower)
+	AddModifier(TorpedoLauncher::SetDoTActive(1))
 
 	SecondaryMoneyCost(1000)
 
