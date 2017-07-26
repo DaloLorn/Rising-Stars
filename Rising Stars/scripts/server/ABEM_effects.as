@@ -38,6 +38,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 void ForcefieldShutdown(Event& evt) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
+	bp.currentHP -= bp.decimal(sys, 0); // We need to remove all of our remaining HP from the blueprint or all hell will break loose.
 	bp.decimal(sys, 0) = 0; // Store new shield integrity.
 	
 	sync_health_nocore(sys, bp, 0, 1); // Synchronize hex health with new shield integrity.
