@@ -31,7 +31,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.
 	bp.decimal(sys, 0) = health; // Store new shield integrity.
 	
-	sync_health_nocore(sys, bp, health, Capacity); // Synchronize hex health with new shield integrity.
+	sync_health_nocore(sys, bp, health, Capacity * bp.hpFactor); // Synchronize hex health with new shield integrity.
 }
 
 // Sets forcefield health to 0.
