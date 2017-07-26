@@ -66,5 +66,5 @@ Subsystem: Forcefield
 	Effect: ForcefieldShutdown
 
 	Effect: ForcefieldDamage
-		Capacity = Capacity
+		Capacity = ForcefieldCapacity
 		UseBleedthrough = 1

@@ -124,7 +124,7 @@ Preset: Heralds
 	DLC: Heralds
 
 	Trait: Theocracy
-	Trait: Flux
+	Trait: Jumpdrive
 	Trait: Extragalactic
 	Trait: Animated
 

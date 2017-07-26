@@ -89,7 +89,7 @@ class BoardShip : StatusHook {
 			if(sys.type.hasTag(ST_Volatile)) // Antimatter Reactors are too dangerous to board.
 				continue;
 			
-			if(sys.type.hasTag(ST_NoWall) || sys.type.hasTag(ST_IsArmor) || sys.type.hasTag(ST_ExternalSpace) || sys.type.hasTag(ST_FauxExterior) || sys.type.hasTag(ST_PassExterior)) // This should prevent attacks against all armor, sensors and Solar Panels.
+			if(sys.type.hasTag(ST_NoWall) || sys.type.hasTag(ST_IsArmor) || sys.type.hasTag(ST_ExternalSpace) || sys.type.hasTag(ST_FauxExterior) || sys.type.hasTag(ST_Forcefield) || sys.type.hasTag(ST_PassExterior)) // This should prevent attacks against all armor, sensors and Solar Panels.
 				continue;
 				
 			if(sys.type.hasTag(ST_Applied)) // This should prevent attacks against applied subsystems.
@@ -176,11 +176,13 @@ class BoardShip : StatusHook {
 				@obj.owner = defaultEmpire;
 					
 		if(obj.owner is defaultEmpire) {
+			if(obj.hasStatusEffect(getStatusID("DerelictShip")))
+				obj.removeStatusType(getStatusID("DerelictShip"));
 			obj.engaged = false;
 			obj.clearOrders();
 			info.reactivationTimer += time;
-			// Reactivation takes two minutes if all the boarders survived the battle... but more likely it'll be a while longer. Limiting reactivation time to 30 minutes for a cripplingly close fight.
-			if(info.reactivationTimer > min(120.0 / (info.boarders / info.originalBoarders), 1800.0)) {
+			// Reactivation takes a minute if all the boarders survived the battle... but more likely it'll be a while longer. Limiting reactivation time to 30 minutes for a cripplingly close fight.
+			if(info.reactivationTimer > min(60.0 / (info.boarders / info.originalBoarders), 1800.0)) {
 				@obj.owner = status.originEmpire;
 				return false;
 			}
