@@ -355,6 +355,7 @@ S_FORCEFIELD_DESC: <<
 	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
 	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
 	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
+	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
 >>
 
 TARGETINGSENSOR_DESC: <<

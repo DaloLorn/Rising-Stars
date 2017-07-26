@@ -52,4 +52,5 @@ Trait: Technicists
 	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
 
 	///SECRET ARMOR BAN
+	UnlockSubsystem(Forcefield)
 	RemoveTechnologyNodes(FerrofluidArmor)
