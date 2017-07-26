@@ -47,7 +47,7 @@ void ForcefieldShutdown(Event& evt) {
 void sync_health_nocore(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
 	// HexStatus.hp is an uint from 0 to 255 describing the health percentage of the hex.
 	// Hopefully my math is right here, and I'm getting an accurate percentage value in the below equation.
-	uint healthPct = uint(((health * bp.hpFactor) / (maxHealth * bp.hpFactor)) * 255);
+	uint healthPct = uint((health / maxHealth) * 255);
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u pos = sys.hexagon(i);
 		if(pos == sys.core) // We don't want to affect the core.
@@ -64,7 +64,7 @@ void sync_health_nocore(const Subsystem& sys, Blueprint& bp, double health, doub
 void sync_health(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
 	// HexStatus.hp is an uint from 0 to 255 describing the health percentage of the hex.
 	// Hopefully my math is right here, and I'm getting an accurate percentage value in the below equation.
-	uint healthPct = uint(((health * bp.hpFactor) / (maxHealth * bp.hpFactor)) * 255);
+	uint healthPct = uint((health / maxHealth) * 255);
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u pos = sys.hexagon(i);
 		HexStatus@ stat = bp.getHexStatus(pos.x, pos.y);
@@ -116,7 +116,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	bp.decimal(sys, 0) = health;
 	
 	// Postprocessing.
-	sync_health_nocore(sys, bp, health, Capacity); // Sync the damaged forcefield's health.
+	sync_health_nocore(sys, bp, health, Capacity * bp.hpFactor); // Sync the damaged forcefield's health.
 	cast<Ship>(evt.target).recordDamage(evt.obj);
 	if(dmg <= 0.0) // Send the diminished damage (if any) on its merry way.
 		return DE_EndDamage;
