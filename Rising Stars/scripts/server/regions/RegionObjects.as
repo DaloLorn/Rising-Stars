@@ -85,6 +85,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	
 	Macronebula@ macronebula = null;
 	bool isNebulaSystem = false;
+	bool shouldInitMacronebula = false;
 
 	array<uint> regionStatusTypes;
 	array<double> regionStatusTimers;
@@ -350,7 +351,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			
 		if(region.getSystemFlagAny(NEBULA_FLAG)) {
 			isNebulaSystem = true;
-			region.initMacronebula();
+			shouldInitMacronebula = true;
 		}
 	}
 	
@@ -519,6 +520,11 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		if(system is null) {
 			@system = getSystem(cast<Region>(region));
 			return;
+		}
+		
+		if(shouldInitMacronebula) {
+			cast<Region>(region).initMacronebula();
+			shouldInitMacronebula = false;
 		}
 	
 		if(plane !is null && !planeParented) {
