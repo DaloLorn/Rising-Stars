@@ -334,16 +334,20 @@ class ShipInfoBar : InfoBar {
 			ObjectLock lock(ship, true);
 			vec2u hex = vec2u(bpdisp.hexHovered);
 			const HexStatus@ status = bp.getHexStatus(hex.x, hex.y);
+			auto@ sys = design.subsystem(hex);
+			auto@ mod = design.module(hex);
 			if(status !is null) {
-				maxHP = design.variable(hex, HV_HP) * bp.hpFactor;
+				if(sys !is null && mod !is sys.type.coreModule && sys.type.hasTag(ST_Forcefield)) {
+					maxHP = sys.variable(SV_Capacity);
+				}
+				else {
+					maxHP = design.variable(hex, HV_HP) * bp.hpFactor;
+				}
 				curHP = maxHP * double(status.hp) / double(0xff);
 			}
 
 			high = Color(0x9768ffff);
 			low = Color(0xff689bff);
-
-			auto@ sys = design.subsystem(hex);
-			auto@ mod = design.module(hex);
 			if(sys !is null && expanded) {
 				subsystem.visible = true;
 				if(mod is null || mod is sys.type.coreModule || mod is sys.type.defaultModule) {

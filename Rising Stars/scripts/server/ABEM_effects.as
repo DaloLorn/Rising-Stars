@@ -26,7 +26,9 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 		}
 	}
 	double health = bp.decimal(sys, 0); // Get current shield integrity.
-	health = min(health + Regen, Capacity); // Calculate new shield integrity.
+	double regeneratedHP = min(Regen, Capacity - health); // Calculate how much we can heal.
+	health += regeneratedHP;
+	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.
 	bp.decimal(sys, 0) = health; // Store new shield integrity.
 	
 	sync_health_nocore(sys, bp, health, Capacity); // Synchronize hex health with new shield integrity.
@@ -95,7 +97,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	
 	double health = bp.decimal(sys, 0);
 	// Do we have any power left?
-	if(health < 0) {
+	if(health <= 0) {
 		return DE_SkipHex;
 	}
 
@@ -105,6 +107,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	// Do damage math.
 	double dmg = evt.damage;
 	dmg = max(dmg - health, 0.0);
+	bp.currentHP -= evt.damage - dmg; // This should tell the blueprint that it's been damaged. I think.
 	health = max(health - evt.damage, 0.0);
 	
 	// Store the damage and health values.
@@ -112,8 +115,8 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	bp.decimal(sys, 0) = health;
 	
 	// Postprocessing.
-	cast<Ship>(evt.target).recordDamage(evt.obj);
 	sync_health_nocore(sys, bp, health, Capacity); // Sync the damaged forcefield's health.
+	cast<Ship>(evt.target).recordDamage(evt.obj);
 	if(dmg <= 0.0) // Send the diminished damage (if any) on its merry way.
 		return DE_EndDamage;
 	return DE_SkipHex; 

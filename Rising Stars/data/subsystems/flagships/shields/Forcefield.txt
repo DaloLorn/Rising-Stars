@@ -4,8 +4,8 @@ Subsystem: Forcefield
 	BaseColor: #00a4db
 	Elevation: 2
 
-	Tags: Category:Shields, NoWall, PassExterior,BadFiller
-	// Tags: Defense, HasInternals, SecondaryDefense, ExternalSpace
+	Tags: Category:Shields, NoWall, PassExterior, BadFiller
+	Tags: Forcefield, HasInternals, ExternalSpace
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
@@ -34,7 +34,7 @@ Subsystem: Forcefield
 
 	Module: Default
 		Sprite: Forcefield*#00a4db
-		Hex.HP := Capacity
+		Hex.HP := Capacity / (Hexes - 1)
 		Hex.Resistance := 99
 		Hex.Mass := 0
 

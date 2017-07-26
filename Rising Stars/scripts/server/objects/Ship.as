@@ -1239,17 +1239,11 @@ tidy class ShipScript {
 						Ship@ shipLeader = cast<Ship>(cachedLeader);
 						if(shipLeader !is null) {
 							if(shipLeader.Supply < repairCost)
-								repairAmt = 0.0;
-							else
-								shipLeader.consumeSupply(repairCost);
+								repairAmt *= shipLeader.Supply / repairCost;
 						}
 					}
-					else {
-						if(ship.Supply < repairCost)
-							repairAmt = 0.0;
-						else
-							consumeSupply(ship, repairCost);
-					}
+					else if(ship.Supply < repairCost)
+						repairAmt *= ship.Supply / repairCost;
 				}
 				else {
 					repairAmt = max(repairAmt, 0.01 * bp.design.totalHP * repairFact * time);
@@ -1260,7 +1254,17 @@ tidy class ShipScript {
 						repairAmt -= repWreckage;
 						wreckage -= repWreckage;
 					}
-					bp.repair(ship, repairAmt);
+					double amtRepaired = bp.repair(ship, repairAmt);
+					repairCost *= amtRepaired / repairAmt;
+					if(inCombat) {
+						if(cachedLeader !is null) {
+							Ship@ shipLeader = cast<Ship>(cachedLeader);
+							if(shipLeader !is null)
+								shipLeader.consumeSupply(repairCost);
+						}
+						else
+							ship.consumeSupply(repairCost);
+					}
 				}
 			}
 		}
