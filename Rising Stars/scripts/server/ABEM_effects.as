@@ -26,7 +26,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 		}
 	}
 	double health = bp.decimal(sys, 0); // Get current shield integrity.
-	double regeneratedHP = min(Regen, Capacity - health); // Calculate how much we can heal.
+	double regeneratedHP = min(Regen, Capacity * bp.hpFactor - health); // Calculate how much we can heal.
 	health += regeneratedHP;
 	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.
 	bp.decimal(sys, 0) = health; // Store new shield integrity.
@@ -47,7 +47,7 @@ void ForcefieldShutdown(Event& evt) {
 void sync_health_nocore(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
 	// HexStatus.hp is an uint from 0 to 255 describing the health percentage of the hex.
 	// Hopefully my math is right here, and I'm getting an accurate percentage value in the below equation.
-	uint healthPct = uint((health / maxHealth) * 255);
+	uint healthPct = uint(((health * bp.hpFactor) / (maxHealth * bp.hpFactor)) * 255);
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u pos = sys.hexagon(i);
 		if(pos == sys.core) // We don't want to affect the core.
@@ -64,7 +64,7 @@ void sync_health_nocore(const Subsystem& sys, Blueprint& bp, double health, doub
 void sync_health(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
 	// HexStatus.hp is an uint from 0 to 255 describing the health percentage of the hex.
 	// Hopefully my math is right here, and I'm getting an accurate percentage value in the below equation.
-	uint healthPct = uint((health / maxHealth) * 255);
+	uint healthPct = uint(((health * bp.hpFactor) / (maxHealth * bp.hpFactor)) * 255);
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u pos = sys.hexagon(i);
 		HexStatus@ stat = bp.getHexStatus(pos.x, pos.y);
