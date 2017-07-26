@@ -195,6 +195,20 @@ SubsystemStat: RegenPerSecond
 
 	Variable: RegenPerSecond
 
+SubsystemStat: ForcefieldCapacity
+	Name: #S_FORCEFIELD
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ForcefieldCapacity
+
+SubsystemStat: ForcefieldRegen
+	Name: #S_FORCEFIELDREGEN
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ForcefieldRegen
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************

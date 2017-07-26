@@ -326,7 +326,7 @@ class ShipPopup : Popup {
 			auto@ mod = design.module(hex);
 			if(status !is null) {
 				if(sys !is null && mod !is sys.type.coreModule && sys.type.hasTag(ST_Forcefield)) {
-					maxHP = sys.variable(SV_Capacity);
+					maxHP = sys.variable(SV_ForcefieldCapacity);
 				}
 				else {
 					maxHP = design.variable(hex, HV_HP) * bp.hpFactor;

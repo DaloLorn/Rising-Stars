@@ -10,11 +10,11 @@ Subsystem: Forcefield
 
 	Size := HexSize * Hexes
 	PowerUse := (10 + 1 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
-	RegenRate := 0.75 * Size
-	Capacity := 15 * HexSize * (Hexes - 1)
+	ForcefieldRegen := 0.75 * Size
+	ForcefieldCapacity := 15 * HexSize * (Hexes - 1)
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
-	State: double = Capacity
+	State: double = ForcefieldCapacity
 
 	Requires:
 		Command = 1
@@ -34,7 +34,7 @@ Subsystem: Forcefield
 
 	Module: Default
 		Sprite: Forcefield*#00a4db
-		Hex.HP := Capacity / (Hexes - 1)
+		Hex.HP := ForcefieldCapacity / (Hexes - 1)
 		Hex.Resistance := 99
 		Hex.Mass := 0
 
@@ -52,16 +52,16 @@ Subsystem: Forcefield
 		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
 
 	Modifier: ShieldCapacityFactor(factor)
-		Capacity := Capacity * factor
+		ForcefieldCapacity := ForcefieldCapacity * factor
 
 	Modifier: ShieldRegenFactor(factor)
-		RegenRate := RegenRate * factor
+		ForcefieldRegen := ForcefieldRegen * factor
 
 	Effect: NoRepairNonCore
 
 	Effect: ForcefieldBase
-		Regen = RegenRate
-		Capacity = Capacity
+		Regen = ForcefieldRegen
+		Capacity = ForcefieldCapacity
 
 	Effect: ForcefieldShutdown
 

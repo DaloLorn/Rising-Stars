@@ -94,3 +94,5 @@ OUTPOST_WEAPONS_DESC: <<
 
 	Adds 10 missile tubes, each firing one missile per second for a damage of 50 per missile. May be modified by upgrades that improve stationary defense weapons. Subsequent missile launchers require increasingly large amounts of Ore to install.
 >>
+CONS_BOARDING_PARTY: Train Boarding Party
+CONS_BOARDING_PARTY_DESC: Train a new batch of troops to replace the target flagship's boarding parties.

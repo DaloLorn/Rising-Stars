@@ -6,6 +6,7 @@ Construction: BoardingParty
 	In Context: True
 
 	Target: targ = Object
+	Icon: BoardingParty
 
 	RequireSubsystemUnlocked(BoardingParty)
 
