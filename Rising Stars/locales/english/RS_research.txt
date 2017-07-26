@@ -25,6 +25,17 @@ R_CAT_PLANET: Planetary Development
 R_CAT_POLITICS: Political Science
 R_CAT_INDUSTRY: Industry
 R_CAT_PROPULSION: Dynamics
+R_FORCEFIELD: Forcefield Projection
+R_FORCEFIELD_DESC: <<
+	[color=#aaa][i]We all know very well how a shield typically functions. A semi-permeable cohesive plasma bubble is formed outside the ship, allowing objects to exit at will while deflecting anything that tries to enter it. However, what if we could apply the same principles to create a more complex shape, such as a panel or a brick? Or a sword?
+
+	It turns out that's a pretty neat thing to do. It also turns out it's a pretty expensive thing to do, but hey, science is expensive too and we're still doing it. Speaking of which, we're going to need some more grant money... could you please sign here?[/i][/color]
+
+	Unlocks the Forcefield subsystem.
+
+	[i][bbloc=#S_FORCEFIELD_DESC/][/i]
+>>
+
 
 R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
 R_SYS_SHIELDED_AMGEN_DESC: <<

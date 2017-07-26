@@ -1,0 +1,14 @@
+Technology: Forcefield
+	Name: #R_FORCEFIELD
+	Description: #R_FORCEFIELD_DESC
+	Class: Unlock
+	Icon: SupportShield*#50ffff
+	Symbol: Forcefield*#00a4db
+	Color: #00a4db
+	Point Cost: 750
+	Time Cost: 120
+	Category: Shields
+	SecondaryEnergyCost(1500)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	SkipOnUnlockedSubsystem(Forcefield)
+	UnlockSubsystem(Forcefield)

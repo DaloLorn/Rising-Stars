@@ -260,7 +260,7 @@ Grid: RisingStars
 	Connector: 6,-9
 	Connector: 5,-10
 	ColossusHull: 3,-18
-	Connector: 12,12
+	ShieldReg: 12,12
 	InfiniteShields: 12,13
 	Connector: 6,12
 	ShieldCap: 5,13
@@ -401,3 +401,5 @@ Grid: RisingStars
 	Connector: 6,8
 	ShieldReg: 7,10
 	EnergyHurdle: 7,9
+	ShieldCap: 8,14
+	Forcefield: 8,15

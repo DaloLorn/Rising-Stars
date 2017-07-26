@@ -349,12 +349,12 @@ S_JUGGERNAUT_HULL_DESC: <<
 >>
 S_FORCEFIELD: Force Field
 S_FORCEFIELD_DESC: <<
-	Advanced manipulation of energy allow us to generate force fields without the bubble constrains of regular shields
+	An advanced shielding system capable of projecting a highly cohesive, geometrically complex plasma field to defend key sections of the ship.
 
-	[img=Plus]Allow to protect important parts[/img]
-	[img=Plus]Allow the use of self destruct devices[/img]
-	[img=Plus]Oh screw it, I can localize this later[/img]
-	[img=Minus]Very high energy usage[/img]
+	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier.[/img]
+	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
+	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
+	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
 >>
 
 TARGETINGSENSOR_DESC: <<
