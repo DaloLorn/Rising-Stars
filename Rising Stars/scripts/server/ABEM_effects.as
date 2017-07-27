@@ -31,6 +31,22 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 		health *= 1 + (bp.hpFactor - healthFactor); // This should adjust our current health to match the new veterancy buff.
 		bp.decimal(sys, 1) = bp.hpFactor;
 	}
+	// We need to account for various effects that could have changed the field's health, because I'm bound to miss something somewhere. Too many ways to damage the damn thing without triggering ForcefieldDamage.
+	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
+		vec2u hex = sys.hexagon(i);
+		if(hex != sys.core) {
+			HexStatus@ field = bp.getHexStatus(hex.x, hex.y);
+			if(field is null)
+				continue;
+			
+			uint healthPct = uint((health / (Capacity * bp.hpFactor)) * 255);
+			if(healthPct != field.hp) {
+				double healthDiff = double((healthPct - field.hp) / 255) * (Capacity * bp.hpFactor);
+				health -= healthDiff;
+				bp.currentHP -= healthDiff;
+			}
+		}
+	}
 	double regeneratedHP = min(Regen, Capacity * bp.hpFactor - health); // Calculate how much we can heal.
 	health += regeneratedHP;
 	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.
