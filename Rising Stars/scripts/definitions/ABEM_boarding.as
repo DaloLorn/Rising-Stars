@@ -92,7 +92,7 @@ class BoardShip : StatusHook {
 			if(sys.type.hasTag(ST_NoWall) || sys.type.hasTag(ST_IsArmor) || sys.type.hasTag(ST_ExternalSpace) || sys.type.hasTag(ST_FauxExterior) || sys.type.hasTag(ST_Forcefield) || sys.type.hasTag(ST_PassExterior)) // This should prevent attacks against all armor, sensors and Solar Panels.
 				continue;
 				
-			if(sys.type.hasTag(ST_Applied)) // This should prevent attacks against applied subsystems.
+			if(sys.type.hasTag(ST_Applied) || sys.type.hasTag(ST_HullSystem)) // This should prevent attacks against applied subsystems or hulls.
 				continue;
 				
 			if(blueprint.getSysStatus(index).status != ES_Active) // This should prevent attacks against disabled subsystems.
@@ -127,7 +127,7 @@ class BoardShip : StatusHook {
 	bool damageTick(BoardingData& info, Status@ status, bool isShip) {
 		DamageEvent dmg;
 		@dmg.obj = status.originObject;
-		dmg.damage = info.boarders / 2;
+		dmg.damage = info.boarders;
 		dmg.partiality = BOARDING_TICKRATE;
 		dmg.flags |= DT_Generic | ReachedInternals | DF_FullShieldBleedthrough;
 		if(isShip) {

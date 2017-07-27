@@ -13,10 +13,10 @@ Subsystem: BoardingParty
 	EvaluationOrder: -10
 
 	Size := HexSize * Hexes
-	BoardingStrength := floor(40 * Size)
+	BoardingStrength := floor(10 * Size)
 
-	BoardingPartyCost := BoardingStrength
-	BoardingPartyLabor := BoardingStrength / 40
+	BoardingPartyCost := BoardingStrength * 4
+	BoardingPartyLabor := BoardingStrength / 10
 	BoardingPartyStorage := 1
 
 	Hook: OnEnable(AddStatus(BoardingPartyTroops))
