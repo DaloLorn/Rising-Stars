@@ -29,6 +29,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 	double healthFactor = bp.decimal(sys, 1); // Get ship health factor.
 	if(healthFactor != bp.hpFactor) {
 		health *= 1 + (bp.hpFactor - healthFactor); // This should adjust our current health to match the new veterancy buff.
+		bp.decimal(sys, 1) = bp.hpFactor;
 	}
 	double regeneratedHP = min(Regen, Capacity * bp.hpFactor - health); // Calculate how much we can heal.
 	health += regeneratedHP;
