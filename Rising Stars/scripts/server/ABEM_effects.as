@@ -26,6 +26,10 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 		}
 	}
 	double health = bp.decimal(sys, 0); // Get current shield integrity.
+	double healthFactor = bp.decimal(sys, 1); // Get ship health factor.
+	if(healthFactor != bp.hpFactor) {
+		health *= 1 + (bp.hpFactor - healthFactor); // This should adjust our current health to match the new veterancy buff.
+	}
 	double regeneratedHP = min(Regen, Capacity * bp.hpFactor - health); // Calculate how much we can heal.
 	health += regeneratedHP;
 	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.

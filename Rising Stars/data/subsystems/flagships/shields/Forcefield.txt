@@ -15,6 +15,7 @@ Subsystem: Forcefield
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
 	State: double = ForcefieldCapacity
+	State: double = 1
 
 	Requires:
 		Command = 1
