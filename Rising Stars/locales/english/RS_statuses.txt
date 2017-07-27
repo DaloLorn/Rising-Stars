@@ -1,4 +1,4 @@
-﻿STATUS_STELLAR_SHIELD: Shielded
+STATUS_STELLAR_SHIELD: Shielded
 NEBULA_CERULEAN: Sicutmarian Nebula
 NEBULA_ECONOMIC: Pretiosian Nebula
 EMPTY_SPACE: Empty Space
@@ -20,9 +20,9 @@ STATUS_STELLAR_SHIELD_DESC: <<
 >>
 STATUS_BOARDED: Boarded
 STATUS_BOARDED_DESC: <<
-	This object is currently being boarded. Depending on the strength of the boarding party, it may soon be captured. No more boarding parties can be sent to the object until the boarding action ends.
-	
-	Boarding actions last between 10 and 100 seconds.
+	This object is currently being boarded and is taking damage to various subsystems. No more boarding parties can be sent to the object until the boarding action ends.
+
+	If it reaches critical condition before the boarding party has been eliminated, the object will become neutral for a certain period before transferring control to the empire which boarded it.
 >>
 STATUS_ENVOY: Diplomatic Expedition
 STATUS_ENVOY_DESC: <<
@@ -53,3 +53,5 @@ STATUS_DAMAGED_DESC: <<
 	This vessel was accidentally damaged in a scientific experiment and will operate at significantly reduced effectiveness until it is repaired.
 >>
 STATUS_PROGENITOR_COMPUTER_BOOST_DESC: Heavy computation done by the Progenitor-designed control computer aboard the flagship is significantly increasing this fleet's efficiency and combat strength for the first 60 seconds of any combat.
+STATUS_BOARDING_TROOPS: Carrying Boarding Parties
+STATUS_BOARDING_TROOPS_DESC: This ship is carrying highly-trained marines ready to board, sabotage and capture an enemy flagship.
