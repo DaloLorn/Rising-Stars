@@ -1,0 +1,16 @@
+Ability: StealResources
+	Name: #ABL_STEAL_RESOURCES
+	Description: #ABL_STEAL_RESOURCES_DESC
+	Icon: QuickbarIcons::2
+	Hotkey: C
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	TargetFilterNotSelf(targ)
+	ABEM_hooks::TargetFilterStatus(targ, ReadyForHarvest)
+	TargetFilterNotStatus(targ, Ringworld)
+	TargetFilterNotStatus(targ, ArtificialPlanetoid)
+
+	ABEM_races::StealResources(targ)
+	Trigger(targ, RemoveStatus(ReadyForHarvest))

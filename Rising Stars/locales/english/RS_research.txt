@@ -19,6 +19,17 @@ R_CAT_INDUSTRY_DESC: <<
 R_CAT_PROPULSION_DESC: <<
 	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous--- AAAAARGH![/i][/color]
 >>
+R_NYLLI_FOOD: Nutrient Reclamation
+R_NYLLI_FOOD_BLURB: Nutrient Orbitals
+R_NYLLI_FOOD_DESC: <<
+	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
+
+	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
+	
+	[i][bbloc=#ORB_FARM_DESC/][/i]
+	
+	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
+>>
 R_CAT_MILITARY: Military Research
 R_CAT_ENERGY: Energy Science
 R_CAT_PLANET: Planetary Development

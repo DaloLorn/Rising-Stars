@@ -18,6 +18,7 @@ Subsystem: ShipComputer
 	Prayer := Sum.RequirePrayer * 4 * Hexes
 
 	BoardingStrength := 20 * Size
+	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
 
 	SupplyRate := 30 * HexSize * (Hexes-1)
 

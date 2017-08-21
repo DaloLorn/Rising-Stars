@@ -48,9 +48,30 @@ TRAIT_VERDANT_DESC: <<
 TRAIT_FLUX_DESC: <<
 	Your empire maintains an intricate flux field across all its systems to allow for instantaneous spatial translation.
 
-	Your ships instantly FTL to any system you have vision over. A fleet that has recently used the flux field cannot use it again immediately. Your ships are not able travel through deep space.
+	Your ships instantly FTL to any system you have vision over. A fleet that has recently used the flux field cannot use it again immediately. Your ships are unable to travel through deep space.
 
 	Ships cost FTL Energy to build.
 
 	You automatically gain vision over all systems within your trade range. You start the game with a free Subspace Telescope Array, and cannot research other FTL methods.
+>>
+TRAIT_VANGUARD_RINGWORLDER: Vanguard (Ringworlders)
+TRAIT_VANGUARD_RINGWORLDER_DESC: <<|
+	[vspace=3/][img=PlanetType::14;28]Instead of planets, starts with a Ringworld and the technology to build more.[/img]
+	[vspace=3/][img=QuickbarIcons::3;22]Cannot own non-Ringworld planets. This includes Artificial Planetoids.[/img]
+	[vspace=3/][img=QuickbarIcons::2;22]Bulky Harvesters prepare planets for harvesting by Ringworlds, which steal all non-building resources from the planet's surface and turn it into a barren world.[/img]
+	[vspace=3/][img=QuickbarIcons::4;22]Harvesters can Devour barren planets, producing vast quantities of Ore and damaging the planet over time.[/img]
+	[bbloc=#TRAIT_VANGUARD_DESC/]
+>>
+TRAIT_VANGUARD_DESC: <<
+	[vspace=3/][img=ShieldImpactLarge*#de12de;22]Is a Vanguard race, with all their advantages and disadvantages:
+	
+	[vspace=3/][img=SpaceProgram;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
+	[vspace=3/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
+>>
+TRAIT_MECHANOID_DESC: <<|
+	[vspace=3/][img=ResourceIcon::6;22]Additional [b]population[/b] must be constructed with labor instead of growing. Each unit of population provides extra labor.[/img]
+	[vspace=3/][img=ActionBarIcons::1;22]Can instantaneouly transfer population between planets to colonize, costing [img=ResourceIcon::3;20/] FTL Energy.[/img]
+	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
+	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
+	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
 >>

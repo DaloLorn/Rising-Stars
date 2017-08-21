@@ -1,0 +1,18 @@
+Ability: MinePlanet
+	Name: #ABL_MINE_PLANET
+	Description: #ABL_MINE_PLANET_DESC
+	Icon: QuickbarIcons::4
+
+	Range: 250
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	ABEM_hooks::TargetFilterStatus(targ, Barren)
+	TargetFilterNotAllied(targ, Allow Null = True)
+
+	RequireCargoSpace()
+
+	IsToggleTarget(targ)
+	PersistentBeamEffect(targ, #91692c, Tractor)
+
+	ABEM_races::MineCargoFromPlanet(targ, Ore, Sys.MiningRate:10, 400000)

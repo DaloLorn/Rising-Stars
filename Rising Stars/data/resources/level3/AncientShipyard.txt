@@ -4,7 +4,7 @@ Resource: Ancient Shipyard
 	Blurb: #RESOURCE_SHIPYARD_BLURB
 	Icon: TechIcons::33
 
-	Level: 4
+	Level: 3
 	
 	Pressure: 7 Defense
 	Small Icon: TechIcons::33

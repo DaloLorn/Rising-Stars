@@ -1,0 +1,23 @@
+Ability: PrepareForHarvest
+	Name: #ABL_PREPARE_HARVEST
+	Description: #ABL_PREPARE_HARVEST_DESC
+	Icon: QuickbarIcons::7
+
+	Range: 300
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	TargetFilterNotStatus(targ, Barren)
+	TargetFilterNotStatus(targ, ReadyForHarvest)
+	TargetFilterNotAllied(targ)
+	TargetFilterNotStatus(targ, Ringworld)
+	TargetFilterNotStatus(targ, ArtificialPlanetoid)
+	TargetFilterNotQuarantined(targ)
+
+	ABEM_races::TriggerTargetForCasterPeriodic(targ, ABEM_races::NotifyEmpire(#ALERT_READY_FOR_HARVESTING, Description = #ALERT_READY_FOR_HARVESTING_DESC), Interval = 360, Max Triggers = 1)
+	AutoOrderOnAutoColonizeTarget()
+	OffensiveToTarget(targ)
+	IsToggleTarget(targ)
+	TriggerTargetPeriodic(targ, AddStatus(ReadyForHarvest), 360, 1)
+	PersistentBeamEffect(targ, #086786, PreparingHarvest)

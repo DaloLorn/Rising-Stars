@@ -55,3 +55,7 @@ STATUS_DAMAGED_DESC: <<
 STATUS_PROGENITOR_COMPUTER_BOOST_DESC: Heavy computation done by the Progenitor-designed control computer aboard the flagship is significantly increasing this fleet's efficiency and combat strength for the first 60 seconds of any combat.
 STATUS_BOARDING_TROOPS: Carrying Boarding Parties
 STATUS_BOARDING_TROOPS_DESC: This ship is carrying highly-trained marines ready to board, sabotage and capture an enemy flagship.
+STATUS_READYFORHARVEST: Ready for Harvesting
+STATUS_READYFORHARVEST_DESC: <<
+	A Ringworlder Harvester has prepared this planet for harvesting. Any Ringworlder empire can now transfer all the resources on the planet to one of their Ringworlds, turning it into a Barren planet.
+>>

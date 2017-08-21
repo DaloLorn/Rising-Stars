@@ -81,3 +81,17 @@ ORB_TELESCOPE_DESC: <<
 
 	[i][bbloc=#ABL_TELESCOPEORE_DESC:40000/][/i]
 >>
+ORB_FARM: Hydroponics Station
+ORB_HYDROGENATOR: Water Reclamation Facility
+ORB_FARM_BLURB: Produces food.
+ORB_FARM_DESC: <<
+	Generates a basic food resource for the planet it orbits. Food generation only applies if the planet and Hydroponics Station are owned by the same empire.
+>>
+ORB_HYDROGENATOR_BLURB: Produces water. 
+ORB_HYDROGENATOR_DESC: <<
+	Generates a basic water resource for the planet it orbits. Water generation only applies if the planet and Water Reclamation Facility are owned by the same empire.
+>>
+ORB_SENATE_BLURB: Generates 10 Influence stake.
+ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
+ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
+

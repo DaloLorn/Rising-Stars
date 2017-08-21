@@ -101,6 +101,37 @@ STT_CHANNELPERCENTAGE: <<
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
+
+
+S_PLANET_MINING_LASER: Planet Devourer
+S_PLANET_MINING_LASER_DESC: <<
+	An array of tractor beams and mining lasers designed to harvest immense quantities of resources from a barren planet, destroying the planet in the process.
+
+	[img=Plus]Mines Ore from planets.[/img]
+	[img=Plus]Is 10 times faster than mining from an asteroid.[/img]
+	[img=MenuIcons::3;20]Cannot be placed on the same ship as a Mining Laser, and can only be placed on a Harvester.[/img]
+	[img=MenuIcons::3;20]Only Barren planets can be mined for Ore. Other planets must first have their resources Harvested.[/img]
+	[img=Minus]Has a significantly higher power consumption compared to a Mining Laser, and cannot mine from asteroids.[/img]
+>>
+S_HARVESTER: Harvester Hull
+S_HARVESTER_DESC: <<
+	A hull architecture designed specifically for the harvesting of resources from other planets.
+
+	[img=Plus]Can prepare planets for Harvesting by Ringworlds.[/img]
+	[img=Plus]Can use the Planet Devourer subsystem to mine Barren planets for Ore.[/img]
+	[img=Plus]All hex health is doubled.[/img]
+	[img=Plus]All damage resistance is increased by 50%.[/img]
+	[img=Plus]Shield capacity is doubled.[/img]
+	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
+	[img=Plus]Slipstream costs are significantly reduced.[/img]
+	[img=Plus]Cargo storage capacity is multiplied tenfold.[/img]
+	[img=Minus]Mass is tripled.[/img]
+	[img=Minus]Cannot hold support ships.[/img]
+	[img=Minus]Damage output is reduced by 75%.[/img]
+	[img=Minus]Build costs are increased by 50%.[/img]
+	[img=MenuIcons::3;20]Cannot be used on ships under size 500.[/img]
+>>
+
 CREWCONTROL_DESC: <<
 	A bridge, crew quarters, and other facilities for a crew to command a vessel.
 

@@ -24,6 +24,7 @@ Trait: Mechanoid
 	ModAttribute(PopulationDecayFactor, Multiply, 0)
 	ModAttribute(OverpopulationBenefitFactor, Multiply, 0)
 	ModAttribute(ForbidColonization, Add, 1)
+	ModAttribute(ImmuneToRadiation, Add, 1)
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
 	RemoveTechnologyNodes(HydroponicsSatellite)

@@ -1,0 +1,48 @@
+Subsystem: PlanetMiningLaser
+	Name: #S_PLANET_MINING_LASER
+	Description: #S_PLANET_MINING_LASER_DESC
+	BaseColor: #a1692c
+	TypeColor: #a1692c
+	Elevation: 3
+
+	Tags: ScaledCost, Category:Manufacturing, HasInternals, ExteriorCore, Rotatable, StaticMaintenance
+	Tags: Ability:MinePlanet, Ability:DropoffPoint
+
+	Size := HexSize * Hexes
+	Hex.Mass := HexSize
+
+	CargoStorage := Size / 4
+	PlanetMiningRate := Size * 10 / 28
+	MiningLasers := 1
+
+	PowerUse := Size * 100
+
+	Hex.Resistance := 0.2
+	Hex.HP := 18 * HexSize
+
+	Hex.LaborCost := 0.5 * HexSize
+	Hex.BuildCost := 5 * HexSize
+	Hex.MaintainCost := HexSize / 5
+	Hull: Flagship
+
+	Hook: AddCargoStorage(CargoStorage)
+
+	Hook: AddPermanentStatus(CanGiveCargo)
+	Assert: Sum.MiningLasers == 1
+		Unique: True
+		Message: #ERROR_PLANETDEVOURER_NOLASER
+
+	Assert: Sum.IsHarvester >= 1
+		Unique: True
+		Message: #ERROR_PLANETDEVOURER_HARVESTERONLY
+
+	Modifier: MiningRateFactor(factor)
+		PlanetMiningRate := PlanetMiningRate * factor
+
+	Requires:
+		Command = 1
+		Power = PowerUse
+
+	Module: Core
+		Sprite: TractorGun::0 * #a1692c
+		DrawMode: 1

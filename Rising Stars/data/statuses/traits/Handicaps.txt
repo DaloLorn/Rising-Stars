@@ -1,0 +1,29 @@
+Status: NOOB
+	Visible To: Nobody
+
+	ModCivResourceMult(Money, 0.1)
+	ModCivResourceMult(Influence, 0.1)
+	ModCivResourceMult(Research, 0.1)
+	ModCivResourceMult(Defense, 0.1)
+	ModCivResourceMult(Labor, 0.1)
+	ModCivResourceMult(Energy, 0.1)
+
+Status: SUPERNOOB
+	Visible To: Nobody
+
+	ModCivResourceMult(Money, 0.2)
+	ModCivResourceMult(Influence, 0.2)
+	ModCivResourceMult(Research, 0.2)
+	ModCivResourceMult(Defense, 0.2)
+	ModCivResourceMult(Labor, 0.2)
+	ModCivResourceMult(Energy, 0.2)
+	
+Status: ULTRANOOB
+	Visible To: Nobody
+
+	ModCivResourceMult(Money, 0.3)
+	ModCivResourceMult(Influence, 0.3)
+	ModCivResourceMult(Research, 0.3)
+	ModCivResourceMult(Defense, 0.3)
+	ModCivResourceMult(Labor, 0.3)
+	ModCivResourceMult(Energy, 0.3)

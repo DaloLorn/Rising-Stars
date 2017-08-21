@@ -14,7 +14,7 @@ GlobalStat: BoardingDefense
 			Color: #ff8000
 			Secondary: Control
 			
-			Variable: BoardingStrength
+			Variable: BoardingDefense
 			
 GlobalStat: DefenseGeneration
 	Name: #S_DEFENSEGENERATION

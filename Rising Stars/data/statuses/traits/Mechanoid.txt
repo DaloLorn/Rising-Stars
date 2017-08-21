@@ -5,6 +5,7 @@ Status: Mechanoid
 	PerPopulationAddResource(1.0, Labor, Overpop Factor = False)
 
 	GrantAbility(MechanoidColonize)
+	GrantAbility(MechanoidColonize5)
 
 	AddDummyResource(Water, 1)
 	AddDummyResource(Meat, 6)

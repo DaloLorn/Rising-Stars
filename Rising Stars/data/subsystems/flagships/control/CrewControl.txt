@@ -17,6 +17,7 @@ Subsystem: CrewControl
 	Command := Hexes * 2
 
 	BoardingStrength := 0.5 * Crew
+	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
 
 	SupplyRate := 30 * HexSize * (Hexes-1)
 

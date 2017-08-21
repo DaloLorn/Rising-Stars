@@ -1,0 +1,17 @@
+Subsystem: BlockDefenseBuild
+	Name: Experimental Design
+	Description: <<
+		This ship's advanced features make it unsuitable for mass production or automated construction.
+
+		[img=MenuIcons::3;20]Cannot be built by Defense.[/img]
+		[img=MenuIcons::3;20]Does not conflict with any other applied subsystems.[/img]
+	>>
+	EvaluationOrder: -200
+	BaseColor: #cc0b04
+
+	Tags: DefaultUnlock, HasMaintenanceCost, Applied, Category:Hulls, NoCore
+	Hull: Support
+
+	Module: Default
+		Sprite: DesignationIcons::16
+		DrawMode: 3

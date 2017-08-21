@@ -1,0 +1,25 @@
+Building: VanguardPortal
+	Size: 5x5
+	Sprite: SpaceProgram
+	Name: #BLD_VANGUARDPORTAL
+	Description: #BLD_VANGUARDPORTAL_DESC
+	Category: Special
+	Base Cost: 5000
+	Tile Cost: 200
+	Base Maintenance: 100
+	Tile Maintenance: 20
+	Labor Cost: 500
+
+	ShowAttributeValue(Stabilizers Constructed, VanguardVictoryRequirement, Base Amount = 3, Multiplier = -1.0, Icon = ShieldImpactLarge*#de12de, Suffix = / 3)
+	ShowFTLValue(500, Name = FTL Cost)
+	ShowEnergyValue(1000, Name = Energy Cost, Apply Penalty = False)
+	TriggerConstructed(NotifyAll(#EVT_VANGUARD_PORTAL, Description = #EVT_VANGUARD_PORTAL_DESC, Icon = SpaceProgram))
+	ABEM_races::SelfDestructOnOwnerChange(Undevelop = True)
+	ModEmpireAttribute(VanguardVictoryRequirement, Add, -1)
+	AddRegionStatus(AllyBuff40)
+	ConsumeEnergy(1000)
+	ConsumeFTL(500)
+	ConsumeCargo(Ore, 1000)
+	ConflictBuilding(VanguardPortal)
+	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
+	RequireUnlockTag(VanguardUnlocks)
