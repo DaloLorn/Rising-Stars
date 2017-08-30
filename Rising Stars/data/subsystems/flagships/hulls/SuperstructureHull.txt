@@ -14,9 +14,9 @@ Subsystem: SuperstructureHull
 	AddShipModifier: TechMultFactor(2)
 
 	Hex.OreCost := 0
-	AddPostModifier: AddOreCost(HexSum.BuildCost)
-	AddPostModifier: AddOreCost(HexSum.LaborCost)
-	AddPostModifier: AddOreCost(HexSum.MaintainCost * 0.5)
+	AddPostModifier: AddOreCost(HexSum.BuildCost * 0.75)
+	AddPostModifier: AddOreCost(HexSum.LaborCost * 0.75)
+	AddPostModifier: AddOreCost(HexSum.MaintainCost * 0.375)
 
 	Module: Default
 		Sprite: HullSubsystems::3
