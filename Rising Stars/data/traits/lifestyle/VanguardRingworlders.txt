@@ -34,6 +34,7 @@ Trait: VanguardRingworlders
 	IfHaveTrait(Gate, LoadDesigns(ABEM_defaults/ringworlder/other))
 	IfHaveTrait(Fling, LoadDesigns(ABEM_defaults/ringworlder/other))
 	IfHaveTrait(Sublight, LoadDesigns(ABEM_defaults/ringworlder/other))
+	IfHaveTrait(Flux, LoadDesigns(ABEM_defaults/ringworlder/other))
 
 	ReplaceTechnologyNodes(Megacity,PlanetSupport2)
 	ModEmpireAttribute(VictoryType, Add, 1)
