@@ -1,7 +1,7 @@
 Trait: Technicists
 	Name: #TRAIT_TECHNICISTS
 	Description: #TRAIT_TECHNICISTS_DESC
-	Order: 11
+	Order: 12
 
 	DLC: Heralds
 

@@ -1,0 +1,14 @@
+Status: RRInitialRingworld
+	Visible To: Nobody
+	Collapses: True
+
+
+
+	OnEnable(ringworlders::SetAsHome())
+	IsHomeObject()
+	OnEnable(SpawnBuilding(PlanetaryCannon, (12, 0), Develop = True))
+	OnEnable(GivePopulation(2))
+	OnEnable(SpawnBuilding(Factory, (4, 3), Develop = True))
+	AddStatus(Ringworld)
+	AddDummyResource(Water, 1)
+	AddDummyResource(Meat, 1)

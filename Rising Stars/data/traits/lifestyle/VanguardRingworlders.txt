@@ -1,0 +1,40 @@
+Trait: VanguardRingworlders
+	Name: #TRAIT_VANGUARD_RINGWORLDER
+	Description: #TRAIT_VANGUARD_RINGWORLDER_DESC
+	Order: 13
+
+	Icon: PlanetType::14
+	Color: #8f8f8f
+
+	Category: Lifestyle
+	Unique: Lifestyle
+	AI Support: False
+
+	TriggerHomeworld(SpawnPlanet(Ringworld, Owned = True, Add Status = RRInitialRingworld, Radius = 750, Physics = False))
+	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
+	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
+	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))
+
+	SpawnShip(Harvester, Override Disable Starting = True)
+	SpawnShip(Harvester, Override Disable Starting = True)
+	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
+	AddStatusOwnedPlanets(ReclusiveRingworlder)
+
+	ReplaceTechnologyNodes(ArtificialPlanetoid, FactoryLabor2)
+	ReplaceTechnologyNodes(Ringworld, Science)
+	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
+
+	UnlockTag(RingworldUnlock)
+	UnlockSubsystem(HarvesterHull)
+	UnlockSubsystem(PlanetMiningLaser)
+	UnlockTag(VanguardUnlocks)
+
+	IfHaveTrait(Slipstream, LoadDesigns(ABEM_defaults/ringworlder/slipstream))
+	IfHaveTrait(Hyperdrive, LoadDesigns(ABEM_defaults/ringworlder/hyperdrive))
+	IfHaveTrait(Gate, LoadDesigns(ABEM_defaults/ringworlder/other))
+	IfHaveTrait(Fling, LoadDesigns(ABEM_defaults/ringworlder/other))
+	IfHaveTrait(Sublight, LoadDesigns(ABEM_defaults/ringworlder/other))
+
+	ReplaceTechnologyNodes(Megacity,PlanetSupport2)
+	ModEmpireAttribute(VictoryType, Add, 1)
+	ModAttribute(ForbidColonization, Add, 1)
