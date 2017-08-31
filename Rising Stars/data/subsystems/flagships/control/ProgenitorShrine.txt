@@ -1,0 +1,44 @@
+Subsystem: ProgenitorShrine
+	Name: #S_PROGENITOR_SHRINE
+	Description: #S_PROGENITOR_SHRINE_DESC
+	BaseColor: #408fc1
+	Elevation: 1
+
+	DamageOrder: -100
+	EvaluationOrder: -20
+
+	Tags: BaseCost, Prayer, RaceSpecial, Important
+	Tags: IsShield, Defense, Category:Control, HasInternals
+	Hull: Flagship, Station
+
+	Prayer := Hexes * 2
+	RequirePrayer := 1
+
+	Size := HexSize * Hexes
+
+	ShieldCapacity := Size * 150
+	ShieldRegen := Size * 1.5
+	ShieldHexes := Hexes
+
+	DamageFactor := 1.0 + (Size / ShipSize) * 1.2
+	RepairFactor := 1.0 + (Size / ShipSize) / 6
+
+	AddShipModifier: tag/Weapon::DamageFactor(DamageFactor)
+	AddShipModifier: RepairFactor(RepairFactor)
+	
+	Hex.Resistance := 0.5
+	Hex.HP := 16 * HexSize
+	Hex.Mass := 3 * HexSize
+	Hex.BuildCost := 2 * Hex.BuildCost
+	Hex.LaborCost := 5 * Hex.LaborCost
+	Hex.MaintainCost := 2 * Hex.MaintainCost
+
+	Effect: ABEMShieldDamage
+
+	Assert: Sum.Prayer >= Sum.Command
+		Unique: True
+		Message: #ERROR_EQUAL_PRAYER
+	
+	Module: Core
+		Sprite: RSComputer * #408fc1
+		Hex.BuildCost := 4 * Hex.BuildCost

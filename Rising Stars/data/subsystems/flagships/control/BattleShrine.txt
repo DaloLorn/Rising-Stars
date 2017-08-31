@@ -30,4 +30,4 @@ Subsystem: BattleShrine
 	
 	Module: Core
 		Sprite: ProgenitorShield * #408fc1
-		Hex.BuildCost := 2 * Hex.BuildCost
+		Hex.BuildCost := 4 * Hex.BuildCost
