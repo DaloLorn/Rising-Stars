@@ -30,5 +30,5 @@ Subsystem: DevoutShrine
 		Message: #ERROR_EQUAL_PRAYER
 	
 	Module: Core
-		Sprite: AntimatterReactor * #408fc1
+		Sprite: ShieldShrine
 		Hex.BuildCost := 2 * Hex.BuildCost

@@ -135,3 +135,15 @@ Material: SecurityStation
 Material: ABEMShuttle
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/shuttle.png
+Material: ShieldShrine
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/shieldshrine.png
+Material: WarShrine
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/warshrine.png
+Material: GreatShrine
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/greatshrine.png
+Material: ProgenitorShrine
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/progenitorshrine.png
