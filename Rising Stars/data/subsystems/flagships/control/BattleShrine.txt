@@ -14,8 +14,8 @@ Subsystem: BattleShrine
 	RequirePrayer := 1
 
 	Size := HexSize * Hexes
-	DamageFactor := 1.0 + (Size / ShipSize)
-	RepairFactor := 1.0 + (Size / ShipSize) / 8
+	DamageFactor := 1.0 + (Size / ShipSize) * 1.5
+	RepairFactor := 1.0 + (Size / ShipSize) / 4
 
 	AddShipModifier: tag/Weapon::DamageFactor(DamageFactor)
 	AddShipModifier: RepairFactor(RepairFactor)

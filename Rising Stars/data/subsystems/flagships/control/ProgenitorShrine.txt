@@ -16,12 +16,12 @@ Subsystem: ProgenitorShrine
 
 	Size := HexSize * Hexes
 
-	ShieldCapacity := Size * 150
-	ShieldRegen := Size * 1.5
+	ShieldCapacity := Size * 220
+	ShieldRegen := Size * 1.25
 	ShieldHexes := Hexes
 
-	DamageFactor := 1.0 + (Size / ShipSize) * 1.2
-	RepairFactor := 1.0 + (Size / ShipSize) / 6
+	DamageFactor := 1.0 + (Size / ShipSize) * 2
+	RepairFactor := 1.0 + (Size / ShipSize) / 2
 
 	AddShipModifier: tag/Weapon::DamageFactor(DamageFactor)
 	AddShipModifier: RepairFactor(RepairFactor)
@@ -29,9 +29,9 @@ Subsystem: ProgenitorShrine
 	Hex.Resistance := 0.5
 	Hex.HP := 16 * HexSize
 	Hex.Mass := 3 * HexSize
-	Hex.BuildCost := 2 * Hex.BuildCost
-	Hex.LaborCost := 5 * Hex.LaborCost
-	Hex.MaintainCost := 2 * Hex.MaintainCost
+	Hex.BuildCost := 2 * HexSize
+	Hex.LaborCost := 5 * HexSize
+	Hex.MaintainCost := 2 * HexSize
 
 	Effect: ABEMShieldDamage
 
