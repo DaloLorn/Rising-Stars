@@ -429,8 +429,37 @@ S_SHIELDED_AMGEN_DESC: <<
 	[img=Minus]Provides less power and resupplies the ship slower than a regular antimatter generator.[/img]
 >>
 
+S_BATTLE_SHRINE: Shrine of War
+S_SHRINE: Shrine of Protection
+S_GRAND_SHRINE: Shrine of Leadership
+S_PROGENITOR_SHRINE: Shrine of the Gods
+S_BATTLE_SHRINE_DESC: <<
+	A shrine honoring the War God, Enilatros, built to his exacting specifications. Praying to this shrine improves the crew's effectiveness in combat, making them hit harder and think faster.
+
+	[img=Plus]Improves the ship's damage output and repair rate.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_GRAND_SHRINE_DESC: <<
+	A shrine honoring the God of Leadership, Ialatros, and built from the blueprints he has given us. Although this shrine is not as vast as the others, its elaborate design and the teachings within remind the crew that size does not always matter.
+
+	[img=Plus]Adds twice as much Prayer as other Shrines.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_PROGENITOR_SHRINE_DESC: <<
+	An extremely complex shrine, built to honor all of the Old Gods. Its power is almost tangible; the Gods have truly blessed us with these blueprints.
+
+	[img=Plus]Combines and improves upon the effects of all other Shrines.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=Minus]Extremely expensive.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
 S_SHRINE_DESC: <<
-	A shrine to honor the Old Gods, constructed in accordance with the blueprints they bestowed upon us. Praying to the shrine protects the ship from harm.
+	A shrine to honor the Goddess of Wisdom, Alephatra, and built under her guiding hand. Praying to this shrine protects the ship from harm.
 
 	[img=Plus]Adds a Shield to the ship.[/img]
 	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]

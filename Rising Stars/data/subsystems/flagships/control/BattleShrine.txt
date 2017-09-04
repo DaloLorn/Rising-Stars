@@ -19,7 +19,7 @@ Subsystem: BattleShrine
 
 	AddShipModifier: tag/Weapon::DamageFactor(DamageFactor)
 	AddShipModifier: RepairFactor(RepairFactor)
-	
+
 	Hex.Resistance := 0.5
 	Hex.HP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
@@ -27,7 +27,7 @@ Subsystem: BattleShrine
 	Assert: Sum.Prayer >= Sum.Command
 		Unique: True
 		Message: #ERROR_EQUAL_PRAYER
-	
+
 	Module: Core
 		Sprite: WarShrine
 		Hex.BuildCost := 4 * Hex.BuildCost
