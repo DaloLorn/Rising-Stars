@@ -1,6 +1,6 @@
 Technology: Megacity
 	Name: #R_BLD_MEGACITY
-	Description: #R_BLD_MEGACITY_DESC:16
+	Description: #R_BLD_MEGACITY_DESC
 	Class: Unlock
 	Category: Buildings
 
@@ -13,3 +13,18 @@ Technology: Megacity
 	ModAttribute(ProgenitorTechProgress, Add, 1)
 	UnlockTag(MegacityUnlock)
 	SkipOnUnlockedTag(MegacityUnlock)
+
+Technology: AtroanMegacity
+	Name: #R_CORE_ADV
+	Description: #R_CORE_ADV_DESC
+	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	Point Cost: 800
+	Time Cost: 90
+
+	Icon: AncientCore
+	Color: #00f3ff
+
+	UnlockTag(AdvancedCores)
+	SkipOnUnlockedTag(AdvancedCores)
