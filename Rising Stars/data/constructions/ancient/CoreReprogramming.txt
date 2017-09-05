@@ -1,0 +1,17 @@
+Construction: CoreReprogrammingMoney
+	Name: #CONS_REPROGRAMMING_MONEY
+	Description: #CONS_REPROGRAMMING_MONEY_DESC
+
+	Category: Core Programming
+
+	Build Cost: 750
+	Labor Cost: 45
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	

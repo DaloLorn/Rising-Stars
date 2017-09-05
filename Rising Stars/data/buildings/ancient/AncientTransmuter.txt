@@ -17,6 +17,7 @@ Building: AncientTransmuter
 	ConflictBuilding(AncientCore, Hide = True)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
 
 	AddStatus(AncientClaim)
 	ChangeNativeResourceTo(BaseMaterial)

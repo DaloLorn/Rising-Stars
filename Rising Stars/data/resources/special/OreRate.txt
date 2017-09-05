@@ -12,5 +12,6 @@ Resource: OreRate
 	Level: 0
 
 	TriggerPeriodic(AddCargo(Ore, 1), Interval = 1)
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))
 
 	OnExportMoveLocalCargo(Ore)

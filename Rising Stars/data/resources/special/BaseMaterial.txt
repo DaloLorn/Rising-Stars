@@ -12,5 +12,7 @@ Resource: BaseMaterial
 	Level: 0
 
 	TriggerPeriodic(AddCargo(BaseMaterial, 1), Interval = 6)
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.5), Interval = 6))
+	
 
 	OnExportMoveLocalCargo(BaseMaterial)

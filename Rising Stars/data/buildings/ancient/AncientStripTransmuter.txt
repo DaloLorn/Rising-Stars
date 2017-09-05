@@ -1,15 +1,17 @@
-Building: AncientCore
-	Name: #BLD_ANCIENT_CORE
-	Description: #BLD_ANCIENT_CORE_DESC
-	Sprite: CoreBuilding
+Building: AncientStripTransmuter
+	Name: #BLD_ANCIENT_STRIP_TRANSMUTER
+	Description: #BLD_ANCIENT_STRIP_TRANSMUTER_DESC
+	Sprite: StripMiner
 
 	Category: ControlHubs
 
-	Size: 6x6
+	Size: 10x6
 
-	Base Cost: 150
-	Build Time: 90
-	Base Maintenance: 70
+	Base Cost: 80
+	Tile Cost: 4
+	Build Time: 60
+
+	Build Affinity: Mountains
 
 	In Queue: True
 
@@ -20,10 +22,5 @@ Building: AncientCore
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
 
-	DisableResourceExport()
-	ProduceAsteroidPressure()
-
 	AddStatus(AncientClaim)
-	AddStatus(AncientCore)
-
-	Repeat(5, AddStatus(AncientProduce))
+	ChangeNativeResourceTo(StripTransmuter)

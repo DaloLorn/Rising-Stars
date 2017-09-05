@@ -1,0 +1,18 @@
+Resource: StripTransmuter
+	Name: #R_STRIP_TRANSMUTER
+	Description: #R_STRIP_TRANSMUTER_DESC
+	Native Biome: Crystallic
+
+	Icon: ResourceIconsSmall::81
+	Small Icon: ResourceIconsSmall::81
+
+	Rarity: Common
+	Distribution: 0
+	Frequency: 0
+	Level: 0
+
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.75), Interval = 6)
+	TriggerPeriodic(AddCargo(Ore, 0.75), Interval = 1)
+
+	OnExportMoveLocalCargo(BaseMaterial)
+	OnExportMoveLocalCargo(Ore)
