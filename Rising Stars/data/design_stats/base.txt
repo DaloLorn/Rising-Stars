@@ -26,7 +26,7 @@
 GlobalStat: DPS
 	Name: #S_DPS
 	Description: #STT_DPS
-	AttributeIcons::3
+	Icon: AttributeIcons::3
 	Color: #ff8080
 
 	Variable: DPS

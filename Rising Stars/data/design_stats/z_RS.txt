@@ -209,6 +209,22 @@ SubsystemStat: ForcefieldRegen
 
 	Variable: ForcefieldRegen
 
+SubsystemStat: DamageFactor
+	Name: #S_DAMAGEFACTOR
+	Icon: AttributeIcons::3
+	Color: #ff8080
+	Suffix: x
+
+	Variable: DamageFactor
+
+SubsystemStat: RepairFactor
+	Name: #S_REPAIRFACTOR
+	Icon: AttributeIcons::6
+	Color: #80ff80
+	Suffix: x
+
+	Variable: RepairFactor
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************
