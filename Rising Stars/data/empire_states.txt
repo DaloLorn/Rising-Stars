@@ -101,7 +101,7 @@ visible:
 	attribute double ForbidSecondaryUnlock = 0
 	attribute double DrydockCostFactor = 1
 	attribute double HasPopulation = 1
-	attribute double ForbidTerraform = 0
+	attribute double ForbidTerraform = 1
 	attribute double HasFlux = 0
 	attribute double ForbidDeepSpace = 0
 	attribute double HyperdriveStartCostMod = 0
