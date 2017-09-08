@@ -1,0 +1,28 @@
+Construction: CoreMoney
+	Name: #CONS_CORE_MONEY
+	Description: #CONS_CORE_MONEY_DESC
+	Icon: AncientCore*#d1cb6a
+
+	Category: Core Programming
+
+	Build Cost: 750
+	Labor Cost: 45
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreMoney)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 250)
+	AddLaborCostStatusCount(CoreProgrammed, 15)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreMoney)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreEnergy)

@@ -1,0 +1,28 @@
+Construction: CoreResearch
+	Name: #CONS_CORE_RESEARCH
+	Description: #CONS_CORE_RESEARCH_DESC
+	Icon: AncientCore*#8c4ec9
+
+	Category: Core Programming
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreResearch)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreResearch)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreMoney)

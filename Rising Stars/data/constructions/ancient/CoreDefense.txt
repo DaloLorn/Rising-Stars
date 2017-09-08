@@ -1,0 +1,28 @@
+Construction: CoreDefense
+	Name: #CONS_CORE_DEFENSE
+	Description: #CONS_CORE_DEFENSE_DESC
+	Icon: AncientCore*#af7926
+
+	Category: Core Programming
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreDefense)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreDefense)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreMoney)

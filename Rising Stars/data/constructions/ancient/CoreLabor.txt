@@ -1,0 +1,28 @@
+Construction: CoreLabor
+	Name: #CONS_CORE_LABOR
+	Description: #CONS_CORE_LABOR_DESC
+	Icon: AncientCore*#b1b4b6
+
+	Category: Core Programming
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreLabor)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreLabor)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreMoney)

@@ -1,0 +1,28 @@
+Construction: CoreEnergy
+	Name: #CONS_CORE_ENERGY
+	Description: #CONS_CORE_ENERGY_DESC
+	Icon: AncientCore*#42b4bd
+
+	Category: Core Programming
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreEnergy)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreEnergy)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreMoney)

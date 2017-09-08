@@ -1,0 +1,28 @@
+Construction: CoreInfluence
+	Name: #CONS_CORE_INFLUENCE
+	Description: #CONS_CORE_INFLUENCE_DESC
+	Icon: AncientCore*#0087c7
+
+	Category: Core Programming
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreInfluence)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreInfluence)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreMoney)
