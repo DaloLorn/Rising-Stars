@@ -13,3 +13,19 @@ Technology: MetropolisUpg
 	Time Cost: 180
 	ReduceResearchPenalty(700)
 	ModAttribute(MetropolisExtraPressureCap, Add, 2)
+
+Technology: AtroanMetropolisUpg
+	Name: #R_CORE_OPTIMIZATIONS
+	Description: #R_CORE_OPTIMIZATIONS_DESC
+
+	Icon: AncientCore
+	Symbol: SupplyIcon
+	Color: #b0d16a
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: BigUpgrade
+
+	Point Cost: 700
+	Time Cost: 180
+	ReduceResearchPenalty(700)
+	ModAttribute(OptimizedCores, Add, 1)

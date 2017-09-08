@@ -13,6 +13,8 @@ Resource: StripTransmuter
 
 	TriggerPeriodic(AddCargo(BaseMaterial, 0.75), Interval = 6)
 	TriggerPeriodic(AddCargo(Ore, 0.75), Interval = 1)
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.25), Interval = 6))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 1))
 
 	OnExportMoveLocalCargo(BaseMaterial)
 	OnExportMoveLocalCargo(Ore)

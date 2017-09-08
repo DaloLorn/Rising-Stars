@@ -12,6 +12,7 @@ Construction: CoreEnergy
 	RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreEnergy)
+	RequireAttributeGTE(OptimizedCores, 1)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)

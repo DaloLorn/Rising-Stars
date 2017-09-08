@@ -17,6 +17,7 @@ Building: AncientStripTransmuter
 
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
+	RequireTagUnlocked(AdvancedCores)
 	ConflictBuilding(AncientCore, Hide = True)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)

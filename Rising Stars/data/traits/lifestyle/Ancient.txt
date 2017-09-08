@@ -59,8 +59,9 @@ Trait: Ancient
 
 	ReplaceTechnologyNodes(FactoryLabor, FoundryLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, FoundryLabor2)
+	ReplaceTechnologyNodes(MetropolisUpg, AtroanMetropolisUpg)
 
-	ReplaceTechnologyNodes(Megacity, Thrust2)
+	ReplaceTechnologyNodes(Megacity, AtroanMegacity)
 	ReplaceTechnologyNodes(RingHabitat, Thrust)
 	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
 	ReplaceTechnologyNodes(Population, FoundryLabor)

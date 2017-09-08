@@ -12,6 +12,7 @@ Construction: CoreMoney
 	RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreMoney)
+	RequireAttributeGTE(OptimizedCores, 1)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
