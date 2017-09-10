@@ -12,7 +12,7 @@ Technology: EnergyHurdle
 	Point Cost: 0
 	Time Cost: 80
 
-	SecondaryEnergyCost(1500)
+	SecondaryEnergyCost(1000)
 
 Technology: EnergyHurdle2
 	Name: #R_ENERGY_HURDLE_VERYLARGE
@@ -28,7 +28,7 @@ Technology: EnergyHurdle2
 	Point Cost: 0
 	Time Cost: 80
 
-	SecondaryEnergyCost(2000)
+	SecondaryEnergyCost(1500)
 
 Technology: EnergyHurdle3
 	Name: #R_ENERGY_HURDLE_INSANE
@@ -44,4 +44,4 @@ Technology: EnergyHurdle3
 	Point Cost: 0
 	Time Cost: 80
 
-	SecondaryEnergyCost(2500)
+	SecondaryEnergyCost(2000)
