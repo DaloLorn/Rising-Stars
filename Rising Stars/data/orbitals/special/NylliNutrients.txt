@@ -1,0 +1,33 @@
+Module: NylliFood
+	Name: #ORB_FARM
+	Description: #ORB_FARM_DESC
+	Icon: OrbitalIcons::0
+	Strategic Icon: Megafarm
+	Maintenance: 150
+	Build Cost: 350
+	Labor Cost: 10
+	Health: 7000
+	Armor: 7000
+	Model: CommerceStation
+	Material: VolkurGenericPBR
+	Size: 5
+
+	RequireUnlockTag(NylliNutrients)
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
+	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
+Module: NylliWater
+	Name: #ORB_HYDROGENATOR
+	Icon: OrbitalIcons::0
+	Strategic Icon: Hydrogenator
+	Description: #ORB_HYDROGENATOR_DESC
+	Maintenance: 150
+	Build Cost: 350
+	Labor Cost: 10
+	Health: 7000
+	Armor: 7000
+	Model: Depot
+	Material: VolkurGenericPBR
+	Size: 5
+	RequireUnlockTag(NylliNutrients)
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
+	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)

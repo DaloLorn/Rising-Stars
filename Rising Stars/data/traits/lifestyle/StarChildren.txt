@@ -42,7 +42,7 @@ Trait: StarChildren
 	ReplaceTechnologyNodes(Construction2, HabitatUpgrade)
 	ReplaceTechnologyNodes(CivConstruction, HabitatUpgrade)
 	ReplaceTechnologyNodes(CivConstruction2, HabitatUpgrade)
-	ReplaceTechnologyNodes(Megacity, HabitatUpgrade)
+	ReplaceTechnologyNodes(Megacity, NylliMegacity)
 	ReplaceTechnologyNodes(MetropolisUpg, HabitatUpgrade)
 	ReplaceTechnologyNodes(PlanetaryEngine, HabitatUpgrade)
 	ReplaceTechnologyNodes(Population, HabitatUpgrade)

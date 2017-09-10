@@ -28,3 +28,18 @@ Technology: AtroanMegacity
 
 	UnlockTag(AdvancedCores)
 	SkipOnUnlockedTag(AdvancedCores)
+
+Technology: NylliMegacity
+	Name: #R_NYLLI_FOOD
+	Description: #R_NYLLI_FOOD_DESC
+
+	Icon: Plantation
+	Symbol: SupplyIcon
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 120
+
+	SecondaryEnergyCost(1000)
+	SkipOnUnlockedTag(NylliNutrients)
+	UnlockTag(NylliNutrients)
