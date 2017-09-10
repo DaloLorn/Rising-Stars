@@ -1,7 +1,7 @@
 Construction: CoreDefense
 	Name: #CONS_CORE_DEFENSE
 	Description: #CONS_CORE_DEFENSE_DESC
-	Icon: AncientCore*#af7926
+	Icon: CoreBuilding*#af7926
 
 	Category: Core Programming
 

@@ -1,7 +1,7 @@
 Construction: CoreResearch
 	Name: #CONS_CORE_RESEARCH
 	Description: #CONS_CORE_RESEARCH_DESC
-	Icon: AncientCore*#8c4ec9
+	Icon: CoreBuilding*#8c4ec9
 
 	Category: Core Programming
 

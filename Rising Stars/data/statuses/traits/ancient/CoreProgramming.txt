@@ -5,41 +5,41 @@ Status: CoreProgrammed
 Status: CoreMoney
 	Name: #S_CORE_MONEY
 	Description: #S_CORE_MONEY_DESC
-	Icon: AncientCore*#d1cb6a
+	Icon: CoreBuilding*#d1cb6a
 
 	IfHaveStatus(AncientCore, AddResource(Money, 1.5))
 
 Status: CoreEnergy
 	Name: #S_CORE_ENERGY
 	Description: #S_CORE_ENERGY_DESC
-	Icon: AncientCore*#42b4bd
+	Icon: CoreBuilding*#42b4bd
 
 	IfHaveStatus(AncientCore, AddResource(Energy, 1.5))
 
 Status: CoreInfluence
 	Name: #S_CORE_INFLUENCE
 	Description: #S_CORE_INFLUENCE_DESC
-	Icon: AncientCore*#0087c7
+	Icon: CoreBuilding*#0087c7
 
 	IfHaveStatus(AncientCore, AddResource(Influence, 1.5))
 
 Status: CoreLabor
 	Name: #S_CORE_LABOR
 	Description: #S_CORE_LABOR_DESC
-	Icon: AncientCore*#b1b4b6
+	Icon: CoreBuilding*#b1b4b6
 
 	IfHaveStatus(AncientCore, AddResource(Labor, 1.5))
 
 Status: CoreDefense
 	Name: #S_CORE_DEFENSE
 	Description: #S_CORE_DEFENSE_DESC
-	Icon: AncientCore*#af7926
+	Icon: CoreBuilding*#af7926
 
 	IfHaveStatus(AncientCore, AddResource(Defense, 1.5))
 
 Status: CoreResearch
 	Name: #S_CORE_RESEARCH
 	Description: #S_CORE_RESEARCH_DESC
-	Icon: AncientCore*8c4ec9
+	Icon: CoreBuilding*8c4ec9
 
 	IfHaveStatus(AncientCore, AddResource(Research, 1.5))

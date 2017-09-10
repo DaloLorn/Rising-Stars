@@ -1,7 +1,7 @@
 Construction: CoreMoney
 	Name: #CONS_CORE_MONEY
 	Description: #CONS_CORE_MONEY_DESC
-	Icon: AncientCore*#d1cb6a
+	Icon: CoreBuilding*#d1cb6a
 
 	Category: Core Programming
 

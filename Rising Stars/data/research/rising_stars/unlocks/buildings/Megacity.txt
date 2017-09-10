@@ -23,7 +23,7 @@ Technology: AtroanMegacity
 	Point Cost: 800
 	Time Cost: 90
 
-	Icon: AncientCore
+	Icon: CoreBuilding
 	Color: #00f3ff
 
 	UnlockTag(AdvancedCores)

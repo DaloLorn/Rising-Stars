@@ -1,7 +1,7 @@
 Construction: CoreEnergy
 	Name: #CONS_CORE_ENERGY
 	Description: #CONS_CORE_ENERGY_DESC
-	Icon: AncientCore*#42b4bd
+	Icon: CoreBuilding*#42b4bd
 
 	Category: Core Programming
 

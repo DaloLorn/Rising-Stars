@@ -1,7 +1,7 @@
 Construction: CoreLabor
 	Name: #CONS_CORE_LABOR
 	Description: #CONS_CORE_LABOR_DESC
-	Icon: AncientCore*#b1b4b6
+	Icon: CoreBuilding*#b1b4b6
 
 	Category: Core Programming
 

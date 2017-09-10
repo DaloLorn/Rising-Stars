@@ -1,7 +1,7 @@
 Construction: CoreInfluence
 	Name: #CONS_CORE_INFLUENCE
 	Description: #CONS_CORE_INFLUENCE_DESC
-	Icon: AncientCore*#0087c7
+	Icon: CoreBuilding*#0087c7
 
 	Category: Core Programming
 
