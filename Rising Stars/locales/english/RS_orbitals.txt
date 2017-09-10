@@ -94,4 +94,38 @@ ORB_HYDROGENATOR_DESC: <<
 ORB_SENATE_BLURB: Generates 10 Influence stake.
 ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
 ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
+ORB_HYDROPONICS_SATELLITE_BLURB: Adds 1 Food and Water to the planet it is in orbit of.
+ORB_HYDROPONICS_SATELLITE: Nutrient Reclamation Satellite
+ORB_HYDROPONICS_SATELLITE_DESC: <<
+	A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight, as well as an advanced water processing facility.
 
+	Must be constructed in orbit of a planet.
+
+	The planet this is in orbit of gains 1 Food and Water resource.
+
+	Costs 750 Energy to construct in addition to its build cost.
+>>
+ORB_DEFENSE_SATELLITE_DESC: <<
+	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.
+
+	Must be constructed in orbit of a planet.
+
+	Support ships assigned to this planet fight at increased combat strength, and can independently move across the system in order to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the planet's orbit.
+
+	Additionally, the satellite is armed with a number of laser and missile turrets, allowing it to defend itself to a limited degree.
+
+	Costs 500 Energy to construct in addition to its build cost.
+
+	Only one tactical satellite may be constructed in orbit of every planet.
+>>
+ORB_RING_HABITAT_DESC: <<
+	A ring habitat constructed in low planetary orbit increases the population that can live in and around it, allowing a luxuriously maintained lifestyle in space for those who can afford it.
+
+	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 2.
+
+	2 Population is removed from the planet constructing the Ring Habitat to live on it. These people will appear on the planet owning the Ring Habitat once it is completed.
+
+	Costs 10 Influence to construct in addition to its build cost.
+
+	Only one ring habitat may be constructed in orbit of every planet.
+>>

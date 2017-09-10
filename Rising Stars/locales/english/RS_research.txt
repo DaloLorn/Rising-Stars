@@ -428,3 +428,9 @@ R_CONNECTOR_SPECIALIZATION: <<
 
 	Functionally, it is identical to a 'LINK' node - this description is only here to assure you that this is most likely not a bug.
 >>
+R_ORB_HYDROPONICS_SATELLITE: Nutrient Reclamation Satellite
+R_ORB_HYDROPONICS_SATELLITE_DESC: <<
+	[color=#aaa][i]Unlocks the Nutrient Reclamation Satellite orbital.[/i][/color]
+
+	[bbloc=#ORB_HYDROPONICS_SATELLITE_DESC/]
+>>
