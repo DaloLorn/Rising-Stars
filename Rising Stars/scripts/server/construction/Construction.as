@@ -1091,8 +1091,8 @@ tidy class Construction : Component_Construction, Savable {
 		if(planet.isTerraforming())
 			return;
 
-		double cost = res.terraformCost * terraformCost * constructionCost;
-		double labor = res.terraformLabor;
+		double cost = res.terraformCost * terraformCost * constructionCost * obj.owner.TerraformCostFactor;
+		double labor = res.terraformLabor * obj.owner.TerraformLaborFactor;
 		if(cost < 0.0)
 			return;
 

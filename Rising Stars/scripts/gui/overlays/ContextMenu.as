@@ -373,8 +373,8 @@ class TerraformOption : Option, IInputDialogCallback {
 		if(!pathCheck.isUsablePath)
 			return;
 
-		laborFactor = 1.0 + config::TERRAFORM_COST_STEP * double(pathCheck.pathSize - 1);
-		costFactor = selected.terraformCostMod * laborFactor;
+		laborFactor = (1.0 + config::TERRAFORM_COST_STEP * double(pathCheck.pathSize - 1)) * playerEmpire.TerraformLaborFactor;
+		costFactor = selected.terraformCostMod * laborFactor * playerEmpire.TerraformCostFactor;
 
 		InputDialog@ dialog = InputDialog(this, null);
 		dialog.addTitle(locale::TERRAFORM+" "+clicked.name);

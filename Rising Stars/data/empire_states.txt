@@ -160,4 +160,6 @@ visible:
 	attribute double Glory = 0
 	attribute double ContestedSystems = 0
 	attribute double GloryFactor = 1
+	attribute double TerraformCostFactor = 1
+	attribute double TerraformLaborFactor = 1
 }
