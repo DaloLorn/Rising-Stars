@@ -8,12 +8,17 @@ Technology: Terraforming
 	Category: Terraforming
 	Point Cost: 750
 	Time Cost: 120
+	SkipOnUnlockedTag(Terraforming)
+	ModAttribute(ForbidTerraforming, Multiply, 0)
 Technology: AtroanTerraforming
 	Name: #R_CORE_PROGRAMMING
 	Description: #R_CORE_PROGRAMMING_DESC
 	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
 	Icon: CoreBuilding
 	Symbol: AffinityIcons::11
 	Color: #058514
 	Time Cost: 120
 	Point Cost: 750
+	UnlockTag(CoreProgramming)
+	SkipOnUnlockedTag(CoreProgramming)

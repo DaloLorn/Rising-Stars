@@ -12,7 +12,7 @@ Construction: CoreInfluence
 	RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreInfluence)
-	RequireAttributeGTE(OptimizedCores, 1)
+	RequireTagUnlocked(CoreProgramming)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)

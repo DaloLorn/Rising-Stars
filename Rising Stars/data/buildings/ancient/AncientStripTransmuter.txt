@@ -10,6 +10,8 @@ Building: AncientStripTransmuter
 	Base Cost: 80
 	Tile Cost: 4
 	Build Time: 60
+	Base Maintenance: 40
+	Tile Maintenance: 2
 
 	Build Affinity: Mountains
 

@@ -28,7 +28,7 @@ Status: CoreLabor
 	Description: #S_CORE_LABOR_DESC
 	Icon: CoreBuilding*#b1b4b6
 
-	IfHaveStatus(AncientCore, AddResource(Labor, 1.5))
+	IfHaveStatus(AncientCore, AddResource(Labor, 3))
 
 Status: CoreDefense
 	Name: #S_CORE_DEFENSE

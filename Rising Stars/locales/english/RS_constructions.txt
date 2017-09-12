@@ -96,3 +96,44 @@ OUTPOST_WEAPONS_DESC: <<
 >>
 CONS_BOARDING_PARTY: Train Boarding Party
 CONS_BOARDING_PARTY_DESC: Train a new batch of troops to replace the target flagship's boarding parties.
+CONS_CORE_DEFENSE: High-Security Core
+CONS_CORE_ENERGY: Overcharged Core
+CONS_CORE_INFLUENCE: Communication Core
+CONS_CORE_LABOR: Manufacturing Core
+CONS_CORE_RESEARCH: Science Core
+CONS_CORE_MONEY: Allocator Core
+CONS_CORE_PROGRAM: <<
+	The Core will generate $1 equivalent to $2 pressure on top of its usual benefits. Removes any other Core Programming effects.
+
+	Attempting to reprogram a previously programmed Core will increase the build and Labor costs of the new program by 25% as the existing configuration is discarded.
+>>
+CONS_CORE_DEFENSE_DESC: <<
+	Reconfigure the planet's Core to allocate excess resources towards the creation of small arms and security equipment.
+
+	[bbloc=#CONS_CORE_PROGRAM:Defense:1.5/]
+>>
+CONS_CORE_ENERGY_DESC: <<
+	Reconfigure the planet's Core to minimize power expenditure and allocate resources to power generation.
+
+	[bbloc=#CONS_CORE_PROGRAM:Energy:1.5/]
+>>
+CONS_CORE_INFLUENCE_DESC: <<
+	Reconfigure the planet's Core to allocate additional power to its communications equipment and construct additional transmitters.
+
+	[bbloc=#CONS_CORE_PROGRAM:Influence:1.5/]
+>>
+CONS_CORE_LABOR_DESC: <<
+	Reconfigure the planet's Core to manufacture large quantities of industrial equipment and components.
+
+	[bbloc=#CONS_CORE_PROGRAM:Labor:3/]
+>>
+CONS_CORE_RESEARCH_DESC: <<
+	Reconfigure the planet's Core to dedicate more processing resources to scientific endeavours.
+
+	[bbloc=#CONS_CORE_PROGRAM:Research:1.5/]
+>>
+CONS_CORE_MONEY_DESC: <<
+	Reconfigure the planet's Core to minimize resource consumption and allocate excess resources wherever they are needed.
+
+	[bbloc=#CONS_CORE_PROGRAM:Money:1.5/]
+>>

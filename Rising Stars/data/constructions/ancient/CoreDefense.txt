@@ -12,7 +12,7 @@ Construction: CoreDefense
 	RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreDefense)
-	RequireAttributeGTE(OptimizedCores, 1)
+	RequireTagUnlocked(CoreProgramming)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
