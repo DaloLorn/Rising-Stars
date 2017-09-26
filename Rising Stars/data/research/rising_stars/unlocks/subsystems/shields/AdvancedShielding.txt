@@ -12,3 +12,17 @@ Technology: AdvancedShielding
 	UnlockSubsystem(CovariantShield)
 	ModAttribute(ProgenitorTechProgress, Add, 5)
 	SecondaryEnergyCost(1500)
+
+Technology: FeyhAdvancedShielding
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Name: #R_SYS_GRAND_SHRINE
+	Description: #R_SYS_GRAND_SHRINE_DESC
+	Icon: GreatShrine
+	Time Cost: 180
+	Class: Unlock
+	Color: #e20dff
+	Point Cost: 1000
+	UnlockTag(ShieldCharger)
+	UnlockTag(StellarShieldOrbital)
+	UnlockSubsystem(GrandShrine)
+	SecondaryEnergyCost(1500)

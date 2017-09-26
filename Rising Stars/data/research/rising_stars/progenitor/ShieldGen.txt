@@ -12,3 +12,16 @@ Technology: ProgenitorShield
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(RemnantShield)
 	UnlockSubsystem(RemnantShield)
+
+Technology: FeyhProgenitorShield
+	Icon: ProgenitorShrine
+	Description: #R_SYS_PROGENITOR_SHRINE_DESC
+	Name: #R_SYS_PROGENITOR_SHRINE
+	Point Cost: 1500
+	Time Cost: 180
+	Class: Unlock
+	Color: #000bde
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	RequireUnlockTag(ProgenitorTech)
+	AutoUnlockOnUnlockedTag(RemnantShield)
+	UnlockSubsystem(ProgenitorShrine)

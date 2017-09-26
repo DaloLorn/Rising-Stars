@@ -442,7 +442,7 @@ R_CORE_OPTIMIZATIONS_DESC: <<
 >>
 R_TERRAFORMING: Terraforming
 R_TERRAFORMING_DESC: <<
-	[color=#aaa][i]After a number of failed experiments, and destroying several native ecosystems, we've finally figured out how to alter a planetary environment to suit our requirements. The indigenous wildlife looked weird, anyways.[/i][/color]
+	[color=#aaa][i]After a number of failed experiments, and destroying several native ecosystems in the process, we've finally figured out how to alter a planetary environment to suit our requirements. The indigenous wildlife looked weird, anyways.[/i][/color]
 
 	Allows planets to be terraformed to a basic Tier 1 resource.
 >>
@@ -459,4 +459,28 @@ R_CORE_ADV_DESC: <<
 	Unlocks the Ore Transmuter control hub.
 
 	[bbloc=#BLD_ANCIENT_STRIP_TRANSMUTER_DESC/]
+>>
+R_SYS_BATTLE_SHRINE: Wrath of Enilatros
+R_SYS_BATTLE_SHRINE_DESC: <<
+	[color=#aaa][i]Our priests have achieved communion with the War God, Enilatros. He has vowed to improve the combat performance of anyone who prays to him.[/i][/color]
+
+	Unlocks the Shrine of War for use on flagships.
+
+	[bbloc=#S_BATTLE_SHRINE_DESC/]
+>>
+R_SYS_GRAND_SHRINE: Knowledge of the Greats
+R_SYS_GRAND_SHRINE_DESC: <<
+	[color=#aaa][i]Under Alephatra's guidance, our priests have contacted her husband Ialatros, the God of Leadership. Together, they have granted us blueprints for several devices that will augment Alephatra's defensive blessings and inspire our crusaders, respectively.[/i][/color]
+
+	Unlocks the Power Transmitter and Stellar Shield Generator orbitals, and the Shrine of Leadership for use on flagships.
+
+	[bbloc=#S_GRAND_SHRINE_DESC/]
+>>
+R_SYS_PROGENITOR_SHRINE: Blessing of the Gods
+R_SYS_PROGENITOR_SHRINE_DESC: <<
+	[color=#aaa][i]Using the technology of the Ancients, our priests have communed with the Old Gods on a more profound level than ever before. They have blessed our great victories and given us designs for an impressive new shrine capable of channeling their combined power.[/i][/color]
+
+	Unlocks the Shrine of the Gods for use on flagships.
+
+	[bbloc=#S_PROGENITOR_SHRINE_DESC/]
 >>

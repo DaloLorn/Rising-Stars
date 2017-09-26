@@ -21,3 +21,7 @@ Trait: Devout
 	TriggerHomeworld(SpawnBuilding(Altar, (8, 4), Develop = True))
 	OnHomeworld(AddPlanetResource(BuildingWater)) #version>=150
 	OnHomeworld(AddPlanetResource(Soylent1)) #version>=150
+
+	ReplaceTechnologyNodes(ShieldGen, FeyhShieldGen)
+	ReplaceTechnologyNodes(AdvancedShielding, FeyhAdvancedShielding)
+	ReplaceTechnologyNodes(ProgenitorShield, FeyhProgenitorShield)

@@ -19,3 +19,21 @@ Technology: ShieldGen
 	SecondaryEnergyCost(1000)
 
 	ModAttribute(ProgenitorTechProgress, Add, 1)
+
+Technology: FeyhShieldGen
+	Name: #R_SYS_BATTLE_SHRINE
+	Description: #R_SYS_BATTLE_SHRINE_DESC
+
+	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: WarShrine
+	Color: #2b2bce
+
+	UnlockSubsystem(BattleShrine)
+	SkipOnUnlockedSubsystem(BattleShrine)
+
+	SecondaryEnergyCost(1000)
