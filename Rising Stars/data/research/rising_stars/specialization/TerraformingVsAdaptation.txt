@@ -1,0 +1,90 @@
+Technology: TerraformSpec1
+	Name: #R_SPEC_TERRAFORM1
+	Description: #R_SPEC_TERRAFORM1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(AdaptationSpec1, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.1)
+	ModAttribute(TerraformLaborFactor, Add, -0.1)
+
+Technology: AdaptationSpec1
+	Name: #R_SPEC_ADAPTATION1
+	Description: #R_SPEC_ADAPTATION1_DESC:10%:5%
+	Time Cost: 60
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	ReplaceTechnologyNodes(TerraformSpec1, SpecConnector)
+	ModAttribute(ImperialBldConstructionRate, Add, 1)
+	ModAttribute(BuildingCostFactor, Add, -0.2)
+	ModAttribute(BuildingMaintFactor, Add, -0.05)
+
+Technology: TerraformSpec2
+	Name: #R_SPEC_TERRAFORM2
+	Description: #R_SPEC_TERRAFORM2_DESC
+	Time Cost: 120
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(AdaptationSpec2, SpecConnector)
+	UnlockTag(Terraform2)
+
+Technology: AdaptationSpec2
+	Name: #R_SPEC_ADAPTATION2
+	Description: #R_SPEC_ADAPTATION2_DESC:25%
+	Time Cost: 120
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(TerraformSpec2, SpecConnector)
+	AddStatusOwnedPlanets(Adaptation2)
+
+Technology: TerraformSpec3
+	Name: #R_SPEC_TERRAFORM3
+	Description: #R_SPEC_TERRAFORM3_DESC:30%:15%
+	Time Cost: 240
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(AdaptationSpec3, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.15)
+	ModAttribute(TerraformLaborFactor, Add, -0.15)
+
+Technology: AdaptationSpec3
+	Name: #R_SPEC_ADAPTATION3
+	Description: #R_SPEC_ADAPTATION3_DESC:1
+	Time Cost: 240
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(TerraformSpec3, SpecConnector)
+	AddStatusOwnedPlanets(Adaptation3)
+
+Technology: TerraformSpec4
+	Name: #R_SPEC_TERRAFORM4
+	Description: #R_SPEC_TERRAFORM4_DESC
+	Time Cost: 300
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(AdaptationSpec4, SpecConnector)
+	UnlockTag(Terraform4)
+
+Technology: AdaptationSpec4
+	Name: #R_SPEC_ADAPTATION4
+	Description: #R_SPEC_ADAPTATION4_DESC:
+	Time Cost: 300
+	Point Cost: 1
+	Class: Unlock
+	Category: Specializations
+	SecondaryMoneyCost(1)
+	ReplaceTechnologyNodes(TerraformSpec4, SpecConnector)
+	UnlockTag(Adaptation4)
