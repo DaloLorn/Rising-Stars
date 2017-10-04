@@ -162,4 +162,5 @@ visible:
 	attribute double GloryFactor = 1
 	attribute double TerraformCostFactor = 1
 	attribute double TerraformLaborFactor = 1
+	attribute double BuildingMaintFactor = 1
 }

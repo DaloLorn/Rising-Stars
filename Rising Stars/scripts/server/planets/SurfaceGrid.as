@@ -1448,7 +1448,8 @@ tidy class SurfaceGrid : PlanetSurface {
 		}
 
 		//Update maintenance cost
-		curMaintain = curMaintain - bldMaintenanceRefund;
+		if(obj.owner !is null && obj.owner.valid)
+			curMaintain = ceil(double(curMaintain) * obj.owner.BuildingMaintFactor) - bldMaintenanceRefund;
 		if(Maintenance != curMaintain) {
 			if(obj.owner !is null && obj.owner.valid)
 				obj.owner.modMaintenance(max(curMaintain, 0) - max(Maintenance, 0), MoT_Buildings);

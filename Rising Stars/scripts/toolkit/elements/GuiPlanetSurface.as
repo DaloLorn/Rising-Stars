@@ -403,6 +403,8 @@ void drawHoverBuilding(Planet& pl, const Skin@ skin, const BuildingType@ type, c
 		}
 	}
 
+	maintainCost = ceil(double(maintainCost) * pl.owner.BuildingMaintFactor);
+
 	if(buildCost != 0 || maintainCost != 0) {
 		const Font@ small = skin.getFont(FT_Normal);
 		string cost = formatMoney(buildCost, maintainCost);

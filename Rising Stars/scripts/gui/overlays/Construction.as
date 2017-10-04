@@ -1543,7 +1543,7 @@ class BuildElement : GuiListElement {
 			nameText = building.name;
 			build = building.buildCostEst * buildAt.owner.BuildingCostFactor;
 			build *= buildAt.constructionCostMod;
-			maintain = building.maintainCostEst;
+			maintain = building.maintainCostEst * buildAt.owner.BuildingMaintFactor;
 			if(building.laborCost > 0)
 				labor = building.laborCost;
 			else
