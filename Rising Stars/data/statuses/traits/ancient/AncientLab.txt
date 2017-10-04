@@ -1,0 +1,5 @@
+Status: AncientLab
+	Visible To: Nobody
+
+	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(AddCargo(BaseMaterial, 1), Interval = 2, Trigger Immediate = True))
+	AddResource(Research, 1)

@@ -1,6 +1,6 @@
 Construction: MechanoidPopulation
-	Name: #MECH_BUILD_POPULATION
-	Description: #MECH_BUILD_POPULATION_DESC
+	Name: #MECH_BUILD_POPULATION:1
+	Description: #MECH_BUILD_POPULATION_DESC:1
 
 	Category: Infrastructure
 
@@ -23,8 +23,8 @@ Construction: MechanoidPopulation
 	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 2.5)
 
 Construction: MechanoidPopulation10
-	Name: #MECH_BUILD_POPULATION10
-	Description: #MECH_BUILD_POPULATION10_DESC
+	Name: #MECH_BUILD_POPULATION:10
+	Description: #MECH_BUILD_POPULATION_DESC:10
 
 	Category: Infrastructure
 

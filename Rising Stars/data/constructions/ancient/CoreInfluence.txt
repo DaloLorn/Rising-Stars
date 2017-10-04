@@ -9,16 +9,16 @@ Construction: CoreInfluence
 	Labor Cost: 22.5
 
 	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreInfluence)
-	RequireTagUnlocked(CoreProgramming)
+	RequireUnlockTag(CoreProgramming)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
 
 	AddBuildCostStatusCount(CoreProgrammed, 125)
-	AddLaborCostStatusCount(CoreProgrammed, 7.5)	
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)
 
 	AddStatus(CoreProgrammed)
 	AddStatus(CoreInfluence)

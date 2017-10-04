@@ -1,0 +1,13 @@
+Status: Adaptation2
+	Unique: True
+	Visible To: Nobody
+	ModCivResourceMult(Money, 0.25)
+	ModCivResourceMult(Influence, 0.25)
+	ModCivResourceMult(Defense, 0.25)
+	ModCivResourceMult(Labor, 0.25)
+	ModCivResourceMult(Research, 0.25)
+	ModCivResourceMult(Energy, 0.25)
+Status: Adaptation3
+	Unique: True
+	Visible To: Nobody
+	RepeatPlanetLevel(AddMaxPopulation(1))

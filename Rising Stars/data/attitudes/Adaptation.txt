@@ -1,0 +1,16 @@
+Attitude: Adaptation2
+	Sort: 10000
+	Name: Adaptation 2 - Adaptive Industrialization
+	Description: This attitude should not be visible.
+	Secret: True
+	Progress: Report the presence of this attitude as a bug.
+	ABEM_glory::CannotManuallyTake()
+	AddStatusOwnedPlanets(Adaptation2)
+Attitude: Adaptation3
+	Name: Adaptation 3 - Adaptive Habitats
+	Description: This attitude should not be visible.
+	Progress: Report the presence of this attitude as a bug.
+	Secret: True
+	Sort: 10000
+	AddStatusOwnedPlanets(Adaptation3)
+	ABEM_glory::CannotManuallyTake()

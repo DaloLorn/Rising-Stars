@@ -6,6 +6,7 @@ Status: CoreMoney
 	Name: #S_CORE_MONEY
 	Description: #S_CORE_MONEY_DESC
 	Icon: CoreBuilding*#d1cb6a
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Money, 1.5))
 
@@ -13,6 +14,7 @@ Status: CoreEnergy
 	Name: #S_CORE_ENERGY
 	Description: #S_CORE_ENERGY_DESC
 	Icon: CoreBuilding*#42b4bd
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Energy, 1.5))
 
@@ -20,6 +22,7 @@ Status: CoreInfluence
 	Name: #S_CORE_INFLUENCE
 	Description: #S_CORE_INFLUENCE_DESC
 	Icon: CoreBuilding*#0087c7
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Influence, 1.5))
 
@@ -27,6 +30,7 @@ Status: CoreLabor
 	Name: #S_CORE_LABOR
 	Description: #S_CORE_LABOR_DESC
 	Icon: CoreBuilding*#b1b4b6
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Labor, 3))
 
@@ -34,6 +38,7 @@ Status: CoreDefense
 	Name: #S_CORE_DEFENSE
 	Description: #S_CORE_DEFENSE_DESC
 	Icon: CoreBuilding*#af7926
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Defense, 1.5))
 
@@ -41,5 +46,6 @@ Status: CoreResearch
 	Name: #S_CORE_RESEARCH
 	Description: #S_CORE_RESEARCH_DESC
 	Icon: CoreBuilding*8c4ec9
+	Unique: True
 
 	IfHaveStatus(AncientCore, AddResource(Research, 1.5))

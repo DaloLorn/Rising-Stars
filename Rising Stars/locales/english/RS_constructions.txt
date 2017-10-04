@@ -1,4 +1,10 @@
-﻿CONS_MOON_BASE_DESC: <<
+﻿MECH_BUILD_POPULATION: Construct $1B Population
+MECH_BUILD_POPULATION_DESC: <<
+	Construct $1B new mechanoid population on this planet.
+
+	As you construct more population, the labor cost of constructing will increase.
+>>
+CONS_MOON_BASE_DESC: <<
 	Construct a large amount of infrastructure on one of the planet's moons, making more area available for placing buildings and increasing the maximum population of the planet by 2.
 
 	Only one moon base may be constructed for every moon present in orbit of the planet.

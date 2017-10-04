@@ -1,7 +1,7 @@
 Building: AncientStripTransmuter
 	Name: #BLD_ANCIENT_STRIP_TRANSMUTER
 	Description: #BLD_ANCIENT_STRIP_TRANSMUTER_DESC
-	Sprite: StripMiner
+	Sprite: StripTransmuter
 
 	Category: ControlHubs
 
@@ -19,7 +19,7 @@ Building: AncientStripTransmuter
 
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
-	RequireTagUnlocked(AdvancedCores)
+	RequireUnlockTag(AdvancedCores)
 	ConflictBuilding(AncientCore, Hide = True)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)

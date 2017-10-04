@@ -31,3 +31,7 @@ Material: lvl2b
 Material: lvl2d
 	Inherit: RSBuilding
 	Texture: data/images/buildings/Lvl2Defense.png
+
+Material: StripTransmuter
+	Inherit: RSBuilding
+	Texture: data/images/buildings/ancient_strip_transmuter.png

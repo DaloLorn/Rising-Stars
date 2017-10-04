@@ -42,7 +42,7 @@ Technology: AdaptationSpec2
 	Category: Specializations
 	SecondaryMoneyCost(1)
 	ReplaceTechnologyNodes(TerraformSpec2, SpecConnector)
-	AddStatusOwnedPlanets(Adaptation2)
+	GainAttitude(Adaptation2)
 
 Technology: TerraformSpec3
 	Name: #R_SPEC_TERRAFORM3
@@ -65,7 +65,7 @@ Technology: AdaptationSpec3
 	Category: Specializations
 	SecondaryMoneyCost(1)
 	ReplaceTechnologyNodes(TerraformSpec3, SpecConnector)
-	AddStatusOwnedPlanets(Adaptation3)
+	GainAttitude(Adaptation3)
 
 Technology: TerraformSpec4
 	Name: #R_SPEC_TERRAFORM4
@@ -80,11 +80,11 @@ Technology: TerraformSpec4
 
 Technology: AdaptationSpec4
 	Name: #R_SPEC_ADAPTATION4
-	Description: #R_SPEC_ADAPTATION4_DESC:
+	Description: #R_SPEC_ADAPTATION4_DESC
 	Time Cost: 300
 	Point Cost: 1
 	Class: Unlock
 	Category: Specializations
 	SecondaryMoneyCost(1)
 	ReplaceTechnologyNodes(TerraformSpec4, SpecConnector)
-	UnlockTag(Adaptation4)
+	ModAttribute(Adaptation4, Add, 1)

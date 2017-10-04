@@ -1,0 +1,6 @@
+Status: AncientDepot
+	Visible To: Nobody
+
+	IfAttributeGTE(Adaptation4, 1, AddFleetCommand(64))
+	AddLaborStorage(100)
+	AddDefenseReserve(10)

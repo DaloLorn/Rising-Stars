@@ -9,16 +9,16 @@ Construction: CoreMoney
 	Labor Cost: 45
 
 	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreMoney)
-	RequireTagUnlocked(CoreProgramming)
+	RequireUnlockTag(CoreProgramming)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
 
 	AddBuildCostStatusCount(CoreProgrammed, 250)
-	AddLaborCostStatusCount(CoreProgrammed, 15)	
+	AddLaborCostStatusCount(CoreProgrammed, 15)
 
 	AddStatus(CoreProgrammed)
 	AddStatus(CoreMoney)

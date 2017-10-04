@@ -1,0 +1,18 @@
+Status: NylliFood
+	Name: Hydroponics Station
+	Collapses: True
+	Unique: False
+	Visible To: Nobody
+	Icon: Megafarm
+	RepeatStacks(AddPlanetResource(Soylent1))
+	RemoveOnOwnerChange()
+	ABEM_orbitals::ApplyToOwned()
+Status: NylliWater
+	Name: Water Reclamation Facility
+	Collapses: True
+	Unique: False
+	Visible To: Nobody
+	Icon: Hydrogenator
+	RepeatStacks(AddPlanetResource(BuildingWater))
+	ABEM_orbitals::ApplyToOwned()
+	RemoveOnOwnerChange()

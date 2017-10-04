@@ -1,6 +1,6 @@
 Ability: MechanoidColonize
-	Name: #ABL_MECHANOID_COLONIZE
-	Description: #ABL_MECHANOID_COLONIZE_DESC
+	Name: #ABL_MECHANOID_COLONIZE:1
+	Description: #ABL_MECHANOID_COLONIZE_DESC:1
 	Icon: ActionBarIcons::1
 	Hotkey: C
 
@@ -23,8 +23,8 @@ Ability: MechanoidColonize
 	AutoCastAsColonizePopTransfer()
 
 Ability: MechanoidColonize5
-	Name: #ABL_MECHANOID_COLONIZE5
-	Description: #ABL_MECHANOID_COLONIZE5_DESC
+	Name: #ABL_MECHANOID_COLONIZE:5
+	Description: #ABL_MECHANOID_COLONIZE_DESC:5
 	Icon: ActionBarIcons::1
 
 	Target: targ = Object

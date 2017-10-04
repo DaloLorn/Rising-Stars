@@ -108,3 +108,5 @@ ABL_MINE_PLANET_DESC: <<
 
 	Rapidly produces Ore. Can only target Barren planets. 2.5k Ore is generated for every 1G of damage to the planet.
 >>
+ABL_MECHANOID_COLONIZE: Transfer $1B Population
+ABL_MECHANOID_COLONIZE_DESC: Transfer $1B Population from this planet to another. Transfering population costs FTL energy, but can be done freely to colonize new planets or supply existing colonies with more population.
