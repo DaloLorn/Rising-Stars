@@ -282,7 +282,7 @@ class GalaxyTab : Tab {
 			vec2i pos;
 			file >> pos;
 
-			bool isFloating;
+			bool isFloating = false;
 			file >> isFloating;
 
 			if(obj !is null) {

@@ -8,6 +8,6 @@ class TerraformRequireUnlockTag : ResourceHook {
 	bool canTerraform(Object@ from, Object@ to) const override {
 		if(from.owner is null || !from.owner.valid)
 			return false;
-		return from.owner.isTagUnlocked(tag.integer));
+		return from.owner.isTagUnlocked(tag.integer);
 	}
 }

@@ -12,7 +12,7 @@ Technology: TerraformSpec1
 
 Technology: AdaptationSpec1
 	Name: #R_SPEC_ADAPTATION1
-	Description: #R_SPEC_ADAPTATION1_DESC:10%:5%
+	Description: #R_SPEC_ADAPTATION1_DESC:20%:10%
 	Time Cost: 60
 	Point Cost: 1
 	Class: Unlock
@@ -20,7 +20,7 @@ Technology: AdaptationSpec1
 	ReplaceTechnologyNodes(TerraformSpec1, SpecConnector)
 	ModAttribute(ImperialBldConstructionRate, Add, 1)
 	ModAttribute(BuildingCostFactor, Add, -0.2)
-	ModAttribute(BuildingMaintFactor, Add, -0.05)
+	ModAttribute(BuildingMaintFactor, Add, -0.1)
 
 Technology: TerraformSpec2
 	Name: #R_SPEC_TERRAFORM2
