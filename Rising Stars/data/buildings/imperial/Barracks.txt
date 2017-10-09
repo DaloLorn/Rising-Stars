@@ -15,5 +15,8 @@ Building: Barracks
 
 	Build Time: 70
 
+
+	ShowAttributeValue(Planet Support Command, Adaptation4, Multiplier = 64.0, Icon = ActionBarIcons::2, Hide Zero = True)
+	IfAttributeGTE(Adaptation4, 1, AddFleetCommand(64))
 	RequireNotTrait(Ancient)
 	AddDefenseReserve(+20)

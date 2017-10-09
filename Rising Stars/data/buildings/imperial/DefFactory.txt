@@ -2,7 +2,7 @@ Building: DefenseFactory
 	Name: #B_DEFENSEFACTORY
 
 
-	Sprite: LoyaltyIcon*#75ff13
+	Sprite: lvl1d
 	Base Cost: 300
 	Size: 2x2
 	Tile Cost: 50
@@ -11,7 +11,8 @@ Building: DefenseFactory
 	Build Time: 250
 	Category: Military
 	Description: #B_DEFENSEFACTORY_DESC
-	//ABEM_sensors::AddSightModifier(AddedRange = 25)
+	IfAttributeGTE(Adaptation4, 1, AddFleetEffectiveness(0.15))
+	ShowAttributeValue(Defense Fleet Effectiveness, Adaptation4, Multiplier = 15.0, Icon = AttributeIcons::3, Suffix = %, Hide Zero = True)
 	AddResource(Defense, 2)
 	AddFleetCommand(128)
 	RequireNotTrait(Ancient)

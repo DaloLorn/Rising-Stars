@@ -10,7 +10,7 @@ Building: Metropolis
 	Base Cost: 200
 	Tile Cost: 40
 	Build Time: 60
-	
+
 	Base Maintenance: 30
 	Tile Maintenance: 15
 
@@ -23,6 +23,8 @@ Building: Metropolis
 
 	ModBuildSpeedAttribute(CityConstructRate)
 
-	AI: BuildForPressureCap(5)
- 
+	AI:BuildForPressureCap(5)
+
+	ShowAttributeValue(Building Maintenance Reduction, Adaptation4, Multiplier = 100.0, Suffix = k, Hide Zero = True)
+	IfAttributeGTE(Adaptation4, 1, AddBuildingMaintenanceRefund(100))
 	RepeatEmpireAttribute(MetropolisExtraPressureCap, AddPressureCap(2))

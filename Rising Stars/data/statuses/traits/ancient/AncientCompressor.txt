@@ -1,0 +1,6 @@
+Status: AncientCompressor
+	Visible To: Nobody
+
+	EnableModifier(MassFactor(0.92))
+
+	IfAttributeGTE(Adaptation4, 1, AddResource(Research, 1))

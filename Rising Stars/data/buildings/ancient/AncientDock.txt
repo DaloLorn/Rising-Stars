@@ -18,7 +18,7 @@ Building: AncientDock
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
-	ModSupportBuildSpeed(0.1)
+	IfAttributeGTE(Adaptation4, 1, ModSupportBuildSpeed(0.1))
 	ShowAttributeValue(Support Construction Boost, Adaptation4, Multiplier = 10.0, Icon = ResourceIcon::6, Suffix = %, Hide Zero = True)
 	ModConstructionHPBonus(+0.1)
 	AddFleetCommand(100)

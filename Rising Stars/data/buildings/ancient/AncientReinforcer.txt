@@ -1,0 +1,22 @@
+Building: AncientReinforcer
+	Name: #BLD_ANCIENT_REINFORCER
+	Description: #BLD_ANCIENT_REINFORCER_DESC
+	Sprite: AncientReinforcer
+
+	Category: Enhancing
+
+	Size: 5x3
+
+	Base Cost: 0
+	Tile Cost: 25
+	Build Time: 100
+
+	Build Affinity: Forest
+
+	In Queue: True
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+
+	ShowAttributeValue(All Subsystem Health, Adaptation4, Multiplier = 5.0, Icon = AttributeIcons::6, Suffix = %, Hide Zero = True)
+	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientReinforcer), Inactive Status = AncientRequireBaseMat)

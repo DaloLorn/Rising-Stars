@@ -1,0 +1,22 @@
+Building: LargeDefenseGrid
+	Name: #BLD_DEFENSE_GRID
+	Description: #BLD_DEFENSE_GRID_DESC:20:500:1000
+	Sprite: DefenseGrid
+
+	Category: Military
+
+	Size: 4x4
+	Base Cost: 180
+	Tile Cost: 10
+	Base Maintenance: 50
+	Tile Maintenance: 5
+	Build Time: 60
+
+	AddStatus(HasDefenses)
+	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
+	RequireNotTrait(Ancient)
+
+	IfAttributeGTE(Adaptation4, 1, AddLocalDefense(2, Build Satellites = True))
+	ShowAttributeValue(Satellite Defense Generation, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::5, Suffix = #PER_MINUTE, Hide Zero = True)
+	IfNotSiege(RepeatExtended(AddTurret(Missile, Range=1000, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	RecordBonusDPS(500)

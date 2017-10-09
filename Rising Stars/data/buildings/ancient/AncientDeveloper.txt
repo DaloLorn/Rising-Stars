@@ -18,5 +18,5 @@ Building: AncientDeveloper
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
-	ShowAttributeValue(Defense Generation, Adaptation4, Icon = ResourceIcon::5, Hide Zero = True)
+	ShowAttributeValue(Defense Generation, Adaptation4, Icon = ResourceIcon::5, Suffix = #PER_MINUTE, Hide Zero = True)
 	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientDeveloper), Inactive Status = AncientRequireBaseMat)

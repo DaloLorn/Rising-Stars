@@ -14,6 +14,8 @@ Building: Refinery
 
 	RequireNotTrait(Ancient)
 
+	ShowAttributeValue(Ore Generation, Adaptation4, Multiplier = 30.0, Icon = ResourceIconsSmall::65, Suffix = #PER_MINUTE, Hide Zero = True)
+	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(AddCargo(Ore, 1), Interval = 2))
 	ConsumeCargo(Ore, 200)
 	RequireNativePressure(Allow Money = False)
 	GiveNativePressure(1, Allow Money = False)

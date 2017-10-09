@@ -1,7 +1,7 @@
 Building: RecallBuilding
 	Name: #BLD_RECALL
 	Description: #BLD_RECALL_DESC
-	Sprite: cloack
+	Sprite: PlanetThruster*#aaffff
 
 	Category: Military
 
@@ -18,5 +18,7 @@ Building: RecallBuilding
 
 	Build Time: 300
 
+	IfAttributeGTE(Adaptation4, 1, ModAttribute(FreeEnergyStorage, Add, 50))
+	ShowAttributeValue(Free Energy Storage, Adaptation4, Multiplier = 50.0, Icon = ResourceIcon::2, Hide Zero = True)
 	RequireUnlockTag(Recall)
 	GrantAbility(Recall)

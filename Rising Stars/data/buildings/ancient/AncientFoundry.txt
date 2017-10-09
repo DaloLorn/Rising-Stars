@@ -17,5 +17,5 @@ Building: AncientFoundry
 
 	ActiveWhenCargoConsumed(Ore, 2, 1.0, AddStatus(AncientFoundry), Labor Use Linked = True)
 
-	ShowAttributeValue(Construction Cost Reduction, Adaptation4, Multiplier = 5.0, Icon = ResourceIcon::0, Suffix = %, Hide Zero = True)
+	ShowAttributeValue(Construction Cost Reduction, Adaptation4, Multiplier = 3.0, Icon = ResourceIcon::0, Suffix = %, Hide Zero = True)
 	ShowAttributeValue(#RESOURCE_LABOR, FactoryLaborMod, Base Amount = 4, Icon = ResourceIcon::6, Suffix = #PER_MINUTE)

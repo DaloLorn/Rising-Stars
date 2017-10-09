@@ -1,0 +1,20 @@
+Building: Museum
+	Name: #BLD_MUSEUM
+	Description: #BLD_MUSEUM_DESC
+	Sprite: Museum
+
+	Category: Infrastructure
+
+	Tile Cost: 20
+	Build Affinity: Ice
+
+	Size: 3x3
+	Labor Cost: 25
+
+	RequireUnlockTag(MuseumUnlock)
+	CannotRemove()
+
+	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(GainRandomInfluenceCards(1), Interval = 240))
+	ShowAttributeValue(Influence Card Generation, Adaptation4, Multiplier = 0.25, Icon = TabDiplomacy, Suffix = #PER_MINUTE, Hide Zero = True)
+	AddResource(Influence, 1)
+	OnEnable( AddInfluencePoints(10) )

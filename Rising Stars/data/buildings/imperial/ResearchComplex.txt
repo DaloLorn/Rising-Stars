@@ -20,6 +20,8 @@ Building: ResearchComplex
 
 	ModEmpireAttribute(ResearchLabsBuilt, Add, 1)
 
+	IfAttributeGTE(Adaptation4, 1, AddRandomPressure(1, 60, 5))
+	ShowAttributeValue(Random Pressure Generation, Adaptation4, Icon = AffinityIcons::11, Hide Zero = True)
 	ShowAttributeValue(Additional Research Production, ResearchProductionBoost, Multiplier = 0.1, Icon = ResourceIcon::4, Suffix = / s, Hide Zero = True)
 	RepeatExtended(AddResource(Research, 0.1), Base Attribute = ResearchProductionBoost)
 	AddPressureEmpireAttribute(Research, ResearchComplexExtraPressure) #version>=147

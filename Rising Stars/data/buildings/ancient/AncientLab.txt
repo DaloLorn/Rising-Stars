@@ -16,5 +16,5 @@ Building: AncientLab
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
-	ShowAttributeValue(Base Material Generation, Adaptation4, Multiplier = 5.0, Icon = ResourceIconsSmall::81, Suffix = / minute, Hide Zero = True)
+	ShowAttributeValue(Base Material Generation, Adaptation4, Multiplier = 5.0, Icon = ResourceIconsSmall::81, Suffix = #PER_MINUTE, Hide Zero = True)
 	ActiveWhenCargoConsumed(Ore, 1, 2.0, AddStatus(AncientLab))
