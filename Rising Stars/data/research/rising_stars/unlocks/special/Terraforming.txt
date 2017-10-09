@@ -1,7 +1,7 @@
 Technology: Terraforming
 	Name: #R_TERRAFORMING
 	Description: #R_TERRAFORMING_DESC
-	Icon: SequesteredSociety
+	Icon: EnormousPlanet
 	Symbol: AffinityIcons::11
 	Color: #058514
 	Class: Unlock

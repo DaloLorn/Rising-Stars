@@ -7,7 +7,7 @@ Technology: PlanetaryEngine
 	Point Cost: 2000
 	Time Cost: 180
 
-	Icon: HexagonSubsystems::10
+	Icon: PlanetThruster
 	Color: #00f3ff
 
 	ModAttribute(ProgenitorTechProgress, Add, 5)
