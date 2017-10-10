@@ -10,6 +10,7 @@ Resource: OreRate
 	Distribution: 0
 	Frequency: 0
 	Level: 0
+	Stealable: False
 
 	TriggerPeriodic(AddCargo(Ore, 1), Interval = 1)
 	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))

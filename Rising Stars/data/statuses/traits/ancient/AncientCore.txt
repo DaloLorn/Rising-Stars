@@ -1,2 +1,11 @@
 Status: AncientCore
 	Visible To: Nobody
+
+Status: AncientTransmuter
+	Visible To: Nobody
+
+Status: AncientMiner
+	Visible To: Nobody
+
+Status: AncientStripTransmuter
+	Visible To: Nobody

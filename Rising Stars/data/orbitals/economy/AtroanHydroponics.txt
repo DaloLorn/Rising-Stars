@@ -1,0 +1,25 @@
+Module: AtroanHydroponics
+	Name: #ORB_ORBITAL_CONTROL
+	Blurb: #ORB_ORBITAL_CONTROL_BLURB
+	Description: #ORB_ORBITAL_CONTROL_DESC
+	Icon: GuiOrbitalIcons::14
+	Distant Icon: OrbitalIcons::14
+
+	Health: 20000
+	Armor: 10000
+	Size: 8
+
+	Build Cost: 800
+	Labor Cost: 40
+
+
+	RequireUnlockTag(OrbitalControlUnlock)
+
+	Model: Outpost
+	Material: GenericPBR_Outpost
+
+	LimitInOrbitStatus(OrbitalControl, 1)
+
+	ConsumeEnergy(750)
+	AddStatusToOrbitingPlanet(OrbitalControl)
+	MatchOrbitingOwner(Destroy None = True)

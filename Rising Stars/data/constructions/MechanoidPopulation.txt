@@ -21,6 +21,8 @@ Construction: MechanoidPopulation
 	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 10)
 	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 2)
 	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 2.5)
+	AddBuildCostStatusCount(ZeroGAssembly, -150)
+	AddLaborCostStatusCount(ZeroGAssembly, -5)
 
 Construction: MechanoidPopulation10
 	Name: #MECH_BUILD_POPULATION:10
@@ -45,3 +47,5 @@ Construction: MechanoidPopulation10
 	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 100)
 	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 20)
 	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 25)
+	AddBuildCostStatusCount(ZeroGAssembly, -1500)
+	AddLaborCostStatusCount(ZeroGAssembly, -50)

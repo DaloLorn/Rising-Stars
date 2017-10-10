@@ -1,0 +1,25 @@
+Module: MonoHydroponics
+	Name: #ORB_ZEROGRAV_ASSEMBLY
+	Blurb: #ORB_ZEROGRAV_ASSEMBLY_BLURB
+	Description: #ORB_ZEROGRAV_ASSEMBLY_DESC
+	Icon: GuiOrbitalIcons::14
+	Distant Icon: OrbitalIcons::14
+
+	Health: 20000
+	Armor: 10000
+	Size: 8
+
+	Build Cost: 800
+	Labor Cost: 40
+
+
+	RequireUnlockTag(ZeroGAssemblyUnlock)
+
+	Model: Outpost
+	Material: GenericPBR_Outpost
+
+	LimitInOrbitStatus(ZeroGAssembly, 1)
+
+	ConsumeEnergy(750)
+	AddStatusToOrbitingPlanet(ZeroGAssembly)
+	MatchOrbitingOwner(Destroy None = True)

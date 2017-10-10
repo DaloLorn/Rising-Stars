@@ -10,6 +10,7 @@ Resource: StripTransmuter
 	Distribution: 0
 	Frequency: 0
 	Level: 0
+	Stealable: False
 
 	TriggerPeriodic(AddCargo(BaseMaterial, 0.75), Interval = 6)
 	TriggerPeriodic(AddCargo(Ore, 0.75), Interval = 1)
