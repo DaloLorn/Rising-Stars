@@ -25,6 +25,6 @@ Building: Metropolis
 
 	AI:BuildForPressureCap(5)
 
-	ShowAttributeValue(Building Maintenance Reduction, Adaptation4, Multiplier = 100.0, Suffix = k, Hide Zero = True)
+	ShowAttributeValue(Building Maintenance Reduction, Adaptation4, Multiplier = 100.0, Icon = ResourceIcon::0, Suffix = k, Hide Zero = True)
 	IfAttributeGTE(Adaptation4, 1, AddBuildingMaintenanceRefund(100))
 	RepeatEmpireAttribute(MetropolisExtraPressureCap, AddPressureCap(2))

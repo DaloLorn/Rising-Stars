@@ -1,0 +1,14 @@
+Shader: Beam
+	Vertex: data/shaders/source/base_uv_vs.txt
+	Fragment: data/shaders/source/beam_ps.txt
+	
+	Variable: tex texture = 0
+	Variable: float cycle = game_time_cycle 2.0
+
+Shader: NoisyBeam
+	Vertex: data/shaders/source/base_uv_vs.txt
+	Fragment: data/shaders/source/beam_noisy_ps.txt
+	
+	Variable: tex texture = 0
+	Variable: tex noise = 1
+	Variable: float cycle = game_time_cycle 8.0

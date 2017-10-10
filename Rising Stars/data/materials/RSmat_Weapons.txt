@@ -5,3 +5,23 @@ Material: AncientDrone
 	Culling: None
 	Blend: Add
 	Shader: BeamGlowDrone
+
+// Supply and shield transfer beams.
+
+Material: EnergyTransfer
+	Shader: Beam
+	Texture: data/images/sprites/laser_beam.png
+	Lighting: No
+	DepthWrite: No
+	Culling: None
+	Blend: Add
+
+Material: ShieldTransfer
+	Inherit: EnergyTransfer
+	Shader: Beam
+	Texture: data/images/sprites/beam3.png
+
+// Preparing a planet for harvesting by the Ringworlders.
+Material: PreparingHarvest
+	Inherit: ShieldTransfer
+	Texture: data/images/sprites/beam2.png

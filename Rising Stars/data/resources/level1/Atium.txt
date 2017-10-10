@@ -1,0 +1,18 @@
+Resource: Atium
+	Name: #R_ATIUM
+	Description: #R_ATIUM_DESC
+	Native Biome: Desert
+	DLC: Heralds
+
+	Small Icon: ResourceIconsSmall::78
+
+	Level: 1
+	Rarity: Epic
+	Affinity: Money
+
+	Pressure: 5 Money
+	Terraform Labor: 180
+	Terraform Cost: 3000
+
+	OnNative(GrantAllFleetVision(Require Heading Here = True))
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform4)

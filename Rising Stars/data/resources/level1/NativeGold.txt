@@ -14,3 +14,5 @@ Resource: NativeGold
 	AddResource(Influence, 1)
 
 	Asteroid Labor: 50
+	Terraform Cost: 2000
+	Terraform Labor: 120

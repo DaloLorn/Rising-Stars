@@ -1,0 +1,15 @@
+Resource: Medicines
+	Name: #MEDICINES
+	Description: #MEDICINES_DESC
+	Native Biome: Forest
+
+	Icon: ResourceIcons::15
+	Small Icon: ResourceIconsSmall::6
+
+	Level: 2
+	Affinity: Money
+
+	Pressure: 7 Money
+	Terraform Cost: 3000
+	Terraform Labor: 180
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform4)

@@ -1,0 +1,17 @@
+Resource: Glass
+	Name: #GLASS
+	Description: #GLASS_DESC
+	Native Biome: Desert
+
+	Icon: ResourceIcons::27
+	Small Icon: ResourceIconsSmall::27
+
+	Level: 1
+	Rarity: Uncommon
+	Affinity: Money
+
+	Pressure: 3 Money
+	Terraform Labor: 90
+	Terraform Cost: 1500
+	AddResource(Energy, 1)
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)

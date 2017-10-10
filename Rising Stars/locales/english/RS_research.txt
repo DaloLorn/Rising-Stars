@@ -550,7 +550,7 @@ R_SPEC_ADAPTATION4: Multipurpose Infrastructure
 R_SPEC_TERRAFORM4_DESC: <<
 	[color=#aaa][i]We now know how to alter planetary ecosystems with incredible precision. We won't let any creatures breed out of control and eat everything anymore.[/i][/color]
 
-	Allows planets to be terraformed to a basic Tier 2 resource.
+	Allows planets to be terraformed to a basic Tier 2 resource or a very advanced Tier 1 resource.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
 >>
