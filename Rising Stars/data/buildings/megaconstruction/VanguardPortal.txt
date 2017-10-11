@@ -11,8 +11,6 @@ Building: VanguardPortal
 	Labor Cost: 500
 
 	ShowAttributeValue(Stabilizers Constructed, VanguardVictoryRequirement, Base Amount = 3, Multiplier = -1.0, Icon = ShieldImpactLarge*#de12de, Suffix = / 3)
-	ShowFTLValue(500, Name = FTL Cost)
-	ShowEnergyValue(1000, Name = Energy Cost, Apply Penalty = False)
 	TriggerConstructed(NotifyAll(#EVT_VANGUARD_PORTAL, Description = #EVT_VANGUARD_PORTAL_DESC, Icon = SpaceProgram))
 	ABEM_races::SelfDestructOnOwnerChange(Undevelop = True)
 	ModEmpireAttribute(VanguardVictoryRequirement, Add, -1)
