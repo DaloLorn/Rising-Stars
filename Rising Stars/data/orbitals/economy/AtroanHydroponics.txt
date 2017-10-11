@@ -18,7 +18,7 @@ Module: AtroanHydroponics
 	Model: Outpost
 	Material: GenericPBR_Outpost
 
-	LimitInOrbitStatus(OrbitalControl, 1)
+	LimitInOrbitStatus(OrbitalControl, 2)
 
 	ConsumeEnergy(750)
 	AddStatusToOrbitingPlanet(OrbitalControl)
