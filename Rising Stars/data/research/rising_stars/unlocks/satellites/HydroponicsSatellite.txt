@@ -7,7 +7,7 @@ Technology: HydroponicsSatellite
 	DLC: Heralds
 	DLC Replace: DLCConnector
 
-	Point Cost: 150
+	Point Cost: 250
 	Time Cost: 90
 
 	Icon: GuiOrbitalIcons::14
@@ -17,3 +17,41 @@ Technology: HydroponicsSatellite
 	UnlockTag(HydroponicsSatelliteUnlock)
 	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
 	ModAttribute(ProgenitorTechProgress, Add, 0.5)
+
+Technology: AtroanHydroponics
+	Name: #R_ORB_ORBITAL_CONTROL
+	Description: #R_ORB_ORBITAL_CONTROL_DESC
+	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Point Cost: 250
+	Time Cost: 90
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+
+	SecondaryInfluenceCost(10)
+	UnlockTag(OrbitalControlUnlock)
+	SkipOnUnlockedTag(OrbitalControlUnlock)
+
+Technology: MonoHydroponicsSatellite
+	Name: #R_ORB_ZEROGRAV_ASSEMBLY
+	Description: #R_ORB_ZEROGRAV_ASSEMBLY_DESC
+	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Point Cost: 250
+	Time Cost: 90
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+
+	SecondaryInfluenceCost(10)
+	UnlockTag(ZeroGAssemblyUnlock)
+	SkipOnUnlockedTag(ZeroGAssemblyUnlock)

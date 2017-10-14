@@ -19,8 +19,7 @@ R_CAT_INDUSTRY_DESC: <<
 R_CAT_PROPULSION_DESC: <<
 	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous--- AAAAARGH![/i][/color]
 >>
-R_NYLLI_FOOD: Nutrient Reclamation
-R_NYLLI_FOOD_BLURB: Nutrient Orbitals
+R_NYLLI_FOOD: Nutrient Recyclers
 R_NYLLI_FOOD_DESC: <<
 	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
 
@@ -360,6 +359,18 @@ R_ORB_HYDROPONICS_SATELLITE_DESC: <<
 	[color=#aaa][i]Unlocks the Nutrient Reclamation Satellite orbital.[/i][/color]
 
 	[bbloc=#ORB_HYDROPONICS_SATELLITE_DESC/]
+>>
+R_ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
+R_ORB_ZEROGRAV_ASSEMBLY_DESC: <<
+	[color=#aaa][i]Unlocks the Antimatter Core Assembler orbital.[/i][/color]
+
+	[bbloc=#ORB_ZEROGRAV_ASSEMBLY_DESC/]
+>>
+R_ORB_ORBITAL_CONTROL: Orbital Control Satellite
+R_ORB_ORBITAL_CONTROL_DESC: <<
+	[color=#aaa][i]Unlocks the Orbital Control Satellite orbital.[/i][/color]
+
+	[bbloc=#ORB_ORBITAL_CONTROL_DESC/]
 >>
 R_CORE_OPTIMIZATIONS: Improved Extraction
 R_CORE_OPTIMIZATIONS_DESC: <<

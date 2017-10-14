@@ -396,15 +396,11 @@ Grid: RisingStars
 	EnergyHurdle: 7,9
 	ShieldCap: 8,14
 	Forcefield: 8,15
-	Connector: -8,-7
+	Terraforming: -8,-7
 	EnergyHurdle: -7,-7
 	FTLHurdle: -8,-10
 	EnergyHurdle3: -9,-11
 	EnergyHurdle2: -9,-12
-	Terraforming: -9,-7
-	Connector: -10,-8
-	Connector: -10,-6
-	EnergyHurdle: -10,-7
 	TerraformSpec1: -11,-9
 	AdaptationSpec1: -11,-5
 	EnergyHurdle: -12,-5
@@ -422,3 +418,8 @@ Grid: RisingStars
 	Connector: -11,-6
 	Connector: -11,-8
 	HydroponicsSatellite: -12,-7
+	EnergyHurdle: -9,-7
+	Connector: -10,-5
+	Connector: -9,-6
+	Connector: -9,-8
+	Connector: -10,-9

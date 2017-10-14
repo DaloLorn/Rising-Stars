@@ -91,7 +91,7 @@ ORB_HYDROGENATOR_BLURB: Produces water.
 ORB_HYDROGENATOR_DESC: <<
 	Generates a basic water resource for the planet it orbits. Water generation only applies if the planet and Water Reclamation Facility are owned by the same empire.
 >>
-ORB_SENATE_BLURB: Generates 10 Influence stake.
+ORB_SENATE_BLURB: Generates 1 Influence Stake per 20 billion people.
 ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
 ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
 ORB_HYDROPONICS_SATELLITE_BLURB: Adds 1 Food and Water to the planet it is in orbit of.
@@ -104,6 +104,32 @@ ORB_HYDROPONICS_SATELLITE_DESC: <<
 	The planet this is in orbit of gains 1 Food and Water resource.
 
 	Costs 750 Energy to construct in addition to its build cost.
+>>
+ORB_ORBITAL_CONTROL: Orbital Control Satellite
+ORB_ORBITAL_CONTROL_BLURB: Increases Control Hub production by 50% on the planet it is orbiting.
+ORB_ORBITAL_CONTROL_DESC: <<
+	A satellite equipped with the command and communication equipment required to operate Atroan technology on the planet below. Moving the control infrastructure off-world allows the hubs on the surface to operate more efficiently.
+
+	Must be constructed in orbit of a planet.
+
+	The Control Hub of the planet this is orbiting generates 50% more resources.
+
+	Costs 750 Energy to construct in addition to its build cost.
+
+	Only one Orbital Control Satellite may be constructed in orbit of a planet.
+>>
+ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
+ORB_ZEROGRAV_ASSEMBLY_BLURB: Reduces the construction cost of population on the planet it is orbiting.
+ORB_ZEROGRAV_ASSEMBLY_DESC: <<
+	A specialized satellite designed to harvest antimatter for the power cores of Mono drones. The harvested antimatter significantly increases the efficiency with which new drones are constructed.
+
+	Must be constructed in orbit of a planet.
+
+	New population built on the planet surface is §150k cheaper and requires 5 less Labor.
+
+	Costs 750 Energy to construct in addition to its build cost.
+
+	Only one Antimatter Core Assembler may be constructed in orbit of a planet.
 >>
 ORB_DEFENSE_SATELLITE_DESC: <<
 	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.

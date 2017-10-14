@@ -36,10 +36,10 @@ Technology: NylliMegacity
 	Icon: Plantation
 	Symbol: SupplyIcon
 	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
 
-	Point Cost: 1000
-	Time Cost: 120
+	Point Cost: 800
+	Time Cost: 90
 
-	SecondaryEnergyCost(1000)
 	SkipOnUnlockedTag(NylliNutrients)
 	UnlockTag(NylliNutrients)

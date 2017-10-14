@@ -27,4 +27,4 @@ Trait: Mechanoid
 	ModAttribute(ImmuneToRadiation, Add, 1)
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
-	RemoveTechnologyNodes(HydroponicsSatellite)
+	ReplaceTechnologyNodes(HydroponicsSatellite, MonoHydroponics)

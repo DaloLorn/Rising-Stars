@@ -65,4 +65,4 @@ Trait: Ancient
 	ReplaceTechnologyNodes(RingHabitat, Thrust)
 	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
 	ReplaceTechnologyNodes(Population, FoundryLabor)
-    ReplaceTechnologyNodes(HydroponicsSatellite, Thrust)
+	ReplaceTechnologyNodes(HydroponicsSatellite, AtroanHydroponics)

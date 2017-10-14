@@ -1,10 +1,10 @@
 	Name: Rising Stars
 	Description: <<
-		[i]The year is 722 AP. For the first time in years, the galaxy is at peace. On one side, a loose coalition of like-minded races encourages trade and peaceful development between its members, defending themselves against anyone who would conquer them. Its opponents have retreated to their space to rebuild their armies and regain their strength. It is but a brief respite - but it is a welcome one nonetheless.
+		[i]The year is 722 AP. For the first time in years, the galaxy is at peace. On one side, a loose coalition of like-minded races encourages trade and peaceful coexistence between its members, defending themselves against anyone who would conquer them. Defeated but not destroyed, its opponents have retreated to their space to rebuild their armies and regain their strength. It is but a brief respite - but it is a welcome one nonetheless.
 
-		The peace is about to come to an end. On one side, refugees from a distant galaxy are claiming worlds near the edges of civilized space, resupplying - sometimes violently so - as they prepare to flee before a mysterious foe devours the galaxy. Elsewhere, worlds which were once lush and bountiful are being stripped of resources, violated by a technology the likes of which has never been seen before. It is the prelude to an invasion that has been spoken of in hushed tones for over a decade.
+		It is a respite that is about to come to an end. On one side, refugees from a distant galaxy are claiming worlds near the edges of civilized space, resupplying - sometimes violently so - as they prepare to flee from a mysterious galaxy-devouring entity. Elsewhere, worlds which were once lush and bountiful are being stripped of resources, violated by a technology the likes of which has never been seen before. It is the beginning of an invasion whose omens had largely been ignored for over a decade. It is the coming of the Vanguard.
 
-		In the middle of this chaos, a world of machines awakens from its indifference. The last remnant of an ancient empire, older than the Ulthaar, foresees its doom and scrambles to defend itself - with or without the rest of the galaxy...[/i]
+		Amidst the chaos, a world of machines awakens from its indifference. The last remnant of an ancient empire, older than the Ulthaar, foresees its doom and scrambles to defend itself - but the rest of the galaxy may not agree with its methods...[/i]
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function normally, some content may be missing.[/b]
 
