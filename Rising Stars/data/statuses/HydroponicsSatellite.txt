@@ -9,10 +9,10 @@ Status: OrbitalControl
 	Visible To: Nobody
 	Unique: True
 
-	IfHasStatus(AncientCore, AddStatus(OrbitalCoreControl))
-	IfHasStatus(AncientTransmuter, AddStatus(OrbitalTransmuterControl))
-	IfHasStatus(AncientMiner, AddStatus(OrbitalMinerControl))
-	IfHasStatus(AncientStripTransmuter, AddStatus(OrbitalStripTransmuterControl))
+	IfHaveStatus(AncientCore, AddStatus(OrbitalCoreControl))
+	IfHaveStatus(AncientTransmuter, AddStatus(OrbitalTransmuterControl))
+	IfHaveStatus(AncientMiner, AddStatus(OrbitalMinerControl))
+	IfHaveStatus(AncientStripTransmuter, AddStatus(OrbitalStripTransmuterControl))
 
 Status: ZeroGAssembly
 	Visible To: Nobody

@@ -18,7 +18,7 @@ Building: RecallBuilding
 
 	Build Time: 300
 
-	IfAttributeGTE(Adaptation4, 1, ModAttribute(FreeEnergyStorage, Add, 50))
+	IfAttributeGTE(Adaptation4, 1, ModEmpireAttribute(FreeEnergyStorage, Add, 50))
 	ShowAttributeValue(Free Energy Storage, Adaptation4, Multiplier = 50.0, Icon = ResourceIcon::2, Hide Zero = True)
 	RequireUnlockTag(Recall)
 	GrantAbility(Recall)

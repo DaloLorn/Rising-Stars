@@ -14,12 +14,9 @@ Module: NylliSenate
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 5000.0)
 	RequireUnlockTag(NylliSenate)
 	RepeatEmpirePopulation(20, AddInfluenceStake(1))
-	ShowTotalPopulation(Empire Population, Icon = ResourceIcon::8)
 
-	IfAttributeGTE(Adaptation4, 1, AddStatus(NylliSenateAdapted))
 
-	TriggerStartConstruction( ModAttribute(SenateCount, Add, 1) )
-	TriggerCancelConstruction( ModAttribute(SenateCount, Add, -1) )
-	TriggerConstructed( ModAttribute(SenateCount, Add, -1) )
 
+
+	RequireAttributeLT(SenateCount)
 	ModEmpireAttribute(SenateCount, Add, 1)
