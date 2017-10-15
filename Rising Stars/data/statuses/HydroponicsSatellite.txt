@@ -28,21 +28,21 @@ Status: OrbitalTransmuterControl
 	Visible To: Nobody
 	Unique: True
 
-	AddToNativeResource(TriggerPeriodic(AddCargo(BaseMaterial, 0.5), Interval = 6)))
-	AddToNativeResource(IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.25), Interval = 6))))
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.5), Interval = 6))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.25), Interval = 6)))
 
 Status: OrbitalMinerControl
 	Visible To: Nobody
 	Unique: True
 
-	AddToNativeResource(TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1)))
-	AddToNativeResource(IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 1))))
+	TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 1)))
 
 Status: OrbitalStripTransmuterControl
-	Visible To: Nobody
+	Visible To: Global
 	Unique: True
 
-	AddToNativeResource(TriggerPeriodic(AddCargo(BaseMaterial, 0.375), Interval = 6)))
-	AddToNativeResource(IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.125), Interval = 6))))
-	AddToNativeResource(TriggerPeriodic(AddCargo(Ore, 0.375), Interval = 1)))
-	AddToNativeResource(IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.125), Interval = 1))))
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.375), Interval = 6))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.125), Interval = 6)))
+	TriggerPeriodic(AddCargo(Ore, 0.375), Interval = 1))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.125), Interval = 1)))

@@ -37,7 +37,7 @@ Technology: AtroanHydroponics
 	UnlockTag(OrbitalControlUnlock)
 	SkipOnUnlockedTag(OrbitalControlUnlock)
 
-Technology: MonoHydroponicsSatellite
+Technology: MonoHydroponics
 	Name: #R_ORB_ZEROGRAV_ASSEMBLY
 	Description: #R_ORB_ZEROGRAV_ASSEMBLY_DESC
 	Class: Unlock

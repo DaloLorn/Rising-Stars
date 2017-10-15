@@ -25,5 +25,7 @@ Building: AncientStripTransmuter
 	ConflictBuilding(AncientMiner, Hide = True)
 	ConflictBuilding(AncientStripTransmuter, Hide = True)
 
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
 	AddStatus(AncientClaim)
 	ChangeNativeResourceTo(StripTransmuter)

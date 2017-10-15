@@ -10,6 +10,9 @@ Resource: Ringworld
 	Stealable: False
 
 	Small Icon: ResourceIconsSmall::105
+	Class: Scalable
+	Frequency: 0
+	Distribution: 0
 
 	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(160, 8, Biome Count = 3))))))
 
