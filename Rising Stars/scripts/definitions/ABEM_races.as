@@ -187,12 +187,12 @@ class StealResources : AbilityHook {
 }
 
 class MineCargoFromPlanet : AbilityHook {
-	Document doc("Creates cargo from a target planet, dealing damage based on the amount of cargo mined and optionally draining Power.");
+	Document doc("Creates cargo from a target planet, dealing damage based on the amount of cargo mined.");
 	Argument objTarg(TT_Object);
 	Argument cargoType(AT_Cargo, doc="Type of cargo to mine.");
 	Argument amount(AT_SysVar, doc="Maximum amount of cargo to mine per second.");
 	Argument damageMult(AT_Decimal, "10000.0", doc="Amount of damage dealt per unit of cargo.");
-	Argument powerUse(AT_SysVar, "0", doc="Amount of Power to drain per second.");
+//	Argument powerUse(AT_SysVar, "0", doc="Amount of Power to drain per second.");
 	Argument quiet(AT_Boolean, "False", doc="Whether to destroy the planet 'quietly' or not.");
 
 	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
@@ -214,14 +214,7 @@ class MineCargoFromPlanet : AbilityHook {
 			return;
 		if(abl.obj is null || !abl.obj.hasCargo)
 			return;
-			
-		Ship@ ship;
-		double percent = 1;
-		if(abl.obj.isShip)
-		{
-			@ship = cast<Ship>(abl.obj);
-			percent = clamp(ship.Energy / (time * powerUse.fromSys(abl.subsystem, efficiencyObj=abl.obj)), 0, 1);
-		}
+
 		Target@ storeTarg = objTarg.fromTarget(abl.targets);
 		if(storeTarg is null)
 			return;
@@ -230,10 +223,7 @@ class MineCargoFromPlanet : AbilityHook {
 		if(target is null)
 			return;
 
-		// Diminish the mined cargo by the percentage of the consumed power.
-		if(abl.obj.isShip)
-			ship.consumeEnergy(time * powerUse.fromSys(abl.subsystem, efficiencyObj=abl.obj));
-		double miningRate = min(amount.fromSys(abl.subsystem, efficiencyObj=abl.obj) * time * percent, (abl.obj.cargoCapacity - abl.obj.cargoStored) / type.storageSize);
+		double miningRate = min(amount.fromSys(abl.subsystem, efficiencyObj=abl.obj) * time, (abl.obj.cargoCapacity - abl.obj.cargoStored) / type.storageSize);
 
 		abl.obj.addCargo(cargoType.integer, miningRate);
 		if(damageMult.decimal != 0) {
