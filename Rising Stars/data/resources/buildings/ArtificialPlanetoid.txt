@@ -11,9 +11,9 @@ Resource: ArtificialPlanetoid
 	Exportable: False
 	Stealable: False
 
-	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(6, 8, Biome Count = 1, Force Biome = Artificial))))))
+	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(10, 8, Biome Count = 1, Force Biome = Artificial))))))
 	AddStatus(NoSurfaceRegen)
-	OnEnable(DevelopTiles(48))
+	OnEnable(DevelopTiles(80))
 
 	AddResource(Labor, 5)
 	AddIncome(-160)

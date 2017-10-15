@@ -112,7 +112,7 @@ BLD_ANCIENT_CANNON_DESC: <<|
 >>
 BLD_VANGUARDPORTAL: Portal Stabilizer
 BLD_VANGUARDPORTAL_DESC: <<
-	A powerful hyperfield manipulator of tremendous scale. When activated and targeted at a specific point in space along with two other Stabilizers, this structure will create a massive wormhole through which the Overlords' invasion force can enter this galaxy.
+	An immensely powerful hyperfield manipulator. When activated and targeted at a specific point in space along with two other Stabilizers, this structure will create a massive wormhole to the Overlord home galaxy, enabling the Overlords' invasion force to enter this galaxy.
 
 	[img=ShieldImpactLarge*#de12de;20]Constructing three Portal Stabilizers will cause you to win a Vanguard Victory.[/img]
 	[img=Plus;20]The presence of a Portal Stabilizer inspires the owner's race to fight harder to defend the system, manifesting as a 40% boost to fleet effectiveness to all owned fleets in the system.[/img]

@@ -35,3 +35,7 @@ Material: lvl2d
 Material: StripTransmuter
 	Inherit: RSBuilding
 	Texture: data/images/buildings/ancient_strip_transmuter.png
+
+Material: PortalStabilizer
+	Inherit: RSBuilding
+	Texture: data/images/buildings/portal_stabilizer.png

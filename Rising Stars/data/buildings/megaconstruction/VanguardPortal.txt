@@ -1,13 +1,13 @@
 Building: VanguardPortal
-	Size: 5x5
-	Sprite: SpaceProgram
+	Size: 10x6
+	Sprite: PortalStabilizer
 	Name: #BLD_VANGUARDPORTAL
 	Description: #BLD_VANGUARDPORTAL_DESC
 	Category: Special
-	Base Cost: 5000
-	Tile Cost: 200
+	Base Cost: 4000
+	Tile Cost: 100
 	Base Maintenance: 100
-	Tile Maintenance: 20
+	Tile Maintenance: 10
 	Labor Cost: 500
 
 	ShowAttributeValue(Stabilizers Constructed, VanguardVictoryRequirement, Base Amount = 3, Multiplier = -1.0, Icon = ShieldImpactLarge*#de12de, Suffix = / 3)
