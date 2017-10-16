@@ -65,7 +65,7 @@ TRAIT_VANGUARD_RINGWORLDER_DESC: <<|
 TRAIT_VANGUARD_DESC: <<
 	[vspace=3/][img=ShieldImpactLarge*#de12de;22]Is a Vanguard race, with all their advantages and disadvantages:
 	
-	[vspace=3/][img=SpaceProgram;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
+	[vspace=3/][img=PortalStabilizer;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
 	[vspace=3/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
 >>
 TRAIT_MECHANOID_DESC: <<|

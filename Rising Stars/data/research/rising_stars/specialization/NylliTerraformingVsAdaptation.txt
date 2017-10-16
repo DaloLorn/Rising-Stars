@@ -1,0 +1,115 @@
+Technology: NylliTerraformSpec1
+	Name: #R_SPEC_NYLLI_TERRAFORM1
+	Description: #R_SPEC_NYLLI_TERRAFORM1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 250
+	Class: Unlock
+	Category: Specializations
+	Icon: SupplyIcon
+	Symbol: EnormousPlanet
+	Color: #84ff19
+	SecondaryMoneyCost(500)
+	ReplaceTechnologyNodes(NylliAdaptationSpec1, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.1)
+	ModAttribute(TerraformLaborFactor, Add, -0.1)
+
+Technology: NylliAdaptationSpec1
+	Name: #R_SPEC_NYLLI_ADAPTATION1
+	Description: #R_SPEC_NYLLI_ADAPTATION1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 250
+	Category: Specializations
+	Class: Unlock
+	Icon: Megafarm
+	Symbol: SequesteredSociety
+	Color: #6c412f
+	ReplaceTechnologyNodes(NylliTerraformSpec1, SpecConnector)
+	ModAttribute(ImperialBldConstructionRate, Add, 1)
+	ModAttribute(BuildingCostFactor, Add, -0.2)
+	ModAttribute(BuildingMaintFactor, Add, -0.1)
+
+	SecondaryMoneyCost(500)
+Technology: NylliTerraformSpec2
+	Name: #R_SPEC_NYLLI_TERRAFORM2
+	Description: #R_SPEC_NYLLI_TERRAFORM2_DESC
+	Time Cost: 120
+	Point Cost: 500
+	Category: Specializations
+	Symbol: EnormousPlanet
+	Icon: ResourceIcons::26*#aaaaaa
+	Color: #84ff19
+	Class: Unlock
+	SecondaryMoneyCost(1000)
+	ReplaceTechnologyNodes(NylliAdaptationSpec2, SpecConnector)
+	UnlockTag(Terraform2)
+
+Technology: NylliAdaptationSpec2
+	Name: #R_SPEC_NYLLI_ADAPTATION2
+	Description: #R_SPEC_NYLLI_ADAPTATION2_DESC:25%
+	Time Cost: 120
+	Point Cost: 500
+	Class: Unlock
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: Industrious
+	SecondaryMoneyCost(1000)
+	ReplaceTechnologyNodes(NylliTerraformSpec2, SpecConnector)
+	GainAttitude(Adaptation2)
+
+Technology: NylliTerraformSpec3
+	Name: #R_SPEC_NYLLI_TERRAFORM3
+	Description: #R_SPEC_NYLLI_TERRAFORM3_DESC:30%:15%
+	Time Cost: 240
+	Point Cost: 1000
+	Class: Unlock
+	Category: Specializations
+	Color: #84ff19
+	Symbol: EnormousPlanet
+	Icon: FtlIcon
+	SecondaryMoneyCost(2000)
+	ReplaceTechnologyNodes(NylliAdaptationSpec3, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.15)
+	ModAttribute(TerraformLaborFactor, Add, -0.15)
+
+Technology: NylliAdaptationSpec3
+	Name: #R_SPEC_NYLLI_ADAPTATION3
+	Description: #R_SPEC_NYLLI_ADAPTATION3_DESC:1
+	Time Cost: 240
+	Point Cost: 1000
+	Class: Unlock
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: ResourceIcons::38
+	SecondaryMoneyCost(2000)
+	ReplaceTechnologyNodes(NylliTerraformSpec3, SpecConnector)
+	GainAttitude(Adaptation3)
+
+Technology: NylliTerraformSpec4
+	Name: #R_SPEC_NYLLI_TERRAFORM4
+	Description: #R_SPEC_NYLLI_TERRAFORM4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Unlock
+	Category: Specializations
+	Color: #84ff19
+	Icon: ResourceIcons::29*#66ffff
+	Symbol: EnormousPlanet
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(NylliAdaptationSpec4, SpecConnector)
+	UnlockTag(Terraform4)
+
+Technology: NylliAdaptationSpec4
+	Name: #R_SPEC_NYLLI_ADAPTATION4
+	Description: #R_SPEC_NYLLI_ADAPTATION4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Unlock
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: Refinery
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(NylliTerraformSpec4, SpecConnector)
+	ModAttribute(Adaptation4, Add, 1)

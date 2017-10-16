@@ -65,7 +65,7 @@ R_KEY_EMERGENCY_SHIELDS: Improved Plasma Harnessing
 
 
 R_SYS_ZPG_DESC: <<
-	[color=#aaa][i]Massive breakthroughs in physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
+	[color=#aaa][i]Massive breakthroughs in quantum physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
 
 	Unlocks the Singularity Core.
 
@@ -566,6 +566,149 @@ R_SPEC_TERRAFORM4_DESC: <<
 	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
 >>
 R_SPEC_ADAPTATION4_DESC: <<
+	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
+
+	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
+
+	This effect does not apply to Stalks, Altars or Atroan control hubs.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
+>>
+
+*** TERRAFORMING VS ADAPTATION - ATROAN ***
+
+R_SPEC_ATROAN_TERRAFORM1: Efficient Programming
+R_SPEC_ATROAN_ADAPTATION1: Optimized Infrastructure
+R_SPEC_ATROAN_TERRAFORM1_DESC: <<
+	[color=#aaa][i]Additional simulations have discovered a way to optimize our cores more quickly and efficiently.[/i][/color]
+
+	Reduces the Labor cost of core programming by $2, and makes it cost $1 less money. Does not interact in any way with the penalty for reprogramming a programmed core.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Optimized Infrastructure/]
+>>
+R_SPEC_ATROAN_ADAPTATION1_DESC: <<
+	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
+
+	Doubles the base construction speed of all buildings. Additionally, reduces the base construction and maintenance costs of buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
+
+	[bbloc=#R_SPEC_DISCLAIMER:Efficient Programming/]
+>>
+
+R_SPEC_ATROAN_TERRAFORM2: Environmental Engineering
+R_SPEC_ATROAN_ADAPTATION2: Adaptive Industrialization
+R_SPEC_ATROAN_TERRAFORM2_DESC: <<
+	[color=#aaa][i]New terraforming techniques allow us to make more precise alterations to a planet's biosphere. Or we could just build fjords in the equatorial regions. Fjords are nice.[/i][/color]
+
+	Allows planets to be terraformed to an advanced Tier 1 resource.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Industrialization/]
+>>
+R_SPEC_ATROAN_ADAPTATION2_DESC: <<
+	[color=#aaa][i]By adapting our industrial processes to the specifics of each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
+
+	Increases all civilian resource production by $1.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Environmental Engineering/]
+>>
+
+R_SPEC_ATROAN_TERRAFORM3: Efficient Biospheres
+R_SPEC_ATROAN_ADAPTATION3: Adaptive Habitats
+R_SPEC_ATROAN_TERRAFORM3_DESC: <<
+	[color=#aaa][i]We have made another breakthrough in streamlining the terraforming progress. Our terraformers will now be significantly more efficient.[/i][/color]
+
+	Reduces the Labor cost of terraforming by $2, and makes it cost $1 less money.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Habitats/]
+>>
+R_SPEC_ATROAN_ADAPTATION3_DESC: <<
+	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
+
+	Increases the population of all our planets by $1 per level.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Efficient Biospheres/]
+>>
+
+R_SPEC_ATROAN_TERRAFORM4: Ecosystem Restructuring
+R_SPEC_ATROAN_ADAPTATION4: Multipurpose Infrastructure
+R_SPEC_ATROAN_TERRAFORM4_DESC: <<
+	[color=#aaa][i]We now know how to alter planetary ecosystems with incredible precision. We won't let any creatures breed out of control and eat everything anymore.[/i][/color]
+
+	Allows planets to be terraformed to a basic Tier 2 resource or a very advanced Tier 1 resource.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
+>>
+R_SPEC_ATROAN_ADAPTATION4_DESC: <<
+	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
+
+	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
+
+	This effect does not apply to Stalks, Altars or Atroan control hubs.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
+>>
+*** TERRAFORMING VS ADAPTATION - NYLLI ***
+
+R_SPEC_NYLLI_TERRAFORM1: Streamlined Terraforming
+R_SPEC_NYLLI_ADAPTATION1: Optimized Habitats
+R_SPEC_NYLLI_TERRAFORM1_DESC: <<
+	[color=#aaa][i]As we continue to terraform more planets, we inevitably identify more inefficiencies in our initial terraforming process. Resolving these inefficiencies will reduce the colossal amounts of time and money spent by our terraformers.[/i][/color]
+
+	Reduces the Labor cost of terraforming by $2, and makes it cost $1 less money.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Optimized Habitats/]
+>>
+R_SPEC_NYLLI_ADAPTATION1_DESC: <<
+	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
+
+	Doubles the base construction speed of all buildings. Additionally, reduces the base construction and maintenance costs of buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
+
+	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Terraforming/]
+>>
+
+R_SPEC_NYLLI_TERRAFORM2: Environmental Engineering
+R_SPEC_NYLLI_ADAPTATION2: Adaptive Industrialization
+R_SPEC_NYLLI_TERRAFORM2_DESC: <<
+	[color=#aaa][i]New terraforming techniques allow us to make more precise alterations to a planet's biosphere. Or we could just build fjords in the equatorial regions. Fjords are nice.[/i][/color]
+
+	Allows planets to be terraformed to an advanced Tier 1 resource.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Industrialization/]
+>>
+R_SPEC_NYLLI_ADAPTATION2_DESC: <<
+	[color=#aaa][i]By adapting our industrial processes to the specifics of each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
+
+	Increases all civilian resource production by $1.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Environmental Engineering/]
+>>
+
+R_SPEC_NYLLI_TERRAFORM3: Efficient Biospheres
+R_SPEC_NYLLI_ADAPTATION3: Adaptive Habitats
+R_SPEC_NYLLI_TERRAFORM3_DESC: <<
+	[color=#aaa][i]We have made another breakthrough in streamlining the terraforming progress. Our terraformers will now be significantly more efficient.[/i][/color]
+
+	Reduces the Labor cost of terraforming by $2, and makes it cost $1 less money.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Habitats/]
+>>
+R_SPEC_NYLLI_ADAPTATION3_DESC: <<
+	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
+
+	Increases the population of all our planets by $1 per level.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Efficient Biospheres/]
+>>
+
+R_SPEC_NYLLI_TERRAFORM4: Ecosystem Restructuring
+R_SPEC_NYLLI_ADAPTATION4: Multipurpose Infrastructure
+R_SPEC_NYLLI_TERRAFORM4_DESC: <<
+	[color=#aaa][i]We now know how to alter planetary ecosystems with incredible precision. We won't let any creatures breed out of control and eat everything anymore.[/i][/color]
+
+	Allows planets to be terraformed to a basic Tier 2 resource or a very advanced Tier 1 resource.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
+>>
+R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
 
 	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.

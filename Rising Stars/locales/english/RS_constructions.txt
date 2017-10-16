@@ -109,9 +109,14 @@ CONS_CORE_LABOR: Manufacturing Core
 CONS_CORE_RESEARCH: Science Core
 CONS_CORE_MONEY: Allocator Core
 CONS_CORE_PROGRAM: <<
-	The Core will generate $1 equivalent to $2 pressure on top of its usual benefits. Removes any other Core Programming effects.
+	The Core will generate $1 equivalent to $2 pressure on top of its usual benefits. Removes any other Core Programming, Core Adaptation and Core Specialization effects.
 
-	Attempting to reprogram a previously programmed Core will increase the build and Labor costs of the new program by 25% as the existing configuration is discarded.
+	Attempting to reprogram a previously programmed Core will increase the build and Labor costs of the new program by 25% as the existing configuration is discarded. Reprogramming a Core which has been Adapted or Specialized will add another 25% and 50%, respectively, for a maximum of 100% for reprogramming a Specialized Core.
+>>
+CONS_CORE_ADAPT: <<
+	The Core will generate an additional $1 equivalent to $2 pressure on top of its previous programming.
+
+	Attempting to reprogram a previously programmed Core will increase the build and Labor costs of the new program by 25% as the existing configuration is discarded. Reprogramming a Core which has been Adapted or Specialized will add another 25% and 50%, respectively, for a maximum of 100% for reprogramming a Specialized Core.
 >>
 CONS_CORE_DEFENSE_DESC: <<
 	Reconfigure the planet's Core to allocate excess resources towards the creation of small arms and security equipment.
