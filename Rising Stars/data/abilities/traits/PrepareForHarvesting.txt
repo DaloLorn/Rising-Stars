@@ -16,8 +16,8 @@ Ability: PrepareForHarvest
 	TargetFilterNotQuarantined(targ)
 
 	ABEM_races::TriggerTargetForCasterPeriodic(targ, ABEM_races::NotifyEmpire(#ALERT_READY_FOR_HARVESTING, Description = #ALERT_READY_FOR_HARVESTING_DESC), Interval = 360, Max Triggers = 1)
-	ABEM_races::SafeAutoOrderOnAutoColonizeTarget(targ)
 	OffensiveToTarget(targ)
 	IsToggleTarget(targ)
+	IsAutoColonize()
 	TriggerTargetPeriodic(targ, AddStatus(ReadyForHarvest), 360, 1)
 	PersistentBeamEffect(targ, #086786, PreparingHarvest)
