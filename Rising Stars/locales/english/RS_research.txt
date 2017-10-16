@@ -384,7 +384,7 @@ R_TERRAFORMING_DESC: <<
 
 	Allows planets to be terraformed to a basic Tier 1 resource.
 >>
-R_CORE_PROGRAMMING: Core Adaptation
+R_CORE_PROGRAMMING: Optimized Core Programming
 R_CORE_PROGRAMMING_DESC: <<
 	[color=#aaa][i]We have discovered a number of inefficiencies in our basic Core design. The deficiency can be corrected using a variety of methods - all of them will require additional replicator time and support from a Foundry, but once they are completed, they should improve our resource generation.[/i][/color]
 
@@ -582,33 +582,33 @@ R_SPEC_ATROAN_ADAPTATION1: Optimized Infrastructure
 R_SPEC_ATROAN_TERRAFORM1_DESC: <<
 	[color=#aaa][i]Additional simulations have discovered a way to optimize our cores more quickly and efficiently.[/i][/color]
 
-	Reduces the Labor cost of core programming by $2, and makes it cost $1 less money. Does not interact in any way with the penalty for reprogramming a programmed core.
+	Reduces the Labor cost of core programming, adaptation or specialization by $2, and makes it cost $1 less money. Does not interact in any way with the penalty for reprogramming a programmed core.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Optimized Infrastructure/]
 >>
 R_SPEC_ATROAN_ADAPTATION1_DESC: <<
-	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
+	[color=#aaa][i]Dedicating additional computational power to simulating the logistics of constructing planetary infrastructure has revealed a number of glaring inefficiencies. These have now been corrected.[/i][/color]
 
 	Doubles the base construction speed of all buildings. Additionally, reduces the base construction and maintenance costs of buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
 
 	[bbloc=#R_SPEC_DISCLAIMER:Efficient Programming/]
 >>
 
-R_SPEC_ATROAN_TERRAFORM2: Environmental Engineering
-R_SPEC_ATROAN_ADAPTATION2: Adaptive Industrialization
+R_SPEC_ATROAN_TERRAFORM2: Adaptive Programming
+R_SPEC_ATROAN_ADAPTATION2: Efficient Processing
 R_SPEC_ATROAN_TERRAFORM2_DESC: <<
-	[color=#aaa][i]New terraforming techniques allow us to make more precise alterations to a planet's biosphere. Or we could just build fjords in the equatorial regions. Fjords are nice.[/i][/color]
+	[color=#aaa][i]Allowing a core to simulate and iterate upon its own programming yields a program that is tailored to the specific environment of its planet.[/i][/color]
 
-	Allows planets to be terraformed to an advanced Tier 1 resource.
+	Allows programmed Cores to be Adapted, generating even more of whatever resource they are generating.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Industrialization/]
+	[bbloc=#R_SPEC_DISCLAIMER:Efficient Processing/]
 >>
 R_SPEC_ATROAN_ADAPTATION2_DESC: <<
-	[color=#aaa][i]By adapting our industrial processes to the specifics of each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
+	[color=#aaa][i]Better processing techniques [/i][/color]
 
-	Increases all civilian resource production by $1.
+	Cores and Refineries produce an additional $1 and $2 of any pressure on a planet, respectively.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Environmental Engineering/]
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Programming/]
 >>
 
 R_SPEC_ATROAN_TERRAFORM3: Efficient Biospheres
