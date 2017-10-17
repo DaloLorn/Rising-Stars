@@ -551,7 +551,7 @@ R_SPEC_TERRAFORM3_DESC: <<
 R_SPEC_ADAPTATION3_DESC: <<
 	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
 
-	Increases the population of all our planets by $1 per level.
+	Increases the maximum population of all planets by $1 per level.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Efficient Biospheres/]
 >>
@@ -577,7 +577,7 @@ R_SPEC_ADAPTATION4_DESC: <<
 
 *** TERRAFORMING VS ADAPTATION - ATROAN ***
 
-R_SPEC_ATROAN_TERRAFORM1: Efficient Programming
+R_SPEC_ATROAN_TERRAFORM1: Streamlined Programming
 R_SPEC_ATROAN_ADAPTATION1: Optimized Infrastructure
 R_SPEC_ATROAN_TERRAFORM1_DESC: <<
 	[color=#aaa][i]Additional simulations have discovered a way to optimize our cores more quickly and efficiently.[/i][/color]
@@ -591,7 +591,7 @@ R_SPEC_ATROAN_ADAPTATION1_DESC: <<
 
 	Doubles the base construction speed of all buildings. Additionally, reduces the base construction and maintenance costs of buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
 
-	[bbloc=#R_SPEC_DISCLAIMER:Efficient Programming/]
+	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Programming/]
 >>
 
 R_SPEC_ATROAN_TERRAFORM2: Adaptive Programming
@@ -604,36 +604,36 @@ R_SPEC_ATROAN_TERRAFORM2_DESC: <<
 	[bbloc=#R_SPEC_DISCLAIMER:Efficient Processing/]
 >>
 R_SPEC_ATROAN_ADAPTATION2_DESC: <<
-	[color=#aaa][i]Better processing techniques [/i][/color]
+	[color=#aaa][i]Better processing techniques allow us to better utilize the resources on a planet.[/i][/color]
 
 	Cores and Refineries produce an additional $1 and $2 of any pressure on a planet, respectively.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Programming/]
 >>
 
-R_SPEC_ATROAN_TERRAFORM3: Efficient Biospheres
-R_SPEC_ATROAN_ADAPTATION3: Adaptive Habitats
+R_SPEC_ATROAN_TERRAFORM3: Efficient Programming
+R_SPEC_ATROAN_ADAPTATION3: Matter Reclamation
 R_SPEC_ATROAN_TERRAFORM3_DESC: <<
-	[color=#aaa][i]We have made another breakthrough in streamlining the terraforming progress. Our terraformers will now be significantly more efficient.[/i][/color]
+	[color=#aaa][i]Further simulations have discovered a way to modify our cores at a remarkable rate.[/i][/color]
 
-	Reduces the Labor cost of terraforming by $2, and makes it cost $1 less money.
+	Reduces the Labor cost of core programming, adaptation or specialization by $2, and makes it cost $1 less money. Does not interact in any way with the penalty for reprogramming a programmed core.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Habitats/]
+	[bbloc=#R_SPEC_DISCLAIMER:Matter Reclamation/]
 >>
 R_SPEC_ATROAN_ADAPTATION3_DESC: <<
-	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
+	[color=#aaa][i]Base materials are often not completely useless when they have been processed. Using an innovative new technique, we can get more value per block of matter.[/i][/color]
 
-	Increases the population of all our planets by $1 per level.
+	Increases the effectiveness of all buildings which consume Base Materials - except Refineries and Infusers - by $1. Does not modify any negative effects or the effects of Multipurpose Infrastructure.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Efficient Biospheres/]
+	[bbloc=#R_SPEC_DISCLAIMER:Efficient Programming/]
 >>
 
-R_SPEC_ATROAN_TERRAFORM4: Ecosystem Restructuring
+R_SPEC_ATROAN_TERRAFORM4: Specialized Programming
 R_SPEC_ATROAN_ADAPTATION4: Multipurpose Infrastructure
 R_SPEC_ATROAN_TERRAFORM4_DESC: <<
-	[color=#aaa][i]We now know how to alter planetary ecosystems with incredible precision. We won't let any creatures breed out of control and eat everything anymore.[/i][/color]
+	[color=#aaa][i]Dedicating additional processing power to improving a core's programming can provide us with an extremely specialized program designed for the core's environment.[/i][/color]
 
-	Allows planets to be terraformed to a basic Tier 2 resource or a very advanced Tier 1 resource.
+	Allows programmed Cores to be Specialized, generating even more of whatever resource they are generating.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
 >>
@@ -644,7 +644,7 @@ R_SPEC_ATROAN_ADAPTATION4_DESC: <<
 
 	This effect does not apply to Stalks, Altars or Atroan control hubs.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
+	[bbloc=#R_SPEC_DISCLAIMER:Specialized Programming/]
 >>
 *** TERRAFORMING VS ADAPTATION - NYLLI ***
 
@@ -660,7 +660,7 @@ R_SPEC_NYLLI_TERRAFORM1_DESC: <<
 R_SPEC_NYLLI_ADAPTATION1_DESC: <<
 	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
 
-	Doubles the base construction speed of all buildings. Additionally, reduces the base construction and maintenance costs of buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
+	Halves the Labor cost of all orbitals. Additionally, reduces the base construction and maintenance costs of orbitals by $1 and $2, respectively.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Terraforming/]
 >>
@@ -675,26 +675,26 @@ R_SPEC_NYLLI_TERRAFORM2_DESC: <<
 	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Industrialization/]
 >>
 R_SPEC_NYLLI_ADAPTATION2_DESC: <<
-	[color=#aaa][i]By adapting our industrial processes to the specifics of each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
+	[color=#aaa][i]By adapting our industrial processes to the specific raw materials found on each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
 
-	Increases all civilian resource production by $1.
+	Increases all pressure-based resource production by $1.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Environmental Engineering/]
 >>
 
 R_SPEC_NYLLI_TERRAFORM3: Efficient Biospheres
-R_SPEC_NYLLI_ADAPTATION3: Adaptive Habitats
+R_SPEC_NYLLI_ADAPTATION3: Orbital Coordination
 R_SPEC_NYLLI_TERRAFORM3_DESC: <<
 	[color=#aaa][i]We have made another breakthrough in streamlining the terraforming progress. Our terraformers will now be significantly more efficient.[/i][/color]
 
 	Reduces the Labor cost of terraforming by $2, and makes it cost $1 less money.
 
-	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Habitats/]
+	[bbloc=#R_SPEC_DISCLAIMER:Orbital Coordination/]
 >>
 R_SPEC_NYLLI_ADAPTATION3_DESC: <<
-	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
+	[color=#aaa][i]Improvements in our orbital control systems have allowed us to cram more habitats into orbit above our planets. They'll still be just as crowded, but maybe they won't knock each other out of orbit anymore.[/i][/color]
 
-	Increases the population of all our planets by $1 per level.
+	Increases the maximum population of all planets by $1 per level.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Efficient Biospheres/]
 >>
@@ -711,9 +711,9 @@ R_SPEC_NYLLI_TERRAFORM4_DESC: <<
 R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
 
-	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
+	Most orbitals will now be automatically upgraded to Advanced versions, which generate a secondary effect in addition to their usual functionality.
 
-	This effect does not apply to Stalks, Altars or Atroan control hubs.
+	This effect does not apply to Guardian Facilities or captured racial orbitals such as Mainframes, Orbital Replicators or Embassies.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
 >>

@@ -19,6 +19,10 @@ Construction: CoreMoney
 
 	AddBuildCostStatusCount(CoreProgrammed, 250)
 	AddLaborCostStatusCount(CoreProgrammed, 15)
+	AddBuildCostStatusCount(CoreAdapted, 250)
+	AddLaborCostStatusCount(CoreAdapted, 15)
+	AddBuildCostStatusCount(CoreSpecialized, 500)
+	AddLaborCostStatusCount(CoreSpecialized, 30)
 
 	AddStatus(CoreProgrammed)
 	AddStatus(CoreMoney)
@@ -27,3 +31,5 @@ Construction: CoreMoney
 	RemoveStatus(CoreResearch)
 	RemoveStatus(CoreDefense)
 	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreAdapted)
+	RemoveStatus(CoreSpecialized)

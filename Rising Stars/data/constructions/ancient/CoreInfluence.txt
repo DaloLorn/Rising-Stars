@@ -19,6 +19,10 @@ Construction: CoreInfluence
 
 	AddBuildCostStatusCount(CoreProgrammed, 125)
 	AddLaborCostStatusCount(CoreProgrammed, 7.5)
+	AddBuildCostStatusCount(CoreAdapted, 125)
+	AddLaborCostStatusCount(CoreAdapted, 7.5)
+	AddBuildCostStatusCount(CoreSpecialized, 250)
+	AddLaborCostStatusCount(CoreSpecialized, 15)
 
 	AddStatus(CoreProgrammed)
 	AddStatus(CoreInfluence)
@@ -27,3 +31,5 @@ Construction: CoreInfluence
 	RemoveStatus(CoreResearch)
 	RemoveStatus(CoreDefense)
 	RemoveStatus(CoreMoney)
+	RemoveStatus(CoreAdapted)
+	RemoveStatus(CoreSpecialized)

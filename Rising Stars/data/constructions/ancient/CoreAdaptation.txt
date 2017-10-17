@@ -1,0 +1,23 @@
+Construction: CoreAdaptation
+	Name: #CONS_CORE_ADAPT
+	Description: #CONS_CORE_ADAPT_DESC
+	Icon: CoreBuilding
+
+	Category: Programming Upgrades
+
+	Build Cost: 375
+	Labor Cost: 22.5
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireStatus(CoreProgrammed)
+	RequireUnlockTag(AtroanTerraform2)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreMoney, 375)
+	AddLaborCostStatusCount(CoreMoney, 22.5)
+
+	AddStatus(CoreAdapted)

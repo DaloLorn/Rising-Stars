@@ -1,0 +1,6 @@
+Status: AncientProduce
+	Visible To: Nobody
+	Collapses: True
+
+	ProduceNativePressurePct(Per Stack = 0.1)
+	IfAttributeGTE(AtroanAdaptation2, 1, ProduceNativePressurePct(Per Stack = 0.05))

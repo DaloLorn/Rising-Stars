@@ -1,6 +1,6 @@
 Technology: AtroanTerraformSpec1
 	Name: #R_SPEC_ATROAN_TERRAFORM1
-	Description: #R_SPEC_ATROAN_TERRAFORM1_DESC:20%:10%
+	Description: #R_SPEC_ATROAN_TERRAFORM1_DESC:40%:20%
 	Time Cost: 60
 	Point Cost: 250
 	Class: Unlock
@@ -10,7 +10,8 @@ Technology: AtroanTerraformSpec1
 	Color: #84ff19
 	SecondaryMoneyCost(500)
 	ReplaceTechnologyNodes(AtroanAdaptationSpec1, SpecConnector)
-	ModAttribute(AtroanTerraform1, Add, 1)
+	ModAttribute(TerraformCostFactor, Add, -0.4)
+	ModAttribute(TerraformLaborFactor, Add, -0.2)
 
 Technology: AtroanAdaptationSpec1
 	Name: #R_SPEC_ATROAN_ADAPTATION1
@@ -44,7 +45,7 @@ Technology: AtroanTerraformSpec2
 
 Technology: AtroanAdaptationSpec2
 	Name: #R_SPEC_ATROAN_ADAPTATION2
-	Description: #R_SPEC_ATROAN_ADAPTATION2_DESC:25%
+	Description: #R_SPEC_ATROAN_ADAPTATION2_DESC:25%:15%
 	Time Cost: 120
 	Point Cost: 500
 	Class: Unlock
@@ -54,11 +55,11 @@ Technology: AtroanAdaptationSpec2
 	Icon: Industrious
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(AtroanTerraformSpec2, SpecConnector)
-	GainAttitude(AtroanAdaptation2)
+	ModAttribute(AtroanAdaptation2, Add, 1)
 
 Technology: AtroanTerraformSpec3
 	Name: #R_SPEC_ATROAN_TERRAFORM3
-	Description: #R_SPEC_ATROAN_TERRAFORM3_DESC:30%:15%
+	Description: #R_SPEC_ATROAN_TERRAFORM3_DESC:60%:30%
 	Time Cost: 240
 	Point Cost: 1000
 	Class: Unlock
@@ -68,12 +69,12 @@ Technology: AtroanTerraformSpec3
 	Icon: FtlIcon
 	SecondaryMoneyCost(2000)
 	ReplaceTechnologyNodes(AtroanAdaptationSpec3, SpecConnector)
-	ModAttribute(TerraformCostFactor, Add, -0.15)
-	ModAttribute(TerraformLaborFactor, Add, -0.15)
+	ModAttribute(TerraformCostFactor, Add, -0.6)
+	ModAttribute(TerraformLaborFactor, Add, -0.3)
 
 Technology: AtroanAdaptationSpec3
 	Name: #R_SPEC_ATROAN_ADAPTATION3
-	Description: #R_SPEC_ATROAN_ADAPTATION3_DESC:1
+	Description: #R_SPEC_ATROAN_ADAPTATION3_DESC:20%
 	Time Cost: 240
 	Point Cost: 1000
 	Class: Unlock
@@ -83,7 +84,7 @@ Technology: AtroanAdaptationSpec3
 	Icon: ResourceIcons::38
 	SecondaryMoneyCost(2000)
 	ReplaceTechnologyNodes(AtroanTerraformSpec3, SpecConnector)
-	GainAttitude(AtroanAdaptation3)
+	ModAttribute(AtroanAdaptation3, Add, 1)
 
 Technology: AtroanTerraformSpec4
 	Name: #R_SPEC_ATROAN_TERRAFORM4

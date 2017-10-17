@@ -59,3 +59,16 @@ STATUS_READYFORHARVEST: Ready for Harvesting
 STATUS_READYFORHARVEST_DESC: <<
 	A Ringworlder Harvester has prepared this planet for harvesting. Any Ringworlder empire can now transfer all the resources on the planet to one of their Ringworlds, turning it into a Barren planet.
 >>
+S_CORE_DEFENSE: High-Security Core
+S_CORE_ENERGY: Overcharged Core
+S_CORE_INFLUENCE: Communication Core
+S_CORE_LABOR: Manufacturing Core
+S_CORE_RESEARCH: Science Core
+S_CORE_MONEY: Allocator Core
+S_CORE_PROGRAM_DESC: <<
+	The planet's Core is programmed to generate $1 equivalent to $2 pressure on top of its usual benefits.
+>>
+S_CORE_ADAPTED: Adapted Core
+S_CORE_ADAPTED_DESC: The planet's Core has been upgraded to generate an additional 25% of whatever resources it is programmed to generate.
+S_CORE_SPECIALIZED: Specialized Core
+S_CORE_SPECIALIZED_DESC: The planet's Core has been upgraded to generate an additional 50% of whatever resources it is programmed to generate. If the Core has also been Adapted, then it is receiving an 87.5% bonus to its resource generation.

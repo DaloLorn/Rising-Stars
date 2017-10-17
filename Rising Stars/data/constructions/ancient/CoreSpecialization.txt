@@ -1,0 +1,23 @@
+Construction: CoreAdaptation
+	Name: #CONS_CORE_SPECIALIZATION
+	Description: #CONS_CORE_SPECIALIZATION_DESC
+	Icon: CoreBuilding
+
+	Category: Programming Upgrades
+
+	Build Cost: 500
+	Labor Cost: 30
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireStatus(CoreProgrammed)
+	RequireUnlockTag(AtroanTerraform4)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreMoney, 500)
+	AddLaborCostStatusCount(CoreMoney, 30)
+
+	AddStatus(CoreSpecialized)

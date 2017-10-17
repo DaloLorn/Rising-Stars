@@ -25,8 +25,8 @@ Technology: NylliAdaptationSpec1
 	Color: #6c412f
 	ReplaceTechnologyNodes(NylliTerraformSpec1, SpecConnector)
 	ModAttribute(ImperialBldConstructionRate, Add, 1)
-	ModAttribute(BuildingCostFactor, Add, -0.2)
-	ModAttribute(BuildingMaintFactor, Add, -0.1)
+	ModAttribute(OrbitalBuildCostFactor, Add, -0.2)
+	ModAttribute(OrbitalMaintMod, Add, -0.1)
 
 	SecondaryMoneyCost(500)
 Technology: NylliTerraformSpec2
@@ -55,7 +55,7 @@ Technology: NylliAdaptationSpec2
 	Icon: Industrious
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(NylliTerraformSpec2, SpecConnector)
-	GainAttitude(Adaptation2)
+	ModAttribute(NylliAdaptation2, Add, 1)
 
 Technology: NylliTerraformSpec3
 	Name: #R_SPEC_NYLLI_TERRAFORM3
