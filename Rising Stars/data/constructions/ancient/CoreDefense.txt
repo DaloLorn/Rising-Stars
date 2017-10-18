@@ -5,9 +5,6 @@ Construction: CoreDefense
 
 	Category: Core Programming
 
-	Build Cost: 375
-	Labor Cost: 22.5
-
 	RequireStatus(AncientReplicator)
 	building_effects::RequireStatusToProgress(AncientReplicator)
 	RequireStatus(AncientCore)
@@ -24,6 +21,8 @@ Construction: CoreDefense
 	AddBuildCostStatusCount(CoreSpecialized, 250)
 	AddLaborCostStatusCount(CoreSpecialized, 15)
 
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 22.5)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 375)
 	AddStatus(CoreProgrammed)
 	AddStatus(CoreDefense)
 	RemoveStatus(CoreInfluence)

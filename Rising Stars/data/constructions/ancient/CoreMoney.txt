@@ -5,8 +5,8 @@ Construction: CoreMoney
 
 	Category: Core Programming
 
-	Build Cost: 750
-	Labor Cost: 45
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 45)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 750)
 
 	RequireStatus(AncientReplicator)
 	building_effects::RequireStatusToProgress(AncientReplicator)
