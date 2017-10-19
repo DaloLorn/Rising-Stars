@@ -18,5 +18,6 @@ Module: NylliSenate
 
 
 
+	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireAttributeLT(SenateCount)
 	ModEmpireAttribute(SenateCount, Add, 1)

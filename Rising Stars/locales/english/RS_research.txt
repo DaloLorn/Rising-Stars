@@ -713,7 +713,7 @@ R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 
 	Most orbitals will now be automatically upgraded to Advanced versions, which generate a secondary effect in addition to their usual functionality.
 
-	This effect does not apply to Guardian Facilities or captured racial orbitals such as Mainframes, Orbital Replicators or Embassies.
+	This effect does not apply to Guardian Facilities, FTL orbitals, satellites, Habitats, or captured racial orbitals such as Mainframes, Orbital Replicators and Embassies.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
 >>

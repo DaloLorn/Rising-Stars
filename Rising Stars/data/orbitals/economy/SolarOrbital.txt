@@ -25,4 +25,39 @@ Module: SolarOrbital
 	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(SpawnOrbital(ProgenitorSolarOrbital)))
 	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
+
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedSolarOrbital)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
+
+Module: AdaptedSolarOrbital
+	Name: #ORB_SOLAR_ORBITAL_ADAPTED
+	Description: #ORB_SOLAR_ORBITAL_ADAPTED_DESC
+	Blurb: #ORB_SOLAR_ORBITAL_BLURB
+	Icon: GuiOrbitalIcons::13
+	Distant Icon: OrbitalIcons::13
+	Icon Size: 0.01
+
+	Build Cost: 400
+	Maintenance: 25
+	Labor Cost: 15
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+
+	FacesOrbitCenter()
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+	RequireUnlockTag(SolarOrbitalUnlock)
+	RequireUnlockTag(NylliAdaptation4)
+
+	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(SpawnOrbital(AdaptedProgenitorSolarOrbital)))
+	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(Destroy(True)))
+	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
+	AddEnergyIncomeStarTemperature(0.25, 1.0)
+	AddFTLIncome(0.1)

@@ -24,7 +24,7 @@ Technology: NylliAdaptationSpec1
 	Symbol: SequesteredSociety
 	Color: #6c412f
 	ReplaceTechnologyNodes(NylliTerraformSpec1, SpecConnector)
-	ModAttribute(ImperialBldConstructionRate, Add, 1)
+	ModAttribute(OrbitalLaborCostFactor, Add, -0.5)
 	ModAttribute(OrbitalBuildCostFactor, Add, -0.2)
 	ModAttribute(OrbitalMaintMod, Add, -0.1)
 
@@ -112,4 +112,4 @@ Technology: NylliAdaptationSpec4
 	Icon: Refinery
 	SecondaryMoneyCost(3000)
 	ReplaceTechnologyNodes(NylliTerraformSpec4, SpecConnector)
-	ModAttribute(Adaptation4, Add, 1)
+	UnlockTag(NylliAdaptation4)
