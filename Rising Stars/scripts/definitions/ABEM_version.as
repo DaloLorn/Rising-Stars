@@ -1,7 +1,7 @@
 import version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "686"; 
+const string MOD_REVISION = "717"; 
 const array<string> VERSIONS = {
 	"v2.0.3",
 };
