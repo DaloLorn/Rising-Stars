@@ -10,6 +10,7 @@ Attitude: Adaptation2
 		Icon: SupportIcon
 	Level:
 		Icon: SupportIcon
+		Threshold: 1000
 Attitude: Adaptation3
 	Name: Adaptation 3 - Adaptive Habitats
 	Description: This attitude should not be visible.
@@ -22,3 +23,4 @@ Attitude: Adaptation3
 		Icon: SupportIcon
 	Level:
 		Icon: SupportIcon
+		Threshold: 1000
