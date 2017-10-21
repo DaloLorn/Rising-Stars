@@ -20,6 +20,36 @@ Module: ProgenitorSolarOrbital
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedProgenitorSolarOrbital)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 
 	RequireUnlockTag(SolarOrbitalUnlock)
+	AddEnergyIncomeStarTemperature(0.5, 2.0)
+
+Module: AdaptedProgenitorSolarOrbital
+	Name: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED
+	Description: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED_DESC
+	Blurb: #ORB_PROGENITOR_SOLARORBITAL_BLURB
+	Icon: GuiOrbitalIcons::13
+	Distant Icon: OrbitalIcons::13
+	Icon Size: 0.01
+
+	Build Cost: 400
+	Labor Cost: 15
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+
+	FacesOrbitCenter()
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+	RequireUnlockTag(ProgenitorSolarOrbital)
+
+	RequireUnlockTag(SolarOrbitalUnlock)
+	RequireUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.5, 2.0)

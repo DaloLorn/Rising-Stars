@@ -6,6 +6,10 @@ Attitude: Adaptation2
 	Progress: Report the presence of this attitude as a bug.
 	ABEM_glory::CannotManuallyTake()
 	AddStatusOwnedPlanets(Adaptation2)
+	Level:
+		Icon: SupportIcon
+	Level:
+		Icon: SupportIcon
 Attitude: Adaptation3
 	Name: Adaptation 3 - Adaptive Habitats
 	Description: This attitude should not be visible.
@@ -14,3 +18,7 @@ Attitude: Adaptation3
 	Sort: 10000
 	AddStatusOwnedPlanets(Adaptation3)
 	ABEM_glory::CannotManuallyTake()
+	Level:
+		Icon: SupportIcon
+	Level:
+		Icon: SupportIcon

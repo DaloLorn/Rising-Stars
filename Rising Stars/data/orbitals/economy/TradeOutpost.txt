@@ -40,9 +40,62 @@ Module: TradeOutpost
 	AddStatus(OutpostWeaponCost)
 	AddStatus(OutpostDefenseCost)
 
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedTradeOutpost)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
 	AllowConstruction()
 	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
 	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
 	GiveTrade()
+
+Module: AdaptedTradeOutpost
+	Name: #ORB_TRADE_OUTPOST_ADAPTED
+	Blurb: #ORB_TRADE_OUTPOST_BLURB
+	Description: #ORB_TRADE_OUTPOST_ADAPTED_DESC
+	Icon: GuiOrbitalIcons::14
+	Distant Icon: OrbitalIcons::14
+
+	Core: True
+	Standalone: True
+
+	Build Cost: 300
+	Maintenance: 30
+	Labor Cost: 15
+	Size: 7
+
+	Health: 6000
+	Armor: 4000
+
+	AddCargoStorage(1000000)
+
+	Model: Outpost
+	Material: GenericPBR_Outpost
+
+	LimitOncePerSystem(OutpostFlag)
+
+	RequireUnlockTag(NylliAdaptation4)
+
+	AddFleetCommand(128)
+	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
+	AddFleetEffectiveness(+2.0)
+	AddSupportBonusHP(+1.0)
+
+	AddHealthEmpireAttribute(OutpostBoost, 10000)
+	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
+
+	ProtectSystem(90)
+	AddStatus(StartingProtection, Duration = 90)
+
+	AddStatus(OutpostArmorCost)
+	AddStatus(OutpostWeaponCost)
+	AddStatus(OutpostDefenseCost)
+
+	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
+	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
+	AllowConstruction()
+	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
+	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
+	GiveTrade()
+

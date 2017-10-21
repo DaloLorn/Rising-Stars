@@ -19,6 +19,33 @@ Module: ShieldCharger
 
 	Strategic Icon: OrbitalIcons::7
 
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedShieldCharger)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	AddRegionStatus(FastRecharge)
+	RequireUnlockTag(ShieldCharger)
+
+Module: AdaptedShieldCharger
+	Name: #ORB_SHIELD_CHARGER_ADAPTED
+	Blurb: #ORB_SHIELD_CHARGER_BLURB
+	Description: #ORB_SHIELD_CHARGER_ADAPTED_DESC
+	Icon: OrbitalIcons::7
+
+	Core: True
+	Standalone: True
+
+	Build Cost: 500
+	Maintenance: 100
+	Labor Cost: 10
+
+	Health: 6000
+	Armor: 6000
+
+	Model: DefenseStation
+	Material: VolkurGenericPBR
+
+	Strategic Icon: OrbitalIcons::7
+
+	RequireUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastRecharge)
 	RequireUnlockTag(ShieldCharger)

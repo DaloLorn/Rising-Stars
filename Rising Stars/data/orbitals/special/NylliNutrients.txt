@@ -1,5 +1,6 @@
 Module: NylliFood
 	Name: #ORB_FARM
+	Blurb: #ORB_FARM_BLURB
 	Description: #ORB_FARM_DESC
 	Icon: OrbitalIcons::0
 	Strategic Icon: Megafarm
@@ -9,9 +10,11 @@ Module: NylliFood
 	Health: 7000
 	Armor: 7000
 	Model: CommerceStation
-	Material: VolkurGenericPBR
+	Material: GenericPBR_CommerceStation
 	Size: 5
 
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedNylliFood)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
@@ -20,6 +23,7 @@ Module: NylliWater
 	Name: #ORB_HYDROGENATOR
 	Icon: OrbitalIcons::0
 	Strategic Icon: Hydrogenator
+	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_DESC
 	Maintenance: 150
 	Build Cost: 350
@@ -27,9 +31,49 @@ Module: NylliWater
 	Health: 7000
 	Armor: 7000
 	Model: Depot
-	Material: VolkurGenericPBR
+	Material: GenericPBR_Depot
 	Size: 5
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedNylliWater)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireUnlockTag(NylliNutrients)
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
+	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
+
+Module: AdaptedNylliFood
+	Name: #ORB_FARM_ADAPTED
+	Blurb: #ORB_FARM_BLURB
+	Description: #ORB_FARM_ADAPTED_DESC
+	Icon: OrbitalIcons::0
+	Strategic Icon: Megafarm
+	Maintenance: 150
+	Build Cost: 350
+	Labor Cost: 10
+	Health: 7000
+	Armor: 7000
+	Model: CommerceStation
+	Material: GenericPBR_CommerceStation
+	Size: 5
+
+	RequireUnlockTag(NylliAdaptation4)
+	RequireUnlockTag(NylliNutrients)
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
+	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
+Module: AdaptedNylliWater
+	Name: #ORB_HYDROGENATOR_ADAPTED
+	Icon: OrbitalIcons::0
+	Strategic Icon: Hydrogenator
+	Blurb: #ORB_HYDROGENATOR_BLURB
+	Description: #ORB_HYDROGENATOR_ADAPTED_DESC
+	Maintenance: 150
+	Build Cost: 350
+	Labor Cost: 10
+	Health: 7000
+	Armor: 7000
+	Model: Depot
+	Material: GenericPBR_Depot
+	Size: 5
+	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)

@@ -15,9 +15,29 @@ Module: NylliSenate
 	RequireUnlockTag(NylliSenate)
 	RepeatEmpirePopulation(20, AddInfluenceStake(1))
 
-
-
-
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedNylliSenate)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireAttributeLT(SenateCount)
+	ModEmpireAttribute(SenateCount, Add, 1)
+
+Module: AdaptedNylliSenate
+	Name: #ORB_SENATE_ADAPTED_NAME
+	Description: #ORB_SENATE_ADAPTED_DESC
+	Blurb: #ORB_SENATE_BLURB
+	Icon: PoliticalStrengthIcon
+	Strategic Icon: PoliticalStrengthIcon
+	Labor Cost: 125
+	Build Cost: 800
+	Maintenance: 750
+	Health: 10000
+	Armor: 10000
+	Model: CommerceStation
+	Material: GenericPBR_CommerceStation
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 5000.0)
+	RequireUnlockTag(NylliSenate)
+	RepeatEmpirePopulation(20, AddInfluenceStake(1))
+
+	RequireUnlockTag(NylliAdaptation4)
 	RequireAttributeLT(SenateCount)
 	ModEmpireAttribute(SenateCount, Add, 1)

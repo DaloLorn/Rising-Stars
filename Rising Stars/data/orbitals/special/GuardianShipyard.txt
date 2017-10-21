@@ -11,7 +11,7 @@ Module: GuardianShipyard
 	Shield Capacity: 50000
 	Shield Regeneration: 50
 	Model: Shipyard
-	Material: VolkurGenericPBR
+	Material: GenericPBR_Shipyard
 	Can Fling: False
 	GrantAbility(FinishGuardianConstruction)
 	GrantAbility(BuildGuardian)

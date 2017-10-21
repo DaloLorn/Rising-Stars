@@ -22,5 +22,34 @@ Module: VacuumTelescope
 	Material: GenericPBR_Telescope
 	Size: 50
 
+	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedVacuumTelescope)))
+	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	GrantAllFleetVision(System Space = False, Deep Space = True, In FTL = False, Stations = True)
+
+Module: AdaptedVacuumTelescope
+	Name: #VACUUM_TELESCOPE_ADAPTED
+	Blurb: #VACUUM_TELESCOPE_BLURB
+	Description: #VACUUM_TELESCOPE_ADAPTED_DESC
+
+	Icon: GuiOrbitalIcons::17
+	Strategic Icon: OrbitalIcons::17
+
+	Core: True
+	Standalone: True
+
+	Build Cost: 1000
+	Labor Cost: 100
+	ConsumeCargo(Ore, 5000)
+
+	RequireUnlockTag(VacuumTelescopeUnlock)
+
+	Health: 50000
+	Armor: 50000
+
+	Model: Observatory
+	Material: GenericPBR_Telescope
+	Size: 50
+
+	RequireUnlockTag(NylliAdaptation4)
 	GrantAllFleetVision(System Space = False, Deep Space = True, In FTL = False, Stations = True)

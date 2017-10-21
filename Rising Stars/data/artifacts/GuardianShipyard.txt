@@ -4,6 +4,7 @@ Artifact: GuardianShipyard
 	Icon: HullIcons::1
 	Strategic Icon: HullIcons::1
 	Model: Shipyard
+	Material: GenericPBR_Shipyard
 	Size: 50.0
 	Mass: 30000000000
 	Frequency: 0
