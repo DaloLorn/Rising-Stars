@@ -67,6 +67,7 @@ Module: AdaptedSenatorialPalace
 	GloballyVisible()
 	GrantAllVision()
 
+	AddInfluenceStake(3)
 	RequireUnlockTag(NylliAdaptation4)
 	GrantAbility(BuyElection)
 	GrantAbility(BuyGalacticUtopia)

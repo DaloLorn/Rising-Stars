@@ -47,5 +47,5 @@ Module: AdaptedShieldCharger
 	Strategic Icon: OrbitalIcons::7
 
 	RequireUnlockTag(NylliAdaptation4)
-	AddRegionStatus(FastRecharge)
+	AddRegionStatus(AdaptedFastRecharge)
 	RequireUnlockTag(ShieldCharger)

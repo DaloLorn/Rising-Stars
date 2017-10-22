@@ -1,0 +1,8 @@
+Status: SingularityDisruption
+	Name: #STATUS_SINGULARITY_DISRUPTION
+	Description: #STATUS_SINGULARITY_DISRUPTION_DESC
+	Icon: ShieldImpactSmall*#ff88ff
+	Color: #ff0000
+
+	PlayParticles(SingularityDisruption, Scale = 1.2)
+	ABEM_nebulae::DealRandomDamage(Damage = 500, Damage Percent = 0, Shield Percent = 0.025, Shield Multiplier = 1, Shields Only = True)

@@ -51,5 +51,6 @@ Module: AdaptedVacuumTelescope
 	Material: GenericPBR_Telescope
 	Size: 50
 
+	AddResearchIncome(5)
 	RequireUnlockTag(NylliAdaptation4)
 	GrantAllFleetVision(System Space = False, Deep Space = True, In FTL = False, Stations = True)

@@ -52,5 +52,6 @@ Module: AdaptedFTLJammer
 	IfNotFTLShortage(BlockSystemFTL())
 	FTLMaintenance(0.15)
 
+	AddEnergyIncome(1)
 	RequireUnlockTag(NylliAdaptation4)
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147

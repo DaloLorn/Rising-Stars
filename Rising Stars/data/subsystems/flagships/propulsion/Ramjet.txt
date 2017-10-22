@@ -45,14 +45,14 @@ Subsystem: Ramjet
 		Message: #ERROR_NOT_ALLOWED_ON_MOTHERSHIP
 
 	Module: Default
-		Hex.MaintainCost := Hex.MaintainCost * BussardMaintMult * min(ShipSize/BussardMinSize, 1)
+		Hex.MaintainCost := Hex.MaintainCost * BussardMaintMult * min(ShipSize/BussardPeakSize, 1)
 		Hex.BuildCost := 1.0 * Hex.BuildCost
 		Hex.LaborCost := 0.5 * Hex.LaborCost
 
 	Module: Core
 		Sprite: Ramjet
 
-		Hex.MaintainCost := Hex.MaintainCost * 5 * BussardMaintMult * min(ShipSize/BussardMinSize, 1)
+		Hex.MaintainCost := Hex.MaintainCost * 5 * BussardMaintMult * min(ShipSize/BussardPeakSize, 1)
 		Hex.HP := 5 * Hex.HP
 		Hex.BuildCost := 2.0 * Hex.BuildCost
 		Hex.LaborCost := 2.0 * Hex.LaborCost

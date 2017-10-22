@@ -26,5 +26,5 @@ Building: AncientCore
 	AddStatus(AncientClaim)
 	AddStatus(AncientCore)
 
-	ShowAttributeValue(Additional Resource Production, AtroanAdaptation2, Multiplier = 15.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
+	ShowAttributeValue(Additional Resource Production, AtroanAdaptation2, Multiplier = 25.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
 	Repeat(5, AddStatus(AncientProduce))
