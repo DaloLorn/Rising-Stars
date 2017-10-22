@@ -640,7 +640,7 @@ R_SPEC_ATROAN_TERRAFORM4_DESC: <<
 R_SPEC_ATROAN_ADAPTATION4_DESC: <<
 	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
 
-	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
+	Most buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
 
 	This effect does not apply to Stalks, Altars or Atroan control hubs.
 
