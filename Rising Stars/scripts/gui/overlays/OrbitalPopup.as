@@ -24,6 +24,7 @@ class OrbitalPopup : Popup {
 
 	GuiProgressbar@ health;
 	GuiProgressbar@ strength;
+	GuiProgressbar@ shield;
 
 	GuiCargoDisplay@ cargo;
 
@@ -35,20 +36,27 @@ class OrbitalPopup : Popup {
 
 	OrbitalPopup(BaseGuiElement@ parent) {
 		super(parent);
-		size = vec2i(190, 155);
+		size = vec2i(190, 181);
 
 		@name = GuiText(this, Alignment(Left+4, Top+2, Right-4, Top+24));
 		name.horizAlign = 0.5;
 
-		@health = GuiProgressbar(this, Alignment(Left+3, Bottom-56, Right-4, Bottom-30));
+		@health = GuiProgressbar(this, Alignment(Left+3, Bottom-82, Right-4, Bottom-56));
 		health.tooltip = locale::HEALTH;
 
 		GuiSprite healthIcon(health, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Health);
 
-		@strength = GuiProgressbar(this, Alignment(Left+3, Bottom-30, Right-4, Bottom-4));
+		@strength = GuiProgressbar(this, Alignment(Left+3, Bottom-56, Right-4, Bottom-30));
 		strength.tooltip = locale::FLEET_STRENGTH;
 
 		GuiSprite strIcon(strength, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Strength);
+		
+		@shield = GuiProgressbar(this, Alignment(Left+2, Bottom-30, Right-4, Bottom-4));
+		shield.tooltip = locale::SHIELD_STRENGTH;
+		shield.frontColor = Color(0x429cffff);
+		shield.backColor = Color(0x59a8ff20);
+		
+		GuiSprite shieldIcon(shield, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Shield);
 
 		@objView = Gui3DObject(this, recti(34, 24, 156, 98));
 
@@ -215,6 +223,13 @@ class OrbitalPopup : Popup {
 		health.progress = curHP / maxHP;
 		health.frontColor = low.interpolate(high, health.progress);
 		health.text = standardize(curHP)+" / "+standardize(maxHP);
+		
+		// Update shield display
+		if(obj.maxShield != 0)
+			shield.progress = obj.shield / obj.maxShield;
+		else
+			shield.progress = 0;
+		shield.text = standardize(obj.shield)+" / "+standardize(obj.maxShield);
 
 		defIcon.visible = playerEmpire.isDefending(obj);
 
