@@ -202,3 +202,5 @@ TECHNOFARM_DESC: <<
 
 	Cannot be exported.
 >>
+R_STRIP_TRANSMUTER: Transmuted Ore
+R_STRIP_TRANSMUTER_DESC: Generates 7.5 Base Materials and 45 Ore per minute. Can be exported to other planets.

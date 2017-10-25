@@ -631,3 +631,12 @@ S_SELF_DESTRUCT_DESC: <<
 	[img=Minus]You die.[/img]
 >>
 S_SELF_DESTRUCT: Self-Destruct Device
+S_WARHEAD_DESC: <<
+	A heavily armed warhead that detonates in the enemy fleet, creating a blast of ultrahard radiation to bombard all the enemy ships in the area.
+
+	[img=Plus]Damage is divided equally across all hexes on each affected ship.[/img]
+	[img=Minus]Limited storage of warheads.[/img]
+	[img=Minus]Warheads are expensive and must be constructed manually from a planet with labor.[/img]
+	[img=Minus]Damage reduced significantly by shields.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Warhead storage can be expanded by adding extra Warhead Tube modifiers to the subsystem.[/color][/i][/img]
+>>

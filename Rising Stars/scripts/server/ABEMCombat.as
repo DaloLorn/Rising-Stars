@@ -602,7 +602,7 @@ void ABEMWarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, 
 				deal *= 1.0 - (ship.Shield / ship.MaxShield);
 			}
 			// Divide damage by hex count.
-			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes - ship.blueprint.destroyedHexes;
+			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes;
 			ship.damageAllHexes(deal, source=source);
 		}
 	}
