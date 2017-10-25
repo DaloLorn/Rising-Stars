@@ -1,6 +1,7 @@
 Effect: ForcefieldBase
 	Value: Regen
 	Value: Capacity
+	Value: CapacityMult
 
 	Tick: ABEM_effects::ForcefieldTick
 
