@@ -39,7 +39,7 @@ ORB_PROGENITOR_SOLARORBITAL_DESC: <<
 
 	Only one Solar Engine of any kind may be constructed per system.
 >>
-ORB_ADAPTED: This is an upgrade from the [b][color=#foo]$1[/color][/b], unlocked by the Multipurpose Infrastructure specialization tech. Secondary effect: $2.
+ORB_ADAPTED: [i]This is an upgrade from the [b][color=#f00]$1[/color][/b], unlocked by the Multipurpose Infrastructure specialization tech. [b]Secondary effect: $2.[/b][/i]
 ORB_SOLAR_ORBITAL_ADAPTED: Improved Solar Engine
 ORB_SOLAR_ORBITAL_ADAPTED_DESC: <<
 	[bbloc=#ORB_SOLAR_ORBITAL_DESC/]
@@ -182,4 +182,94 @@ ORB_SHIPYARD_ADAPTED_DESC: <<|
 	[bbloc=#ORB_SHIPYARD_DESC/]
 
 	[bbloc=#ORB_ADAPTED:Shipyard:Generates 2 Defense per minute/]
+>>
+ORB_SENATORIAL_PALACE_ADAPTED: Lavish Senatorial Palace
+ORB_SENATORIAL_PALACE_ADAPTED_DESC: <<
+	[bbloc=#ORB_SENATORIAL_PALACE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Senatorial Palace:Generates 3 Influence Stake/]
+>>
+ORB_SINGULARITY_LAB_ADAPTED: Advanced Singularity Lab
+ORB_SINGULARITY_LAB_ADAPTED_DESC: <<
+	[bbloc=#ORB_SINGULARITY_LAB_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Singularity Lab:Creates system-wide hyperfield distortions, effectively blocking enemy FTL in the system it is located in and dealing heavy shield damage/]
+>>
+ORB_TRADE_OUTPOST_ADAPTED: Fortified Outpost
+ORB_TRADE_OUTPOST_ADAPTED_DESC: <<
+	[bbloc=#ORB_TRADE_OUTPOST_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Outpost:Has a fairly powerful shield generator, and support ships can break off to raid enemy forces/]
+>>
+ORB_TRADE_STATION_ADAPTED: Prosperous Commerce Station
+ORB_TRADE_STATION_ADAPTED_DESC: <<
+	[bbloc=#ORB_TRADE_STATION_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Commerce Station:Sends two Freighters to random allied or owned Level 1+ planets every 3 minutes. Receiving planets become Happy for 3 minutes/]
+>>
+ORB_FTL_JAMMER_ADAPTED: Redistributing FTL Jammer
+ORB_FTL_JAMMER_ADAPTED_DESC: <<
+	[bbloc=#ORB_FTL_JAMMER_DESC/]
+
+	[bbloc=#ORB_ADAPTED:FTL Jammer:Generates 1 Energy per second/]
+>>
+STARFORGE_ADAPTED: Restorative Star Forge
+STARFORGE_ADAPTED_DESC: <<
+	[bbloc=#STARFORGE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Star Forge:Generates a shield around the system's star, reducing the damage dealt by the forge and possibly eliminating it altogether if the shield is allowed time to recover/]
+>>
+ORB_TELESCOPE_ADAPTED: Subspace Spy Telescope Array
+ORB_TELESCOPE_ADAPTED_DESC: <<
+	[bbloc=#ORB_TELESCOPE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Subspace Telescope Array:Periodically generates Intelligence cards against nearby empires/]
+>>
+VACUUM_TELESCOPE_ADAPTED: Vacuum Research Telescope
+VACUUM_TELESCOPE_ADAPTED_DESC: <<
+	[bbloc=#VACUUM_TELESCOPE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Vacuum Telescope:Generates 5 Research per second/]
+>>
+ORB_SHIELD_CHARGER_ADAPTED: Radiant Power Transmitter
+ORB_SHIELD_CHARGER_ADAPTED_DESC: <<
+	[bbloc=#ORB_SHIELD_CHARGER_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Power Transmitter:All flagships in the system receive a 20% boost to shield capacity. Does not affect Forcefields/]
+>>
+ORB_STELLAR_SHIELD_ADAPTED: Advanced Stellar Shield Generator
+ORB_STELLAR_SHIELD_ADAPTED_DESC: <<
+	[bbloc=#ORB_STELLAR_SHIELD_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Stellar Shield Generator:Has the Support Beam ability/]
+>>
+ORB_SUPPLY_DEPOT_ADAPTED: Advanced Supply Depot
+ORB_SUPPLY_DEPOT_ADAPTED_DESC: <<
+	[bbloc=#ORB_SUPPLY_DEPOT_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Supply Depot:Grants 50 Defense Reserve/]
+>>
+ORB_FTL_STORAGE_ADAPTED: Advanced FTL Storage
+ORB_FTL_STORAGE_ADAPTED_DESC: <<
+	[bbloc=#ORB_FTL_STORAGE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:FTL Storage:Generates 0.5 Research per second/]
+>>
+ORB_FARM_ADAPTED: Efficient Hydroponics Station
+ORB_FARM_ADAPTED_DESC: <<
+	[bbloc=#ORB_FARM_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Hydroponics Station:Has a reduced maintenance cost, equivalent to building a Megafarm on developed terrain/]
+>>
+ORB_HYDROGENATOR_ADAPTED: Efficient Water Reclamation Facility
+ORB_HYDROGENATOR_ADAPTED_DESC: <<
+	[bbloc=#ORB_HYDROGENATOR_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Water Reclamation Facility:Has a reduced maintenance cost, equivalent to building a Hydrogenator on developed terrain/]
+>>
+ORB_SENATE_ADAPTED_NAME: Hyper-Centralized Coordination Complex
+ORB_SENATE_ADAPTED_DESC: <<
+	[bbloc=#F_SENATE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Centralized Coordination Complex:Generates a random influence card once per minute/]
 >>

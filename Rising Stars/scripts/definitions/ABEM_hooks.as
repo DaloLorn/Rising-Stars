@@ -1601,3 +1601,17 @@ tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
 	}
 #section all
 };
+
+class SubsystemModAttributeOnEnable : SubsystemEffect {
+	Document doc("Modify an empire attribute when the subsystem has been activated. WARNING: Will occur every time the subsystem comes online! Use extreme caution!");
+	Argument attribute(AT_EmpAttribute, doc="Attribute to modify.");
+	Argument mode(AT_AttributeMode, doc="How to modify the attribute.");
+	Argument value(AT_Decimal, doc="How much to modify the attribute.");
+
+#section server
+	void start(SubsystemEvent& event) const override {
+		if(event.obj.owner !is null && event.obj.owner.valid)
+			event.obj.owner.modAttribute(uint(attribute.integer), mode.integer, value.decimal);
+	}
+#section all
+};

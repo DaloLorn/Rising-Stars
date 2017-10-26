@@ -9,13 +9,15 @@ Subsystem: Forcefield
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	PowerUse := (10 + 1 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
+	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
 	ForcefieldRegen := 0.75 * Size
 	ForcefieldCapacity := 15 * HexSize * (Hexes - 1)
+	ForcefieldCapacityMult := 1
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
 	State: double = ForcefieldCapacity
 	State: double = 1
+	State: double = ForcefieldCapacityMult
 
 	Requires:
 		Command = 1
@@ -54,6 +56,7 @@ Subsystem: Forcefield
 
 	Modifier: ShieldCapacityFactor(factor)
 		ForcefieldCapacity := ForcefieldCapacity * factor
+		ForcefieldCapacityMult := ForcefieldCapacityMult * factor
 
 	Modifier: ShieldRegenFactor(factor)
 		ForcefieldRegen := ForcefieldRegen * factor
@@ -63,6 +66,7 @@ Subsystem: Forcefield
 	Effect: ForcefieldBase
 		Regen = ForcefieldRegen
 		Capacity = ForcefieldCapacity
+		CapacityMult = ForcefieldCapacityMult
 
 	Effect: ForcefieldShutdown
 

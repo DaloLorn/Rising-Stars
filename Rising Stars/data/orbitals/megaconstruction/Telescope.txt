@@ -55,8 +55,8 @@ Module: AdaptedTelescope
 	Maintenance: 100
 	Icon Size: 0.02
 
+	PeriodicNearbyIntelligence()
 	RequireUnlockTag(NylliAdaptation4)
 	AddAccelerationBonus(0.2)
 	ShowRange(40000, #00ff00)
 	GrantAbility(TelescopeOre)
-

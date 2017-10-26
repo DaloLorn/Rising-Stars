@@ -4,4 +4,4 @@ Status: AncientCompressor
 	EnableModifier(MassFactor(0.92))
 
 	IfAttributeGTE(Adaptation4, 1, AddResource(Research, 1))
-	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(MassFactor, 0.984))
+	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(MassFactor(0.984)))

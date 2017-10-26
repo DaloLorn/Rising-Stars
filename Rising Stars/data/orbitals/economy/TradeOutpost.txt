@@ -72,6 +72,8 @@ Module: AdaptedTradeOutpost
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
+	Shield Capacity: 10000
+	Shield Regeneration: 5
 
 	LimitOncePerSystem(OutpostFlag)
 
@@ -92,10 +94,10 @@ Module: AdaptedTradeOutpost
 	AddStatus(OutpostWeaponCost)
 	AddStatus(OutpostDefenseCost)
 
+	AllowFreeRaiding()
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
 	AllowConstruction()
 	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
 	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
 	GiveTrade()
-

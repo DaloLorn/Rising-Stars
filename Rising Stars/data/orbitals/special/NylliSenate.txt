@@ -38,6 +38,7 @@ Module: AdaptedNylliSenate
 	RequireUnlockTag(NylliSenate)
 	RepeatEmpirePopulation(20, AddInfluenceStake(1))
 
+	TriggerPeriodic(GainRandomInfluenceCards(1))
 	RequireUnlockTag(NylliAdaptation4)
 	RequireAttributeLT(SenateCount)
 	ModEmpireAttribute(SenateCount, Add, 1)

@@ -66,3 +66,13 @@ Trait: Ancient
 	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
 	ReplaceTechnologyNodes(Population, FoundryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, AtroanHydroponics)
+
+	ReplaceTechnologyNodes(TerraformSpec1, AtroanTerraformSpec1)
+	ReplaceTechnologyNodes(TerraformSpec2, AtroanTerraformSpec2)
+	ReplaceTechnologyNodes(TerraformSpec3, AtroanTerraformSpec3)
+	ReplaceTechnologyNodes(TerraformSpec4, AtroanTerraformSpec4)
+
+	ReplaceTechnologyNodes(AdaptationSpec1, AtroanAdaptationSpec1)
+	ReplaceTechnologyNodes(AdaptationSpec2, AtroanAdaptationSpec2)
+	ReplaceTechnologyNodes(AdaptationSpec3, AtroanAdaptationSpec3)
+	ReplaceTechnologyNodes(AdaptationSpec4, AtroanAdaptationSpec4)

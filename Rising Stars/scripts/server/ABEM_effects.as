@@ -17,7 +17,7 @@ void NoRepairNonCore(Event& evt) {
 	}
 }
 
-void ForcefieldTick(Event& evt, double Regen, double Capacity) {
+void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMult) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
 	if(sys.type.hasCore) {
@@ -31,6 +31,19 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 		health *= 1 + (bp.hpFactor - healthFactor); // This should adjust our current health to match the new veterancy buff.
 		bp.decimal(sys, 1) = bp.hpFactor;
 	}
+	double shieldFactor = bp.decimal(sys, 2); // Get shield capacity factor.
+	if(shieldFactor != CapacityMult) {
+		double hpMult = (CapacityMult / shieldFactor);
+		double extraHealth = health * hpMult - health;
+		print("Adjusting for multiplier change:");
+		print("Current capacity: " + Capacity);
+		print("Current health: " + health);
+		print("Multipliers: " + shieldFactor + " changing to " + CapacityMult + ", difference " + hpMult);
+		print("Current ship health: " + bp.currentHP);
+		print("Extra capacity: " + extraHealth);
+		bp.currentHP -= extraHealth;
+		bp.decimal(sys, 2) = CapacityMult;
+	}
 	// We need to account for various effects that could have changed the field's health, because I'm bound to miss something somewhere. Too many ways to damage the damn thing without triggering ForcefieldDamage.
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u hex = sys.hexagon(i);
@@ -39,9 +52,9 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity) {
 			if(field is null)
 				continue;
 			
-			uint healthPct = uint((health / (Capacity * bp.hpFactor)) * 255);
-			if(healthPct != field.hp) {
-				double healthDiff = double((healthPct - field.hp) / 255) * (Capacity * bp.hpFactor);
+			int healthPct = int((health / (Capacity * bp.hpFactor)) * 255);
+			double healthDiff = double((healthPct - int(field.hp)) / 255) * (Capacity * bp.hpFactor);
+			if(healthPct != int(field.hp)) {				
 				health -= healthDiff;
 				bp.currentHP -= healthDiff;
 			}

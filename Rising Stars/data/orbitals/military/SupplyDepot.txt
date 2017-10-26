@@ -45,5 +45,6 @@ Module: AdaptedSupplyDepot
 
 	Strategic Icon: OrbitalIcons::7
 
+	AddDefenseReserve(50)
 	RequireUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)

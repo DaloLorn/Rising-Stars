@@ -73,5 +73,6 @@ Module: AdaptedStarForge
 
 	MultConstructionCost(0.5)
 
+	AddStatus(AdaptedStarForge)
 	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(StarForgeUnlock)

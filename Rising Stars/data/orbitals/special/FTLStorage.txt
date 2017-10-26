@@ -43,5 +43,6 @@ Module: AdaptedFTLStorage
 
 	RequireTrait(StarChildren)
 
+	AddResearchIncome(0.5)
 	RequireUnlockTag(NylliAdaptation4)
 	AddFTLStorage(300)

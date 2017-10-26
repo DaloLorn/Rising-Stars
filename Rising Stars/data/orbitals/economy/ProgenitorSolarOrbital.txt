@@ -50,6 +50,7 @@ Module: AdaptedProgenitorSolarOrbital
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
 
+	AddFTLIncome(0.15)
 	RequireUnlockTag(SolarOrbitalUnlock)
 	RequireUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.5, 2.0)

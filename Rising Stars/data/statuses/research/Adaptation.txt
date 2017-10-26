@@ -11,3 +11,12 @@ Status: Adaptation3
 	Unique: True
 	Visible To: Nobody
 	RepeatPlanetLevel(AddMaxPopulation(1))
+Status: NylliAdaptation2
+	Unique: True
+	Visible To: Nobody
+	ProduceAllPressure(Research, Factor = 0.25)
+	ProduceAllPressure(Labor, Factor = 0.25)
+	ProduceAllPressure(Defense, Factor = 0.25)
+	ProduceAllPressure(Energy, Factor = 0.25)
+	ProduceAllPressure(Influence, Factor = 0.25)
+	ProduceAllPressure(Money, Factor = 0.25)

@@ -48,3 +48,13 @@ Trait: StarChildren
 	ReplaceTechnologyNodes(Population, HabitatUpgrade)
 
 	ReplaceTechnologyNodes(Senate, NylliSenate)
+
+	ReplaceTechnologyNodes(TerraformSpec1, NylliTerraformSpec1)
+	ReplaceTechnologyNodes(TerraformSpec2, NylliTerraformSpec2)
+	ReplaceTechnologyNodes(TerraformSpec3, NylliTerraformSpec3)
+	ReplaceTechnologyNodes(TerraformSpec4, NylliTerraformSpec4)
+
+	ReplaceTechnologyNodes(AdaptationSpec1, NylliAdaptationSpec1)
+	ReplaceTechnologyNodes(AdaptationSpec2, NylliAdaptationSpec2)
+	ReplaceTechnologyNodes(AdaptationSpec3, NylliAdaptationSpec3)
+	ReplaceTechnologyNodes(AdaptationSpec4, NylliAdaptationSpec4)

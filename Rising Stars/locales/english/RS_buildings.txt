@@ -123,8 +123,8 @@ BLD_ANCIENT_STRIP_TRANSMUTER: Ore Transmuter
 BLD_ANCIENT_STRIP_TRANSMUTER_DESC: <<
 	A complex apparatus which mines large amounts of ore from the planet's surface, then transmutes some of it into base materials.
 
-	[img=Plus;20]Generates both Ore and Base Materials.[/img]
-	[img=Plus;20]Two Ore Transmuters will generate more of both resource type than a Strip Miner and a Transmuter. This effect is slightly dampened by the [bbloc=#R_CORE_OPTIMIZATIONS/] tech.[/img]
+	[img=Plus;20]Generates both Ore and Base Materials. Generates 7.5 Base Materials and 45 Ore per minute.[/img]
+	[img=Plus;20]Two Ore Transmuters will generate more of each resource type than a Strip Miner and a Transmuter combined. This effect is slightly dampened by the [bbloc=#R_CORE_OPTIMIZATIONS/] tech.[/img]
 	[img=Minus;20]Requires a small maintenance cost, and combines the construction costs of Strip Miners and Transmuters.[/img]
 >>
 BLD_DEFENSE_GRID_DESC: <<

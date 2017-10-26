@@ -2,5 +2,9 @@ Status: AncientProduce
 	Visible To: Nobody
 	Collapses: True
 
+	RepeatStacks(IfAttributeGTE(AtroanAdaptation2, 1, AddStatus(AncientProduceAdapted)))
 	ProduceNativePressurePct(Per Stack = 0.1)
-	IfAttributeGTE(AtroanAdaptation2, 1, ProduceNativePressurePct(Per Stack = 0.05))
+Status: AncientProduceAdapted
+	Collapses: True
+	Visible To: Nobody
+	ProduceNativePressurePct(Per Stack = 0.05)

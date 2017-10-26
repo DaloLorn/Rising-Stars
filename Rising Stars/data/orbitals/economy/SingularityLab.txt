@@ -46,6 +46,8 @@ Module: AdaptedSingularityLab
 	LimitOncePerSystem(SingularityLabFlag)
 	RequireBlackHoleSystem()
 
+	AddRegionStatusEnemies(SingularityDisruption)
+	BlockSystemFTL()
 	RequireUnlockTag(NylliAdaptation4)
 	AddResearchIncome(4)
 	AddEnergyIncome(4)

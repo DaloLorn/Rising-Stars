@@ -20,7 +20,7 @@ Technology: AtroanAdaptationSpec1
 	Point Cost: 250
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Class: Unlock
-	Icon: Megafarm
+	Icon: Depot
 	Symbol: SequesteredSociety
 	Color: #6c412f
 	ReplaceTechnologyNodes(AtroanTerraformSpec1, SpecConnector)
@@ -81,7 +81,7 @@ Technology: AtroanAdaptationSpec3
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
-	Icon: ResourceIcons::38
+	Icon: ResourceIconsSmall::81
 	SecondaryMoneyCost(2000)
 	ReplaceTechnologyNodes(AtroanTerraformSpec3, SpecConnector)
 	ModAttribute(AtroanAdaptation3, Add, 1)
@@ -109,7 +109,7 @@ Technology: AtroanAdaptationSpec4
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
-	Icon: Refinery
+	Icon: NetworkBuilding
 	SecondaryMoneyCost(3000)
 	ReplaceTechnologyNodes(AtroanTerraformSpec4, SpecConnector)
 	ModAttribute(Adaptation4, Add, 1)

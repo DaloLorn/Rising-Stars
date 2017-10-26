@@ -2,6 +2,6 @@ Status: AncientDeveloper
 	Visible To: Nobody
 
 	IfAttributeGTE(Adaptation4, 1, AddResource(Defense, 1))
-	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(SupportCapModule::SupportCapacityFactor(1.01))
+	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(SupportCapModule::SupportCapacityFactor(1.01)))
 	EnableModifier(SupportCapModule::SupportCapacityFactor(1.05))
 	EnableModifier(SupportCapModule::MassFactor(1.25))
