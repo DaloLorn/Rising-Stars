@@ -54,7 +54,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMu
 			
 			int healthPct = int((health / (Capacity * bp.hpFactor)) * 255);
 			double healthDiff = double((healthPct - int(field.hp)) / 255) * (Capacity * bp.hpFactor);
-			if(healthPct != field.hp) {				
+			if(healthPct != int(field.hp)) {				
 				health -= healthDiff;
 				bp.currentHP -= healthDiff;
 			}

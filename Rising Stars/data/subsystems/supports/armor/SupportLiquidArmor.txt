@@ -11,7 +11,7 @@ Subsystem: SupportLiquidArmor
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	Hook: OnEnable(ModAttribute(EmpireLiquidArmorSize, Add, Size))
+	Hook: ABEM_hooks::SubsystemModAttributeOnEnable(EmpireLiquidArmorSize, Add, Size)
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
@@ -21,7 +21,7 @@ Subsystem: SupportLiquidArmor
 
 	Hex.BuildCost := 4.0 * HexSize
 	Hex.LaborCost := 0.5 * HexSize
-	
+
 	Effect: DistributeHealth
 
 	Module: Default
