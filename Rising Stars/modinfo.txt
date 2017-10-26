@@ -8,7 +8,7 @@
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function normally, some content may be missing.[/b]
 
-		[b][h1]Current version: 1.2.0 (Coming of the Vanguard)[/h1][/b]
+		[b][h1]Current version: 1.2.1 (Coming of the Vanguard)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
 		[*]Five new lifestyles with various pros and cons[list]
 		[*]Berserkers, exemplified by the warlike Rahta race[list]
