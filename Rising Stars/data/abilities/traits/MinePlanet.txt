@@ -15,4 +15,4 @@ Ability: MinePlanet
 	IsToggleTarget(targ)
 	PersistentBeamEffect(targ, #91692c, Tractor)
 
-	ABEM_races::MineCargoFromPlanet(targ, Ore, Sys.MiningRate:10, 400000)
+	ABEM_races::MineCargoFromPlanet(targ, Ore, Sys.PlanetMiningRate:10, 400000)
