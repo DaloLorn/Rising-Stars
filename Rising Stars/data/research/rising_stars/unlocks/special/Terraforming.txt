@@ -9,7 +9,8 @@ Technology: Terraforming
 	Point Cost: 750
 	Time Cost: 120
 	SkipOnUnlockedTag(Terraforming)
-	ModAttribute(ForbidTerraforming, Multiply, 0)
+	ModAttribute(ForbidTerraform, Multiply, 0)
+	UnlockTag(Terraforming)
 Technology: AtroanTerraforming
 	Name: #R_CORE_PROGRAMMING
 	Description: #R_CORE_PROGRAMMING_DESC

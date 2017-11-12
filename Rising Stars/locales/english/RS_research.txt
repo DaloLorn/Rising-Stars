@@ -53,6 +53,11 @@ R_SYS_SHIELDED_AMGEN_DESC: <<
 
 	[bbloc=#S_SHIELDED_AMGEN_DESC/]
 >>
+R_DEV_FTL_DESC: <<
+	[i][color=#aaa]New technologies to store and transport FTL energy.[/color][/i]
+
+	When unlocked, immediately increases your stored FTL and FTL storage capacity by $1.
+>>
 
 R_CONNECTOR_DLC: <<
 	This node once contained an item dependent on a piece of DLC content such as the Wake of the Heralds expansion.

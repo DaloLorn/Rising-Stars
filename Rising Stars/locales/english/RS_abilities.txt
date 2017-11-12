@@ -1,4 +1,6 @@
-﻿ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
+﻿ABL_ANCIENT_BUILD_ORE_TRANSMUTER: Attempt to Build Ore Transmuter
+ABL_ANCIENT_BUILD_ORE_TRANSMUTER_DESC: Move to the target planet and attempt to build an Ore Transmuter on it. Building will fail if insufficient funds are available.
+ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
 ABL_SCUTTLEDERELICT_DESC: <<
 	Sends a demolition crew to plant charges on the target derelict. The remains of the target ship are destroyed.
 >>

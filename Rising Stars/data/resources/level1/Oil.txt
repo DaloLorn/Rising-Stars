@@ -12,6 +12,6 @@ Resource: Oil
 
 	Pressure: 2 Energy
 	Pressure: 2 Money
-	Terraform Cost: 45
-	Terraform Labor: 750
+	Terraform Cost: 750
+	Terraform Labor: 45
 	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)
