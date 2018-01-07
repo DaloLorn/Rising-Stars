@@ -1479,7 +1479,7 @@ class BuildElement : GuiListElement {
 				if(amt > 0) {
 					extraIcons.insertLast(cargo.icon);
 					extraCosts.insertLast(standardize(amt, true));
-					if(buildAt is null || !buildAt.hasCargo || buildAt.getCargoStored(cargo.id) < amt)
+					if(buildAt is null || !buildAt.hasCargo || buildAt.getCargoStored(cargo.id) + buildAt.owner.getCargoStored(cargo.id) < amt)
 						hasError = true;
 				}
 			}

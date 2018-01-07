@@ -93,6 +93,10 @@ restricted local:
 	float get_DebtFactor() const;
 		@return The factor of income the empire is currently in debt.
 
+	double getCargoStored(uint type);
+	safe uint get_cargoTypes();
+	uint get_cargoType(uint index);
+
 restricted remote:
 	void set_WelfareMode(uint mode);
 		@arg The type of welfare exchange mode the empire should use
@@ -204,6 +208,15 @@ server:
 
 	void writeResources(Message& msg);
 		@doc Internal message passing.
+
+	void forceCargoTypeVisible(uint type);
+	void addCargo(uint type, double amount);
+	void removeCargo(uint type, double amount);
+	double consumeCargo(uint type, double amount, bool partial = false);
+	void transferAllCargoTo(Object@ other);
+	void transferAllCargoTo(Empire@ other);
+	void transferCargoTo(uint type, Object@ other, double rate);
+	void transferCargoTo(uint type, Empire@ other, double rate);
 
 shadow:
 	void readResources(Message& msg);

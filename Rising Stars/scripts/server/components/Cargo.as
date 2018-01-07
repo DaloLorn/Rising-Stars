@@ -78,6 +78,22 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 		}
 	}
 
+	void transferAllCargoTo(Empire@ other) {
+		if(types is null)
+			return;
+		while(types.length > 0) {
+			auto@ type = types[0];
+			double cons = amounts[0];
+			cons = consume(type, cons, partial=true);
+			if(cons > 0) {
+				other.addCargo(type.id, cons);
+			}
+			else {
+				break;
+			}
+		}
+	}
+
 	void transferPrimaryCargoTo(Object@ other, double rate) {
 		if(types is null || types.length == 0)
 			return;
@@ -88,21 +104,56 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 			other.addCargo(type.id, realAmount);
 	}
 
+	void transferPrimaryCargoTo(Empire@ other, double rate) {
+		if(types is null || types.length == 0)
+			return;
+		auto@ type = types[0];
+		double realAmount = rate / type.storageSize;
+		realAmount = consume(type, realAmount, partial=true);
+		if(realAmount > 0)
+			other.addCargo(type.id, realAmount);
+	}
+
 	void transferCargoTo(uint typeId, Object@ other) {
+		transferCargoTo(typeId, other, 1000000000);
+	}
+
+	void transferCargoTo(uint typeId, Object@ other, double rate) {
 		if(types is null || types.length == 0)
 			return;
 		auto@ type = getCargoType(typeId);
 		if(type is null)
 			return;
 
-		double stored = getCargoStored(typeId);
-		if(stored != 0.0) {
+		double amt = min(rate, getCargoStored(typeId));
+		if(amt > 0) {
 			double cap = other.cargoCapacity - other.cargoStored;
-			double cons = min(cap / type.storageSize, stored);
+			double cons = min(cap / type.storageSize, amt);
 			cons = consume(type, cons, partial=true);
 			if(cons > 0) {
 				other.addCargo(type.id, cons);
 				cap -= cons;
+			}
+		}
+	}
+
+	void transferCargoTo(uint typeId, Empire@ other) {
+		transferCargoTo(typeId, other, 1000000000);
+	}
+
+	void transferCargoTo(uint typeId, Empire@ other, double rate) {
+		if(types is null || types.length == 0)
+			return;
+		auto@ type = getCargoType(typeId);
+		if(type is null)
+			return;
+
+		double amt = min(rate, getCargoStored(typeId));
+		if(amt > 0) {
+			double cons = amt;
+			cons = consume(type, cons, partial=true);
+			if(cons > 0) {
+				other.addCargo(type.id, cons);
 			}
 		}
 	}

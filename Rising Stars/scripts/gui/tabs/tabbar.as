@@ -28,7 +28,7 @@ const int TAB_MIN_WIDTH = 45;
 const int TAB_HEIGHT = 26;
 const int TAB_SPACING = 8;
 const int TAB_SCRUNCH = -18;
-const int GLOBAL_BAR_HEIGHT = 50;
+const int GLOBAL_BAR_HEIGHT = 76;
 const vec2i TAB_ICON_OFFSET(16, 2);
 const vec2i TAB_ICON_SIZE(24, 24);
 const vec2i TAB_CLOSE_OFFSET(14, 7);

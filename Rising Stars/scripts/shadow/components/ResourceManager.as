@@ -1,9 +1,16 @@
 import resources;
+import cargo;
+
+tidy class CargoManager : CargoStorage {
+	// Should be properly initialized by the readResources() function, so a custom constructor seems unnecessary.
+}
 
 tidy class ResourceManager : Component_ResourceManager {
 	Mutex budgetMutex;
 	Mutex ftlMutex;
 	Mutex energyMutex;
+
+	CargoManager cargo;
 
 	double Population = 0;
 
@@ -198,6 +205,27 @@ tidy class ResourceManager : Component_ResourceManager {
 		return canBorrow(amount - Budget_Remaining);
 	}
 
+	uint get_cargoTypes() {
+		if(cargo.types is null)
+			return 0;
+		return cargo.types.length;
+	}
+
+	uint get_cargoType(uint index) {
+		if(cargo.types is null)
+			return uint(-1);
+		if(index >= cargo.types.length)
+			return uint(-1);
+		return cargo.types[index].id;
+	}
+
+	double getCargoStored(uint typeId) {
+		auto@ type = getCargoType(typeId);
+		if(type is null || !type.isGlobal)
+			return -1.0;
+		return cargo.get(type);
+	}
+
 	//Networking
 	void readResources(Empire& emp, Message& msg) {
 		Population = msg.read_float();
@@ -228,5 +256,7 @@ tidy class ResourceManager : Component_ResourceManager {
 			moneyTypes[i] = msg.readSignedSmall();
 		
 		welfareMode = msg.readLimited(WM_COUNT-1);
+
+		cargo.read(msg);
 	}
 };

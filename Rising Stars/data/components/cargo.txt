@@ -14,8 +14,13 @@ server:
 	void removeCargo(uint type, double amount);
 	double consumeCargo(uint type, double amount, bool partial = false);
 	void transferAllCargoTo(Object@ other);
+	void transferAllCargoTo(Empire@ other);
 	void transferPrimaryCargoTo(Object@ other, double rate);
+	void transferPrimaryCargoTo(Empire@ other, double rate);
 	void transferCargoTo(uint type, Object@ other);
+	void transferCargoTo(uint type, Object@ other, double rate);
+	void transferCargoTo(uint type, Empire@ other);
+	void transferCargoTo(uint type, Empire@ other, double rate);
 
 	void writeCargo(Message& msg) const;
 	bool writeCargoDelta(Message& msg) const;

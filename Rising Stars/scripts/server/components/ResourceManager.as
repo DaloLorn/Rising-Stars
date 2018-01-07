@@ -1,6 +1,7 @@
 #include "include/resource_constants.as"
 
 import resources;
+import cargo;
 import attributes;
 from saving import SaveVersion;
 
@@ -24,11 +25,29 @@ tidy class EnergyFloat {
 	double amount;
 };
 
+tidy class CargoManager : CargoStorage {
+	CargoManager() {
+		capacity = 1000000000;
+		for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; i++) {
+			auto@ type = getCargoType(i);
+			if(type !is null && type.isGlobal && type.visible) {
+				index(type, true);
+			}
+		}
+	}
+
+	void remove(const CargoType@ type) override {
+		return;
+	}
+}
+
 tidy class ResourceManager : Component_ResourceManager, Savable {
 	Mutex popMutex;
 	Mutex budgetMutex;
 	Mutex ftlMutex;
 	Mutex energyMutex;
+
+	CargoManager cargo;
 
 	double Population = 0;
 
@@ -121,6 +140,8 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 				@floatedEnergy[i] = flt;
 			}
 		}
+
+		cargo.load(msg);
 	}
 	
 	void save(SaveFile& msg) {
@@ -168,6 +189,8 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 			msg << floatedEnergy[i].forEmp;
 			msg << floatedEnergy[i].amount;
 		}
+
+		cargo.save(msg);
 	}
 
 	//Population
@@ -700,6 +723,96 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		}
 	}
 
+	// This function forces a resource type to become visible in the resource bar regardless of its default setting.
+	// Used for racial resources such as the Herald Support resources.
+	void forceCargoTypeVisible(uint typeId) {
+		auto@ type = getCargoType(typeId);
+		if(type !is null && type.isGlobal) {
+			cargo.index(type, true);
+		}
+	}
+
+	uint get_cargoTypes() {
+		if(cargo.types is null)
+			return 0;
+		return cargo.types.length;
+	}
+
+	uint get_cargoType(uint index) {
+		if(cargo.types is null)
+			return uint(-1);
+		if(index >= cargo.types.length)
+			return uint(-1);
+		return cargo.types[index].id;
+	}
+
+	double getCargoStored(uint typeId) {
+		auto@ type = getCargoType(typeId);
+		if(type is null || !type.isGlobal)
+			return -1.0;
+		return cargo.get(type);
+	}
+
+	void addCargo(uint typeId, double amount) {
+		auto@ type = getCargoType(typeId);
+		if(type is null || !type.isGlobal)
+			return;
+		cargo.add(type, amount);
+	}
+
+	void removeCargo(uint typeId, double amount) {
+		auto@ type = getCargoType(typeId);
+		if(type is null || !type.isGlobal)
+			return;
+		cargo.consume(type, amount);
+	}
+
+	double consumeCargo(uint typeId, double amount, bool partial = false) {
+		auto@ type = getCargoType(typeId);
+		if(type is null || !type.isGlobal)
+			return 0.0;
+		return cargo.consume(type, amount, partial);
+	}
+
+	void transferAllCargoTo(Object@ other) {
+		if(other.owner !is null)
+			transferAllCargoTo(other.owner);
+	}
+
+	void transferAllCargoTo(Empire@ other) {
+		if(cargo.types is null)
+			return;
+		while(cargo.types.length > 0) {
+			auto@ type = cargo.types[0];
+			double cons = cargo.consume(type, cargo.amounts[0], partial=true);
+			if(cons > 0) {
+				other.addCargo(type.id, cons);
+			}
+		}
+	}
+
+	void transferCargoTo(uint typeId, Object@ other, double rate) {
+		if(other.owner !is null) {
+			transferCargoTo(typeId, other.owner, rate);
+		}
+	}
+
+	void transferCargoTo(uint typeId, Empire@ other, double rate) {
+		if(cargo.types is null || cargo.types.length == 0)
+			return;
+		auto@ type = getCargoType(typeId);
+		if(type is null)
+			return;
+
+		double amt = min(rate, getCargoStored(typeId));
+		if(amt > 0) {
+			amt = cargo.consume(type, amt, partial=true);
+			if(amt > 0) {
+				other.addCargo(type.id, amt);
+			}
+		}
+	}
+
 	//Networking
 	void writeResources(Message& msg) {
 		msg << float(Population);
@@ -730,5 +843,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 			msg.writeSignedSmall(moneyTypes[i]);
 		
 		msg.writeLimited(welfareMode, WM_COUNT-1);
+
+		cargo.write(msg);
 	}
 };

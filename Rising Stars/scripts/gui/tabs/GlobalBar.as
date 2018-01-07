@@ -7,6 +7,7 @@ import elements.GuiMarkupText;
 import elements.GuiContextMenu;
 import elements.GuiProgressbar;
 import elements.MarkupTooltip;
+import elements.GuiCargoDisplay;
 import targeting.ObjectTarget;
 import resources;
 import research;
@@ -526,6 +527,7 @@ class GlobalBar : BaseGuiElement {
 	BaseGuiElement@ container;
 	double updateTimer = -INFINITY;
 
+	GuiCargoDisplay@ cargo;
 	array<ResourceDisplay@> sections;
 	ResourceDisplay@ budget;
 	ResourceDisplay@ energy;
@@ -539,6 +541,8 @@ class GlobalBar : BaseGuiElement {
 
 		@container = BaseGuiElement(this, Alignment_Fill());
 		container.StrictBounds = true;
+
+		@cargo = GuiCargoDisplay(container, Alignment(Left, Top, Right, Top+26));
 
 		@budget = BudgetResource(container, Alignment());
 		sections.insertLast(budget);
@@ -562,12 +566,14 @@ class GlobalBar : BaseGuiElement {
 	}
 
 	void update() {
+		cargo.update(playerEmpire);
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i)
 			sections[i].update();
 	}
 
 	void updateSections(){ 
 		float x = 0.f;
+		cargo.alignment = Alignment(Left, Top, Right, Top+26);
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 			float w;
 			if(size.width >= 1600)
@@ -577,7 +583,7 @@ class GlobalBar : BaseGuiElement {
 			else
 				w = (1.f - (1.f / 5.f)) / 5.f;
 
-			sections[i].alignment = Alignment(Left+x, Top, Left+x+w, Bottom);
+			sections[i].alignment = Alignment(Left+x, Top+26, Left+x+w, Bottom);
 			x += w;
 		}
 		updateAbsolutePosition();

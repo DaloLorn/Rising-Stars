@@ -16,6 +16,8 @@ tidy final class CargoType {
 	string description;
 	Sprite icon;
 	Color color;
+	bool isGlobal = false;
+	bool visible = false;
 
 	double storageSize = 1.0;
 	HexVariable variable = HexVariable(-1);
@@ -229,20 +231,28 @@ bool payDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0) {
 			return false;
 		}
 	}
+	array<double> globalAmts(getCargoTypeCount());
 	for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; ++i) {
 		auto@ cargo = getCargoType(i);
 		if(int(cargo.variable) == -1)
 			continue;
 		double amt = dsg.total(cargo.variable) * multiply;
+		if(cargo.isGlobal) {
+			globalAmts[i] = obj.owner.consumeCargo(cargo.id, amt, partial=true);
+			amt -= globalAmts[i];
+		}
 		if(amt > 0) {
 			if(!obj.hasCargo || obj.consumeCargo(cargo.id, amt, partial=false) < amt - 0.001) {
 				for(uint j = 0; j < i; ++j) {
 					auto@ other = getCargoType(j);
 					if(int(other.variable) == -1)
 						continue;
-					double amt = dsg.total(other.variable) * multiply;
-					if(amt > 0)
-						obj.addCargo(other.id, amt);
+					if(cargo.isGlobal) {
+						obj.owner.addCargo(other.id, globalAmts[i]);
+					}
+					double localAmt = (dsg.total(other.variable) * multiply) - globalAmts[i];
+					if(localAmt > 0)
+						obj.addCargo(other.id, localAmt);
 				}
 				if(energyCost > 0)
 					obj.owner.modEnergyStored(+energyCost);
@@ -278,8 +288,12 @@ void reverseDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0, b
 			if(int(cargo.variable) == -1)
 				continue;
 			double amt = dsg.total(cargo.variable) * multiply;
-			if(amt > 0)
-				obj.addCargo(cargo.id, amt);
+			if(amt > 0) {
+				if(cargo.isGlobal) // Can't easily track where the cargo originated, but *in principle* there shouldn't be any cases where local resources are being consumed.
+					obj.owner.addCargo(cargo.id, amt);
+				else
+					obj.addCargo(cargo.id, amt);
+			}
 		}
 	}
 }
@@ -384,6 +398,12 @@ void loadCargo(const string& filename) {
 		}
 		else if(key.equals_nocase("Storage Size")) {
 			type.storageSize = toDouble(value);
+		}
+		else if(key.equals_nocase("Global")) {
+			type.isGlobal = toBool(value);
+		}
+		else if(key.equals_nocase("Always Visible")) {
+			type.visible = toBool(value);
 		}
 	}
 }
