@@ -347,12 +347,16 @@ class ConsumeCargo : ConsumeEffect {
 	Argument type(AT_Cargo, doc="Type of cargo to take.");
 	Argument amount(AT_Decimal, doc="Amount of cargo taken to build.");
 	Argument hide(AT_Boolean, "False", doc="If the planet has _no_ cargo of this type, hide the project.");
+	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
 		if(!obj.hasCargo)
 			return false;
 
 		double val = obj.getCargoStored(type.integer);
+		if(allow_global.boolean) {
+			val += obj.owner.getCargoStored(type.integer);
+		}
 		if(hide.boolean && val < 0.001)
 			return false;
 		if(ignoreCost)
@@ -382,7 +386,15 @@ class ConsumeCargo : ConsumeEffect {
 
 #section server
 	bool consume(Object& obj, const Targets@ targs) const override {
-		double consAmt = obj.consumeCargo(type.integer, amount.decimal, partial=false);
+		double consAmt = obj.consumeCargo(type.integer, amount.decimal, partial=allow_global.boolean);
+		if(allow_global.boolean && consAmt < amount.decimal - 0.001) {
+			double consGlobal = obj.owner.consumeCargo(type.integer, amount.decimal - consAmt, partial=false);
+			if(consGlobal + consAmt < amount.decimal - 0.001) {
+				obj.addCargo(type.integer, consAmt);
+				return false;
+			}
+			else return true;
+		}
 		return consAmt >= amount.decimal - 0.001;
 	}
 
@@ -399,6 +411,7 @@ class ConsumeCargoAttribute : ConsumeEffect {
 	Argument base_amount(AT_Decimal, "0", doc="Base amount of cargo taken to build.");
 	Argument multiply(AT_Decimal, "1", doc="Multiply value of attribute.");
 	Argument hide(AT_Boolean, "False", doc="If the planet has _no_ cargo of this type, hide the project.");
+	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 
 	double getCost(Empire& emp) {
 		return base_amount.decimal + emp.getAttribute(attribute.integer) * multiply.decimal;
@@ -409,6 +422,9 @@ class ConsumeCargoAttribute : ConsumeEffect {
 			return false;
 
 		double val = obj.getCargoStored(type.integer);
+		if(allow_global.boolean) {
+			val += obj.owner.getCargoStored(type.integer);
+		}
 		if(hide.boolean && val < 0.001)
 			return false;
 		if(ignoreCost)
@@ -439,7 +455,15 @@ class ConsumeCargoAttribute : ConsumeEffect {
 #section server
 	bool consume(Object& obj, const Targets@ targs) const override {
 		double cost = getCost(obj.owner);
-		double consAmt = obj.consumeCargo(type.integer, cost, partial=false);
+		double consAmt = obj.consumeCargo(type.integer, cost, partial=allow_global.boolean);
+		if(allow_global.boolean && consAmt < cost - 0.001) {
+			double consGlobal = obj.owner.consumeCargo(type.integer, cost - consAmt, partial=false);
+			if(consGlobal + consAmt < cost - 0.001) {
+				obj.addCargo(type.integer, consAmt);
+				return false;
+			}
+			else return true;
+		}
 		return consAmt >= cost - 0.001;
 	}
 
@@ -455,13 +479,17 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 	Argument status(AT_Status, doc="Status to count.");
 	Argument amount(AT_Decimal, doc="Amount of cargo taken to build per status.");
 	Argument hide(AT_Boolean, "False", doc="If the planet has _no_ cargo of this type, hide the project.");
-	Argument allow_cancel(AT_Boolean, "False", doc="Refund the cost when canceling. Only use in specific circumstances when you know the status doesn't get added any other way.");
+	Argument allow_cancel(AT_Boolean, "False", doc="Refund the cost when canceling. Only use in specific circumstances when you know the status doesn't get added or removed any other way.");
+	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
 		if(!obj.hasCargo)
 			return false;
 
 		double val = obj.getCargoStored(type.integer);
+		if(allow_global.boolean) {
+			val += obj.owner.getCargoStored(type.integer);
+		}
 		if(hide.boolean && val < 0.001)
 			return false;
 		if(ignoreCost)
@@ -495,8 +523,17 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 
 #section server
 	bool consume(Object& obj, const Targets@ targs) const override {
-		double consAmt = obj.consumeCargo(type.integer, get(obj), partial=false);
-		return consAmt >= amount.decimal - 0.001;
+		double cost = get(obj);
+		double consAmt = obj.consumeCargo(type.integer, cost, partial=allow_global.boolean);
+		if(allow_global.boolean && consAmt < cost - 0.001) {
+			double consGlobal = obj.owner.consumeCargo(type.integer, cost - consAmt, partial=false);
+			if(consGlobal + consAmt < cost - 0.001) {
+				obj.addCargo(type.integer, consAmt);
+				return false;
+			}
+			else return true;
+		}
+		return consAmt >= cost - 0.001;
 	}
 
 	void reverse(Object& obj, const Targets@ targs, bool cancel) const override {

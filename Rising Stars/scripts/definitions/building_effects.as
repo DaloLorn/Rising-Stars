@@ -136,6 +136,7 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	Argument labor_use_linked(AT_Boolean, "False", doc="Don't require the cargo consumption when no labor is currently being used.");
 	Argument inactive_status(AT_Status, EMPTY_DEFAULT, doc="Status to add when this building is inactive.");
 	Argument inactive_status_count(AT_Integer, "1", doc="How many statuses to add when this building is inactive.");
+	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 	GenericEffect@ hook;
 
 	bool instantiate() override {
@@ -198,12 +199,29 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 			}
 			else if(labor_use_linked.boolean && !obj.isUsingLabor) {
 				cond = obj.getCargoStored(cargo_type.integer) >= amount.decimal;
+				if(allow_global.boolean && !cond) {
+					cond = obj.getCargoStored(cargo_type.integer) + obj.owner.getCargoStored(cargo_type.integer) >= amount.decimal;
+				}
 			}
 			else {
-				double consAmt = obj.consumeCargo(cargo_type.integer, amount.decimal, partial=false);
+				double consAmt = obj.consumeCargo(cargo_type.integer, amount.decimal, partial=allow_global.boolean);
 				if(consAmt < amount.decimal - 0.001) {
-					cond = false;
-					info.timer += interval.decimal;
+					if(allow_global.boolean) {
+						double consGlobal = obj.owner.consumeCargo(cargo_type.integer, amount.decimal - consAmt, partial=false);
+						if(consAmt + consGlobal < amount.decimal - 0.001) {
+							obj.addCargo(cargo_type.integer, consAmt); // Refund the object's cargo.
+							cond = false;
+							info.timer += interval.decimal;
+						}
+						else {
+							cond = true;
+							info.timer += interval.decimal;
+						}
+					}
+					else {
+						cond = false;
+						info.timer += interval.decimal;
+					}
 				}
 				else {
 					cond = true;
