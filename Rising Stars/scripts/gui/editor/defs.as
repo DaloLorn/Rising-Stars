@@ -926,6 +926,8 @@ class EventFile : FileDef {
 };
 
 class CargoFile : FileDef {
+	array<string> globalOptions = { "Automatic", "Manual", "False" };
+
 	CargoFile() {
 		localeFile = "resources.txt";
 		block("Cargo", doc="A type of cargo that can be stored and moved.");
@@ -934,6 +936,8 @@ class CargoFile : FileDef {
 			field("Icon", AT_Sprite, "", doc="Icon used to display the cargo.");
 			field("Color", AT_Color, "", doc="Color used to display the cargo.");
 			field("Storage Size", AT_Decimal, "1.0", doc="Size of one unit of this cargo in cargo storage.");
+			field("Global", AT_Selection, "False", doc="Whether the resource can be stored in the global pool, and whether it is automatically stored there by planets and similar entities. False means the resource can only be stored locally by objects, Manual means it can be forcibly added to the global pool but isn't automatically stored there, and Automatic means planets will always put it in the global pool.");
+			field("Always Visible", AT_Boolean, "False", doc="Whether the resource is always visible in the global resource UI, regardless of whether the empire has any. This should only be true for resources which are important to all races, like Ore. Other resources, such as Base Materials, can be made visible to the races that require them via trait hooks.");
 	}
 
 	void onChange() {

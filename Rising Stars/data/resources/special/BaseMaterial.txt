@@ -14,6 +14,7 @@ Resource: BaseMaterial
 
 	TriggerPeriodic(AddCargo(BaseMaterial, 1), Interval = 6)
 	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.5), Interval = 6))
-	
 
+
+	OnNative(ProcessCargo(BaseMaterial, 1, 1, ABEM_cargo::AddGlobalCargo(BaseMaterial, 1),False))
 	OnExportMoveLocalCargo(BaseMaterial)

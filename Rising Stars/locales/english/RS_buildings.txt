@@ -126,6 +126,9 @@ BLD_ANCIENT_STRIP_TRANSMUTER_DESC: <<
 	[img=Plus;20]Generates both Ore and Base Materials. Generates 7.5 Base Materials and 45 Ore per minute.[/img]
 	[img=Plus;20]Two Ore Transmuters will generate more of each resource type than a Strip Miner and a Transmuter combined. This effect is slightly dampened by the [bbloc=#R_CORE_OPTIMIZATIONS/] tech.[/img]
 	[img=Minus;20]Requires a small maintenance cost, and combines the construction costs of Strip Miners and Transmuters.[/img]
+	[bbloc=#TIP_BASE_MATERIAL/]
+
+	[bbloc=#TIP_CONTROL_HUB/]
 >>
 BLD_DEFENSE_GRID_DESC: <<
 	A massive field of missile silos located on the surface of the planet, capable of firing at nearby enemy fleets.
@@ -136,3 +139,18 @@ BLD_DEFENSE_GRID_DESC: <<
 >>
 BLD_PLANETOID_LV1_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 1 resource requirements.
 BLD_PLANETOID_LV2_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 2 resource requirements.
+BLD_ANCIENT_TRANSMUTER_DESC: <<
+	Converts the planet's resource into a Base Materials resource that generates [b]10 Base Materials per minute[/b].
+
+	[bbloc=#TIP_BASE_MATERIAL/]
+
+	[bbloc=#TIP_CONTROL_HUB/]
+>>
+TIP_CONSUME_BASE_MATERIAL: <<
+	[b][img=ResourceIconsSmall::81;20/] [color=#cda33d]Base Material Used:[/color][/b][offset=210]$1 / minute[/offset]
+
+	[i][color=#aaa]This building requires a certain amount of Base Materials to be consumed every minute to be active. If there are any Base Materials present on the planet, the building will attempt to consume those before tapping the global pool.[/color][/i]
+>>
+TIP_BASE_MATERIAL: <<
+	[i][color=#aaa]By default, Base Materials are stored in and consumed from the global resource pool. However, exporting this planet's resource to a different planet will store them in that planet's local resource pool instead. If enough Base Materials are exported to that planet, this can ensure that a supply shortage in the global pool will not prevent the planet's buildings from functioning.[/color][/i]
+>>

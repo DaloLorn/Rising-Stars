@@ -4068,11 +4068,15 @@ class ForceHoldFire : GenericEffect {
 };
 
 class CountAsPlanet : GenericEffect {
-	Document doc("This object counts as a planet for preventing game loss conditions.");
+	Document doc("This object counts as a planet for preventing game loss conditions and storing secondary resources in the global pool.");
 
 	void enable(Object& obj, any@ data) const override {
 		if(obj.owner !is null)
 			obj.owner.TotalPlanets += 1;
+#section server
+		if(obj.hasCargo)
+			obj.setGlobalCargoAccess(true);
+#section all
 	}
 
 	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const {
@@ -4085,6 +4089,10 @@ class CountAsPlanet : GenericEffect {
 	void disable(Object& obj, any@ data) const override {
 		if(obj.owner !is null)
 			obj.owner.TotalPlanets -= 1;
+#section server
+		if(obj.hasCargo)
+			obj.setGlobalCargoAccess(false); // This won't affect planets, because their cargo access is checked independently of this value.
+#section all
 	}
 };
 
@@ -4691,11 +4699,12 @@ class AddPlanetGfxFlag : GenericEffect {
 }
 
 class ProcessCargo : GenericEffect {
-	Document doc("Process cargo at a particular rate, triggering a bonus hook whenever a certain amount of ore has been processed.");
+	Document doc("Process cargo at a particular rate, triggering a bonus hook whenever a certain amount of cargo has been processed.");
 	Argument cargo_type(AT_Cargo, doc="Type of cargo to process.");
 	Argument rate(AT_Decimal, doc="Rate at which to process the cargo per second.");
 	Argument threshold(AT_Decimal, doc="Trigger the hook whenever this much cargo has been processed.");
 	Argument hookID(AT_Hook, "bonus_effects::BonusEffect");
+	Argument allow_global(AT_Boolean, "True", doc="Whether to allow processing from the global pool.")
 
 	BonusEffect@ hook;
 
@@ -4718,9 +4727,16 @@ class ProcessCargo : GenericEffect {
 		double processed = 0;
 		data.retrieve(processed);
 
+		double consAmt;
+
 		if(obj.hasCargo) {
-			double consAmt = time * rate.decimal;
+			consAmt = time * rate.decimal;
 			consAmt = obj.consumeCargo(cargo_type.integer, consAmt, partial=true);
+			processed += consAmt;
+		}
+		if(allow_global.boolean && consAmt < time * rate.decimal && obj.owner !is null && obj.owner.valid) {
+			consAmt = time * rate.decimal - consAmt;
+			consAmt = obj.owner.consumeCargo(cargo_type.integer, consAmt, partial=true);
 			processed += consAmt;
 		}
 

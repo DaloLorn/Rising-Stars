@@ -1,6 +1,9 @@
 import cargo;
+import saving;
 
 tidy class Cargo : CargoStorage, Component_Cargo {
+	bool hasGlobalAccess = false;
+
 	void getCargo() {
 		yield(this);
 	}
@@ -39,11 +42,32 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 		delta = true;
 	}
 
-	void addCargo(uint typeId, double amount) {
+	void addCargo(Object& obj, uint typeId, double amount) {
 		auto@ type = getCargoType(typeId);
 		if(type is null)
 			return;
+		// Short-circuit the cargo addition system if we can store this in the global pool.
+		if(type.isGlobal && type.autostore && (obj.isPlanet || hasGlobalAccess) && obj.owner !is null && obj.owner.valid) {
+			obj.owner.addCargo(typeId, amount);
+			return;
+		}
 		add(type, amount);
+	}
+
+	void setGlobalCargoAccess(Object& obj, bool canStore) {
+		hasGlobalAccess = canStore;
+		if(canStore) { // Immediately dump all autostorable resources into the global pool.
+			if(types is null) return;
+
+			for(uint i = 0; i < types.length; i++) {
+				auto@ type = types[i];
+				if(type.isGlobal && type.autostore && obj.owner !is null && obj.owner.valid) {
+					obj.owner.addCargo(type.id, amounts[i]);
+					remove(type);
+					i--; // This type will be removed, altering the length of the array. To compensate, we need to push the loop back.
+				}
+			}
+		}
 	}
 
 	void removeCargo(uint typeId, double amount) {
@@ -160,6 +184,16 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 
 	void writeCargo(Message& msg) {
 		msg << this;
+	}
+
+	void save(SaveFile& file) override {
+		CargoStorage::save(file);
+		file.writeBit(hasGlobalAccess);
+	}
+
+	void load(SaveFile& file) override {
+		CargoStorage::load(file);
+		hasGlobalAccess = file.readBit();
 	}
 
 	bool writeCargoDelta(Message& msg) {

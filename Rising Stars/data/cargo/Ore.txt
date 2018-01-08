@@ -2,5 +2,5 @@ Cargo: Ore
 	Name: #C_ORE
 	Description: #C_ORE_DESC
 	Icon: ResourceIconsSmall::65
-	Global: True
+	Global: Automatic
 	Always Visible: True

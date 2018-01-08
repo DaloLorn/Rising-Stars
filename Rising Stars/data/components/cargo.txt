@@ -10,6 +10,7 @@ local:
 
 server:
 	void modCargoStorage(double amount);
+	void setGlobalCargoAccess(bool canStore);
 	void addCargo(uint type, double amount);
 	void removeCargo(uint type, double amount);
 	double consumeCargo(uint type, double amount, bool partial = false);

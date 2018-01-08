@@ -11,8 +11,7 @@ Resource: OreRate
 	Frequency: 0
 	Level: 0
 	Stealable: False
+	Exportable: False
 
-	TriggerPeriodic(AddCargo(Ore, 1), Interval = 1)
-	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))
-
-	OnExportMoveLocalCargo(Ore)
+	TriggerPeriodic(ABEM_cargo::AddGlobalCargo(Ore, 1), Interval = 1)
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(Ore, 0.5), Interval = 1))

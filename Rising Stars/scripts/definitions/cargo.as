@@ -18,6 +18,7 @@ tidy final class CargoType {
 	Color color;
 	bool isGlobal = false;
 	bool visible = false;
+	bool autostore = false;
 
 	double storageSize = 1.0;
 	HexVariable variable = HexVariable(-1);
@@ -382,7 +383,7 @@ void loadCargo(const string& filename) {
 			type.variable = getHexVariable(type.ident+"Cost");
 		}
 		else if(type is null) {
-			file.error("Missing Cargo: ID' line");
+			file.error("Missing 'Cargo: ID' line");
 		}
 		else if(key.equals_nocase("Name")) {
 			type.name = localize(value);
@@ -400,7 +401,21 @@ void loadCargo(const string& filename) {
 			type.storageSize = toDouble(value);
 		}
 		else if(key.equals_nocase("Global")) {
-			type.isGlobal = toBool(value);
+			if(value.equals_nocase("Automatic")) {
+				type.isGlobal = true;
+				type.autostore = true;
+			}
+			else if(value.equals_nocase("Manual")) {
+				type.isGlobal = true;
+				type.autostore = false;
+			}
+			else if(value.equals_nocase("False")) {
+				type.isGlobal = false;
+				type.autostore = false;
+			}
+			else {
+				file.error("Invalid value for cargo 'Global' parameter: " + value);
+			}
 		}
 		else if(key.equals_nocase("Always Visible")) {
 			type.visible = toBool(value);
