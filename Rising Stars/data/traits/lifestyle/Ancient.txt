@@ -77,3 +77,5 @@ Trait: Ancient
 	ReplaceTechnologyNodes(AdaptationSpec2, AtroanAdaptationSpec2)
 	ReplaceTechnologyNodes(AdaptationSpec3, AtroanAdaptationSpec3)
 	ReplaceTechnologyNodes(AdaptationSpec4, AtroanAdaptationSpec4)
+
+	ABEM_cargo::MakeResourceVisible(BaseMaterial)
