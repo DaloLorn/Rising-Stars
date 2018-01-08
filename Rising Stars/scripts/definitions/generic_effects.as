@@ -4704,7 +4704,7 @@ class ProcessCargo : GenericEffect {
 	Argument rate(AT_Decimal, doc="Rate at which to process the cargo per second.");
 	Argument threshold(AT_Decimal, doc="Trigger the hook whenever this much cargo has been processed.");
 	Argument hookID(AT_Hook, "bonus_effects::BonusEffect");
-	Argument allow_global(AT_Boolean, "True", doc="Whether to allow processing from the global pool.")
+	Argument allow_global(AT_Boolean, "True", doc="Whether to allow processing from the global pool.");
 
 	BonusEffect@ hook;
 
