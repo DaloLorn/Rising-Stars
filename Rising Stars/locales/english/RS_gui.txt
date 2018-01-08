@@ -10,3 +10,5 @@
 
 	[b]Fleet Efficiency[/b] [offset=230]$5[/offset]
 >>
+OFFER_CARGO: Offer Commodity
+DONATE_CARGO: Donate Commodity

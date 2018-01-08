@@ -15,6 +15,7 @@ import util.formatting;
 import util.icon_view;
 import targeting.ObjectTarget;
 import artifacts;
+import cargo;
 from tabs.GalaxyTab import zoomTo;
 from tabs.tabbar import findTab;
 
@@ -33,6 +34,7 @@ class GuiOfferList : BaseGuiElement {
 	GuiButton@ fleetButton;
 	GuiButton@ planetButton;
 	GuiButton@ artifButton;
+	GuiButton@ cargoButton;
 
 	GuiOfferList(IGuiElement@ parent, Alignment@ align, const string& prefix = "OFFER") {
 		super(parent, align);
@@ -73,6 +75,14 @@ class GuiOfferList : BaseGuiElement {
 		artifButton.buttonIcon = icons::Artifact;
 		x += w;
 
+		x = 0.f;
+		y += 38;
+
+		@cargoButton = GuiButton(this, Alignment(Left+4+x, Top+y, Right-4-x, Height=34), localize("#"+prefix+"_CARGO"));
+		cargoButton.color = colors::Labor;
+		cargoButton.buttonIcon = Sprite(spritesheet::ResourceIconsSmall, 65);
+		x += w*3;
+
 		updateAbsolutePosition();
 	}
 
@@ -84,7 +94,7 @@ class GuiOfferList : BaseGuiElement {
 		BaseGuiElement::updateAbsolutePosition();
 		uint cnt = offers.length;
 		for(uint i = 0; i < cnt; ++i)
-			offers[i].rect = recti_area(vec2i(8, i*38), vec2i(size.width-36, 34));
+			offers[i].rect = recti_area(vec2i(8, i*38+34), vec2i(size.width-36, 34));
 		panel.updateAbsolutePosition();
 	}
 
@@ -165,6 +175,10 @@ class GuiOfferList : BaseGuiElement {
 			}
 			if(evt.caller is artifButton) {
 				targetObject(ArtifactOfferTarget(this), findTab(this));
+				return true;
+			}
+			if(evt.caller is cargoButton) {
+				addOffer(CargoOffer(panel));
 				return true;
 			}
 		}
@@ -334,6 +348,60 @@ class CardOffer : GuiOffer {
 	}
 };
 
+class CargoOffer : GuiOffer {
+	GuiSprite@ icon;
+	GuiText@ label;
+	GuiDropdown@ selection;
+	GuiSpinbox@ input;
+	array<const CargoType@> cargo;
+
+	CargoOffer(IGuiElement@ parent) {
+		super(parent);
+		offer.type = DOT_Cargo;
+
+		@icon = GuiSprite(this, recti_area(4,4, 28,28), Sprite(spritesheet::ResourceIconsSmall, 65));
+		@label = GuiText(this, recti_area(40,6, 150,26), locale::OFFER_CARGO);
+		label.font = FT_Bold;
+
+		@selection = GuiDropdown(this, Alignment(Left+180, Top+4, Right-140, Bottom));
+		for(uint i = 0, cnt = playerEmpire.cargoTypes; i < cnt; i++) {
+			auto@ type = getCargoType(playerEmpire.cargoType[i]);
+			if(type !is null && playerEmpire.getCargoStored(type.id) >= 1)
+				cargo.insertLast(type);
+		}
+
+		for(uint i = 0, cnt = cargo.length; i < cnt; ++i)
+			selection.addItem(GuiMarkupListText(cargo[i].name));
+
+		@input = GuiSpinbox(this, Alignment(Right-136, Top+4, Right-40, Bottom),
+				num=50, min=1, max=INFINITY, step=50, decimals=2);
+		input.font = FT_Bold;
+
+		updateAbsolutePosition();
+		apply();
+	}
+
+	void apply() {
+		if(uint(selection.selected) >= selection.itemCount) {
+			offer.id = -1;
+		}
+		else {
+			offer.id = cargo[selection.selected].id;
+			offer.value = input.value;
+			icon.desc = cargo[selection.selected].icon;
+		}
+	}
+
+	bool onGuiEvent(const GuiEvent& evt) {
+		if(evt.type == GUI_Changed && (evt.caller is input || evt.caller is selection)) {
+			apply();
+			emitChanged();
+			return true;
+		}
+		return GuiOffer::onGuiEvent(evt);
+	}
+};
+
 class ObjectOffer : GuiOffer {
 	GuiText@ label;
 
@@ -449,6 +517,8 @@ GuiOffer@ createOffer(IGuiElement@ parent, DiplomacyOffer@ input) {
 		return MoneyOffer(parent);
 	if(input.type == DOT_Energy)
 		return EnergyOffer(parent);
+	if(input.type == DOT_Cargo) 
+		return CargoOffer(parent);
 	if(input.type == DOT_Planet)
 		return ObjectOffer(parent, input.obj);
 	if(input.type == DOT_Fleet)
@@ -549,6 +619,23 @@ void drawDiplomacyOffer(DiplomacyOffer& offer, const recti& position) {
 					font::DroidSans_8.draw(
 						pos=position, horizAlign=0.5, vertAlign=1.0,
 						text=toString(int(offer.value),0)+"x", stroke=colors::Black,
+						color=colors::Red);
+				}
+			}
+		}
+		break;
+		case DOT_Cargo:
+		{
+			auto@ type = getCargoType(offer.id);
+			if(type !is null && type.isGlobal) {
+				type.icon.draw(recti_area(position.topLeft+vec2i(5,5), vec2i(position.height-10, position.height-10)));
+				font::DroidSans_8.draw(
+					pos=position, horizAlign=0.5, vertAlign=0.0,
+					text=type.name, stroke=colors::Black, color=type.color);
+				if(int(offer.value) != 0) {
+					font::DroidSans_8.draw(
+						pos=position, horizAlign=0.5, vertAlign=1.0,
+						text=toString(int(offer.value),0), stroke=colors::Black,
 						color=colors::Red);
 				}
 			}

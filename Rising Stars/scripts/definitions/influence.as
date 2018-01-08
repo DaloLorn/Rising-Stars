@@ -3,6 +3,7 @@ import hooks;
 import saving;
 import icons;
 import util.formatting;
+import cargo;
 
 from settings.map_lib import SystemDesc;
 import const SystemDesc@ getClosestSystem(const vec3d& point, Empire& presence, bool trade = false) from "system_pathing";
@@ -3568,6 +3569,7 @@ enum DiplomacyOfferType {
 	DOT_Fleet,
 	DOT_Planet,
 	DOT_Artifact,
+	DOT_Cargo,
 
 	DOT_COUNT,
 	DOT_INVALID = DOT_COUNT
@@ -3692,6 +3694,14 @@ tidy final class DiplomacyOffer : Serializable, Savable {
 				}
 				return "---";
 			}
+			case DOT_Cargo: {
+				auto@ type = getCargoType(id);
+				if(type is null || !type.isGlobal)
+					return "";
+				return format("[img=$3;20/] [b][color=$1]$2[/color][/b]",
+						toString(type.color), standardize(value, true),
+						getSpriteDesc(type.icon));
+			}
 		}
 		return "";
 	}
@@ -3725,12 +3735,14 @@ tidy final class DiplomacyOffer : Serializable, Savable {
 					&& (!obj.owner.valid || obj.owner is from)
 					&& region !is null && region.TradeMask & from.mask != 0;
 			}
+			case DOT_Cargo:
+				return from.getCargoStored(id) >= value && value > 0;
 		}
 		return true;
 	}
 
 	bool conflicts(Empire@ from, const DiplomacyOffer& other) const {
-		if(type == DOT_Card && id == other.id)
+		if((type == DOT_Card || type == DOT_Cargo) && id == other.id)
 			return true;
 		return false;
 	}
@@ -3756,6 +3768,10 @@ tidy final class DiplomacyOffer : Serializable, Savable {
 			{
 				@bound = from;
 			}
+			case DOT_Cargo: {
+				double cons = from.consumeCargo(id, value, partial=false);
+				return cons >= value - 0.001;
+			}
 		}
 		return true;
 	}
@@ -3768,6 +3784,9 @@ tidy final class DiplomacyOffer : Serializable, Savable {
 			case DOT_Energy:
 				from.modEnergyStored(value);
 				from.modEnergyAllocated(-value);
+			break;
+			case DOT_Cargo:
+				from.addCargo(id, value);
 			break;
 		}
 	}
@@ -3862,6 +3881,9 @@ tidy final class DiplomacyOffer : Serializable, Savable {
 					pos.z += offset.y;
 					obj.orbitAround(pos, targSys.position);
 				}
+			}
+			case DOT_Cargo: {
+				to.addCargo(id, value);
 			}
 		}
 		return true;
