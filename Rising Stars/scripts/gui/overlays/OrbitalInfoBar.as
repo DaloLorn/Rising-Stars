@@ -17,6 +17,7 @@ import orbitals;
 import util.formatting;
 import icons;
 from overlays.ContextMenu import openContextMenu, FinanceDryDock;
+from overlays.Construction import ConstructionOverlay;
 from overlays.OrbitalOverlay import OrbitalOverlay;
 from obj_selection import isSelected, selectObject, clearSelection, addToSelection, selectedObject;
 from tabs.GalaxyTab import zoomTabTo, openOverlay;
@@ -46,7 +47,7 @@ class ModuleGrid : GuiIconGrid {
 class OrbitalInfoBar : InfoBar {
 	Orbital@ obj;
 	Gui3DObject@ objView;
-	OrbitalOverlay@ overlay;
+	GuiOverlay@ overlay;
 
 	GuiSkinElement@ nameBox;
 	GuiText@ name;
@@ -142,8 +143,15 @@ class OrbitalInfoBar : InfoBar {
 			FinanceDryDock(obj);
 			return false;
 		}
-		@overlay = OrbitalOverlay(findTab(), cast<Orbital>(obj));
-		visible = false;
+		auto@ core = getOrbitalModule(cast<Orbital>(obj).coreModule);
+		if(core.isStandalone) {
+			@overlay = OrbitalOverlay(findTab(), cast<Orbital>(obj));
+			visible = false;
+		}
+		else if(obj.hasConstruction) {
+			@overlay = ConstructionOverlay(findTab(), obj);
+			visible = false;
+		}
 		return false;
 	}
 

@@ -17,6 +17,8 @@ Module: HydroponicsSatellite
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
+	Standalone: True
+	Core: True
 
 	LimitInOrbitStatus(HydroponicsSatellite, 1000)
 

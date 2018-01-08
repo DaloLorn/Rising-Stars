@@ -4,8 +4,6 @@ Module: SupplyDepot
 	Description: #ORB_SUPPLY_DEPOT_DESC
 	Icon: OrbitalIcons::7
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 100
@@ -24,14 +22,13 @@ Module: SupplyDepot
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)
 
+	RequireOnOrbital(MilitaryCore)
 Module: AdaptedSupplyDepot
 	Name: #ORB_SUPPLY_DEPOT_ADAPTED
 	Blurb: #ORB_SUPPLY_DEPOT_BLURB
 	Description: #ORB_SUPPLY_DEPOT_ADAPTED_DESC
 	Icon: OrbitalIcons::7
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 100
@@ -45,6 +42,7 @@ Module: AdaptedSupplyDepot
 
 	Strategic Icon: OrbitalIcons::7
 
+	RequireOnOrbital(MilitaryCore)
 	AddDefenseReserve(50)
 	RequireUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)

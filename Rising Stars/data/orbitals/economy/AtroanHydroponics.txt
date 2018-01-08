@@ -17,6 +17,8 @@ Module: AtroanHydroponics
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
+	Core: True
+	Standalone: True
 
 	LimitInOrbitStatus(OrbitalControl, 2)
 

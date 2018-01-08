@@ -17,6 +17,7 @@ Module: SenatorialPalace
 
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
+	Core: True
 
 	RequireSenateLeader()
 	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)

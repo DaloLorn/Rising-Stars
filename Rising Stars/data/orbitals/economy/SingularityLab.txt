@@ -25,6 +25,7 @@ Module: SingularityLab
 	AddResearchIncome(4)
 	AddEnergyIncome(4)
 
+	RequireOnOrbital(EconomyCore)
 Module: AdaptedSingularityLab
 	Name: #ORB_SINGULARITY_LAB_ADAPTED
 	Blurb: #ORB_SINGULARITY_LAB_BLURB
@@ -46,6 +47,7 @@ Module: AdaptedSingularityLab
 	LimitOncePerSystem(SingularityLabFlag)
 	RequireBlackHoleSystem()
 
+	RequireOnOrbital(EconomyCore)
 	AddRegionStatusEnemies(SingularityDisruption)
 	BlockSystemFTL()
 	RequireUnlockTag(NylliAdaptation4)

@@ -5,7 +5,6 @@ Module: FTLJammer
 	Icon: OrbitalIcons::9
 
 	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 50
@@ -35,7 +34,6 @@ Module: AdaptedFTLJammer
 	Icon: OrbitalIcons::9
 
 	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 50

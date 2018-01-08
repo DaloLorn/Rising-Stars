@@ -82,10 +82,10 @@ tidy final class OrbitalModule {
 	double spin = 30.0;
 	double mass = -1.0;
 
-	bool isCore = true;
+	bool isCore = false;
 	bool isSolid = true;
-	bool isStandalone = true;
-	bool isUnique = true;
+	bool isStandalone = false;
+	bool isUnique = false;
 
 	bool combatRepair = true;
 	bool alwaysRegenShield = false;
@@ -618,7 +618,8 @@ void loadOrbitalModules(const string& filename) {
 			mod.spin = toDouble(value);
 		}
 		else if(key.equals_nocase("Core")) {
-			mod.isCore = toBool(value);
+			if(!mod.isStandalone)
+				mod.isCore = toBool(value);
 		}
 		else if(key.equals_nocase("Standalone")) {
 			mod.isStandalone = toBool(value);

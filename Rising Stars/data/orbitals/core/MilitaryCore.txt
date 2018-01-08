@@ -1,0 +1,16 @@
+Module: MilitaryCore
+	Core: True
+	Name: #ORB_CORE_MILITARY
+	Description: #ORB_CORE_MILITARY_DESC
+	Blurb: #ORB_CORE_MILITARY_BLURB
+	Size: 20
+	Model: Outpost
+	Material: GenericPBR_Outpost
+	Health: 5000
+	Armor: 2500
+	Build Cost: 300
+	Labor Cost: 15
+	Maintenance: 50
+	Icon: GuiOrbitalIcons::14
+	Strategic Icon: OrbitalIcons::14
+	Distant Icon: OrbitalIcons::14

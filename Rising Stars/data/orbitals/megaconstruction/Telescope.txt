@@ -7,7 +7,6 @@ Module: Telescope
 	Strategic Icon: OrbitalIcons::17
 
 	Core: True
-	Standalone: True
 
 	Build Cost: 750
 	Labor Cost: 50
@@ -39,7 +38,6 @@ Module: AdaptedTelescope
 	Strategic Icon: OrbitalIcons::17
 
 	Core: True
-	Standalone: True
 
 	Build Cost: 750
 	Labor Cost: 50

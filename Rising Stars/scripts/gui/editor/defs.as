@@ -598,7 +598,10 @@ class OrbitalFile : FileDef {
 			field("Distant Icon", AT_Sprite, "", doc="Icon used in the 3D view on the orbital's distant icon.");
 			field("Strategic Icon", AT_Sprite, "", doc="Icon used in the 3D view for the orbital's strategic icon.");
 			field("Spin", AT_Decimal, "30", doc="Speed at which the orbital spins.");
+			field("Core", AT_Boolean, "False", doc="Whether the module is a core module and can be built on its own. Standalone modules are implied to be cores.");
 			field("Solid", AT_Boolean, "True", doc="Whether the orbital is considered solid and pushes things away.");
+			field("Standalone", AT_Boolean, "False", doc="Whether the module is a full orbital that cannot be expanded upon.");
+			field("Unique", AT_Boolean, "True", doc="Whether the module can be built only once per orbital.");
 			field("Maintenance", AT_Integer, "0", doc="The orbital's maintenance cost.");
 			field("Build Cost", AT_Integer, "0", doc="The orbital's build cost.");
 			field("Labor Cost", AT_Decimal, "0", doc="The orbital's labor cost.");

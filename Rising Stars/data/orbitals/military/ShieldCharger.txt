@@ -4,8 +4,6 @@ Module: ShieldCharger
 	Description: #ORB_SHIELD_CHARGER_DESC
 	Icon: OrbitalIcons::7
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 100
@@ -24,6 +22,7 @@ Module: ShieldCharger
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastRecharge)
 	RequireUnlockTag(ShieldCharger)
+	RequireOnOrbital(MilitaryCore)
 
 Module: AdaptedShieldCharger
 	Name: #ORB_SHIELD_CHARGER_ADAPTED
@@ -31,8 +30,6 @@ Module: AdaptedShieldCharger
 	Description: #ORB_SHIELD_CHARGER_ADAPTED_DESC
 	Icon: OrbitalIcons::7
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 500
 	Maintenance: 100
@@ -49,3 +46,4 @@ Module: AdaptedShieldCharger
 	RequireUnlockTag(NylliAdaptation4)
 	AddRegionStatus(AdaptedFastRecharge)
 	RequireUnlockTag(ShieldCharger)
+	RequireOnOrbital(MilitaryCore)

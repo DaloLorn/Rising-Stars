@@ -5,7 +5,6 @@ Module: Shipyard
 	Icon: OrbitalIcons::5
 
 	Core: True
-	Standalone: True
 	Spin: 0
 
 	Build Cost: 500

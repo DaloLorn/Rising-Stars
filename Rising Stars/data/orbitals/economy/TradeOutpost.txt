@@ -5,8 +5,6 @@ Module: TradeOutpost
 	Icon: GuiOrbitalIcons::14
 	Distant Icon: OrbitalIcons::14
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 300
 	Maintenance: 30
@@ -36,9 +34,6 @@ Module: TradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
-	AddStatus(OutpostArmorCost)
-	AddStatus(OutpostWeaponCost)
-	AddStatus(OutpostDefenseCost)
 
 	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedTradeOutpost)))
 	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
@@ -57,8 +52,6 @@ Module: AdaptedTradeOutpost
 	Icon: GuiOrbitalIcons::14
 	Distant Icon: OrbitalIcons::14
 
-	Core: True
-	Standalone: True
 
 	Build Cost: 300
 	Maintenance: 30
@@ -90,9 +83,6 @@ Module: AdaptedTradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
-	AddStatus(OutpostArmorCost)
-	AddStatus(OutpostWeaponCost)
-	AddStatus(OutpostDefenseCost)
 
 	AllowFreeRaiding()
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))

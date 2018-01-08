@@ -15,6 +15,7 @@ Module: FTLStorage
 
 	Model: FTLStorage
 	Material: GenericPBR_FTLStorage
+	Unique: False
 
 	RequireTrait(StarChildren)
 
@@ -23,6 +24,7 @@ Module: FTLStorage
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddFTLStorage(300)
 
+	RequireOnOrbital(EconomyCore)
 Module: AdaptedFTLStorage
 	Name: #ORB_FTL_STORAGE_ADAPTED
 	Blurb: #ORB_FTL_STORAGE_DESC
@@ -40,9 +42,11 @@ Module: AdaptedFTLStorage
 
 	Model: FTLStorage
 	Material: GenericPBR_FTLStorage
+	Unique: False
 
 	RequireTrait(StarChildren)
 
+	RequireOnOrbital(EconomyCore)
 	AddResearchIncome(0.5)
 	RequireUnlockTag(NylliAdaptation4)
 	AddFTLStorage(300)

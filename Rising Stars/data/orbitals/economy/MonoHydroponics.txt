@@ -17,6 +17,8 @@ Module: MonoHydroponics
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
+	Standalone: True
+	Core: True
 
 	LimitInOrbitStatus(ZeroGAssembly, 2)
 

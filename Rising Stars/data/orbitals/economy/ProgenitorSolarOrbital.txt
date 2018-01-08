@@ -27,6 +27,7 @@ Module: ProgenitorSolarOrbital
 	RequireUnlockTag(SolarOrbitalUnlock)
 	AddEnergyIncomeStarTemperature(0.5, 2.0)
 
+	RequireOnOrbital(EconomyCore)
 Module: AdaptedProgenitorSolarOrbital
 	Name: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED
 	Description: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED_DESC
@@ -50,6 +51,7 @@ Module: AdaptedProgenitorSolarOrbital
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
 
+	RequireOnOrbital(EconomyCore)
 	AddFTLIncome(0.15)
 	RequireUnlockTag(SolarOrbitalUnlock)
 	RequireUnlockTag(NylliAdaptation4)

@@ -1,0 +1,16 @@
+Module: EconomyCore
+	Core: True
+	Name: #ORB_CORE_ECONOMY
+	Description: #ORB_CORE_ECONOMY_DESC
+	Blurb: #ORB_CORE_ECONOMY_BLURB
+	Size: 20
+	Model: CommerceStation
+	Material: GenericPBR_CommerceStation
+	Health: 3000
+	Armor: 1000
+	Build Cost: 150
+	Labor Cost: 10
+	Maintenance: 10
+	Icon: GuiOrbitalIcons::15
+	Strategic Icon: OrbitalIcons::15
+	Distant Icon: OrbitalIcons::15

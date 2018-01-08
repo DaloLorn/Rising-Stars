@@ -4,7 +4,6 @@ Module: FlingCore
 	Description: #ORB_FLING_CORE_DESC
 	Icon: GuiOrbitalIcons::2
 
-	Standalone: True
 	Solid: False
 	Spin: 0
 
@@ -23,6 +22,7 @@ Module: FlingCore
 	Icon Size: 0.04
 
 	Can Fling: False
+	Core: True
 
 	IsFlingBeacon() #version<147
 	IfNotFTLShortage(IsFlingBeacon()) #version>=147
