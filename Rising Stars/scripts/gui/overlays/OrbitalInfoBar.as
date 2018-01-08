@@ -11,6 +11,7 @@ import elements.GuiBlueprint;
 import elements.GuiSprite;
 import elements.GuiSkinElement;
 import elements.GuiIconGrid;
+import elements.GuiOverlay;
 import elements.MarkupTooltip;
 import ship_groups;
 import orbitals;
@@ -144,7 +145,7 @@ class OrbitalInfoBar : InfoBar {
 			return false;
 		}
 		auto@ core = getOrbitalModule(cast<Orbital>(obj).coreModule);
-		if(core.isStandalone) {
+		if(!core.isStandalone) {
 			@overlay = OrbitalOverlay(findTab(), cast<Orbital>(obj));
 			visible = false;
 		}
@@ -162,8 +163,12 @@ class OrbitalInfoBar : InfoBar {
 				@overlay = null;
 				visible = true;
 			}
-			else
-				overlay.update(time);
+			else {
+				if(cast<ConstructionOverlay>(overlay) !is null)
+					cast<ConstructionOverlay>(overlay).update(time);
+				else if(cast<OrbitalOverlay>(overlay) !is null) 
+					cast<OrbitalOverlay>(overlay).update(time);
+			}
 		}
 
 		updateTimer -= time;
