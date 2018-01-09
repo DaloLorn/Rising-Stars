@@ -293,7 +293,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		double closestDist = INFINITY;
 		for(uint i = 0, cnt = Orbitals.length; i < cnt; ++i) {
 			Orbital@ orb = Orbitals[i];
-			if(orb.coreModule == type) {
+			if(orb.hasModule(type)) {
 				double d = orb.position.distanceToSQ(position);
 				if(d < closestDist) {
 					closestDist = d;
