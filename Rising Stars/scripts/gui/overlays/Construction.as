@@ -610,6 +610,10 @@ class ConstructionDisplay : DisplayBox {
 					constructionsButton.pressed = true;
 					constructionsList.visible = true;
 				}
+				else if(!modulesButton.disabled) {
+					modulesButton.pressed = true;
+					modulesList.visible = true;
+				}
 			}
 		}
 		else {
@@ -642,6 +646,15 @@ class ConstructionDisplay : DisplayBox {
 			}
 			for(uint i = 0, cnt = constructionsList.items.length; i < cnt; ++i) {
 				GuiListbox@ list = cast<GuiListbox>(constructionsList.items[i]);
+				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
+					GuiListElement@ ele = list.getItemElement(j);
+
+					if(cast<BuildElement>(ele) !is null)
+						cast<BuildElement>(ele).update(this);
+				}
+			}
+			for(uint i = 0, cnt = modulesList.items.length; i < cnt; ++i) {
+				GuiListbox@ list = cast<GuiListbox>(modulesList.items[i]);
 				for(uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
 					GuiListElement@ ele = list.getItemElement(j);
 
@@ -868,13 +881,13 @@ class ConstructionDisplay : DisplayBox {
 				shipsButton.visible = false;
 				orbitalsButton.visible = false;
 			}
-			/*if(obj.isOrbital) {*/
-			/*	modulesButton.visible = true;*/
-			/*	btnCount += 1;*/
-			/*}*/
-			/*else {*/
+			if(obj.isOrbital && !cast<Orbital>(obj).isStandalone) {
+				modulesButton.visible = true;
+				btnCount += 1;
+			}
+			else {
 				modulesButton.visible = false;
-			/*}*/
+			}
 			if(hasConstructions) {
 				constructionsButton.visible = true;
 				btnCount += 1;
@@ -1519,10 +1532,17 @@ class BuildElement : GuiListElement {
 			nameText = orb.name;
 			ttText = orb.getTooltip();
 			build = orb.buildCost;
-			build *= buildAt.constructionCostMod;
+			if(buildAt.hasConstruction) // Some orbitals don't have construction, so this would return 0.
+				build *= buildAt.constructionCostMod;
 			build *= buildAt.owner.OrbitalBuildCostFactor;
 			labor = orb.laborCost;
 			labor *= buildAt.owner.OrbitalLaborCostFactor;
+			if (buildAt.isOrbital && buildAt.laborIncome <= 0) {
+				labor = 0;
+				Orbital@ buildOrb = cast<Orbital>(buildAt);
+				if(!orb.canBuildOn(buildOrb))
+					hasError = true;
+			}
 			maintain = orb.maintenance;
 			energy = 0;
 			icon = orb.icon;

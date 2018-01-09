@@ -44,6 +44,7 @@ Module: TradeOutpost
 	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
 	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
 	GiveTrade()
+	RequireOnOrbital(EconomyCore)
 
 Module: AdaptedTradeOutpost
 	Name: #ORB_TRADE_OUTPOST_ADAPTED
@@ -91,3 +92,4 @@ Module: AdaptedTradeOutpost
 	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
 	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
 	GiveTrade()
+	RequireOnOrbital(EconomyCore)

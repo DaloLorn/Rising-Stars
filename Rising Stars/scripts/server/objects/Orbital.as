@@ -681,6 +681,11 @@ tidy class OrbitalScript {
 				Armor *= 0.25;
 			}
 		}
+		else {
+			if(type.isSolid) {
+				obj.noCollide = false;
+			}
+		}
 
 		sec.create(obj);
 		if(sec is core && !this.disabled)

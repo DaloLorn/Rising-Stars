@@ -85,7 +85,7 @@ tidy final class OrbitalModule {
 	bool isCore = false;
 	bool isSolid = true;
 	bool isStandalone = false;
-	bool isUnique = false;
+	bool isUnique = true;
 
 	bool combatRepair = true;
 	bool alwaysRegenShield = false;
@@ -100,7 +100,7 @@ tidy final class OrbitalModule {
 	uint totalRequirementCount = 0;
 
 	bool canBuildBy(Object@ obj, bool ignoreCost = true) const {
-		if(!isCore)
+		if(!isCore && !(obj.isOrbital && canBuildOn(cast<Orbital>(obj))))
 			return false;
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
 			if(!hooks[i].canBuildBy(obj, ignoreCost))
@@ -130,10 +130,16 @@ tidy final class OrbitalModule {
 	}
 
 	bool canBuildOn(Orbital& orbital) const {
+		if(orbital.isStandalone)
+			return false;
 		if(isCore)
 			return false;
 		if(isUnique) {
 			if(orbital.hasModule(id))
+				return false;
+		}
+		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
+			if(!hooks[i].canBuildAt(orbital, orbital.position))
 				return false;
 		}
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
