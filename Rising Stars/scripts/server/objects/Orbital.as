@@ -639,6 +639,34 @@ tidy class OrbitalScript {
 		else return 1;
 	}
 
+	void replaceModule(Orbital& obj, uint oldId, uint newId, bool validate) {
+		if(contestion != 0)
+			return; // If we continued, we'd add a module without deleting the old one.
+
+		for(uint i = 0; i < sections.length; i++) {
+			if(sections[i].type.id == oldId) {
+				obj.destroyModule(sections[i].id);
+				i--;
+				bool canAdd = true;
+				if(validate) {
+					auto@ type = getOrbitalModule(newId);
+					if(type !is null)
+						canAdd = type.canBuildOn(obj);
+
+					// Special case for replacing standalone cores.
+					if(core.type.isStandalone && type.isCore) {
+						int coreId = core.id;
+						@core = null;
+						obj.destroyModule(coreId);
+						canAdd = true; // We don't need to decrement 'i' in this case, because the loop's supposed to end now.
+					}
+				}
+				if(canAdd)
+					obj.addSection(newId);
+			}
+		}
+	}
+
 	void addSection(Orbital& obj, uint typeId) {
 		auto@ type = getOrbitalModule(typeId);
 		if(type is null)
@@ -653,6 +681,7 @@ tidy class OrbitalScript {
 			if(node !is null)
 				node.establish(obj, type.id);
 			@core = sec;
+			obj.name = type.name;
 			obj.orbitSpin(type.spin);
 			if(type.isStandalone)
 				obj.setImportEnabled(false);
@@ -808,7 +837,9 @@ tidy class OrbitalScript {
 			auto@ sec = sections[i];
 			if(sec.id == id) {
 				//Can't destroy the core, silly
-				if(sec is core)
+				// Unless, of course, we say the core's no longer the core.
+				// But we need to make sure that's the case or things will break.
+				if(core !is null && sec is core)
 					return;
 
 				if(sec.enabled)

@@ -14,3 +14,4 @@ Module: EconomyCore
 	Icon: GuiOrbitalIcons::15
 	Strategic Icon: OrbitalIcons::15
 	Distant Icon: OrbitalIcons::15
+	GiveTrade()

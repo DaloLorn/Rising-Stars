@@ -17,7 +17,6 @@ Module: SenatorialPalace
 
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
-	Core: True
 
 	RequireSenateLeader()
 	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)
@@ -30,12 +29,12 @@ Module: SenatorialPalace
 	GloballyVisible()
 	GrantAllVision()
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedSenatorialPalace)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SenatorialPalace, AdaptedSenatorialPalace))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	GrantAbility(BuyElection)
 	GrantAbility(BuyGalacticUtopia)
 	GrantAbility(BuyGalacticSuperpower)
+	RequireOnOrbital(EconomyCore)
 
 Module: AdaptedSenatorialPalace
 	Name: #ORB_SENATORIAL_PALACE_ADAPTED
@@ -73,3 +72,4 @@ Module: AdaptedSenatorialPalace
 	GrantAbility(BuyElection)
 	GrantAbility(BuyGalacticUtopia)
 	GrantAbility(BuyGalacticSuperpower)
+	RequireOnOrbital(EconomyCore)

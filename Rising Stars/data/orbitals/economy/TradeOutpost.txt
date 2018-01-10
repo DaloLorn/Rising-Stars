@@ -35,16 +35,11 @@ Module: TradeOutpost
 	AddStatus(StartingProtection, Duration = 90)
 
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedTradeOutpost)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
-	AllowConstruction()
-	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
-	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
-	GiveTrade()
-	RequireOnOrbital(EconomyCore)
+	RequireOnOrbital(MilitaryCore)
 
 Module: AdaptedTradeOutpost
 	Name: #ORB_TRADE_OUTPOST_ADAPTED
@@ -88,8 +83,4 @@ Module: AdaptedTradeOutpost
 	AllowFreeRaiding()
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
-	AllowConstruction()
-	ABEM_races::IfRace(OnEnable(SpawnOrbital(Temple)), Evangelical, #RACE_SAAR)
-	ABEM_races::IfRace(OnEnable(Destroy(Quiet = True)), Evangelical, #RACE_SAAR)
-	GiveTrade()
-	RequireOnOrbital(EconomyCore)
+	RequireOnOrbital(MilitaryCore)

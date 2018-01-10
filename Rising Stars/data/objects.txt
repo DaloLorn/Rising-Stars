@@ -155,7 +155,7 @@ local visible:
 	safe bool get_isContested();
 	safe bool get_isDisabled();
 	OrbitalSection@[] getSections();
-	bool hasModule(uint typeId);
+	safe bool hasModule(uint typeId);
 	safe double get_health();
 	safe double get_maxHealth();
 	safe double get_armor();
@@ -189,6 +189,7 @@ server:
 	void setDerelict(bool value);
 	void setContested(bool value);
 	void addSection(uint modId);
+	void replaceModule(uint oldId, uint newId, bool validate);
 	void modMaxArmor(double value);
 	void modMaxHealth(double value);
 	void modMaxShield(double value);

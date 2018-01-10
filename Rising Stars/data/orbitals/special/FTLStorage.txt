@@ -19,8 +19,7 @@ Module: FTLStorage
 
 	RequireTrait(StarChildren)
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedFTLStorage)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLStorage, AdaptedFTLStorage))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddFTLStorage(300)
 

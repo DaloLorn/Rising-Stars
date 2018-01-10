@@ -350,10 +350,13 @@ class ConsumeCargo : ConsumeEffect {
 	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
-		if(!obj.hasCargo)
+		if(!allow_global.boolean && !obj.hasCargo)
 			return false;
-
-		double val = obj.getCargoStored(type.integer);
+		
+		double val = 0.0;
+		if(obj.hasCargo) {
+			val = obj.getCargoStored(type.integer);
+		}
 		if(allow_global.boolean) {
 			val += obj.owner.getCargoStored(type.integer);
 		}
@@ -418,10 +421,13 @@ class ConsumeCargoAttribute : ConsumeEffect {
 	}
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
-		if(!obj.hasCargo)
+		if(!allow_global.boolean && !obj.hasCargo)
 			return false;
 
-		double val = obj.getCargoStored(type.integer);
+		double val = 0.0;
+		if(obj.hasCargo) {
+			val = obj.getCargoStored(type.integer);
+		}
 		if(allow_global.boolean) {
 			val += obj.owner.getCargoStored(type.integer);
 		}
@@ -483,10 +489,13 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 	Argument allow_global(AT_Boolean, "True", doc="Whether cargo can be consumed from the global pool if the object doesn't have enough.");
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
-		if(!obj.hasCargo)
+		if(!allow_global.boolean && !obj.hasCargo)
 			return false;
 
-		double val = obj.getCargoStored(type.integer);
+		double val = 0.0;
+		if(obj.hasCargo) {
+			val = obj.getCargoStored(type.integer);
+		}
 		if(allow_global.boolean) {
 			val += obj.owner.getCargoStored(type.integer);
 		}

@@ -33,8 +33,7 @@ Module: StarForge
 
 	MultConstructionCost(0.5)
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedStarForge)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StarForge, AdaptedStarForge))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(StarForgeUnlock)
 

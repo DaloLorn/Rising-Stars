@@ -13,12 +13,12 @@ Module: NylliFood
 	Material: GenericPBR_CommerceStation
 	Size: 5
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedNylliFood)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliFood, AdaptedNylliFood))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
+	RequireOnOrbital(EconomyCore)
 Module: NylliWater
 	Name: #ORB_HYDROGENATOR
 	Icon: OrbitalIcons::0
@@ -33,12 +33,12 @@ Module: NylliWater
 	Model: Depot
 	Material: GenericPBR_Depot
 	Size: 5
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedNylliWater)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliWater, AdaptedNylliWater))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
+	RequireOnOrbital(EconomyCore)
 
 Module: AdaptedNylliFood
 	Name: #ORB_FARM_ADAPTED
@@ -59,6 +59,7 @@ Module: AdaptedNylliFood
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
+	RequireOnOrbital(EconomyCore)
 Module: AdaptedNylliWater
 	Name: #ORB_HYDROGENATOR_ADAPTED
 	Icon: OrbitalIcons::0
@@ -77,3 +78,5 @@ Module: AdaptedNylliWater
 	RequireUnlockTag(NylliNutrients)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
+
+	RequireOnOrbital(EconomyCore)

@@ -17,8 +17,7 @@ Module: SupplyDepot
 
 	Strategic Icon: OrbitalIcons::7
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedSupplyDepot)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SupplyDepot, AdaptedSupplyDepot))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)
 

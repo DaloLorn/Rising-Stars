@@ -5,6 +5,7 @@ Module: Shipyard
 	Icon: OrbitalIcons::5
 
 	Core: True
+	Standalone: True
 	Spin: 0
 
 	Build Cost: 500
@@ -31,8 +32,7 @@ Module: Shipyard
 	AddLaborFactor(-0.25)
 
 	RequireNotTrait(Mechanoid)
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedShipyard)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Shipyard, AdaptedShipyard))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 
 	AllowLaborImport()

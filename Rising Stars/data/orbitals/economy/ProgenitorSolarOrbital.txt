@@ -20,8 +20,7 @@ Module: ProgenitorSolarOrbital
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedProgenitorSolarOrbital)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(ProgenitorSolarOrbital, AdaptedProgenitorSolarOrbital, False))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 
 	RequireUnlockTag(SolarOrbitalUnlock)

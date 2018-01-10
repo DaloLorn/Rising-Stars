@@ -6,12 +6,11 @@ Module: Telescope
 	Icon: GuiOrbitalIcons::17
 	Strategic Icon: OrbitalIcons::17
 
-	Core: True
-
 	Build Cost: 750
 	Labor Cost: 50
 	ConsumeCargo(Ore, 750)
 
+	Standalone: True
 
 	Health: 5000
 	Armor: 5000
@@ -22,8 +21,7 @@ Module: Telescope
 	Maintenance: 100
 	Icon Size: 0.02
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedTelescope)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Telescope, AdaptedTelescope))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddAccelerationBonus(0.2)
 	ShowRange(40000, #00ff00)
@@ -37,12 +35,11 @@ Module: AdaptedTelescope
 	Icon: GuiOrbitalIcons::17
 	Strategic Icon: OrbitalIcons::17
 
-	Core: True
-
 	Build Cost: 750
 	Labor Cost: 50
 	ConsumeCargo(Ore, 750)
 
+	Standalone: True
 
 	Health: 5000
 	Armor: 5000

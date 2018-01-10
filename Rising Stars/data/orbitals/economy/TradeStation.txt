@@ -22,10 +22,8 @@ Module: TradeStation
 	GrantAbility(BuyResearch) #version>=93
 	GrantAbility(BuyLabor) #version>=93
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedShipyard)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeStation, AdaptedTradeStation))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
-	GiveTrade()
 	GlobalTradeNode()
 
 	RequireOnOrbital(EconomyCore)
@@ -56,5 +54,4 @@ Module: AdaptedTradeStation
 	RequireOnOrbital(EconomyCore)
 	SpawnFreighters(Rate = 2.0, Min Level = 1)
 	RequireUnlockTag(NylliAdaptation4)
-	GiveTrade()
 	GlobalTradeNode()

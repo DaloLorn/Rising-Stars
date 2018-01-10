@@ -4,8 +4,6 @@ Module: FTLJammer
 	Description: #ORB_FTL_JAMMER_DESC
 	Icon: OrbitalIcons::9
 
-	Core: True
-
 	Build Cost: 500
 	Maintenance: 50
 	Labor Cost: 20
@@ -21,11 +19,10 @@ Module: FTLJammer
 	IfNotFTLShortage(BlockSystemFTL())
 	FTLMaintenance(0.15)
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedFTLJammer)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLJammer, AdaptedFTLJammer))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
-	RequireUnlockTag(NylliAdaptation4)
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147
+	RequireOnOrbital(MilitaryCore)
 
 Module: AdaptedFTLJammer
 	Name: #ORB_FTL_JAMMER_ADAPTED
@@ -33,7 +30,6 @@ Module: AdaptedFTLJammer
 	Description: #ORB_FTL_JAMMER_ADAPTED_DESC
 	Icon: OrbitalIcons::9
 
-	Core: True
 
 	Build Cost: 500
 	Maintenance: 50
@@ -53,3 +49,4 @@ Module: AdaptedFTLJammer
 	AddEnergyIncome(1)
 	RequireUnlockTag(NylliAdaptation4)
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147
+	RequireOnOrbital(MilitaryCore)

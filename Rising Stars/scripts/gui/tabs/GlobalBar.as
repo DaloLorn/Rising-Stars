@@ -523,12 +523,39 @@ class DefenseResource : ResourceDisplay {
 	}
 };
 
+class CargoDisplay : BaseGuiElement {
+	GuiCargoDisplay@ cargo;
+
+	CargoDisplay(IGuiElement@ parent, Alignment@ align) {
+		super(parent, align);
+		@cargo = GuiCargoDisplay(this, Alignment(Left+4, Top, Right-4, Bottom-1));
+	}
+
+	void update() {
+		cargo.update(playerEmpire);
+	}
+
+	void draw() {
+		skin.draw(SS_PlainBox, SF_Normal, AbsolutePosition.padded(0,0,0,1));
+
+		Color topColor = colors::Labor;
+		topColor.a = 0x30;
+
+		Color botColor = colors::Labor;
+		botColor.a = 0x10;
+
+		drawRectangle(AbsolutePosition, topColor, topColor, botColor, botColor);
+
+		BaseGuiElement::draw();
+	}
+};
+
 class GlobalBar : BaseGuiElement {
 	BaseGuiElement@ container;
 	double updateTimer = -INFINITY;
 
-	GuiCargoDisplay@ cargo;
 	array<ResourceDisplay@> sections;
+	CargoDisplay@ cargo;
 	ResourceDisplay@ budget;
 	ResourceDisplay@ energy;
 	ResourceDisplay@ ftl;
@@ -542,7 +569,7 @@ class GlobalBar : BaseGuiElement {
 		@container = BaseGuiElement(this, Alignment_Fill());
 		container.StrictBounds = true;
 
-		@cargo = GuiCargoDisplay(container, Alignment(Left, Top, Right, Top+26));
+		@cargo = CargoDisplay(container, Alignment(Left, Top, Right, Top+26));
 
 		@budget = BudgetResource(container, Alignment());
 		sections.insertLast(budget);
@@ -566,7 +593,7 @@ class GlobalBar : BaseGuiElement {
 	}
 
 	void update() {
-		cargo.update(playerEmpire);
+		cargo.update();
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i)
 			sections[i].update();
 	}

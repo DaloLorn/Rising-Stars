@@ -303,7 +303,6 @@ class ModuleElement : BaseGuiElement {
 	GuiSprite@ icon;
 	GuiText@ name;
 	GuiMarkupText@ blurb;
-	GuiMarkupText@ data;
 	Color color;
 	GuiButton@ removeButton;
 
@@ -312,9 +311,7 @@ class ModuleElement : BaseGuiElement {
 		@icon = GuiSprite(this, recti_area(8, 13, 50, 50));
 		@name = GuiText(this, Alignment(Left+70, Top+4, Right-4, Top+28));
 		name.font = FT_Bold;
-		@blurb = GuiMarkupText(this, Alignment(Left+68, Top+26, Right-4, Top+48));
-		@data = GuiMarkupText(this, Alignment(Left+68, Top+48, Right-4, Bottom-4));
-		data.defaultFont = FT_Italic;
+		@blurb = GuiMarkupText(this, Alignment(Left+68, Top+26, Right-4, Bottom-4));
 		@removeButton = GuiButton(this, Alignment(Right-40, Bottom-26, Right, Bottom), "-");
 		removeButton.color = colors::Red;
 
@@ -337,7 +334,6 @@ class ModuleElement : BaseGuiElement {
 		icon.desc = section.type.icon;
 		name.text = section.type.name;
 		blurb.text = section.type.blurb;
-		data.text = section.getData(obj);
 		if(section.enabled) {
 			color = colors::White;
 			name.color = colors::White;
@@ -346,7 +342,7 @@ class ModuleElement : BaseGuiElement {
 			color = colors::Red;
 			name.color = colors::Red;
 		}
-		setMarkupTooltip(this, section.type.getTooltip());
+		setMarkupTooltip(this, format("[font=Medium]$1[/font]\n$2", section.type.name, section.type.description), width=350);
 		removeButton.visible = !section.type.isCore && !obj.isContested;
 	}
 

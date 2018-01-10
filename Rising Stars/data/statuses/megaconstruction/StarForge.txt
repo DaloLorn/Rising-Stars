@@ -9,7 +9,7 @@ Status: StarForge
 	RepeatStacks(IfSystemHasStar(IfUsingLabor(TriggerPeriodic(DealDamageToStar(5000000), Interval = 1.0))))
 	OnEnable(AddStatus(StarForgeUpgrade))
 
-	RepeatStacks(IfHaveStatus(AdaptedStarForge, AddStatus(StellarShield)))
+	RepeatStacks(IfHaveStatus(AdaptedStarForge, AddRegionStatus(StellarShield, false)))
 Status: StarForgeUpgrade
 	Visible To: Nobody
 	Collapses: True

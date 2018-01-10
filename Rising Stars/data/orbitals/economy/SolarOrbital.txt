@@ -22,12 +22,10 @@ Module: SolarOrbital
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(SolarOrbitalUnlock)
 
-	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(SpawnOrbital(ProgenitorSolarOrbital)))
-	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(Destroy(True)))
+	IfTagUnlocked(ProgenitorSolarOrbital, ABEM_orbitals::ReplaceModule(SolarOrbital, ProgenitorSolarOrbital, False))
 	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedSolarOrbital)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SolarOrbital, AdaptedSolarOrbital, False))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 
@@ -58,8 +56,7 @@ Module: AdaptedSolarOrbital
 	RequireUnlockTag(NylliAdaptation4)
 
 	RequireOnOrbital(EconomyCore)
-	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(SpawnOrbital(AdaptedProgenitorSolarOrbital)))
-	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(Destroy(True)))
+	IfTagUnlocked(ProgenitorSolarOrbital, ABEM_orbitals::ReplaceModule(AdaptedSolarOrbital, AdaptedProgenitorSolarOrbital, False))
 	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 	AddFTLIncome(0.1)

@@ -23,8 +23,7 @@ Module: StellarShieldGenerator
 	AddRegionStatus(StellarShield, false) // This 'false' says that the status must apply to all objects in the system regardless of owner.
 	FacesOrbitCenter()
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedStellarShieldGenerator)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StellarShieldGenerator, AdaptedStellarShieldGenerator))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(StellarShieldOrbital)
 

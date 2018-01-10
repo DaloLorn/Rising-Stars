@@ -19,8 +19,7 @@ Module: SingularityLab
 	LimitOncePerSystem(SingularityLabFlag)
 	RequireBlackHoleSystem()
 
-	IfTagUnlocked(NylliAdaptation4, OnEnable(SpawnOrbital(AdaptedSingularityLab)))
-	IfTagUnlocked(NylliAdaptation4, OnEnable(Destroy(True)))
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SingularityLab, AdaptedSingularityLab))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddResearchIncome(4)
 	AddEnergyIncome(4)

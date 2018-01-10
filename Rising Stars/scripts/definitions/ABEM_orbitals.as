@@ -1,6 +1,7 @@
 import hooks;
 import orbitals;
 import generic_effects;
+import generic_hooks;
 import traits;
 import statuses;
 import status_effects;
@@ -185,6 +186,135 @@ class ModifyOrbitalHealth : StatusHook {
 		else return;
 		orb.modMaxHealth(-hpValue.decimal);
 		orb.modMaxArmor(-armorValue.decimal);
+	}
+#section all
+}
+
+class ReplaceModule : GenericEffect {
+	Document doc("Replaces all modules on the target orbital with modules of a different kind.");
+	Argument old("Old Module", AT_OrbitalModule, doc="The module type to replace. Attempting to replace core modules will have no effect, unless it is a standalone core, in which case it can only be replaced by a core.");
+	Argument new("New Module", AT_OrbitalModule, doc="The module type to replace it with.  Attempting to replace a module with itself will have no effect.");
+	Argument validate("Validate", AT_Boolean, "True", doc="Whether to check if the new module can be placed before attempting to install it.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(obj is null || !obj.isOrbital || old.integer == new.integer)
+			return;
+
+		auto@ type = getOrbitalModule(old.integer);
+		if(type is null || (type.isCore && !type.isStandalone)) {
+			return;
+		}
+		
+		Orbital@ orb = cast<Orbital>(obj);
+		if(orb.hasModule(old.integer)) {
+			orb.replaceModule(old.integer, new.integer, validate.boolean);
+		}
+	}
+#section all
+}
+
+class DestroyModule : GenericEffect {
+	Document doc("Destroys all modules on the target orbital.");
+	Argument old("Old Module", AT_OrbitalModule, doc="The module type to destroy. Destroying core modules will destroy the station itself.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(obj is null || !obj.isOrbital)
+			return;
+
+		auto@ type = getOrbitalModule(old.integer);
+		if(type is null) {
+			return;
+		}
+		
+		Orbital@ orb = cast<Orbital>(obj);
+		if(orb.coreModule == type.id)
+			orb.destroy();
+		else if(orb.hasModule(old.integer)) {
+			array<OrbitalSection> sections;
+			sections.syncFrom(orb.getSections());
+			for(uint i = 0, cnt = sections.length; i < cnt; i++)
+				orb.destroyModule(sections[i].id);
+		}
+	}
+#section all
+}
+
+class AddModule : GenericEffect {
+	Document doc("Adds a module to the target orbital.");
+	Argument module("Module", AT_OrbitalModule, doc="The module type to add. Attempting to add core modules - or add modules to standalone orbitals - will have no effect.");
+	Argument validate("Validate", AT_Boolean, "True", doc="Whether to check if the new module can be placed before attempting to install it.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(obj is null || !obj.isOrbital)
+			return;
+
+		auto@ type = getOrbitalModule(module.integer);
+		if(type is null || type.isCore) { // Block cores.
+			return;
+		}
+
+		Orbital@ orb = cast<Orbital>(obj);
+		if(!orb.isStandalone && (!validate.boolean || type.canBuildOn(orb))) { // If it's a standalone, block it regardless of validation. Otherwise, validate as needed.
+			orb.addSection(module.integer);
+		}
+	}
+#section all
+}
+
+class ReplaceModulesInEmpire : EmpireEffect {
+	Document doc("Replaces all modules of a certain kind with modules of a different kind across all orbitals in the empire.");
+	Argument old("Old Module", AT_OrbitalModule, doc="The module type to replace. Attempting to replace core modules will have no effect, unless it is a standalone core, in which case it can be replaced by a core.");
+	Argument new("New Module", AT_OrbitalModule, doc="The module type to replace it with. Attempting to replace a module with itself will have no effect.");
+	Argument validate("Validate", AT_Boolean, "True", doc="Whether to check if the new module can be placed before attempting to install it.");
+
+#section server
+	void tick(Empire& emp, any@ data, double time) const override {
+		if(emp is null || !emp.valid || old.integer == new.integer)
+			return;
+
+		auto@ type = getOrbitalModule(old.integer);
+		if(type is null || (type.isCore && !type.isStandalone)) {
+			return;
+		}
+		
+		for(uint i = 0, cnt = emp.orbitalCount; i < cnt; i++) {
+			Orbital@ orb = emp.orbitals[i];
+			if(orb.hasModule(old.integer)) {
+				orb.replaceModule(old.integer, new.integer, validate.boolean);
+			}
+		}
+	}
+#section all
+}
+
+class DestroyModulesInEmpire : EmpireEffect {
+	Document doc("Destroy all modules of a certain kind across all orbitals in the empire.");
+	Argument old("Target Module", AT_OrbitalModule, doc="The module type to destroy. Destroying core modules will destroy the station itself.");
+
+#section server
+	void tick(Empire& emp, any@ data, double time) const override {
+		if(emp is null || !emp.valid)
+			return;
+
+		auto@ type = getOrbitalModule(old.integer);
+		if(type is null) {
+			return;
+		}
+		
+		for(uint i = 0, cnt = emp.orbitalCount; i < cnt; i++) {
+			Orbital@ orb = emp.orbitals[i];
+			if(orb.coreModule == type.id)
+				orb.destroy();
+			else if(orb.hasModule(old.integer)) {
+				array<OrbitalSection> sections;
+				sections.syncFrom(orb.getSections());
+				for(uint j = 0, jcnt = sections.length; j < jcnt; j++)
+					orb.destroyModule(sections[j].id);
+			}
+		}
 	}
 #section all
 }

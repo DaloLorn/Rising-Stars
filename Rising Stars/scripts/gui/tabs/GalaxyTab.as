@@ -793,7 +793,7 @@ class GalaxyTab : Tab {
 		}
 
 		Orbital@ orb = cast<Orbital>(object);
-		if(orb !is null && (!orb.hasLeaderAI || orb.hasConstruction || orb.SupplyCapacity == 0)) {
+		if(orb !is null && (orb.hasConstruction || !orb.isStandalone)) {
 			openManage(orb);
 			return true;
 		}
@@ -805,7 +805,7 @@ class GalaxyTab : Tab {
 		/*}*/
 
 		if(object.hasLeaderAI) {
-			if(object.owner.controlled && !object.hasConstruction)
+			if(object.owner.controlled && !object.hasConstruction && object.SupplyCapacity > 0)
 				openSupportOverlay(object);
 			else
 				openManage(object);
