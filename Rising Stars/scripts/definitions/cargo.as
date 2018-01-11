@@ -27,6 +27,7 @@ tidy final class CargoType {
 tidy class CargoStorage : Serializable, Savable {
 	array<const CargoType@>@ types;
 	array<double>@ amounts;
+	array<bool>@ persistence;
 
 	double capacity = 0.0;
 	double filled = 0.0;
@@ -37,7 +38,7 @@ tidy class CargoStorage : Serializable, Savable {
 		return types.length;
 	}
 
-	int index(const CargoType@ type, bool create = true) {
+	int index(const CargoType@ type, bool create = true, bool persistent = false) {
 		int ind = -1;
 		if(types !is null)
 			ind = types.find(type);
@@ -45,10 +46,12 @@ tidy class CargoStorage : Serializable, Savable {
 			if(types is null) {
 				@types = array<const CargoType@>();
 				@amounts = array<double>();
+				@persistence = array<bool>();
 			}
 			ind = types.length;
 			types.insertLast(type);
 			amounts.insertLast(0.0);
+			persistence.insertLast(persistent);
 		}
 		return ind;
 	}
@@ -61,6 +64,7 @@ tidy class CargoStorage : Serializable, Savable {
 			return;
 		types.removeAt(ind);
 		amounts.removeAt(ind);
+		persistence.removeAt(ind);
 		/*if(types.length == 0) {*/
 		/*	@types = null;*/
 		/*	@amounts = null;*/
@@ -70,6 +74,7 @@ tidy class CargoStorage : Serializable, Savable {
 	void removeAll() {
 		@types = null;
 		@amounts = null;
+		@persistence = null;
 		filled = 0;
 	}
 
@@ -80,14 +85,14 @@ tidy class CargoStorage : Serializable, Savable {
 		return amounts[ind];
 	}
 
-	double add(const CargoType@ type, double amount, bool partial = true) {
+	double add(const CargoType@ type, double amount, bool persistent = false, bool partial = true) {
 		if(!partial && (capacity - filled) < type.storageSize * amount)
 			return 0.0;
 		double storeAmt = min(amount, (capacity - filled) / type.storageSize);
 		if(storeAmt <= 0.0001)
 			return 0.0;
 
-		int ind = index(type);
+		int ind = index(type, true, persistent);
 		amounts[ind] += storeAmt;
 		filled = clamp(filled + (storeAmt * type.storageSize), 0, capacity);
 		delta = true;
@@ -108,7 +113,7 @@ tidy class CargoStorage : Serializable, Savable {
 		filled = clamp(filled - (consAmt * type.storageSize), 0, capacity);
 		delta = true;
 
-		if(amounts[ind] < 0.0001)
+		if(!persistence[ind] && amounts[ind] < 0.0001)
 			remove(type);
 		return consAmt;
 	}
@@ -122,6 +127,7 @@ tidy class CargoStorage : Serializable, Savable {
 			for(uint i = 0, cnt = types.length; i < cnt; ++i) {
 				msg.writeSmall(types[i].id);
 				msg << amounts[i];
+				msg << persistence[i];
 			}
 		}
 
@@ -135,19 +141,23 @@ tidy class CargoStorage : Serializable, Savable {
 			if(types !is null) {
 				@types = null;
 				@amounts = null;
+				@persistence = null;
 			}
 		}
 		else {
 			if(types is null) {
 				@types = array<const CargoType@>();
 				@amounts = array<double>();
+				@persistence = array<bool>();
 			}
 
 			types.length = cnt;
 			amounts.length = cnt;
+			persistence.length = cnt;
 			for(uint i = 0; i < cnt; ++i) {
 				@types[i] = getCargoType(msg.readSmall());
 				msg >> amounts[i];
+				msg >> persistence[i];
 			}
 		}
 
@@ -163,6 +173,7 @@ tidy class CargoStorage : Serializable, Savable {
 		for(uint i = 0; i < cnt; ++i) {
 			file.writeIdentifier(SI_CargoType, types[i].id);
 			file << amounts[i];
+			file << persistence[i];
 		}
 
 		file << capacity;
@@ -176,27 +187,32 @@ tidy class CargoStorage : Serializable, Savable {
 			if(types !is null) {
 				@types = null;
 				@amounts = null;
+				@persistence = null;
 			}
 		}
 		else {
 			if(types is null) {
 				@types = array<const CargoType@>();
 				@amounts = array<double>();
+				@persistence = array<bool>();
 			}
 
 			types.length = cnt;
 			amounts.length = cnt;
+			persistence.length = cnt;
 			for(uint i = 0; i < cnt; ++i) {
 				auto@ type = getCargoType(file.readIdentifier(SI_CargoType));
 				if(type is null) {
 					double tmp = 0;
 					file >> tmp;
 					amounts.removeAt(i);
+					persistence.removeAt(i);
 					--cnt; --i;
 				}
 				else {
 					@types[i] = type;
 					file >> amounts[i];
+					file >> persistence[i];
 				}
 			}
 		}

@@ -31,13 +31,9 @@ tidy class CargoManager : CargoStorage {
 		for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; i++) {
 			auto@ type = getCargoType(i);
 			if(type !is null && type.isGlobal && type.visible) {
-				index(type, true);
+				index(type, true, true);
 			}
 		}
-	}
-
-	void remove(const CargoType@ type) override {
-		return;
 	}
 }
 
@@ -728,7 +724,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 	void forceCargoTypeVisible(uint typeId) {
 		auto@ type = getCargoType(typeId);
 		if(type !is null && type.isGlobal) {
-			cargo.index(type, true);
+			cargo.index(type, true, true);
 		}
 	}
 
@@ -782,9 +778,9 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 	void transferAllCargoTo(Empire@ other) {
 		if(cargo.types is null)
 			return;
-		while(cargo.types.length > 0) {
-			auto@ type = cargo.types[0];
-			double cons = cargo.consume(type, cargo.amounts[0], partial=true);
+		for(uint i = 0; i < cargo.types.length; i++) {
+			auto@ type = cargo.types[i];
+			double cons = cargo.consume(type, cargo.amounts[i], partial=true);
 			if(cons > 0) {
 				other.addCargo(type.id, cons);
 			}
