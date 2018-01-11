@@ -27,7 +27,7 @@ tidy class EnergyFloat {
 
 tidy class CargoManager : CargoStorage {
 	CargoManager() {
-		capacity = 1000000000;
+		capacity = +INFINITY;
 		for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; i++) {
 			auto@ type = getCargoType(i);
 			if(type !is null && type.isGlobal && type.visible) {
