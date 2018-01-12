@@ -2,7 +2,7 @@ Module: NylliFood
 	Name: #ORB_FARM
 	Blurb: #ORB_FARM_BLURB
 	Description: #ORB_FARM_DESC
-	Icon: OrbitalIcons::0
+	Icon: Megafarm
 	Strategic Icon: Megafarm
 	Maintenance: 150
 	Build Cost: 350
@@ -21,7 +21,7 @@ Module: NylliFood
 	RequireOnOrbital(EconomyCore)
 Module: NylliWater
 	Name: #ORB_HYDROGENATOR
-	Icon: OrbitalIcons::0
+	Icon: Hydrogenator
 	Strategic Icon: Hydrogenator
 	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_DESC
@@ -44,7 +44,7 @@ Module: AdaptedNylliFood
 	Name: #ORB_FARM_ADAPTED
 	Blurb: #ORB_FARM_BLURB
 	Description: #ORB_FARM_ADAPTED_DESC
-	Icon: OrbitalIcons::0
+	Icon: Megafarm
 	Strategic Icon: Megafarm
 	Maintenance: 100
 	Build Cost: 350
@@ -62,7 +62,7 @@ Module: AdaptedNylliFood
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedNylliWater
 	Name: #ORB_HYDROGENATOR_ADAPTED
-	Icon: OrbitalIcons::0
+	Icon: Hydrogenator
 	Strategic Icon: Hydrogenator
 	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_ADAPTED_DESC

@@ -1,0 +1,14 @@
+Module: IonCannon
+	Name: #ORB_ION_CANNON
+	Description: #ORB_ION_CANNON_DESC
+	Blurb: #ORB_ION_CANNON_BLURB
+	Icon: HexagonSubsystems::6 * #ff8d00
+	Health: 2500
+	Armor: 1500
+	Maintenance: 50
+	Build Cost: 500
+	Strategic Icon: HexagonSubsystems::6 * #ff8d00
+	Distant Icon: HexagonSubsystems::6 * #ff8d00
+	GrantAbility(IonCannon)
+	ConsumeCargo(Ore, 500)
+	RequireOnOrbital(MilitaryCore)

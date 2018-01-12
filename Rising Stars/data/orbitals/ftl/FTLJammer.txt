@@ -5,7 +5,7 @@ Module: FTLJammer
 	Icon: OrbitalIcons::9
 
 	Build Cost: 500
-	Maintenance: 50
+	Maintenance: 30
 	Labor Cost: 20
 
 	Health: 5000
@@ -24,6 +24,7 @@ Module: FTLJammer
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147
 	RequireOnOrbital(MilitaryCore)
 
+	ConsumeCargo(Ore, 500)
 Module: AdaptedFTLJammer
 	Name: #ORB_FTL_JAMMER_ADAPTED
 	Blurb: #ORB_FTL_JAMMER_BLURB
@@ -32,7 +33,7 @@ Module: AdaptedFTLJammer
 
 
 	Build Cost: 500
-	Maintenance: 50
+	Maintenance: 30
 	Labor Cost: 20
 
 	Health: 5000
@@ -50,3 +51,4 @@ Module: AdaptedFTLJammer
 	RequireUnlockTag(NylliAdaptation4)
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147
 	RequireOnOrbital(MilitaryCore)
+	ConsumeCargo(Ore, 500)

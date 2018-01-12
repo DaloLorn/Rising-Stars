@@ -1,0 +1,29 @@
+Module: TachyonCollector
+	Name: #ORB_TACHYON_COLLECTOR
+	Description: #ORB_TACHYON_COLLECTOR_DESC
+	Blurb: #ORB_TACHYON_COLLECTOR_BLURB
+	Icon: FtlIcon
+	Distant Icon: FtlIcon
+	Icon Size: 0.01
+
+	Build Cost: 300
+	Maintenance: 15
+	Labor Cost: 15
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+	Unique: False
+
+
+	ABEM_orbitals::LimitTwicePerSystem(TachyonCollector, TachyonCollector2)
+
+
+
+	AddFTLIncome(0.5)
+	ABEM_orbitals::RequireSystemFlag(TachyonNebula)
+	ConsumeCargo(Ore, 250)
+	RequireOnOrbital(EconomyCore)

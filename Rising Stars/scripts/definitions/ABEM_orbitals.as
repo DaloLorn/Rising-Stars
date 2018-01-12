@@ -318,3 +318,51 @@ class DestroyModulesInEmpire : EmpireEffect {
 	}
 #section all
 }
+
+class IfHasModule : IfHook {
+	Document doc("Only applies the inner hook if the orbital has a given module.");
+	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
+	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
+
+	bool instantiate() override {
+		if(!withHook(hookID.str)) 
+			return false;
+		return GenericEffect::instantiate();
+	}
+
+#section server
+	bool condition(Object& obj) const override {
+		if(obj is null) 
+			return false;
+		Orbital@ orb = cast<Orbital>(obj);
+		if(orb is null)
+			return false;
+
+		return orb.hasModule(module.integer);
+	}
+#section all
+}
+
+class IfNotHaveModule : IfHook {
+	Document doc("Only applies the inner hook if the orbital does not have a given module.");
+	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
+	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
+
+	bool instantiate() override {
+		if(!withHook(hookID.str)) 
+			return false;
+		return GenericEffect::instantiate();
+	}
+
+#section server
+	bool condition(Object& obj) const override {
+		if(obj is null) 
+			return false;
+		Orbital@ orb = cast<Orbital>(obj);
+		if(orb is null)
+			return true;
+
+		return !orb.hasModule(module.integer);
+	}
+#section all
+}

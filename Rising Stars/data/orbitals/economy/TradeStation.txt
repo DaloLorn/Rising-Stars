@@ -7,7 +7,7 @@ Module: TradeStation
 
 
 	Build Cost: 500
-	Maintenance: 200
+	Maintenance: 190
 	Labor Cost: 15
 	Size: 16
 
@@ -26,6 +26,7 @@ Module: TradeStation
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	GlobalTradeNode()
 
+	ConsumeCargo(Ore, 750)
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedTradeStation
 	Name: #ORB_TRADE_STATION_ADAPTED
@@ -36,7 +37,7 @@ Module: AdaptedTradeStation
 
 
 	Build Cost: 500
-	Maintenance: 200
+	Maintenance: 190
 	Labor Cost: 15
 	Size: 16
 
@@ -55,3 +56,4 @@ Module: AdaptedTradeStation
 	SpawnFreighters(Rate = 2.0, Min Level = 1)
 	RequireUnlockTag(NylliAdaptation4)
 	GlobalTradeNode()
+	ConsumeCargo(Ore, 750)

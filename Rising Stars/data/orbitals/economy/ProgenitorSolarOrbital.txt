@@ -6,7 +6,7 @@ Module: ProgenitorSolarOrbital
 	Distant Icon: OrbitalIcons::13
 	Icon Size: 0.01
 
-	Build Cost: 400
+	Build Cost: 250
 	Labor Cost: 15
 	Size: 30
 
@@ -16,7 +16,6 @@ Module: ProgenitorSolarOrbital
 	Model: SolarEngine
 	Material: GenericPBR_SolarEngine
 
-	FacesOrbitCenter()
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
@@ -27,6 +26,7 @@ Module: ProgenitorSolarOrbital
 	AddEnergyIncomeStarTemperature(0.5, 2.0)
 
 	RequireOnOrbital(EconomyCore)
+	ConsumeCargo(Ore, 250)
 Module: AdaptedProgenitorSolarOrbital
 	Name: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED
 	Description: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED_DESC
@@ -35,7 +35,7 @@ Module: AdaptedProgenitorSolarOrbital
 	Distant Icon: OrbitalIcons::13
 	Icon Size: 0.01
 
-	Build Cost: 400
+	Build Cost: 250
 	Labor Cost: 15
 	Size: 30
 
@@ -45,7 +45,6 @@ Module: AdaptedProgenitorSolarOrbital
 	Model: SolarEngine
 	Material: GenericPBR_SolarEngine
 
-	FacesOrbitCenter()
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(ProgenitorSolarOrbital)
@@ -55,3 +54,4 @@ Module: AdaptedProgenitorSolarOrbital
 	RequireUnlockTag(SolarOrbitalUnlock)
 	RequireUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.5, 2.0)
+	ConsumeCargo(Ore, 250)

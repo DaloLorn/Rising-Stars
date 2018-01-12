@@ -22,6 +22,7 @@ Trait: Devout
 	OnHomeworld(AddPlanetResource(BuildingWater)) #version>=150
 	OnHomeworld(AddPlanetResource(Soylent1)) #version>=150
 
+	UnlockTag(ShieldGenerator)
 	ReplaceTechnologyNodes(ShieldGen, FeyhShieldGen)
 	ReplaceTechnologyNodes(AdvancedShielding, FeyhAdvancedShielding)
 	ReplaceTechnologyNodes(ProgenitorShield, FeyhProgenitorShield)

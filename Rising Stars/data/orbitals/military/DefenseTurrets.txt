@@ -1,0 +1,22 @@
+Module: DefenseTurrets
+	Name: #ORB_DEFENSE_TURRETS
+	Description: #ORB_DEFENSE_TURRETS_DESC
+	Blurb: #ORB_DEFENSE_TURRETS_BLURB
+	Unique: False
+	Distant Icon: techRailgun
+	Icon: techRailgun
+	Health: 2500
+	Armor: 1500
+	Maintenance: 10
+	Build Cost: 200
+	Strategic Icon: techRailgun
+	ABEM_orbitals::IfNotHaveModule(Repeat(2, AddTurret(Railgun, Range=600, Damage=2, Reload=0.25, Speed=150, Spread=0.03, FireArc=3.14, Tracking=0.4, FireTolerance=0.78)), MilitaryCore)
+	ABEM_orbitals::IfNotHaveModule(Repeat(3, AddTurret(Laser, Range=450, DPS=5, Duration=2, Cooldown=0, Tracking=0.4)), MilitaryCore)
+	ABEM_orbitals::IfNotHaveModule(Repeat(2, AddTurret(Missile, Range=900, Damage=15, Reload=2, Speed=120, Tracking=3)), MilitaryCore)
+	ABEM_orbitals::IfNotHaveModule(RecordBonusDPS(46), MilitaryCore)
+
+	ABEM_orbitals::IfHasModule(Repeat(2, AddTurret(Railgun, Range=600, Damage=4, Reload=0.25, Speed=150, Spread=0.03, FireArc=3.14, Tracking=0.4, FireTolerance=0.78)), MilitaryCore)
+	ABEM_orbitals::IfHasModule(Repeat(3, AddTurret(Laser, Range=450, DPS=10, Duration=2, Cooldown=0, Tracking=0.4)), MilitaryCore)
+	ABEM_orbitals::IfHasModule(Repeat(2, AddTurret(Missile, Range=900, Damage=30, Reload=2, Speed=120, Tracking=3)), MilitaryCore)
+	ABEM_orbitals::IfHasModule(RecordBonusDPS(92), MilitaryCore)
+	ConsumeCargo(Ore, 250)

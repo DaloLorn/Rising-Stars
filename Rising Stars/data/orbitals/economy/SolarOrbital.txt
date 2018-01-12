@@ -6,8 +6,8 @@ Module: SolarOrbital
 	Distant Icon: OrbitalIcons::13
 	Icon Size: 0.01
 
-	Build Cost: 400
-	Maintenance: 25
+	Build Cost: 250
+	Maintenance: 15
 	Labor Cost: 15
 	Size: 30
 
@@ -17,7 +17,6 @@ Module: SolarOrbital
 	Model: SolarEngine
 	Material: GenericPBR_SolarEngine
 
-	FacesOrbitCenter()
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(SolarOrbitalUnlock)
@@ -29,6 +28,7 @@ Module: SolarOrbital
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 
+	ConsumeCargo(Ore, 250)
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedSolarOrbital
 	Name: #ORB_SOLAR_ORBITAL_ADAPTED
@@ -38,8 +38,8 @@ Module: AdaptedSolarOrbital
 	Distant Icon: OrbitalIcons::13
 	Icon Size: 0.01
 
-	Build Cost: 400
-	Maintenance: 25
+	Build Cost: 250
+	Maintenance: 15
 	Labor Cost: 15
 	Size: 30
 
@@ -49,7 +49,6 @@ Module: AdaptedSolarOrbital
 	Model: SolarEngine
 	Material: GenericPBR_SolarEngine
 
-	FacesOrbitCenter()
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(SolarOrbitalUnlock)
@@ -60,3 +59,4 @@ Module: AdaptedSolarOrbital
 	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 	AddFTLIncome(0.1)
+	ConsumeCargo(Ore, 250)

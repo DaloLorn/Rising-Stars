@@ -20,6 +20,7 @@ Technology: ShieldGen
 
 	ModAttribute(ProgenitorTechProgress, Add, 1)
 
+	UnlockTag(ShieldGenerator)
 Technology: FeyhShieldGen
 	Name: #R_SYS_BATTLE_SHRINE
 	Description: #R_SYS_BATTLE_SHRINE_DESC

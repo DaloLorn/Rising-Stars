@@ -2,11 +2,11 @@ Module: SenatorialPalace
 	Name: #ORB_SENATORIAL_PALACE
 	Blurb: #ORB_SENATORIAL_PALACE_BLURB
 	Description: #ORB_SENATORIAL_PALACE_DESC
-	Icon: GuiOrbitalIcons::15
-	Distant Icon: OrbitalIcons::15
+	Icon: LeaderIcon
+	Distant Icon: LeaderIcon
 
 	Build Cost: 1000
-	Maintenance: 150
+	Maintenance: 140
 	Labor Cost: 50
 	Size: 15
 
@@ -21,7 +21,7 @@ Module: SenatorialPalace
 	RequireSenateLeader()
 	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)
 
-	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, Icon = GuiOrbitalIcons::0))
+	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, LeaderIcon))
 
 	ModEmpireAttribute(SenatorialPalaceConstructed, Add, 1)
 	RequireAttributeLT(SenatorialPalaceConstructed, 1)
@@ -36,15 +36,16 @@ Module: SenatorialPalace
 	GrantAbility(BuyGalacticSuperpower)
 	RequireOnOrbital(EconomyCore)
 
+	ConsumeCargo(Ore, 1000)
 Module: AdaptedSenatorialPalace
 	Name: #ORB_SENATORIAL_PALACE_ADAPTED
 	Blurb: #ORB_SENATORIAL_PALACE_BLURB
 	Description: #ORB_SENATORIAL_PALACE_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::15
-	Distant Icon: OrbitalIcons::15
+	Icon: LeaderIcon
+	Distant Icon: LeaderIcon
 
 	Build Cost: 1000
-	Maintenance: 150
+	Maintenance: 140
 	Labor Cost: 50
 	Size: 15
 
@@ -59,7 +60,7 @@ Module: AdaptedSenatorialPalace
 	RequireSenateLeader()
 	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)
 
-	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, Icon = GuiOrbitalIcons::0))
+	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, Icon = LeaderIcon))
 
 	ModEmpireAttribute(SenatorialPalaceConstructed, Add, 1)
 	RequireAttributeLT(SenatorialPalaceConstructed, 1)
@@ -73,3 +74,4 @@ Module: AdaptedSenatorialPalace
 	GrantAbility(BuyGalacticUtopia)
 	GrantAbility(BuyGalacticSuperpower)
 	RequireOnOrbital(EconomyCore)
+	ConsumeCargo(Ore, 1000)

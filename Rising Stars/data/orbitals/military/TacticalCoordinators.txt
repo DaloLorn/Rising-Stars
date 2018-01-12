@@ -1,0 +1,16 @@
+Module: TacticalCoordinators
+	Name: #ORB_TACTICAL_COORDINATORS
+	Description: #ORB_TACTICAL_COORDINATORS_DESC
+	Blurb: #ORB_TACTICAL_COORDINATORS_BLURB
+	Unique: False
+	Distant Icon: ActionBarIcons::2
+	Icon: ActionBarIcons::2
+	Health: 2500
+	Armor: 1500
+	Maintenance: 15
+	Build Cost: 200
+	Strategic Icon: ActionBarIcons::2
+	AddFleetCommand(128)
+	ConsumeCargo(Ore, 250)
+
+	ABEM_orbitals::IfHasModule(AddFleetCommand(128), MilitaryCore)

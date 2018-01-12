@@ -35,6 +35,7 @@ Module: TradeOutpost
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireOnOrbital(MilitaryCore)
 
+	ConsumeCargo(Ore, 500)
 Module: AdaptedTradeOutpost
 	Name: #ORB_TRADE_OUTPOST_ADAPTED
 	Blurb: #ORB_TRADE_OUTPOST_BLURB
@@ -55,7 +56,7 @@ Module: AdaptedTradeOutpost
 	Model: Outpost
 	Material: GenericPBR_Outpost
 	Shield Capacity: 10000
-	Shield Regeneration: 5
+	Shield Regeneration: 50
 
 	LimitOncePerSystem(OutpostFlag)
 
@@ -72,3 +73,4 @@ Module: AdaptedTradeOutpost
 
 	AllowFreeRaiding()
 	RequireOnOrbital(MilitaryCore)
+	ConsumeCargo(Ore, 500)

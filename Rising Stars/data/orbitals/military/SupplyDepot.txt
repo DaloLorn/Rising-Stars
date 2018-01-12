@@ -6,7 +6,7 @@ Module: SupplyDepot
 
 
 	Build Cost: 500
-	Maintenance: 100
+	Maintenance: 80
 	Labor Cost: 10
 
 	Health: 8000
@@ -21,6 +21,7 @@ Module: SupplyDepot
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)
 
+	ConsumeCargo(Ore, 500)
 	RequireOnOrbital(MilitaryCore)
 Module: AdaptedSupplyDepot
 	Name: #ORB_SUPPLY_DEPOT_ADAPTED
@@ -30,7 +31,7 @@ Module: AdaptedSupplyDepot
 
 
 	Build Cost: 500
-	Maintenance: 100
+	Maintenance: 80
 	Labor Cost: 10
 
 	Health: 8000
@@ -45,3 +46,4 @@ Module: AdaptedSupplyDepot
 	AddDefenseReserve(50)
 	RequireUnlockTag(NylliAdaptation4)
 	AddRegionStatus(FastResupply)
+	ConsumeCargo(Ore, 500)

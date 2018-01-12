@@ -5,8 +5,8 @@ Module: SingularityLab
 	Icon: GuiOrbitalIcons::12
 	Distant Icon: OrbitalIcons::12
 
-	Build Cost: 800
-	Maintenance: 25
+	Build Cost: 600
+	Maintenance: 15
 	Labor Cost: 25
 	Size: 8
 
@@ -24,6 +24,7 @@ Module: SingularityLab
 	AddResearchIncome(4)
 	AddEnergyIncome(4)
 
+	ConsumeCargo(Ore, 500)
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedSingularityLab
 	Name: #ORB_SINGULARITY_LAB_ADAPTED
@@ -32,8 +33,8 @@ Module: AdaptedSingularityLab
 	Icon: GuiOrbitalIcons::12
 	Distant Icon: OrbitalIcons::12
 
-	Build Cost: 800
-	Maintenance: 25
+	Build Cost: 600
+	Maintenance: 15
 	Labor Cost: 25
 	Size: 8
 
@@ -52,3 +53,4 @@ Module: AdaptedSingularityLab
 	RequireUnlockTag(NylliAdaptation4)
 	AddResearchIncome(4)
 	AddEnergyIncome(4)
+	ConsumeCargo(Ore, 500)

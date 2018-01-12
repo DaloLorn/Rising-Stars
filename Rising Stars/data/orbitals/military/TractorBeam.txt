@@ -1,0 +1,14 @@
+Module: TractorBeam
+	Name: #ORB_TRACTOR_BEAM
+	Description: #ORB_TRACTOR_BEAM_DESC
+	Blurb: #ORB_TRACTOR_BEAM_BLURB
+	Icon: TractorGun::0
+	Health: 2500
+	Armor: 1500
+	Maintenance: 50
+	Build Cost: 500
+	Strategic Icon: TractorGun::0
+	Distant Icon: TractorGun::0
+	GrantAbility(OrbitalTractorBeam)
+	ConsumeCargo(Ore, 500)
+	RequireOnOrbital(MilitaryCore)

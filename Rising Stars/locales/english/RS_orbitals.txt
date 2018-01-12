@@ -93,12 +93,10 @@ ORB_TELESCOPE_DESC: <<
 
 	[i][bbloc=#ABL_TELESCOPEORE_DESC:40000/][/i]
 >>
-ORB_FARM: Hydroponics Station
+ORB_FARM: Hydroponics Bay
 ORB_HYDROGENATOR: Water Reclamation Facility
 ORB_FARM_BLURB: Produces food.
-ORB_FARM_DESC: <<
-	Generates a basic food resource for the planet it orbits. Food generation only applies if the planet and Hydroponics Station are owned by the same empire.
->>
+ORB_FARM_DESC: Generates a basic food resource for the planet it orbits. Food generation only applies if the planet and Hydroponics Bay are owned by the same empire.
 ORB_HYDROGENATOR_BLURB: Produces water. 
 ORB_HYDROGENATOR_DESC: <<
 	Generates a basic water resource for the planet it orbits. Water generation only applies if the planet and Water Reclamation Facility are owned by the same empire.
@@ -201,11 +199,11 @@ ORB_TRADE_OUTPOST_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:Command Post:Has a fairly powerful shield generator, and support ships can break off to raid enemy forces/]
 >>
-ORB_TRADE_STATION_ADAPTED: Prosperous Commerce Station
+ORB_TRADE_STATION_ADAPTED: Prosperous Commerce Hub
 ORB_TRADE_STATION_ADAPTED_DESC: <<
 	[bbloc=#ORB_TRADE_STATION_DESC/]
 
-	[bbloc=#ORB_ADAPTED:Commerce Station:Sends two Freighters to random allied or owned Level 1+ planets every 3 minutes. Receiving planets become Happy for 3 minutes/]
+	[bbloc=#ORB_ADAPTED:Commerce Hub:Sends two Freighters to random allied or owned Level 1+ planets every 3 minutes. Receiving planets become Happy for 3 minutes/]
 >>
 ORB_FTL_JAMMER_ADAPTED: Redistributing FTL Jammer
 ORB_FTL_JAMMER_ADAPTED_DESC: <<
@@ -255,11 +253,11 @@ ORB_FTL_STORAGE_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:FTL Storage:Generates 0.5 Research per second/]
 >>
-ORB_FARM_ADAPTED: Efficient Hydroponics Station
+ORB_FARM_ADAPTED: Efficient Hydroponics Bay
 ORB_FARM_ADAPTED_DESC: <<
 	[bbloc=#ORB_FARM_DESC/]
 
-	[bbloc=#ORB_ADAPTED:Hydroponics Station:Has a reduced maintenance cost, equivalent to building a Megafarm on developed terrain/]
+	[bbloc=#ORB_ADAPTED:Hydroponics Bay:Has a reduced maintenance cost, equivalent to building a Megafarm on developed terrain/]
 >>
 ORB_HYDROGENATOR_ADAPTED: Efficient Water Reclamation Facility
 ORB_HYDROGENATOR_ADAPTED_DESC: <<
@@ -307,3 +305,68 @@ ORB_TRADE_OUTPOST_DESC: <<
 	[i]Only one command post can be constructed per system.[/i]
 >>
 ORB_TRADE_OUTPOST: Command Post
+ORB_ARMOR_PLATING: Armor Plating
+ORB_ARMOR_PLATING_DESC: <<
+	Heavy armor plating and structural reinforcements are installed onto the starbase, increasing its health by 20000.
+
+	This module can be installed multiple times.
+>>
+ORB_ARMOR_PLATING_BLURB: Adds 20000 health to the station.
+ORB_DEFENSE_TURRETS: Defense Turrets
+ORB_DEFENSE_TURRETS_DESC: <<
+	A variety of weapons are installed onto the station's exterior, improving its ability to fend off hostile forces.
+
+	This module can be installed multiple times.
+>>
+ORB_DEFENSE_TURRETS_BLURB: Adds various weapons to the station.
+ORB_ION_CANNON: Ion Cannon Array
+ORB_ION_CANNON_DESC: <<
+	An array of ion cannons is installed onto the station's exterior, allowing it to disable enemy flagships.
+
+	Grants the Ion Cannon ability.
+>>
+ORB_ION_CANNON_BLURB: Grants the Ion Cannon ability.
+ORB_SHIELD_ARRAY: Shield Generators
+ORB_SHIELD_ARRAY_DESC: <<
+	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 30 SP/s.
+
+	This module can be installed multiple times.
+>>
+ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 30 shield regeneration.
+ORB_TACTICAL_COORDINATORS: Tactical Coordination Suite
+ORB_TACTICAL_COORDINATORS_DESC: <<
+	Additional tactical coordination computers are installed in the starbase, allowing it to manage a greater amount of defending ships. Increases the station's support capacity by 128.
+
+	This module can be installed multiple times.
+>>
+ORB_TACTICAL_COORDINATORS_BLURB: Increases support capacity by 128.
+ORB_TRACTOR_BEAM: Tractor Beam Array
+ORB_TRACTOR_BEAM_DESC: <<
+	A series of long-range tractor beams is installed onto the starbase, allowing it to slow down enemy fleets.
+
+	Grants a long-ranged version of the Tractor Beam ability.
+>>
+ORB_TRACTOR_BEAM_BLURB: Grants a long-ranged version of the Tractor Beam ability.
+ORB_TRADE_STATION: Commerce Hub
+ORB_TRADE_STATION_BLURB: Allows global trade to other commerce hubs. Allows the purchase of resources with money.
+ORB_TRADE_STATION_DESC: <<
+	A large and bustling station of commerce allows global resource trade between any territories with Commerce Hub.
+
+	In addition, in each commerce hub you can purchase a quantity of research, energy, influence or labor in exchange for money every 3 minutes.
+
+	[i]Normally, planets in separated territories cannot export resources to each other. Construct a Commerce Hub in both territories in order to allow import and export of resources from planets in your distinct territories.[/i]
+>>
+ORB_PRETIOSIAN_COLLECTOR: Pretiosian Harvester
+ORB_PRETIOSIAN_COLLECTOR_DESC: <<
+	An array of gas collectors designed to harvest valuable materials from the nebula for later use. Increases income by $50k.
+
+	Only two Pretiosian Harvesters may be built in a Pretiosian Nebula.
+>>
+ORB_PRETIOSIAN_COLLECTOR_BLURB: Increases income by $50k. Only two per nebula allowed.
+ORB_TACHYON_COLLECTOR: Tachyon Collector
+ORB_TACHYON_COLLECTOR_DESC: <<
+	Equipment designed to harvest tachyons and use them to re-energize spent FTL crystals. Generates 0.5 FTL per second.
+
+	Only two Tachyon Collectors may be built in a Tachyon Nebula.
+>>
+ORB_TACHYON_COLLECTOR_BLURB: Generates 0.5 FTL per second. Only two per nebula allowed.

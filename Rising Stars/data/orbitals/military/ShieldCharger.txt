@@ -6,7 +6,7 @@ Module: ShieldCharger
 
 
 	Build Cost: 500
-	Maintenance: 100
+	Maintenance: 80
 	Labor Cost: 10
 
 	Health: 6000
@@ -23,6 +23,7 @@ Module: ShieldCharger
 	RequireUnlockTag(ShieldCharger)
 	RequireOnOrbital(MilitaryCore)
 
+	ConsumeCargo(Ore, 500)
 Module: AdaptedShieldCharger
 	Name: #ORB_SHIELD_CHARGER_ADAPTED
 	Blurb: #ORB_SHIELD_CHARGER_BLURB
@@ -31,7 +32,7 @@ Module: AdaptedShieldCharger
 
 
 	Build Cost: 500
-	Maintenance: 100
+	Maintenance: 80
 	Labor Cost: 10
 
 	Health: 6000
@@ -46,3 +47,4 @@ Module: AdaptedShieldCharger
 	AddRegionStatus(AdaptedFastRecharge)
 	RequireUnlockTag(ShieldCharger)
 	RequireOnOrbital(MilitaryCore)
+	ConsumeCargo(Ore, 500)

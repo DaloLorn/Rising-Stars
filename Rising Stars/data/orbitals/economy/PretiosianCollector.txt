@@ -1,0 +1,28 @@
+Module: PretiosianCollector
+	Name: #ORB_PRETIOSIAN_COLLECTOR
+	Description: #ORB_PRETIOSIAN_COLLECTOR_DESC
+	Blurb: #ORB_PRETIOSIAN_COLLECTOR_BLURB
+	Icon: Ramscoop
+	Distant Icon: Ramscoop
+	Icon Size: 0.01
+
+	Build Cost: 300
+	Labor Cost: 15
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+	Unique: False
+
+
+	ABEM_orbitals::LimitTwicePerSystem(PretiosianCollector, PretiosianCollector2)
+
+
+
+	AddMoneyIncome(50)
+	ABEM_orbitals::RequireSystemFlag(EconomicNebula)
+	ConsumeCargo(Ore, 250)
+	RequireOnOrbital(EconomyCore)

@@ -10,7 +10,7 @@ Module: MilitaryCore
 	Armor: 5000
 	Build Cost: 300
 	Labor Cost: 15
-	Maintenance: 50
+	Maintenance: 20
 	Icon: GuiOrbitalIcons::14
 	Strategic Icon: OrbitalIcons::14
 	Distant Icon: OrbitalIcons::14

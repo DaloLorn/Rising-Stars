@@ -6,7 +6,7 @@ Module: FTLStorage
 	Strategic Icon: OrbitalIcons::19
 
 	Build Cost: 300
-	Maintenance: 50
+	Maintenance: 40
 	Labor Cost: 10
 	Size: 16
 
@@ -32,7 +32,7 @@ Module: AdaptedFTLStorage
 	Strategic Icon: OrbitalIcons::19
 
 	Build Cost: 300
-	Maintenance: 50
+	Maintenance: 40
 	Labor Cost: 10
 	Size: 16
 

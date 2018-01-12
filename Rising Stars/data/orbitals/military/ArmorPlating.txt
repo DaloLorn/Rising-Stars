@@ -1,0 +1,15 @@
+Module: ArmorPlating
+	Name: #ORB_ARMOR_PLATING
+	Description: #ORB_ARMOR_PLATING_DESC
+	Blurb: #ORB_ARMOR_PLATING_BLURB
+	Unique: False
+	Distant Icon: techArmor
+	Icon: techArmor
+	Health: 5000
+	Armor: 15000
+	Maintenance: 5
+	Build Cost: 200
+	Strategic Icon: techArmor
+	ConsumeCargo(Ore, 250)
+	ABEM_orbitals::IfHasModule(AddArmor(15000), MilitaryCore)
+	ABEM_orbitals::IfHasModule(AddHealth(5000), MilitaryCore)

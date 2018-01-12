@@ -6,7 +6,7 @@ Module: NylliSenate
 	Strategic Icon: PoliticalStrengthIcon
 	Labor Cost: 125
 	Build Cost: 800
-	Maintenance: 750
+	Maintenance: 740
 	Health: 10000
 	Armor: 10000
 	Model: CommerceStation
@@ -21,6 +21,7 @@ Module: NylliSenate
 	ModEmpireAttribute(SenateCount, Add, 1)
 	RequireOnOrbital(EconomyCore)
 
+	ConsumeCargo(Ore, 1000)
 Module: AdaptedNylliSenate
 	Name: #ORB_SENATE_ADAPTED_NAME
 	Description: #ORB_SENATE_ADAPTED_DESC
@@ -29,7 +30,7 @@ Module: AdaptedNylliSenate
 	Strategic Icon: PoliticalStrengthIcon
 	Labor Cost: 125
 	Build Cost: 800
-	Maintenance: 750
+	Maintenance: 740
 	Health: 10000
 	Armor: 10000
 	Model: CommerceStation
@@ -43,3 +44,4 @@ Module: AdaptedNylliSenate
 	RequireAttributeLT(SenateCount)
 	ModEmpireAttribute(SenateCount, Add, 1)
 	RequireOnOrbital(EconomyCore)
+	ConsumeCargo(Ore, 1000)

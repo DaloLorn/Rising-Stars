@@ -1,0 +1,18 @@
+Module: ShieldArray
+	Name: #ORB_SHIELD_ARRAY
+	Description: #ORB_SHIELD_ARRAY_DESC
+	Blurb: #ORB_SHIELD_ARRAY_BLURB
+	Unique: False
+	Distant Icon: ShieldGen
+	Icon: ShieldGen
+	Health: 2500
+	Armor: 1500
+	Maintenance: 10
+	Build Cost: 200
+	Strategic Icon: ShieldGen
+	Shield Capacity: 6000
+	Shield Regeneration: 30
+	RequireUnlockTag(ShieldGenerator)
+	ConsumeCargo(Ore, 250)
+
+	ABEM_orbitals::IfHasModule(AddStatus(ShieldArray), MilitaryCore)
