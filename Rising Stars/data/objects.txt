@@ -303,6 +303,7 @@ server:
 	void setResourceLimit(uint limit);
 	void modResourceLimitMod(int mod);
 	void morphTo(uint resource, double cost = 10.0);
+	void clearSetup();
 }
 
 Anomaly : objects.Anomaly::AnomalyScript {
@@ -397,3 +398,14 @@ server:
 	void setCivilianType(uint type);
 	void modIncome(int mod);
 };
+
+CargoShip : objects.CargoShip::CargoShipScript {
+invisible:
+	Object$ Origin
+	Object$ Target
+	Mover mover
+visible:
+	synced double Health = 50
+	double Cargo = 0
+	uint CargoType = -1
+}

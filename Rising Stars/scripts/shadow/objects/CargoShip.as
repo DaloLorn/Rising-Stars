@@ -1,15 +1,15 @@
 import regions.regions;
 
-tidy class FreighterScript {
-	FreighterScript() {
+tidy class CargoShipScript {
+	CargoShipScript() {
 	}
 
-	void makeMesh(Freighter& obj) {
+	void makeMesh(CargoShip& obj) {
 		MeshDesc shipMesh;
 		const Shipset@ ss = obj.owner.shipset;
 		const ShipSkin@ skin;
 		if(ss !is null)
-			@skin = ss.getSkin(obj.skin);
+			@skin = ss.getSkin("CargoShip");
 
 		if(skin !is null) {
 			@shipMesh.model = skin.model;
@@ -26,36 +26,39 @@ tidy class FreighterScript {
 		bindMesh(obj, shipMesh);
 	}
 
-	void init(Freighter& ship) {
+	void init(CargoShip& ship) {
 		//Create the graphics
 		makeMesh(ship);
 	}
 
-	void destroy(Freighter& ship) {
+	void destroy(CargoShip& ship) {
 		leaveRegion(ship);
 	}
 
-	bool onOwnerChange(Freighter& obj, Empire@ prevOwner) {
+	bool onOwnerChange(CargoShip& obj, Empire@ prevOwner) {
 		regionOwnerChange(obj, prevOwner);
 		return false;
 	}
 	
-	double tick(Freighter& ship, double time) {
+	double tick(CargoShip& ship, double time) {
 		updateRegion(ship);
 		ship.moverTick(time);
 		return 0.2;
 	}
 
-	void syncInitial(Freighter& ship, Message& msg) {
-		msg >> ship.skin;
+	void syncInitial(CargoShip& ship, Message& msg) {
 		ship.readMover(msg);
+		msg >> ship.CargoType;
+		msg >> ship.Cargo;
 	}
 
-	void syncDetailed(Freighter& ship, Message& msg, double tDiff) {
+	void syncDetailed(CargoShip& ship, Message& msg, double tDiff) {
 		ship.readMover(msg);
+		msg >> ship.CargoType;
+		msg >> ship.Cargo;
 	}
 
-	void syncDelta(Freighter& ship, Message& msg, double tDiff) {
+	void syncDelta(CargoShip& ship, Message& msg, double tDiff) {
 		if(msg.readBit())
 			ship.readMoverDelta(msg);
 	}

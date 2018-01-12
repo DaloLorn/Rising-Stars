@@ -15,6 +15,7 @@ from overlays.PickupPopup import PickupPopup;
 from overlays.ArtifactPopup import ArtifactPopup;
 from overlays.StarPopup import StarPopup;
 from overlays.AnomalyOverlay import AnomalyOverlay;
+from overlays.CargoShipPopup import CargoShipPopup;
 from overlays.Quickbar import Quickbar;
 from overlays.GloryBar import GloryBar;
 
@@ -733,6 +734,8 @@ class GalaxyTab : Tab {
 			return ArtifactPopup(popupRoot);
 		if(cast<Star>(obj) !is null)
 			return StarPopup(popupRoot);
+		if(cast<CargoShip>(obj) !is null)
+			return CargoShipPopup(popupRoot);
 		return ObjectPopup(popupRoot);
 	}
 

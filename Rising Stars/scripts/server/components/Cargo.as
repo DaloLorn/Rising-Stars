@@ -51,7 +51,7 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 			obj.owner.addCargo(typeId, amount);
 			return;
 		}
-		add(type, amount);
+		add(type, amount, obj.isAsteroid);
 	}
 
 	void setGlobalCargoAccess(Object& obj, bool canStore) {

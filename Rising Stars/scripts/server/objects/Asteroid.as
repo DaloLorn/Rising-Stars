@@ -249,14 +249,21 @@ tidy class AsteroidScript {
 			timer = 1.f;
 		}
 
-		//Asteroids lose ownership if not in an owned or neutral system
-		if(obj.owner.valid) {
-			if(prevRegion !is null && prevRegion.PlanetsMask != 0 && prevRegion.PlanetsMask & obj.owner.mask == 0) {
-				if(!hasTradeAdjacent(obj.owner, prevRegion)) {
-					clearSetup(obj);
-					return 0.2;
+		// Resource asteroids lose ownership if not in an owned or neutral system,
+		// while cargo asteroids lose ownership if their mining station is lost.
+		if(obj.cargoTypes == 0) {
+			if (obj.owner.valid) {
+				if(prevRegion !is null && prevRegion.PlanetsMask != 0 && prevRegion.PlanetsMask & obj.owner.mask == 0) {
+					if(!hasTradeAdjacent(obj.owner, prevRegion)) {
+						clearSetup(obj);
+						return 0.2;
+					}
 				}
 			}
+		}
+		else if(obj.origin is null || !obj.origin.valid) {
+			clearSetup(obj);
+			return 0.2;
 		}
 
 		//Asteroids are destroyed when they run out of cargo or resources
@@ -336,42 +343,44 @@ tidy class AsteroidScript {
 	
 	void setup(Asteroid& obj, Object@ origin, Empire@ emp, uint resource) {
 		if(obj.owner.valid && emp !is obj.owner)
-			return;
+			return;	
 		if(currentResources >= resourceLimit)
 			return;
-	
-		const ResourceType@ type = getResource(resource);
-		if(type is null)
-			return;
-	
-		bool found = false;
-		uint foundIndex = 0;
-		for(uint i = 0, cnt = available.length; i < cnt; ++i) {
-			if(exploited[i])
-				continue;
-			if(available[i] is type) {
-				found = true;
-				foundIndex = i;
-				break;
+		bool isCargo = obj.cargoTypes != 0;
+		if(!isCargo) {
+		
+			const ResourceType@ type = getResource(resource);
+			if(type is null)
+				return;
+		
+			bool found = false;
+			uint foundIndex = 0;
+			for(uint i = 0, cnt = available.length; i < cnt; ++i) {
+				if(exploited[i])
+					continue;
+				if(available[i] is type) {
+					found = true;
+					foundIndex = i;
+					break;
+				}
 			}
+		
+			if(!found)
+				return;
+			Object@ queued;
+			exploited[foundIndex] = true;
+			obj.setResourceDisabled(nativeIds[foundIndex], false);
+			obj.name = type.name+" "+locale::ASTEROID;
 		}
-	
-		if(!found)
-			return;
-		Object@ queued;
-		exploited[foundIndex] = true;
-		obj.setResourceDisabled(nativeIds[foundIndex], false);
-	
 		if(!obj.owner.valid) {
 			@obj.owner = emp;
 			@obj.origin = origin;
-			obj.name = type.name+" "+locale::ASTEROID;
 			emp.modAttribute(EA_MiningBasesBuilt, AC_Add, 1);
 		}
 	
 		//Remove all the fake resources and remember the queue
 		currentResources += 1;
-		if(currentResources >= resourceLimit) {
+		if(!isCargo && currentResources >= resourceLimit) {
 			for(uint i = 0, cnt = available.length; i < cnt; ++i) {
 				if(exploited[i])
 					continue;
@@ -386,32 +395,35 @@ tidy class AsteroidScript {
 	void clearSetup(Asteroid& obj) {
 		if(currentResources == 0)
 			return;
+		bool isCargo = obj.cargoTypes != 0;
 		delta = true;
 		currentResources = 0;
 
-		Object@ queued = obj.nativeResourceDestination[0];
-		uint qtype = obj.nativeResourceType[0];
+		if(!isCargo) {
+			Object@ queued = obj.nativeResourceDestination[0];
+			uint qtype = obj.nativeResourceType[0];
 
-		for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i)
-			obj.removeResource(obj.nativeResourceId[i]);
+			for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i)
+				obj.removeResource(obj.nativeResourceId[i]);
 
-		Empire@ prevOwner = obj.owner;
+			Empire@ prevOwner = obj.owner;
+			obj.name = locale::ASTEROID;
+
+			for(uint i = 0, cnt = available.length; i < cnt; ++i) {
+				exploited[i] = false;
+				if(costs[i] <= 0)
+					costs[i] = available[i].asteroidCost;
+
+				int id = obj.addResource(available[i].id);
+				obj.setResourceDisabled(id, true);
+				nativeIds[i] = id;
+
+				if(queued !is null && qtype == available[i].id && prevOwner.valid)
+					obj.exportResource(prevOwner, id, queued);
+			}
+		}
 		@obj.owner = defaultEmpire;
 		@obj.origin = null;
-		obj.name = locale::ASTEROID;
-
-		for(uint i = 0, cnt = available.length; i < cnt; ++i) {
-			exploited[i] = false;
-			if(costs[i] <= 0)
-				costs[i] = available[i].asteroidCost;
-
-			int id = obj.addResource(available[i].id);
-			obj.setResourceDisabled(id, true);
-			nativeIds[i] = id;
-
-			if(queued !is null && qtype == available[i].id && prevOwner.valid)
-				obj.exportResource(prevOwner, id, queued);
-		}
 	}
 	
 	void checkLimit(Asteroid& obj, uint prevLimit) {

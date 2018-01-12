@@ -10,5 +10,7 @@
 
 	[b]Fleet Efficiency[/b] [offset=230]$5[/offset]
 >>
-OFFER_CARGO: Offer Commodity
-DONATE_CARGO: Donate Commodity
+OFFER_CARGO: Offer Materials
+DONATE_CARGO: Donate Materials
+CARGO_SHIP: Cargo Hauler
+SHIP_MATERIALS_WORTH: [right][b][color=#0f0]$1[/color][/b] units[/right]

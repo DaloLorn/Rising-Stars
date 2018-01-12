@@ -4,20 +4,17 @@ import elements.GuiMarkupText;
 import elements.GuiButton;
 import elements.GuiSprite;
 import elements.Gui3DObject;
-import elements.GuiResources;
 import elements.GuiProgressbar;
 import elements.GuiSkinElement;
 from overlays.ContextMenu import openContextMenu;
 import icons;
-import resources;
-import civilians;
+import cargo;
 
-class CivilianPopup : Popup {
+class CargoShipPopup : Popup {
 	GuiText@ name;
 	Gui3DObject@ objView;
-	Civilian@ obj;
+	CargoShip@ obj;
 	double lastUpdate = -INFINITY;
-	GuiResourceGrid@ resources;
 
 	GuiText@ cargoLabel;
 	GuiMarkupText@ worth;
@@ -25,18 +22,14 @@ class CivilianPopup : Popup {
 
 	GuiProgressbar@ health;
 
-	CivilianPopup(BaseGuiElement@ parent) {
+	CargoShipPopup(BaseGuiElement@ parent) {
 		super(parent);
-		size = vec2i(190, 185);
+		size = vec2i(190, 159);
 
 		@name = GuiText(this, Alignment(Left+4, Top+2, Right-4, Top+24));
 		name.horizAlign = 0.5;
 
 		@objView = Gui3DObject(this, Alignment(Left+4, Top+25, Right-4, Top+95));
-
-		@health = GuiProgressbar(this, Alignment(Left+3, Bottom-89, Right-4, Bottom-63));
-		health.tooltip = locale::HEALTH;
-		GuiSprite healthIcon(health, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Health);
 
 		GuiSkinElement band(this, Alignment(Left+3, Bottom-65, Right-4, Bottom-32), SS_SubTitle);
 		band.color = Color(0xaaaaaaff);
@@ -50,19 +43,17 @@ class CivilianPopup : Popup {
 
 		@cargoText = GuiMarkupText(band2, Alignment(Left+3, Top+4, Right-3, Bottom-2));
 		cargoText.defaultFont = FT_Bold;
-		@resources = GuiResourceGrid(band2, Alignment(Left+3, Top+3, Right-3, Bottom-2));
 
 		updateAbsolutePosition();
 	}
 
 	bool compatible(Object@ Obj) {
-		return Obj.isCivilian;
+		return Obj.isCargoShip;
 	}
 
 	void set(Object@ Obj) {
-		@obj = cast<Civilian>(Obj);
+		@obj = cast<CargoShip>(Obj);
 		@objView.object = Obj;
-		@resources.drawFrom = obj;
 		lastUpdate = -INFINITY;
 	}
 
@@ -133,42 +124,15 @@ class CivilianPopup : Popup {
 		else
 			name.font = FT_Normal;
 
-		//Update hp display
-		double curHP = obj.health;
-		double maxHP = obj.maxHealth;
-
-		Color high(0x00ff00ff);
-		Color low(0xff0000ff);
-
-		health.progress = curHP / maxHP;
-		health.frontColor = low.interpolate(high, health.progress);
-		health.text = standardize(curHP)+" / "+standardize(maxHP);
-
 		//Update resources
-		uint type = obj.getCargoType();
-		int value = obj.getCargoWorth();
+		uint typeId = obj.CargoType;
+		auto@ type = getCargoType(typeId);
+		double value = obj.Cargo;
 		cargoLabel.color = obj.owner.color;
-		if(type == CT_Goods) {
-			resources.visible = false;
-			cargoText.visible = true;
-			cargoText.text = locale::CARGO_GOODS;
-		}
-		else if(type == CT_Resource) {
-			const ResourceType@ res = getResource(obj.getCargoResource());
-			resources.visible = true;
-			cargoText.visible = false;
-			if(res !is null) {
-				resources.types.length = 1;
-				@resources.types[0] = res;
-				resources.typeMode = true;
-				resources.setSingleMode();
-			}
-			else {
-				resources.types.length = 0;
-			}
-		}
+		if(type !is null) 
+			cargoText.text = format("[img=$1;21/] [color=#aaa]$2[/color]", getSpriteDesc(type.icon), type.name);
 
-		worth.text = format(locale::SHIP_CARGO_WORTH, formatMoney(value));
+		worth.text = format(locale::SHIP_MATERIALS_WORTH, value);
 
 		Popup::update();
 		Popup::updatePosition(obj);
