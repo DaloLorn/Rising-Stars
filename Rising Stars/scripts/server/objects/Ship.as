@@ -370,6 +370,8 @@ tidy class ShipScript {
 		else
 			ship.Supply = 0;
 
+		ship.Shield = ship.MaxShield;
+
 		if(ship.hasLeaderAI) {
 			ship.leaderInit();
 			ship.activateStatuses();
