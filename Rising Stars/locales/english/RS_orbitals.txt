@@ -195,11 +195,11 @@ ORB_SINGULARITY_LAB_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:Singularity Lab:Creates system-wide hyperfield distortions, effectively blocking enemy FTL in the system it is located in and dealing heavy shield damage/]
 >>
-ORB_TRADE_OUTPOST_ADAPTED: Fortified Outpost
+ORB_TRADE_OUTPOST_ADAPTED: Fortified Command Post
 ORB_TRADE_OUTPOST_ADAPTED_DESC: <<
 	[bbloc=#ORB_TRADE_OUTPOST_DESC/]
 
-	[bbloc=#ORB_ADAPTED:Outpost:Has a fairly powerful shield generator, and support ships can break off to raid enemy forces/]
+	[bbloc=#ORB_ADAPTED:Command Post:Has a fairly powerful shield generator, and support ships can break off to raid enemy forces/]
 >>
 ORB_TRADE_STATION_ADAPTED: Prosperous Commerce Station
 ORB_TRADE_STATION_ADAPTED_DESC: <<
@@ -273,3 +273,37 @@ ORB_SENATE_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:Centralized Coordination Complex:Generates a random influence card once per minute/]
 >>
+ORB_MINING_OUTPOST_BLURB: Allows the orbital to establish a mining base on an asteroid.
+ORB_MINING_OUTPOST: Mining Complex
+ORB_MINING_OUTPOST_DESC: <<
+	Houses all the equipment and personnel required to capture a nearby asteroid and establish a mining base to extract valuable materials from it. The materials are then shipped via freighter to a nearby planet.
+
+	Only one mining base can be operated on an asteroid at any given time. Miners can still mine the asteroid until its resources are depleted.
+
+	Once an asteroid's resources have been depleted, the mining base will continue to operate at a severely reduced rate.
+
+	If a cargo hauler is destroyed, a percentage of its cargo is given to the attacking empire, while the rest is lost forever.
+>>
+ORB_CORE_ECONOMY: Economic Starbase
+ORB_CORE_ECONOMY_BLURB: Allows trade through its system. Can be upgraded to give various economic boosts.
+ORB_CORE_ECONOMY_DESC: A bustling commercial hub expanding the empire's trade borders, this starbase can be upgraded with a wide variety of modules to improve the empire's economy.
+ORB_CORE_MILITARY: Military Starbase
+ORB_CORE_MILITARY_BLURB: Moderately armed defense platform. Can be upgraded to provide various military boosts.
+ORB_CORE_MILITARY_DESC: <<
+	A well-armed defense platform capable of supporting a variety of useful tactical subsystems. In its default configuration, this starbase boasts a variety of basic weapons and can command a small support fleet.
+
+	Weapons installed on the Military Starbase will deal double damage. Other generic tactical upgrades will also be twice as effective.
+>>
+ORB_TRADE_OUTPOST_BLURB: Generates defense ships and protects planets in the system from being captured.
+ORB_TRADE_OUTPOST_DESC: <<
+	Command Posts generate up to [b]3 Defense[/b] worth of local defense ships, depending on how many adjacent systems have command posts in them.
+
+	If all of the starbase's support command is used and it has a full complement of defense ships, it will start adding its defense generation to your empire's global pool.
+
+	Planets in systems that have contained a command post for at least 90 seconds will be [b]Protected[/b] from being captured until the command post is destroyed.
+
+	Support ships orbiting a starbase with a command post will be substantially stronger in combat.
+
+	[i]Only one command post can be constructed per system.[/i]
+>>
+ORB_TRADE_OUTPOST: Command Post
