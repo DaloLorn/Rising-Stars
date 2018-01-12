@@ -4,7 +4,7 @@ Module: NylliFood
 	Description: #ORB_FARM_DESC
 	Icon: Megafarm
 	Strategic Icon: Megafarm
-	Maintenance: 150
+	Maintenance: 140
 	Build Cost: 350
 	Labor Cost: 10
 	Health: 3500
@@ -25,7 +25,7 @@ Module: NylliWater
 	Strategic Icon: Hydrogenator
 	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_DESC
-	Maintenance: 150
+	Maintenance: 140
 	Build Cost: 350
 	Labor Cost: 10
 	Health: 3500
@@ -46,7 +46,7 @@ Module: AdaptedNylliFood
 	Description: #ORB_FARM_ADAPTED_DESC
 	Icon: Megafarm
 	Strategic Icon: Megafarm
-	Maintenance: 100
+	Maintenance: 90
 	Build Cost: 350
 	Labor Cost: 10
 	Health: 3500
@@ -66,7 +66,7 @@ Module: AdaptedNylliWater
 	Strategic Icon: Hydrogenator
 	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_ADAPTED_DESC
-	Maintenance: 100
+	Maintenance: 90
 	Build Cost: 350
 	Labor Cost: 10
 	Health: 3500
