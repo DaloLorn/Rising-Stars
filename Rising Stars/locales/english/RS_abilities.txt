@@ -112,3 +112,11 @@ ABL_MINE_PLANET_DESC: <<
 >>
 ABL_MECHANOID_COLONIZE: Transfer $1B Population
 ABL_MECHANOID_COLONIZE_DESC: Transfer $1B Population from this planet to another. Transfering population costs FTL energy, but can be done freely to colonize new planets or supply existing colonies with more population.
+ABL_BIND_ASTEROID: Begin Mining Operation
+ABL_BIND_ASTEROID_DESC: <<
+	Capture an asteroid with the orbital's tractor beams and establish a mining base to extract valuable materials. The materials will then be sent by freighter to a friendly planet.
+
+	The mining base will not interfere with the activities of any starships assigned to mine the asteroid, but only one base can be established per asteroid.
+
+	When the main deposit is depleted, the base will continue harvesting resources at a reduced rate, but regular miners will no longer be effective.
+>>

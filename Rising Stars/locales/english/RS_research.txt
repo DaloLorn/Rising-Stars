@@ -722,3 +722,12 @@ R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 
 	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
 >>
+R_IMP_PLANET_SUPPORT_DESC: <<
+	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
+
+	Increases the [img=Plus;20/] Health and the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Military Starbases[/b] by $1.
+
+	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
+
+	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
+>>

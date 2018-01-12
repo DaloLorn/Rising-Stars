@@ -2,8 +2,8 @@ Module: TradeOutpost
 	Name: #ORB_TRADE_OUTPOST
 	Blurb: #ORB_TRADE_OUTPOST_BLURB
 	Description: #ORB_TRADE_OUTPOST_DESC
-	Icon: GuiOrbitalIcons::14
-	Distant Icon: OrbitalIcons::14
+	Icon: GuiOrbitalIcons::0
+	Distant Icon: OrbitalIcons::0
 
 
 	Build Cost: 300
@@ -11,10 +11,9 @@ Module: TradeOutpost
 	Labor Cost: 15
 	Size: 7
 
-	Health: 6000
+	Health: 4000
 	Armor: 4000
 
-	AddCargoStorage(1000000)
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
@@ -23,12 +22,9 @@ Module: TradeOutpost
 
 	LimitOncePerSystem(OutpostFlag)
 
-	AddFleetCommand(128)
-	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
 	AddFleetEffectiveness(+2.0)
 	AddSupportBonusHP(+1.0)
 
-	AddHealthEmpireAttribute(OutpostBoost, 10000)
 	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
 
 	ProtectSystem(90)
@@ -37,8 +33,6 @@ Module: TradeOutpost
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
-	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
-	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
 	RequireOnOrbital(MilitaryCore)
 
 Module: AdaptedTradeOutpost
@@ -54,10 +48,9 @@ Module: AdaptedTradeOutpost
 	Labor Cost: 15
 	Size: 7
 
-	Health: 6000
+	Health: 4000
 	Armor: 4000
 
-	AddCargoStorage(1000000)
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
@@ -68,12 +61,9 @@ Module: AdaptedTradeOutpost
 
 	RequireUnlockTag(NylliAdaptation4)
 
-	AddFleetCommand(128)
-	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
 	AddFleetEffectiveness(+2.0)
 	AddSupportBonusHP(+1.0)
 
-	AddHealthEmpireAttribute(OutpostBoost, 10000)
 	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
 
 	ProtectSystem(90)
@@ -81,6 +71,4 @@ Module: AdaptedTradeOutpost
 
 
 	AllowFreeRaiding()
-	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
-	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
 	RequireOnOrbital(MilitaryCore)

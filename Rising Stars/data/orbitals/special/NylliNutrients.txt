@@ -7,16 +7,16 @@ Module: NylliFood
 	Maintenance: 150
 	Build Cost: 350
 	Labor Cost: 10
-	Health: 7000
-	Armor: 7000
+	Health: 3500
+	Armor: 300
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
 	Size: 5
+	Unique: False
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliFood, AdaptedNylliFood))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
-	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
 Module: NylliWater
@@ -28,15 +28,15 @@ Module: NylliWater
 	Maintenance: 150
 	Build Cost: 350
 	Labor Cost: 10
-	Health: 7000
-	Armor: 7000
+	Health: 3500
+	Armor: 3500
 	Model: Depot
 	Material: GenericPBR_Depot
 	Size: 5
+	Unique: False
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliWater, AdaptedNylliWater))
 	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
-	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
 
@@ -49,15 +49,15 @@ Module: AdaptedNylliFood
 	Maintenance: 100
 	Build Cost: 350
 	Labor Cost: 10
-	Health: 7000
-	Armor: 7000
+	Health: 3500
+	Armor: 3500
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
 	Size: 5
+	Unique: False
 
 	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
-	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedNylliWater
@@ -69,14 +69,14 @@ Module: AdaptedNylliWater
 	Maintenance: 100
 	Build Cost: 350
 	Labor Cost: 10
-	Health: 7000
-	Armor: 7000
+	Health: 3500
+	Armor: 3500
 	Model: Depot
 	Material: GenericPBR_Depot
 	Size: 5
+	Unique: False
 	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
-	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 4000.0)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
 
 	RequireOnOrbital(EconomyCore)

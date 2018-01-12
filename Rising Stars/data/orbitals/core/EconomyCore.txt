@@ -6,8 +6,8 @@ Module: EconomyCore
 	Size: 20
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
-	Health: 3000
-	Armor: 1000
+	Health: 7500
+	Armor: 2500
 	Build Cost: 150
 	Labor Cost: 10
 	Maintenance: 10

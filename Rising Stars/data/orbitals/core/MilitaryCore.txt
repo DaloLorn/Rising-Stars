@@ -7,10 +7,19 @@ Module: MilitaryCore
 	Model: Outpost
 	Material: GenericPBR_Outpost
 	Health: 5000
-	Armor: 2500
+	Armor: 5000
 	Build Cost: 300
 	Labor Cost: 15
 	Maintenance: 50
 	Icon: GuiOrbitalIcons::14
 	Strategic Icon: OrbitalIcons::14
 	Distant Icon: OrbitalIcons::14
+	RecordBonusDPS(92)
+	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
+	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
+	Repeat(2, AddTurret(Missile, Range=900, Damage=30, Reload=2, Speed=120, Tracking=3))
+	Repeat(3, AddTurret(Laser, Range=450, DPS=10, Duration=2, Cooldown=0, Tracking=0.4))
+	Repeat(2, AddTurret(Railgun, Range=600, Damage=4, Reload=0.25, Speed=150, Spread=0.03, FireArc=3.14, Tracking=0.4, FireTolerance=0.78))
+	AddHealthEmpireAttribute(OutpostBoost, 10000)
+	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
+	AddFleetCommand(128)
