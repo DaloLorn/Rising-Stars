@@ -6,11 +6,13 @@ Ability: TractorBeam
 	Range: 100
 
 	Target: targ = Object
-	TargetFilterAllowTractor(targ)
+	Either(ability_effects::TargetFilterAllowTractor(targ), ABEM_hooks::TargetFilterStatus(targ, ExplicitlyTractorable))
 
 	IsToggleTarget(targ, Check Range = False, Channels = False)
 	TractorObject(targ)
 	PersistentBeamEffect(targ, #b8b8d8, Tractor)
 
+	ABEM_hooks::TargetFilterNotRemnantOrPirate(targ)
+	Either(Either(TargetFilterType(targ, Asteroid), TargetFilterType(targ, Artifact)), TargetFilterNotStatus(targ, Untractorable))
 	ApplyTargetStatusEffect(targ, InterdictFTL)
 	OffensiveToTarget(targ)
