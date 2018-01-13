@@ -1,0 +1,5 @@
+Status: ArmorPlating
+	Visible To: Nobody
+	Collapses: True
+	RepeatStacks(AddArmor(15000))
+	RepeatStacks(AddHealth(5000))

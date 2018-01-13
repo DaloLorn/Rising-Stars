@@ -11,5 +11,4 @@ Module: ArmorPlating
 	Build Cost: 200
 	Strategic Icon: techArmor
 	ConsumeCargo(Ore, 250)
-	ABEM_orbitals::IfHasModule(AddArmor(15000), MilitaryCore)
-	ABEM_orbitals::IfHasModule(AddHealth(5000), MilitaryCore)
+	ABEM_orbitals::IfHasModule(AddStatus(ArmorPlating), MilitaryCore)
