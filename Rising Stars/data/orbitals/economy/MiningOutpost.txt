@@ -9,7 +9,7 @@ Module: MiningOutpost
 	Material: GenericPBR_Outpost
 	Health: 3000
 	Armor: 3000
-	Maintenance: 25
+	Maintenance: 70
 	Build Cost: 500
 	RequireOnOrbital(EconomyCore)
 	GrantAbility(BindAsteroid)
