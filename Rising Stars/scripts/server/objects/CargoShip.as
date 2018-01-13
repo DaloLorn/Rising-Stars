@@ -110,18 +110,18 @@ tidy class CargoShipScript {
 					}
 				}
 				
-				return 0.2;
+				if(target !is null)
+					return 0.2;
 			}
 
-			if(target is null) { // If all else fails, pick a random planet.
-				Planet@ targ = ship.owner.planetList[randomi(0, ship.owner.planetCount-1)];
-				if(targ !is null) {
-					@target = targ; 
-					@ship.Target = targ;
-					ship.moveTo(target, moveId, enterOrbit=false);
-				}
-				return 0.2;
+			// If all else fails, pick a random planet.
+			Planet@ targ = ship.owner.planetList[randomi(0, ship.owner.planetCount-1)];
+			if(targ !is null) {
+				@target = targ; 
+				@ship.Target = targ;
+				ship.moveTo(target, moveId, enterOrbit=false);
 			}
+			return 0.2;
 		}
 
 		if(!target.owner.valid || ship.owner !is target.owner) {

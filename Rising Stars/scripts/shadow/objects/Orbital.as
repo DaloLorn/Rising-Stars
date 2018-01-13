@@ -114,7 +114,7 @@ tidy class OrbitalScript {
 	double getValue(Player& pl, Orbital& obj, uint id) {
 		double value = 0.0;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
 				if(sec.type.hooks[j].getValue(pl, obj, sec.data[j], id, value))
 					return value;
@@ -126,7 +126,7 @@ tidy class OrbitalScript {
 	const Design@ getDesign(Player& pl, Orbital& obj, uint id) {
 		const Design@ value;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
 				if(sec.type.hooks[j].getDesign(pl, obj, sec.data[j], id, value))
 					return value;
@@ -138,7 +138,7 @@ tidy class OrbitalScript {
 	Object@ getObject(Player& pl, Orbital& obj, uint id) {
 		Object@ value;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -156,7 +156,7 @@ tidy class OrbitalScript {
 
 	bool hasModule(uint typeId) {
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.type.id == typeId)
 				return true;
 		}
@@ -164,14 +164,14 @@ tidy class OrbitalScript {
 	}
 
 	uint get_coreModule() {
-		auto@ mod = core;
+		OrbitalSection@ mod = core;
 		if(mod is null)
 			return uint(-1);
 		return mod.type.id;
 	}
 
 	bool get_isStandalone() {
-		auto@ mod = core;
+		OrbitalSection@ mod = core;
 		if(mod is null)
 			return true;
 		return mod.type.isStandalone;

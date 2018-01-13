@@ -185,7 +185,7 @@ tidy class OrbitalScript {
 		if(isFree)
 			return;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.type.maintenance != 0 && obj.owner !is null && obj.owner.valid)
 				obj.owner.modMaintenance(-sec.type.maintenance, MoT_Orbitals);
 		}
@@ -491,7 +491,7 @@ tidy class OrbitalScript {
 	double getValue(Player& pl, Orbital& obj, uint id) {
 		double value = 0.0;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -505,7 +505,7 @@ tidy class OrbitalScript {
 	const Design@ getDesign(Player& pl, Orbital& obj, uint id) {
 		const Design@ value;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -519,7 +519,7 @@ tidy class OrbitalScript {
 	Object@ getObject(Player& pl, Orbital& obj, uint id) {
 		Object@ value;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -534,7 +534,7 @@ tidy class OrbitalScript {
 		if(!obj.valid || obj.destroying)
 			return;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -548,7 +548,7 @@ tidy class OrbitalScript {
 		if(!obj.valid || obj.destroying)
 			return;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -562,7 +562,7 @@ tidy class OrbitalScript {
 		if(!obj.valid || obj.destroying)
 			return;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(!sec.enabled)
 				continue;
 			for(uint j = 0, jcnt = sec.type.hooks.length; j < jcnt; ++j) {
@@ -730,7 +730,7 @@ tidy class OrbitalScript {
 		reqs.init(obj, direct=true);
 		double CurrentMaint = 0;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			CurrentMaint += sec.type.maintenance;
 			if(sec.enabled) {
 				if(this.disabled || sec.shouldDisable(obj)) {
@@ -803,7 +803,7 @@ tidy class OrbitalScript {
 
 	bool hasModule(uint typeId) {
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.type.id == typeId)
 				return true;
 		}
@@ -834,7 +834,7 @@ tidy class OrbitalScript {
 		if(contestion != 0)
 			return;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.id == id) {
 				//Can't destroy the core, silly
 				// Unless, of course, we say the core's no longer the core.
@@ -868,14 +868,14 @@ tidy class OrbitalScript {
 	}
 
 	uint get_coreModule() {
-		auto@ mod = core;
+		OrbitalSection@ mod = core;
 		if(mod is null)
 			return uint(-1);
 		return mod.type.id;
 	}
 
 	bool get_isStandalone() {
-		auto@ mod = core;
+		OrbitalSection@ mod = core;
 		if(mod is null)
 			return true;
 		return mod.type.isStandalone;
@@ -912,7 +912,7 @@ tidy class OrbitalScript {
 			playParticleSystem("ShipExplosion", obj.position, obj.rotation, obj.radius, obj.visibleMask);
 	
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.enabled)
 				sec.disable(obj);
 			sec.destroy(obj);
@@ -959,7 +959,7 @@ tidy class OrbitalScript {
 		obj.changeResourceOwner(prevOwner);
 		LastMaint = 0;
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
-			auto@ sec = sections[i];
+			OrbitalSection@ sec = sections[i];
 			if(sec.enabled)
 				sec.ownerChange(obj, prevOwner, obj.owner);
 			if(sec.type.maintenance != 0 && !isFree) {
