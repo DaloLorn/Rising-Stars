@@ -1,0 +1,114 @@
+Technology: BluuhbiTerraformSpec1
+	Name: #R_SPEC_BLUUHBI_TERRAFORM1
+	Description: #R_SPEC_BLUUHBI_TERRAFORM1_DESC:33%
+	Time Cost: 60
+	Point Cost: 250
+	Class: Unlock
+	Category: Specializations
+	Icon: techEconomics*#84ff19
+	Symbol: QuickbarIcons::4
+	Color: #84ff19
+	SecondaryMoneyCost(500)
+	ReplaceTechnologyNodes(BluuhbiAdaptationSpec1, SpecConnector)
+	AddModifier(Terraform1(0.5))
+
+Technology: BluuhbiAdaptationSpec1
+	Name: #R_SPEC_BLUUHBI_ADAPTATION1
+	Description: #R_SPEC_BLUUHBI_ADAPTATION1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 250
+	Category: Specializations
+	Class: Unlock
+	Icon: Megafarm
+	Symbol: SequesteredSociety
+	Color: #6c412f
+	ReplaceTechnologyNodes(BluuhbiTerraformSpec1, SpecConnector)
+	ModAttribute(ImperialBldConstructionRate, Add, 1)
+	ModAttribute(BuildingCostFactor, Add, -0.2)
+	ModAttribute(BuildingMaintFactor, Add, -0.1)
+
+	SecondaryMoneyCost(500)
+Technology: BluuhbiTerraformSpec2
+	Name: #R_SPEC_BLUUHBI_TERRAFORM2
+	Description: #R_SPEC_BLUUHBI_TERRAFORM2_DESC:33%
+	Time Cost: 120
+	Point Cost: 500
+	Category: Specializations
+	Symbol: QuickbarIcons::4
+	Icon: Superstructure
+	Color: #84ff19
+	Class: Unlock
+	SecondaryMoneyCost(1000)
+	ReplaceTechnologyNodes(BluuhbiAdaptationSpec2, SpecConnector)
+	AddModifier(Terraform2(1))
+
+Technology: BluuhbiAdaptationSpec2
+	Name: #R_SPEC_BLUUHBI_ADAPTATION2
+	Description: #R_SPEC_BLUUHBI_ADAPTATION2_DESC:25%
+	Time Cost: 120
+	Point Cost: 500
+	Class: Unlock
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: Industrious
+	SecondaryMoneyCost(1000)
+	ReplaceTechnologyNodes(BluuhbiTerraformSpec2, SpecConnector)
+	GainAttitude(Adaptation2)
+
+Technology: BluuhbiTerraformSpec3
+	Name: #R_SPEC_BLUUHBI_TERRAFORM3
+	Description: #R_SPEC_BLUUHBI_TERRAFORM3_DESC:33%:25%
+	Time Cost: 240
+	Point Cost: 1000
+	Class: Unlock
+	Category: Specializations
+	Color: #84ff19
+	Symbol: QuickbarIcons::4
+	Icon: TractorGun::0*#a1692c
+	SecondaryMoneyCost(2000)
+	ReplaceTechnologyNodes(BluuhbiAdaptationSpec3, SpecConnector)
+	ModAttribute(Terraform3, Add, 1)
+	AddModifier(PlanetMiningLaser::MiningRateFactor(1.25)
+
+Technology: BluuhbiAdaptationSpec3
+	Name: #R_SPEC_BLUUHBI_ADAPTATION3
+	Description: #R_SPEC_BLUUHBI_ADAPTATION3_DESC:10
+	Time Cost: 240
+	Point Cost: 1000
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: ResourceIcons::38
+	Class: Unlock
+	SecondaryMoneyCost(2000)
+	ReplaceTechnologyNodes(BluuhbiTerraformSpec3, SpecConnector)
+	ModAttribute(BluuhbiAdaptation3, Add, 1)
+
+Technology: BluuhbiTerraformSpec4
+	Name: #R_SPEC_BLUUHBI_TERRAFORM4
+	Description: #R_SPEC_BLUUHBI_TERRAFORM4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Unlock
+	Category: Specializations
+	Color: #84ff19
+	Icon: techArmor
+	Symbol: QuickbarIcons::4
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(BluuhbiAdaptationSpec4, SpecConnector)
+	UnlockSubsystem(WarHarvester)
+
+Technology: BluuhbiAdaptationSpec4
+	Name: #R_SPEC_BLUUHBI_ADAPTATION4
+	Description: #R_SPEC_BLUUHBI_ADAPTATION4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Unlock
+	Category: Specializations
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: Refinery
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(BluuhbiTerraformSpec4, SpecConnector)
+	ModAttribute(Adaptation4, Add, 1)

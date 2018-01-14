@@ -640,3 +640,20 @@ S_WARHEAD_DESC: <<
 	[img=Minus]Damage reduced significantly by shields.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Warhead storage can be expanded by adding extra Warhead Tube modifiers to the subsystem.[/color][/i][/img]
 >>
+S_WAR_HARVESTER: Devourer Hull
+S_WAR_HARVESTER_DESC: <<
+	A hull architecture designed specifically for the harvesting of resources from other planets. This variant of the Harvester Hull has been modified to lay siege to enemy planets.
+
+	[img=Plus]Can prepare planets for Harvesting by Ringworlds.[/img]
+	[img=Plus]Can use the Planet Devourer subsystem to mine Barren planets for Ore.[/img]
+	[img=Plus]All hex health is tripled.[/img]
+	[img=Plus]All damage resistance is doubled.[/img]
+	[img=Plus]Shield capacity is tripled.[/img]
+	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
+	[img=Plus]Slipstream costs are significantly reduced.[/img]
+	[img=Plus]Cargo storage capacity is multiplied tenfold.[/img]
+	[img=Minus]Mass is hextupled.[/img]
+	[img=Minus]Cannot hold support ships.[/img]
+	[img=Minus]Build costs are tripled.[/img]
+	[img=MenuIcons::3;20]Cannot be used on ships under size 500.[/img]
+>>

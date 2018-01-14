@@ -94,7 +94,6 @@ ABL_PREPARE_HARVEST: Prepare Planet for Harvesting
 ABL_PREPARE_HARVEST_DESC: <<
 	Tags any and all valuable resources on the planet surface for collection by a Ringworld. The process is a lengthy one; the beam must remain active for 6 consecutive minutes.
 
-	[img=MenuIcons::3;20]Deactivation of this ability, premature or not, incurs a 3 minute cooldown![/img]
 	[img=MenuIcons::3;20]Cannot target Barren planets, Ringworlds or Artificial Planetoids.[/img]
 >>
 ABL_STEAL_RESOURCES: Harvest Planet
@@ -135,4 +134,9 @@ ABL_ORE_OFF_DESC: <<
 	Prevents all buildings on the planet from consuming Ore.
 
 	Buildings requiring Ore will be deactivated until the ban is lifted.
+>>
+ABL_PREPARE_HARVEST_FAST_DESC: <<
+	Tags any and all valuable resources on the planet surface for collection by a Ringworld. The process is a lengthy one; the beam must remain active for 4 consecutive minutes.
+
+	[img=MenuIcons::3;20]Cannot target Barren planets, Ringworlds or Artificial Planetoids.[/img]
 >>

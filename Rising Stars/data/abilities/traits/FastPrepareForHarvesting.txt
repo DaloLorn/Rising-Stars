@@ -1,6 +1,6 @@
-Ability: PrepareForHarvest
+Ability: FastPrepareForHarvest
 	Name: #ABL_PREPARE_HARVEST
-	Description: #ABL_PREPARE_HARVEST_DESC
+	Description: #ABL_PREPARE_HARVEST_FAST_DESC
 	Icon: QuickbarIcons::7
 
 	Range: 300
@@ -19,5 +19,5 @@ Ability: PrepareForHarvest
 	OffensiveToTarget(targ)
 	IsToggleTarget(targ)
 	IsAutoColonize()
-	TriggerTargetPeriodic(targ, AddStatus(ReadyForHarvest), Interval = 360, Max Triggers = 1)
+	TriggerTargetPeriodic(targ, AddStatus(ReadyForHarvest), Interval = 240, Max Triggers = 1)
 	PersistentBeamEffect(targ, #086786, PreparingHarvest)

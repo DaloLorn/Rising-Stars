@@ -40,3 +40,13 @@ Trait: VanguardRingworlders
 	ReplaceTechnologyNodes(Megacity,PlanetSupport2)
 	ModEmpireAttribute(VictoryType, Add, 1)
 	ModAttribute(ForbidColonization, Add, 1)
+
+	ReplaceTechnologyNodes(TerraformSpec1, BluuhbiTerraformSpec1)
+	ReplaceTechnologyNodes(TerraformSpec2, BluuhbiTerraformSpec2)
+	ReplaceTechnologyNodes(TerraformSpec3, BluuhbiTerraformSpec3)
+	ReplaceTechnologyNodes(TerraformSpec4, BluuhbiTerraformSpec4)
+
+	ReplaceTechnologyNodes(AdaptationSpec1, BluuhbiAdaptationSpec1)
+	ReplaceTechnologyNodes(AdaptationSpec2, BluuhbiAdaptationSpec2)
+	ReplaceTechnologyNodes(AdaptationSpec3, BluuhbiAdaptationSpec3)
+	ReplaceTechnologyNodes(AdaptationSpec4, BluuhbiAdaptationSpec4)

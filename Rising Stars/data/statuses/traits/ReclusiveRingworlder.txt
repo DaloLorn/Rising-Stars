@@ -3,9 +3,17 @@ Status: ReclusiveRingworlder
 
 	IfNotHaveStatus(Ringworld, OnEnable(AbandonPlanet()))
 	GrantAbility(StealResources)
+	IfAttributeGTE(BluuhbiAdaptation3, 1, AddStatus(BluuhbiAdaptation3))
 
 Status: ReadyForHarvest
 	Name: #STATUS_READYFORHARVEST
 	Description: #STATUS_READYFORHARVEST_DESC
 	Icon: QuickbarIcons::4
 	Unique: True
+	OnEnable(NotifyOwner(#ALERT_ENEMY_HARVESTED, Description = #ALERT_ENEMY_HARVESTED_DESC))
+	OnOriginEmpire(TriggerPeriodic(NotifyOwner(#ALERT_READY_FOR_HARVESTING, Description = #ALERT_READY_FOR_HARVESTING_DESC), Max Triggers = 1, Trigger Immediate = True))
+Status: HarvesterHull
+	Visible To: Nobody
+	Unique: True
+	IfAttributeLT(Terraform3, 1, GrantAbility(PrepareForHarvest))
+	IfAttributeGTE(Terraform3, 1, GrantAbility(FastPrepareForHarvest))

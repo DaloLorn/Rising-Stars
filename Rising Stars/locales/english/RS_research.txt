@@ -29,6 +29,15 @@ R_NYLLI_FOOD_DESC: <<
 	
 	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
 >>
+R_IMP_PLANET_SUPPORT_DESC: <<
+	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
+
+	Increases the [img=Plus;20/] Health and the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Military Starbases[/b] by $1.
+
+	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
+
+	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
+>>
 R_CAT_MILITARY: Military Research
 R_CAT_ENERGY: Energy Science
 R_CAT_PLANET: Planetary Development
@@ -722,12 +731,77 @@ R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 
 	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
 >>
-R_IMP_PLANET_SUPPORT_DESC: <<
-	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
-	Increases the [img=Plus;20/] Health and the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Military Starbases[/b] by $1.
+*** TERRAFORMING VS ADAPTATION - BLUUHBI ***
 
-	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
+R_SPEC_BLUUHBI_TERRAFORM1: Mass-Produced Harvesters
+R_SPEC_BLUUHBI_ADAPTATION1: Optimized Habitats
+R_SPEC_BLUUHBI_TERRAFORM1_DESC: <<
+	[color=#aaa][i]Mass production of Harvester-related components allows us to build cheaper Harvesters.[/i][/color]
 
-	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
+	Reduces the build cost of Harvesters by $1.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Optimized Habitats/]
+>>
+R_SPEC_BLUUHBI_ADAPTATION1_DESC: <<
+	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
+
+	Doubles the base construction speed of imperial buildings. Additionally, reduces the base construction and maintenance costs of imperial buildings by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades.)
+
+	[bbloc=#R_SPEC_DISCLAIMER:Mass-Produced Harvesters/]
+>>
+
+R_SPEC_BLUUHBI_TERRAFORM2: Lightweight Harvesters
+R_SPEC_BLUUHBI_ADAPTATION2: Adaptive Industrialization
+R_SPEC_BLUUHBI_TERRAFORM2_DESC: <<
+	[color=#aaa][i]New lightweight components significantly reduce the bulk of our Harvesters.[/i][/color]
+
+	Reduces the mass of Harvesters by $1.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Industrialization/]
+>>
+R_SPEC_BLUUHBI_ADAPTATION2_DESC: <<
+	[color=#aaa][i]By adapting our industrial processes to the specifics of each planet, we can improve our economic output by a substantial margin by building more fidget spinners or what have you.[/i][/color]
+
+	Increases all civilian resource production by $1.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Lightweight Harvesters/]
+>>
+
+R_SPEC_BLUUHBI_TERRAFORM3: Accelerated Harvesting
+R_SPEC_BLUUHBI_ADAPTATION3: Adaptive Habitats
+R_SPEC_BLUUHBI_TERRAFORM3_DESC: <<
+	[color=#aaa][i]A new Harvester design developed using stolen Nejjul'har technology has allowed us to more quickly harvest and devour a planet.[/i][/color]
+
+	Increases the speed of the "Prepare Planet for Harvesting" ability by $1, and increases the mining rate of the Planet Devourer subsystem by $2.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Adaptive Habitats/]
+>>
+R_SPEC_BLUUHBI_ADAPTATION3_DESC: <<
+	[color=#aaa][i]Improvements in our life support technology have allowed us to cram more people onto our planets. They'll still be just as crowded, but maybe they won't complain about the toxic gases anymore.[/i][/color]
+
+	Increases the maximum population of all planets by $1 per level.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Accelerated Harvesting/]
+>>
+
+R_SPEC_BLUUHBI_TERRAFORM4: Devourer Hull
+R_SPEC_BLUUHBI_ADAPTATION4: Multipurpose Infrastructure
+R_SPEC_BLUUHBI_TERRAFORM4_DESC: <<
+	[color=#aaa][i]Our engineers have developed a new Harvester design. Called a 'Devourer', this craft is heavier and more expensive than an ordinary Harvester, but its advanced weapons and defenses make it a formidable siege engine.[/i][/color]
+
+	Unlocks the Devourer Hull for use on flagships. Devourers are a variant of Harvesters, and receive all the Harvester-related abilities and upgrades this implies.
+
+	[bbloc=#S_WAR_HARVESTER_DESC/]
+
+	[bbloc=#R_SPEC_DISCLAIMER:Multipurpose Infrastructure/]
+>>
+R_SPEC_BLUUHBI_ADAPTATION4_DESC: <<
+	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
+
+	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description.
+
+	This effect does not apply to Stalks, Altars or Atroan control hubs.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Devourer Hull/]
 >>

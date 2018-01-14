@@ -20,3 +20,8 @@ Status: NylliAdaptation2
 	ProduceAllPressure(Energy, Factor = 0.25)
 	ProduceAllPressure(Influence, Factor = 0.25)
 	ProduceAllPressure(Money, Factor = 0.25)
+
+Status: BluuhbiAdaptation3
+	Unique: True
+	Visible To: Nobody
+	RepeatPlanetLevel(AddMaxPopulation(10))
