@@ -71,9 +71,13 @@ S_CORE_PROGRAM_DESC: <<
 S_CORE_ADAPTED: Adapted Core
 S_CORE_ADAPTED_DESC: The planet's Core has been upgraded to generate an additional 25% of whatever resources it is programmed to generate.
 S_CORE_SPECIALIZED: Specialized Core
-S_CORE_SPECIALIZED_DESC: The planet's Core has been upgraded to generate an additional 50% of whatever resources it is programmed to generate. If the Core has also been Adapted, then it is receiving an 87.5% bonus to its resource generation.
+S_CORE_SPECIALIZED_DESC: The planet's Core has been upgraded to generate an additional 50% of whatever resources it is programmed to generate. If the Core has also been Adapted, then it is receiving a total bonus of 87.5% to its resource generation.
 STATUS_FAST_RECHARGE_ADAPTED_DESC: <<
 	Is receiving power from a Radiant Power Transmitter.
 
 	While out of combat, all ships in the fleet receive an additional 25 shield regeneration, plus 0.01% of the ship's shield capacity. Additionally, the fleet's flagship receives a 20% boost to shield capacity.
 >>
+STATUS_ORE_DISABLED: Ore Consumption Disabled
+STATUS_ORE_DISABLED_DESC: This planet's buildings are banned from consuming Ore. Any buildings requiring Ore are disabled.
+STATUS_MATERIALS_DISABLED: Global Consumption Disabled (Base Materials)
+STATUS_MATERIALS_DISABLED_DESC: This planet's buildings are banned from consuming Base Materials from the global pool. Any buildings requiring Base Materials will either consume from the local pool or be disabled.

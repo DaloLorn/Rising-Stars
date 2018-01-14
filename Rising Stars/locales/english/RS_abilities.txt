@@ -120,3 +120,19 @@ ABL_BIND_ASTEROID_DESC: <<
 
 	When the main deposit is depleted, the base will continue harvesting resources at a reduced rate, but regular miners will no longer be effective.
 >>
+ABL_MATERIALS_ON: Resume Global Consumption (Base Materials)
+ABL_MATERIALS_ON_DESC: Allows all buildings on the planet to resume consumption of Base Materials from the global pool.
+ABL_MATERIALS_OFF: Disable Global Consumption (Base Materials)
+ABL_MATERIALS_OFF_DESC: <<
+	Prevents all buildings on the planet from consuming Base Materials from the global pool.
+
+	Buildings requiring Base Materials will still attempt to consume them from the local pool, but if none are present, they will be deactivated until the ban is lifted or additional Base Materials are imported.
+>>
+ABL_ORE_ON: Resume Ore Consumption
+ABL_ORE_ON_DESC: Allows all buildings on the planet to resume Ore consumption.
+ABL_ORE_OFF: Disable Ore Consumption
+ABL_ORE_OFF_DESC: <<
+	Prevents all buildings on the planet from consuming Ore.
+
+	Buildings requiring Ore will be deactivated until the ban is lifted.
+>>

@@ -1,0 +1,8 @@
+Status: DisableOre
+	Visible To: Owner
+	Unique: True
+	Icon: ResourceIconsSmall::65*#f44
+	Name: #STATUS_ORE_DISABLED
+	Description: #STATUS_ORE_DISABLED_DESC
+
+	GrantAbility(ActivateOre)

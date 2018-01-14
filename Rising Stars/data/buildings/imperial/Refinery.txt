@@ -9,13 +9,13 @@ Building: Refinery
 	Tile Cost: 50
 	Build Time: 150
 
-	Base Maintenance: 10
-	Tile Maintenance: 5
+	Base Maintenance: 20
+	Tile Maintenance: 10
 
 	RequireNotTrait(Ancient)
 
 	ShowAttributeValue(Ore Generation, Adaptation4, Multiplier = 30.0, Icon = ResourceIconsSmall::65, Suffix = #PER_MINUTE, Hide Zero = True)
-	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(AddCargo(Ore, 1), Interval = 2))
-	ConsumeCargo(Ore, 200)
+	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(AddGlobalCargo(Ore, 1), Interval = 2))
+	ConsumeCargo(Ore, 500)
 	RequireNativePressure(Allow Money = False)
 	GiveNativePressure(1, Allow Money = False)

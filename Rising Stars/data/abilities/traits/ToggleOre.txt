@@ -1,0 +1,14 @@
+Ability: ActivateOre
+	Name: #ABL_ORE_ON
+	Description: #ABL_ORE_ON_DESC
+	Icon: ResourceIconsSmall::65
+
+	RemoveStatus(DisableOre)
+
+Ability: DisableOre
+	Name: #ABL_ORE_OFF
+	Description: #ABL_ORE_OFF_DESC
+	Icon: ResourceIconsSmall::65*#f44
+
+	AddStatus(DisableOre)
+	ABEM_hooks::UserMustNotHaveStatus(DisableOre)

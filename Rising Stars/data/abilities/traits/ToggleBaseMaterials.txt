@@ -1,0 +1,14 @@
+Ability: ActivateBaseMaterials
+	Name: #ABL_MATERIALS_ON
+	Description: #ABL_MATERIALS_ON_DESC
+	Icon: ResourceIconsSmall::81
+
+	RemoveStatus(DisableBaseMaterials)
+
+Ability: DisableBaseMaterials
+	Name: #ABL_MATERIALS_OFF
+	Description: #ABL_MATERIALS_OFF_DESC
+	Icon: ResourceIconsSmall::81*#f88
+
+	AddStatus(DisableBaseMaterials)
+	ABEM_hooks::UserMustNotHaveStatus(DisableBaseMaterials)

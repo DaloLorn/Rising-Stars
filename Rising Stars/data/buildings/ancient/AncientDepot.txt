@@ -18,5 +18,6 @@ Building: AncientDepot
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
+	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientDepot), Inactive Status = AncientRequireBaseMat, Allow Global = False))
 	ShowAttributeValue(Planet Support Capacity, Adaptation4, Multiplier = 64.0, Icon = ActionBarIcons::2, Hide Zero = True)
-	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientDepot)), Inactive Status = AncientRequireBaseMat)
+	IfNotHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientDepot),Inactive Status = AncientRequireBaseMat))

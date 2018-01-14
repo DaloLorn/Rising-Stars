@@ -1,0 +1,8 @@
+Status: DisableBaseMaterials
+	Visible To: Owner
+	Unique: True
+	Icon: ResourceIconsSmall::81*#f88
+	Name: #STATUS_MATERIALS_DISABLED
+	Description: #STATUS_MATERIALS_DISABLED_DESC
+
+	GrantAbility(ActivateBaseMaterials)
