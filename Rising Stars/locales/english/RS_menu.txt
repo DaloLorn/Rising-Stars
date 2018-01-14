@@ -163,3 +163,8 @@ SCENARIO_NOT_COMPLETED: <<
 NOT_A_SCENARIO: <<
 	[i][color=#888]This is a campaign item, and is only here for categorization and description purposes. You cannot play this; try one of the scenarios directly underneath.[/color][/i]
 >>
+AA_FX: FXAA
+OPT_FXAA: FXAA
+OPTTT_FXAA: <<
+	A cheapish antialiasing option used as an alternative to the malfunctioning MSAA antialiasing options.
+>>

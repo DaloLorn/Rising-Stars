@@ -870,7 +870,7 @@ void tick(double time) {
 }
 
 const Shader@ getFullscreenShader() {
-	if(settings::bBloom || settings::bChromaticAberration || settings::bFilmGrain || settings::bGodRays || settings::bVignette)
+	if(settings::bBloom || settings::bChromaticAberration || settings::bFilmGrain || settings::bGodRays || settings::bVignette || settings::bFXAA)
 		return shader::FullscreenPostProcess;
 	return null;
 }

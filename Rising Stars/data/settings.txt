@@ -69,6 +69,8 @@ Category: Graphics
 		Default: False
 	Bool: bSkycubeStars
 		Default: True
+	Bool: bFXAA
+		Default: False
 Category: Camera
 	Double: dZoomSpeed
 		Default: 1.0
