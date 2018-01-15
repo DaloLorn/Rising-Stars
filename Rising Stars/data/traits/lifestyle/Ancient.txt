@@ -60,6 +60,12 @@ Trait: Ancient
 	ReplaceTechnologyNodes(FactoryLabor, FoundryLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, FoundryLabor2)
 	ReplaceTechnologyNodes(MetropolisUpg, AtroanMetropolisUpg)
+	ReplaceTechnologyNodes(CivConstruction, OrbitalConstruction)
+	ReplaceTechnologyNodes(CivConstruction2, OrbitalConstruction2)
+	ReplaceTechnologyNodes(DecaySpeed, Construction)
+	ReplaceTechnologyNodes(DecaySpeed2, Construction2)
+	ReplaceTechnologyNodes(TileDevelopment, FoundryLabor)
+	ReplaceTechnologyNodes(TileDevelopment2, FoundryLabor2)
 
 	ReplaceTechnologyNodes(Megacity, AtroanMegacity)
 	ReplaceTechnologyNodes(RingHabitat, Thrust)

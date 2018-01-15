@@ -131,3 +131,9 @@ That is in the past, though. The Bluuhbi have served the Overlords for a great d
 
 We are the Vanguard. To fail in our mission is to be exterminated. To achieve this goal before the other races of the Vanguard is to solidify and increase our power and prestige once more.
 >>
+
+RACE_VANGUARD_SWARMERS: Khalerii
+RACE_VANGUARD_SWARMERS_TAGLINE: Overlord victory through boundless numbers.
+
+RACE_VANGUARD_SCIENTISTS: Nejjul'har
+RACE_VANGUARD_SCIENTISTS_TAGLINE: All particles serve the Overlords.

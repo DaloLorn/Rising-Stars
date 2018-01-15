@@ -1,4 +1,4 @@
-ORB_SHIELD_CHARGER: Power Transmitter
+﻿ORB_SHIELD_CHARGER: Power Transmitter
 ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.
 ORB_SHIELD_CHARGER_DESC: <<
 	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
@@ -154,6 +154,7 @@ ORB_DEFENSE_SATELLITE_DESC: <<
 
 	Only one tactical satellite may be constructed in orbit of every planet.
 >>
+ORB_DEFENSE_SATELLITE_BLURB: Increases support strength, fires missiles, allows independent support action and controls planetary weapons.
 ORB_RING_HABITAT_DESC: <<
 	A ring habitat constructed in low planetary orbit increases the population that can live in and around it, allowing a luxuriously maintained lifestyle in space for those who can afford it.
 
@@ -350,7 +351,7 @@ ORB_TRACTOR_BEAM_BLURB: Grants a long-ranged version of the Tractor Beam ability
 ORB_TRADE_STATION: Commerce Hub
 ORB_TRADE_STATION_BLURB: Allows global trade to other commerce hubs. Allows the purchase of resources with money.
 ORB_TRADE_STATION_DESC: <<
-	A large and bustling station of commerce allows global resource trade between any territories with Commerce Hub.
+	A large and bustling marketplace that allows global resource trade between any territories with Commerce Hubs.
 
 	In addition, in each commerce hub you can purchase a quantity of research, energy, influence or labor in exchange for money every 3 minutes.
 
@@ -370,4 +371,10 @@ ORB_TACHYON_COLLECTOR_DESC: <<
 	Only two Tachyon Collectors may be built in a Tachyon Nebula.
 >>
 ORB_TACHYON_COLLECTOR_BLURB: Generates 0.5 FTL per second. Only two per nebula allowed.
-ORB_DEFENSE_SATELLITE_BLURB: Increases support strength, fires missiles, allows independent support action and controls planetary weapons.
+ORB_TARGETING_SATELLITE: Targeting Control Satellite
+ORB_TARGETING_SATELLITE_BLURB: Controls planetary weapons.
+ORB_TARGETING_SATELLITE_DESC: <<
+	A small, fragile satellite designed to identify and mark targets for the weapons installed on the planet's surface. Without it, the planetary defense net is virtually useless, as it cannot receive accurate data about the location and heading of enemy warships.
+
+	Only one Targeting Control Satellite can be orbiting a given planet. If it is destroyed, a new one will be built for free after a 3-minute period.
+>>

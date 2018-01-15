@@ -23,3 +23,14 @@ Technology: AtroanTerraforming
 	Point Cost: 750
 	UnlockTag(CoreProgramming)
 	SkipOnUnlockedTag(CoreProgramming)
+Technology: BluuhbiTerraforming
+	Name: #R_BIGGER_CARGO
+	Description: #R_BIGGER_CARGO_DESC:25%
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+	Icon: CoreBuilding
+	Symbol: AffinityIcons::11
+	Color: #058514
+	Time Cost: 120
+	Point Cost: 750
+	AddModifier(CargoStorageFactor(1.25))

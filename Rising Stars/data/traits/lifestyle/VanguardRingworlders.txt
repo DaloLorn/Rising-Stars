@@ -41,6 +41,8 @@ Trait: VanguardRingworlders
 	ModEmpireAttribute(VictoryType, Add, 1)
 	ModAttribute(ForbidColonization, Add, 1)
 
+	ReplaceTechnologyNodes(Terraforming, BluuhbiTerraforming)
+
 	ReplaceTechnologyNodes(TerraformSpec1, BluuhbiTerraformSpec1)
 	ReplaceTechnologyNodes(TerraformSpec2, BluuhbiTerraformSpec2)
 	ReplaceTechnologyNodes(TerraformSpec3, BluuhbiTerraformSpec3)

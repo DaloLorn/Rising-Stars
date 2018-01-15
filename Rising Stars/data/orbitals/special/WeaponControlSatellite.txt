@@ -1,6 +1,17 @@
 Module: WeaponControlSatellite
+	Name: #ORB_TARGETING_SATELLITE
+	Description: #ORB_TARGETING_SATELLITE_DESC
+	Blurb: #ORB_TARGETING_SATELLITE_BLURB
+	Size: 6
 	Model: DefenseStation
 	Material: VolkurGenericPBR
-	Size: 6
-	Name: #ORB_TARGETING_SATELLITE
+	Health: 5000
+	Armor: 5000
+
+	Icon: GuiOrbitalIcons::0
+	Distant Icon: OrbitalIcons::0
+	Standalone: True
+
 	AddStatusToOrbitingPlanet(WeaponControl, Only Owned = True)
+	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 1250.0)
+	AddArmorEmpireAttribute(StaticDamageFactor, Multiplier = 1250.0)

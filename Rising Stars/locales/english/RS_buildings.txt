@@ -161,7 +161,7 @@ TIP_BASE_MATERIAL: <<
 BLD_PLANET_CANNON_DESC: <<
 	An enormous railgun on the planet's surface propels large projectiles towards enemy fleets in the system, inflicting devastating damage.
 
-	The cannon deals 2000 Damage every 5 seconds at 1500 range.
+	The cannon deals 2500 Damage every 5 seconds at 2000 range.
 
 	[i]The cannon's targeting telemetry is provided by a satellite in orbit, and the cannon will not fire if the satellite is destroyed. If the satellite is destroyed, a new one will be deployed after a 3-minute period.
 

@@ -12,6 +12,5 @@ Module: EconomyCore
 	Labor Cost: 10
 	Maintenance: 10
 	Icon: GuiOrbitalIcons::15
-	Strategic Icon: OrbitalIcons::15
 	Distant Icon: OrbitalIcons::15
 	GiveTrade()

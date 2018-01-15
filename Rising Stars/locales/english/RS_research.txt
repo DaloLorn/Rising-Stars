@@ -404,6 +404,12 @@ R_CORE_PROGRAMMING_DESC: <<
 
 	Allows Cores to be programmed to generate resources equivalent to 50% of a basic Tier 1 resource. This requires the planet containing the Core to have a Labor source.
 >>
+R_BIGGER_CARGO: Cargo Compression
+R_BIGGER_CARGO_DESC: <<
+	[color=#aaa][i]Our operatives have managed to provide us with insight into the unique packaging techniques of the Khalerii, allowing us to store more cargo on our starships.[/i][/color]
+
+	Increases the capacity of Cargo Storage by $1.
+>>
 R_CORE_ADV: Ore Transmutation
 R_CORE_ADV_DESC: <<
 	[color=#aaa][i]An innovative new Transmuter design has been developed, allowing the ore harvested by a Strip Miner to be converted into base materials.[/i][/color]
