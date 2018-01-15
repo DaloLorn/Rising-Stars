@@ -103,12 +103,14 @@ COND_ANCIENT_CANNON_DESC: <<|
 	An ancient defense system of immense power is located on the surface, inactive but usable.
 >>
 BLD_ANCIENT_CANNON: Ancient Gravitational Collapser
-BLD_ANCIENT_CANNON_DESC: <<|
+BLD_ANCIENT_CANNON_DESC: <<
 	A reactivated ancient weapon of considerable firepower.
 
 	If operational, fires a projectile every 10 seconds, dealing between 500 and 37500 damage to all targets within 50 units of the explosion, depending on their size. Size 100 ships will take 2500 damage per hit, size 20 or smaller will take 500 damage per hit, size 1500 or larger will take 37500 damage per hit.
 
 	If the planet is under siege and has no defenses remaining in orbit, the weapon is deactivated.
+
+	This weapon does not require an orbital control satellite, as its integrated sensor array is perfectly capable of tracking enemy targets on its own.
 >>
 BLD_VANGUARDPORTAL: Portal Stabilizer
 BLD_VANGUARDPORTAL_DESC: <<
@@ -135,7 +137,9 @@ BLD_DEFENSE_GRID_DESC: <<
 
 	The grid is composed of $1 missile launchers totaling $2 DPS with $3 range.
 
-	[i]If there are enemy fleets in orbit and you do not have any remaining support ships to protect the satellite guidance system, the missile silos are disabled.[/i]
+	[i]The missiles are guided by a satellite in orbit and will not be launched if the satellite is destroyed. If the satellite is destroyed, a new one will be deployed after a 3-minute period.
+
+	If there are enemy fleets in orbit and you do not have any remaining support ships to protect the planet, the satellite will not be replaced.[/i]
 >>
 BLD_PLANETOID_LV1_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 1 resource requirements.
 BLD_PLANETOID_LV2_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 2 resource requirements.
@@ -153,4 +157,13 @@ TIP_CONSUME_BASE_MATERIAL: <<
 >>
 TIP_BASE_MATERIAL: <<
 	[i][color=#aaa]By default, Base Materials are stored in and consumed from the global resource pool. However, exporting this planet's resource to a different planet will store them in that planet's local resource pool instead. If enough Base Materials are exported to that planet, this can ensure that a supply shortage in the global pool will not prevent the planet's buildings from functioning.[/color][/i]
+>>
+BLD_PLANET_CANNON_DESC: <<
+	An enormous railgun on the planet's surface propels large projectiles towards enemy fleets in the system, inflicting devastating damage.
+
+	The cannon deals 2000 Damage every 5 seconds at 1500 range.
+
+	[i]The cannon's targeting telemetry is provided by a satellite in orbit, and the cannon will not fire if the satellite is destroyed. If the satellite is destroyed, a new one will be deployed after a 3-minute period.
+
+	If there are enemy fleets in orbit and you do not have any remaining support ships to protect the planet, the satellite will not be replaced.[/i]
 >>

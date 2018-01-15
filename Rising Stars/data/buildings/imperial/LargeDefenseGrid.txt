@@ -1,6 +1,6 @@
 Building: LargeDefenseGrid
 	Name: #BLD_DEFENSE_GRID
-	Description: #BLD_DEFENSE_GRID_DESC:20:500:1000
+	Description: #BLD_DEFENSE_GRID_DESC:20:5000:1000
 	Sprite: DefenseGrid
 
 	Category: Military
@@ -18,5 +18,5 @@ Building: LargeDefenseGrid
 
 	IfAttributeGTE(Adaptation4, 1, AddLocalDefense(2, Build Satellites = True))
 	ShowAttributeValue(Satellite Defense Generation, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::5, Suffix = #PER_MINUTE, Hide Zero = True)
-	IfNotSiege(RepeatExtended(AddTurret(Missile, Range=1000, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
-	RecordBonusDPS(500)
+	IfHaveStatus(WeaponControl, RepeatExtended(AddTurret(Missile, Range=1000, Damage=250, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	IfHaveStatus(WeaponControl, RecordBonusDPS(5000))

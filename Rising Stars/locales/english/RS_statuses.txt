@@ -81,3 +81,8 @@ STATUS_ORE_DISABLED: Ore Consumption Disabled
 STATUS_ORE_DISABLED_DESC: This planet's buildings are banned from consuming Ore. Any buildings requiring Ore are disabled.
 STATUS_MATERIALS_DISABLED: Global Consumption Disabled (Base Materials)
 STATUS_MATERIALS_DISABLED_DESC: This planet's buildings are banned from consuming Base Materials from the global pool. Any buildings requiring Base Materials will either consume from the local pool or be disabled.
+STATUS_HAS_DEFENSES_DESC: <<
+	This planet has defensive weapons constructed on its surface or in low orbit that can fire at nearby enemies.
+
+	It is highly advisable to destroy any Targeting Control Satellites and Tactical Satellites in orbit before attempting to launch an attack.
+>>

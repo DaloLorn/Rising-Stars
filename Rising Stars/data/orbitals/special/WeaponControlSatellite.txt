@@ -1,0 +1,6 @@
+Module: WeaponControlSatellite
+	Model: DefenseStation
+	Material: VolkurGenericPBR
+	Size: 6
+	Name: #ORB_TARGETING_SATELLITE
+	AddStatusToOrbitingPlanet(WeaponControl, Only Owned = True)

@@ -1,4 +1,4 @@
-﻿ORB_SHIELD_CHARGER: Power Transmitter
+ORB_SHIELD_CHARGER: Power Transmitter
 ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.
 ORB_SHIELD_CHARGER_DESC: <<
 	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
@@ -142,7 +142,7 @@ ORB_ZEROGRAV_ASSEMBLY_DESC: <<
 	Only one Antimatter Core Assembler may be constructed in orbit of a planet.
 >>
 ORB_DEFENSE_SATELLITE_DESC: <<
-	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.
+	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships, and acts as an auxiliary targeting system for any defense systems installed on the planet's surface.
 
 	Must be constructed in orbit of a planet.
 
@@ -370,3 +370,4 @@ ORB_TACHYON_COLLECTOR_DESC: <<
 	Only two Tachyon Collectors may be built in a Tachyon Nebula.
 >>
 ORB_TACHYON_COLLECTOR_BLURB: Generates 0.5 FTL per second. Only two per nebula allowed.
+ORB_DEFENSE_SATELLITE_BLURB: Increases support strength, fires missiles, allows independent support action and controls planetary weapons.
