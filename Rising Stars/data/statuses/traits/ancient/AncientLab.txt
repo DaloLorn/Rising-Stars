@@ -1,5 +1,5 @@
 Status: AncientLab
 	Visible To: Nobody
 
-	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(AddGlobalCargo(BaseMaterial, 1), Interval = 2, Trigger Immediate = True))
+	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(BaseMaterial, 0.5), Interval = 6, Trigger Immediate = True))
 	AddResource(Research, 1)

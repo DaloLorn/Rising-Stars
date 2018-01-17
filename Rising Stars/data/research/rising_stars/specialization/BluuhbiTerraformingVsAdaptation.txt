@@ -10,7 +10,7 @@ Technology: BluuhbiTerraformSpec1
 	Color: #84ff19
 	SecondaryMoneyCost(500)
 	ReplaceTechnologyNodes(BluuhbiAdaptationSpec1, SpecConnector)
-	AddModifier(Terraform1(0.5))
+	AddModifier(TerraformCostMod(0.5))
 
 Technology: BluuhbiAdaptationSpec1
 	Name: #R_SPEC_BLUUHBI_ADAPTATION1
@@ -40,7 +40,7 @@ Technology: BluuhbiTerraformSpec2
 	Class: Unlock
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(BluuhbiAdaptationSpec2, SpecConnector)
-	AddModifier(Terraform2(1))
+	AddModifier(TerraformMassMod(1))
 
 Technology: BluuhbiAdaptationSpec2
 	Name: #R_SPEC_BLUUHBI_ADAPTATION2
@@ -69,7 +69,7 @@ Technology: BluuhbiTerraformSpec3
 	SecondaryMoneyCost(2000)
 	ReplaceTechnologyNodes(BluuhbiAdaptationSpec3, SpecConnector)
 	ModAttribute(Terraform3, Add, 1)
-	AddModifier(PlanetMiningLaser::MiningRateFactor(1.25)
+	AddModifier(PlanetMiningLaser::MiningRateFactor(1.25))
 
 Technology: BluuhbiAdaptationSpec3
 	Name: #R_SPEC_BLUUHBI_ADAPTATION3

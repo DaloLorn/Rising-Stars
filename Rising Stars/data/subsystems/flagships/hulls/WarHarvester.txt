@@ -14,7 +14,7 @@ Subsystem: WarHarvester
 	AddShipModifier: HPFactor(3.0)
 	AddShipModifier: DamageResistFactor(2)
 	AddShipModifier: ShieldCapacityFactor(3)
-	AddShipModifier: MassFactor(6 + Terraform2Mod)
+	AddShipModifier: MassFactor(6 + TerraformMassMod)
 	AddShipModifier: SupplyCapacityFactor(0.01)
 	AddShipModifier: SupplyCostFactor(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)
@@ -22,15 +22,14 @@ Subsystem: WarHarvester
 	AddShipModifier: SlipstreamOverheadFactor(0.16)
 	AddShipModifier: SupportCapacityFactor(0)
 	AddShipModifier: CargoStorageFactor(10)
-	AddShipModifier: BuildCostFactor(3 + Terraform1Mod)
+	AddShipModifier: BuildCostFactor(3 + TerraformCostMod)
 
 	IsHarvester := 1
 	Hook: AddPermanentStatus(HarvesterHull)
-	Modifier: Terraform2(factor)
-		Terraform2Mod := -factor * 2
-	Modifier: Terraform1(factor)
-
-		Terraform1Mod := -factor * 2
+	Modifier: TerraformMassMod(factor)
+		TerraformMassMod := -factor * 2
+	Modifier: TerraformCostMod(factor)
+		TerraformCostMod := -factor * 2
 	Assert: ShipSize >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 
