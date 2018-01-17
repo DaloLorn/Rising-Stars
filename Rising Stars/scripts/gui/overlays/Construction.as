@@ -1011,6 +1011,8 @@ class ConstructionDisplay : DisplayBox {
 
 					BuildElement@ ele = cast<BuildElement>(list.selectedItem);
 					if(ele !is null) {
+						if(ele.hasError)
+							return true;
 						if(ele.dsg !is null) {
 							if(ele.dsg.hasTag(ST_IsSupport)) {
 								if(!obj.canBuildShips)
@@ -1382,6 +1384,7 @@ class BuildElement : GuiListElement {
 	Color iconColor = colors::White;
 	bool isSupport = false;
 	bool incomplete = false;
+	bool hasError = false;
 	array<Sprite> extraIcons;
 	array<string> extraCosts;
 
@@ -1456,7 +1459,7 @@ class BuildElement : GuiListElement {
 	void update(ConstructionDisplay@ disp) {
 		int build = 0, maintain = 0;
 		double labor = 0, time = 0, energy = 0;
-		bool hasError = false, hasWarning = false;
+		bool hasWarning = false;
 		extraIcons.length = 0;
 		extraCosts.length = 0;
 
