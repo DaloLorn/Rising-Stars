@@ -159,6 +159,13 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	}
 
 #section server
+	void startConstruction(Object& obj, SurfaceBuilding@ bld) const override {
+		auto@ data = bld.data[hookIndex];
+		ConsumeData info;
+		info.enabled = false;
+		data.store(@info);
+	}
+
 	void complete(Object& obj, SurfaceBuilding@ bld) const {
 		auto@ data = bld.data[hookIndex];
 		ConsumeData info;
