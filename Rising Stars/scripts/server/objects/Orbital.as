@@ -821,6 +821,9 @@ tidy class OrbitalScript {
 
 		if(!type.canBuildOn(obj))
 			return;
+			
+		if(!type.canBuildBy(obj, ignoreCost=false))
+			return;
 
 		if(type.buildCost != 0) {
 			if(obj.owner.consumeBudget(type.buildCost) == -1)
