@@ -159,13 +159,6 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	}
 
 #section server
-	void startConstruction(Object& obj, SurfaceBuilding@ bld) const override {
-		auto@ data = bld.data[hookIndex];
-		ConsumeData info;
-		info.enabled = false;
-		data.store(@info);
-	}
-
 	void complete(Object& obj, SurfaceBuilding@ bld) const {
 		auto@ data = bld.data[hookIndex];
 		ConsumeData info;
@@ -187,6 +180,11 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void disable(Object& obj, any@ data) const override {
 		ConsumeData@ info;
 		data.retrieve(@info);
+		if(info is null) {
+			@info = ConsumeData();
+			info.enabled = false;
+			data.store(@info);
+		}
 
 		if(info.enabled)
 			hook.disable(obj, info.data);
@@ -196,6 +194,11 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 		auto@ data = bld.data[hookIndex];
 		ConsumeData@ info;
 		data.retrieve(@info);
+		if(info is null) {
+			@info = ConsumeData();
+			info.enabled = false;
+			data.store(@info);
+		}
 
 		bool cond = info.enabled;
 		info.timer -= time;
@@ -263,6 +266,11 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
+		if(info is null) {
+			@info = ConsumeData();
+			info.enabled = false;
+			data.store(@info);
+		}
 
 		if(info.enabled)
 			hook.ownerChange(obj, info.data, prevOwner, newOwner);
@@ -271,6 +279,11 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
+		if(info is null) {
+			@info = ConsumeData();
+			info.enabled = false;
+			data.store(@info);
+		}
 
 		if(info.enabled)
 			hook.regionChange(obj, info.data, fromRegion, toRegion);
@@ -279,6 +292,10 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void save(any@ data, SaveFile& file) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
+		if(info is null) {
+			@info = ConsumeData();
+			info.enabled = false;
+		}
 
 		if(info is null) {
 			bool enabled = false;
