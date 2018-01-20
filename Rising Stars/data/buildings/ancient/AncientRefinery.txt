@@ -15,7 +15,7 @@ Building: AncientRefinery
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
-	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, Repeat(3, AddStatus(AncientProduce)), Inactive Status = AncientRequireBaseMat, Allow Global = False)
+	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, Repeat(3, AddStatus(AncientProduce)), Inactive Status = AncientRequireBaseMat)
 	IfAttributeGTE(Adaptation4, 1, AddLaborFactor(0.1))
 	ShowAttributeValue(Added Labor, Adaptation4, Multiplier = 10.0, Icon = ResourceIcon::6, Suffix = %, Hide Zero = True)
 	ShowAttributeValue(Additional Resource Production, AtroanAdaptation2, Multiplier = 15.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
