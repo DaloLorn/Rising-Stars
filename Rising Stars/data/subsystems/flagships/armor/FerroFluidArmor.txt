@@ -22,7 +22,8 @@ Subsystem: FerroFluidArmor
 	Hex.LaborCost := 0.525 * HexSize
 	Hex.BuildCost := 3.25 * HexSize
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
-	ProjResist := ShipSize / 13.5
+	BaseDamageResist := ShipSize / 13.5
+	ProjResist = BaseDamageResist
 	PowerUse := Size * 1
 	Requires:
 		Power = PowerUse

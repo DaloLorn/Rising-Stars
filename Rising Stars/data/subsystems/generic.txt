@@ -46,6 +46,14 @@ Template: var/DamageResist,tag/IsArmor
 	Modifier: ArmorResistFactor(factor)
 		DamageResist := DamageResist * factor
 
+Template: var/BaseDamageResist
+	Modifier: DamageResistFactor(factor)
+		BaseDamageResist := BaseDamageResist * factor
+
+Template: var/BaseDamageResist,tag/IsArmor
+	Modifier: ArmorResistFactor(factor)
+		BaseDamageResist := BaseDamageResist * factor
+
 Template: var/ShieldCapacity
 	Modifier: ShieldCapacityFactor(factor)
 		ShieldCapacity := ShieldCapacity * factor

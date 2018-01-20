@@ -21,7 +21,8 @@ Subsystem: SupportFerrofluidArmor
 	Hex.BuildCost := 4.5 * HexSize
 	Hex.LaborCost := 0.525 * HexSize
 	
-	ProjResist := ShipSize / 11
+	BaseDamageResist := ShipSize / 11
+	ProjResist := BaseDamageResist
 	
 	Effect: DistributeHealth
 	
