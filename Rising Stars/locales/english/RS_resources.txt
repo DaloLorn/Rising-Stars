@@ -214,3 +214,6 @@ R_BASE_MATERIAL_DESC: <<
 
 	[bbloc=#TIP_BASE_MATERIAL/]
 >>
+PSIONIC_REAGENTS_DESC: <<
+	Planets in the consuming system receive an additional 10 Loyalty.
+>>

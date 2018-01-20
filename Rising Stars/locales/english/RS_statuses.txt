@@ -86,3 +86,6 @@ STATUS_HAS_DEFENSES_DESC: <<
 
 	It is highly advisable to destroy any Targeting Control Satellites and Tactical Satellites in orbit before attempting to launch an attack.
 >>
+STATUS_PSIONIC_PROTECTED_DESC: <<
+	This planet is shielded from capture by psionic reagents imported to one of the planets in this system, resulting in an additional 10 Loyalty.
+>>
