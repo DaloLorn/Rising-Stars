@@ -42,8 +42,11 @@ void declareVictor(Empire@ emp) {
 				}
 			}
 			if(other.major && emp.team != -1 && emp.team == other.team) {
-				if(other.Victory >= 0 && other.VictoryType <= emp.VictoryType)
+				if(other.Victory >= 0 && other.VictoryType <= emp.VictoryType) {
 					other.Victory = emp.VictoryType;
+					if(emp.VanguardVictoryRequirement <= 0)
+						other.VanguardVictoryRequirement = 0;
+				}
 			}	
 		}
 		if(emp is playerEmpire) {

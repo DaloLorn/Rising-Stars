@@ -166,18 +166,8 @@ class VictoryTab : Tab {
 		description.text = data.descriptionText;
 		typeIcon = data.typeIcon;
 
-		if(victorPanel.visible) {
-			if(playerEmpire is winner) {
-				if(winner.VanguardVictoryRequirement == 0)
-					title = locale::V_VANGUARD_TITLE;
-				else
-					title = locale::V_WON_TITLE;
-			}
-			else if(playerEmpire.SubjugatedBy is winner)
-				title = locale::V_LESSER_TITLE;
-			else
-				title = locale::V_LOST_TITLE;
-		}
+		if(victorPanel.visible) 
+			title = heading.text;
 		else
 			title = locale::V_SCORES;
 

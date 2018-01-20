@@ -80,13 +80,13 @@ class VictorySelector {
 class StandardVictoryAdjuster : VictoryAdjuster {
 #section gui
 	void AdjustVictorText(VictoryTabData& tab, Empire@ winner, Empire@ playerEmpire) {
-		if(playerEmpire is winner) {
+		if(playerEmpire.Victory == winner.Victory) {
 			tab.headingText = locale::V_WON_TITLE;
 			tab.headingColor = colors::Green;
 			tab.descriptionText = format(locale::V_WON_TEXT, formatEmpireName(winner), formatEmpireName(playerEmpire));
 			tab.typeIcon = Sprite(material::PointsIcon);
 		}
-		else if(playerEmpire.Victory == -2 && playerEmpire.SubjugatedBy is winner) {
+		else if(playerEmpire.Victory == -2 && (playerEmpire.SubjugatedBy is winner || (winner.team >= 0 && playerEmpire.SubjugatedBy.team == winner.team))) {
 			switch(int(playerEmpire.VictoryType)) {
 				case VType_Vanguard:
 					tab.headingText = locale::V_VANGUARD_LESSER_TITLE;
@@ -125,8 +125,8 @@ class StandardVictoryAdjuster : VictoryAdjuster {
 class VanguardVictoryAdjuster : VictoryAdjuster {
 #section gui
 	void AdjustVictorText(VictoryTabData& tab, Empire@ winner, Empire@ playerEmpire) {
-		if(playerEmpire is winner) {
-			if(playerEmpire.VanguardVictoryRequirement == 0) {
+		if(playerEmpire.Victory == winner.Victory) {
+			if(playerEmpire.VanguardVictoryRequirement <= 0) {
 				tab.headingText = locale::V_VANGUARD_SUCCESS_TITLE;
 				tab.headingColor = colors::Green;
 				tab.descriptionText = format(locale::V_VANGUARD_SUCCESS_TEXT, formatEmpireName(winner), formatEmpireName(playerEmpire));
@@ -139,7 +139,7 @@ class VanguardVictoryAdjuster : VictoryAdjuster {
 				tab.typeIcon = Sprite(material::PointsIcon);
 			}
 		}
-		else if(playerEmpire.Victory == -2 && playerEmpire.SubjugatedBy is winner) {
+		else if(playerEmpire.Victory == -2 && (playerEmpire.SubjugatedBy is winner || (winner.team >= 0 && playerEmpire.SubjugatedBy.team == winner.team))) {
 			switch(int(playerEmpire.VictoryType)) {
 				case VType_Vanguard:
 					tab.headingText = locale::V_LESSER_TITLE;
