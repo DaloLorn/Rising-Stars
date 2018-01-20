@@ -9,7 +9,7 @@ Status: HasDefenses
 Status: SpawnWeaponControl
 	Visible To: Global
 	Unique: True
-	IfNotSiege(TriggerPeriodic(SpawnOrbital(WeaponControlSatellite, Free = True, In Orbit = True), Interval = 180))
+	IfNotHaveStatus(WeaponControl, IfNotSiege(TriggerPeriodic(SpawnOrbital(WeaponControlSatellite, Free = True, In Orbit = True), Interval = 180)))
 Status: WeaponControl
 	Visible To: Nobody
 	Collapses: True
