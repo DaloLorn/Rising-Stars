@@ -29,8 +29,6 @@ Subsystem: ProgenitorComputer
 	Prayer := Sum.RequirePrayer * 10 * Hexes
 
 	Hook: AddStatus(ProgenitorComputer)
-
-	Hex.BuildCost := Hex.BuildCost * 2
 	Effect: ABEMControlCore
 
 	Assert: Sum.HasComputer == 0
@@ -45,9 +43,10 @@ Subsystem: ProgenitorComputer
 
 	Module: Default
 		Sprite: TechIcons::36
+		Hex.BuildCost := Hex.BuildCost * 2
 
 	Module: Core
 		Sprite: ProgenitorComputer
 		Hex.HP := 2.5 * Hex.HP
 		Hex.Resistance := 0.5
-		Hex.BuildCost := 5 * Hex.BuildCost
+		Hex.BuildCost := 10 * Hex.BuildCost
