@@ -1,7 +1,7 @@
-Technology: ImpDecaySpeed
+Technology: DecaySpeed
 	Name: #R_IMP_DECAY
-	Blurb: #R_IMP_DECAY_BLURB:20%
-	Description: #R_IMP_DECAY_DESC:20%:1.2M
+	Blurb: #R_IMP_DECAY_BLURB:25%
+	Description: #R_IMP_DECAY_DESC:25%
 
 	Icon: AttributeIcons::0
 	Color: #a77751
@@ -9,15 +9,14 @@ Technology: ImpDecaySpeed
 	Point Cost: 500
 	Time Cost: 60
 	Symbol: QuickbarIcons::4
-	Class: Boost
 	Category: Minor Upgrades
 
-	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.8) )
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.75) )
 
-Technology: ImpDecaySpeed2
+Technology: DecaySpeed2
 	Name: #R_IMP_DECAY2
-	Blurb: #R_IMP_DECAY_BLURB:40%
-	Description: #R_IMP_DECAY_DESC:40%:2M
+	Blurb: #R_IMP_DECAY_BLURB:50%
+	Description: #R_IMP_DECAY_DESC:50%
 
 	Icon: AttributeIcons::0
 	Color: #a77751
@@ -27,4 +26,4 @@ Technology: ImpDecaySpeed2
 	Symbol: QuickbarIcons::4
 	Category: Medium Upgrades
 
-	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.64) )
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.5) )

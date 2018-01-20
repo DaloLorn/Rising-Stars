@@ -1,7 +1,7 @@
 Technology: TileDevelopment
 	Name: #R_IMP_TILE_DEVELOPMENT
-	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:20%
-	Description: #R_IMP_TILE_DEVELOPMENT_DESC:20%
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:50%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:50%
 
 	Icon: DesignationIcons::10
 	Color: #a46c2f
@@ -11,12 +11,12 @@ Technology: TileDevelopment
 	Class: Boost
 	Category: Minor Upgrades
 
-	ModAttribute(TileDevelopmentFactor, Multiply, 1.2)
+	ModAttribute(TileDevelopmentFactor, Multiply, 1.5)
 
 Technology: TileDevelopment2
 	Name: #R_IMP_TILE_DEVELOPMENT2
-	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:40%
-	Description: #R_IMP_TILE_DEVELOPMENT_DESC:40%
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:100%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:100%
 
 	Icon: DesignationIcons::10
 	Color: #a46c2f
@@ -25,4 +25,4 @@ Technology: TileDevelopment2
 	Time Cost: 80
 	Category: Medium Upgrades
 
-	ModAttribute(TileDevelopmentFactor, Multiply, 1.4)
+	ModAttribute(TileDevelopmentFactor, Multiply, 2)

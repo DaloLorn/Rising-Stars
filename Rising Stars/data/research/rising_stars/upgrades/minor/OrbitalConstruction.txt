@@ -1,6 +1,6 @@
 Technology: OrbitalConstruction
 	Name: #R_ORBITAL_CONSTRUCTION
-	Description: #R_ORBITAL_CONSTRUCTION_DESC:15%
+	Description: #R_ORBITAL_CONSTRUCTION_DESC:25%
 
 	Icon: techConstruction*#c82986
 	Symbol: GuiOrbitalIcons::0
@@ -12,12 +12,12 @@ Technology: OrbitalConstruction
 	Point Cost: 500
 	Time Cost: 60
 
-	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.85)
-	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.85)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.75)
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.75)
 
 Technology: OrbitalConstruction2
 	Name: #R_ORBITAL_CONSTRUCTION2
-	Description: #R_ORBITAL_CONSTRUCTION_DESC:30%
+	Description: #R_ORBITAL_CONSTRUCTION_DESC:50%
 
 	Icon: techConstruction*#91176f
 	Symbol: GuiOrbitalIcons::0
@@ -29,5 +29,5 @@ Technology: OrbitalConstruction2
 	Point Cost: 800
 	Time Cost: 140
 
-	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.7)
-	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.7)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.5)
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.5)

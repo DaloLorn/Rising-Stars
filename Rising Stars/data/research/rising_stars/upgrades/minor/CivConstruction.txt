@@ -1,7 +1,7 @@
 Technology: CivConstruction
 	Name: #R_IMP_CIV_CONSTRUCT
-	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:20%
-	Description: #R_IMP_CIV_CONSTRUCT_DESC:20%
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:50%
+	Description: #R_IMP_CIV_CONSTRUCT_DESC:50%
 
 	Icon: techConstruction*#3accae
 	Color: #3accae
@@ -12,12 +12,12 @@ Technology: CivConstruction
 	Category: Minor Upgrades
 	Symbol: BuildingSprites::0
 
-	ModAttribute(CivBldConstructionRate, Multiply, 1.2)
+	ModAttribute(CivBldConstructionRate, Multiply, 1.5)
 
 Technology: CivConstruction2
 	Name: #R_IMP_CIV_CONSTRUCT2
-	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:40%
-	Description: #R_IMP_CIV_CONSTRUCT_DESC:40%
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:100%
+	Description: #R_IMP_CIV_CONSTRUCT_DESC:100%
 
 	Icon: techConstruction*#3accae
 	Color: #3accae
@@ -27,4 +27,4 @@ Technology: CivConstruction2
 	Category: Medium Upgrades
 	Symbol: BuildingSprites::0
 
-	ModAttribute(CivBldConstructionRate, Multiply, 1.4)
+	ModAttribute(CivBldConstructionRate, Multiply, 2)

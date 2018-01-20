@@ -38,6 +38,21 @@ R_IMP_PLANET_SUPPORT_DESC: <<
 
 	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
 >>
+R_IMP_DECAY_DESC: <<
+	[i][color=#aaa]Improved storage capacities and methods allow planets to go longer without supplies of vital resources.[/color][/i]
+
+	Planets decay $1 slower when out of necessary resources.
+>>
+R_FLARE_BOMB_DESC: <<
+	Study the remains of collected Ulthaar artifacts to recover plans for an Ulthaar superweapons project.
+
+	Unlocks construction of Flare Bombs, costing large amounts of Ore and Energy to construct.
+
+	Flare bombs can be used on stars. After a 60 second channel period, the star is triggered to emit a critical flare, wiping out all population in the solar system but leaving everything else intact. The planets in the system are irradiated for the next 5 minutes and cannot be colonized.
+
+	The flare bomb ship is destroyed in the process.
+>>
+
 R_CAT_MILITARY: Military Research
 R_CAT_ENERGY: Energy Science
 R_CAT_PLANET: Planetary Development

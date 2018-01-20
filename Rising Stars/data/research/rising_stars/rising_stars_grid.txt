@@ -89,7 +89,7 @@ Grid: RisingStars
 	FTLStorage: -5,13
 	Connector: -4,14
 	OrbitalConstruction: 1,-6
-	ImpDecaySpeed: -2,-6
+	DecaySpeed: -2,-6
 	PlanetSupport2: -1,-6
 	DefenseSatellite: -1,-5
 	ArmorHealth: 0,-5
@@ -153,12 +153,12 @@ Grid: RisingStars
 	EnergyHurdle: -3,-9
 	InfluenceHurdle: -4,-8
 	MetropolisUpg: -5,-8
-	ImpDecaySpeed: -6,-9
+	DecaySpeed: -6,-9
 	Health: -5,-10
 	Laboratories: -2,-10
 	FTLJammerCombat: -9,13
 	FTLHurdle: -8,14
-	ImpDecaySpeed2: -7,-9
+	DecaySpeed2: -7,-9
 	Connector: -3,-10
 	SupportCap: -4,-11
 	FTLHurdle: -4,-12
@@ -208,10 +208,10 @@ Grid: RisingStars
 	PlanetSupport: 1,-12
 	Connector: -1,-13
 	Connector: 0,-14
-	OreProcessor: 1,-13
+	SuperstructureHull: 1,-13
 	Connector: 1,-14
 	Construction2: 0,-15
-	SuperstructureHull: 1,-16
+	OreProcessor: 1,-16
 	Connector: 0,-16
 	FactoryLabor: -1,-16
 	InfluenceHurdle: -18,15
@@ -423,3 +423,4 @@ Grid: RisingStars
 	Connector: -9,-6
 	Connector: -9,-8
 	Connector: -10,-9
+	Connector: 2,-12
