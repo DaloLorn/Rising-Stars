@@ -38,6 +38,8 @@ Trait: VanguardRingworlders
 	IfHaveTrait(Jumpdrive, LoadDesigns(ringworlder/jumpdrive))
 
 	ReplaceTechnologyNodes(Megacity,PlanetSupport2)
+	ReplaceTechnologyNodes(DecaySpeed2, Construction2)
+	ReplaceTechnologyNodes(DecaySpeed, Construction)
 	ModEmpireAttribute(VictoryType, Add, 1)
 	ModAttribute(ForbidColonization, Add, 1)
 
