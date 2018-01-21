@@ -22,6 +22,8 @@ Status: AncientPlanet
 	IfNativeClass(Scalable, SetMaxLevelStatusCount(Base = 2, Status = AncientScalable)) #version>=159
 	IfNativeClass(Scalable, PlanetLevelIncomeMod(0, 0, Step = -50)) #version>=159
 
+	GrantAbility(DisableOre)
+	GrantAbility(DisableBaseMaterials)
 	IfLevel(0, AddFleetCommand(-50), Exact = True, Limit = False)
 	IfLevel(1, AddFleetCommand(-50), Exact = True, Limit = False)
 	IfLevel(2, AddFleetCommand(-200), Exact = True, Limit = False)

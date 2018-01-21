@@ -180,46 +180,47 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void disable(Object& obj, any@ data) const override {
 		ConsumeData@ info;
 		data.retrieve(@info);
-		if(info is null) {
-			@info = ConsumeData();
-			info.enabled = false;
-			data.store(@info);
-		}
+
+		bld.disabled = true;
+		bld.delta = true;
 
 		if(info.enabled)
 			hook.disable(obj, info.data);
+		else if(inactive_status.integer != -1) {
+			for(int n = 0; n < inactive_status_count.integer; ++n) {
+				obj.removeStatusInstanceOfType(inactive_status.integer);
+			}
+		}
 	}
 
 	void tick(Object& obj, SurfaceBuilding@ bld, double time) const {
 		auto@ data = bld.data[hookIndex];
 		ConsumeData@ info;
 		data.retrieve(@info);
-		if(info is null) {
-			@info = ConsumeData();
-			info.enabled = false;
-			data.store(@info);
-		}
 
 		bool cond = info.enabled;
 		info.timer -= time;
 		if(info.timer <= 0) {
-			if(!obj.hasCargo) {
+			if(!obj.hasCargo && !allow_global.boolean) {
 				cond = false;
 				info.timer += interval.decimal;
 			}
 			else if(labor_use_linked.boolean && !obj.isUsingLabor) {
-				cond = obj.getCargoStored(cargo_type.integer) >= amount.decimal;
-				if(allow_global.boolean && !cond) {
+				cond = obj.hasCargo || obj.getCargoStored(cargo_type.integer) >= amount.decimal;
+				if(allow_global.boolean && !cond && obj.owner !is null && obj.owner.valid) {
 					cond = obj.getCargoStored(cargo_type.integer) + obj.owner.getCargoStored(cargo_type.integer) >= amount.decimal;
 				}
 			}
 			else {
-				double consAmt = obj.consumeCargo(cargo_type.integer, amount.decimal, partial=allow_global.boolean);
+				double consAmt;
+				if(obj.hasCargo)
+					consAmt = obj.consumeCargo(cargo_type.integer, amount.decimal, partial=allow_global.boolean);
 				if(consAmt < amount.decimal - 0.001) {
-					if(allow_global.boolean) {
+					if(allow_global.boolean && obj.owner !is null && obj.owner.valid) {
 						double consGlobal = obj.owner.consumeCargo(cargo_type.integer, amount.decimal - consAmt, partial=false);
 						if(consAmt + consGlobal < amount.decimal - 0.001) {
-							obj.addCargo(cargo_type.integer, consAmt); // Refund the object's cargo.
+							if(obj.hasCargo)
+								obj.addCargo(cargo_type.integer, consAmt); // Refund the object's cargo.
 							cond = false;
 							info.timer += interval.decimal;
 						}
@@ -266,11 +267,6 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
-		if(info is null) {
-			@info = ConsumeData();
-			info.enabled = false;
-			data.store(@info);
-		}
 
 		if(info.enabled)
 			hook.ownerChange(obj, info.data, prevOwner, newOwner);
@@ -279,11 +275,6 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
-		if(info is null) {
-			@info = ConsumeData();
-			info.enabled = false;
-			data.store(@info);
-		}
 
 		if(info.enabled)
 			hook.regionChange(obj, info.data, fromRegion, toRegion);
@@ -292,10 +283,6 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	void save(any@ data, SaveFile& file) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
-		if(info is null) {
-			@info = ConsumeData();
-			info.enabled = false;
-		}
 
 		if(info is null) {
 			bool enabled = false;

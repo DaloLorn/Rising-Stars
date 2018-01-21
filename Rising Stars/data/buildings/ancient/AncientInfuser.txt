@@ -17,6 +17,7 @@ Building: AncientInfuser
 	RequireStatusToProgress(AncientReplicator)
 	RequireNativeClass(Scalable)
 
-	ActiveWhenCargoConsumed(BaseMaterial, 3, 6, AddStatus(AncientScalable), Inactive Status = AncientRequireBaseMat, Inactive Status Count = 3)
+	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 3, 6, AddStatus(AncientScalable), Inactive Status = AncientRequireBaseMat, Inactive Status Count = 3, Allow Global = False))
 	ShowAttributeValue(Energy Generation, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::2, Suffix = #PER_SECOND, Hide Zero = True)
 	IfAttributeGTE(Adaptation4, 1, AddResource(Energy, 2))
+	IfNotHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 3, 6, AddStatus(AncientScalable), Inactive Status = AncientRequireBaseMat, Inactive Status Count = 3))

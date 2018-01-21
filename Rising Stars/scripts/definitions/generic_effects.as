@@ -2432,10 +2432,20 @@ tidy class IfHook : GenericEffect {
 	}
 
 #section server
-	void enable(Object& obj, any@ data) const override {
-		IfData info;
-		info.enabled = condition(obj);
+	IfData@ initData(Object& obj, any@ data) const {
+		IfData@ info;
+		data.retrieve(@info);
+		if(info is null)
+			@info = IfData();
 		data.store(@info);
+
+		info.enabled = condition(obj);
+
+		return info;
+	}
+
+	void enable(Object& obj, any@ data) const override {
+		IfData@ info = initData(obj, data);
 
 		if(info.enabled)
 			hook.enable(obj, info.data);
@@ -2503,6 +2513,61 @@ tidy class IfHook : GenericEffect {
 		file >> info.enabled;
 		if(info.enabled)
 			hook.load(info.data, file);
+	}
+
+	void startConstruction(Object& obj, SurfaceBuilding@ bld) const override {
+		IfData@ info = initData(obj, bld.data[hookIndex]);
+
+		if(info.enabled) 
+			hook.startConstruction(obj, bld);
+	}
+
+	void cancelConstruction(Object& obj, SurfaceBuilding@ bld) const override {
+		IfData@ info;
+		bld.data[hookIndex].retrieve(@info);
+
+		if(info.enabled)
+			hook.cancelConstruction(obj, bld);
+	}
+
+	void complete(Object& obj, SurfaceBuilding@ bld) const override {
+		IfData@ info;
+		bld.data[hookIndex].retrieve(@info);
+
+		if(info.enabled)
+			hook.complete(obj, bld);
+	}
+
+	void remove(Object& obj, SurfaceBuilding@ bld) const override {
+		IfData@ info;
+		bld.data[hookIndex].retrieve(@info);
+
+		if(info.enabled)
+			hook.remove(obj, bld);
+	}
+
+	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner) const override {
+		IfData@ info;
+		bld.data[hookIndex].retrieve(@info);
+
+		if(info.enabled) 
+			hook.ownerChange(obj, bld.data[hookIndex], prevOwner, newOwner);
+	}
+
+	void tick(Object& obj, SurfaceBuilding@ bld, double time) const override {
+		IfData@ info;
+		bld.data[hookIndex].retrieve(@info);
+
+		bool cond = condition(obj);
+		if(cond != info.enabled) {
+			if(info.enabled)
+				hook.remove(obj, bld);
+			else
+				hook.complete(obj, bld);
+			info.enabled = cond;
+		}
+		if(info.enabled)
+			hook.tick(obj, bld, time);
 	}
 #section all
 };
