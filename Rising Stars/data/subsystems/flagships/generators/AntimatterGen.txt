@@ -31,13 +31,11 @@ Subsystem: AntimatterGen
 		Sprite: AntimatterGen
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
-		Hex.HP := 36 * HexSize
+		Hex.HP := 1
 
 	Module: Default
 		Hex.BuildCost := 0.9 * Hex.BuildCost
 		Hex.Mass := 0.9 * Hex.Mass
-
-		Hex.HP := 1
 
 
 	Modifier: SupplyCapacityFactor(factor)

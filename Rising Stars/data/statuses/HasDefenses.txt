@@ -7,9 +7,13 @@ Status: HasDefenses
 	Color: #80ff80
 	AddStatus(SpawnWeaponControl)
 Status: SpawnWeaponControl
-	Visible To: Global
+	Visible To: Nobody
 	Unique: True
-	IfNotHaveStatus(WeaponControl, IfNotSiege(TriggerPeriodic(SpawnOrbital(WeaponControlSatellite, Free = True, In Orbit = True), Interval = 180)))
+	IfNotHaveStatus(WeaponControlSatellite, IfNotSiege(TriggerPeriodic(SpawnOrbital(WeaponControlSatellite, Free = True, In Orbit = True), Interval = 180)))
 Status: WeaponControl
 	Visible To: Nobody
 	Collapses: True
+Status: WeaponControlSatellite
+	Visible To: Nobody
+	Unique: True
+	AddStatus(WeaponControl)

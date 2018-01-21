@@ -13,6 +13,6 @@ Module: WeaponControlSatellite
 	Standalone: True
 
 	CannotBuildManually()
-	AddStatusToOrbitingPlanet(WeaponControl, Only Owned = True)
+	AddStatusToOrbitingPlanet(WeaponControlSatellite, Only Owned = True)
 	AddHealthEmpireAttribute(StaticDamageFactor, Multiplier = 1250.0)
 	AddArmorEmpireAttribute(StaticDamageFactor, Multiplier = 1250.0)
