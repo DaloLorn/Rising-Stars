@@ -22,5 +22,5 @@ Trait: Berserkers
 
 	UnlockSubsystem(BoardingParty)
 	ABEM_glory::SetGloryMeter(BerserkerGlory, Level Up = 5)
-	AddModifier(SupportCapacityFactor(0.5))
-	AddModifier(SupplyCostFactor(0.75))
+	AddModifier(SupportCapacityMult(0.5))
+	AddModifier(SupplyCostMult(0.75))

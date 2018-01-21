@@ -3,18 +3,24 @@ Template: tag/WeaponBase
 		Range := 100.0
 		Damage := 1.0
 		Reload := 1.0
-		SupplyCost := 0.0
+		BaseSupplyCost := 0.0
 		out DPS := Damage / Reload
 		out SupplyDrain := SupplyCost
 		out SupplyFireCost := SupplyCost * Reload
 
 	Modifier: RangeFactor(factor)
+		Range := Range + Base::Range * (factor - 1)
+	Modifier: RangeMult(factor)
 		Range := Range * factor
 	
 	Modifier: ReloadFactor(factor)
+		Reload := Reload + Base::Reload * (factor - 1)
+	Modifier: ReloadMult(factor)
 		Reload := Reload * factor
 	
 	Modifier: DamageFactor(factor)
+		Damage := Damage + Base::Damage * (factor - 1)
+	Modifier: DamageMult(factor)
 		Damage := Damage * factor
 
 Template: tag/BeamBase
@@ -29,35 +35,55 @@ Template: tag/BeamBase
 		Tracking := 1
 
 	Modifier: RangeFactor(factor)
+		Range := Range + Base::Range * (factor - 1)
+	Modifier: RangeMult(factor)
 		Range := Range * factor
 	
 	Modifier: DurationFactor(factor)
+		Duration := Duration + Base::Duration * (factor - 1)
+	Modifier: DurationMult(factor)
 		Duration := Duration * factor
 	
 	Modifier: CooldownFactor(factor)
+		Cooldown := Cooldown + Base::Cooldown * (factor - 1)
+	Modifier: CooldownMult(factor)
 		Cooldown := Cooldown * factor
 	
 	Modifier: DamageFactor(factor)
+		BeamDPS := BeamDPS + Base::BeamDPS * (factor - 1)
+	Modifier: DamageMult(factor)
 		BeamDPS := BeamDPS * factor
 	
 	Modifier: TrackingFactor(factor)
+		Tracking := Tracking + Base::Tracking * (factor - 1)
+	Modifier: TrackingMult(factor)
 		Tracking := Tracking * factor
 
 Template: tag/MissileBase
 	Modifier: SpeedFactor(factor)
+		Speed := Speed + Base::Speed * (factor - 1)
+	Modifier: SpeedMult(factor)
 		Speed := Speed * factor
 	
 	Modifier: TrackingFactor(factor)
+		Tracking := Tracking + Base::Tracking * (factor - 1)
+	Modifier: TrackingMult(factor)
 		Tracking := Tracking * factor
 
 Template: tag/ProjBase
 	Modifier: SpeedFactor(factor)
+		Speed := Speed + Base::Speed * (factor - 1)
+	Modifier: SpeedMult(factor)
 		Speed := Speed * factor
 	
 	Modifier: TrackingFactor(factor)
+		Tracking := Tracking + Base::Tracking * (factor - 1)
+	Modifier: TrackingMult(factor)
 		Tracking := Tracking * factor
 	
 	Modifier: SpreadFactor(factor)
+		Spread := Spread + Base::Spread * (factor - 1)
+	Modifier: SpreadMult(factor)
 		Spread := Spread * factor
 	
 	Modifier: PierceMod(add)

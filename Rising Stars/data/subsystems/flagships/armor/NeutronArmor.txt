@@ -15,7 +15,7 @@ Subsystem: NeutronArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.8
-	Hex.HP := 300 * HexSize
+	BaseHP := 300 * HexSize
 	Hex.Mass := 8 * HexSize
 	Hex.LaborCost := 2 * HexSize
 	Hex.BuildCost := 8 * HexSize

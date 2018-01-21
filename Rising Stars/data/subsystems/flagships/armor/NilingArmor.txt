@@ -11,11 +11,11 @@ Subsystem: NilingArmor
 
 	Size := HexSize * Hexes
 
-	Hex.HP := 0
+	BaseHP := 0
 	Hex.Mass := 6.0 * HexSize
 
 	Modifier: AddHP(amount)
-		Hex.HP := 0
+		BaseHP := 0
 
 	Damage := Size * 100
 	Radius := ((ShipSize + Size)/2)^(1/2.5) * 50

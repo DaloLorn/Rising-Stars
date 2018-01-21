@@ -8,13 +8,21 @@ Template: tag/BeamTool
 		Tracking := 1
 
 	Modifier: RangeFactor(factor)
+		Range := Range + Base::Range * (factor - 1)
+	Modifier: RangeMult(factor)
 		Range := Range * factor
 	
 	Modifier: DurationFactor(factor)
+		Duration := Duration + Base::Duration * (factor - 1)
+	Modifier: DurationMult(factor)
 		Duration := Duration * factor
 	
 	Modifier: CooldownFactor(factor)
+		Cooldown := Cooldown + Base::Cooldown * (factor - 1)
+	Modifier: CooldownMult(factor)
 		Cooldown := Cooldown * factor
 	
 	Modifier: TrackingFactor(factor)
+		Tracking := Tracking + Base::Tracking * (factor - 1)
+	Modifier: TrackingMult(factor)
 		Tracking := Tracking * factor

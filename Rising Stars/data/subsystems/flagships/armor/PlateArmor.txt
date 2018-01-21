@@ -12,7 +12,7 @@ Subsystem: PlateArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 50 * HexSize
+	BaseHP := 50 * HexSize
 
 	Hex.Mass := 6 * HexSize
 

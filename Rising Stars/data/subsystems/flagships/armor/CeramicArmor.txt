@@ -11,7 +11,7 @@ Subsystem: CeramicArmor
 
 	Size := HexSize * Hexes
 	Hex.Resistance := 0.3
-	Hex.HP := 30 * HexSize
+	BaseHP := 30 * HexSize
 	Hex.Mass := 1.0 * HexSize
 
 	Hex.LaborCost := 0.35 * HexSize

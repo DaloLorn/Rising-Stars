@@ -21,7 +21,7 @@ Subsystem: CompositeArmor
 	DummyEnergyResist := CompEnergyResist * 100
 	DummyExplosiveResist := CompExplosiveResist * 100
 
-	Hex.HP := 45 * HexSize
+	BaseHP := 45 * HexSize
 	Hex.Mass := 2.5 * HexSize
 
 	Hex.LaborCost := 0.6 * HexSize

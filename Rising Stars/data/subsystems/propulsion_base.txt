@@ -1,4 +1,17 @@
-Template: var/Thrust
+Template: var/BaseThrust
+	Defaults:
+		ThrustMod := 1
+		Thrust := BaseThrust * ThrustMod
 	Modifier: ThrustFactor(factor)
-		Thrust := Thrust * factor
+		BaseThrust := BaseThrust + Base::BaseThrust * (factor - 1)
+	Modifier: ThrustMult(factor)
+		ThrustMod := ThrustMod * factor
 
+Template: var/BaseTurnThrust
+	Defaults:
+		TurnThrustMod := 1
+		TurnThrust := BaseTurnThrust * TurnThrustMod
+	Modifier: TurnThrustFactor(factor)
+		BaseTurnThrust := BaseTurnThrust + Base::BaseTurnThrust * (factor - 1)
+	Modifier: TurnThrustMult(factor)
+		TurnThrustMod := TurnThrustMod * factor

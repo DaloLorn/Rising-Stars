@@ -12,7 +12,7 @@ Subsystem: LiquidArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.1
-	Hex.HP := 55 * HexSize
+	BaseHP := 55 * HexSize
 	Hex.Mass := 3 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes

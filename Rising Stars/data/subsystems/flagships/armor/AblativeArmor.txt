@@ -16,7 +16,7 @@ Subsystem: AblativeArmor
 	Size := HexSize * Hexes
 	Hex.Resistance := 0.3
 
-	Hex.HP := 31 * HexSize
+	BaseHP := 31 * HexSize
 	Hex.Mass := 4.0 * HexSize
 
 

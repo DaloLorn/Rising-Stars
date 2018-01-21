@@ -8,4 +8,4 @@ Trait: Inefficient
 
 	Gives Points: 1
 
-	AddModifier( SupplyCostFactor(1.25) )
+	AddModifier( SupplyCostMult(1.25) )

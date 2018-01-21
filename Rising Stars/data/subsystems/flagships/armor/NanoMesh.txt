@@ -11,11 +11,11 @@ Subsystem: NanoMesh
 
 	Size := HexSize * Hexes
 
-	Hex.HP := 200 * HexSize
+	BaseHP := 200 * HexSize
+	Hex.HP := 0
 	Hex.Mass := 2.0 * HexSize
 
-	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
-	AddPostModifier: HpFactor(0.0)
+	AddAdjacentModifier: AddHP(BaseHP * HPMod / 6.0)
 
 	Hex.LaborCost := 0.6 * HexSize
 	Hex.BuildCost := 4.0  * HexSize

@@ -10,58 +10,94 @@ Template: hexVar/LaborCost
 	Modifier: LaborCostFactor(factor)
 		Hex.LaborCost := Hex.LaborCost * factor
 
-Template: hexVar/HP
+Template: var/BaseHP
+	Defaults:
+		HPMod := 1
+		Hex.HP := if(IsCore, CoreHP * CoreHPMod, BaseHP * HPMod)
+		CoreHP := BaseHP * HPMod
 	Modifier: HpFactor(factor)
-		Hex.HP := Hex.HP * factor
-	Modifier: AddBaseHP(factor)
-		Hex.HP := Hex.HP + Base::Hex.HP * factor
+		BaseHP := BaseHP + Base::BaseHP * (factor - 1)
+	Modifier: HpMult(factor)
+		HPMod := HPMod * factor
 	Modifier: AddHP(amount)
-		Hex.HP := Hex.HP + amount
+		BaseHP := BaseHP + amount
 	Modifier: CoreHealthFactor(factor)
-		Hex.HP := if(IsCore, Hex.HP * factor, Hex.HP)
+		CoreHP := CoreHP + Base::CoreHP * (factor - 1)
+	Modifier: CoreHealthMult(factor)
+		CoreHPMod := CoreHPMod * factor
 
 Template: hexVar/Mass
 	Modifier: MassFactor(factor)
-		Hex.Mass := Hex.Mass * factor
+		Hex.Mass := Hex.Mass + Base::Hex.Mass * (factor - 1)
 	Modifier: CoreMassFactor(factor)
+		Hex.Mass := if(IsCore, Hex.Mass + Base::Hex.Mass * (factor - 1), Hex.Mass)
+	Modifier: MassMult(factor)
+		Hex.Mass := Hex.Mass * factor
+	Modifier: CoreMassMult(factor)
 		Hex.Mass := if(IsCore, Hex.Mass * factor, Hex.Mass)
 
 Template: var/Speed
 	Modifier: SpeedFactor(factor)
+		Speed := Speed + Base::Speed * (factor - 1)
+	Modifier: SpeedMult(factor)
 		Speed := Speed * factor
 
-Template: var/SupplyCost
+Template: var/BaseSupplyCost
+	Defaults: 
+		SupplyCostMod := 1
+		SupplyCost := BaseSupplyCost * SupplyCostMod
 	Modifier: SupplyCostFactor(factor)
-		SupplyCost := SupplyCost * factor
+		BaseSupplyCost := BaseSupplyCost + Base::BaseSupplyCost * (factor - 1)
+	Modifier: SupplyCostMult(factor)
+		SupplyCostMod := SupplyCostMod * factor
+
+Template: var/BaseSupportCapacity
+	Defaults: 
+		SupportCapacityMod := 1
+		SupportCapacity := BaseSupportCapacity * SupportCapacityMod
+	Modifier: SupportCapacityFactor(factor)
+		BaseSupportCapacity := BaseSupportCapacity + Base::BaseSupportCapacity * (factor - 1)
+	Modifier: SupportCapacityMult(factor)
+		SupportCapacityMod := SupportCapacityMod * factor
 
 Template: var/Repair
 	Modifier: RepairFactor(factor)
+		Repair := Repair + Base::Repair * (factor - 1)
+	Modifier: RepairMult(factor)
 		Repair := Repair * factor
-
-Template: var/DamageResist
-	Modifier: DamageResistFactor(factor)
-		DamageResist := DamageResist * factor
-
-Template: var/DamageResist,tag/IsArmor
-	Modifier: ArmorResistFactor(factor)
-		DamageResist := DamageResist * factor
 
 Template: var/BaseDamageResist
 	Modifier: DamageResistFactor(factor)
+		BaseDamageResist := BaseDamageResist + Base::BaseDamageResist * (factor - 1)
+	Modifier: DamageResistMult(factor)
 		BaseDamageResist := BaseDamageResist * factor
 
 Template: var/BaseDamageResist,tag/IsArmor
 	Modifier: ArmorResistFactor(factor)
+		BaseDamageResist := BaseDamageResist + Base::BaseDamageResist * (factor - 1)
+	Modifier: ArmorResistMult(factor)
 		BaseDamageResist := BaseDamageResist * factor
 
-Template: var/ShieldCapacity
+Template: var/BaseShieldCapacity
+	Defaults: 
+		ShieldCapacityMod := 1
+		ShieldCapacity := BaseShieldCapacity * ShieldCapacityMod
 	Modifier: ShieldCapacityFactor(factor)
-		ShieldCapacity := ShieldCapacity * factor
+		BaseShieldCapacity := BaseShieldCapacity + Base::BaseShieldCapacity * (factor - 1)
+	Modifier: ShieldCapacityMult(factor)
+		ShieldCapacityMod := ShieldCapacityMod * factor
 
-Template: var/ShieldRegen
+Template: var/BaseShieldRegen
+	Defaults: 
+		ShieldRegenMod := 1
+		ShieldRegen := BaseShieldRegen * ShieldRegenMod
 	Modifier: ShieldRegenFactor(factor)
-		ShieldRegen := ShieldRegen * factor
+		BaseShieldRegen := BaseShieldRegen + Base::BaseShieldRegen * (factor - 1)
+	Modifier: ShieldRegenMult(factor)
+		ShieldRegenMod := ShieldRegenMod * factor
 		
 Template: var/CargoStorage
 	Modifier: CargoStorageFactor(factor)
+		CargoStorage := CargoStorage + Base::CargoStorage * (factor - 1)
+	Modifier: CargoStorageMult(factor)
 		CargoStorage := CargoStorage * factor

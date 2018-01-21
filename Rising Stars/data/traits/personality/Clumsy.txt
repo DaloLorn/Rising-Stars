@@ -10,6 +10,6 @@ Trait: Clumsy
 	Conflict: Nimble
 
 
-	AddModifier( ThrustFactor(0.77) )
-	AddModifier( TurnThrustFactor(0.77) )
-	AddModifier( Hyperdrive::SpeedFactor(0.77) )
+	AddModifier( ThrustMult(0.7) )
+	AddModifier( TurnThrustMult(0.7) )
+	AddModifier( Hyperdrive::SpeedMult(0.7) )

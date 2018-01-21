@@ -10,6 +10,6 @@ Trait: Nimble
 	Costs Points: 1
 	Conflict: Clumsy
 
-	AddModifier( ThrustFactor(1.3) )
-	AddModifier( TurnThrustFactor(1.3) )
-	AddModifier( Hyperdrive::SpeedFactor(1.3) )
+	AddModifier( ThrustMult(1.3) )
+	AddModifier( TurnThrustMult(1.3) )
+	AddModifier( Hyperdrive::SpeedMult(1.3) )

@@ -17,8 +17,8 @@ Subsystem: BattleShrine
 	DamageFactor := 1.0 + (Size / ShipSize) * 1.5
 	RepairFactor := 1.0 + (Size / ShipSize) / 4
 
-	AddShipModifier: tag/Weapon::DamageFactor(DamageFactor)
-	AddShipModifier: RepairFactor(RepairFactor)
+	AddShipModifier: tag/Weapon::DamageMult(DamageFactor)
+	AddShipModifier: RepairMult(RepairFactor)
 
 	Hex.Resistance := 0.5
 	Hex.HP := 12 * HexSize
