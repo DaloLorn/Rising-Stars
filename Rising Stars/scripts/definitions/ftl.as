@@ -107,7 +107,7 @@ double flingSpeed(Object& obj, const vec3d& pos) {
 int flingCost(Object& obj, vec3d position) {
 	Region@ reg = obj.region;
 	Empire@ owner = obj.owner;
-	if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
+	if(!obj.isPlanet && reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 		return 0;
 	if(obj.isShip) {
 		Ship@ ship = cast<Ship>(obj);
