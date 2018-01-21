@@ -7,11 +7,11 @@ Module: ShieldArray
 	Icon: ShieldGen
 	Health: 2500
 	Armor: 1500
-	Maintenance: 10
+	Maintenance: 20
 	Build Cost: 200
 	Strategic Icon: ShieldGen
 	Shield Capacity: 6000
-	Shield Regeneration: 30
+	Shield Regeneration: 6.25
 	RequireUnlockTag(ShieldGenerator)
 	ConsumeCargo(Ore, 250)
 

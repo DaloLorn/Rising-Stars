@@ -1,5 +1,5 @@
 Status: ShieldArray
 	Visible To: Nobody
 	Collapses: True
-	RepeatStacks(ABEM_hooks::RechargeShields(30, In Combat = True, Fleet = False))
+	RepeatStacks(ABEM_hooks::RechargeShields(6.25, In Combat = True, Fleet = False))
 	RepeatStacks(ABEM_hooks::AddShieldCapacity(SV_ShieldCapacity, Default Capacity = 6000.0, Start On = False))

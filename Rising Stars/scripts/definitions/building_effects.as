@@ -159,8 +159,17 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	}
 
 #section server
-	void complete(Object& obj, SurfaceBuilding@ bld) const {
+	any@ getData(SurfaceBuilding@ bld) const {
 		auto@ data = bld.data[hookIndex];
+		IfData@ info;
+		data.retrieve(@info);
+		if(info is null)
+			return data;
+		else return info.data;
+	}
+
+	void complete(Object& obj, SurfaceBuilding@ bld) const {
+		auto@ data = getData(bld);
 		ConsumeData info;
 		info.enabled = false;
 		data.store(@info);
@@ -177,9 +186,9 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 		}
 	}
 
-	void disable(Object& obj, any@ data) const override {
+	void remove(Object& obj, SurfaceBuilding@ bld) const override {
 		ConsumeData@ info;
-		data.retrieve(@info);
+		getData(bld).retrieve(@info);
 
 		bld.disabled = true;
 		bld.delta = true;
@@ -194,7 +203,7 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	}
 
 	void tick(Object& obj, SurfaceBuilding@ bld, double time) const {
-		auto@ data = bld.data[hookIndex];
+		auto@ data = getData(bld);
 		ConsumeData@ info;
 		data.retrieve(@info);
 
