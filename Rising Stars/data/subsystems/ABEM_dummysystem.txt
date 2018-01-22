@@ -1,5 +1,5 @@
 Subsystem: ABEMDummy
-  Tags: Disabled, BadFiller, DontList, GateHull, CannotDonate, Hyperdrive, Slipstream, Boarders, Volatile
+  Tags: Disabled, BadFiller, DontList, GateHull, CannotDonate, Hyperdrive, Slipstream, Boarders, Volatile, NoFrontWall
 
 	DummySensorMult := 0
   HullHealing := 0

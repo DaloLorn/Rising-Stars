@@ -17,7 +17,8 @@ Subsystem: CarpetBomb
 	Reload := 30
 	BombardCost := Size * 200
 
-	Hex.HP := 3 * HexSize
+	BaseHP := 3 * HexSize
+	CoreHPMod := 4
 	Hex.Mass := HexSize
 	Hex.Resistance := 0.2
 
@@ -35,7 +36,6 @@ Subsystem: CarpetBomb
 
 	Module: Core
 		Hex.BuildCost := 3 * Hex.BuildCost
-		Hex.HP := Hex.HP * 4.0
 
 		Sprite: MissileLauncher::0 * #ffa0a0
 		DrawMode: 1

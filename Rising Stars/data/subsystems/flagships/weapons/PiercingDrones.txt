@@ -49,7 +49,6 @@ Subsystem: PiercingDrones
 		Message: #ERROR_DRONEWEAPON
 
 	Module: Core
-		Hex.HP := Hex.HP * 2
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.MaintainCost := 1.5 * Hex.MaintainCost
 		Hex.Mass := 5.0 * Hex.Mass

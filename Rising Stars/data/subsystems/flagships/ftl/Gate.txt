@@ -15,7 +15,7 @@ Subsystem: Gate
 	Hex.Mass := HexSize
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	
 	Effect: FTLUpkeep
 		Amount = 0.15
