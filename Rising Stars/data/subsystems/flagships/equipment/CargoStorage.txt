@@ -16,7 +16,7 @@ Subsystem: CargoStorage
 	Hook: AddPermanentStatus(CanTakeCargo)
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Mass := HexSize * 3
 
 	Hex.LaborCost := 0.1 * HexSize

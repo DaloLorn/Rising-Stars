@@ -24,15 +24,18 @@ Subsystem: FlakBattery
 	Tracking := 0.6
 
 	Pierce := 0.2
-	SupplyCost := Size * 0.5
+	BaseSupplyCost := Size * 0.5
 
 	PowerUse := 3 * Size
 	
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 6
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
 	Modifier: RangeFactor(factor)
+		Range := Range + Base::Range * pow(factor - 1, 1.0/5.0)
+	Modifier: RangeMult(factor)
 		Range := Range * pow(factor, 1.0/5.0)
 
 	Requires:
@@ -42,7 +45,6 @@ Subsystem: FlakBattery
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 6
 		Hex.BuildCost := 4.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

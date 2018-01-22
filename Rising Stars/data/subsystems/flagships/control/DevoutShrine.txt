@@ -15,12 +15,12 @@ Subsystem: DevoutShrine
 	RequirePrayer := 1
 
 	Size := HexSize * Hexes
-	ShieldCapacity := Size * 100
-	ShieldRegen := Size
+	BaseShieldCapacity := Size * 100
+	BaseShieldRegen := Size
 	ShieldHexes := Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
 
 	Effect: ABEMShieldDamage

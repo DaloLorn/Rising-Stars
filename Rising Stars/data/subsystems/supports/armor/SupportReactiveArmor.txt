@@ -14,7 +14,7 @@ Subsystem: SupportReactiveArmor
 	MinPct := 1/2
 
 	Hex.Resistance := 0.55
-	Hex.HP := 32 * HexSize
+	BaseHP := 32 * HexSize
 	Hex.Mass := 2.8 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes

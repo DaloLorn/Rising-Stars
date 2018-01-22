@@ -25,7 +25,8 @@ Subsystem: AncientCore
 	out SupplyDrain := RepairSupplyCost
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Mass := HexSize
 
 	Hex.LaborCost := 0.15 * HexSize + 0.18
@@ -42,7 +43,6 @@ Subsystem: AncientCore
 
 	Module: Core
 		Sprite: AncientComputerCore
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 
 		Hex.BuildCost := 5 * Hex.BuildCost

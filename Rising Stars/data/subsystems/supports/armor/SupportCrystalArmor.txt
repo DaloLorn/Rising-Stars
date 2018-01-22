@@ -14,7 +14,7 @@ Subsystem: SupportCrystalArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Hex.Resistance := 0.6
-	Hex.HP := 200 * HexSize
+	BaseHP := 200 * HexSize
 	Hex.Mass := 2.4 * HexSize
 
 	Hex.BuildCost := 6.0 * HexSize

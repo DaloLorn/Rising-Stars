@@ -14,7 +14,7 @@ Subsystem: SatelliteHull
 	GridWidth := 21
 	GridHeight := 17
 
-	TurnThrust = 0.5 * Size
+	BaseTurnThrust = 0.5 * Size
 	DummyForStR:=1000
 	DummyForRepair:=4
 
@@ -31,11 +31,11 @@ Subsystem: SatelliteHull
 
 	AddShipModifier: BuildCostFactor(0.75)
 	AddShipModifier: LaborCostFactor(0.5)
-	AddShipModifier: tag/Weapon::RangeFactor(2.0)
-	AddShipModifier: tag/MissileBase::RangeFactor(0.65)
-	AddShipModifier: tag/MissileBase::DamageFactor(0.65)
-	AddShipModifier: tag/Weapon::DamageFactor(1.5)
-	AddShipModifier: HpFactor(2.0)
+	AddShipModifier: tag/Weapon::RangeMult(2.0)
+	AddShipModifier: tag/MissileBase::RangeMult(0.65)
+	AddShipModifier: tag/MissileBase::DamageMult(0.65)
+	AddShipModifier: tag/Weapon::DamageMult(1.5)
+	AddShipModifier: HpMult(2.0)
 
 	Hex.Mass := 0
 	AddPostModifier: AddMass(ShipSize * (1.0 - max((ShipTotalHexes - Ship.ExternalHexes) / HexLimit, 0.0)))

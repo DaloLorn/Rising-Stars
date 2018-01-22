@@ -13,5 +13,5 @@ Technology: GravitonChanneling
 	Time Cost: 100
 
 	ReduceResearchPenalty(800)
-	AddModifier( GravityEngine::ThrustFactor(1.5) )
+	AddModifier( GravityEngine::ThrustMult(1.5) )
 	AddModifier( GravityEngine::PowerUseFactor(2.0) )

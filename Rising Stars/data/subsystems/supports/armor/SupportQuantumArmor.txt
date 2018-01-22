@@ -16,7 +16,7 @@ Subsystem: SupportQuantumArmor
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 160* HexSize
+	BaseHP := 160* HexSize
 	Hex.Mass := 2.5 * HexSize
 
 	Hex.BuildCost := 1.5 * HexSize

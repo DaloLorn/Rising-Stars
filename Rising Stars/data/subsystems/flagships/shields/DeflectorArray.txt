@@ -21,7 +21,8 @@ Subsystem: DeflectorArray
 	Arc := 0.3 * pi
 
 	Hex.Resistance := 0.5
-	Hex.HP := 20 * HexSize
+	BaseHP := 20 * HexSize
+	CoreHPMod := 6
 	Hex.Mass := 3.0 * HexSize
 
 	Effector: Deflector
@@ -39,5 +40,4 @@ Subsystem: DeflectorArray
 
 	Module: Core
 		Sprite: Dish
-		Hex.HP := 6 * Hex.HP
 		Hex.BuildCost := 5 * Hex.BuildCost

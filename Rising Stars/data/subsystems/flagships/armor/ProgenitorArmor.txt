@@ -22,7 +22,7 @@ Subsystem: ProgenitorArmor
 	DamageResist := ShipSize / 16
 	Description: #S_PROGENITOR_ARMOR_DESC
 	PowerUse := 8 * Size
-	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
+	AddAdjacentModifier: AddHP(BaseHP * HPMod / 6.0)
 	RegenPerSecond := 2 * HexSize
 	ImpactLevel := 80 * HexSize
 	Effect: CapDamage

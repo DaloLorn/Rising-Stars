@@ -8,6 +8,6 @@ Template: hexVar/BuildCost, hexVar/HP, !tag/NoBulkhead, !tag/NoCore, !tag/IsArmo
 
 		Hex.HP := 3.0 * Hex.HP
 
-		AddModifier: AddBaseHP(1.5)
+		AddModifier: HpFactor(1.5)
 		AddModifier: BuildCostFactor(2.0)
 		AddModifier: LaborCostFactor(1.5)

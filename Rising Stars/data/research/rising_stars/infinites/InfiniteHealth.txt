@@ -1,6 +1,6 @@
 Technology: InfiniteHealth
 	Name: #R_INFINITE_HEALTH
-	Description: #R_INFINITE_HEALTH_DESC:5%
+	Description: #R_INFINITE_HEALTH_DESC:+20%
 
 	Icon: techMaterialScience1*#a8df21
 	Symbol: EditIcons::7
@@ -17,7 +17,7 @@ Technology: InfiniteHealth
 
 	ResetWhenUnlocked()
 
-	AddModifier(HpFactor(1.05))
-	AddModifier(ReactiveArmor::ImpactLevelFactor(1.05))
-	ModAttribute(OrbitalHealthMod, Multiply, 1.05)
+	AddModifier(HpFactor(1.2))
+	AddModifier(ImpactLevelFactor(1.2))
+	ModAttribute(OrbitalHealthMod, Multiply, 1.2)
 	ModAttribute(InfiniteHealthTaken, Add, 1)

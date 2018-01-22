@@ -11,10 +11,10 @@ Subsystem: JuggernautHull
 
 	HexLimit := -50
 
-	AddShipModifier: HpFactor(12.0)
-	AddShipModifier: ArmorResistFactor(1.5)
-	AddShipModifier: MassFactor(5)
-	AddShipModifier: TurnThrustFactor(3)
+	AddShipModifier: HpMult(12.0)
+	AddShipModifier: ArmorResistMult(1.5)
+	AddShipModifier: MassMult(5)
+	AddShipModifier: TurnThrustMult(3)
 
 
 	AddShipModifier: TechMultFactor(1)

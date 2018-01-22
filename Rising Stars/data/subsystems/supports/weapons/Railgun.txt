@@ -20,9 +20,10 @@ Subsystem: Railgun
 	Tracking := 0.8
 	FireArc := 0.5 * pi
 	Pierce := if(MuonEnhanced > 0, 1.5, 1.0)
-	SupplyCost := Size * 1.5
+	BaseSupplyCost := Size * 1.5
 
-	Hex.HP := 27 * HexSize
+	BaseHP := 27 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Hex.BuildCost := 0.75 * HexSize
@@ -38,7 +39,6 @@ Subsystem: Railgun
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 5
 		Hex.Mass := Hex.Mass * 5
 

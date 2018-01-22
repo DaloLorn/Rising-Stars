@@ -11,15 +11,16 @@ Subsystem: Ramjet
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	Thrust := 18 * Size
-	TurnThrust := 0.75 * Size
+	BaseThrust := 18 * Size
+	BaseTurnThrust := 0.75 * Size
 
 	SupplyGain := 0
 
 	Hex.Mass := 0.3 * HexSize
 
 	Hex.Resistance := 0.3
-	Hex.HP := 26 * HexSize
+	BaseHP := 26 * HexSize
+	CoreHPMod := 5
 
 	Hook: GainSupplyVelocity(SupplyGain, 100)
 
@@ -53,7 +54,6 @@ Subsystem: Ramjet
 		Sprite: Ramjet
 
 		Hex.MaintainCost := Hex.MaintainCost * 5 * BussardMaintMult * min(ShipSize/BussardPeakSize, 1)
-		Hex.HP := 5 * Hex.HP
 		Hex.BuildCost := 2.0 * Hex.BuildCost
 		Hex.LaborCost := 2.0 * Hex.LaborCost
 
@@ -68,7 +68,7 @@ Subsystem: Ramjet
 		Hex.MaintainCost := 0
 		Hex.BuildCost := 25 * Hex.BuildCost
 		Hex.LaborCost := 25 * Hex.LaborCost
-		Hex.HP := 5 * Hex.HP
+		Hex.HP := CoreHP * CoreHPMod
 
 		SupplyGain := SupplyGain + HexSize * 200
 

@@ -13,7 +13,7 @@ Subsystem: BusterBeam
 	Hex.Mass := HexSize
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	Requires:
 		Command = 1

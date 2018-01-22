@@ -15,7 +15,7 @@ Subsystem: SupportPlateArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Hex.Resistance := 0.5
-	Hex.HP := 52.5 * HexSize
+	BaseHP := 52.5 * HexSize
 	Hex.Mass := 4.0 * HexSize
 
 	Hex.BuildCost := 1.2 * HexSize

@@ -15,7 +15,7 @@ Subsystem: VerdantSinew
 	Repair := 32 * HexSize
 
 	Hex.Resistance := 0.2
-	Hex.HP := 40 * HexSize
+	BaseHP := 40 * HexSize
 	Hex.Mass := HexSize * 1.5
 
 	Effect: DestroyOnLowEfficiency

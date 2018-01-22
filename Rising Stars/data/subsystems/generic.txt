@@ -20,7 +20,7 @@ Template: var/BaseHP
 	Modifier: HpMult(factor)
 		HPMod := HPMod * factor
 	Modifier: AddHP(amount)
-		BaseHP := BaseHP + amount
+		Hex.HP := Hex.HP + amount
 	Modifier: CoreHealthFactor(factor)
 		CoreHP := CoreHP + Base::CoreHP * (factor - 1)
 	Modifier: CoreHealthMult(factor)
@@ -60,11 +60,41 @@ Template: var/BaseSupportCapacity
 	Modifier: SupportCapacityMult(factor)
 		SupportCapacityMod := SupportCapacityMod * factor
 
+Template: var/BaseSupplyCapacity
+	Defaults: 
+		SupplyCapMod := 1
+		SupplyCapacity := BaseSupplyCapacity * SupplyCapMod
+	Modifier: SupplyCapacityFactor(factor)
+		BaseSupplyCapacity := BaseSupplyCapacity + Base::BaseSupplyCapacity * (factor - 1)
+	Modifier: SupplyCapacityMult(factor)
+		SupplyCapMod := SupplyCapMod * factor
+
+Template: var/BasePower
+	Defaults:
+		PowerMod := 1
+		Power := BasePower * PowerMod
+	Modifier: PowerFactor(factor)
+		BasePower := BasePower + Base::BasePower * (factor - 1)
+	Modifier: PowerMult(factor)
+		PowerMod := PowerMod * factor
+
 Template: var/Repair
 	Modifier: RepairFactor(factor)
 		Repair := Repair + Base::Repair * (factor - 1)
 	Modifier: RepairMult(factor)
 		Repair := Repair * factor
+
+Template: var/DamageResist
+	Modifier: DamageResistFactor(factor)
+		DamageResist := DamageResist + Base::DamageResist * (factor - 1)
+	Modifier: DamageResistMult(factor)
+		DamageResist := DamageResist * factor
+
+Template: var/DamageResist,tag/IsArmor
+	Modifier: ArmorResistFactor(factor)
+		DamageResist := DamageResist + Base::DamageResist * (factor - 1)
+	Modifier: ArmorResistMult(factor)
+		DamageResist := DamageResist * factor
 
 Template: var/BaseDamageResist
 	Modifier: DamageResistFactor(factor)

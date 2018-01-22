@@ -9,13 +9,13 @@ Subsystem: AntimatterGen
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Power := 90 * Size
+	BasePower := 90 * Size
 
-	SupplyCapacity := Size * 300
+	BaseSupplyCapacity := Size * 300
 	SupplyRate := Size * 15
 
 	Hex.Resistance := 0.5
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Mass := 3.5 * HexSize
 
 	Hex.LaborCost := 0.25 * HexSize + 1.2
@@ -36,10 +36,3 @@ Subsystem: AntimatterGen
 	Module: Default
 		Hex.BuildCost := 0.9 * Hex.BuildCost
 		Hex.Mass := 0.9 * Hex.Mass
-
-
-	Modifier: SupplyCapacityFactor(factor)
-		SupplyCapacity := SupplyCapacity * factor
-
-	Modifier: PowerFactor(factor)
-		Power := Power * factor

@@ -17,7 +17,7 @@ Subsystem: ShieldHardener
 	HasShieldHardener := 1
 
 	Hex.Resistance := 0.5
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
 	
 	Requires:

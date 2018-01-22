@@ -24,7 +24,7 @@ Technology: Flagship2
 	Category: Specializations
 	Symbol: techMilitia*#ff0021
 	SecondaryMoneyCost(1)
-	AddModifier(hull/Flagship::SupportCapacityFactor(0.80))
+	AddModifier(hull/Flagship::SupportCapacityMult(0.80))
 	AddModifier(hull/Flagship::MaintCostFactor(0.90) )
 
 	ReplaceTechnologyNodes(Support2, SpecConnector)
@@ -54,8 +54,8 @@ Technology: Flagship4
 	Symbol: techMilitia*#ff0021
 	Category: Specializations
 	SecondaryMoneyCost(1)
-	AddModifier(hull/Flagship::HpFactor(1.1))
-	AddModifier( hull/Flagship::ShieldCapacityFactor(1.1))
+	AddModifier(hull/Flagship::HpMult(1.1))
+	AddModifier( hull/Flagship::ShieldCapacityMult(1.1))
 
 
 	ReplaceTechnologyNodes(Support4, SpecConnector)
@@ -86,8 +86,8 @@ Technology: Support2
 	Class: Unlock
 	Category: Specializations
 	Symbol: techMilitia*#ff8f0f
-	AddModifier( hull/Flagship::DamageFactor(0.9) )
-	AddModifier(hull/Support::DamageFactor(1.1))
+	AddModifier( hull/Flagship::DamageMult(0.9) )
+	AddModifier(hull/Support::DamageMult(1.1))
 
 	SecondaryMoneyCost(1)
 	ReplaceTechnologyNodes(Flagship2, SpecConnector)
@@ -101,8 +101,8 @@ Technology: Support3
 	Color: #ff8f0f
 	Category: Specializations
 	Symbol: techMilitia*#ff8f0f
-	AddModifier(hull/Support::RangeFactor(1.10))
-	AddModifier(hull/Flagship::RangeFactor(0.9))
+	AddModifier(hull/Support::RangeMult(1.10))
+	AddModifier(hull/Flagship::RangeMult(0.9))
 
 	SecondaryMoneyCost(1)
 	ReplaceTechnologyNodes(Flagship3, SpecConnector)

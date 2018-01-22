@@ -14,4 +14,4 @@ Technology: DroneCount
 
 	ReduceResearchPenalty(750)
 	AddModifier( DroneLauncher::DroneCountFactor(1.5) )
-	AddModifier( DroneLauncher::DamageFactor(1.3) )
+	AddModifier( DroneLauncher::DamageMult(1.3) )

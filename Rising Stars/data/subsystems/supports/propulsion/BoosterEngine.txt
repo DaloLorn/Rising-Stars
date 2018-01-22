@@ -15,13 +15,16 @@ Subsystem: BoosterEngine
 
 	Size := HexSize * Hexes
 
-	BoostThrust := 100 * Size
-	TurnThrust := 5.0 * Size
+	BaseThrust := 100 * Size
+	Thrust := 0
+	BoostThrust := BaseThrust * ThrustMod
+	BaseTurnThrust := 5.0 * Size
 
 	Hex.Mass := 0.5 * HexSize
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 22 * HexSize
+	BaseHP := 22 * HexSize
+	CoreHPMod := 2
 	
 	Hex.BuildCost := 1.2 * HexSize
 	Hex.LaborCost := 0.1 * HexSize
@@ -33,6 +36,5 @@ Subsystem: BoosterEngine
 	
 	Module: Core
 		Sprite: BoosterEngine
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

@@ -20,11 +20,12 @@ Subsystem: RailgunBattery
 	Tracking := 0.8 / min(1.0 + Size/512, 2.0)
 	FireArc := 0.5 * pi
 	Pierce := 1.0
-	SupplyCost := Size * 1.5
+	BaseSupplyCost := Size * 1.5
 	PowerUse := 2.5 * Size
 	Impulse := 0
 
-	Hex.HP := 27 * HexSize
+	BaseHP := 27 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Modifier: AddRailgunKnockback(Amount)
@@ -37,7 +38,6 @@ Subsystem: RailgunBattery
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

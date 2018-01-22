@@ -16,7 +16,8 @@ Subsystem: SelfDestruct
 	Radius := ((ShipSize + Size)/2)^(1/2.5) * 12.5
 
 	Hex.Mass := 4* HexSize
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Resistance := 0.2
 
 	Requires:
@@ -25,7 +26,6 @@ Subsystem: SelfDestruct
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 2
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

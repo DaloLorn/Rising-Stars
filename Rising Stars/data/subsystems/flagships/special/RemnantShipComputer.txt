@@ -20,7 +20,8 @@ Subsystem: RemnantShipComputer
 	SupplyRate := 30 * HexSize * (Hexes-1)
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Mass := HexSize
 
 	Effect: ControlCore
@@ -36,6 +37,5 @@ Subsystem: RemnantShipComputer
 	
 	Module: Core
 		Sprite: ComputerCore
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

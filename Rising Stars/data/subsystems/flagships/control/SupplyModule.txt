@@ -10,7 +10,7 @@ Subsystem: SupplyModule
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	SupplyCapacity := Size * 4000
+	BaseSupplyCapacity := Size * 4000
 	SupplyRate := Size * 6
 
 	Hex.LaborCost := 0.15 * HexSize + 0.8
@@ -18,11 +18,8 @@ Subsystem: SupplyModule
 	Hex.MaintainCost := 2 * HexSize + 3 - (4 * HexSize / ShipSize^0.5)
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Mass := HexSize
-
-	Modifier: SupplyCapacityFactor(factor)
-		SupplyCapacity := SupplyCapacity * factor
 
 	Modifier: Compress(Amount)
 		SupplyCapacity := SupplyCapacity + Base::SupplyCapacity * (Amount / Hexes)

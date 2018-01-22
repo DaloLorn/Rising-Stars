@@ -11,8 +11,8 @@ Subsystem: SolarPanel
 
 	Size := HexSize * Hexes
 
-	Power := 7 * Size
-	SolarPower := 7 * Size
+	BasePower := 7 * Size
+	SolarPower := Power
 
 	SolarEfficiencyLoss := 0.5
 	SolarEfficiencyMinBoost := 0.0
@@ -21,7 +21,7 @@ Subsystem: SolarPanel
 	Hook: SolarEfficiency(SolarEfficiencyLoss, SolarEfficiencyMinBoost, SolarEfficiencyMaxBoost, True)
 
 	Hex.Resistance := 0.01
-	Hex.HP := 10 * HexSize
+	BaseHP := 10 * HexSize
 	Hex.Mass := 0.25 * HexSize
 
 	Hex.LaborCost := 0.05 * HexSize

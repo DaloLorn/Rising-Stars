@@ -1,6 +1,6 @@
 Technology: InfiniteSupport
 	Name: #R_INFINITE_SUPPORT
-	Description: #R_INFINITE_SUPPORT_DESC:5%
+	Description: #R_INFINITE_SUPPORT_DESC:+20%
 
 	Icon: techOrganization * #22c8ca
 	Symbol: EditIcons::7
@@ -17,5 +17,5 @@ Technology: InfiniteSupport
 
 	ResetWhenUnlocked()
 
-	AddModifier( SupportCapacityFactor(1.05) )
+	AddModifier( SupportCapacityFactor(1.2) )
 	ModAttribute(InfiniteSupportTaken, Add, 1)

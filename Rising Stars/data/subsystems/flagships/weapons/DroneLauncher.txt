@@ -15,7 +15,7 @@ Subsystem: DroneLauncher
 	Range := Size + 900
 	Speed := 80
 	Tracking := 3
-	SupplyCost := Size * 3.0
+	BaseSupplyCost := Size * 3.0
 
 	Lifetime := 30
 
@@ -29,7 +29,8 @@ Subsystem: DroneLauncher
 	//DPS is an estimation
 	out DPS := Damage * 10 * DroneCount / Lifetime
 	
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 	
@@ -39,7 +40,6 @@ Subsystem: DroneLauncher
 	Module: Default
 	
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

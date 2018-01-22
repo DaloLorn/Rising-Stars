@@ -7,7 +7,7 @@ Template: hexVar/BuildCost, hexVar/HP, tag/Weapon, var/Range, var/SupplyCost, !t
 		Sprite: SupportCommand * #00ff00
 
 		AddModifier: BuildCostFactor(1.5)
-		AddModifier: SupplyCostFactor(1.2)
-		AddModifier: optional SpreadFactor(0.5)
+		AddModifier: SupplyCostMult(1.2)
+		AddModifier: optional SpreadMult(0.5)
 
 		Range := Range + Base::Range * 0.6

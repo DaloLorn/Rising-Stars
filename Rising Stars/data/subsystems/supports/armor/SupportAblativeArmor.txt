@@ -14,7 +14,7 @@ Subsystem: SupportAblativeArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Hex.Resistance := 0.25
-	Hex.HP := 36 * HexSize
+	BaseHP := 36 * HexSize
 	Hex.Mass := 2.8 * HexSize
 
 	Hex.BuildCost := 2.25 * HexSize

@@ -42,20 +42,20 @@ Subsystem: StationHull
 
 	MaintenanceMod := 1.0
 	RangeMod := 1.0
-	HPMod := 1.0
+	StationHPMod := 1.0
 	LaborMod := 1.0
 
 	AddShipModifier: BuildCostFactor(0.75)
 	AddShipModifier: !tag/StaticMaintenance::MaintCostFactor(0.2 * MaintenanceMod)
 	AddShipModifier: LaborCostFactor(0.3 * LaborMod)
-	AddShipModifier: SupportCapacityFactor(0.33)
-	AddShipModifier: HpFactor(4.0 * HPMod)
-	AddShipModifier: ShieldCapacityFactor(4.0)
-	AddShipModifier: RangeFactor(2.0 * RangeMod)
-	AddShipModifier: SpreadFactor(0.5)
-	AddShipModifier: MassFactor(3.0)
+	AddShipModifier: SupportCapacityMult(0.33)
+	AddShipModifier: HpMult(4.0 * StationHPMod)
+	AddShipModifier: ShieldCapacityMult(4.0)
+	AddShipModifier: RangeMult(2.0 * RangeMod)
+	AddShipModifier: SpreadMult(0.5)
+	AddShipModifier: MassMult(3.0)
 	AddShipModifier: FireArcFactor(2.0)
-	AddShipModifier: TrackingFactor(2.0)
+	AddShipModifier: TrackingMult(2.0)
 
 	Modifier: IncreaseHexLimit(Hexes)
 		HexLimit := HexLimit + Hexes

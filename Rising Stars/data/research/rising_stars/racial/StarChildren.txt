@@ -1,7 +1,7 @@
 Technology: HabitatUpgrade
 	Name: #R_IMP_HABITAT
-	Blurb: #R_IMP_HABITAT_BLURB:50%:30%
-	Description: #R_IMP_HABITAT_DESC:50%:30%
+	Blurb: #R_IMP_HABITAT_BLURB:+50%:+30%
+	Description: #R_IMP_HABITAT_DESC:+50%:+30%
 
 	Icon: ResourceIcon::8
 	Color: #ca6700

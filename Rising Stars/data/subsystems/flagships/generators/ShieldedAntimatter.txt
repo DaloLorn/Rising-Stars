@@ -8,13 +8,13 @@ Subsystem: ShieldedAntimatter
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Power := 75 * Size
-	SupplyCapacity := Size * 300
+	BasePower := 75 * Size
+	BaseSupplyCapacity := Size * 300
 	SupplyRate := Size * 75
 	CombatSupplyRate := SupplyRate / 10
 
 	Hex.Resistance := 0.5
-	Hex.HP := 25 * HexSize
+	BaseHP := 25 * HexSize
 	Hex.Mass := 4 * HexSize
 
 	Hex.LaborCost := 1.5*HexSize + 3
@@ -28,9 +28,3 @@ Subsystem: ShieldedAntimatter
 	Module: Core
 		Sprite: ShieldedAntimatterGen
 	Module: Default
-
-	Modifier: SupplyCapacityFactor(factor)
-		SupplyCapacity := SupplyCapacity * factor
-
-	Modifier: PowerFactor(factor)
-		Power := Power * factor

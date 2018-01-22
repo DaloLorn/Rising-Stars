@@ -26,7 +26,8 @@ Subsystem: CrewControl
 	out SupplyDrain := RepairSupplyCost
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Mass := HexSize
 
 	Effect: ABEMControlCore
@@ -40,7 +41,6 @@ Subsystem: CrewControl
 
 	Module: Core
 		Sprite: Bridge
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 
 		Hex.BuildCost := 5 * Hex.BuildCost

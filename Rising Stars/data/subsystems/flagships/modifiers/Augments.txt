@@ -10,9 +10,9 @@ Template: hexVar/HP, tag/Weapon, !tag/NoAugment
 		Hex.HP := 3.0 * Hex.HP
 		Hex.BuildCost := Size
 
-		AddModifier: optional ReloadFactor(0.8)
-		AddModifier: optional CooldownFactor(0.8)
-		AddModifier: HPFactor(0.5)
+		AddModifier: optional ReloadMult(0.8)
+		AddModifier: optional CooldownMult(0.8)
+		AddModifier: HPMult(0.5)
 
 	Module: AugmentDamage
 		Name: #S_AUGMENT_DAMAGE
@@ -25,9 +25,8 @@ Template: hexVar/HP, tag/Weapon, !tag/NoAugment
 		Hex.HP := 3.0 * Hex.HP
 		Hex.BuildCost := Size
 
-		AddModifier: optional RangeFactor(0.5)
-		AddModifier: optional DamageFactor(1.25)
-		AddModifier: optional BeamDPSFactor(1.25)
+		AddModifier: optional RangeMult(0.5)
+		AddModifier: optional DamageMult(1.25)
 
 Template: hexVar/HP, var/SupplyCost, tag/Weapon, !tag/NoAugment
 	Module: AugmentSupply
@@ -41,6 +40,6 @@ Template: hexVar/HP, var/SupplyCost, tag/Weapon, !tag/NoAugment
 		Hex.HP := 3.0 * Hex.HP
 		Hex.BuildCost := Size
 
-		AddModifier: optional SupplyCostFactor(0.7)
+		AddModifier: optional SupplyCostMult(0.7)
 		AddModifier: optional FireArcFactor(0.5)
-		AddModifier: optional SpeedFactor(0.5)
+		AddModifier: optional SpeedMult(0.5)

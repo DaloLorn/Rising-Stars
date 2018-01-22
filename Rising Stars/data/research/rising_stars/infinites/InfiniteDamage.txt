@@ -1,6 +1,6 @@
 Technology: InfiniteDamage
 	Name: #R_INFINITE_DAMAGE
-	Description: #R_INFINITE_DAMAGE_DESC:5%
+	Description: #R_INFINITE_DAMAGE_DESC:+20%
 
 	Icon: techImpact * #d45418
 	Symbol: EditIcons::7
@@ -17,6 +17,6 @@ Technology: InfiniteDamage
 
 	ResetWhenUnlocked()
 
-	AddModifier( tag/Weapon::DamageFactor(1.05) )
-	ModAttribute(StaticDamageFactor, Multiply, 1.05)
+	AddModifier( tag/Weapon::DamageFactor(1.2) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.2)
 	ModAttribute(InfiniteDamageTaken, Add, 1)

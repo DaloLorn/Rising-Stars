@@ -9,7 +9,7 @@ Subsystem: RemnantSupplyModule
 	Hull: Flagship, Station
 	
 	Size := HexSize * Hexes
-	SupplyCapacity := Size * 500000
+	BaseSupplyCapacity := Size * 500000
 	SupplyRate := Size * 60000
 	
 	Hex.LaborCost := 0.3 * HexSize + 0.8
@@ -17,7 +17,7 @@ Subsystem: RemnantSupplyModule
 	Hex.MaintainCost := 8 * HexSize + 5
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Mass := HexSize
 
 	Module: Default

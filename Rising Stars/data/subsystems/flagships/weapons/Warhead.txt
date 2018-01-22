@@ -25,7 +25,8 @@ Subsystem: Warhead
 	WarheadLabor := 0.1 * ShipSize
 	WarheadStorage := 1
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 
 	Hook: OnEnable(AddStatus(Warhead))
@@ -45,7 +46,6 @@ Subsystem: Warhead
 		Message: #ERROR_ONLY_ONE
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost + WarheadCost
 		Hex.LaborCost := Hex.LaborCost + WarheadLabor
 		Hex.Mass := 5.0 * Hex.Mass

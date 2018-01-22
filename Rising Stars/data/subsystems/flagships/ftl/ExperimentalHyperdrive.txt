@@ -11,11 +11,13 @@ Subsystem: ExperimentalHyperdrive
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	HyperdriveSpeed := 1600.0 * Size / ShipSize
+	BaseHyperdriveSpeed := 1600.0 * Size / ShipSize
+	HyperSpeedMod := 1
+	HyperdriveSpeed := BaseHyperdriveSpeed * HyperSpeedMod
 	Hex.Mass := HexSize * 2
 
 	Hex.Resistance := 0.2
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
 	Hook: AddStatus(HasPrototypeHyperdrive)
 	Assert: TagCount.Hyperdrive == 1
 		Unique: True
@@ -27,8 +29,10 @@ Subsystem: ExperimentalHyperdrive
 	Requires:
 		Command = 4
 
-	Modifier: SpeedFactor(factor)
-		HyperdriveSpeed := HyperdriveSpeed * factor
+	Modifier: HyperSpeedFactor(factor)
+		BaseHyperdriveSpeed := BaseHyperdriveSpeed + Base::BaseHyperdriveSpeed * (factor - 1)
+	Modifier: HyperSpeedMult(factor)
+		HyperSpeedMod := HyperSpeedMod * factor
 
 	Module: Default
 

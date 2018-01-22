@@ -13,6 +13,7 @@ Subsystem: BroadcastAntenna
 
 	InfluenceBuildCost := floor(5 * max(sqrt(ShipSize/128), 1.0))
 	PowerUse := 3.0 * Size
+	CoreHPMod := 3
 
 	ConvertInterval := 5 / (Size / ShipSize) / if(ShipSize > 128, sqrt(ShipSize/128), ShipSize/128)
 
@@ -30,7 +31,6 @@ Subsystem: BroadcastAntenna
 		Message: #ERROR_TOO_SMALL
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 10
 		Hex.Mass := Hex.Mass * 5
 

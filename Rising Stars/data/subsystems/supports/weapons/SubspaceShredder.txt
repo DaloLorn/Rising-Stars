@@ -13,14 +13,15 @@ Subsystem: SubspaceShredder
 	Reload := 6.0 * min(1.0 + Size/512, 2.0)
 	Speed := 20
 	Tracking := 0.2
-	SupplyCost := Size * 2.0
+	BaseSupplyCost := Size * 2.0
 
 	Range := 5 + Size
 	TravelRange := (Range * 30) - (28 * Size)
 
 	out DPS := 0.25 * (Damage / Reload)
 	
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 	
@@ -33,7 +34,6 @@ Subsystem: SubspaceShredder
 	Module: Default
 	
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 5
 		Hex.Mass := Hex.Mass * 5
 

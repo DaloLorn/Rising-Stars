@@ -20,7 +20,8 @@ Subsystem: ProgenitorComputer
 	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2.5
 	Hex.Mass := HexSize
 
 	Duration := 60
@@ -47,6 +48,5 @@ Subsystem: ProgenitorComputer
 
 	Module: Core
 		Sprite: ProgenitorComputer
-		Hex.HP := 2.5 * Hex.HP
 		Hex.Resistance := 0.5
 		Hex.BuildCost := 10 * Hex.BuildCost

@@ -16,7 +16,7 @@ Subsystem: SupportLiquidArmor
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
 	Hex.Resistance := 0.1
-	Hex.HP := 55 * HexSize
+	BaseHP := 55 * HexSize
 	Hex.Mass := 1.4 * HexSize
 
 	Hex.BuildCost := 4.0 * HexSize

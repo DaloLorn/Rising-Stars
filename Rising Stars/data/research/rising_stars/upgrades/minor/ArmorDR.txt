@@ -1,7 +1,7 @@
 Technology: ArmorDR
 	Name: #R_IMP_ARMOR_DR
-	Blurb: #R_IMP_ARMOR_DR_BLURB:10%
-	Description: #R_IMP_ARMOR_DR_DESC:10%
+	Blurb: #R_IMP_ARMOR_DR_BLURB:+10%
+	Description: #R_IMP_ARMOR_DR_DESC:+10%
 
 	Class: Boost
 	Category: Minor Upgrades
@@ -16,8 +16,8 @@ Technology: ArmorDR
 
 Technology: ArmorDR2
 	Name: #R_IMP_ARMOR_DR2
-	Blurb: #R_IMP_ARMOR_DR_BLURB:25%
-	Description: #R_IMP_ARMOR_DR_DESC:25%
+	Blurb: #R_IMP_ARMOR_DR_BLURB:+25%
+	Description: #R_IMP_ARMOR_DR_DESC:+25%
 
 	Class: Upgrade
 	Category: Medium Upgrades

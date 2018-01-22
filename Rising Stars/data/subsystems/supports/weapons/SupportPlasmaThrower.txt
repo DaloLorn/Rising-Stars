@@ -19,8 +19,10 @@ Subsystem: SupportPlasmaThrower
 	out DPS := (DamageOverTime * Duration) / Reload
 	out SupplyDrain := SupplyCost
 	out SupplyFireCost := SupplyCost * Reload
-
+	
 	Modifier: DamageFactor(factor)
+		DamageOverTime := DamageOverTime + Base::DamageOverTime * (factor - 1)
+	Modifier: DamageMult(factor)
 		DamageOverTime := DamageOverTime * factor
 
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
@@ -29,9 +31,10 @@ Subsystem: SupportPlasmaThrower
 	Tracking := 0.2
 	FireArc := 1.5
 	Pierce := 0.0
-	SupplyCost := Size * 1.0
+	BaseSupplyCost := Size * 1.0
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -44,7 +47,6 @@ Subsystem: SupportPlasmaThrower
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

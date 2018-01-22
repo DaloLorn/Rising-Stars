@@ -13,7 +13,7 @@ Subsystem: VerdantSupportSinew
 	Ship.ExternalHexes := Hexes
 
 	Hex.Resistance := 0.2
-	Hex.HP := 40 * HexSize
+	BaseHP := 40 * HexSize
 	Hex.Mass := HexSize * 1.5
 
 	Repair := 24 * HexSize

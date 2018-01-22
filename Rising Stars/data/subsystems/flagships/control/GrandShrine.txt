@@ -16,7 +16,7 @@ Subsystem: GrandShrine
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.4
-	Hex.HP := 8 * HexSize
+	BaseHP := 8 * HexSize
 	Hex.Mass := 3 * HexSize
 
 	Assert: Sum.Prayer >= Sum.Command

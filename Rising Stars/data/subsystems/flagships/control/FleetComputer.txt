@@ -16,7 +16,8 @@ Subsystem: FleetComputer
 	out SupplyDrain := RepairSupplyCost
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 24 * HexSize
+	BaseHP := 24 * HexSize
+	CoreHPMod := 2
 	Hex.Mass := 0.5 * HexSize
 
 	RaidRange := 1000 + (Size / (ShipSize * 0.3)) * 5000
@@ -33,6 +34,5 @@ Subsystem: FleetComputer
 	
 	Module: Core
 		Sprite: FleetComputer
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

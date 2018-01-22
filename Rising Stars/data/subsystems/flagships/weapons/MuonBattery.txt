@@ -20,10 +20,11 @@ Subsystem: MuonBattery
 	Tracking := 0.8
 	FireArc := 1.5
 	Pierce := 3
-	SupplyCost := Size * 1.5
+	BaseSupplyCost := Size * 1.5
 	PowerUse := 3.5 * Size
 	
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -34,7 +35,6 @@ Subsystem: MuonBattery
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

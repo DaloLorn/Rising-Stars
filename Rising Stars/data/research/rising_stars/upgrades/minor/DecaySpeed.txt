@@ -1,7 +1,7 @@
 Technology: DecaySpeed
 	Name: #R_IMP_DECAY
-	Blurb: #R_IMP_DECAY_BLURB:25%
-	Description: #R_IMP_DECAY_DESC:25%
+	Blurb: #R_IMP_DECAY_BLURB:-25%
+	Description: #R_IMP_DECAY_DESC:-25%
 
 	Icon: AttributeIcons::0
 	Color: #a77751
@@ -15,8 +15,8 @@ Technology: DecaySpeed
 
 Technology: DecaySpeed2
 	Name: #R_IMP_DECAY2
-	Blurb: #R_IMP_DECAY_BLURB:50%
-	Description: #R_IMP_DECAY_DESC:50%
+	Blurb: #R_IMP_DECAY_BLURB:-50%
+	Description: #R_IMP_DECAY_DESC:-50%
 
 	Icon: AttributeIcons::0
 	Color: #a77751

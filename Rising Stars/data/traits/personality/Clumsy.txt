@@ -12,4 +12,4 @@ Trait: Clumsy
 
 	AddModifier( ThrustMult(0.7) )
 	AddModifier( TurnThrustMult(0.7) )
-	AddModifier( Hyperdrive::SpeedMult(0.7) )
+	AddModifier( HyperSpeedMult(0.7) )

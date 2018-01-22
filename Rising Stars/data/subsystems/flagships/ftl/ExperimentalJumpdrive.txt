@@ -13,7 +13,7 @@ Subsystem: ExperimentalJumpdrive
 	Hex.Mass := HexSize * 2
 
 	Hex.Resistance := 0.2
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
 
 	JumpRange := 85000 * Size / ShipSize
 	Assert: Size >= 500

@@ -20,7 +20,7 @@ Subsystem: MatterDisruptor
 	Spread := 0.030 / max(Range / 900, 1)
 	Tracking := 0.8 / min(1.0 + Size/512, 2.0)
 	FireArc := 1.5
-	SupplyCost := Size * 1.5
+	BaseSupplyCost := Size * 1.5
 	PowerUse := 2.5 * Size
 	SizeMultiplier := 1 // Basically, the difference in scale multiplies the damage. No extra factors.
 	AmountPerSize := 0 // This is a tricky one. If the enemy is double size, you deal this amount multiplied by 2. Really not sure what I was thinking.
@@ -29,7 +29,8 @@ Subsystem: MatterDisruptor
 
 	DamageType := 2 // Read scripts/server/ABEMCombat.as before changing this.
 
-	Hex.HP := 27 * HexSize
+	BaseHP := 27 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 
@@ -40,7 +41,6 @@ Subsystem: MatterDisruptor
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

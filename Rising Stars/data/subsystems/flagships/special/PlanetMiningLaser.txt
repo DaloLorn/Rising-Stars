@@ -18,7 +18,7 @@ Subsystem: PlanetMiningLaser
 	PowerUse := Size * 100
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	Hex.LaborCost := 0.5 * HexSize
 	Hex.BuildCost := 5 * HexSize

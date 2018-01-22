@@ -14,7 +14,7 @@ Subsystem: Slipstream
 	Hex.Mass := HexSize
 	
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	Hex.BuildCost := 2.0 * HexSize
 

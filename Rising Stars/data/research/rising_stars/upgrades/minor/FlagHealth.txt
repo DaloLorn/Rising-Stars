@@ -1,6 +1,6 @@
 Technology: FlagHealth
 	Name: #R_FLAG_HEALTH
-	Description: #R_FLAG_HEALTH_DESC:25%
+	Description: #R_FLAG_HEALTH_DESC:+25%
 
 	Icon: AttributeIcons::1 * #00e5f7
 	Symbol: techMaterialScience1*#80ff80
@@ -18,7 +18,7 @@ Technology: FlagHealth
 
 Technology: FlagHealth2
 	Name: #R_FLAG_HEALTH2
-	Description: #R_FLAG_HEALTH_DESC:50%
+	Description: #R_FLAG_HEALTH_DESC:+50%
 
 	Icon: AttributeIcons::1 * #00e5f7
 	Symbol: techMaterialScience2*#80ff80

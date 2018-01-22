@@ -13,12 +13,13 @@ Subsystem: RocketEngine
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
 	Size := HexSize * Hexes
-	Thrust := 35 * Size
-	TurnThrust := 0.75 * Size
+	BaseThrust := 35 * Size
+	BaseTurnThrust := 0.75 * Size
 	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 
 	Requires:
 		Command = 1
@@ -27,6 +28,5 @@ Subsystem: RocketEngine
 
 	Module: Core
 		Sprite: RocketEngine
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

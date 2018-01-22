@@ -12,7 +12,7 @@ Technology: PowerGeneration
 	Point Cost: 750
 	Time Cost: 120
 
-	AddModifier( tag/IsReactor::PowerFactor(1.25) )
+	AddModifier( tag/IsReactor::PowerMult(1.25) )
 
 	ReduceResearchPenalty(750)
 	AffectsTaggedSubsystems(IsReactor)

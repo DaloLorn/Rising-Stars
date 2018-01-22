@@ -16,10 +16,11 @@ Subsystem: SupportLaser
 	Cooldown := 5 * min(1.0 + Size/512, 2.0)
 	Range := Size + 350
 	Tracking := 0.5
-	SupplyCost := Size * 1.1
+	BaseSupplyCost := Size * 1.1
 	FireArc := 0.1666 * pi
 
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -32,7 +33,6 @@ Subsystem: SupportLaser
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 5
 		Hex.Mass := Hex.Mass * 5
 

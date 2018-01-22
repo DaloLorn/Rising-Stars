@@ -11,7 +11,7 @@ Subsystem: SupportNanoMesh
 
 	Size := HexSize * Hexes
 
-	Hex.HP := 200 * HexSize
+	BaseHP := 200 * HexSize
 	Hex.Mass := 1.0 * HexSize
 
 	Hex.BuildCost := 4.00 * HexSize
@@ -19,7 +19,7 @@ Subsystem: SupportNanoMesh
 	Hex.MaintainCost := 10 * HexSize
 
 	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
-	AddPostModifier: HpFactor(0.0)
+	AddPostModifier: HpMult(0.0)
 
 	Module: Default
 		Sprite: NanoMesh

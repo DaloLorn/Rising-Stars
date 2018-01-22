@@ -17,11 +17,12 @@ Subsystem: HyperLaser
 	Cooldown := 5 * min(1.0 + Size/1024, 1.5)
 	Range := Size + 550
 	Tracking := 0.8
-	SupplyCost := Size * 0.75
+	BaseSupplyCost := Size * 0.75
 	PowerUse := 8 * Size
 	FireArc := 0.25 * pi
 
-	Hex.HP := 12 * HexSize
+	BaseHP := 12 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -35,7 +36,6 @@ Subsystem: HyperLaser
 		Hex.BuildCost := Hex.BuildCost * 2
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 5
 		Hex.Mass := Hex.Mass * 5
 

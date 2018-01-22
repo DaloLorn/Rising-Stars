@@ -22,7 +22,8 @@ Subsystem: ControlChair
 
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Mass := HexSize
 	Assert: Sum.ControlChairs == 1
 		Unique: True
@@ -40,7 +41,6 @@ Subsystem: ControlChair
 
 	Module: Core
 		Sprite: ControlChair
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 
 		Hex.BuildCost := 10 * Hex.BuildCost

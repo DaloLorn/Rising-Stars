@@ -1,7 +1,7 @@
 Technology: Damage
 	Name: #R_IMP_DAMAGE
-	Blurb: #R_IMP_DAMAGE_BLURB:17%
-	Description: #R_IMP_DAMAGE_DESC:17%
+	Blurb: #R_IMP_DAMAGE_BLURB:+17%
+	Description: #R_IMP_DAMAGE_DESC:+17%
 
 	Icon: techImpact * #ff8000
 	Color: #ff8000
@@ -17,8 +17,8 @@ Technology: Damage
 
 Technology: Damage2
 	Name: #R_IMP_DAMAGE2
-	Blurb: #R_IMP_DAMAGE_BLURB:35%
-	Description: #R_IMP_DAMAGE_DESC:35%
+	Blurb: #R_IMP_DAMAGE_BLURB:+35%
+	Description: #R_IMP_DAMAGE_DESC:+35%
 
 	Icon: techImpact2*#ffff00
 	Color: #ff8000

@@ -9,7 +9,7 @@ Subsystem: SupportSupplyStorage
 	Hull: Support
 	
 	Size := HexSize * Hexes
-	SupplyCapacity := Size * 2500
+	BaseSupplyCapacity := Size * 2500
 	
 	Hex.LaborCost := 0.1 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2

@@ -14,14 +14,21 @@ Subsystem: ShieldHarmonizer
 	Size := HexSize * Hexes
 
 	Percentage := min(2.0 * Size / ShipSize, 1.0)
-	BonusShield := Size * 3.0
+	BaseBonusShield := Size * 3.0
+	BonusShieldMod := 1
+	BonusShield := BaseBonusShield * BonusShieldMod
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 	
 	Hex.BuildCost := 1.25 * HexSize
 	Hex.LaborCost := 0.10 * HexSize
+
+	Modifier: BonusShieldFactor(factor)
+		BaseBonusShield := BaseBonusShield + Base::BaseBonusShield * (factor - 1)
+	Modifier: BonusShieldMult(factor)
+		BonusShieldMod := BonusShieldMod * factor
 	
 	Requires:
 		Command = 1

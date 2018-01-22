@@ -8,13 +8,13 @@ Subsystem: MinerHull
 	BaseColor: #7000cc
 
 
-	AddShipModifier: MassFactor(1)
-	AddShipModifier: ShieldCapacityFactor(1.5)
-	AddShipModifier: ArmorHpFactor(1)
+	AddShipModifier: MassMult(1)
+	AddShipModifier: ShieldCapacityMult(1.5)
+	AddShipModifier: ArmorHpMult(1)
 	AddShipModifier: MaintCostFactor(0.1)
-	AddShipModifier: SupplyCapacityFactor(0.1)
+	AddShipModifier: SupplyCapacityMult(0.1)
 	AddShipModifier: MiningRateFactor(1.25)
-	AddShipModifier: CargoStorageFactor(1.25)
+	AddShipModifier: CargoStorageMult(1.25)
 	Assert: TagCount.Boarders == 0
 		Message: #ERROR_CANNOT_BOARD
 

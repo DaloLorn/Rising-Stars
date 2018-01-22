@@ -23,7 +23,7 @@ Subsystem: BoardingParty
 	Hook: LimitStatusStacks(BoardingPartyTroops, BoardingPartyStorage)
 
 	Hex.Resistance := 0.2
-	Hex.HP := 36 * HexSize
+	BaseHP := 36 * HexSize
 	Hex.Mass := HexSize
 
 	Requires:

@@ -17,14 +17,15 @@ Subsystem: RocketPod
 	Reload := 7 * min(1.0 + Size/512, 2.0)
 	Speed := max(105, Range / 12)
 	Tracking := 0.2
-	SupplyCost := Size * 10.0
+	BaseSupplyCost := Size * 10.0
 	Spread := 1.5
 	PodSize := 8
 	
 	out DPS := (Damage * PodSize) / (Reload * 2)
 	out SupplyDrain := SupplyCost * ((FireDelay * PodSize) / Reload)
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -36,7 +37,6 @@ Subsystem: RocketPod
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

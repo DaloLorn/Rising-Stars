@@ -1,7 +1,7 @@
 Technology: TileDevelopment
 	Name: #R_IMP_TILE_DEVELOPMENT
-	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:50%
-	Description: #R_IMP_TILE_DEVELOPMENT_DESC:50%
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:+50%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:+50%
 
 	Icon: DesignationIcons::10
 	Color: #a46c2f
@@ -15,8 +15,8 @@ Technology: TileDevelopment
 
 Technology: TileDevelopment2
 	Name: #R_IMP_TILE_DEVELOPMENT2
-	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:100%
-	Description: #R_IMP_TILE_DEVELOPMENT_DESC:100%
+	Blurb: #R_IMP_TILE_DEVELOPMENT_BLURB:+100%
+	Description: #R_IMP_TILE_DEVELOPMENT_DESC:+100%
 
 	Icon: DesignationIcons::10
 	Color: #a46c2f

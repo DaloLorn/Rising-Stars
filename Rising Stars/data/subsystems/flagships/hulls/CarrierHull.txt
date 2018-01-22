@@ -10,10 +10,10 @@ Subsystem: CarrierHull
 
 	HexLimit := -26
 
-	AddShipModifier: SupplyCapacityFactor(1.5)
-	AddShipModifier: SupportCapacityFactor(2.0)
-	AddShipModifier: HpFactor(2.0)
-	AddShipModifier: ShieldCapacityFactor(2.0)
+	AddShipModifier: SupplyCapacityMult(1.5)
+	AddShipModifier: SupportCapacityMult(2.0)
+	AddShipModifier: HpMult(2.0)
+	AddShipModifier: ShieldCapacityMult(2.0)
 	AddShipModifier: TechMultFactor(1.25)
 
 	Assert: ShipSize >= 300

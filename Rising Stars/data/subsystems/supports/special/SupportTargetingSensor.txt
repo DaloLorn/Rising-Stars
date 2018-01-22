@@ -8,8 +8,7 @@ Template: hexVar/BuildCost, hexVar/HP, tag/Weapon, var/Range, var/SupplyCost, ta
 
 		AddModifier: BuildCostFactor(3.0)
 		AddModifier: LaborCostFactor(2.0)
-		AddModifier: SupplyCostFactor(2.0)
-		AddModifier: optional SpeedFactor(2.0)
-		AddModifier: optional SpreadFactor(0.5)
+		AddModifier: SupplyCostMult(2.0)
+		AddModifier: optional SpreadMult(0.5)
 
 		Range := Range + Base::Range * 0.5

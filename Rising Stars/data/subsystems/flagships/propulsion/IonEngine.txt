@@ -13,13 +13,14 @@ Subsystem: IonEngine
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
 	Size := HexSize * Hexes
-	Thrust := 22 * Size
-	TurnThrust := 2.0 * Size
+	BaseThrust := 22 * Size
+	BaseTurnThrust := 2.0 * Size
 	PowerUse := 1.5 * Size
 	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 
 	Requires:
 		Command = 1
@@ -29,6 +30,5 @@ Subsystem: IonEngine
 
 	Module: Core
 		Sprite: IonEngine
-		Hex.HP := 2 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

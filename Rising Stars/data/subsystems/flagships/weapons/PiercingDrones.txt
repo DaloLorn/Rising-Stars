@@ -19,7 +19,7 @@ Subsystem: PiercingDrones
 	Reload := 20 * max(1.0 + Size/512, 2.0)
 	Speed := max(120, Range / 6)
 	Tracking := 6.0
-	SupplyCost := Size * 6.0
+	BaseSupplyCost := Size * 6.0
 	Spread := 0.6
 
 	//DPS is an estimation
@@ -31,7 +31,8 @@ Subsystem: PiercingDrones
 	DamageType := 2
 	Spillable := 0
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 	Hex.LaborCost := 1 * HexSize

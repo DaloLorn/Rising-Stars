@@ -17,7 +17,7 @@ Subsystem: SecurityStation
 	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
 
 	Hex.Resistance := 0.2
-	Hex.HP := 72 * HexSize
+	BaseHP := 72 * HexSize
 	Hex.Mass := HexSize
 	Module: Default
 		Sprite: SecurityStation

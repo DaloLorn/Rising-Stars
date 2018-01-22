@@ -17,7 +17,7 @@ Subsystem: MiningLaser
 	MiningLasers := 1
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	Hex.LaborCost := 0.1 * HexSize
 	Hex.BuildCost := 1.1 * HexSize

@@ -17,11 +17,12 @@ Subsystem: Disruptor
 	Cooldown := 6 * min(1.0 + Size/512, 2.0)
 	Range := Size + 250
 	Tracking := 0.5
-	SupplyCost := Size * 0.75
+	BaseSupplyCost := Size * 0.75
 	FireArc := 0.25 * pi
 	PowerUse := 10 * Size
 
-	Hex.HP := 10 * HexSize
+	BaseHP := 10 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -32,7 +33,6 @@ Subsystem: Disruptor
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

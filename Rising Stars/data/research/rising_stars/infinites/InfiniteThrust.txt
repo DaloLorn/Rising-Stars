@@ -1,6 +1,6 @@
 Technology: InfiniteThrust
 	Name: #R_INFINITE_THRUST
-	Description: #R_INFINITE_THRUST_DESC:5%
+	Description: #R_INFINITE_THRUST_DESC:+20%
 
 	Icon: techPropulsion * #e2f83a
 	Symbol: EditIcons::7
@@ -17,7 +17,7 @@ Technology: InfiniteThrust
 
 	ResetWhenUnlocked()
 
-	AddModifier( ThrustFactor(1.05) )
-	AddModifier( TurnThrustFactor(1.05) )
-	AddModifier( Hyperdrive::SpeedFactor(1.05) )
+	AddModifier( ThrustFactor(1.2) )
+	AddModifier( TurnThrustFactor(1.2) )
+	AddModifier( HyperSpeedFactor(1.2) )
 	ModAttribute(InfiniteThrustTaken, Add, 1)

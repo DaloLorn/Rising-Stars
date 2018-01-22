@@ -20,7 +20,8 @@ Subsystem: AICore
 	out SupplyDrain := RepairSupplyCost
 
 	Hex.Resistance := 0.1
-	Hex.HP := 8 * HexSize
+	BaseHP := 8 * HexSize
+	CoreHPMod := 4
 	Hex.Mass := 0.5 * HexSize
 
 	Hex.LaborCost := 0.03 * HexSize
@@ -43,6 +44,5 @@ Subsystem: AICore
 
 	Module: Core
 		Sprite: RSComputer
-		Hex.HP := 4 * Hex.HP
 		Hex.Resistance := 0.35
 		Hex.BuildCost := 2 * Hex.BuildCost

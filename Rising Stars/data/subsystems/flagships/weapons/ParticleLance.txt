@@ -18,10 +18,11 @@ Subsystem: ParticleLance
 	Spread := 0
 	Tracking := 0.1
 	FireArc := 0.1666 * pi
-	SupplyCost := Size * 2.5
+	BaseSupplyCost := Size * 2.5
 	PowerUse := 4.5 * Size
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -32,7 +33,6 @@ Subsystem: ParticleLance
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := 5.0 * Hex.BuildCost
 		Hex.Mass := 5.0 * Hex.Mass
 

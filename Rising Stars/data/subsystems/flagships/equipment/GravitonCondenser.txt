@@ -14,7 +14,7 @@ Subsystem: GravitonCondenser
 	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	StellarDamage := 4000000 * (Size / 100)
 	PowerUse := 15 * Size

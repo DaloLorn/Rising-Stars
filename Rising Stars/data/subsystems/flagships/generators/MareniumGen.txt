@@ -11,14 +11,14 @@ Subsystem: MareniumGen
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Power := 20 * Size
+	BasePower := 20 * Size
 	MareniumPower := Power
 
-	SupplyCapacity := Size * 300
+	BaseSupplyCapacity := Size * 300
 	SupplyRate := Size * 100
 
 	Hex.Resistance := 0.5
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Mass := 3.5 * HexSize
 
 	Hex.LaborCost := 0.15 * HexSize + 0.18
@@ -44,9 +44,3 @@ Subsystem: MareniumGen
 	Assert: Sum.Power == Sum.MareniumPower
 		Unique: True
 		Message: #ERROR_ALL_POWER
-
-	Modifier: SupplyCapacityFactor(factor)
-		SupplyCapacity := SupplyCapacity * factor
-
-	Modifier: PowerFactor(factor)
-		Power := Power * factor

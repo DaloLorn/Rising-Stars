@@ -1,7 +1,7 @@
 Technology: FlagDamage
 	Name: #R_IMP_FLAG_DAMAGE
-	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:25%
-	Description: #R_IMP_FLAG_DAMAGE_DESC:25%
+	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:+25%
+	Description: #R_IMP_FLAG_DAMAGE_DESC:+25%
 
 	Icon: AttributeIcons::1 * #00e5f7
 	Color: #ff8000
@@ -16,8 +16,8 @@ Technology: FlagDamage
 
 Technology: FlagDamage2
 	Name: #R_IMP_FLAG_DAMAGE2
-	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:50%
-	Description: #R_IMP_FLAG_DAMAGE_DESC:50%
+	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:+50%
+	Description: #R_IMP_FLAG_DAMAGE_DESC:+50%
 
 	Icon: AttributeIcons::1 * #00e5f7
 	Color: #ff8000

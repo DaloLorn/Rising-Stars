@@ -25,7 +25,7 @@ Subsystem: TroopPods
 	TroopLabor := 2.0 * MaxLoyalty
 	TroopStorage := 1
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 	Hex.Resistance := 0.2
 
 	Hook: OnEnable(AddStatus(Troops))

@@ -1,7 +1,7 @@
 Technology: AoERadius
 	Name: #R_IMP_AOE
-	Blurb: #R_IMP_AOE_BLURB:20%
-	Description: #R_IMP_AOE_DESC:20%
+	Blurb: #R_IMP_AOE_BLURB:+20%
+	Description: #R_IMP_AOE_DESC:+20%
 
 	Icon: techExplosives*#80ff80
 	Color: #80ff80
@@ -16,8 +16,8 @@ Technology: AoERadius
 
 Technology: AoERadius2
 	Name: #R_IMP_AOE2
-	Blurb: #R_IMP_AOE_BLURB:40%
-	Description: #R_IMP_AOE_DESC:40%
+	Blurb: #R_IMP_AOE_BLURB:+40%
+	Description: #R_IMP_AOE_DESC:+40%
 
 	Icon: techExplosives2*#80ff80
 	Color: #80ff80

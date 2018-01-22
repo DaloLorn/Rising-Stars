@@ -10,9 +10,17 @@ Subsystem: Forcefield
 
 	Size := HexSize * Hexes
 	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
-	ForcefieldRegen := 0.75 * Size
-	ForcefieldCapacity := 15 * HexSize * (Hexes - 1)
-	ForcefieldCapacityMult := 1
+	BaseHP := 20 * HexSize
+
+	BaseForcefieldRegen := 0.75 * Size
+	ForcefieldRegen := BaseForcefieldRegen * ForcefieldRegenMod
+	ForcefieldRegenMod := 1
+
+	BaseForcefieldCapacity := 15 * HexSize * (Hexes - 1)
+	BaseForcefieldMult := 1
+	ForcefieldCapacity := BaseForcefieldCapacity * ForcefieldCapacityMod
+	ForcefieldCapacityMult := BaseForcefieldMult * ForcefieldCapacityMod
+	ForcefieldCapacityMod := 1
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
 	State: double = ForcefieldCapacity
@@ -25,8 +33,6 @@ Subsystem: Forcefield
 
 	Module: Core
 		Sprite: SupportShield*#50ffff
-
-		Hex.HP := 20 * HexSize
 		Hex.Mass := 3 * HexSize
 		Hex.Resistance := 0.1
 
@@ -45,21 +51,19 @@ Subsystem: Forcefield
 		Hex.LaborCost := 0.25 * HexSize
 		Hex.MaintainCost := 0
 
-	Modifier: HpFactor(factor)
-		Hex.HP := if(IsCore, Hex.HP * factor, Hex.HP)
-
-	Modifier: AddBaseHP(factor)
-		Hex.HP := if(IsCore, Hex.HP + Base::Hex.HP * factor, Hex.HP)
-
 	Modifier: AddHP(amount)
 		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
 
 	Modifier: ShieldCapacityFactor(factor)
-		ForcefieldCapacity := ForcefieldCapacity * factor
-		ForcefieldCapacityMult := ForcefieldCapacityMult * factor
+		BaseForcefieldCapacity := BaseForcefieldCapacity + Base::BaseForcefieldMult * (factor - 1)
+		BaseForcefieldMult := BaseForcefieldMult + Base::BaseForcefieldMult * (factor - 1)
+	Modifier: ShieldCapacityMult(factor)
+		ForcefieldCapacityMod := ForcefieldCapacityMod * factor
 
 	Modifier: ShieldRegenFactor(factor)
-		ForcefieldRegen := ForcefieldRegen * factor
+		BaseForcefieldRegen := BaseForcefieldRegen + Base::BaseForcefieldMult * (factor - 1)
+	Modifier: ShieldRegenMult(factor)
+		ForcefieldRegenMod := ForcefieldRegenMod * factor
 
 	Effect: NoRepairNonCore
 

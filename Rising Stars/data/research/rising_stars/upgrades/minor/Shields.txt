@@ -1,7 +1,7 @@
 Technology: ShieldCap
 	Name: #R_IMP_SHIELDCAP
-	Blurb: #R_IMP_SHIELDCAP_BLURB:25%
-	Description: #R_IMP_SHIELDCAP_DESC:25%
+	Blurb: #R_IMP_SHIELDCAP_BLURB:+25%
+	Description: #R_IMP_SHIELDCAP_DESC:+25%
 
 	Icon: techPhaseContainment * #4040ff
 	Color: #149080
@@ -19,8 +19,8 @@ Technology: ShieldCap
 	ModAttribute(OrbitalShieldMod, Multiply, 1.125)
 Technology: ShieldCap2
 	Name: #R_IMP_SHIELDCAP2
-	Blurb: #R_IMP_SHIELDCAP_BLURB:50%
-	Description: #R_IMP_SHIELDCAP_DESC:50%
+	Blurb: #R_IMP_SHIELDCAP_BLURB:+50%
+	Description: #R_IMP_SHIELDCAP_DESC:+50%
 
 	Icon: techPhaseContainment * #407bff
 	Color: #149080
@@ -37,8 +37,8 @@ Technology: ShieldCap2
 	ModAttribute(OrbitalShieldMod, Multiply, 1.25)
 Technology: ShieldReg
 	Name: #R_IMP_SHIELDREG
-	Blurb: #R_IMP_SHIELDREG_BLURB:25%
-	Description: #R_IMP_SHIELDREG_DESC:25%
+	Blurb: #R_IMP_SHIELDREG_BLURB:+25%
+	Description: #R_IMP_SHIELDREG_DESC:+25%
 
 	Icon: techPhaseHarmonics * #4040ff
 	Color: #429f5c
@@ -54,8 +54,8 @@ Technology: ShieldReg
 	ModAttribute(OrbitalShieldMod, Multiply, 1.125)
 Technology: ShieldReg2
 	Name: #R_IMP_SHIELDREG2
-	Blurb: #R_IMP_SHIELDREG_BLURB:50%
-	Description: #R_IMP_SHIELDREG_DESC:50%
+	Blurb: #R_IMP_SHIELDREG_BLURB:+50%
+	Description: #R_IMP_SHIELDREG_DESC:+50%
 
 	Icon: techPhaseHarmonics * #407bff
 	Color: #429f5c

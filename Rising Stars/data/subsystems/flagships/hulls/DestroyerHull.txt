@@ -10,13 +10,13 @@ Subsystem: DestroyerHull
 
 	HexLimit := 30
 
-	AddShipModifier: HpFactor(6.0)
-	AddShipModifier: ArmorResistFactor(1.5)
-	AddShipModifier: MassFactor(0.5)
-	AddShipModifier: tag/Weapon::RangeFactor(0.7)
+	AddShipModifier: HpMult(6.0)
+	AddShipModifier: ArmorResistMult(1.5)
+	AddShipModifier: MassMult(0.5)
+	AddShipModifier: tag/Weapon::RangeMult(0.7)
 	AddShipModifier: TechMultFactor(3)
 	AddShipModifier: HullStrengthMultFactor(1.5)
-	AddShipModifier: ShieldCapacityFactor(6.0)
+	AddShipModifier: ShieldCapacityMult(6.0)
 
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300

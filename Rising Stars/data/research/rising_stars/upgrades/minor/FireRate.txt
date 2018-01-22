@@ -1,7 +1,7 @@
 Technology: FireRate
 	Name: #R_IMP_FIRE_RATE
-	Blurb: #R_IMP_FIRE_RATE_BLURB:10%
-	Description: #R_IMP_FIRE_RATE_DESC:10%
+	Blurb: #R_IMP_FIRE_RATE_BLURB:+10%
+	Description: #R_IMP_FIRE_RATE_DESC:+10%
 
 	Icon: techCooling * #c680ff
 	Color: #c680ff
@@ -19,8 +19,8 @@ Technology: FireRate
 
 Technology: FireRate2
 	Name: #R_IMP_FIRE_RATE2
-	Blurb: #R_IMP_FIRE_RATE_BLURB:20%
-	Description: #R_IMP_FIRE_RATE_DESC:20%
+	Blurb: #R_IMP_FIRE_RATE_BLURB:+20%
+	Description: #R_IMP_FIRE_RATE_DESC:+20%
 
 	Icon: techCooling * #c680ff
 	Color: #c680ff

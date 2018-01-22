@@ -12,9 +12,9 @@ Technology: ProjTracking
 	Point Cost: 750
 	Time Cost: 100
 
-	AddModifier( tag/IsProjWeapon::TrackingFactor(1.4) )
-	AddModifier( tag/IsProjWeapon::SpreadFactor(0.6) )
-	AddModifier( tag/IsProjWeapon::SupplyCostFactor(0.6) )
+	AddModifier( tag/IsProjWeapon::TrackingMult(1.4) )
+	AddModifier( tag/IsProjWeapon::SpreadMult(0.6) )
+	AddModifier( tag/IsProjWeapon::SupplyCostMult(0.6) )
 
 	ReduceResearchPenalty(750)
 	AffectsTaggedSubsystems(IsProjWeapon)

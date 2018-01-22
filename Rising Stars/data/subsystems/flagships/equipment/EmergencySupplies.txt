@@ -19,7 +19,7 @@ Subsystem: EmergencySupplies
 	out Duration := HaveStatus * sqrt(Size / ShipSize) * 120
 
 	Hex.Resistance := 0.2
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
 
 	Requires:
 		Command = 1

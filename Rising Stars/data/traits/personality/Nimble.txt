@@ -12,4 +12,4 @@ Trait: Nimble
 
 	AddModifier( ThrustMult(1.3) )
 	AddModifier( TurnThrustMult(1.3) )
-	AddModifier( Hyperdrive::SpeedMult(1.3) )
+	AddModifier( HyperSpeedMult(1.3) )

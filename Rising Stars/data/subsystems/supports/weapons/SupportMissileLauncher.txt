@@ -16,9 +16,10 @@ Subsystem: SupportMissileLauncher
 	Reload := 4.75 * min(1.0 + Size/512, 2.0)
 	Speed := max(80, Range / 20)
 	Tracking := 2.8
-	SupplyCost := Size * 6
+	BaseSupplyCost := Size * 6
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
@@ -31,7 +32,6 @@ Subsystem: SupportMissileLauncher
 	Module: Default
 
 	Module: Core
-		Hex.HP := Hex.HP * 3
 		Hex.BuildCost := Hex.BuildCost * 5
 		Hex.Mass := Hex.Mass * 5
 

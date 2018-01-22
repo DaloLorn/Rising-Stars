@@ -10,7 +10,7 @@ Subsystem: SupportSuperstructure
 	Size := HexSize * Hexes
 
 	Hex.Resistance := 0.1
-	Hex.HP := 10.5 * HexSize
+	BaseHP := 10.5 * HexSize
 
 	Hex.Mass := 1.3 * HexSize
 

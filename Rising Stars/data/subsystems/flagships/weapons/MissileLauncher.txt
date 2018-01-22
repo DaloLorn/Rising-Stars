@@ -18,11 +18,12 @@ Subsystem: MissileLauncher
 	Reload := (4.75 * min(1.0 + Size/512, 2.0)) * PodSize
 	Speed := max(85, Range / 30)
 	Tracking := 3
-	SupplyCost := Size * 6.5
+	BaseSupplyCost := Size * 6.5
 	out DPS := (Damage * PodSize) / (Reload)
 	out SupplyDrain := SupplyCost / PodSize
 
-	Hex.HP := 18 * HexSize
+	BaseHP := 18 * HexSize
+	CoreHPMod := 3
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
