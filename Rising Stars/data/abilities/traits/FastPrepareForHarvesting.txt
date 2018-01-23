@@ -15,9 +15,10 @@ Ability: FastPrepareForHarvest
 	TargetFilterNotStatus(targ, ArtificialPlanetoid)
 	TargetFilterNotQuarantined(targ)
 
-	Trigger(targ, NotifyOwner(#ALERT_ENEMY_HARVESTING, Description = #ALERT_ENEMY_HARVESTING_DESC))
+	Trigger(targ, ABEM_races::NotifyOwner(Title = #ALERT_ENEMY_HARVESTING, Description = #ALERT_EnEMY_HARVESTING_DESC))
 	OffensiveToTarget(targ)
 	IsToggleTarget(targ)
 	IsAutoColonize()
+	ABEM_races::TriggerTargetForCasterPeriodic(targ, ABEM_races::NotifyEmpire(#ALERT_READY_FOR_HARVESTING, Description = #ALERT_READY_FOR_HARVESTING_DESC), Interval = 240, Max Triggers = 1)
 	TriggerTargetPeriodic(targ, AddStatus(ReadyForHarvest), Interval = 240, Max Triggers = 1)
 	PersistentBeamEffect(targ, #086786, PreparingHarvest)

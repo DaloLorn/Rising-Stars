@@ -3,4 +3,4 @@ ALERT_READY_FOR_HARVESTING_DESC: A Harvester has prepared the planet [color=$4]$
 ALERT_ENEMY_HARVESTED: [color=$4]$3[/color] Harvested!
 ALERT_ENEMY_HARVESTED_DESC: An enemy Harvester has prepared the planet [color=$4]$3[/color] for harvesting, and its resources are theirs for the taking!
 ALERT_ENEMY_HARVESTING: [color=$4]$3[/color] Being Harvested
-ALERT_ENEMY_HARVESTING: An enemy Harvester has begun preparing the planet [color=$4]$3[/color] for harvesting! If they are not stopped, the planet's resources will be theirs!
+ALERT_ENEMY_HARVESTING_DESC: An enemy Harvester has begun preparing the planet [color=$4]$3[/color] for harvesting! If they are not stopped, the planet's resources will be theirs!
