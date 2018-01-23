@@ -13,6 +13,7 @@ Template: hexVar/LaborCost
 Template: var/BaseHP
 	Defaults:
 		HPMod := 1
+		CoreHPMod := 1
 		Hex.HP := if(IsCore, CoreHP * CoreHPMod, BaseHP * HPMod)
 		CoreHP := BaseHP * HPMod
 	Modifier: HpFactor(factor)

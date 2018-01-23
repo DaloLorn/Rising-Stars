@@ -13,14 +13,14 @@ Subsystem: Forcefield
 	BaseHP := 20 * HexSize
 
 	BaseForcefieldRegen := 0.75 * Size
-	ForcefieldRegen := BaseForcefieldRegen * ForcefieldRegenMod
 	ForcefieldRegenMod := 1
+	ForcefieldRegen := BaseForcefieldRegen * ForcefieldRegenMod
 
 	BaseForcefieldCapacity := 15 * HexSize * (Hexes - 1)
 	BaseForcefieldMult := 1
+	ForcefieldCapacityMod := 1
 	ForcefieldCapacity := BaseForcefieldCapacity * ForcefieldCapacityMod
 	ForcefieldCapacityMult := BaseForcefieldMult * ForcefieldCapacityMod
-	ForcefieldCapacityMod := 1
 
 	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
 	State: double = ForcefieldCapacity
@@ -55,13 +55,13 @@ Subsystem: Forcefield
 		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
 
 	Modifier: ShieldCapacityFactor(factor)
-		BaseForcefieldCapacity := BaseForcefieldCapacity + Base::BaseForcefieldMult * (factor - 1)
+		BaseForcefieldCapacity := BaseForcefieldCapacity + Base::BaseForcefieldCapacity * (factor - 1)
 		BaseForcefieldMult := BaseForcefieldMult + Base::BaseForcefieldMult * (factor - 1)
 	Modifier: ShieldCapacityMult(factor)
 		ForcefieldCapacityMod := ForcefieldCapacityMod * factor
 
 	Modifier: ShieldRegenFactor(factor)
-		BaseForcefieldRegen := BaseForcefieldRegen + Base::BaseForcefieldMult * (factor - 1)
+		BaseForcefieldRegen := BaseForcefieldRegen + Base::BaseForcefieldRegen * (factor - 1)
 	Modifier: ShieldRegenMult(factor)
 		ForcefieldRegenMod := ForcefieldRegenMod * factor
 
