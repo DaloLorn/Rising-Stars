@@ -15,13 +15,13 @@ Subsystem: RemnantHull
 
 	HullStrengthMult := 1
 
-	AddShipModifier: HpFactor(1.5)
-	AddShipModifier: DamageFactor(0.9)
-	AddShipModifier: SpreadFactor(1.5)
-	AddShipModifier: ThrustFactor(4.0)
-	AddShipModifier: TurnThrustFactor(8.0)
-	AddShipModifier: SupportCapacityFactor(2.0)
-	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
+	AddShipModifier: HpMult(1.5)
+	AddShipModifier: DamageMult(0.9)
+	AddShipModifier: SpreadMult(1.5)
+	AddShipModifier: ThrustMult(4.0)
+	AddShipModifier: TurnThrustMult(8.0)
+	AddShipModifier: SupportCapacityMult(2.0)
+	AddShipModifier: tag/MissileBase::SpeedMult(0.5)
 
 Subsystem: RemnantSupportHull
 	Tags: NoCore, RemnantComputer, HullSystem
@@ -38,10 +38,10 @@ Subsystem: RemnantSupportHull
 	Repair := (ShipSize / HexLimit) * 16
 	TechMult = 1.5
 
-	AddShipModifier: HpFactor(1.5)
-	AddShipModifier: DamageFactor(0.9)
-	AddShipModifier: SpreadFactor(1.5)
-	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
+	AddShipModifier: HpMult(1.5)
+	AddShipModifier: DamageMult(0.9)
+	AddShipModifier: SpreadMult(1.5)
+	AddShipModifier: tag/MissileBase::SpeedMult(0.5)
 
 Subsystem: SpecialRemnantHull
 	Tags: NoCore, RemnantComputer, HullSystem, Ability:ScuttleDerelict
@@ -55,10 +55,10 @@ Subsystem: SpecialRemnantHull
 
 	HullStrengthMult := 1
 
-	AddShipModifier: HpFactor(1.5)
-	AddShipModifier: DamageFactor(0.9)
-	AddShipModifier: SpreadFactor(1.5)
-	AddShipModifier: ThrustFactor(4.0)
-	AddShipModifier: TurnThrustFactor(8.0)
-	AddShipModifier: SupportCapacityFactor(2.0)
-	AddShipModifier: tag/MissileBase::SpeedFactor(0.5)
+	AddShipModifier: HpMult(1.5)
+	AddShipModifier: DamageMult(0.9)
+	AddShipModifier: SpreadMult(1.5)
+	AddShipModifier: ThrustMult(4.0)
+	AddShipModifier: TurnThrustMult(8.0)
+	AddShipModifier: SupportCapacityMult(2.0)
+	AddShipModifier: tag/MissileBase::SpeedMult(0.5)

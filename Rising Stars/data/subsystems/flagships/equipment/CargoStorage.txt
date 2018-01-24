@@ -9,7 +9,8 @@ Subsystem: CargoStorage
 	Hull: Flagship, Station
 	
 	Size := HexSize * Hexes
-	CargoStorage := Size * 4
+	CompressedHexes := 0
+	CargoStorage := HexSize * (Hexes + CompressedHexes) * 4
 
 	Hook: AddCargoStorage(CargoStorage)
 	Hook: AddPermanentStatus(CanGiveCargo)
@@ -24,7 +25,7 @@ Subsystem: CargoStorage
 	Hex.MaintainCost := HexSize - (HexSize/ShipSize * 8 * ShipSize^0.5)
 
 	Modifier: Compress(Amount)
-		CargoStorage := CargoStorage + Base::CargoStorage * (Amount / Hexes)
+		CompressedHexes := CompressedHexes + Amount
 
 	Module: Default
 		Sprite: CargoStorage

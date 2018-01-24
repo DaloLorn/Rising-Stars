@@ -327,13 +327,13 @@ ORB_ION_CANNON_DESC: <<
 	Grants the Ion Cannon ability.
 >>
 ORB_ION_CANNON_BLURB: Grants the Ion Cannon ability.
-ORB_SHIELD_ARRAY: Shield Generators
+ORB_SHIELD_ARRAY: Shield Array
 ORB_SHIELD_ARRAY_DESC: <<
-	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 30 SP/s.
+	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 7.5 SP/s.
 
 	This module can be installed multiple times.
 >>
-ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 30 shield regeneration.
+ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 7.5 shield regeneration.
 ORB_TACTICAL_COORDINATORS: Tactical Coordination Suite
 ORB_TACTICAL_COORDINATORS_DESC: <<
 	Additional tactical coordination computers are installed in the starbase, allowing it to manage a greater amount of defending ships. Increases the station's support capacity by 128.

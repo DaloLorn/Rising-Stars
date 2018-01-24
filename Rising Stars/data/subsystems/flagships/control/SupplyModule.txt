@@ -10,7 +10,8 @@ Subsystem: SupplyModule
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	BaseSupplyCapacity := Size * 4000
+	CompressedHexes := 0
+	BaseSupplyCapacity := HexSize * (Hexes + CompressedHexes) * 4000
 	SupplyRate := Size * 6
 
 	Hex.LaborCost := 0.15 * HexSize + 0.8
@@ -22,7 +23,7 @@ Subsystem: SupplyModule
 	Hex.Mass := HexSize
 
 	Modifier: Compress(Amount)
-		SupplyCapacity := SupplyCapacity + Base::SupplyCapacity * (Amount / Hexes)
+		CompressedHexes := CompressedHexes + Amount
 
 	Effect: LeakSupply
 		LeakPctPerSec = 1 / 60
