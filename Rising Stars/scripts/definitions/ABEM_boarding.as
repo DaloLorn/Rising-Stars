@@ -150,6 +150,8 @@ class BoardShip : StatusHook {
 		else {
 			@dmg.target = info.targetOrbital;
 			double maxDamage = (info.targetOrbital.maxHealth + info.targetOrbital.maxArmor) * randomd(5.0, 15.0); // While we want to bring the station below the 25% health threshold, we don't want to destroy the station.
+			if(dmg.damage > maxDamage)
+				dmg.damage = maxDamage;
 			
 			info.targetOrbital.damage(dmg, 0, vec2d(0, 0));
 			return true;
