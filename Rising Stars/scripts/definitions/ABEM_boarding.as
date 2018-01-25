@@ -46,7 +46,7 @@ class BoardShip : StatusHook {
 		double defenders = 0;
 		Ship@ ship = cast<Ship>(obj);
 		if(ship !is null)
-			defenders = ship.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_SecuritySystem, true);
+			defenders = ship.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_BoardingDefense, true);
 		Orbital@ orb = cast<Orbital>(obj);
 		if(defenders <= 0) // TODO: Make it possible to define custom boarding strength for various orbitals.
 			defenders = defaultDefenders.decimal;
