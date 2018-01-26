@@ -17,7 +17,7 @@ Building: VanguardPortal
 	AddRegionStatus(AllyBuff40)
 	ConsumeEnergy(1000)
 	ConsumeFTL(500)
-	ConsumeCargo(Ore, 1000)
+	ConsumeCargo(Ore, 10000)
 	ConflictBuilding(VanguardPortal)
 	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
 	RequireUnlockTag(VanguardUnlocks)

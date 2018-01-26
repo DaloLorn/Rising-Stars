@@ -25,7 +25,7 @@
 		[*]A fully transformed tech grid, bringing back the organized nature of the ABEM grid and reintroducing its specialization system
 		[*]More than a dozen new subsystems, including Ferrofluid Armor, Miner Hulls, Covariant Shield Generators, and Singularity Cores
 		[*]A complete overhaul of weapon balancing
-		[*]Several new orbitals - Stellar Shield Generators, Power Transmitters, Subspace Telescope Arrays, and others
+		[*]Several new orbital modules - Stellar Shield Generators, Power Transmitters, Subspace Telescope Arrays, and others
 		[*]Several new buildings, including Command Centers and Centralized Coordination Complexes
 		[*]Increased control over the way the game plays, with settings such as First Contact Mode, Research Effectiveness Decay, and more being changeable during game configuration
 		[*]New gameplay mechanics:[list]
@@ -33,6 +33,8 @@
 			[*]Stellar phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
 			[*]Boarding - [i]send troops to attack the enemy from within and take their ships for yourself[/i]
 			[*]Vanguard Victory - [i]races such as the Bluuhbi can construct Portal Stabilizers on Ringworlds and Artificial Planetoids, working to summon an unstoppable alien armada[/i]
+			[*]Materials - [i]resources such as Ore can now be stored and used in a global resource pool, and are now used more frequently[/i]
+			[*]Starbases - [i]most orbitals have been converted into modules for large, upgradeable 'Starbase' orbitals, capable of performing a variety of functions and potentially resilient enough to repel raiding parties[/i]
 			[/list]
 		[*]New maps:[list]
 			[*]Precious Clouds - [i]4-player map; race to rule the rich nebulae at the heart of this small sector[/i]
@@ -41,6 +43,7 @@
 
 		Full patch notes can be found in the forums.
 		[h1][b]Links[/b][/h1]
+		[b]SR2 Mod Manager:[/b] https://github.com/DaloLorn/SR2ModManager
 		[b]Rising Stars on GitHub:[/b] https://github.com/DaloLorn/Rising-Stars
 		[b]Rising Stars on ModDB:[/b] http://moddb.com/mods/alternate-balance-expansion-mod
 		[b]Rising Stars wiki:[/b] https://github.com/DaloLorn/Rising-Stars/wiki
