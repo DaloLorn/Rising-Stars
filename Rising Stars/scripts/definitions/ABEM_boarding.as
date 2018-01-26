@@ -53,6 +53,9 @@ class BoardShip : StatusHook {
 
 		if(obj.owner is defaultEmpire)
 			defenders = 0;
+			
+		print("Starting boarders: " + boarders);
+		print("Starting defenders: " + defenders);
 
 		info.boarders = boarders;
 		info.defenders = defenders;
@@ -110,7 +113,7 @@ class BoardShip : StatusHook {
 			
 		// Damaging a Security Station will reduce the ship's defense strength, and we need to remember that.
 		if(info.targetShip !is null)
-			info.defenders = info.targetShip.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_SecuritySystem, true);
+			info.defenders = info.targetShip.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_BoardingDefense, true);
 		
 		// The boarders' casualties grow exponentially if they don't have a significant advantage over the defenders. If their relative strength is great enough, their casualties will be negligible.
 		double advantageMult = 1;
@@ -118,7 +121,9 @@ class BoardShip : StatusHook {
 		if(ratio > 2)
 			advantageMult = ratio / 2;
 		
+		// double currentBoarders = info.boarders;
 		info.boarders -= info.defenders / (ratio * advantageMult * 10) * BOARDING_TICKRATE;
+		// print("Boarding tick killed " + (currentBoarders - info.boarders) + " boarders, " + info.boarders + " remaining");
 		
 		return info.boarders > 0;
 	}
