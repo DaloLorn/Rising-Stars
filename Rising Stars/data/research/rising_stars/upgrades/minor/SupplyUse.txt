@@ -1,6 +1,6 @@
 Technology: SupplyUse
 	Name: #R_IMP_SUPPLY_USE
-	Blurb: #R_IMP_SUPPLY_USE_BLURB:-10%
+	Blurb: #R_IMP_SUPPLY_USE_BLURB:10%
 	Description: #R_IMP_SUPPLY_USE_DESC:-10%
 
 	Color: #fefc61
@@ -16,7 +16,7 @@ Technology: SupplyUse
 
 Technology: SupplyUse2
 	Name: #R_IMP_SUPPLY_USE2
-	Blurb: #R_IMP_SUPPLY_USE_BLURB:-20%
+	Blurb: #R_IMP_SUPPLY_USE_BLURB:20%
 	Description: #R_IMP_SUPPLY_USE_DESC:-20%
 
 	Icon: AttributeIcons::1*#00e5f7

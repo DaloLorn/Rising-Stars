@@ -21,4 +21,4 @@ Technology: InfiniteShields
 	AddModifier(ShieldRegenFactor(1.15))
 
 	ModAttribute(InfiniteShieldsTaken, Add, 1)
-	ModAttribute(OrbitalShieldMod, Multiply, 1.15)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.15)

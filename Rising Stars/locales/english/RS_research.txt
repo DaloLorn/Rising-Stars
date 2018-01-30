@@ -1,3 +1,7 @@
+R_CONSTRUCTION_DESC: Increases the construction speed of imperial surface buildings by $1, and decreases their build cost by $2.
+R_IMP_PLANET_SUPPORT_BLURB: Military Starbase Support +$1
+R_TACTICS_DESC: Increases all Experience gained by ships by $1.
+R_DRONE_COUNT_DESC: Increases the amount of drones launched by the Drone Launcher subsystem by 50%. Additionally, increases the damage dealt by those drones by 30%.
 R_SYS_MATTERDISRUPTOR: Matter Disruption
 R_VOIDRAY: Adaptive Frequency Modulation
 RESEARCH_REQ_BUILDLIQUIDARMOR: Construct at least $2 units of Liquid Armor across all your ships. ( $1 / $2 )
@@ -32,7 +36,7 @@ R_NYLLI_FOOD_DESC: <<
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
-	Increases the [img=Plus;20/] Health and the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Military Starbases[/b] by $1.
+	Increases the [img=Plus;20/] Health and the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Military Starbases[/b] by $3 and $1, respectively.
 
 	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
 

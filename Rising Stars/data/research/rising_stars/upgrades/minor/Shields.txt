@@ -1,6 +1,6 @@
 Technology: ShieldCap
 	Name: #R_IMP_SHIELDCAP
-	Blurb: #R_IMP_SHIELDCAP_BLURB:+25%
+	Blurb: #R_IMP_SHIELDCAP_BLURB:25%
 	Description: #R_IMP_SHIELDCAP_DESC:+25%
 
 	Icon: techPhaseContainment * #4040ff
@@ -16,10 +16,10 @@ Technology: ShieldCap
 	AddModifier( ShieldHarmonizer::BonusShieldFactor(1.25) )
 
 
-	ModAttribute(OrbitalShieldMod, Multiply, 1.125)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.125)
 Technology: ShieldCap2
 	Name: #R_IMP_SHIELDCAP2
-	Blurb: #R_IMP_SHIELDCAP_BLURB:+50%
+	Blurb: #R_IMP_SHIELDCAP_BLURB:50%
 	Description: #R_IMP_SHIELDCAP_DESC:+50%
 
 	Icon: techPhaseContainment * #407bff
@@ -34,10 +34,10 @@ Technology: ShieldCap2
 	AddModifier( ShieldCapacityFactor(1.5) )
 	AddModifier( ShieldHarmonizer::BonusShieldFactor(1.5) )
 
-	ModAttribute(OrbitalShieldMod, Multiply, 1.25)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.25)
 Technology: ShieldReg
 	Name: #R_IMP_SHIELDREG
-	Blurb: #R_IMP_SHIELDREG_BLURB:+25%
+	Blurb: #R_IMP_SHIELDREG_BLURB:25%
 	Description: #R_IMP_SHIELDREG_DESC:+25%
 
 	Icon: techPhaseHarmonics * #4040ff
@@ -51,10 +51,10 @@ Technology: ShieldReg
 
 	AddModifier(ShieldRegenFactor(1.25))
 
-	ModAttribute(OrbitalShieldMod, Multiply, 1.125)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.125)
 Technology: ShieldReg2
 	Name: #R_IMP_SHIELDREG2
-	Blurb: #R_IMP_SHIELDREG_BLURB:+50%
+	Blurb: #R_IMP_SHIELDREG_BLURB:50%
 	Description: #R_IMP_SHIELDREG_DESC:+50%
 
 	Icon: techPhaseHarmonics * #407bff
@@ -66,5 +66,5 @@ Technology: ShieldReg2
 	Point Cost: 700
 	Time Cost: 90
 
-	ModAttribute(OrbitalShieldMod, Multiply, 1.25)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.25)
 	AddModifier(ShieldRegenFactor(1.5))

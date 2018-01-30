@@ -24,9 +24,9 @@ Technology: AdaptationSpec1
 	Symbol: SequesteredSociety
 	Color: #6c412f
 	ReplaceTechnologyNodes(TerraformSpec1, SpecConnector)
-	ModAttribute(ImperialBldConstructionRate, Add, 1)
-	ModAttribute(BuildingCostFactor, Add, -0.2)
-	ModAttribute(BuildingMaintFactor, Add, -0.1)
+	ModAttribute(ImperialBldConstructionRate, Multiply, 2)
+	ModAttribute(BuildingCostFactor, Multiply, 0.8)
+	ModAttribute(BuildingMaintFactor, Multiply, 0.9)
 
 	SecondaryMoneyCost(500)
 Technology: TerraformSpec2

@@ -983,18 +983,26 @@ class ConstructionDisplay : DisplayBox {
 		menu.flexWidth = false;
 		menu.width = 400;
 
-		uint cnt = playerEmpire.designCount;
-		for(uint i = 0; i < cnt; ++i) {
-			auto@ dsg = playerEmpire.designs[i];
-			if(dsg.obsolete || dsg.newer !is null || dsg.updated !is null)
-				continue;
-			if(dsg.hasTag(ST_Support))
-				continue;
-			if(dsg.hasTag(ST_Station))
-				continue;
-			if(dsg.hasTag(ST_Satellite))
-				continue;
-			menu.addOption(FlagshipDrydock(obj, dsg, forEmp));
+		ReadLock lock(playerEmpire.designMutex);
+		uint clsCount = playerEmpire.designClassCount;
+		for(uint i = 0; i < clsCount; ++i) {
+			const DesignClass@ cls = playerEmpire.getDesignClass(i);
+
+			bool hasShips = false;
+			for(uint j = 0, jcnt = cls.designCount; j < jcnt; ++j) {
+				const Design@ dsg = cls.designs[j];
+				if(dsg.obsolete)
+					continue;
+				if(dsg.hasTag(ST_Support))
+					continue;
+				if(dsg.hasTag(ST_Station))
+					continue;
+				if(dsg.hasTag(ST_Satellite))
+					continue;
+				menu.addOption(FlagshipDrydock(obj, dsg, forEmp));
+				menu.list.sortDesc();
+				menu.updateAbsolutePosition();
+			}
 		}
 
 		menu.list.sortDesc();

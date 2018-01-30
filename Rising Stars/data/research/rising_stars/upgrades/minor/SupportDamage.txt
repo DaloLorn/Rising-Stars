@@ -1,6 +1,6 @@
 Technology: SupportDamage
 	Name: #R_IMP_SUPPORT_DAMAGE
-	Blurb: #R_IMP_SUPPORT_DAMAGE_BLURB:+25%
+	Blurb: #R_IMP_SUPPORT_DAMAGE_BLURB:25%
 	Description: #R_IMP_SUPPORT_DAMAGE_DESC:+25%
 
 	Icon: ActionBarIcons::2
@@ -16,7 +16,7 @@ Technology: SupportDamage
 
 Technology: SupportDamage2
 	Name: #R_IMP_SUPPORT_DAMAGE2
-	Blurb: #R_IMP_SUPPORT_DAMAGE_BLURB:+50%
+	Blurb: #R_IMP_SUPPORT_DAMAGE_BLURB:50%
 	Description: #R_IMP_SUPPORT_DAMAGE_DESC:+50%
 
 	Icon: ActionBarIcons::2

@@ -24,9 +24,9 @@ Technology: NylliAdaptationSpec1
 	Symbol: SequesteredSociety
 	Color: #6c412f
 	ReplaceTechnologyNodes(NylliTerraformSpec1, SpecConnector)
-	ModAttribute(OrbitalLaborCostFactor, Add, -0.5)
-	ModAttribute(OrbitalBuildCostFactor, Add, -0.2)
-	ModAttribute(OrbitalMaintMod, Add, -0.1)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.5)
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.8)
+	ModAttribute(OrbitalMaintMod, Multiply, 0.9)
 
 	SecondaryMoneyCost(500)
 Technology: NylliTerraformSpec2

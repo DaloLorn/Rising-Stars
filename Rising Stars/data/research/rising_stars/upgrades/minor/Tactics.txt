@@ -11,4 +11,4 @@ Technology: Tactics
 	Point Cost: 500
 	Time Cost: 60
 
-	ModAttribute(ExperienceGainFactor, Multiply, 1.1)
+	ModAttribute(ExperienceGainFactor, AddFactor, 0.1)

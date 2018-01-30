@@ -19,5 +19,5 @@ Technology: InfiniteHealth
 
 	AddModifier(HpFactor(1.2))
 	AddModifier(ImpactLevelFactor(1.2))
-	ModAttribute(OrbitalHealthMod, Multiply, 1.2)
+	ModAttribute(OrbitalHealthMod, AddFactor, 0.2)
 	ModAttribute(InfiniteHealthTaken, Add, 1)

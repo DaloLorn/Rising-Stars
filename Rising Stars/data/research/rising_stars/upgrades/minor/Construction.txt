@@ -1,6 +1,6 @@
 Technology: Construction
 	Name: #R_CONSTRUCTION
-	Description: #R_CONSTRUCTION_DESC:25%
+	Description: #R_CONSTRUCTION_DESC:+25%:-10%
 
 	Icon: techConstruction*#00cc8f
 	Color: #00cc8f
@@ -12,12 +12,12 @@ Technology: Construction
 	Time Cost: 100
 	Symbol: Metropolis
 
-	ModAttribute(ImperialBldConstructionRate, Multiply, 1.25)
-	ModAttribute(BuildingCostFactor, Multiply, 0.75)
+	ModAttribute(ImperialBldConstructionRate, AddFactor, 0.25)
+	ModAttribute(BuildingCostFactor, AddFactor, -0.1)
 
 Technology: Construction2
 	Name: #R_CONSTRUCTION2
-	Description: #R_CONSTRUCTION_DESC:50%
+	Description: #R_CONSTRUCTION_DESC:+50%:-20%
 
 	Icon: techConstruction*#00cc8f
 	Color: #00cc41
@@ -29,5 +29,5 @@ Technology: Construction2
 	Time Cost: 140
 	Symbol: Metropolis
 
-	ModAttribute(ImperialBldConstructionRate, Multiply, 1.5)
-	ModAttribute(BuildingCostFactor, Multiply, 0.5)
+	ModAttribute(ImperialBldConstructionRate, AddFactor, 0.5)
+	ModAttribute(BuildingCostFactor, AddFactor, -0.2)

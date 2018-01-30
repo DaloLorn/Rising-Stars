@@ -18,5 +18,5 @@ Technology: InfiniteDamage
 	ResetWhenUnlocked()
 
 	AddModifier( tag/Weapon::DamageFactor(1.2) )
-	ModAttribute(StaticDamageFactor, Multiply, 1.2)
+	ModAttribute(StaticDamageFactor, AddFactor, 0.2)
 	ModAttribute(InfiniteDamageTaken, Add, 1)

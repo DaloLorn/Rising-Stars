@@ -1,6 +1,6 @@
 Technology: HabitatUpgrade
 	Name: #R_IMP_HABITAT
-	Blurb: #R_IMP_HABITAT_BLURB:+50%:+30%
+	Blurb: #R_IMP_HABITAT_BLURB:50%:+30%
 	Description: #R_IMP_HABITAT_DESC:+50%:+30%
 
 	Icon: ResourceIcon::8
@@ -10,8 +10,8 @@ Technology: HabitatUpgrade
 	Time Cost: 90
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 
-	ModAttribute(HabitatUpgrade, Multiply, 1.5)
-	ModAttribute(StaticDamageFactor, Multiply, 1.3)
+	ModAttribute(HabitatUpgrade, AddFactor, 0.5)
+	ModAttribute(StaticDamageFactor, AddFactor, 0.3)
 
 Technology: MothershipLabor
 	Name: #R_IMP_MOTHERSHIP_LABOR

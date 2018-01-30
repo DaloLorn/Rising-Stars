@@ -1,13 +1,12 @@
 Technology: Thrust
 	Name: #R_IMP_THRUST
-	Blurb: #R_IMP_THRUST_BLURB:+20%
+	Blurb: #R_IMP_THRUST_BLURB:20%
 	Description: #R_IMP_THRUST_DESC:+20%
 
 	Icon: techPropulsion*#ffeba5
 	Color: #a77751
 
 	Category: Minor Upgrades
-	Class: Boost
 
 	Point Cost: 500
 	Time Cost: 60
@@ -18,7 +17,7 @@ Technology: Thrust
 
 Technology: Thrust2
 	Name: #R_IMP_THRUST2
-	Blurb: #R_IMP_THRUST_BLURB:+40%
+	Blurb: #R_IMP_THRUST_BLURB:40%
 	Description: #R_IMP_THRUST_DESC:+40%
 
 	Icon: techPropulsion2*#ffeba5

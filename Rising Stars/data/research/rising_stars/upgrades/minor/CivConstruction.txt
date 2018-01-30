@@ -1,6 +1,6 @@
 Technology: CivConstruction
 	Name: #R_IMP_CIV_CONSTRUCT
-	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:+50%
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:50%
 	Description: #R_IMP_CIV_CONSTRUCT_DESC:+50%
 
 	Icon: techConstruction*#3accae
@@ -16,7 +16,7 @@ Technology: CivConstruction
 
 Technology: CivConstruction2
 	Name: #R_IMP_CIV_CONSTRUCT2
-	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:+100%
+	Blurb: #R_IMP_CIV_CONSTRUCT_BLURB:100%
 	Description: #R_IMP_CIV_CONSTRUCT_DESC:+100%
 
 	Icon: techConstruction*#3accae

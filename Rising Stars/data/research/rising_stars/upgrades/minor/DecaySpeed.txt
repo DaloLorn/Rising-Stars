@@ -11,7 +11,7 @@ Technology: DecaySpeed
 	Symbol: QuickbarIcons::4
 	Category: Minor Upgrades
 
-	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.75) )
+	ModAttribute(PlanetDecaySpeed, AddFactor, 0.75)
 
 Technology: DecaySpeed2
 	Name: #R_IMP_DECAY2
@@ -26,4 +26,4 @@ Technology: DecaySpeed2
 	Symbol: QuickbarIcons::4
 	Category: Medium Upgrades
 
-	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.5) )
+	ModAttribute(PlanetDecaySpeed, AddFactor, 0.5)
