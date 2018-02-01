@@ -57,6 +57,11 @@ server:
 
 	bool writeMoverDelta(Message& msg) const;
 	void writeMover(Message& msg) const;
+	
+	void setSpacetimeDrag(const bool value);
+	void modSpacetimeDrag(double mod);
+	void setRelativisticAccel(const bool value);
+	void modLightspeed(double mod);
 
 shadow:
 	void readMoverDelta(Message& msg);

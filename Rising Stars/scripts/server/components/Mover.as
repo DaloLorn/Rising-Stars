@@ -5,6 +5,11 @@ import ftl;
 
 const double straighDot = 0.99999;
 
+const double baseSpacetimeDragCoefficient = 0.09;
+const double offAxisThrustMultiplier = 0.35;
+const double baseLightspeed = 700;
+const double maxDistMultiplier = 1.0; // multiplies objects radius to find maximum braking distance.
+
 //Rotation rate in radians/s
 const double shipRotSpeed = 0.1;
 const double SQRT_2 = sqrt(2.0);
@@ -233,6 +238,15 @@ tidy class Mover : Component_Mover, Savable {
 
 	bool FTL = false;
 	double FTLSpeed = 1.0;
+	
+	bool spacetimeDrag = true;
+	double spacetimeDragCoefficient = baseSpacetimeDragCoefficient;
+	double spacetimeDragCoefficientFactor = 0.0;
+	
+	// Don't use this until you fix why it isn't working - ships will overshoot their destinations massively and somehow have more acceleration than they should, even though it's intended to reduce acceleration!
+	bool relativisticAccel = false;
+	double lightspeed = baseLightspeed;
+	double lightspeedFactor = 0.0;
 
 	Mover() {
 	}
@@ -261,7 +275,12 @@ tidy class Mover : Component_Mover, Savable {
 			data >> rotSpeed;
 		if(data >= SV_0054)
 			data >> fleetRelative;
-
+		data >> spacetimeDrag;
+		data >> spacetimeDragCoefficient;
+		data >> relativisticAccel;
+		data >> lightspeed;
+			
+			
 		if(data >= SV_0009) {
 			uint cnt = 0;
 			data >> cnt;
@@ -298,6 +317,10 @@ tidy class Mover : Component_Mover, Savable {
 		data << vectorMovement;
 		data << rotSpeed;
 		data << fleetRelative;
+		data << spacetimeDrag;
+		data << spacetimeDragCoefficient;
+		data << relativisticAccel;
+		data << lightspeed;
 
 		uint cnt = path is null ? 0 : path.length;
 		data << cnt;
@@ -486,6 +509,33 @@ tidy class Mover : Component_Mover, Savable {
 	void modAccelerationBonus(double mod) {
 		accel += mod;
 		accelBonus += mod;
+		moverDelta = true;
+	}
+	
+	void setSpacetimeDrag(const bool value) {
+		if(spacetimeDrag != value) {
+			spacetimeDrag = value;
+			moverDelta = true;
+		}
+	}
+	
+	void modSpacetimeDrag(double mod) {
+		spacetimeDragCoefficientFactor += mod;
+		spacetimeDragCoefficient = baseSpacetimeDragCoefficient * (1.0 + spacetimeDragCoefficientFactor);
+		moverDelta = true;
+	}
+	
+	// Don't use this until you fix why it isn't working - ships will overshoot their destinations massively and somehow have more acceleration than they should, even though it's intended to reduce acceleration!
+	void setRelativisticAccel(const bool value) {
+		if(relativisticAccel != value) {
+			relativisticAccel = value;
+			moverDelta = true;
+		}
+	}
+	
+	void modLightspeed(double mod) {
+		lightspeedFactor += mod;
+		lightspeed = baseLightspeed * (1.0 + lightspeedFactor);
 		moverDelta = true;
 	}
 	
@@ -815,6 +865,30 @@ tidy class Mover : Component_Mover, Savable {
 
 		double a = accel;
 		
+		// Don't use this until you fix why it isn't working - ships will overshoot their destinations massively and somehow have more acceleration than they should, even though it's intended to reduce acceleration!
+		if(relativisticAccel) {
+			a = accel * max(0.01, 1 - (obj.velocity.length / lightspeed)^2);
+		}
+		
+		// This code handles spacetime drag - in short, take a fraction of how fast you're going, and subtract it from how fast you're going.
+		if(spacetimeDrag) {
+			vec3d drag = obj.velocity * spacetimeDragCoefficient * time;
+			obj.velocity = obj.velocity - drag;
+			
+			// code for magically slowing down even better when close to the target area.
+			double brakingDistance = obj.radius * maxDistMultiplier;
+			double distanceToDestination = (compDestination - obj.position).length;
+			if (distanceToDestination > 0 && brakingDistance > 0)
+			{
+				if (distanceToDestination < brakingDistance)
+				{
+					double brakingFactor = (1 - (distanceToDestination / brakingDistance)) * 0.8;
+					vec3d magicalBrakingDrag = obj.velocity * brakingFactor;
+					obj.velocity = obj.velocity - magicalBrakingDrag;
+				}	
+			}
+		}
+		
 		obj.position += obj.velocity * time;
 
 		if(obj.owner.ForbidDeepSpace != 0) {
@@ -1002,6 +1076,35 @@ tidy class Mover : Component_Mover, Savable {
 				}
 				else if(!vectorMovement) {
 					targRot = quaterniond_fromVecToVec(vec3d_front(), dest - obj.position, vec3d_up());
+					// Added code to apply a little bit of thrust even when not rotated.
+					{
+						double dot = targRot.dot(obj.rotation);
+						if(dot < 0.999) {
+							if(dot < -1.0)
+								dot = -1.0;
+						}
+						else {
+							if(dot > 1.0)
+								dot = 1.0;
+						}
+						
+						// dot is now in the range -1 to +1, where 0 is a rightangle between target rotation and current rotation.
+						// Therefore, if we take 35% of the acceleration and multiply that by the absolute value of dot
+						// we'll achieve the goal of slight off-axis acceleration, scaling up to 35% when it's almost parallel, and then the
+						// normal code will take over when rotating is false or vector movement is true, as this entire block is only executed as
+						// an else to the standard rotation/accel block.
+						double absdot = dot < 0 ? 0-dot : dot; 
+						double ratio = absdot * offAxisThrustMultiplier; // 35% thrust scaled down to zero sideways.
+						double timeLeft = time;
+						do {
+							double take = 0;
+							obj.acceleration = accToGoal(a, take, dest - obj.position, destVel - obj.velocity) * ratio;
+							take = min(timeLeft, max(take, 0.01));
+							obj.position += obj.acceleration * (take * take * 0.5);
+							obj.velocity += obj.acceleration * take;
+							timeLeft -= take;
+						} while(timeLeft > 0.0001);
+					}
 				}
 			}
 			else {

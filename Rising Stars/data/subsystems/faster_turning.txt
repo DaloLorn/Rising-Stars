@@ -1,0 +1,2 @@
+Template: tag/HullSystem
+	AddShipModifier: TurnThrustMult(2.2)
