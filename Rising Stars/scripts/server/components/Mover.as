@@ -5,7 +5,7 @@ import ftl;
 
 const double straighDot = 0.99999;
 
-const double baseSpacetimeDragCoefficient = 0.09;
+const double baseSpacetimeDragCoefficient = 0.03;
 const double offAxisThrustMultiplier = 0.35;
 const double baseLightspeed = 700;
 const double maxDistMultiplier = 1.0; // multiplies objects radius to find maximum braking distance.
@@ -239,7 +239,7 @@ tidy class Mover : Component_Mover, Savable {
 	bool FTL = false;
 	double FTLSpeed = 1.0;
 	
-	bool spacetimeDrag = true;
+	bool spacetimeDrag = config::NEW_MOVEMENT > 0;
 	double spacetimeDragCoefficient = baseSpacetimeDragCoefficient;
 	double spacetimeDragCoefficientFactor = 0.0;
 	

@@ -11,8 +11,8 @@ Subsystem: GravityEngine
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	BaseThrust := 85 * Size
-	BaseTurnThrust := 5.0 * Size
+	BaseThrust := (28 + 57 * $NEW_MOVEMENT) * Size
+	BaseTurnThrust := (2.0 + 3.0 * $NEW_MOVEMENT) * Size
 	PowerUse := 5 * Size
 	Hex.Mass := HexSize
 

@@ -1,2 +1,2 @@
 Template: tag/HullSystem
-	AddShipModifier: TurnThrustMult(2.2)
+	AddShipModifier: TurnThrustMult(1 + 0.75 * $NEW_MOVEMENT)

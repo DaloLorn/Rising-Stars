@@ -85,6 +85,7 @@ class AdvancedGamePage : GameSettingsPage {
 		Toggle(locale::NG_HIDE_EMPIRE_RELATIONS, "HIDE_EMPIRE_RELATIONS", halfWidth=true, tooltip=locale::NGTT_HIDE_EMPIRE_RELATIONS);
 		Toggle(locale::NG_TEAMS_START_CLOSE, "TEAMS_START_CLOSE", halfWidth=true, tooltip=locale::NGTT_TEAMS_START_CLOSE);
 		Toggle(locale::NG_FIRST_CONTACT, "FIRST_CONTACT", halfWidth=true, tooltip=locale::NGTT_FIRST_CONTACT);
+		Toggle(locale::NG_NEW_MOVEMENT, "NEW_MOVEMENT", halfWidth=true, tooltip=locale::NGTT_NEW_MOVEMENT);
 		Number(locale::NG_CARD_STACK_INTERVAL, "CARD_STACK_DRAW_INTERVAL", step=15, min=15, max=360, tooltip=locale::NGTT_CARD_STACK_INTERVAL);
 		Number(locale::NG_ENERGY_EFFICIENCY_STEP, "ENERGY_EFFICIENCY_STEP", step=25, min=100, max=5000, tooltip=locale::NGTT_ENERGY_EFFICIENCY_STEP);
 		Number(locale::NG_ENERGY_PER_SEEDSHIP, "ENERGY_PER_SEEDSHIP", step=100, min=500, tooltip=locale::NGTT_ENERGY_PER_SEEDSHIP);

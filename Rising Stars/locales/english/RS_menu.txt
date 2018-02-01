@@ -71,6 +71,13 @@ NGTT_TEAMS_START_CLOSE: When checked, the game will try to place members of a te
 NG_FIRST_CONTACT: First Contact Mode
 NGTT_FIRST_CONTACT: When unchecked, the game will act as if all the empires had already met before the beginning of the match.
 
+NG_NEW_MOVEMENT: New Movement Physics
+NGTT_NEW_MOVEMENT: <<
+	When checked, the game will use the spacetime drag mechanic from Darloth's "New Movement Physics" mod, as well as the graviton engine buffs from the associated "NMP Graviton Adjust" mod.
+
+	[i][color=#aaa]NMP's lateral thrust functionality is enabled regardless of this setting.[/color][/i]
+>>
+
 NG_CARD_STACK_INTERVAL: Influence Stack Refresh Rate
 NGTT_CARD_STACK_INTERVAL: How long it takes for the influence card stack to refresh. (Developer note: The timer above the right end of the stack - the thing that controls when new cards are added to/removed from the stack.)
 
