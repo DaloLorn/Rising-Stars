@@ -129,6 +129,12 @@ tidy class PlanetScript {
 		if(ringStyle != 0)
 			plNode.addRing(ringStyle);
 
+		int resId = planet.primaryResourceType;
+    	if (resId != -1) {
+			const ResourceType@ type = getResource(resId);
+			type.applyGraphics(planet, plNode);
+		}
+
 		if(file >= SV_0110) {
 			if(file.readBit()) {
 				if(moons is null)
@@ -184,7 +190,7 @@ tidy class PlanetScript {
 					vec3d pos = planet.position;
 					pos += random3d(80 + planet.radius);
 
-					Asteroid@ roid = createAsteroid(pos);
+					Asteroid@ roid = createAsteroid(pos, planet.region, delay = true);
 					Region@ reg = planet.region;
 					if(reg !is null) {
 						roid.orbitAround(reg.position);
