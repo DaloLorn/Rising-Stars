@@ -867,6 +867,20 @@ class PersistentBeamEffect : AbilityHook {
 		else if(oldTarget.obj !is null)
 			removeGfxEffect(ALL_PLAYERS, effId);
 	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const override {
+		Target storeTarg = objTarg.fromTarget(abl.targets);
+		if (storeTarg is null)
+			return;
+
+		int64 effId = abl.obj.id << 32 | 0x1 << 24 | abl.id << 8 | uint(objTarg.integer);
+		Color bColor = toColor(color.str);
+		double bWidth = width.decimal;
+		if(modified_width.boolean)
+			bWidth *= abl.obj.radius;
+
+		makeBeamEffect(ALL_PLAYERS, effId, abl.obj, storeTarg.obj, bColor.color, bWidth, material.str, -1.0);
+	}
 #section all
 };
 
