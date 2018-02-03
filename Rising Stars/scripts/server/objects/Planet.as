@@ -129,6 +129,12 @@ tidy class PlanetScript {
 		if(ringStyle != 0)
 			plNode.addRing(ringStyle);
 
+		int resId = planet.primaryResourceType;
+    if (resId != -1) {
+			const ResourceType@ type = getResource(resId);
+			type.applyGraphics(planet, plNode);
+		}
+
 		if(file >= SV_0110) {
 			if(file.readBit()) {
 				if(moons is null)
