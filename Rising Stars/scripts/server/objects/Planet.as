@@ -184,7 +184,7 @@ tidy class PlanetScript {
 					vec3d pos = planet.position;
 					pos += random3d(80 + planet.radius);
 
-					Asteroid@ roid = createAsteroid(pos);
+					Asteroid@ roid = createAsteroid(pos, planet.region, delay = true);
 					Region@ reg = planet.region;
 					if(reg !is null) {
 						roid.orbitAround(reg.position);

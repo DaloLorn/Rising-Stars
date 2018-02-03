@@ -239,7 +239,8 @@ tidy class AsteroidScript {
 		if(prevRegion is null && isOutsideUniverseExtents(obj.position))
 			limitToUniverseExtents(obj.position);
 
-		icon.visible = obj.isVisibleTo(playerEmpire);
+		if (icon !is null)
+			icon.visible = obj.isVisibleTo(playerEmpire);
 
 		obj.orbitTick(time);
 		obj.resourceTick(time);
