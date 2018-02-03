@@ -956,6 +956,9 @@ class MapGeneration {
 				if(biome !is null)
 					data.distributedResources[i].replaceFirstBiomeWith(biome.id);
 				markResourceUsed(resources[i]);
+				auto@ node = cast<PlanetNode>(data.distributedResources[i].getNode());
+				if(node !is null)
+					resources[i].applyGraphics(data.distributedResources[i], node);
 			}
 			data.distributedResources.length = 0;
 		}
