@@ -158,6 +158,7 @@ class Orbitals : AIComponent, AIOrbitals {
 			@data.obj = obj;
 			data.prevTick = gameTime;
 			orbitals.insertLast(data);
+			data.init(ai, this);
 		}
 		return data;
 	}
