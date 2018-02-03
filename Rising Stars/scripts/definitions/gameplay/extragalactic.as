@@ -413,9 +413,11 @@ class RefugeeColonization : GenericEffect {
 
 		{
 			auto@ coord = getCoordinate(obj.owner);
-			Lock lck(coord.mtx);
-			coord.spreading.insertLast(rd);
-			rd.registered = true;
+			if (coord !is null) {
+				Lock lck(coord.mtx);
+				coord.spreading.insertLast(rd);
+				rd.registered = true;
+			}
 		}
 	}
 
@@ -425,9 +427,11 @@ class RefugeeColonization : GenericEffect {
 
 		if(rd !is null) {
 			auto@ coord = getCoordinate(obj.owner);
-			Lock lck(coord.mtx);
-			coord.spreading.remove(rd);
-			rd.registered = false;
+			if (coord !is null) {
+				Lock lck(coord.mtx);
+				coord.spreading.remove(rd);
+				rd.registered = false;
+			}
 		}
 	}
 
@@ -437,14 +441,18 @@ class RefugeeColonization : GenericEffect {
 
 		if(prevOwner !is null) {
 			auto@ coord = getCoordinate(prevOwner);
-			Lock lck(coord.mtx);
-			coord.spreading.remove(rd);
+			if (coord !is null) {
+				Lock lck(coord.mtx);
+				coord.spreading.remove(rd);
+			}
 		}
 		if(newOwner !is null) {
 			auto@ coord = getCoordinate(newOwner);
-			Lock lck(coord.mtx);
-			coord.spreading.insertLast(rd);
-			rd.registered = true;
+			if (coord !is null) {
+				Lock lck(coord.mtx);
+				coord.spreading.insertLast(rd);
+				rd.registered = true;
+			}
 		}
 	}
 
@@ -469,30 +477,32 @@ class RefugeeColonization : GenericEffect {
 			Empire@ emp = obj.owner;
 
 			auto@ coord = getCoordinate(emp);
-			Lock lck(coord.mtx);
+			if (coord !is null) {
+				Lock lck(coord.mtx);
 
-			//Send colonizations
-			Region@ reg = obj.region;
-			if(reg is null)
-				@reg = findNearestRegion(obj.position);
+				//Send colonizations
+				Region@ reg = obj.region;
+				if(reg is null)
+					@reg = findNearestRegion(obj.position);
 
-			Planet@ bestPlanet;
-			double bestWeight = 0.0;
+				Planet@ bestPlanet;
+				double bestWeight = 0.0;
 
-			for(uint i = 0, cnt = rd.systems.length; i < cnt; ++i) {
-				auto@ sys = rd.systems[i];
-				for(uint n = 0, ncnt = sys.planets.length; n < ncnt; ++n) {
-					Planet@ pl = sys.planets[n];
+				for(uint i = 0, cnt = rd.systems.length; i < cnt; ++i) {
+					auto@ sys = rd.systems[i];
+					for(uint n = 0, ncnt = sys.planets.length; n < ncnt; ++n) {
+						Planet@ pl = sys.planets[n];
 
-					double w = coord.getWeight(emp, rd, pl);
-					if(w > bestWeight) {
-						bestWeight = w;
-						@bestPlanet = pl;
+						double w = coord.getWeight(emp, rd, pl);
+						if(w > bestWeight) {
+							bestWeight = w;
+							@bestPlanet = pl;
+						}
 					}
 				}
-			}
 
-			@rd.nextTarget = bestPlanet;
+				@rd.nextTarget = bestPlanet;
+			}
 		}
 
 		//Update our internal representation of the surrounding area
