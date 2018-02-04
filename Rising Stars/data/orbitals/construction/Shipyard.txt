@@ -78,5 +78,4 @@ Module: AdaptedShipyard
 	AllowLaborImport()
 	ForbidLaborExport()
 
-	AI:RegisterForUse(Shipyard)
 	AddGlobalDefense(2)
