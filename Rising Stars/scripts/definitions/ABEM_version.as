@@ -1,7 +1,7 @@
 import version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "835"; 
+const string MOD_REVISION = "836"; 
 const array<string> VERSIONS = {
 	"v2.0.3",
 };
@@ -10,7 +10,7 @@ const array<string> REVISIONS = {
 	"5101",
 	"5095",
 };
-const string MOD_NAME = "Rising Stars v1.2.1";
+const string MOD_NAME = "Rising Stars v1.3.0";
 const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0] + ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ")";
 
 string getLowestSupported(string input) {
