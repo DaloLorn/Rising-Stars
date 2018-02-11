@@ -226,6 +226,11 @@ class Battle {
 					if(ourStrength < enemyStrength * 0.5)
 						shouldRetreat = true;
 				}
+				//DOF - Adding some leader based checks
+				if(miss.fleet.flagshipHealth < 0.5)  {
+					if(ourStrength < enemyStrength * 0.75)  shouldRetreat = true;
+				}
+				//End of DOF addition
 				if(shouldRetreat) {
 					war.fleets.returnToBase(miss.fleet);
 					fleets.removeAt(i);
@@ -785,6 +790,10 @@ class War : AIComponent {
 				return 0.0;
 			if(fleet.filled < 0.2)
 				return 0.0;
+			//DOF - Do not send badly damaged flagships
+			if(fleet.flagshipHealth < 0.5)
+				return 0.0;
+			//End of DOF addition
 
 			if(fleet.obj.isMoving) {
 				if(fleet.obj.velocity.length / fleet.obj.maxAcceleration > 16.0)

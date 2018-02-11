@@ -64,6 +64,12 @@ RemnantComposition@ composeRemnantFleet(double targetStrength, double margin = 0
 
 		const Design@ flag = getRemnantDesign(DT_Flagship, flagSize, emp);
 		@compose.flagship = flag;
+		
+		// Dolynick: I don't like this but this occassionally throws a null and it needs to have an exception added
+		if(flag is null)  {
+			//print("Remnant flag is null");
+			continue;
+		}
 
 		double hp = flag.totalHP;
 		hp += flag.total(SV_ShieldCapacity);

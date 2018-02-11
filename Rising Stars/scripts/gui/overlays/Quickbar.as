@@ -84,7 +84,7 @@ class Quickbar : BaseGuiElement, Savable {
 		auto@ anTrait = getTrait("Ancient");
 		auto@ exTrait = getTrait("Extragalactic");
 
-		add(CardMode(this), closed=true);
+		add(CardMode(this)); // DOF - Enabling Influence Peddling
 		if(exTrait !is null && playerEmpire.hasTrait(exTrait.id))
 			add(Beacons(this));
 		if(anTrait !is null && playerEmpire.hasTrait(anTrait.id))
@@ -100,13 +100,13 @@ class Quickbar : BaseGuiElement, Savable {
 		add(ColonizingPlanets(this));
 		add(ColonizeSafePlanets(this), closed=true);
 		add(SiegePlanets(this));
-		add(LaborPlanets(this), closed=true);
+		add(LaborPlanets(this)); // DOF - Enabling Planets with Labor
 		add(DefenseTargets(this), closed=true);
 		add(FlingBeacons(this), closed=(flingTrait is null || !playerEmpire.hasTrait(flingTrait.id)));
 		add(CombatFleets(this));
 		add(LowSupplyFleets(this));
-		add(AllFleets(this), closed=true);
-		add(CivilianFleets(this), closed=true);
+		add(AllFleets(this)); // DOF - Enabling Military fleets
+		add(CivilianFleets(this)); // DOF - Enabling Civ fleets
 		if(playerEmpire.isUnlocked(subsystem::MothershipHull))
 			add(Motherships(this));
 		add(DefenseStations(this), closed=true);
@@ -1148,7 +1148,8 @@ class AllFleets : ObjectMode {
 		while(receive(objs, obj)) {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null && !ship.blueprint.design.hasTag(ST_Mothership)) {
-				if(ship.getFleetMaxStrength() < 1000.0)
+				// DOF - Always classify fleets from "Exploration" class as Civilian 
+				if(ship.getFleetMaxStrength() < 1000.0 || ship.blueprint.design.cls.name == "Exploration")
 					continue;
 				grid.set(index, ship);
 				++index;
@@ -1178,7 +1179,8 @@ class CivilianFleets : ObjectMode {
 		while(receive(objs, obj)) {
 			Ship@ ship = cast<Ship>(obj);
 			if(ship !is null && !ship.blueprint.design.hasTag(ST_Mothership)) {
-				if(ship.getFleetMaxStrength() > 1000.0)
+				// DOF - Always classify fleets from "Exploration" as Civilian
+				if(ship.getFleetMaxStrength() > 1000.0 && ship.blueprint.design.cls.name != "Exploration")
 					continue;
 				grid.set(index, ship);
 				++index;

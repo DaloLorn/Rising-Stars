@@ -26,8 +26,9 @@ void init() {
 	packAbility = getAbilityID("GatePack");
 	unpackAbility = getAbilityID("GateUnpack");
 
-	packedStatus = getAbilityID("GatePacked");
-	unpackedStatus = getAbilityID("GateUnpacked");
+	// DOF - Fixing a bug until Devs do
+	packedStatus = getStatusID("GatePacked");
+	unpackedStatus = getStatusID("GateUnpacked");
 }
 
 class GateRegion : Savable {

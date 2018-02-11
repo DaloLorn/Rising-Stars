@@ -1293,7 +1293,10 @@ class RaceChooser : GuiOverlay {
 		}
 		
 		y += 110 + 12;
-		GuiSkinElement shipsetBG(leftBG, Alignment(Left, Top+y, Right, Height=150), SS_PlainBox);
+		// DOF - Adjust shipset selection box size.
+		// Trying dynamic size based on number of shipsets.  Target 6 per row, max 4 rows (don't want to get too tall for lower resolutions).
+		uint SSBoxHeight = min(int(ceil(getShipsetCount()/8.0)),4) * 75;
+		GuiSkinElement shipsetBG(leftBG, Alignment(Left, Top+y, Right, Height=SSBoxHeight), SS_PlainBox);
 		@shipsets = ShipsetChooser(shipsetBG, Alignment().padded(8, 0), vec2i(160, 70));
 		shipsets.selectedColor = setup.settings.color;
 		shipsets.selected = 0;
