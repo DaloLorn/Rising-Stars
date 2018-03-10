@@ -1,4 +1,4 @@
-Template: hexVar/HP, tag/Weapon, !tag/NoAugment
+Template: var/BaseHP, tag/Weapon, !tag/NoAugment
 	Module: AugmentReload
 		Name: #S_AUGMENT_RELOAD
 		Description: #S_AUGMENT_RELOAD_DESC
@@ -12,7 +12,7 @@ Template: hexVar/HP, tag/Weapon, !tag/NoAugment
 
 		AddModifier: optional ReloadMult(0.8)
 		AddModifier: optional CooldownMult(0.8)
-		AddModifier: HPMult(0.5)
+		AddModifier: HpMult(0.5)
 
 	Module: AugmentDamage
 		Name: #S_AUGMENT_DAMAGE
@@ -28,7 +28,7 @@ Template: hexVar/HP, tag/Weapon, !tag/NoAugment
 		AddModifier: optional RangeMult(0.5)
 		AddModifier: optional DamageMult(1.25)
 
-Template: hexVar/HP, var/SupplyCost, tag/Weapon, !tag/NoAugment
+Template: var/BaseHP, var/BaseSupplyCost, tag/Weapon, !tag/NoAugment
 	Module: AugmentSupply
 		Name: #S_AUGMENT_SUPPLY
 		Description: #S_AUGMENT_SUPPLY_DESC

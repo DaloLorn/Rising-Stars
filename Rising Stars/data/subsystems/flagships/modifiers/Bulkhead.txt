@@ -1,4 +1,4 @@
-Template: hexVar/BuildCost, hexVar/HP, !tag/NoBulkhead, !tag/NoCore, !tag/IsArmor, !tag/SupportHull
+Template: hexVar/BuildCost, var/BaseHP, !tag/NoBulkhead, !tag/NoCore, !tag/IsArmor, !tag/SupportHull
 	Module: Bulkhead
 		Name: #BULKHEAD_NAME
 		Description: #BULKHEAD_DESC
