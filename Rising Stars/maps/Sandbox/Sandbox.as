@@ -50,8 +50,8 @@ class Sandbox : Map {
 		//Enemy gate system (Odatak)
 		addSystem(vec3d(0, 0, 0), code=SystemCode()
 			<< "NameSystem(Sandbox)"
-			<< "MakeStar(Temperature = 5778, Radius = 75)"
-			<< "ExpandSystem(2000)"
+			<< "MakeStar(Temperature = 5778, Radius = 750)"
+			<< "ExpandSystem(10000)"
 		);
 	}
 

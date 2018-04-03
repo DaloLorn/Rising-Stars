@@ -151,7 +151,7 @@ class ExpanseMap : Map {
 			//Generate systems
 			uint sysCount = sysPerRoom;
 			angle = 0.0;
-			radius = i == 0 ? 9000 : 0;
+			radius = i == 0 ? (9000*20) : 0;
 			angleStep = twopi;
 			if(radius != 0) {
 				anglePct = (spacing / (2.0 * pi * radius));
