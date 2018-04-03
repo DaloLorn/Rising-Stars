@@ -11,7 +11,7 @@ Subsystem: Ramjet
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	BaseThrust := 18 * Size
+	BaseThrust := 18 * Size * 6
 	BaseTurnThrust := 0.75 * Size
 
 	SupplyGain := 0

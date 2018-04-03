@@ -110,7 +110,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	bool allowSatellites = false;
 
 	bool FreeRaiding = false;
-	double RaidRange = 1000.0;
+	// DOF - Scaling: Adjusting for increased galaxy sizing
+	double RaidRange = 3000.0;
 
 	//Whether to automaticall pluck supports of planets
 	bool autoFill = true;
@@ -1410,6 +1411,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 		calculateSightRange(obj);
 		formation.reset(obj.radius * 2.0, getFormationRadius(obj));
+		// DOF - Increased min radius for supports that are larger than ourselves.
+		formation.reset(obj.radius * 3.0, getFormationRadius(obj));
 		leaderChangeOwner(obj, null, obj.owner);
 
 		AllowFillFrom = obj.isPlanet;
@@ -1592,7 +1595,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		//Refresh formations
 		if(formationDelta && !obj.inCombat) {
 			if(!obj.hasMover || !obj.isMoving) {
-				double minRad = obj.radius + 2.0;
+				// DOF - Increasing radius for supports larger than flagship
+				double minRad = obj.radius * 3.0;
 				double maxRad = getFormationRadius(obj);
 				formation.reset(minRad, maxRad);
 				for(uint i = 0, cnt = supports.length; i < cnt; ++i) {

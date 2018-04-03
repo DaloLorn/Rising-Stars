@@ -15,7 +15,7 @@ Subsystem: Laser
 	BeamDPS := 2.4 * Size
 	Duration := 7
 	Cooldown := 0.01
-	Range := Size + 450
+	Range := (Size + 450) * 2
 	Tracking := 0.5
 	BaseSupplyCost := Size * 0.5
 	FireArc := 0.1666 * pi

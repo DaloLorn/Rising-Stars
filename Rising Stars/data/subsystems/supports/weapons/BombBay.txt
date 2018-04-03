@@ -11,11 +11,11 @@ Subsystem: BombBay
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	Range := Size + 250
+	Range := (Size + 250) * 2
 	Damage := Size * 30
 	Reload := 60 * min(1.0 + Size/512, 5/3)
 	Radius := 30 + (log(Size) / log(2) * 10)
-	Speed := max(40, Range / 40)
+	Speed := max(40, Range / 40) * 2
 	Tracking := 0.8
 	BaseSupplyCost := Size * 3.0
 	Spread := 1

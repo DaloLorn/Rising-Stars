@@ -12,10 +12,10 @@ Subsystem: MuonBattery
 
 	Size := HexSize * Hexes
 	
-	Range := Size + 480
+	Range := (Size + 480) * 2
 	Damage := Size * 1
 	Reload := 0.8 * min(1.0 + Size/512, 2.0)
-	Speed := max(90, Range / 16)
+	Speed := max(90, Range / 16) * 2
 	Spread := 0.01 / max(Range / 600, 1)
 	Tracking := 0.8
 	FireArc := 1.5

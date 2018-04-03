@@ -13,11 +13,11 @@ Subsystem: PiercingDrones
 	Lifetime := 15
 
 	Size := HexSize * Hexes
-	Range := Size + 700
+	Range := (Size + 700) * 2
 	Damage := 75
 	PodSize := floor(Size)
 	Reload := 20 * max(1.0 + Size/512, 2.0)
-	Speed := max(120, Range / 6)
+	Speed := max(120, Range / 6) * 2
 	Tracking := 6.0
 	BaseSupplyCost := Size * 6.0
 	Spread := 0.6

@@ -1,6 +1,7 @@
 //Radius added to every entry
 const double ExtraRadius = 100.0;
-const double BorderThickness = 150.0;
+// DOF - Scaling
+const double BorderThickness = 3000.0;
 
 bool SHOW_TERRITORY_BORDERS = true;
 void setTerritoryBordersShown(bool enabled) {

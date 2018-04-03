@@ -4,10 +4,11 @@ import design_settings;
 //Time needed for a support ship to expire if left without a leader
 const double SUPPORT_EXPIRE_TIME = 3.0 * 60.0;
 
+// DOF - Scaling
 //Max distance a support ship can find a leader to attach to
-const double MAX_LEADER_RESCUE_DIST = 1000.0;
+const double MAX_LEADER_RESCUE_DIST = 3000.0;
 const double MAX_LEADER_RESCUE_DIST_SQ = MAX_LEADER_RESCUE_DIST * MAX_LEADER_RESCUE_DIST;
-const double MAX_SUPPORT_ABANDON_DIST = 2500.0;
+const double MAX_SUPPORT_ABANDON_DIST = 7500.0;
 const double MAX_SUPPORT_ABANDON_DIST_SQ = MAX_SUPPORT_ABANDON_DIST * MAX_SUPPORT_ABANDON_DIST;
 
 enum SupportOrder {

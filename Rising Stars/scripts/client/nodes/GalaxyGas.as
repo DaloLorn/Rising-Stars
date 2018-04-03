@@ -14,7 +14,7 @@ final class GasSprite {
 	
 	GasSprite(const vec3d& pos, double Scale, uint col, bool structured, int baseAlpha = 0) {
 		position = pos;
-		scale = Scale * 2.0;
+		scale = Scale * 40.0;
 		baseCol = col & 0xffffff00;
 		trueAlpha = int(col & 0xff);
 		index = structured ? randomi(0,23) : randomi(24,47);
@@ -77,7 +77,8 @@ final class GalaxyGasScript {
 				continue;
 			}
 			
-			double fadeOut = ((sortDist / 30000.0) - 0.3);
+			// DOF - Scaling
+			double fadeOut = ((sortDist / 600000.0) - 0.3);
 			int trueAlpha = sprite.trueAlpha;
 			int a = fadeOut < 1.0 ? int(double(trueAlpha) * fadeOut) : trueAlpha;
 			a += sprite.baseAlpha;

@@ -5,15 +5,17 @@ import nodes.StrategicIcon;
 import planet_levels;
 
 const double APPROACH_EPSILON = 0.002;
-const double OUTSIDE_DISTANCE = 12000.0;
-const double OUTSIDE_SIZE_MAX = 25000.0;
+// DOF - Scaling: Adjusting distance for increased scaling
+const double OUTSIDE_DISTANCE = 200000.0;	// Distance at which planets move out to the border
+const double OUTSIDE_SIZE_MAX = 250000.0;	// Distance at which icons start getting smaller
 const double ANIMATE_TIME = 0.45;
-const double GRAVITY_DISC_MAX_DIST = 1000.0;
+const double GRAVITY_DISC_MAX_DIST = 6000.0;	// Max distance at which the circle around the planet that displays its max orbit will show.
 
-const double FADE_DIST_MIN = 250;
-const double FADE_DIST_MAX = 300;
-const double VERY_DISTANT_START = 56000.0;
-const double VERY_DISTANT_END = 80000.0;
+// DOF - Scaling: Adjusting distance for increased scaling
+const double FADE_DIST_MIN = 1000;	// Distance at which the icon starts to appear (multiplied by 10 in planets)
+const double FADE_DIST_MAX = 2000;	// Distance at which the icon finishes appearing
+const double VERY_DISTANT_START = 400000.0;	// Distance at which they start fading to colored circles
+const double VERY_DISTANT_END = 600000.0;	// Distance at which they complete fading to colored circles
 
 vec4f DISABLE_NORMAL, DISABLE_POPULATION;
 

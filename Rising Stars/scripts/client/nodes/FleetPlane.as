@@ -1,4 +1,5 @@
-const double MAX_SIZE = 4000.0;
+// DOF - Scaling: Controls factor by which ship/fleet icons start to scale down
+const double MAX_SIZE = 30000.0;	
 const double APPROACH_EPSILON = 0.0002;
 
 bool SHOW_FLEET_PLANES = true;

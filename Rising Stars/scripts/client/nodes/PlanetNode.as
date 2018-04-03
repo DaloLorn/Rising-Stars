@@ -2,7 +2,8 @@ import planet_types;
 
 from planets.PlanetSurface import preparePlanetShader;
 
-const double PLANET_DIST_MAX = 4000;
+// DOF - Scaling: Adjusting for increased scaling
+const double PLANET_DIST_MAX = 100000;	//distance at which planet physical models dissapear
 
 enum PlanetSpecial {
 	PS_None,

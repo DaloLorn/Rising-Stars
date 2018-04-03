@@ -5,7 +5,7 @@ import ftl;
 
 const double straighDot = 0.99999;
 
-const double baseSpacetimeDragCoefficient = 0.03;
+const double baseSpacetimeDragCoefficient = 0.05;
 const double offAxisThrustMultiplier = 0.35;
 const double baseLightspeed = 700;
 const double maxDistMultiplier = 1.0; // multiplies objects radius to find maximum braking distance.

@@ -2876,7 +2876,7 @@ class GenerateSystem : EmpireTrigger {
 				}
 			}
 
-			vec2d offset = random2d(3000.0 + offSystem.radius * randomd(1.5, 5.0));
+			vec2d offset = random2d(60000.0 + offSystem.radius * randomd(1.5, 5.0));
 			vec3d offPosition = offSystem.position;
 			offPosition.x += offset.x;
 			offPosition.y += randomd(-100, 100);
@@ -2885,7 +2885,8 @@ class GenerateSystem : EmpireTrigger {
 			bool overlaps = false;
 			for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 				auto@ sys = getSystem(i);
-				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 3000.0)) {
+				// DOF - Scaling
+				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 60000.0)) {
 					overlaps = true;
 					break;
 				}
@@ -2909,7 +2910,8 @@ class GenerateSystem : EmpireTrigger {
 		if(vision_to_empire.boolean && emp !is null && emp.valid)
 			@hook = GiveVision(emp);
 
-		generateNewSystem(position, hook=hook, radius=250.0, type=system_type.str, name=name);
+		// DOF - Scaling
+		generateNewSystem(position, hook=hook, radius=5000.0, type=system_type.str, name=name);
 	}
 #section all
 };

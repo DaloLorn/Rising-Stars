@@ -1,7 +1,8 @@
 import orbitals;
 from nodes.FleetPlane import SHOW_FLEET_PLANES;
 
-const double MAX_SIZE = 500.0;
+// DOF - Scaling: Make the viewable icon larger
+const double MAX_SIZE = 10000.0;
 
 final class OrbitalNodeScript {
 	const Orbital@ obj;
@@ -11,6 +12,8 @@ final class OrbitalNodeScript {
 	OrbitalNodeScript(Node& node) {
 		node.transparent = true;
 		node.memorable = true;
+		//DOF - Disable AutoCulling
+		//node.autoCull = false;
 	}
 	
 	void establish(Node& node, Orbital& orbital, uint type) {
@@ -26,9 +29,14 @@ final class OrbitalNodeScript {
 		if(def is null)
 			return;
 
+		// Dolynick: Distance at which the icon is displaced and how it scales?
+
+		// Dalo: My best guess is that this actually governs the 'fleet plane',
+		// the circle that displays the area across which support ships will spread out.
 		if(fleetPlane != 0 && node.sortDistance < 2000.0 && node.sortDistance >= 150.0 && SHOW_FLEET_PLANES) {
 			Color color(0xffffff14);
-			if(node.sortDistance < 250.0)
+			// DOF - Scaling
+			if(node.sortDistance < 500.0)
 				color.a = double(color.a) * (node.sortDistance - 150.0) / 100.0;
 			renderPlane(material::FleetCircle, node.abs_position, fleetPlane, color);
 		}
@@ -46,7 +54,8 @@ final class OrbitalNodeScript {
 		
 		undoTransform();
 
-		if(node.sortDistance > 600.0 && def.distantIcon.valid) {
+		// DOF - Scaling: Range at which icon disappears for model view
+		if(node.sortDistance > 1000.0 && def.distantIcon.valid) {
 			double size = obj.radius * def.iconSize;
 			size *= node.sortDistance * 0.09;
 			size = min(size, MAX_SIZE);

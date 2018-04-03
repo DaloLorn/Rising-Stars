@@ -12,10 +12,10 @@ Subsystem: RocketPod
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size + 250
+	Range := (Size + 250) * 2
 	Damage := Size * 5.0
 	Reload := 7 * min(1.0 + Size/512, 2.0)
-	Speed := max(105, Range / 12)
+	Speed := max(105, Range / 12) * 2
 	Tracking := 0.2
 	BaseSupplyCost := Size * 10.0
 	Spread := 1.5

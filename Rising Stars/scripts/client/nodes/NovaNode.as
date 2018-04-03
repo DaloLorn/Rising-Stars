@@ -23,8 +23,9 @@ final class NovaNodeScript {
 			}
 			
 			alpha = 1.0 - (life / duration);
-			
-			node.scale = 1000.0 + 1000.0 * life / duration;
+
+			// DOF - Scaling
+			node.scale = 10000.0 + 10000.0 * life / duration;
 			node.rebuildTransform();
 		}
 		

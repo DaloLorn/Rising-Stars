@@ -9,7 +9,8 @@ final class StarNodeScript {
 	}
 
 	void render(Node& node) {
-		double dist = node.sortDistance / (250.0 * node.abs_scale * pixelSizeRatio);
+		// DOF - Scaling
+		double dist = node.sortDistance / (1000.0 * node.abs_scale * pixelSizeRatio);
 		
 		if(dist < 1.0) {
 			drawBuffers();
@@ -52,7 +53,8 @@ final class StarNodeScript {
 		if(dist > 0.5) {
 			Color col(node.color);
 			col.a = dist > 1.0 ? 255 : int((dist - 0.5)*255.0/0.5);
-			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 32.0, 0.0, col);
+			// DOF - Scaling
+			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 128.0, 0.0, col);
 		}
 	}
 };

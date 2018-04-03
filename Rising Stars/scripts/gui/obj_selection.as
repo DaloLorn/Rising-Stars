@@ -405,11 +405,12 @@ void dragSelect(const recti& box) {
 	return 16000.0;
 }*/
 
+// DOF - Scaling: Adjusting selection distances for increased sizing
 const double MAX_SUPPORT_SELECT_DIST = 1000.0;
-const double MAX_PLANET_SELECT_DIST = 52000.0;
-const double MAX_PLANET_PHYS_SEL_DIST = 2000.0;
-const double MAX_ORBITAL_SELECT_DIST = 52000.0;
-const double MAX_PICKUP_SELECT_DIST = 20000.0;
+const double MAX_PLANET_SELECT_DIST = 1500000.0;	
+const double MAX_PLANET_PHYS_SEL_DIST = 20000.0; // Distance at which you can select the physical planet instead of the icon
+const double MAX_ORBITAL_SELECT_DIST = 520000.0;
+const double MAX_PICKUP_SELECT_DIST = 2000000.0;
 const double MAX_COLSHIP_SELECT_DIST = 12000.0;
 const double MAX_CIVILIAN_SELECT_DIST = 1500.0;
 

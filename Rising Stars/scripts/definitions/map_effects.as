@@ -47,7 +47,7 @@ class MakeStar : MapHook {
 			temp = normald(arguments[0].decimal,arguments[1].decimal2);
 		else
 			temp = arguments[0].fromRange();
-		double radius = arguments[1].fromRange();
+		double radius = arguments[1].fromRange() * 10;
 		vec3d pos = arguments[2].fromPosition();
 
 		//Create star
@@ -81,13 +81,13 @@ class MakeStar : MapHook {
 		if(system !is null)
 			node.hintParentObject(system.object, false);
 
-		double hp = AVG_STAR_HEALTH * (radius / 75.0);
+		double hp = AVG_STAR_HEALTH * (radius / 750.0);
 		star.Health = hp;
 		star.MaxHealth = hp;
 
 		//Create light
 		LightDesc lightDesc;
-		lightDesc.att_quadratic = 1.f/(2000.f*2000.f);
+		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
 		lightDesc.position = vec3f(star.position);
 		lightDesc.diffuse = node.color * 1.0f;
 		lightDesc.specular = lightDesc.diffuse;
@@ -116,7 +116,7 @@ class MakeBlackhole : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * 10;
 		vec3d pos = arguments[1].fromPosition();
 
 		//Create star
@@ -351,8 +351,8 @@ class MakePlanet : MapHook {
 
 		double radius = arguments[1].decimal;
 		if(arguments[1].isRange)
-			radius = normald(arguments[1].decimal, arguments[1].decimal2);
-		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE;
+			radius = normald(arguments[1].decimal, arguments[1].decimal2) * 10;
+		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE * 10;
 
 		system.radius += spacing;
 
@@ -403,7 +403,9 @@ class MakePlanet : MapHook {
 		const Biome@ biome3 = getDistributedBiome();
 		
 		//Figure out planet size
-		double sizeFact = clamp(radius / 10.0, 0.1, 5.0);
+		// DOF - Scaling: Adding this to constrain the range and average more to the standard range and average
+		radius = 60 + 100 * (radius - 60) / 240;
+		double sizeFact = clamp(radius / 100.0, 0.1, 5.0);
 		int gridW = round(AVG_PLANET_GRID_WIDTH * sizeFact);
 		int gridH = round(AVG_PLANET_GRID_HEIGHT * sizeFact);
 
@@ -416,7 +418,8 @@ class MakePlanet : MapHook {
 		//Figure out planet type
 		const PlanetType@ planetType = getBestPlanetType(biome1, biome2, biome3);
 		planet.PlanetType = planetType.id;
-		planet.OrbitSize = 100 + radius;
+		// DOF - Scaling: Give a slightly larger OrbitSize
+		planet.OrbitSize = 500 + radius;
 		
 		//Setup orbit
 		planet.orbitAround(system.position, offset.length);
@@ -582,7 +585,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * 25;
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();
@@ -1025,7 +1028,7 @@ class MakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, system.object);
@@ -1074,7 +1077,7 @@ void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null
 		uint maxCnt = type.shipMaxes[i];
 		int amt = randomi(minCnt, maxCnt);
 
-		if(!dsg.hull.hasTag(ST_IsSupport)) {
+		if(dsg.hull.hasTag(ST_Flagship)) {
 			for(; amt > 0; --amt) {
 				vec3d leaderPos = pos;
 				if(lastLeader !is null)
@@ -1632,7 +1635,7 @@ class ForceMakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, system.object);
