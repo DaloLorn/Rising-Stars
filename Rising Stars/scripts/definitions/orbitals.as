@@ -94,10 +94,21 @@ tidy final class OrbitalModule {
 
 	array<IOrbitalEffect@> hooks;
 	array<Hook@> ai;
+	array<OrbitalModule@> descendants;
 
 	array<uint> affinities(TR_COUNT, 0);
 	array<const ResourceType@> requirements;
 	uint totalRequirementCount = 0;
+
+	bool isParentOf(OrbitalModule@ other) {
+		if(other.id == id)
+			return true;
+		for(uint i = 0, cnt = descendants.length; i < cnt; ++i) {
+			if(descendants[i].isParentOf(other))
+				return true;
+		}
+		return false;
+	}
 
 	bool canBuildBy(Object@ obj, bool ignoreCost = true) const {
 		if(!isCore && !(obj.isOrbital && canBuildOn(cast<Orbital>(obj))))
@@ -580,6 +591,7 @@ void loadOrbitalModules(const string& filename) {
 	
 	string key, value;
 	OrbitalModule@ mod;
+	OrbitalModule@ parent;
 	
 	uint index = 0;
 	while(file++) {
@@ -593,11 +605,48 @@ void loadOrbitalModules(const string& filename) {
 		else if(key.equals_nocase("Module")) {
 			if(mod !is null)
 				addOrbitalModule(mod);
+			if(parent !is null) 
+				parent.descendants.insertLast(mod);
+			@parent = null;
 			@mod = OrbitalModule();
 			mod.ident = value;
 		}
 		else if(mod is null) {
 			file.error("Missing Module: 'ID' line");
+		}
+		else if(key.equals_nocase("Inherit")) {
+			@parent = getOrbitalModule(value);
+			if(parent is null)
+				file.error("Cannot inherit from non-existent parent module '" + value + "'");
+			else {
+				mod.name = parent.name;
+				mod.blurb = parent.blurb;
+				mod.description = parent.description;
+				mod.icon = parent.icon;
+				mod.iconSize = parent.iconSize;
+				mod.distantIcon = parent.distantIcon;
+				mod.strategicIcon = parent.strategicIcon;
+				mod.spin = parent.spin;
+				mod.isStandalone = parent.isStandalone;
+				mod.isCore = parent.isCore;
+				mod.isSolid = parent.isSolid;
+				mod.isUnique = parent.isUnique;
+				mod.maintenance = parent.maintenance;
+				mod.buildCost = parent.buildCost;
+				mod.laborCost = parent.laborCost;
+				mod.health = parent.health;
+				mod.armor = parent.armor;
+				mod.shield = parent.shield;
+				mod.shieldRegen = parent.shieldRegen;
+				mod.size = parent.size;
+				@mod.model = parent.model;
+				@mod.material = parent.material;
+				mod.combatRepair = parent.combatRepair;
+				mod.canFling = parent.canFling;
+				mod.mass = parent.mass;
+				mod.alwaysRegenShield = parent.alwaysRegenShield;
+				mod.immuneToRadiation = parent.immuneToRadiation;
+			}
 		}
 		else if(key.equals_nocase("Name")) {
 			mod.name = localize(value);
@@ -723,6 +772,8 @@ void loadOrbitalModules(const string& filename) {
 	
 	if(mod !is null)
 		addOrbitalModule(mod);
+	if(parent !is null) 
+		parent.descendants.insertLast(mod);
 }
 
 void preInit() {

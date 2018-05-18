@@ -320,7 +320,7 @@ class DestroyModulesInEmpire : EmpireEffect {
 }
 
 class IfHasModule : IfHook {
-	Document doc("Only applies the inner hook if the orbital has a given module.");
+	Document doc("Only applies the inner hook if the orbital has a given module or one of its descendants.");
 	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
 	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
 
@@ -344,7 +344,7 @@ class IfHasModule : IfHook {
 }
 
 class IfNotHaveModule : IfHook {
-	Document doc("Only applies the inner hook if the orbital does not have a given module.");
+	Document doc("Only applies the inner hook if the orbital does not have a given module or one of its descendants.");
 	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
 	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
 

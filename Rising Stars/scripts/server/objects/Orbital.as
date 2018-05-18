@@ -802,9 +802,13 @@ tidy class OrbitalScript {
 	}
 
 	bool hasModule(uint typeId) {
+		const OrbitalModule@ type = getOrbitalModule(typeId);
+		if(type is null) {
+			return false;
+		}
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 			OrbitalSection@ sec = sections[i];
-			if(sec.type.id == typeId)
+			if(type.isParentOf(sec.type))
 				return true;
 		}
 		return false;
