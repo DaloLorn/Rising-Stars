@@ -506,8 +506,11 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 		return val >= get(obj);
 	}
 
-	double get(Object& obj) const {
-		return amount.decimal * obj.getStatusStackCountAny(status.integer);
+	double get(Object& obj, bool reversed = false) const {
+		uint count = obj.getStatusStackCountAny(status.integer);
+		if (reversed && count > 0)
+			count--;
+		return amount.decimal * count;
 	}
 
 	bool formatCost(Object& obj, const Targets@ targs, string& value) const {
@@ -546,7 +549,7 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 	}
 
 	void reverse(Object& obj, const Targets@ targs, bool cancel) const override {
-		double consAmt = get(obj);
+		double consAmt = get(obj, reversed = true);
 		if(!cancel || allow_cancel.boolean)
 			obj.addCargo(type.integer, consAmt);
 	}
