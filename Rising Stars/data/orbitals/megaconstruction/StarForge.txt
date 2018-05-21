@@ -5,7 +5,6 @@ Module: StarForge
 	Icon: GuiOrbitalIcons::16
 
 	Core: True
-	Standalone: True
 	Spin: 0
 
 	Build Cost: 1000
@@ -34,31 +33,14 @@ Module: StarForge
 	MultConstructionCost(0.5)
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StarForge, AdaptedStarForge))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(StarForgeUnlock)
 
 Module: AdaptedStarForge
 	Name: #STARFORGE_ADAPTED
-	Blurb: #STARFORGE_BLURB
 	Description: #STARFORGE_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::16
 
-	Core: True
-	Standalone: True
-	Spin: 0
-
-	Build Cost: 1000
-	Labor Cost: 100
 	ConsumeCargo(Ore, 5000)
-
-	Health: 20000
-	Armor: 30000
-
-	Model: Forge
-	Material: GenericPBR_Forge
-	Size: 30
-
-	Strategic Icon: OrbitalIcons::16
 
 	RequireCloseToStar()
 	FacesOrbitCenter()

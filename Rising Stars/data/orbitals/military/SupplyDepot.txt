@@ -4,7 +4,6 @@ Module: SupplyDepot
 	Description: #ORB_SUPPLY_DEPOT_DESC
 	Icon: OrbitalIcons::7
 
-
 	Build Cost: 500
 	Maintenance: 80
 	Labor Cost: 10
@@ -18,29 +17,16 @@ Module: SupplyDepot
 	Strategic Icon: OrbitalIcons::7
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SupplyDepot, AdaptedSupplyDepot))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddRegionStatus(FastResupply)
 
 	ConsumeCargo(Ore, 500)
 	RequireOnOrbital(MilitaryCore)
+
 Module: AdaptedSupplyDepot
+	Inherit: SupplyDepot
 	Name: #ORB_SUPPLY_DEPOT_ADAPTED
-	Blurb: #ORB_SUPPLY_DEPOT_BLURB
 	Description: #ORB_SUPPLY_DEPOT_ADAPTED_DESC
-	Icon: OrbitalIcons::7
-
-
-	Build Cost: 500
-	Maintenance: 80
-	Labor Cost: 10
-
-	Health: 8000
-	Armor: 5000
-
-	Model: Depot
-	Material: GenericPBR_Depot
-
-	Strategic Icon: OrbitalIcons::7
 
 	RequireOnOrbital(MilitaryCore)
 	AddDefenseReserve(50)

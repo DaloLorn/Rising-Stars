@@ -5,7 +5,6 @@ Module: StellarShieldGenerator
 	Icon: ResourceIcon::5 * #429cffff
 
 	Core: True
-	Standalone: True
 
 	Build Cost: 1000
 	Maintenance: 250
@@ -28,26 +27,9 @@ Module: StellarShieldGenerator
 	RequireUnlockTag(StellarShieldOrbital)
 
 Module: AdaptedStellarShieldGenerator
+	Inherit: StellarShieldGenerator
 	Name: #ORB_STELLAR_SHIELD_ADAPTED
-	Blurb: #ORB_STELLAR_SHIELD_BLURB
 	Description: #ORB_STELLAR_SHIELD_ADAPTED_DESC
-	Icon: ResourceIcon::5 * #429cffff
-
-	Core: True
-	Standalone: True
-
-	Build Cost: 1000
-	Maintenance: 250
-	Labor Cost: 30
-
-	Health: 6000
-	Armor: 6000
-
-	Model: Fling
-	Material: GenericPBR_Fling
-
-	Strategic Icon: SystemUnderAttack
-	Size: 18
 
 	AddRegionStatus(StellarShield, false) // This 'false' says that the status must apply to all objects in the system regardless of owner.
 	FacesOrbitCenter()

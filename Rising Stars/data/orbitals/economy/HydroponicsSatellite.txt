@@ -12,7 +12,6 @@ Module: HydroponicsSatellite
 	Build Cost: 800
 	Labor Cost: 40
 
-
 	RequireUnlockTag(HydroponicsSatelliteUnlock)
 
 	Model: Outpost

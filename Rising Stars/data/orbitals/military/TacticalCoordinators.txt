@@ -14,3 +14,5 @@ Module: TacticalCoordinators
 	ConsumeCargo(Ore, 250)
 
 	ABEM_orbitals::IfHasModule(AddFleetCommand(128), MilitaryCore)
+	RequireNot(RequireOnOrbital(Temple))
+	RequireNot(RequireOnOrbital(Embassy))

@@ -5,7 +5,6 @@ Module: TradeOutpost
 	Icon: GuiOrbitalIcons::0
 	Distant Icon: OrbitalIcons::0
 
-
 	Build Cost: 300
 	Maintenance: 30
 	Labor Cost: 15
@@ -13,7 +12,6 @@ Module: TradeOutpost
 
 	Health: 4000
 	Armor: 4000
-
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
@@ -30,31 +28,17 @@ Module: TradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
-
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireOnOrbital(MilitaryCore)
 
 	ConsumeCargo(Ore, 500)
+
 Module: AdaptedTradeOutpost
+	Inherit: TradeOutpost
 	Name: #ORB_TRADE_OUTPOST_ADAPTED
-	Blurb: #ORB_TRADE_OUTPOST_BLURB
 	Description: #ORB_TRADE_OUTPOST_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::14
-	Distant Icon: OrbitalIcons::14
 
-
-	Build Cost: 300
-	Maintenance: 30
-	Labor Cost: 15
-	Size: 7
-
-	Health: 4000
-	Armor: 4000
-
-
-	Model: Outpost
-	Material: GenericPBR_Outpost
 	Shield Capacity: 10000
 	Shield Regeneration: 50
 
@@ -69,7 +53,6 @@ Module: AdaptedTradeOutpost
 
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
-
 
 	AllowFreeRaiding()
 	RequireOnOrbital(MilitaryCore)

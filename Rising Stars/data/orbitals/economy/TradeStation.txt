@@ -5,7 +5,6 @@ Module: TradeStation
 	Icon: GuiOrbitalIcons::15
 	Strategic Icon: OrbitalIcons::15
 
-
 	Build Cost: 500
 	Maintenance: 190
 	Labor Cost: 15
@@ -23,29 +22,16 @@ Module: TradeStation
 	GrantAbility(BuyLabor) #version>=93
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeStation, AdaptedTradeStation))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	GlobalTradeNode()
 
 	ConsumeCargo(Ore, 750)
 	RequireOnOrbital(EconomyCore)
+
 Module: AdaptedTradeStation
+	Inherit: TradeStation
 	Name: #ORB_TRADE_STATION_ADAPTED
-	Blurb: #ORB_TRADE_STATION_BLURB
 	Description: #ORB_TRADE_STATION_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::15
-	Strategic Icon: OrbitalIcons::15
-
-
-	Build Cost: 500
-	Maintenance: 190
-	Labor Cost: 15
-	Size: 16
-
-	Health: 5000
-	Armor: 1000
-
-	Model: CommerceStation
-	Material: GenericPBR_CommerceStation
 
 	GrantAbility(BuyInfluence) #version>=93
 	GrantAbility(BuyEnergy) #version>=93

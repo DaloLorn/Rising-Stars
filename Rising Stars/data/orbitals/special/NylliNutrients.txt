@@ -15,7 +15,7 @@ Module: NylliFood
 	Unique: False
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliFood, AdaptedNylliFood))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
@@ -35,46 +35,24 @@ Module: NylliWater
 	Size: 5
 	Unique: False
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliWater, AdaptedNylliWater))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
 
 Module: AdaptedNylliFood
+	Inherit: NylliFood
 	Name: #ORB_FARM_ADAPTED
-	Blurb: #ORB_FARM_BLURB
 	Description: #ORB_FARM_ADAPTED_DESC
-	Icon: Megafarm
-	Strategic Icon: Megafarm
-	Maintenance: 90
-	Build Cost: 350
-	Labor Cost: 10
-	Health: 3500
-	Armor: 3500
-	Model: CommerceStation
-	Material: GenericPBR_CommerceStation
-	Size: 5
-	Unique: False
 
 	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
 Module: AdaptedNylliWater
+	Inherit: NylliWater
 	Name: #ORB_HYDROGENATOR_ADAPTED
-	Icon: Hydrogenator
-	Strategic Icon: Hydrogenator
-	Blurb: #ORB_HYDROGENATOR_BLURB
 	Description: #ORB_HYDROGENATOR_ADAPTED_DESC
-	Maintenance: 90
-	Build Cost: 350
-	Labor Cost: 10
-	Health: 3500
-	Armor: 3500
-	Model: Depot
-	Material: GenericPBR_Depot
-	Size: 5
-	Unique: False
 	RequireUnlockTag(NylliAdaptation4)
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)

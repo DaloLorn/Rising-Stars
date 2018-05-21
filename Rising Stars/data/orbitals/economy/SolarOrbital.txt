@@ -17,38 +17,23 @@ Module: SolarOrbital
 	Model: SolarEngine
 	Material: GenericPBR_SolarEngine
 
-
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(SolarOrbitalUnlock)
 
 	IfTagUnlocked(ProgenitorSolarOrbital, ABEM_orbitals::ReplaceModule(SolarOrbital, ProgenitorSolarOrbital, False))
-	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
+	RequireEither(ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital), RequireNotManual())
 
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SolarOrbital, AdaptedSolarOrbital, False))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 
 	ConsumeCargo(Ore, 250)
 	RequireOnOrbital(EconomyCore)
+
 Module: AdaptedSolarOrbital
+	Inherit: SolarOrbital
 	Name: #ORB_SOLAR_ORBITAL_ADAPTED
 	Description: #ORB_SOLAR_ORBITAL_ADAPTED_DESC
-	Blurb: #ORB_SOLAR_ORBITAL_BLURB
-	Icon: GuiOrbitalIcons::13
-	Distant Icon: OrbitalIcons::13
-	Icon Size: 0.01
-
-	Build Cost: 250
-	Maintenance: 15
-	Labor Cost: 15
-	Size: 30
-
-	Health: 4000
-	Armor: 3500
-
-	Model: SolarEngine
-	Material: GenericPBR_SolarEngine
-
 
 	LimitOncePerSystem(SolarOrbitalFlag)
 	RequireUnlockTag(SolarOrbitalUnlock)
@@ -59,4 +44,38 @@ Module: AdaptedSolarOrbital
 	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
 	AddEnergyIncomeStarTemperature(0.25, 1.0)
 	AddFTLIncome(0.1)
+	ConsumeCargo(Ore, 250)
+
+Module: ProgenitorSolarOrbital
+	Inherit: SolarOrbital
+	Name: #ORB_PROGENITOR_SOLARORBITAL
+	Description: #ORB_PROGENITOR_SOLARORBITAL_DESC
+	Blurb: #ORB_PROGENITOR_SOLARORBITAL_BLURB
+	
+	Maintenance: 0
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+	RequireUnlockTag(ProgenitorSolarOrbital)
+	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(ProgenitorSolarOrbital, AdaptedProgenitorSolarOrbital, False))
+	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+
+	RequireUnlockTag(SolarOrbitalUnlock)
+	AddEnergyIncomeStarTemperature(0.5, 2.0)
+
+	RequireOnOrbital(EconomyCore)
+	ConsumeCargo(Ore, 250)
+
+Module: AdaptedProgenitorSolarOrbital
+	Inherit: ProgenitorSolarOrbital
+	Name: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED
+	Description: #ORB_PROGENITOR_SOLARORBITAL_ADAPTED_DESC
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+	RequireUnlockTag(ProgenitorSolarOrbital)
+
+	RequireOnOrbital(EconomyCore)
+	AddFTLIncome(0.15)
+	RequireUnlockTag(SolarOrbitalUnlock)
+	RequireUnlockTag(NylliAdaptation4)
+	AddEnergyIncomeStarTemperature(0.5, 2.0)
 	ConsumeCargo(Ore, 250)

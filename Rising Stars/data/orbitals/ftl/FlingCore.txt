@@ -23,7 +23,6 @@ Module: FlingCore
 
 	Can Fling: False
 	Core: True
-	Standalone: True
 
 	IsFlingBeacon() #version<147
 	IfNotFTLShortage(IsFlingBeacon()) #version>=147
