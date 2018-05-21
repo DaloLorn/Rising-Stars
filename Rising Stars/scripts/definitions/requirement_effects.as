@@ -425,13 +425,13 @@ class RequireConfigOption : Requirement {
 };
 
 class RequireNot : Requirement {
-	Documetn doc("This can only be done if a certain condition has *not* been met.");
+	Document doc("This can only be done if a certain condition has *not* been met.");
 	Argument condition(AT_Hook, "requirement_effects::Requirement");
 
 	Requirement@ hook;
 
 	bool instantiate() override {
-		@hook = cast<Requirement>(parseHook(condition_two.str, "requirement_effects::"));
+		@hook = cast<Requirement>(parseHook(condition.str, "requirement_effects::"));
 		if(hook is null)
 			error("RequireNot(): could not find condition: "+escape(condition.str));
 		return Requirement::instantiate();

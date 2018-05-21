@@ -100,7 +100,13 @@ tidy final class OrbitalModule {
 	array<const ResourceType@> requirements;
 	uint totalRequirementCount = 0;
 
-	bool isParentOf(OrbitalModule@ other) {
+	bool isParentOf(uint id) const {
+		if(getOrbitalModule(id) is null)
+			return false;
+		return isParentOf(getOrbitalModule(id));
+	}
+
+	bool isParentOf(const OrbitalModule@ other) const {
 		if(other.id == id)
 			return true;
 		for(uint i = 0, cnt = descendants.length; i < cnt; ++i) {
@@ -615,7 +621,7 @@ void loadOrbitalModules(const string& filename) {
 			file.error("Missing Module: 'ID' line");
 		}
 		else if(key.equals_nocase("Inherit")) {
-			@parent = getOrbitalModule(value);
+			@parent = modules[getOrbitalModuleID(value)];
 			if(parent is null)
 				file.error("Cannot inherit from non-existent parent module '" + value + "'");
 			else {
