@@ -11,8 +11,9 @@ import empire_ai.weasel.Budget;
 
 from orbitals import getOrbitalModuleID;
 
-const double MAINFRAME_MIN_DISTANCE_STAGE = 15000;
-const double MAINFRAME_MIN_DISTANCE_DEVELOP = 20000;
+// DOF - Scaling
+const double MAINFRAME_MIN_DISTANCE_STAGE = 450000;
+const double MAINFRAME_MIN_DISTANCE_DEVELOP = 600000;
 const double MAINFRAME_MIN_TIMER = 3.0 * 60.0;
 const int MAINFRAME_BUILD_MOVE_HOPS = 5;
 
