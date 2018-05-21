@@ -83,7 +83,7 @@ class Orbitals : AIComponent, AIOrbitals {
 		if(module is null)
 			return null;
 		for(uint i = 0, cnt = orbitals.length; i < cnt; ++i) {
-			if(orbitals[i].type is module) {
+			if(orbitals[i].obj.hasModule(module)) {
 				if(orbitals[i].obj.region is reg)
 					return orbitals[i];
 			}
@@ -95,7 +95,7 @@ class Orbitals : AIComponent, AIOrbitals {
 		if(module is null)
 			return false;
 		for(uint i = 0, cnt = orbitals.length; i < cnt; ++i) {
-			if(orbitals[i].type is module) {
+			if(orbitals[i].obj.hasModule(module)) {
 				if(orbitals[i].obj.region is reg)
 					return true;
 			}
@@ -107,7 +107,7 @@ class Orbitals : AIComponent, AIOrbitals {
 		if(module is null)
 			return false;
 		for(uint i = 0, cnt = orbitals.length; i < cnt; ++i) {
-			if(orbitals[i].type is module) {
+			if(orbitals[i].obj.hasModule(module)) {
 				if(orbitals[i].around is around)
 					return true;
 			}
