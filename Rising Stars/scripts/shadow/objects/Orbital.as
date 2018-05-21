@@ -154,10 +154,16 @@ tidy class OrbitalScript {
 			yield(sections[i]);
 	}
 
-	bool hasModule(uint typeId) {
+	bool hasModule(uint typeId, bool strict = false) {
+		const OrbitalModule@ type = getOrbitalModule(typeId);
+		if(type is null) {
+			return false;
+		}
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 			OrbitalSection@ sec = sections[i];
 			if(sec.type.id == typeId)
+				return true;
+			else if(!strict && type.isParentOf(sec.type))
 				return true;
 		}
 		return false;

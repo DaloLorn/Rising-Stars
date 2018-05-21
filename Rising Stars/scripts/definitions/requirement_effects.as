@@ -380,9 +380,10 @@ class RequireOnOrbital : Requirement {
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		Orbital@ orb = cast<Orbital>(obj);
-		if(orb is null)
+		const OrbitalModule@ orbType = getOrbitalModule(type.integer);
+		if(orb is null || orbType is null)
 			return false;
-		return orb.coreModule == uint(type.integer);
+		return orbType.isParentOf(orb.coreModule);
 	}
 };
 
