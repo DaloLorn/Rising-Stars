@@ -2288,7 +2288,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		
 		for(uint i = 0, cnt = objectCounts.length; i < cnt; ++i) {
 			Empire@ emp = getEmpire(i);
-			if(emp.visionMask & mask != 0)
+			if(emp.visionMask & mask != 0) 
 				mask |= emp.mask;
 		}
 
@@ -2301,8 +2301,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			if(system.donateVision) {
 				if(config::LEGACY_EXPLORATION_MODE == 0) {
 					region.DonateVisionMask = donateMask;
-					for(uint i = 0, cnt = planetList.length; i < cnt; ++i) 
+					for(uint i = 0, cnt = planetList.length; i < cnt; ++i) {
 						planetList[i].memoryMask |= mask;
+						planetList[i].giveBasicIconVision(playerEmpire);
+					}
 				}
 				else
 					region.DonateVisionMask = mask;
