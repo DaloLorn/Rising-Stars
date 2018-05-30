@@ -36,7 +36,7 @@ visible:
 	int lastHit = 0
 
 	local safe bool get_isStation();
-	local double get_mitigation();
+	local relocking double get_mitigation();
 	
 remote restricted:
 	void scuttle();

@@ -129,7 +129,7 @@ server:
 	void finishFleetRetrofit(Object@ at);
 	void stopFleetRetrofit(Object@ at);
 	void postSupportRetrofit(Ship@ support, const Design@ prevDesign, const Design@ newDesign);
-	void updateFleetStrength();
+	relocking void updateFleetStrength();
 	void modBonusDPS(double amount);
 
 	safe double getEngagementRange();

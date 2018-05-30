@@ -285,7 +285,7 @@ tidy class LeaderAI : Component_LeaderAI {
 			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
 			//DOF
 			double DestroyerMod = bp.design.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
-			hp = (bp.currentHP * bp.hpFactor + (bp.getEfficiencySum(SV_Repair)/3.0*pow(max(log10(bp.getEfficiencySum(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen))*2.0, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance))) + (bp.design.size/20 * bp.getEfficiencySum(SV_Instances) * (bp.getEfficiencySum(SV_Repair)/3 + bp.design.total(SV_ShieldRegen)*(1 - ship.mitigation)/(1 - bp.getEfficiencySum(SV_Chance))));
+			hp = (bp.currentHP * bp.hpFactor + (bp.getEfficiencySum(SV_Repair)/3.0*pow(max(log10(bp.getEfficiencySum(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen))*2.0, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance))) + (bp.design.size/20 * bp.getEfficiencySum(SV_Instances) * (bp.getEfficiencySum(SV_Repair)/3.0 + bp.design.total(SV_ShieldRegen)*(1 - ship.mitigation)/(1 - bp.getEfficiencySum(SV_Chance))));
 			dps = ship.DPS * bp.shipEffectiveness;
 			
 			//maxHP = bp.design.totalHP + ship.MaxShield;
