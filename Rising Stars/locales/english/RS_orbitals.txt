@@ -331,7 +331,7 @@ ORB_SHIELD_ARRAY: Shield Array
 ORB_SHIELD_ARRAY_DESC: <<
 	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 7.5 SP/s.
 
-	This module can be installed multiple times.
+	This module can be installed multiple times. All orbital shields have 50% mitigation.
 >>
 ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 7.5 shield regeneration.
 ORB_TACTICAL_COORDINATORS: Tactical Coordination Suite

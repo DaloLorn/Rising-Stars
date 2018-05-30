@@ -44,7 +44,7 @@ tidy class ShipScript {
 	Object@ lastHitBy;
 	Empire@ killCredit;
 	uint bpStatusID = 0;
-	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false;
+	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false, mitDelta = false;
 	int prevSupply = 0;
 	int currentMaintenance = 0;
 	float mass = 0.f;
@@ -66,6 +66,9 @@ tidy class ShipScript {
 	float movementAccel = 0;
 	float bonusShield = 0;
 	float supplyConsumeFactor = 1.f;
+	double shieldMitCap = 0;
+	double shieldMitExponent = 0;
+	double shieldCores = 0;
 
 	ShipScript() {
 	}
@@ -1247,9 +1250,6 @@ tidy class ShipScript {
 					else if(ship.Supply < repairCost)
 						repairAmt *= ship.Supply / repairCost;
 				}
-				else {
-					repairAmt = max(repairAmt, 0.01 * bp.design.totalHP * repairFact * time);
-				}
 				if(repairAmt != 0) {
 					if(wreckage > 0.f) {
 						double repWreckage = repairAmt * wreckage / (wreckage + damage);
@@ -1360,6 +1360,27 @@ tidy class ShipScript {
 			//This shouldn't be needed, but somehow it is
 			ship.destroy();
 		}
+	}
+
+	void modShieldCores(double count) {
+		shieldCores += count;
+		mitDelta = true;
+	}
+
+	void modShieldMitFactor(double factor) {
+		shieldMitExponent += factor;
+		mitDelta = true;
+	}
+
+	void modShieldMitCap(double cap) {
+		shieldMitCap += cap;
+		mitDelta = true;
+	}
+
+	double get_mitigation(Ship& ship) {
+		double shieldHexes = ship.blueprint.getEfficiencySum(SV_ShieldHexes);
+		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - shieldCores) - 1, shieldMitCap / shieldCores);
+		return mitigation;
 	}
 
 	void damageAllHexes(Ship& ship, double damage, Object@ source = null) {
@@ -1548,6 +1569,9 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+		msg << shieldCores;
+		msg << shieldMitCap;
+		msg << shieldMitExponent;
 	}
 
 	bool prevFTL = false, prevCombat = false;
@@ -1649,6 +1673,15 @@ tidy class ShipScript {
 		}
 		else {
 			msg.write0();
+		}
+
+		msg.writeBit(mitDelta);
+		if(mitDelta) {
+			used = true;
+			mitDelta = false;
+			msg << shieldCores;
+			msg << shieldMitCap;
+			msg << shieldMitExponent;
 		}
 
 		return used;

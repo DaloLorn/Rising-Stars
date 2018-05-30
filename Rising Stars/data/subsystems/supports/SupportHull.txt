@@ -39,3 +39,15 @@ Subsystem: SupportHull
 	Modifier: IncreaseHexLimit(Hexes)
 		HexLimit := HexLimit + Hexes
 		FreeHexLimit := FreeHexLimit + Hexes
+
+	BonusMitigation := 0
+	DummyMitigation := 0
+	MitigationOvercap := 0
+	ShieldAbsorbRate := 0
+	
+	AddPostModifier: CalculateMitigation()
+
+	Modifier: CalculateMitigation()
+		DummyMitigation := (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation) * 100
+		MitigationOvercap := max((pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1 - Sum.ShieldMitCap / Sum.ShieldCores) * 100, 0.0)
+		ShieldAbsorbRate := Sum.ShieldRegen * (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation + 1)

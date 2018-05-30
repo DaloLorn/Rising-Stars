@@ -5,6 +5,9 @@ tidy class ShipScript {
 	float commandUsed = 0.f;
 
 	float timer = 1.f;
+	double shieldMitCap = 0;
+	double shieldMitExponent = 0;
+	double shieldCores = 0;
 	
 	bool hasGraphics = false;
 
@@ -15,6 +18,12 @@ tidy class ShipScript {
 	void occasional_tick(Ship& ship, float time) {
 		if(ship.hasLeaderAI)
 			ship.updateFleetStrength();
+	}
+
+	double get_mitigation(Ship& ship) {
+		double shieldHexes = ship.blueprint.getEfficiencySum(SV_ShieldHexes);
+		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - shieldCores) - 1, shieldMitCap / shieldCores);
+		return mitigation;
 	}
 
 	double tick(Ship& ship, double time) {
@@ -172,6 +181,9 @@ tidy class ShipScript {
 				ship.activateConstruction();
 			ship.readConstruction(msg);
 		}
+		msg >> shieldCores;
+		msg >> shieldMitCap;
+		msg >> shieldMitExponent;
 	}
 
 	void updateStats(Ship& ship) {
@@ -244,6 +256,11 @@ tidy class ShipScript {
 					ship.activateConstruction();
 				ship.readConstructionDelta(msg);
 			}
+		}
+		if(msg.readBit()) {
+			msg >> shieldCores;
+			msg >> shieldMitCap;
+			msg >> shieldMitExponent;
 		}
 	}
 };

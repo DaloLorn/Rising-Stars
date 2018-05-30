@@ -76,4 +76,3 @@ Subsystem: Forcefield
 
 	Effect: ForcefieldDamage
 		Capacity = ForcefieldCapacity
-		UseBleedthrough = 1

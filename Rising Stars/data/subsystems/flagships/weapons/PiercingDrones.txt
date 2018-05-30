@@ -26,7 +26,7 @@ Subsystem: PiercingDrones
 	out DPS := Damage * 10 * PodSize / Lifetime
 	out SupplyDrain := SupplyCost / 2
 
-	Pierce := 0.2
+	Pierce := 1.5
 	DRResponse := 5
 	DamageType := 2
 	Spillable := 0

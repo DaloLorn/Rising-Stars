@@ -1175,12 +1175,12 @@ tidy class OrbitalScript {
 				playParticleSystem("ShieldImpactHeavy", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask, networked=false);
 			}
 			double Mitigation = 0.5;
-			double ShieldPenetration = evt.pierce / 2; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
+			double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
 			double BlockFactor = 1;
 
 			// Process shield bleedthrough damage flags.
-			if(evt.flags & DF_DoubleShieldPenetration != 0)
-				ShieldPenetration *= 2;
+			if(evt.flags & DF_QuadShieldPenetration != 0)
+				ShieldPenetration *= 4;
 			if(evt.flags & DF_HalfShieldDamage != 0)
 				BlockFactor = 0.5;
 
@@ -1197,12 +1197,11 @@ tidy class OrbitalScript {
 			//print(evt.damage);
 
 			double block;
-			block = min(shield / BlockFactor, evt.damage);
+			block = min(shield, evt.damage * max(1 - ShieldPenetration, 0.0));
 			// Use excess shield penetration to increase bleedthrough
-			block = evt.damage * max(1 - ShieldPenetration, 0.0);
 			
-			shield -= block / BlockFactor; // Reduce damage taken by shields.
-			evt.damage -= block * BlockFactor; // Increase damage reduction proportionately.
+			shield -= block * BlockFactor; // Reduce damage taken by shields.
+			evt.damage -= block / BlockFactor; // Increase damage reduction proportionately.
 			// Bleedthrough damage isn't affected by mitigation
 			evt.damage /= 1 - Mitigation;
 				

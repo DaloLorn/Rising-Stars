@@ -5,6 +5,7 @@ Subsystem: CovariantShield
 	Elevation: 1
 
 	DamageOrder: -100
+	EvaluationOrder: -20
 
 	Tags: BaseCost
 	Tags: IsShield, Defense, Category:Shields, HasInternals
@@ -13,10 +14,27 @@ Subsystem: CovariantShield
 
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 140
-	BaseShieldRegen := Size * 0.5
-	ShieldHexes := Hexes
+	BaseShieldRegen := Size * 0.58
+	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
 	PowerUse := 20 * Size
 
+	// Apparently default variables don't fully work in templates.
+	ShieldCapacityMod := 1
+	ShieldCapacity := BaseShieldCapacity * ShieldCapacityMod
+	ShieldRegenMod := 1
+	ShieldRegen := BaseShieldRegen * ShieldRegenMod
+
+	// Shield mitigation
+	ShieldCores := 1
+	ShieldMitCap := 0.6
+	ShieldMitExponent := 1.02
+	//MitigationBase := pow(ShieldMitExponent, ShieldHexes - 1) - 1
+	//Mitigation := min(MitigationBase, ShieldMitCap)
+	//DummyMitigation := Mitigation * 100
+	//MitigationOvercap := max((MitigationBase - ShieldMitCap) * 100, 0.0)
+	//ShieldAbsorbRate := ShieldRegen * (Mitigation + 1)
+
+	CoreHPMod := 2
 	Hex.Resistance := 0.5
 	BaseHP := 6 * HexSize
 	Hex.Mass := 1 * HexSize
@@ -26,6 +44,10 @@ Subsystem: CovariantShield
 	Hex.MaintainCost := 1 * HexSize
 
 	Effect: ABEMShieldDamage
+
+	//Assert: Sum.ShieldCores <= 1
+	//	Unique: True
+	//	Message: #ERROR_ONLY_ONE
 
 	Requires:
 		Command = 1

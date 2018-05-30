@@ -36,6 +36,7 @@ visible:
 	int lastHit = 0
 
 	local safe bool get_isStation();
+	local double get_mitigation();
 	
 remote restricted:
 	void scuttle();
@@ -71,6 +72,10 @@ server:
 	Object@ getLastHitBy();
 	void addBonusEffectiveness(float mod);
 	void recordDamage(Object@ source);
+
+	void modShieldCores(double count);
+	void modShieldMitCap(double amount);
+	void modShieldMitFactor(double amount);
 
 	void startRetrofit(Object@ from, const Design@ to);
 	void stopRetrofit(Object@ from);

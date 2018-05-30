@@ -2,6 +2,7 @@ TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian a
 TRAIT_TECHNICISTS: Researchers
 TRAIT_TECHNICISTS_DESC: <<
 	[img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 110%, and shield regeneration is increased by 20%.[/img]
+	[img=ResourceIcon::5*#429cff;22]All shields have an innate 10% mitigation added on top of the standard mitigation formula.[/img]
 	[img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide 110% more shield capacity to flagships.[/img]
 	[img=Forcefield*#00a4ff;22]Forcefields are available from the beginning of the game.[/img]
 	[img=PlateArmor;22]Cannot research most armor types. Armor discovered through alternative methods will have halved health.[/img]
@@ -74,4 +75,11 @@ TRAIT_MECHANOID_DESC: <<|
 	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
 	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
 	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
+>>
+TRAIT_DEVOUT_DESC: <<|
+	[vspace=3/] [img=ResourceIconsSmall::53;22]Sufficient [b]Altar[/b] buildings must be constructed for your empire's total population. Altars sacrifice planetary resources.[/img]
+	[vspace=6/][img=ShieldShrine;22;#408fc1]Flagships must contain [b]Shrines[/b] for your crew to pray at. Different shrines provide different benefits. Starts with the Shrine of Protection - essentially a shield generator - unlocked at the beginning of the game.[/img]
+	[vspace=6/][img=ResourceIcon::5*#429cff;22]Instead of shield generators, your empire researches new Shrines. Shrine-based shielding has less overall absorption, but has a higher capacity.[/img]
+	[vspace=6/][img=AttributeIcons::3;22]When insufficient Altars are built for your population, your planets and fleets become [b]Godless[/b], decreasing their strength and resource production.[/img]
+	[vspace=6/][img=ResourceIcon::8;22]Your planets have 1 increased [b]maximum population[/b] per planet level.[/img]
 >>
