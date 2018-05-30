@@ -43,14 +43,14 @@ class Sandbox : Map {
 
 	void preGenerate() {
 		Map::preGenerate();
-		radius = 40000;
+		radius = 400000;
 	}
 
 	void placeSystems() {
 		//Enemy gate system (Odatak)
 		addSystem(vec3d(0, 0, 0), code=SystemCode()
 			<< "NameSystem(Sandbox)"
-			<< "MakeStar(Temperature = 5778, Radius = 750)"
+			<< "MakeStar(Temperature = 5778, Radius = 75)"
 			<< "ExpandSystem(10000)"
 		);
 	}
