@@ -70,7 +70,7 @@ GlobalStat: ShieldAbsorb
 
 GlobalStat: MitigationOvercap
 	Name: #S_MITIGATIONOVERCAP
-	Description: #STT_MITIGATION_OVERCAP
+	Description: #STT_MITIGATIONOVERCAP
 	Suffix: %
 
 	Secondary: Mitigation
