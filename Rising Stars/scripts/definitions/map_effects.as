@@ -1077,7 +1077,7 @@ void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null
 		uint maxCnt = type.shipMaxes[i];
 		int amt = randomi(minCnt, maxCnt);
 
-		if(dsg.hull.hasTag(ST_Flagship)) {
+		if(!dsg.hull.hasTag(ST_IsSupport)) {
 			for(; amt > 0; --amt) {
 				vec3d leaderPos = pos;
 				if(lastLeader !is null)
