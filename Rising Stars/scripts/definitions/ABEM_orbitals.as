@@ -369,3 +369,40 @@ class IfNotHaveModule : IfHook {
 	}
 #section all
 }
+
+class AddSystemRepair : GenericEffect {
+	Document doc("Adds a certain amount of repair strength to the system containing this object. All ships and orbitals in the system will repair the specified amount of health each second, up to a limit of 1% of their maximum health.");
+	Argument repair(AT_Decimal, doc="How much HP should be repaired each second.");
+
+#section server	
+	void enable(Object& obj, any@ data) const override {
+		if(obj is null || obj.owner is null || obj.region is null)
+			return;
+		obj.region.modRepairRate(obj.owner, repair.decimal);
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(obj is null || obj.owner is null || obj.region is null)
+			return;
+		obj.region.modRepairRate(obj.owner, -repair.decimal);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		if(obj is null || obj.region is null)
+			return;
+		if(prevOwner !is null)
+			obj.region.modRepairRate(prevOwner, -repair.decimal);
+		if(newOwner !is null)
+			obj.region.modRepairRate(newOwner, repair.decimal);
+	}
+
+	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const override {
+		if(obj is null || obj.owner is null)
+			return;
+		if(fromRegion !is null)
+			fromRegion.modRepairRate(obj.owner, -repair.decimal),
+		if(toRegion !is null)
+			toRegion.modRepairRate(obj.owner, repair.decimal);
+	}
+#section all
+}

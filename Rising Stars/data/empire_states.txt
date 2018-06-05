@@ -163,4 +163,5 @@ visible:
 	attribute double TerraformCostFactor = 1
 	attribute double TerraformLaborFactor = 1
 	attribute double BuildingMaintFactor = 1
+	attribute double SystemRepairMod = 1
 }

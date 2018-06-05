@@ -30,6 +30,8 @@ Module: Shipyard
 	AddLaborEmpireAttribute(FactoryLaborMod)
 	AddLaborFactor(-0.25)
 
+	ABEM_orbitals::AddSystemRepair(2000)
+
 	RequireNotTrait(Mechanoid)
 	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Shipyard, AdaptedShipyard))
 	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
@@ -53,6 +55,8 @@ Module: AdaptedShipyard
 	AddLaborIncome(10)
 	AddLaborEmpireAttribute(FactoryLaborMod)
 	AddLaborFactor(-0.25)
+
+	ABEM_orbitals::AddSystemRepair(2000)
 
 	RequireUnlockTag(NylliAdaptation4)
 

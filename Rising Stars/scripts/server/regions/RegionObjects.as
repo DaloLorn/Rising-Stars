@@ -93,6 +93,8 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 
 	array<locked_Territory> territories(getEmpireCount());
 
+	double[] repairs(getEmpireCount(), 0);
+
 	RegionObjects() {
 	}
 
@@ -398,6 +400,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		initMacronebula(obj);
 	}
 	
+	void modRepairRate(Empire@ emp, double amt) {
+		repairs[emp.index] += amt;
+	}
+
 #section all
 	void addShipDebris(vec3d position, uint count = 1) {
 		if(plane !is null)
@@ -588,6 +594,28 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 
 		//Update the combat state
 		updateCombatState(reg, time);
+
+		// Repair yards
+		for(uint i = 0, cnt = objectList.length; i < cnt; i++) {
+			Object@ obj = objectList[i];
+			if(obj.owner is null || repairs[obj.owner.index] <= 0)
+				continue; // No point in going on, this clearly can't be repaired.
+			if(!obj.isShip && !obj.isOrbital)
+				continue;
+			if(obj.inCombat)
+				continue;
+			if(obj.isShip) {
+				Ship@ ship = cast<Ship>(obj);
+				auto@ bp = ship.blueprint;
+				double repair = min(repairs[obj.owner.index] * obj.owner.SystemRepairMod, bp.design.totalHP * 0.01);
+				ship.repairShip(repair);
+			}
+			else if(obj.isOrbital) {
+				Orbital@ orb = cast<Orbital>(obj);
+				double repair = min(repairs[obj.owner.index].SystemRepairMod, orb.maxHealth * 0.01);
+				orb.repairOrbital(repair);
+			}
+		}
 
 #section shadow
 		if(prevMask != playerEmpire.visionMask) {

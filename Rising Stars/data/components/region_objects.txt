@@ -102,4 +102,6 @@ server:
 	Macronebula@ get_macronebula();
 	relocking void setMacronebula(Macronebula& nebula);
 	relocking void initMacronebula();
+
+	void modRepairRate(Empire@ emp, double amt);
 };
