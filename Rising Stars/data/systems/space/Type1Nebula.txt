@@ -1,7 +1,7 @@
 System: Type1Nebula
 	Frequency: 0
 
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 
 	Repeat(1:7)
 		MakeAnomaly()
@@ -19,4 +19,4 @@ System: Type1Nebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 
 	NoRegionVision()
-	SetStaticSeeableRange(500*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(1500*$SENSOR_RANGE_MULT)

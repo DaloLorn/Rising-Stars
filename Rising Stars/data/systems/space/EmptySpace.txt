@@ -1,7 +1,7 @@
 System: EmptySpace
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(1:4)
 		MakeAnomaly()

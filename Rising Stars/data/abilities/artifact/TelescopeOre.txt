@@ -1,13 +1,13 @@
 Ability: TelescopeOre
 	Name: #ABL_TELESCOPE
-	Description: #ABL_TELESCOPEORE_DESC:40000
+	Description: #ABL_TELESCOPEORE_DESC:400000
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
 
 
 	Target: targ = Object
-	Range: 40000 * $FTL_MULT
+	Range: 400000 * $FTL_MULT
 	Cooldown: 180
 	Hotkey: T
 	TargetFilterRegion(targ)

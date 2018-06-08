@@ -21,8 +21,8 @@ Module: DefenseSatellite
 	Standalone: True
 	Core: True
 
-	RepeatExtended(AddTurret(Missile, Range=350, Damage=6, Reload=1, Speed=150, Tracking=6), Base = 4, Multiply Attribute = StaticDamageFactor)
-	RepeatExtended(AddTurret(Laser, Range=250, DPS=5, Duration=2, Cooldown=0, Tracking=0.4), Base = 2, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(AddTurret(Missile, Range=700, Damage=6, Reload=1, Speed=300, Tracking=6), Base = 4, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(AddTurret(Laser, Range=500, DPS=5, Duration=2, Cooldown=0, Tracking=0.4), Base = 2, Multiply Attribute = StaticDamageFactor)
 
 	RepeatExtended(RecordBonusDPS(6), Base = 4, Multiply Attribute = StaticDamageFactor)
 	RepeatExtended(RecordBonusDPS(5), Base = 2, Multiply Attribute = StaticDamageFactor)

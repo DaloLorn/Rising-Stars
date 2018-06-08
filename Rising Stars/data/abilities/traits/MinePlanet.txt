@@ -3,7 +3,7 @@ Ability: MinePlanet
 	Description: #ABL_MINE_PLANET_DESC
 	Icon: QuickbarIcons::4
 
-	Range: 250
+	Range: 500
 	Target: targ = Object
 
 	TargetFilterType(targ, Planet)

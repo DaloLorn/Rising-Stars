@@ -1,7 +1,7 @@
 System: MetreonNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(2:5)
 		MakeAnomaly()
@@ -16,4 +16,4 @@ System: MetreonNebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(750*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(2250*$SENSOR_RANGE_MULT)

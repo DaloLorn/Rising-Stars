@@ -119,7 +119,7 @@ class MapGeneration {
 	void prepareSystem(SystemData@ data, SystemDesc@ desc) {
 		if(data.homeworlds !is null && data.mirrorSystem !is null)
 			data.ignoreAdjacencies = true;
-		desc.radius = 250.0;
+		desc.radius = 5250.0;
 		if(data.homeworlds !is null) {
 			const SystemType@ hwType = getSystemType("HomeSystem");
 			if(hwType !is null)

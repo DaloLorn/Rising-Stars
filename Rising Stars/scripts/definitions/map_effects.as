@@ -349,7 +349,7 @@ class MakePlanet : MapHook {
 		if(resource !is null)
 			markResourceUsed(resource);
 
-		double radius = arguments[1].decimal;
+		double radius = arguments[1].decimal * 10;
 		if(arguments[1].isRange)
 			radius = normald(arguments[1].decimal, arguments[1].decimal2) * 10;
 		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE * 10;

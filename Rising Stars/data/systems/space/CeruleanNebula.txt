@@ -1,7 +1,7 @@
 System: CeruleanNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(2:5)
 		MakeAnomaly()
@@ -17,4 +17,4 @@ System: CeruleanNebula
 	
 	NoRegionVision()
 	
-	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(3000*$SENSOR_RANGE_MULT)

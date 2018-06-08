@@ -1,7 +1,7 @@
 System: TachyonNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(0:5)
 		MakeAnomaly()
@@ -19,4 +19,4 @@ System: TachyonNebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(750*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(2250*$SENSOR_RANGE_MULT)

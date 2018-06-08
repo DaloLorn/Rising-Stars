@@ -2,7 +2,7 @@ System: Orathi
 	Position: (0, 0, 0)
 	Homeworld: False
 
-	MakeStar(Temperature = 1000, Radius = 2000)
+	MakeStar(Temperature = 1000, Radius = 200)
 	ExpandSystem(5000)
 	TriggerRegion(SetSystemAssignGroup(-2))
 

@@ -1,7 +1,7 @@
 System: MetaphasicNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(1:6)
 		MakeAnomaly()
@@ -18,4 +18,4 @@ System: MetaphasicNebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(3000*$SENSOR_RANGE_MULT)

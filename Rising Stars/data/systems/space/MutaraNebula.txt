@@ -1,7 +1,7 @@
 System: MutaraNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(1:4)
 		MakeAnomaly()
@@ -19,4 +19,4 @@ System: MutaraNebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(100*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(300*$SENSOR_RANGE_MULT)
