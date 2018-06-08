@@ -32,28 +32,15 @@ Module: StarForge
 
 	MultConstructionCost(0.5)
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StarForge, AdaptedStarForge))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StarForge, AdaptedStarForge))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(StarForgeUnlock)
 
 Module: AdaptedStarForge
+	Inherit: StarForge
 	Name: #STARFORGE_ADAPTED
 	Description: #STARFORGE_ADAPTED_DESC
 
-	ConsumeCargo(Ore, 5000)
-
-	RequireCloseToStar()
-	FacesOrbitCenter()
-
-	AllowConstruction(Ships = True, Orbitals = True)
-	ForbidLaborExport()
-	AddFleetCommand(256)
-	AddCargoStorage(100000)
-
-	AddStatus(StarForge)
-
-	MultConstructionCost(0.5)
-
 	AddStatus(AdaptedStarForge)
-	RequireUnlockTag(NylliAdaptation4)
-	RequireUnlockTag(StarForgeUnlock)
+
+	private RequireUnlockTag(NylliAdaptation4)

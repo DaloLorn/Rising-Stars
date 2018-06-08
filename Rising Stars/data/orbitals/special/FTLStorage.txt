@@ -19,8 +19,8 @@ Module: FTLStorage
 
 	RequireTrait(StarChildren)
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLStorage, AdaptedFTLStorage))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLStorage, AdaptedFTLStorage))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddFTLStorage(300)
 
 	RequireOnOrbital(EconomyCore)
@@ -28,10 +28,8 @@ Module: AdaptedFTLStorage
 	Inherit: FTLStorage
 	Name: #ORB_FTL_STORAGE_ADAPTED
 	Description: #ORB_FTL_STORAGE_ADAPTED_DESC
-
-	RequireTrait(StarChildren)
-
-	RequireOnOrbital(EconomyCore)
+	
 	AddResearchIncome(0.5)
-	RequireUnlockTag(NylliAdaptation4)
-	AddFTLStorage(300)
+
+	private RequireUnlockTag(NylliAdaptation4)
+	

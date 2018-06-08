@@ -92,6 +92,9 @@ tidy final class OrbitalModule {
 	bool canFling = true;
 	bool immuneToRadiation = false;
 
+	array<string> hookDefs;
+	array<string> publicHookDefs;
+
 	array<IOrbitalEffect@> hooks;
 	array<Hook@> ai;
 	array<OrbitalModule@> descendants;
@@ -99,6 +102,16 @@ tidy final class OrbitalModule {
 	array<uint> affinities(TR_COUNT, 0);
 	array<const ResourceType@> requirements;
 	uint totalRequirementCount = 0;
+
+	void initHooks() {
+		for(uint i = 0, cnt = hookDefs.length; i < cnt; ++i) {
+			auto@ hook = cast<IOrbitalEffect>(parseHook(hookDefs[i], "orbital_effects::", instantiate=false));
+			if(hook !is null) {
+				hooks.insertLast(hook);
+			}
+			else print("Skipped or failed to parse hook in orbital module " + ident);
+		}
+	}
 
 	bool isParentOf(uint id) const {
 		if(getOrbitalModule(id) is null)
@@ -572,10 +585,30 @@ void addOrbitalModule(OrbitalModule@ mod) {
 }
 
 void parseLine(string& line, OrbitalModule@ mod, ReadFile@ file) {
-	//Hook line
-	auto@ hook = cast<IOrbitalEffect>(parseHook(line, "orbital_effects::", instantiate=false, file=file));
-	if(hook !is null)
-		mod.hooks.insertLast(hook);
+	bool hidden = false;
+	line = line.trimmed();
+	if(line.findFirst("private ") == 0) {
+		hidden = true;
+		line = line.substr(8);
+	}
+	else if(line.findFirst("remove ") == 0) {
+		line = line.substr(7);
+
+		if(mod.hookDefs.find(line) >= 0)
+			mod.hookDefs.removeAt(mod.hookDefs.find(line));
+		else 
+			print("WARNING: Cannot remove missing hook def from orbital module '" + mod.ident + "': " + line);
+
+		if(mod.publicHookDefs.find(line) >= 0)
+			mod.publicHookDefs.removeAt(mod.publicHookDefs.find(line));
+
+		return;
+	}
+
+	// It has to be a hook def.
+	mod.hookDefs.insertLast(line);
+	if(!hidden)
+		mod.publicHookDefs.insertLast(line);
 }
 
 int getOrbitalModuleID(const string& ident) {
@@ -652,6 +685,20 @@ void loadOrbitalModules(const string& filename) {
 				mod.mass = parent.mass;
 				mod.alwaysRegenShield = parent.alwaysRegenShield;
 				mod.immuneToRadiation = parent.immuneToRadiation;
+				mod.hookDefs = parent.publicHookDefs;
+			}
+		}
+		else if(key.equals_nocase("Copy Of")) {
+			@parent = modules[getOrbitalModuleID(value)];
+			if(parent is null)
+				file.error("Cannot copy from non-existent parent module '" + value + "'");
+			else {
+				string ident = mod.ident;
+				mod = parent;
+				if(mod is parent) 
+					file.error("FATAL ERROR: Copy assignment doesn't work!");
+				mod.ident = ident;
+				mod.ai = array<Hook@>(); // None of the current AI hooks are compatible with inheritance of any kind, so there's no point in supporting them.
 			}
 		}
 		else if(key.equals_nocase("Name")) {
@@ -786,12 +833,17 @@ void preInit() {
 	FileList list("data/orbitals", "*.txt", true);
 	for(uint i = 0, cnt = list.length; i < cnt; ++i)
 		loadOrbitalModules(list.path[i]);
+
+	for(uint i = 0, cnt = modules.length; i < cnt; ++i) {
+		modules[i].initHooks();
+	}
 }
 
 void init() {
 	auto@ list = modules;
 	for(uint i = 0, cnt = list.length; i < cnt; ++i) {
 		auto@ type = list[i];
+
 		for(uint n = 0, ncnt = type.hooks.length; n < ncnt; ++n)
 			if(!cast<Hook>(type.hooks[n]).instantiate())
 				error("Could not instantiate hook: "+addrstr(type.hooks[n])+" in "+type.ident);

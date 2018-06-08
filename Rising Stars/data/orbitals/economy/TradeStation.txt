@@ -21,8 +21,8 @@ Module: TradeStation
 	GrantAbility(BuyResearch) #version>=93
 	GrantAbility(BuyLabor) #version>=93
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeStation, AdaptedTradeStation))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeStation, AdaptedTradeStation))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	GlobalTradeNode()
 
 	ConsumeCargo(Ore, 750)
@@ -32,14 +32,7 @@ Module: AdaptedTradeStation
 	Inherit: TradeStation
 	Name: #ORB_TRADE_STATION_ADAPTED
 	Description: #ORB_TRADE_STATION_ADAPTED_DESC
-
-	GrantAbility(BuyInfluence) #version>=93
-	GrantAbility(BuyEnergy) #version>=93
-	GrantAbility(BuyResearch) #version>=93
-	GrantAbility(BuyLabor) #version>=93
-
-	RequireOnOrbital(EconomyCore)
+	
 	SpawnFreighters(Rate = 2.0, Min Level = 1)
-	RequireUnlockTag(NylliAdaptation4)
-	GlobalTradeNode()
-	ConsumeCargo(Ore, 750)
+
+	private RequireUnlockTag(NylliAdaptation4)

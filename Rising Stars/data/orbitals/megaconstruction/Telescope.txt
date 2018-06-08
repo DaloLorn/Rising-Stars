@@ -21,10 +21,10 @@ Module: Telescope
 	Maintenance: 100
 	Icon Size: 0.02
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Telescope, AdaptedTelescope))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
-	AddAccelerationBonus(0.2)
-	ShowRange(40000, #00ff00)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Telescope, AdaptedTelescope))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	AddAccelerationBonus(2)
+	ShowRange(400000, #00ff00)
 	GrantAbility(TelescopeOre)
 
 Module: AdaptedTelescope
@@ -32,10 +32,6 @@ Module: AdaptedTelescope
 	Name: #ORB_TELESCOPE_ADAPTED
 	Description: #ORB_TELESCOPE_ADAPTED_DESC
 	
-	ConsumeCargo(Ore, 750)
-
 	PeriodicNearbyIntelligence()
-	RequireUnlockTag(NylliAdaptation4)
-	AddAccelerationBonus(0.2)
-	ShowRange(40000, #00ff00)
-	GrantAbility(TelescopeOre)
+
+	private RequireUnlockTag(NylliAdaptation4)

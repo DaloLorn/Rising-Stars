@@ -16,8 +16,8 @@ Module: SupplyDepot
 
 	Strategic Icon: OrbitalIcons::7
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SupplyDepot, AdaptedSupplyDepot))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SupplyDepot, AdaptedSupplyDepot))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddRegionStatus(FastResupply)
 
 	ConsumeCargo(Ore, 500)
@@ -27,9 +27,8 @@ Module: AdaptedSupplyDepot
 	Inherit: SupplyDepot
 	Name: #ORB_SUPPLY_DEPOT_ADAPTED
 	Description: #ORB_SUPPLY_DEPOT_ADAPTED_DESC
-
-	RequireOnOrbital(MilitaryCore)
+	
 	AddDefenseReserve(50)
-	RequireUnlockTag(NylliAdaptation4)
-	AddRegionStatus(FastResupply)
-	ConsumeCargo(Ore, 500)
+
+	private RequireUnlockTag(NylliAdaptation4)
+	

@@ -28,8 +28,8 @@ Module: TradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireOnOrbital(MilitaryCore)
 
 	ConsumeCargo(Ore, 500)
@@ -41,19 +41,7 @@ Module: AdaptedTradeOutpost
 
 	Shield Capacity: 10000
 	Shield Regeneration: 50
-
-	LimitOncePerSystem(OutpostFlag)
-
-	RequireUnlockTag(NylliAdaptation4)
-
-	AddFleetEffectiveness(+2.0)
-	AddSupportBonusHP(+1.0)
-
-	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
-
-	ProtectSystem(90)
-	AddStatus(StartingProtection, Duration = 90)
+	
+	private RequireUnlockTag(NylliAdaptation4)
 
 	AllowFreeRaiding()
-	RequireOnOrbital(MilitaryCore)
-	ConsumeCargo(Ore, 500)

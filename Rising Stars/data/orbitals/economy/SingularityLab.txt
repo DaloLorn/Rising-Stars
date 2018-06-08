@@ -19,8 +19,8 @@ Module: SingularityLab
 	LimitOncePerSystem(SingularityLabFlag)
 	RequireBlackHoleSystem()
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SingularityLab, AdaptedSingularityLab))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SingularityLab, AdaptedSingularityLab))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddResearchIncome(4)
 	AddEnergyIncome(4)
 
@@ -31,14 +31,9 @@ Module: AdaptedSingularityLab
 	Inherit: SingularityLab
 	Name: #ORB_SINGULARITY_LAB_ADAPTED
 	Description: #ORB_SINGULARITY_LAB_ADAPTED_DESC
-
-	LimitOncePerSystem(SingularityLabFlag)
-	RequireBlackHoleSystem()
-
-	RequireOnOrbital(EconomyCore)
+	
 	AddRegionStatusEnemies(SingularityDisruption)
 	BlockSystemFTL()
-	RequireUnlockTag(NylliAdaptation4)
-	AddResearchIncome(4)
-	AddEnergyIncome(4)
-	ConsumeCargo(Ore, 500)
+	
+	private RequireUnlockTag(NylliAdaptation4)
+	

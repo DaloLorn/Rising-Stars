@@ -29,8 +29,8 @@ Module: SenatorialPalace
 	GloballyVisible()
 	GrantAllVision()
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SenatorialPalace, AdaptedSenatorialPalace))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SenatorialPalace, AdaptedSenatorialPalace))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	GrantAbility(BuyElection)
 	GrantAbility(BuyGalacticUtopia)
 	GrantAbility(BuyGalacticSuperpower)
@@ -43,23 +43,6 @@ Module: AdaptedSenatorialPalace
 	Name: #ORB_SENATORIAL_PALACE_ADAPTED
 	Description: #ORB_SENATORIAL_PALACE_ADAPTED_DESC
 
-	ConsumeInfluence(15)
-
-	RequireSenateLeader()
-	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)
-
-	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, Icon = LeaderIcon))
-
-	ModEmpireAttribute(SenatorialPalaceConstructed, Add, 1)
-	RequireAttributeLT(SenatorialPalaceConstructed, 1)
-
-	GloballyVisible()
-	GrantAllVision()
-
 	AddInfluenceStake(3)
-	RequireUnlockTag(NylliAdaptation4)
-	GrantAbility(BuyElection)
-	GrantAbility(BuyGalacticUtopia)
-	GrantAbility(BuyGalacticSuperpower)
-	RequireOnOrbital(EconomyCore)
-	ConsumeCargo(Ore, 1000)
+
+	private RequireUnlockTag(NylliAdaptation4)

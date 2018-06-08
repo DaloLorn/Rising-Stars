@@ -16,8 +16,8 @@ Module: ShieldCharger
 
 	Strategic Icon: OrbitalIcons::7
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(ShieldCharger, AdaptedShieldCharger))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(ShieldCharger, AdaptedShieldCharger))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddRegionStatus(FastRecharge)
 	RequireUnlockTag(ShieldCharger)
 	RequireOnOrbital(MilitaryCore)
@@ -29,8 +29,8 @@ Module: AdaptedShieldCharger
 	Name: #ORB_SHIELD_CHARGER_ADAPTED
 	Description: #ORB_SHIELD_CHARGER_ADAPTED_DESC
 
-	RequireUnlockTag(NylliAdaptation4)
+	private RequireUnlockTag(NylliAdaptation4)
+	remove AddRegionStatus(FastRecharge)
+	
 	AddRegionStatus(AdaptedFastRecharge)
-	RequireUnlockTag(ShieldCharger)
-	RequireOnOrbital(MilitaryCore)
-	ConsumeCargo(Ore, 500)
+

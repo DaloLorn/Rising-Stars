@@ -14,8 +14,8 @@ Module: NylliFood
 	Size: 5
 	Unique: False
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliFood, AdaptedNylliFood))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliFood, AdaptedNylliFood))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)
@@ -44,17 +44,15 @@ Module: AdaptedNylliFood
 	Inherit: NylliFood
 	Name: #ORB_FARM_ADAPTED
 	Description: #ORB_FARM_ADAPTED_DESC
+	Maintenance: 90
 
-	RequireUnlockTag(NylliAdaptation4)
-	RequireUnlockTag(NylliNutrients)
-	AddStatusToOrbitingPlanet(NylliFood, Set Origin Empire = True)
-	RequireOnOrbital(EconomyCore)
+	private RequireUnlockTag(NylliAdaptation4)
+	
 Module: AdaptedNylliWater
 	Inherit: NylliWater
 	Name: #ORB_HYDROGENATOR_ADAPTED
 	Description: #ORB_HYDROGENATOR_ADAPTED_DESC
-	RequireUnlockTag(NylliAdaptation4)
-	RequireUnlockTag(NylliNutrients)
-	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
+	Maintenance: 90
 
-	RequireOnOrbital(EconomyCore)
+	private RequireUnlockTag(NylliAdaptation4)
+	

@@ -400,7 +400,7 @@ class AddSystemRepair : GenericEffect {
 		if(obj is null || obj.owner is null)
 			return;
 		if(fromRegion !is null)
-			fromRegion.modRepairRate(obj.owner, -repair.decimal),
+			fromRegion.modRepairRate(obj.owner, -repair.decimal);
 		if(toRegion !is null)
 			toRegion.modRepairRate(obj.owner, repair.decimal);
 	}
