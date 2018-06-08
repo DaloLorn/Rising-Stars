@@ -596,9 +596,9 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		updateCombatState(reg, time);
 
 		// Repair yards
-		for(uint i = 0, cnt = objectList.length; i < cnt; i++) {
-			Object@ obj = objectList[i];
-			if(obj.owner is null || repairs[obj.owner.index] <= 0)
+		for(uint i = 0; i < reg.objectCount; i++) {
+			Object@ obj = reg.objects[i];
+			if(obj is null || obj.owner is null || !obj.owner.valid || repairs[obj.owner.index] <= 0)
 				continue; // No point in going on, this clearly can't be repaired.
 			if(!obj.isShip && !obj.isOrbital)
 				continue;
@@ -612,7 +612,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			}
 			else if(obj.isOrbital) {
 				Orbital@ orb = cast<Orbital>(obj);
-				double repair = min(repairs[obj.owner.index].SystemRepairMod, orb.maxHealth * 0.01);
+				double repair = min(repairs[obj.owner.index] * obj.owner.SystemRepairMod, orb.maxHealth * 0.01);
 				orb.repairOrbital(repair);
 			}
 		}
