@@ -1,0 +1,45 @@
+Trait: VanguardSwarmers
+	Name: #TRAIT_VANGUARD_SWARMER
+	Description: #TRAIT_VANGUARD_SWARMER_DESC
+	Order: 14
+
+	Icon: ActionBarIcons::2
+	Color: #8f7966
+
+	Category: Lifestyle
+	Unique: Lifestyle
+	AI Support: False
+
+	UnlockTag(VanguardSwarmers)
+	UnlockTag(VanguardUnlocks)
+	UnlockSubsystem(MinerHull)
+
+	ModAttribute(VictoryType, Add, 1)
+	ModAttribute(ResearchCostFactor, Multiply, 0.5)
+	ModAttribute(PopulationGrowthFactor, Multiply, 1)
+	ModAttribute(TileDevelopmentFactor, Multiply, 1)
+	ModAttribute(CivBldConstructionRate, Multiply, 1)
+	ModAttribute(OrbitalHealthMod, Multiply, 0.25)
+	ModAttribute(OrbitalArmorMod, Multiply, 0.25)
+	ModAttribute(OrbitalShieldMod, Multiply, 0.25)
+	ModAttribute(OrbitalMaintMod, Multiply, 0.25)
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.25)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.25)
+
+	AddModifier(BoardingStrengthFactor(0.5))
+	AddModifier(DamageMult(0.5))
+	AddModifier(HpMult(0.25))
+	AddModifier(ShieldCapacityMult(0.25))
+	AddModifier(ShieldRegenMult(0.25))
+	AddModifier(RepairMult(0.25))
+	AddModifier(MiningRateFactor(1.5))
+	AddModifier(CargoStorageMult(1.5))
+	AddModifier(BuildCostFactor(0.25))
+	AddModifier(MaintCostFactor(0.25))
+	AddModifier(LaborCostFactor(0.25))
+	AddModifier(TroopPods::MaxLoyaltyFactor(0.5))
+
+	// These modifiers negate the cost reductions for Support Command.
+	AddModifier(SupportCapModule::BuildCostFactor(4.0))
+	AddModifier(SupportCapModule::MaintCostFactor(4.0))
+	AddModifier(SupportCapModule::LaborCostFactor(4.0))

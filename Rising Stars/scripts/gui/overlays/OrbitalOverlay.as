@@ -374,11 +374,11 @@ class ModuleElement : BaseGuiElement {
 				recti_area(vec2i(x, 4)+AbsolutePosition.topLeft, vec2i(26, 26)));
 			x -= 30;
 		}
-		if(section.type.maintenance != 0) {
+		if(section.type.maintenance != 0 && obj.owner !is null && obj.owner.valid) {
 			x -= 60;
 			skin.getFont(FT_Bold).draw(
 					pos=recti_area(vec2i(x, 4)+AbsolutePosition.topLeft, vec2i(86, 26)),
-					text=formatMoney(section.type.maintenance),
+					text=formatMoney(section.type.maintenance * obj.owner.OrbitalMaintMod),
 					color=Color(0xd1cb6aff),
 					horizAlign=1.0);
 		}

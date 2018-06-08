@@ -1,0 +1,15 @@
+Ability: SwarmerBindAsteroid
+	Name: #ABL_BIND_ASTEROID
+	Description: #ABL_BIND_ASTEROID_DESC
+	Icon: OreAsteroidIcon
+
+	Range: 400
+
+	Target: targ = Object
+	Hotkey: B
+
+	IsToggleTarget(targ, Check Range = False, Channels = False)
+	TractorObject(targ, Max Distance = 600)
+	PersistentBeamEffect(targ, #b8b8d8, Tractor, 0.5)
+
+	ABEM_cargo::MaintainMiningBase(targ, Package Size = 325.0, Mining Rate = 2.5, Minimum Mining Rate = 0.75)

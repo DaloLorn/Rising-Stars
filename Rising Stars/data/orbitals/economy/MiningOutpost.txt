@@ -11,5 +11,6 @@ Module: MiningOutpost
 	Armor: 3000
 	Maintenance: 70
 	Build Cost: 500
+	IfHaveTrait(VanguardSwarmers, GrantAbility(SwarmerBindAsteroid))
 	RequireOnOrbital(EconomyCore)
-	GrantAbility(BindAsteroid)
+	IfNotHaveTrait(VanguardSwarmers, GrantAbility(BindAsteroid))
