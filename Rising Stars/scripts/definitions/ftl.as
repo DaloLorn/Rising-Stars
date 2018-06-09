@@ -305,7 +305,7 @@ bool canJumpdriveTo(Object& obj, const vec3d& pos) {
 	return !isFTLBlocked(obj, pos);
 }
 
-const double FLUX_CD_RANGE = 300.0;
+const double FLUX_CD_RANGE = 6000.0;
 
 bool canFluxTo(Object& obj, const vec3d& pos) {
 	if(obj.owner.HasFlux == 0)

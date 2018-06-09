@@ -133,13 +133,13 @@ We are the Vanguard. To fail in our mission is to be exterminated. To achieve th
 >>
 
 RACE_VANGUARD_SWARMER: Khalerii
-RACE_VANGUARD_SWARMER_TAGLINE: The underappreciated backbone of the Vanguard.
+RACE_VANGUARD_SWARMER_TAGLINE: Workers of the Vanguard, unite!
 RACE_VANGUARD_SWARMER_LORE: <<
 The Khalerii have always been looked down upon by the other members of the Vanguard. Put down by the fat Bluuhbi and the arrogant Nejjul'har. They look at us from their vast ringworlds and their tall research spires, and see beasts, inferior beings good only for menial labor.
 
-No more! We don't need their hoards, or their labs. They believe they can think hard enough to stay ahead of us? [i]Factories[/i] will win this race - industrialization and hard work - and [i]no one[/i] knows more about industry than we do.
+No more! We don't need their hoards, or their labs. They believe they can think hard enough to stay ahead of us? [b]Factories[/b] will win this race - industrialization and hard work - and [b]no one[/b] knows more about industry than we do.
 
-The Overlord invasion can wait. First, we will spread in all directions and put these pigs in their place. Then [i]they[/i] will work for [i]us[/i]...
+The Overlord invasion can wait. First, we will spread in all directions and put these pigs in their place. Then [b]they[/i] will work for [b]us[/b]...
 >>
 
 RACE_VANGUARD_SCIENTISTS: Nejjul'har
