@@ -13,7 +13,7 @@ Subsystem: IonEngine
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
 	Size := HexSize * Hexes
-	BaseThrust := 22 * Size * 6
+	BaseThrust := 22 * Size
 	BaseTurnThrust := 2.0 * Size
 	PowerUse := 1.5 * Size
 	Hex.Mass := HexSize

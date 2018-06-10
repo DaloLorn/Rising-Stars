@@ -13,7 +13,7 @@ Subsystem: RocketEngine
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
 	Size := HexSize * Hexes
-	BaseThrust := 35 * Size * 6
+	BaseThrust := 35 * Size
 	BaseTurnThrust := 0.75 * Size
 	Hex.Mass := HexSize
 
