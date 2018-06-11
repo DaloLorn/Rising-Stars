@@ -11,7 +11,7 @@ Subsystem: ExperimentalHyperdrive
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	BaseHyperdriveSpeed := 1600.0 * Size / ShipSize
+	BaseHyperdriveSpeed := 32000.0 * Size / ShipSize
 	HyperSpeedMod := 1
 	HyperdriveSpeed := BaseHyperdriveSpeed * HyperSpeedMod
 	Hex.Mass := HexSize * 2

@@ -18,7 +18,7 @@ Trait: VanguardSwarmers
 	ModAttribute(ResearchCostFactor, AddBase, 0.5)
 	ModAttribute(PopulationGrowthFactor, AddBase, 1)
 	ModAttribute(TileDevelopmentFactor, AddBase, 1)
-	ModAttribute(CivBldConstructionRate, AddBase, 1)
+	ModAttribute(BuildingConstructionRate, AddBase, 1)
 	ModAttribute(OrbitalHealthMod, AddBase, -0.5)
 	ModAttribute(OrbitalArmorMod, AddBase, -0.5)
 	ModAttribute(OrbitalShieldMod, AddBase, -0.5)
@@ -26,6 +26,9 @@ Trait: VanguardSwarmers
 	ModAttribute(OrbitalBuildCostFactor, AddBase, -0.75)
 	ModAttribute(OrbitalLaborCostFactor, AddBase, -0.75)
 	ModAttribute(SystemRepairMod, AddBase, -0.5)
+	ModAttribute(FTLCostFactor, AddBase, -0.75)
+	ModAttribute(BuildingCostFactor, AddBase, -0.75)
+	ModAttribute(BuildingMaintFactor, AddBase, -0.75)
 
 	AddModifier(BoardingStrengthFactor(0.5))
 	AddModifier(DamageMult(0.5))

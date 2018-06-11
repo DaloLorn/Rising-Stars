@@ -64,10 +64,10 @@ TRAIT_VANGUARD_RINGWORLDER_DESC: <<|
 	[bbloc=#TRAIT_VANGUARD_DESC/]
 >>
 TRAIT_VANGUARD_DESC: <<
-	[vspace=3/][img=ShieldImpactLarge*#de12de;22]Is a Vanguard race, with all their advantages and disadvantages:
+	[vspace=6/][img=ShieldImpactLarge*#de12de;22]Is a Vanguard race, with all their advantages and disadvantages:
 	
 	[vspace=3/][img=PortalStabilizer;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
-	[vspace=3/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
+	[vspace=6/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
 >>
 TRAIT_MECHANOID_DESC: <<|
 	[vspace=3/][img=ResourceIcon::6;22]Additional [b]population[/b] must be constructed with labor instead of growing. Each unit of population provides extra labor.[/img]
@@ -84,11 +84,11 @@ TRAIT_DEVOUT_DESC: <<|
 	[vspace=6/][img=ResourceIcon::8;22]Your planets have 1 increased [b]maximum population[/b] per planet level.[/img]
 >>
 TRAIT_VANGUARD_SWARMER: Vanguard (Swarmers)
-TRAIT_VANGUARD_SWARMER_DESC: <<|
+TRAIT_VANGUARD_SWARMER_DESC: <<
 	[vspace=3/][img=Industrious;22]All orbitals and ship systems (except Support Command) cost 75% less money and Labor.[/img]
-	[vspace=3/][img=SequesteredSociety;22]Population growth, tile development and civilian construction are twice as fast.[/img]
-	[vspace=3/][img=ResourceIcon::4*#f88;22]Research costs are increased by 50%.[/img]
-	[vspace=3/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 50%.[/img]
-	[vspace=3/][img=HullSubsystems::6;22]All mining rates and cargo storage are increased by 50%. Also starts with the Miner Hull unlocked at the beginning of the game.[/img]
+	[vspace=6/][img=SequesteredSociety;22]Population growth, tile development and civilian construction are twice as fast.[/img]
+	[vspace=6/][img=ResourceIcon::4*#f88;22]Research costs are increased by 50%.[/img]
+	[vspace=6/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 50%.[/img]
+	[vspace=6/][img=HullSubsystems::6;22]All mining rates and cargo storage are increased by 50%. Also starts with the Miner Hull unlocked at the beginning of the game.[/img]
 	[bbloc=#TRAIT_VANGUARD_DESC/]
 >>

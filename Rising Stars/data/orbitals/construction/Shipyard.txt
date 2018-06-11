@@ -30,8 +30,6 @@ Module: Shipyard
 	AddLaborEmpireAttribute(FactoryLaborMod)
 	AddLaborFactor(-0.25)
 
-	remove AddLaborIncome(10)
-
 	ABEM_orbitals::AddSystemRepair(2000)
 
 	private RequireNotTrait(Mechanoid)

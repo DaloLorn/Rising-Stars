@@ -139,7 +139,7 @@ The Khalerii have always been looked down upon by the other members of the Vangu
 
 No more! We don't need their hoards, or their labs. They believe they can think hard enough to stay ahead of us? [b]Factories[/b] will win this race - industrialization and hard work - and [b]no one[/b] knows more about industry than we do.
 
-The Overlord invasion can wait. First, we will spread in all directions and put these pigs in their place. Then [b]they[/i] will work for [b]us[/b]...
+The Overlord invasion can wait. First, we will spread in all directions and put these pigs in their place. Then [b]they[/b] will work for [b]us[/b]...
 >>
 
 RACE_VANGUARD_SCIENTISTS: Nejjul'har

@@ -2,8 +2,8 @@ Module: OrbitalThrusters
 	Name: #ORB_THRUSTERS
 	Description: #ORB_THRUSTERS_DESC
 	Blurb: #ORB_THRUSTERS_BLURB
-	Icon: TechIcons::44
-	Distant Icon: TechIcons::44
+	Icon: TechIcons::26
+	Distant Icon: TechIcons::26
 	Strategic Icon: TechIcons::44
 
 	Unique: False
@@ -11,7 +11,7 @@ Module: OrbitalThrusters
 	Armor: 1500
 	Maintenance: 10
 	Build Cost: 200
-	
+
 	RequireEither(RequireEither(RequireOnOrbital(AncientReplicator), RequireOnOrbital(Telescope)), RequireOnOrbital(Mainframe))
 
 	AddAccelerationBonus(2.5)

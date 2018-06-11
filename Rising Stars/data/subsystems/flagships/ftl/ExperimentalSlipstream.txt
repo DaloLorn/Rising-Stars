@@ -19,7 +19,7 @@ Subsystem: ExperimentalSlipstream
 	Hex.BuildCost := 2.0 * HexSize
 
 	SlipstreamCost := if(Sum.SlipstreamCost <= 0.01, 600, 0) - 150 * (Size/ShipSize)
-	SlipstreamOptimalDistance := 15000 * sqrt(pow(Sum.SlipstreamOptimalDistance / 15000, 2) + Size / 128) - Sum.SlipstreamOptimalDistance
+	SlipstreamOptimalDistance := 300000 * sqrt(pow(Sum.SlipstreamOptimalDistance / 300000, 8) + Size / 128) - Sum.SlipstreamOptimalDistance
 	SlipstreamDuration := if(Sum.SlipstreamDuration <= 0.01, 50, 0) + 300 * (Size/ShipSize)
 	Assert: Size >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
