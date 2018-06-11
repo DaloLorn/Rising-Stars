@@ -17,6 +17,7 @@ System: Type1Nebula
 
 	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(Type1Nebula)
 
 	NoRegionVision()
 	SetStaticSeeableRange(1500*$SENSOR_RANGE_MULT)

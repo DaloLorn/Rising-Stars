@@ -14,6 +14,7 @@ System: CeruleanNebula
 	
 	AddRegionStatus(Cerulean) // Disables shields, cloaking, FTL and weapons. Also slightly obscures sensors.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(CeruleanNebula)
 	
 	NoRegionVision()
 	

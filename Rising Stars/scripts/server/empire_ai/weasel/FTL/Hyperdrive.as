@@ -8,14 +8,21 @@ import ftl;
 from orders import OrderType;
 
 const double REJUMP_MIN_DIST = 8000.0;
-const double STORAGE_AIM_DISTANCE = 40000;
+//SoI - Scaling
+const double STORAGE_AIM_DISTANCE = 800000;
 
 class Hyperdrive : FTL {
 	Development@ development;
+	Budget@ budget;
 	Fleets@ fleets;
+
+	private double _maxSublightEta = 900;
+
+	double get_maxSublightEta() const override { return _maxSublightEta; }
 
 	void create() override {
 		@development = cast<Development>(ai.development);
+		@budget = cast<Budget>(ai.budget);
 		@fleets = cast<Fleets>(ai.fleets);
 	}
 
@@ -31,11 +38,13 @@ class Hyperdrive : FTL {
 	double subETA(Object& obj, const vec3d& position) {
 		return newtonArrivalTime(obj.maxAcceleration, position - obj.position, vec3d());
 	}
-	
+
 	bool shouldHD(Object& obj, const vec3d& position, uint priority) {
 		//This makes me sad
 		if(position.distanceTo(obj.position) < 3000)
 			return false;
+		if (subETA(obj, position) > 120)
+			return true;
 		double pathDist = cast<Movement>(ai.movement).getPathDistance(obj.position, position, obj.maxAcceleration);
 		double straightDist = position.distanceTo(obj.position);
 		return pathDist >= straightDist * 0.6;
@@ -87,9 +96,14 @@ class Hyperdrive : FTL {
 			auto@ flAI = fleets.fleets[i];
 			if(flAI.fleetClass != FC_Combat)
 				continue;
-			vec3d toPosition = flAI.obj.position + vec3d(0, 0, STORAGE_AIM_DISTANCE);
+			vec3d toPosition = flAI.obj.position + vec3d(0, 0, STORAGE_AIM_DISTANCE * config::SCALE_SPACING);
 			highestCost = max(highestCost, double(hyperdriveCost(flAI.obj, toPosition)));
 		}
+
+		//If we have a comfortable budget, double our requirements
+		if (ai.empire.EstNextBudget > budget.highThreshold)
+			highestCost *= 2;
+
 		development.aimFTLStorage = highestCost / (1.0 - ai.behavior.ftlReservePctCritical - ai.behavior.ftlReservePctNormal);
 	}
 };

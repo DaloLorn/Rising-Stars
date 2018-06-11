@@ -359,6 +359,7 @@ class BuildStation : AllocateConstruction {
 class BuildOrbital : AllocateConstruction {
 	double baseLabor = 0.0;
 	const OrbitalModule@ module;
+	const Planet@ planet;
 	bool local = false;
 	vec3d position;
 
@@ -373,6 +374,13 @@ class BuildOrbital : AllocateConstruction {
 
 	BuildOrbital(const OrbitalModule@ module, bool local) {
 		this.local = true;
+		@this.module = module;
+		baseLabor = module.laborCost;
+	}
+
+	BuildOrbital(const OrbitalModule@ module, const Planet@ planet) {
+		this.local = true;
+		@this.planet = planet;
 		@this.module = module;
 		baseLabor = module.laborCost;
 	}
@@ -445,10 +453,21 @@ class BuildOrbital : AllocateConstruction {
 
 	void construct(AI& ai, Factory@ f) {
 		if(local) {
-			position = f.obj.position;
-			vec2d offset = random2d(f.obj.radius + 10.0, f.obj.radius + 100.0);
-			position.x += offset.x;
-			position.z += offset.y;
+			if (planet !is null) {
+				position = planet.position;
+				vec2d offset = random2d(planet.OrbitSize * 0.8, planet.OrbitSize * 0.9);
+				position.x += offset.x;
+				position.z += offset.y;
+			}
+			else {
+				position = f.obj.position;
+				//vec2d offset = random2d(f.obj.radius + 10.0, f.obj.radius + 100.0);
+				if (f.plAI !is null) {
+					vec2d offset = random2d(f.plAI.obj.OrbitSize * 0.8, f.plAI.obj.OrbitSize * 0.9);
+					position.x += offset.x;
+					position.z += offset.y;
+				}
+			}
 		}
 		f.obj.buildOrbital(module.id, position);
 		AllocateConstruction::construct(ai, f);
@@ -1128,10 +1147,10 @@ class Construction : AIComponent {
 		return f;
 	}
 
-	BuildOrbital@ buildOrbital(const OrbitalModule@ module, const vec3d& position, double priority = 1.0, bool force = false) {
+	BuildOrbital@ buildOrbital(const OrbitalModule@ module, const vec3d& position, double priority = 1.0, bool force = false, uint moneyType = BT_Infrastructure) {
 		//Potentially build a flagship
 		BuildOrbital f(module, position);
-		f.moneyType = BT_Military;
+		f.moneyType = moneyType;
 		f.priority = priority;
 		build(f, force=force);
 		return f;
@@ -1155,10 +1174,19 @@ class Construction : AIComponent {
 		return f;
 	}
 
-	BuildOrbital@ buildLocalOrbital(const OrbitalModule@ module, double priority = 1.0, bool force = false) {
+	BuildOrbital@ buildLocalOrbital(const OrbitalModule@ module, double priority = 1.0, bool force = false, uint moneyType = BT_Infrastructure) {
 		//Potentially build a flagship
 		BuildOrbital f(module, local=true);
-		f.moneyType = BT_Military;
+		f.moneyType = moneyType;
+		f.priority = priority;
+		build(f, force=force);
+		return f;
+	}
+
+	BuildOrbital@ buildLocalOrbital(const OrbitalModule@ module, Planet@ planet, double priority = 1.0, bool force = false, uint moneyType = BT_Infrastructure) {
+		//Potentially build a flagship
+		BuildOrbital f(module, planet);
+		f.moneyType = moneyType;
 		f.priority = priority;
 		build(f, force=force);
 		return f;
@@ -1478,7 +1506,7 @@ class Construction : AIComponent {
 		Region@ reg = f.obj.region;
 		if(reg is null)
 			return null;
-		
+
 		uint cnt = systems.owned.length;
 		uint offset = randomi(0, cnt-1);
 		for(uint i = 0, check = min(3, cnt); i < check; ++i) {

@@ -22,6 +22,7 @@ import AIComponent@ createEnergy() from "empire_ai.weasel.Energy";
 import IAIComponent@ createDiplomacy() from "empire_ai.weasel.Diplomacy";
 import AIComponent@ createConsider() from "empire_ai.weasel.Consider";
 import AIComponent@ createOrbitals() from "empire_ai.weasel.Orbitals";
+import AIComponent@ createInfrastructure() from "empire_ai.weasel.Infrastructure";
 
 import AIComponent@ createHyperdrive() from "empire_ai.weasel.ftl.Hyperdrive";
 import AIComponent@ createGate() from "empire_ai.weasel.ftl.Gate";
@@ -42,6 +43,7 @@ import bool hasInvasionMap() from "Invasion.InvasionMap";
 
 from buildings import BuildingType;
 from orbitals import OrbitalModule;
+from constructions import ConstructionType;
 import util.formatting;
 
 from empire import ai_full_speed;
@@ -336,6 +338,8 @@ final class AIDefs {
 	const BuildingType@ Factory;
 	const BuildingType@ LaborStorage;
 	const OrbitalModule@ Shipyard;
+	const OrbitalModule@ EconomyCore;
+	const ConstructionType@ MoonBase;
 };
 
 final class AI : AIController, Savable {
@@ -375,6 +379,7 @@ final class AI : AIController, Savable {
 	IAIComponent@ diplomacy;
 	IAIComponent@ consider;
 	IAIComponent@ orbitals;
+	IAIComponent@ infrastructure;
 
 	IAIComponent@ ftl;
 	IAIComponent@ race;
@@ -387,8 +392,8 @@ final class AI : AIController, Savable {
 		@budget = add(createBudget());
 		@planets = add(createPlanets());
 		@resources = add(createResources());
-		@colonization = add(createColonization());
 		@systems = add(createSystems());
+		@colonization = add(createColonization());
 		@fleets = add(createFleets());
 		@scouting = add(createScouting());
 		@development = add(createDevelopment());
@@ -405,6 +410,7 @@ final class AI : AIController, Savable {
 		@diplomacy = add(createDiplomacy());
 		@consider = add(createConsider());
 		@orbitals = add(createOrbitals());
+		@infrastructure = add(createInfrastructure());
 
 		//Make FTL component
 		if(empire.hasTrait(getTraitID("Hyperdrive")))

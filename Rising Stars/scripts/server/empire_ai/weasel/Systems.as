@@ -4,6 +4,29 @@ import empire_ai.weasel.searches;
 import systems;
 import system_pathing;
 
+//Event callbacks definitions
+funcdef void OwnedSystemAdded(SystemAI& ai);
+funcdef void OwnedSystemRemoved(SystemAI& ai);
+funcdef void BorderSystemAdded(SystemAI& ai);
+funcdef void BorderSystemRemoved(SystemAI& ai);
+funcdef void OutsideBorderSystemAdded(SystemAI& ai);
+funcdef void OutsideBorderSystemRemoved(SystemAI& ai);
+
+interface IOwnedSystemEvents {
+	void onOwnedSystemAdded(SystemAI& ai);
+	void onOwnedSystemRemoved(SystemAI& ai);
+};
+
+interface IBorderSystemEvents {
+	void onBorderSystemAdded(SystemAI& ai);
+	void onBorderSystemRemoved(SystemAI& ai);
+};
+
+interface IOutsideBorderSystemEvents {
+	void onOutsideBorderSystemAdded(SystemAI& ai);
+	void onOutsideBorderSystemRemoved(SystemAI& ai);
+};
+
 final class SystemAI {
 	const SystemDesc@ desc;
 	Region@ obj;
@@ -85,7 +108,7 @@ final class SystemAI {
 		file << enemyStrength;
 		file << lastStrengthCheck;
 	}
-	
+
 	void load(SaveFile& file) {
 		file >> obj;
 		file >> prevTick;
@@ -158,17 +181,19 @@ final class SystemAI {
 		}
 
 		//Check if we should be owned
-		bool shouldOwned = obj.PlanetsMask & ai.mask != 0;
+		bool shouldOwned = obj.TradeMask & ai.mask != 0;
 		if(owned != shouldOwned) {
 			if(shouldOwned) {
 				systems.owned.insertLast(this);
 				systems.hopsChanged = true;
 				hopDistance = 0;
+				systems.notifyOwnedSystemAdded(this);
 			}
 			else {
 				hopDistance = 1;
 				systems.owned.remove(this);
 				systems.hopsChanged = true;
+				systems.notifyOwnedSystemRemoved(this);
 			}
 			owned = shouldOwned;
 		}
@@ -200,9 +225,11 @@ final class SystemAI {
 		if(border != shouldBorder) {
 			if(shouldBorder) {
 				systems.border.insertLast(this);
+				systems.notifyBorderSystemAdded(this);
 			}
 			else {
 				systems.border.remove(this);
+				systems.notifyBorderSystemRemoved(this);
 			}
 			border = shouldBorder;
 		}
@@ -212,9 +239,11 @@ final class SystemAI {
 		if(outsideBorder != shouldOutsideBorder) {
 			if(shouldOutsideBorder) {
 				systems.outsideBorder.insertLast(this);
+				systems.notifyOutsideBorderSystemAdded(this);
 			}
 			else {
 				systems.outsideBorder.remove(this);
+				systems.notifyOutsideBorderSystemRemoved(this);
 			}
 			outsideBorder = shouldOutsideBorder;
 		}
@@ -307,6 +336,61 @@ class Systems : AIComponent {
 
 	uint sysIdx = 0;
 	bool hopsChanged = false;
+
+	//Event callbacks
+	array<OwnedSystemAdded@> onOwnedSystemAdded;
+	array<OwnedSystemRemoved@> onOwnedSystemRemoved;
+	array<BorderSystemAdded@> onBorderSystemAdded;
+	array<BorderSystemRemoved@> onBorderSystemRemoved;
+	array<OutsideBorderSystemAdded@> onOutsideBorderSystemAdded;
+	array<OutsideBorderSystemRemoved@> onOutsideBorderSystemRemoved;
+
+	//Event delegate registration
+	void registerOwnedSystemEvents(IOwnedSystemEvents& events) {
+		onOwnedSystemAdded.insertLast(OwnedSystemAdded(events.onOwnedSystemAdded));
+		onOwnedSystemRemoved.insertLast(OwnedSystemRemoved(events.onOwnedSystemRemoved));
+	}
+
+	void registerBorderSystemEvents(IBorderSystemEvents& events) {
+		onBorderSystemAdded.insertLast(BorderSystemAdded(events.onBorderSystemAdded));
+		onBorderSystemRemoved.insertLast(BorderSystemRemoved(events.onBorderSystemRemoved));
+	}
+
+	void registerOutsideBorderSystemEvents(IOutsideBorderSystemEvents& events) {
+		onOutsideBorderSystemAdded.insertLast(OutsideBorderSystemAdded(events.onOutsideBorderSystemAdded));
+		onOutsideBorderSystemRemoved.insertLast(OutsideBorderSystemRemoved(events.onOutsideBorderSystemRemoved));
+	}
+
+	//Event notifications
+	void notifyOwnedSystemAdded(SystemAI& ai) {
+		for (uint i = 0, cnt = onOwnedSystemAdded.length; i < cnt; ++i)
+			onOwnedSystemAdded[i](ai);
+	}
+
+	void notifyOwnedSystemRemoved(SystemAI& ai) {
+		for (uint i = 0, cnt = onOwnedSystemRemoved.length; i < cnt; ++i)
+			onOwnedSystemRemoved[i](ai);
+	}
+
+	void notifyBorderSystemAdded(SystemAI& ai) {
+		for (uint i = 0, cnt = onBorderSystemAdded.length; i < cnt; ++i)
+			onBorderSystemAdded[i](ai);
+	}
+
+	void notifyBorderSystemRemoved(SystemAI& ai) {
+		for (uint i = 0, cnt = onBorderSystemRemoved.length; i < cnt; ++i)
+			onBorderSystemRemoved[i](ai);
+	}
+
+	void notifyOutsideBorderSystemAdded(SystemAI& ai) {
+		for (uint i = 0, cnt = onOutsideBorderSystemAdded.length; i < cnt; ++i)
+			onOutsideBorderSystemAdded[i](ai);
+	}
+
+	void notifyOutsideBorderSystemRemoved(SystemAI& ai) {
+		for (uint i = 0, cnt = onOutsideBorderSystemRemoved.length; i < cnt; ++i)
+			onOutsideBorderSystemRemoved[i](ai);
+	}
 
 	void save(SaveFile& file) {
 		uint cnt = all.length;
@@ -541,7 +625,7 @@ class Systems : AIComponent {
 	}
 
 	SystemPath pather;
-	int hopDistance(Region& fromRegion, Region& toRegion){ 
+	int hopDistance(Region& fromRegion, Region& toRegion){
 		pather.generate(getSystem(fromRegion), getSystem(toRegion), keepCache=true);
 		if(!pather.valid)
 			return INT_MAX;

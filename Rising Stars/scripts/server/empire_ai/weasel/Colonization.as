@@ -15,6 +15,11 @@ import util.formatting;
 
 import systems;
 
+enum ColonizationPhase {
+	CP_Expansion,
+	CP_Stabilization,
+};
+
 interface RaceColonization {
 	bool orderColonization(ColonizeData& data, Planet@ sourcePlanet);
 	double getGenericUsefulness(const ResourceType@ type);
@@ -159,7 +164,19 @@ final class Colonization : AIComponent {
 	bool performColonization = true;
 	bool queueColonization = true;
 
+	//Colonization focus
+	private uint _phase = CP_Expansion;
+
+	//Territory request data
+	private bool _needsMoreTerritory = false;
+	private bool _needsNewTerritory = false;
+	private uint _territoryRequests = 0;
+	private Region@ _newTerritoryTarget;
+
 	Object@ colonizeWeightObj;
+
+	bool get_needsMoreTerritory() const { return _needsMoreTerritory; }
+	bool get_needsNewTerritory() const { return _needsNewTerritory; }
 
 	void create() {
 		@resources = cast<Resources>(ai.resources);
@@ -169,10 +186,11 @@ final class Colonization : AIComponent {
 		@creeping = cast<Creeping>(ai.creeping);
 		@race = cast<RaceColonization>(ai.race);
 
-		//Get some hueristic resource classes
+		//Get some heuristic resource classes
 		@foodClass = getResourceClass("Food");
 		@waterClass = getResourceClass("WaterType");
 		@scalableClass = getResourceClass("Scalable");
+
 	}
 
 	void save(SaveFile& file) {
@@ -180,6 +198,16 @@ final class Colonization : AIComponent {
 		file << remainColonizations;
 		file << curColonizations;
 		file << prevColonizations;
+		file << _phase;
+		file << _needsMoreTerritory;
+		file << _needsNewTerritory;
+		file << _territoryRequests;
+		if (_newTerritoryTarget !is null) {
+			file.write1();
+			file << _newTerritoryTarget;
+		}
+		else
+			file.write0();
 
 		uint cnt = colonizing.length;
 		file << cnt;
@@ -216,6 +244,13 @@ final class Colonization : AIComponent {
 		file >> remainColonizations;
 		file >> curColonizations;
 		file >> prevColonizations;
+		file >> _phase;
+		file >> _needsMoreTerritory;
+		file >> _needsNewTerritory;
+		file >> _territoryRequests;
+		if(file.readBit()) {
+			file >> _newTerritoryTarget;
+		}
 
 		uint cnt = 0;
 		file >> cnt;
@@ -315,6 +350,39 @@ final class Colonization : AIComponent {
 		if(source.owner !is ai.empire)
 			return false;
 		return true;
+	}
+
+	bool shouldForceExpansion() {
+    uint otherColonizedSystems = 0;
+		for (uint i = 0, cnt = systems.outsideBorder.length; i < cnt; ++i) {
+			auto@ sys = systems.outsideBorder[i];
+			//Check if any system in our tradable area is unexplored
+			if (!sys.explored)
+				return false;
+			if (sys.planets.length > 0) {
+				uint otherColonizedPlanets = 0;
+				for (uint j = 0, cnt = sys.planets.length; j < cnt; ++j) {
+					auto@ pl = sys.planets[j];
+          int resId = pl.primaryResourceType;
+          if (resId != -1) {
+						//Check if any planet can still be colonized in our tradable area
+						if (!pl.owner.valid && !pl.quarantined)
+							return false;
+						else
+							++otherColonizedPlanets;
+					}
+				}
+				//Check if all planets in the system are colonized
+				if (otherColonizedPlanets == sys.planets.length)
+          ++otherColonizedSystems;
+			}
+		}
+		//Check if all systems in our tradable area belong to other empires
+    if (otherColonizedSystems == systems.outsideBorder.length)
+			//If 0, we colonized everything!
+      return false;
+
+    return true;
 	}
 
 	double getSourceWeight(PotentialSource& source, ColonizeData& data) {
@@ -502,6 +570,12 @@ final class Colonization : AIComponent {
 		if(data.colonizeFrom is null)
 			awaitingSource.remove(data);
 
+		//If we just colonized a new territory, reset request data
+		if (data.target.region is _newTerritoryTarget) {
+			_needsNewTerritory = false;
+			@_newTerritoryTarget = null;
+		}
+
 		PlanetAI@ plAI = planets.register(data.target);
 
 		ColonizeLog logEntry;
@@ -548,17 +622,14 @@ final class Colonization : AIComponent {
 		//Return a relative value for colonizing the resource this planet has in a vacuum,
 		//rather than as an explicit requirement for a planet.
 		double weight = 1.0;
-		if(type.level == 0) {
+		if(type.level == 0)
 			weight *= 2.0;
-		}
-		else {
-			weight /= sqr(double(1 + type.level));
-			weight *= 0.001;
-		}
+		else
+			weight *= sqr(double(1 + type.level));
 		if(type.cls is foodClass || type.cls is waterClass)
-			weight *= 10.0;
+			weight *= 2.5;
 		if(type.cls is scalableClass)
-			weight *= 0.0001;
+			weight *= 0.1;
 		if(type.totalPressure > 0)
 			weight *= double(type.totalPressure);
 		if(race !is null)
@@ -583,7 +654,8 @@ final class Colonization : AIComponent {
 
 	ColonizeData@ colonize(ResourceSpec@ spec) {
 		Planet@ newColony;
-		double totalWeight = 0.0;
+		double w;
+		double bestWeight = 0.0;
 
 		for(uint i = 0, cnt = potentials.length; i < cnt; ++i) {
 			auto@ p = potentials[i];
@@ -595,17 +667,22 @@ final class Colonization : AIComponent {
 				continue;
 			if(isColonizing(p.pl))
 				continue;
+			//Skip planets out of our new territory target if we are colonizing a new one
+			if (_newTerritoryTarget !is null && p.pl.region !is _newTerritoryTarget)
+				continue;
 
 			auto@ sys = systems.getAI(reg);
-			double w = 1.0;
-			if(sys.border)
+			w = 1.0;
+			if (sys.border)
 				w *= 0.25;
-			if(sys.obj.PlanetsMask & ~ai.mask != 0)
+			if (!sys.owned && !sys.border)
+				w /= 0.25;
+			if (sys.obj.PlanetsMask & ~ai.mask != 0)
 				w *= 0.25;
-
-			totalWeight += w;
-			if(randomd() < w / totalWeight)
+			if (w > bestWeight) {
 				@newColony = p.pl;
+				bestWeight = w;
+			}
 		}
 
 		if(newColony !is null)
@@ -668,6 +745,13 @@ final class Colonization : AIComponent {
 		for(uint i = 0, cnt = systems.outsideBorder.length; i < cnt; ++i)
 			checkSystem(systems.outsideBorder[i]);
 
+		if(needsNewTerritory) {
+			for(uint i = 0, cnt = systems.all.length; i < cnt; ++i) {
+				if(systems.all[i].explored)
+					checkSystem(systems.all[i]);
+			}
+		}
+
 		if(systems.owned.length == 0) {
 			Region@ homeSys = ai.empire.HomeSystem;
 			if(homeSys !is null) {
@@ -715,29 +799,48 @@ final class Colonization : AIComponent {
 
 		//Do generic expansion using any remaining colonization steps we have
 		if(ai.behavior.colonizeGenericExpand) {
-			double totalWeight = 0;
 			PotentialColonize@ expand;
+			double w;
+			double bestWeight = 0.0;
 
 			for(uint i = 0, cnt = potentials.length; i < cnt; ++i) {
 				auto@ p = potentials[i];
-				double weight = p.weight * getGenericUsefulness(p.resource);
-				modPotentialWeight(p, weight);
+				w = p.weight * getGenericUsefulness(p.resource);
+				modPotentialWeight(p, w);
 
 				Region@ reg = p.pl.region;
 				if(reg is null)
 					continue;
 				if(reg.PlanetsMask & ai.mask != 0)
 					continue;
-				if(weight == 0)
+				//Skip planets out of our new territory target if we are colonizing a new one
+				if (_newTerritoryTarget !is null && p.pl.region !is _newTerritoryTarget)
 					continue;
-				totalWeight += weight;
-				if(randomd() < weight / totalWeight)
+				if(w == 0)
+					continue;
+				if (w > bestWeight) {
 					@expand = p;
+					bestWeight = w;
+				}
 			}
 
 			if(expand !is null) {
 				auto@ data = colonize(expand.pl);
 				potentials.remove(expand);
+				if (needsNewTerritory && _newTerritoryTarget is null) {
+					//Check if our target planet is outside our tradable area
+					bool found = false;
+					for (uint i = 0, cnt = systems.owned.length; i < cnt; ++i) {
+						if (systems.owned[i].obj is expand.pl.region)
+							found = true;
+					}
+					for (uint i = 0, cnt = systems.outsideBorder.length; i < cnt; ++i) {
+						if (systems.outsideBorder[i].obj is expand.pl.region)
+							found = true;
+					}
+					if (!found)
+						@_newTerritoryTarget = expand.pl.region;
+				}
 				return data;
 			}
 		}
@@ -747,6 +850,102 @@ final class Colonization : AIComponent {
 	void turn() {
 		//Figure out how much we can colonize
 		remainColonizations = ai.behavior.maxColonizations;
+
+		//Decide colonization phase
+		if (_phase == CP_Expansion) {
+			if (ai.empire.EstNextBudget < budget.criticalThreshold) {
+				remainColonizations = 0;
+				_phase = CP_Stabilization;
+				if (log)
+					ai.print("Colonization: entering stabilization phase with estimated next budget: " + ai.empire.EstNextBudget);
+			}
+			else if (ai.empire.EstNextBudget < budget.lowThreshold) {
+				remainColonizations = 1;
+				if (log)
+					ai.print("Colonization: continuing expansion phase with estimated next budget: " + ai.empire.EstNextBudget);
+			}
+			else if (ai.empire.EstNextBudget < budget.mediumThreshold) {
+				remainColonizations = min(2, ai.behavior.maxColonizations);
+				if (log)
+					ai.print("Colonization: continuing expansion phase with estimated next budget: " + ai.empire.EstNextBudget);
+			}
+		}
+		else if (_phase == CP_Stabilization) {
+			if (ai.empire.RemainingBudget > budget.mediumThreshold) {
+				_phase = CP_Expansion;
+				if (log)
+					ai.print("Colonization: entering expansion phase with budget: " + ai.empire.RemainingBudget);
+			}
+			else {
+				remainColonizations = 1;
+				if (log)
+					ai.print("Colonization: continuing stabilization phase with budget: " + ai.empire.RemainingBudget);
+			}
+		}
+
+		if (ai.empire.EstNextBudget <= 0) {
+			//We are in trouble. Abandon planets sucking budget up
+			if (log)
+				ai.print("Colonization: negative budget, abandoning planets");
+			auto@ homeworld = ai.empire.Homeworld;
+			for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
+				auto@ pl = planets.planets[i].obj;
+				if (pl is homeworld)
+					continue;
+				int resId = pl.primaryResourceType;
+				if(resId == -1)
+					continue;
+				const ResourceType@ type = getResource(resId);
+				if ((type.cls is scalableClass || type.level > 0) && pl.resourceLevel == 0) {
+					pl.forceAbandon();
+				}
+			}
+			//If we are still in trouble, abandon more planets
+			if (ai.empire.EstNextBudget <= 0) {
+				for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
+					auto@ pl = planets.planets[i].obj;
+					if (pl is homeworld)
+						continue;
+					int resId = pl.primaryResourceType;
+					if(resId == -1)
+						continue;
+					const ResourceType@ type = getResource(resId);
+					if ((type.cls is foodClass || type.cls is waterClass) && !pl.primaryResourceExported)
+						pl.forceAbandon();
+				}
+				//More!
+				if (ai.empire.EstNextBudget <= 0) {
+					for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
+						auto@ pl = planets.planets[i].obj;
+						if (pl is homeworld)
+							continue;
+						int resId = pl.primaryResourceType;
+						if(resId == -1)
+							continue;
+						const ResourceType@ type = getResource(resId);
+						if (!(type.cls is foodClass || type.cls is waterClass || type.cls is scalableClass) && type.level == 0)
+							pl.forceAbandon();
+					}
+				}
+			}
+		}
+
+		//Check if we need to push for territory
+		if (shouldForceExpansion()) {
+			//If we already spent at least three turns trying to extend our territory, colonize a new one
+			if (needsMoreTerritory && _territoryRequests >= 3)
+				_needsNewTerritory = true;
+			else {
+				_needsMoreTerritory = true;
+				_territoryRequests ++;
+			}
+		}
+		else {
+			_needsMoreTerritory = false;
+			_needsNewTerritory = false;
+			_territoryRequests = 0;
+			@_newTerritoryTarget = null;
+		}
 
 		prevColonizations = curColonizations;
 		curColonizations = 0;
@@ -871,6 +1070,10 @@ final class Colonization : AIComponent {
 			if(!q.spec.meets(p.resource))
 				continue;
 
+			//Skip planets out of our new territory target if we are colonizing a new one
+			if (_newTerritoryTarget !is null && p.pl.region !is _newTerritoryTarget)
+				continue;
+
 			if(p.weight > takeWeight) {
 				takeWeight = p.weight;
 				@take = p;
@@ -972,7 +1175,7 @@ final class Colonization : AIComponent {
 		//If it's not resolved, try to resolve it
 		if(q.target is null)
 			resolve(q);
-		
+
 		//If the colonization failed, try to find a new planet for it
 		if((q.step !is null && q.step.canceled) || (q.step is null && q.target !is null && !canBeColonized(q.target))) {
 			auto@ potentials = getPotentialColonize();
@@ -982,6 +1185,10 @@ final class Colonization : AIComponent {
 			for(uint i = 0, cnt = potentials.length; i < cnt; ++i) {
 				auto@ p = potentials[i];
 				if(!q.spec.meets(p.resource))
+					continue;
+
+				//Skip planets out of our new territory target if we are colonizing a new one
+				if (_newTerritoryTarget !is null && p.pl.region !is _newTerritoryTarget)
 					continue;
 
 				double w = p.weight;

@@ -395,7 +395,8 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 		roll -= ai.behavior.focusColonizeNewWeight * sqr(1.0 / double(focuses.length));
 		if(roll <= 0) {
 			Planet@ newFocus;
-			double totalWeight = 0.0;
+			double w;
+			double bestWeight = 0.0;
 
 			for(uint i = 0, cnt = colonization.potentials.length; i < cnt; ++i) {
 				auto@ p = colonization.potentials[i];
@@ -416,18 +417,20 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 					continue;
 
 				auto@ sys = systems.getAI(reg);
-
-				double w = 1.0;
+				w = 1.0;
 				if(sys.border)
 					w *= 0.25;
+				if (!sys.owned && !sys.border)
+					w /= 0.25;
 				if(sys.obj.PlanetsMask & ~ai.mask != 0)
 					w *= 0.25;
 				if(p.resource.cls is colonization.scalableClass)
 					w *= 10.0;
 
-				totalWeight += w;
-				if(randomd() < w / totalWeight)
+				if (w > bestWeight) {
 					@newFocus = p.pl;
+					bestWeight = w;
+				}
 			}
 
 			if(newFocus !is null) {
@@ -694,7 +697,12 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 								if(log)
 									ai.print("AI hook generically requested building of type "+type.name, buildOn);
 
-								auto@ req = planets.requestBuilding(plAI, type, expire=ai.behavior.genericBuildExpire);
+								double priority = 1.0;
+								// Megafarms and hydrogenerators should be built as soon as possible
+								if (type.ident == "Farm" || type.ident == "Hydrogenator")
+									priority = 2.0;
+
+								auto@ req = planets.requestBuilding(plAI, type, priority, expire=ai.behavior.genericBuildExpire);
 								if(req !is null)
 									genericBuilds.insertLast(req);
 								break;

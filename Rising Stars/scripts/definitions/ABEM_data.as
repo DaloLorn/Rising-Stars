@@ -10,6 +10,15 @@ enum ABEMStatusTypes {
 };
 
 const int NEBULA_FLAG = getSystemFlag("IsNebula");
+const int CERULEAN_NEBULA_FLAG = getSystemFlag("CeruleanNebula");
+const int ECONOMIC_NEBULA_FLAG = getSystemFlag("EconomicNebula");
+const int EMPTY_SPACE_NEBULA_FLAG = getSystemFlag("EmptySpace");
+const int METAPHASIC_NEBULA_FLAG = getSystemFlag("MetaphasicNebula");
+const int METREON_NEBULA_FLAG = getSystemFlag("MetreonNebula");
+const int MUTARA_NEBULA_FLAG = getSystemFlag("MutaraNebula");
+const int RADIOACTIVE_NEBULA_FLAG = getSystemFlag("RadioactiveNebula");
+const int TACHYON_NEBULA_FLAG = getSystemFlag("TachyonNebula");
+const int TYPE_1_NEBULA_FLAG = getSystemFlag("Type1Nebula");
 
 enum ABEMVictoryTypes {
 	VType_Standard = 1,

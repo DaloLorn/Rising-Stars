@@ -16,6 +16,7 @@ System: MetaphasicNebula
 	
 	AddRegionStatus(Metaphasic) // Increases shield regeneration, slightly obscures sensors.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(MetaphasicNebula)
 	
 	NoRegionVision()
 	SetStaticSeeableRange(3000*$SENSOR_RANGE_MULT)

@@ -117,9 +117,12 @@ class Orbitals : AIComponent, AIOrbitals {
 
 	void registerUse(OrbitalUse use, const OrbitalModule& type) {
 		switch(use) {
+			case OU_EconomyCore:
+				@ai.defs.EconomyCore = type;
+				break;
 			case OU_Shipyard:
 				@ai.defs.Shipyard = type;
-			break;
+				break;
 		}
 	}
 

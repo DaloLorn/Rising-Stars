@@ -17,6 +17,7 @@ System: MutaraNebula
 	
 	AddRegionStatus(Mutara) // Disables shields. Also uses LimitedSight to heavily obscure sensors.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(MutaraNebula)
 	
 	NoRegionVision()
 	SetStaticSeeableRange(300*$SENSOR_RANGE_MULT)

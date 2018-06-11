@@ -14,3 +14,4 @@ System: EmptySpace
 		
 	AddRegionStatus(EmptySpace)
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula) // It's not technically a nebula, but it's a nebula. :P
+	ABEM_nebulae::SetGlobalSystemFlag(EmptySpace)

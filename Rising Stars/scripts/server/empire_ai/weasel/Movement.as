@@ -16,6 +16,7 @@ enum FTLReturn {
 };
 
 class FTL : AIComponent {
+	double get_maxSublightEta() const { return INFINITY; }
 	uint order(MoveOrder& order) { return F_Pass; }
 	uint tick(MoveOrder& order, double time) { return F_Pass; }
 };
@@ -168,6 +169,7 @@ class MoveOrder {
 
 class Movement : AIComponent {
 	int nextMoveOrderId = 0;
+	double maxSubLightEta = INFINITY;
 	array<MoveOrder@> moveOrders;
 
 	array<Oddity@> oddities;
@@ -176,6 +178,11 @@ class Movement : AIComponent {
 
 	void create() {
 		@ftl = cast<FTL>(ai.ftl);
+
+		//Set our max sublight acceptable ETA depending on our FTL method
+		if (ftl !is null) {
+			maxSubLightEta = ftl.maxSublightEta;
+		}
 	}
 
 	void save(SaveFile& file) {
@@ -260,9 +267,11 @@ class Movement : AIComponent {
 	}
 
 	double eta(Object& obj, const vec3d& position, uint priority = MP_Normal) {
-		//TODO: Use FTL
-		//TODO: Path through gates/wormholes
-		return newtonArrivalTime(obj.maxAcceleration, position - obj.position, obj.velocity);
+		//Path through gates/wormholes
+		double eta1 = pathOddityGates(oddities, ai.empire, path, obj.position, position, obj.maxAcceleration);
+		double eta2 = newtonArrivalTime(obj.maxAcceleration, position - obj.position, obj.velocity);
+
+		return eta1 != 0 && eta1 <= eta2 ? eta1 : eta2;
 	}
 
 	void order(MoveOrder& ord) {
@@ -271,10 +280,17 @@ class Movement : AIComponent {
 
 		bool madeOrder = false;
 
-		if(ftl !is null) {
+		if (ftl !is null) {
 			uint mode = ftl.order(ord);
-			if(mode == F_Kill || mode == F_Done)
+			if (mode == F_Kill || mode == F_Done)
 				return;
+			if (ord.priority != MP_Critical && mode == F_Pass) {
+				//If not using FTL and the ETA is above our limit, cancel movement
+				if ((ord.target !is null && eta(ord.obj, ord.target) > maxSubLightEta) || eta(ord.obj, ord.position) > maxSubLightEta) {
+					ord.cancel();
+					return;
+				}
+			}
 			madeOrder = (mode == F_Continue);
 		}
 

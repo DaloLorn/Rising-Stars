@@ -844,7 +844,7 @@ tidy class OrbitalScript {
 			return;
 
 		if(type.buildCost != 0) {
-			if(obj.owner.consumeBudget(type.buildCost * obj.owner.OrbitalBuildCostMod) == -1)
+			if(obj.owner.consumeBudget(type.buildCost * obj.owner.OrbitalBuildCostFactor) == -1)
 				return;
 		}
 
