@@ -1470,6 +1470,10 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 	starHook.initClass();
 	starHook.instantiate();
 
+	MakeBlackhole holeHook;
+	holeHook.initClass();
+	holeHook.instantiate();
+
 	MakeAnomaly anomalyHook;
 	anomalyHook.initClass();
 	anomalyHook.instantiate();
@@ -1497,7 +1501,7 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 			obj.wait();
 
 			@plHook.resPossib[0] = getResource(obj.primaryResourceType);
-			plHook.radius.set(obj.radius);
+			plHook.radius.set(obj.radius / 10);
 			plHook.grid_size.set(vec2d(obj.surfaceGridSize));
 
 			plHook.trigger(null, to, current);
@@ -1533,11 +1537,19 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);
 
-			starHook.arguments[0].set(base.temperature);
-			starHook.arguments[1].set(base.radius);
-			starHook.arguments[2].set(destPos - to.position);
+			if(base.temperature == 0.0) {
+				holeHook.arguments[0].set(base.radius / 10);
+				holeHook.arguments[1].set(destPos - to.position);
 
-			starHook.trigger(null, to, current);
+				holeHook.trigger(null, to, current);
+			}
+			else {
+				starHook.arguments[0].set(base.temperature);
+				starHook.arguments[1].set(base.radius / 10);
+				starHook.arguments[2].set(destPos - to.position);
+
+				starHook.trigger(null, to, current);
+			}
 		}
 		else if(obj.isArtifact) {
 			Artifact@ base = cast<Artifact>(obj);
