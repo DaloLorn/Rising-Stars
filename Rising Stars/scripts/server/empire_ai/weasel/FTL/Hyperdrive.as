@@ -96,7 +96,7 @@ class Hyperdrive : FTL {
 			auto@ flAI = fleets.fleets[i];
 			if(flAI.fleetClass != FC_Combat)
 				continue;
-			vec3d toPosition = flAI.obj.position + vec3d(0, 0, STORAGE_AIM_DISTANCE * config::SCALE_SPACING);
+			vec3d toPosition = flAI.obj.position + vec3d(0, 0, STORAGE_AIM_DISTANCE);
 			highestCost = max(highestCost, double(hyperdriveCost(flAI.obj, toPosition)));
 		}
 

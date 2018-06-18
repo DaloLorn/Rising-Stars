@@ -445,8 +445,6 @@ final class PlanetCheck {
 		file << _checkInTime;
 		file << _weight;
 		file << _isSystemUnderAttack;
-		file << _isGasGiant;
-		file << _isIceGiant;
 	}
 
 	void load(Infrastructure& infrastructure, SaveFile& file) {
@@ -463,8 +461,6 @@ final class PlanetCheck {
 		file >> _checkInTime;
 		file >> _weight;
 		file >> _isSystemUnderAttack;
-		file >> _isGasGiant;
-		file >> _isIceGiant;
 	}
 
 	void tick(AI& ai, Infrastructure& infrastructure, double time) {
