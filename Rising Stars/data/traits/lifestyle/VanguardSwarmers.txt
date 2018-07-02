@@ -9,6 +9,7 @@ Trait: VanguardSwarmers
 	Category: Lifestyle
 	Unique: Lifestyle
 	AI Support: False
+	Available: False
 
 	UnlockTag(VanguardSwarmers)
 	UnlockTag(VanguardUnlocks)

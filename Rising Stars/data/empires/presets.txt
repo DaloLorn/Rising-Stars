@@ -185,16 +185,16 @@ Preset: Bluuhbi
 	Trait: VanguardRingworlders
 	Trait: Prideful
 
-Preset: Khalerii
-	Name: #RACE_VANGUARD_SWARMER
-	Tagline: #RACE_VANGUARD_SWARMER_TAGLINE
-	Lore: #RACE_VANGUARD_SWARMER_LORE
-	Portrait: emp_portrait_khalerii
-	Shipset: Moirai
-	Hard: True
-	AI Support: False
+//Preset: Khalerii
+//	Name: #RACE_VANGUARD_SWARMER
+//	Tagline: #RACE_VANGUARD_SWARMER_TAGLINE
+//	Lore: #RACE_VANGUARD_SWARMER_LORE
+//	Portrait: emp_portrait_khalerii
+//	Shipset: Moirai
+//	Hard: True
+//	AI Support: False
 
-	Trait: Communism
-	Trait: Flux
-	Trait: VanguardSwarmers
-	Trait: Industrious
+//	Trait: Communism
+//	Trait: Flux
+//	Trait: VanguardSwarmers
+//	Trait: Industrious
