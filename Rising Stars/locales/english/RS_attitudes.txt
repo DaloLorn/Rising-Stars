@@ -1,3 +1,4 @@
 ATT_XENOPHOBIC_PROGRESS: Maintain [b]$1 Military Starbase(s)[/b] in systems bordering other empires.
 ATT_XENOPHOBIC_L2: Increases the support capacity of military starbases by 128 and increases their health by 10000.
 ATT_XENOPHOBIC_L3: Support ships assigned to military starbases independently move across the system to attack enemy fleets.
+ATT_COLLECTIVISM_PROGRESS: Maintain [b]$1 Asteroid Mining Base(s)[/b].
