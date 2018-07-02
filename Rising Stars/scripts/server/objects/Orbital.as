@@ -848,6 +848,14 @@ tidy class OrbitalScript {
 				return;
 		}
 
+		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i) {
+			if(!type.hooks[i].consume(obj)) {
+				for(uint j = 0; j < i; ++j)
+					type.hooks[j].reverse(obj, false);
+				return false;
+			}
+		}
+
 		addSection(obj, typeId);
 	}
 
