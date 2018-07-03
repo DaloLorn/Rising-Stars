@@ -852,7 +852,7 @@ tidy class OrbitalScript {
 			if(!type.hooks[i].consume(obj)) {
 				for(uint j = 0; j < i; ++j)
 					type.hooks[j].reverse(obj, false);
-				return false;
+				return;
 			}
 		}
 
