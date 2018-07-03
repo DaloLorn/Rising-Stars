@@ -2516,54 +2516,54 @@ tidy class IfHook : GenericEffect {
 			hook.load(info.data, file);
 	}
 
-	void startConstruction(Object& obj, SurfaceBuilding@ bld) const override {
-		IfData@ info = initData(obj, bld.data[hookIndex]);
+	void startConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
+		IfData@ info = initData(obj, data);
 
 		if(info.enabled) 
-			hook.startConstruction(obj, bld);
+			hook.startConstruction(obj, bld, data);
 	}
 
-	void cancelConstruction(Object& obj, SurfaceBuilding@ bld) const override {
-		IfData@ info = getData(bld.data[hookIndex]);
+	void cancelConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
+		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.cancelConstruction(obj, bld);
+			hook.cancelConstruction(obj, bld, data);
 	}
 
-	void complete(Object& obj, SurfaceBuilding@ bld) const override {
-		IfData@ info = getData(bld.data[hookIndex]);
+	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
+		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.complete(obj, bld);
+			hook.complete(obj, bld, data);
 	}
 
-	void remove(Object& obj, SurfaceBuilding@ bld) const override {
-		IfData@ info = getData(bld.data[hookIndex]);
+	void remove(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
+		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.remove(obj, bld);
+			hook.remove(obj, bld, data);
 	}
 
-	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner) const override {
-		IfData@ info = getData(bld.data[hookIndex]);
+	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner, any@ data) const override {
+		IfData@ info = getData(data);
 
 		if(info.enabled) 
-			hook.ownerChange(obj, bld.data[hookIndex], prevOwner, newOwner);
+			hook.ownerChange(obj, bld, prevOwner, newOwner, data);
 	}
 
-	void tick(Object& obj, SurfaceBuilding@ bld, double time) const override {
-		IfData@ info = getData(bld.data[hookIndex]);
+	void tick(Object& obj, SurfaceBuilding@ bld, double time, any@ data) const override {
+		IfData@ info = getData(data);
 
 		bool cond = condition(obj);
 		if(cond != info.enabled) {
 			if(info.enabled)
-				hook.remove(obj, bld);
+				hook.remove(obj, bld, data);
 			else
-				hook.complete(obj, bld);
+				hook.complete(obj, bld, data);
 			info.enabled = cond;
 		}
 		if(info.enabled)
-			hook.tick(obj, bld, time);
+			hook.tick(obj, bld, time, data);
 	}
 #section all
 };
@@ -2871,9 +2871,9 @@ tidy final class IfType : IfHook {
 		return obj.type == typeId;
 	}
 
-	void load(Resource@ r, SaveFile& file) const {
+	void load(Resource@ r, any@ data, SaveFile& file) const {
 		if(file >= SV_0045) {
-			load(r.data[hookIndex], file);
+			load(data, file);
 		}
 		else {
 			Object@ onObj;
@@ -2883,7 +2883,7 @@ tidy final class IfType : IfHook {
 				@onObj = r.origin;
 
 			IfData info;
-			r.data[hookIndex].store(@info);
+			data.store(@info);
 
 			file >> info.enabled;
 			if(info.enabled && !condition(onObj))

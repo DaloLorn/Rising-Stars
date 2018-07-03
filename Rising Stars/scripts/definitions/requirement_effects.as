@@ -54,16 +54,12 @@ class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook {
 	void reverse(Object& obj, bool cancel) const {}
 
 	//Buildings
-	uint hookIndex = 0;
-	void initialize(BuildingType@ type, uint index) { hookIndex = index; }
-	void startConstruction(Object& obj, SurfaceBuilding@ bld) const {}
-	void cancelConstruction(Object& obj, SurfaceBuilding@ bld) const {}
-	void complete(Object& obj, SurfaceBuilding@ bld) const {}
-	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner) const {}
-	void remove(Object& obj, SurfaceBuilding@ bld) const {}
-	void tick(Object& obj, SurfaceBuilding@ bld, double time) const {}
-	void save(SurfaceBuilding@ bld, SaveFile& file) const {}
-	void load(SurfaceBuilding@ bld, SaveFile& file) const {}
+	void startConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const {}
+	void cancelConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const {}
+	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const {}
+	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner, any@ data) const {}
+	void remove(Object& obj, SurfaceBuilding@ bld, any@ data) const {}
+	void tick(Object& obj, SurfaceBuilding@ bld, double time, any@ data) const {}
 	bool canBuildOn(Object& obj, bool ignoreState = false) const { return meets(obj, ignoreState); }
 	bool canRemove(Object& obj) const { return true; }
 	void modBuildTime(Object& obj, double& time) const {}
