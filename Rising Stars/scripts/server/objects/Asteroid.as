@@ -423,7 +423,8 @@ tidy class AsteroidScript {
 					obj.exportResource(prevOwner, id, queued);
 			}
 		}
-		emp.modAttribute(EA_MiningBasesBuilt, AC_Add, -1);
+		if(obj.owner.valid)
+			obj.owner.modAttribute(EA_MiningBasesBuilt, AC_Add, -1);
 		@obj.owner = defaultEmpire;
 		@obj.origin = null;
 	}
