@@ -2520,35 +2520,35 @@ tidy class IfHook : GenericEffect {
 		IfData@ info = initData(obj, data);
 
 		if(info.enabled) 
-			hook.startConstruction(obj, bld, data);
+			hook.startConstruction(obj, bld, info.data);
 	}
 
 	void cancelConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
 		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.cancelConstruction(obj, bld, data);
+			hook.cancelConstruction(obj, bld, info.data);
 	}
 
 	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
 		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.complete(obj, bld, data);
+			hook.complete(obj, bld, info.data);
 	}
 
 	void remove(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
 		IfData@ info = getData(data);
 
 		if(info.enabled)
-			hook.remove(obj, bld, data);
+			hook.remove(obj, bld, info.data);
 	}
 
 	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner, any@ data) const override {
 		IfData@ info = getData(data);
 
 		if(info.enabled) 
-			hook.ownerChange(obj, bld, prevOwner, newOwner, data);
+			hook.ownerChange(obj, bld, prevOwner, newOwner, info.data);
 	}
 
 	void tick(Object& obj, SurfaceBuilding@ bld, double time, any@ data) const override {
@@ -2557,13 +2557,13 @@ tidy class IfHook : GenericEffect {
 		bool cond = condition(obj);
 		if(cond != info.enabled) {
 			if(info.enabled)
-				hook.remove(obj, bld, data);
+				hook.remove(obj, bld, info.data);
 			else
-				hook.complete(obj, bld, data);
+				hook.complete(obj, bld, info.data);
 			info.enabled = cond;
 		}
 		if(info.enabled)
-			hook.tick(obj, bld, time, data);
+			hook.tick(obj, bld, time, info.data);
 	}
 #section all
 };
