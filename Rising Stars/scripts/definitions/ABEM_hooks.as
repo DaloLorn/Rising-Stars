@@ -689,7 +689,6 @@ class UserMustNotHaveStatus : AbilityHook {
 	Document doc("The object using this ability must not be under the effects of the specified status.");
 	Argument status(AT_Custom, doc="Type of status effect to avoid.");
 		
-#section server
 	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
 		if(abl.obj is null)
 			return false;
@@ -703,7 +702,6 @@ class UserMustNotHaveStatus : AbilityHook {
 		}
 		return true;
 	}
-#section all
 }
 
 class DerelictData {
