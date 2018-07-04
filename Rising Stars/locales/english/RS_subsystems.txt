@@ -29,6 +29,7 @@ ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones.
 ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
+ERROR_FORCEFIELD_NO_BATTERY: Forcefields may not have any Quantum Batteries.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************

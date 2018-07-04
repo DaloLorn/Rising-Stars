@@ -1,4 +1,4 @@
-Subsystem: Forcefield
+﻿Subsystem: Forcefield
 	Name: #S_FORCEFIELD
 	Description: #S_FORCEFIELD_DESC
 	BaseColor: #00a4db
@@ -26,6 +26,10 @@ Subsystem: Forcefield
 	State: double = ForcefieldCapacity
 	State: double = 1
 	State: double = ForcefieldCapacityMult
+
+	Assert: EnergyBuildCost == 0
+		Unique: True
+		Message: #ERROR_FORCEFIELD_NO_BATTERY
 
 	Requires:
 		Command = 1
