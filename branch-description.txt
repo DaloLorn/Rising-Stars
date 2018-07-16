@@ -1,0 +1,3 @@
+This branch is usually equivalent to WorkshopBuild, but occasionally when I'm fixing things between major releases (and remember not to put the fixes in the branch for the next release...), the master branch is used to hold the unreleased fixes during testing.
+
+When in doubt, go with WorkshopBuild.
