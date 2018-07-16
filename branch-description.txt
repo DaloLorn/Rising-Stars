@@ -1,0 +1,1 @@
+This branch consistently tracks the Steam Workshop version of Rising Stars. If it's on the Workshop, it's here - and vice versa.
