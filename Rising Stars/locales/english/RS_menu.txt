@@ -175,6 +175,12 @@ OPT_FXAA: FXAA
 OPTTT_FXAA: <<
 	A cheapish antialiasing option used as an alternative to the malfunctioning MSAA antialiasing options.
 >>
+OPT_RINGWORLD_FIX: Safe Ringworlds
+OPTTT_RINGWORLD_FIX: <<
+	Disables a part of the Ringworld shader, preventing crashes with certain older graphics cards when using a shader quality level of Medium or higher.
+
+	Due to the resulting loss of quality, it may be advisable not to enable this option if you are not experiencing issues with Ringworld-related crashes.
+>>
 
 PRECIOUS_CLOUDS_DESC: <<
 	Resources are scarce within this sector of the galaxy; those who can reach and hold the rich nebula at its heart may take them all, but the Remnants do not part with these riches willingly...
