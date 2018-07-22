@@ -522,10 +522,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			dps = maxDPS * orb.efficiency;
 		}
 
-		for(uint i = 0, cnt = supports.length; i < cnt; ++i) {
-			if(supports[i] is null)
-				continue; // This should not be necessary, but it is for some reason.
-
+		for(uint i = 0; i < supports.length; ++i) {
 			Ship@ ship = cast<Ship>(supports[i]);
 			if(ship !is null) {
 				auto@ bp = ship.blueprint;

@@ -219,42 +219,42 @@ tidy final class BuildingType {
 	}
 
 	void startConstruction(Object& obj, SurfaceBuilding@ bld) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].startConstruction(obj, bld, bld.data[i]);
 	}
 
 	void cancelConstruction(Object& obj, SurfaceBuilding@ bld) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].cancelConstruction(obj, bld, bld.data[i]);
 	}
 
 	void complete(Object& obj, SurfaceBuilding@ bld) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].complete(obj, bld, bld.data[i]);
 	}
 
 	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].ownerChange(obj, bld, prevOwner, newOwner, bld.data[i]);
 	}
 
 	void remove(Object& obj, SurfaceBuilding@ bld) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].remove(obj, bld, bld.data[i]);
 	}
 
 	void tick(Object& obj, SurfaceBuilding@ bld, double time) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].tick(obj, bld, time, bld.data[i]);
 	}
 
 	void save(SurfaceBuilding@ bld, SaveFile& file) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].save(bld.data[i], file);
 	}
 
 	void load(SurfaceBuilding@ bld, SaveFile& file) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
+		for(uint i = 0; i < hooks.length; ++i)
 			hooks[i].load(bld.data[i], file);
 	}
 };
