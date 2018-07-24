@@ -373,6 +373,8 @@ class MakePlanet : MapHook {
 		planetDesc.position = system.position + offset;
 
 		if(!physics.boolean) {
+			print("Ringworld radius is " + radius);
+			print("Expected orbit size is " + (500 + radius));
 			planetDesc.flags |= objNoPhysics;
 			planetDesc.flags |= objNoCollide;
 		}
@@ -404,8 +406,8 @@ class MakePlanet : MapHook {
 		
 		//Figure out planet size
 		// DOF - Scaling: Adding this to constrain the range and average more to the standard range and average
-		radius = 60 + 100 * (radius - 60) / 240;
-		double sizeFact = clamp(radius / 100.0, 0.1, 5.0);
+		double scaledradius = 60 + 100 * (radius - 60) / 240;
+		double sizeFact = clamp(scaledradius / 100.0, 0.1, 5.0);
 		int gridW = round(AVG_PLANET_GRID_WIDTH * sizeFact);
 		int gridH = round(AVG_PLANET_GRID_HEIGHT * sizeFact);
 
