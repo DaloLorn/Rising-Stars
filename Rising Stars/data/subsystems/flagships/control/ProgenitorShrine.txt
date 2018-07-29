@@ -44,6 +44,8 @@ Subsystem: ProgenitorShrine
 	Hex.LaborCost := 5 * HexSize
 	Hex.MaintainCost := 2 * HexSize
 
+	State: boolean = 0
+
 	Effect: ABEMShieldDamage
 
 	Assert: Sum.Prayer >= Sum.Command

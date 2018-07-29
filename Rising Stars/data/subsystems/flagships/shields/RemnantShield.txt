@@ -38,6 +38,8 @@ Subsystem: RemnantShield
 	Hex.BuildCost := 1 * HexSize
 	Hex.MaintainCost := 2 * HexSize
 
+	State: boolean = 0
+
 	Effect: ABEMShieldDamage
 
 	//Assert: Sum.ShieldCores <= 1

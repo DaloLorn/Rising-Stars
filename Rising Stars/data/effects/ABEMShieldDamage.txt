@@ -1,4 +1,6 @@
 Effect: ABEMShieldDamage
 	Start: ABEM_effects::ShieldInitMitigation
 	End: ABEM_effects::ShieldDisableMitigation
+	RetrofitPre: ABEM_effects::ShieldDisableMitigation
+	RetrofitPost: ABEM_effects::ShieldInitMitigation
 	GlobalDamage: ABEMCombat::ABEMShieldDamage

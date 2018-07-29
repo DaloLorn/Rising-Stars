@@ -36,6 +36,7 @@ Subsystem: SupShieldGen
 	Hex.Mass := 4 * HexSize
 	Hex.BuildCost := 2*HexSize
 
+	State: boolean = 0
 
 	Effect: ABEMShieldDamage
 

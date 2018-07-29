@@ -37,6 +37,8 @@ Subsystem: ShieldGen
 	BaseHP := 6 * HexSize
 	Hex.Mass := 1 * HexSize
 
+	State: boolean = 0
+
 	Effect: ABEMShieldDamage
 	
 	Hex.LaborCost := 1 * HexSize

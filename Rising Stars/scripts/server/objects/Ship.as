@@ -1379,9 +1379,17 @@ tidy class ShipScript {
 
 	double get_mitigation(Ship& ship) {
 		double shieldHexes = ship.blueprint.getEfficiencySum(SV_ShieldHexes);
+		double adjustedCores = ship.blueprint.getEfficiencySum(SV_ShieldCores);
 		if(shieldHexes <= 0)
 			return 0;
-		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - shieldCores) - 1, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
+		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - adjustedCores) - 1, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
+		if(mitigation < 0) {
+			print("Shield Hexes = " + shieldHexes);
+			print("Shield Exponent = " + shieldMitExponent);
+			print("Shield Cores = " + adjustedCores);
+			print("Shield Cap = " + shieldMitCap);
+			print("Mitigation = " + mitigation);
+		}
 		return mitigation;
 	}
 

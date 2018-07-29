@@ -43,6 +43,8 @@ Subsystem: CovariantShield
 	Hex.BuildCost := 0.1 * HexSize
 	Hex.MaintainCost := 1 * HexSize
 
+	State: boolean = 0
+
 	Effect: ABEMShieldDamage
 
 	//Assert: Sum.ShieldCores <= 1

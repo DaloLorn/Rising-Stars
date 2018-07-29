@@ -19,20 +19,28 @@ void NoRepairNonCore(Event& evt) {
 
 void ShieldInitMitigation(Event& evt) {
 	auto@ sys = evt.source;
+	auto@ bp = evt.blueprint;
 	Ship@ ship = cast<Ship>(evt.obj);
 	
-	ship.modShieldCores(sys.variable(SV_ShieldCores));
-	ship.modShieldMitCap(sys.variable(SV_ShieldMitCap));
-	ship.modShieldMitFactor(sys.variable(SV_ShieldMitExponent));
+	if(!bp.boolean(sys, 0)) {
+		bp.boolean(sys, 0) = true;
+		ship.modShieldCores(sys.variable(SV_ShieldCores));
+		ship.modShieldMitCap(sys.variable(SV_ShieldMitCap));
+		ship.modShieldMitFactor(sys.variable(SV_ShieldMitExponent));
+	}
 }
 
 void ShieldDisableMitigation(Event& evt) {
 	auto@ sys = evt.source;
+	auto@ bp = evt.blueprint;
 	Ship@ ship = cast<Ship>(evt.obj);
 	
-	ship.modShieldCores(-sys.variable(SV_ShieldCores));
-	ship.modShieldMitCap(-sys.variable(SV_ShieldMitCap));
-	ship.modShieldMitFactor(-sys.variable(SV_ShieldMitExponent));
+	if(bp.boolean(sys, 0)) {
+		bp.boolean(sys, 0) = false;
+		ship.modShieldCores(-sys.variable(SV_ShieldCores));
+		ship.modShieldMitCap(-sys.variable(SV_ShieldMitCap));
+		ship.modShieldMitFactor(-sys.variable(SV_ShieldMitExponent));
+	}
 }
 
 void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMult) {
