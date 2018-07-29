@@ -9,7 +9,7 @@
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
+	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 2) * 2000)) * HexSize
 	BaseHP := 20 * HexSize
 
 	BaseForcefieldRegen := 0.75 * Size
