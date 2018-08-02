@@ -1,7 +1,7 @@
 System: RadioactiveNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(3:7)
 		MakeAnomaly()
@@ -19,6 +19,7 @@ System: RadioactiveNebula
 	
 	AddRegionStatus(Radioactive) // Damages shields. If shields offline or non-existent, crew starts to decay until ship becomes a derelict or leaves the nebula. Also significantly obscures sensors.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(RadioactiveNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(300*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(900*$SENSOR_RANGE_MULT)

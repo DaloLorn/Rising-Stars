@@ -5,7 +5,6 @@ Module: Shipyard
 	Icon: OrbitalIcons::5
 
 	Core: True
-	Standalone: True
 	Spin: 0
 
 	Build Cost: 500
@@ -31,51 +30,24 @@ Module: Shipyard
 	AddLaborEmpireAttribute(FactoryLaborMod)
 	AddLaborFactor(-0.25)
 
-	RequireNotTrait(Mechanoid)
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Shipyard, AdaptedShipyard))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	ABEM_orbitals::AddSystemRepair(2000)
+
+	private RequireNotTrait(Mechanoid)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Shipyard, AdaptedShipyard))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 
 	AllowLaborImport()
 	ForbidLaborExport()
 
+	// AI hooks are never inherited under any circumstances
 	AI:RegisterForUse(Shipyard)
 
 Module: AdaptedShipyard
+	Inherit: Shipyard
 	Name: #ORB_SHIPYARD_ADAPTED
-	Blurb: #ORB_SHIPYARD_BLURB
 	Description: #ORB_SHIPYARD_ADAPTED_DESC
-	Icon: OrbitalIcons::5
 
-	Core: True
-	Standalone: True
-	Spin: 0
-
-	Build Cost: 500
-	Maintenance: 250
-	Labor Cost: 30
-
-	Health: 15000
-	Armor: 7000
-
-	Model: Shipyard
-	Material: GenericPBR_Shipyard
-	Size: 20
-
-	Strategic Icon: OrbitalIcons::5
-
-	AllowConstruction(Ships = True, Enable Fill From = True)
-	AddFleetCommand(256)
-	AddCargoStorage(100000)
-
-	MultConstructionCost(0.8)
-
-	AddLaborIncome(10)
-	AddLaborEmpireAttribute(FactoryLaborMod)
-	AddLaborFactor(-0.25)
-
-	RequireUnlockTag(NylliAdaptation4)
-
-	AllowLaborImport()
-	ForbidLaborExport()
+	// I don't, technically, need to make this private, but it's a nice bit of future-proofing.
+	private RequireUnlockTag(NylliAdaptation4)
 
 	AddGlobalDefense(2)

@@ -14,3 +14,5 @@ Module: EconomyCore
 	Icon: GuiOrbitalIcons::15
 	Distant Icon: OrbitalIcons::15
 	GiveTrade()
+
+	AI: RegisterForUse(EconomyCore)

@@ -5,7 +5,6 @@ Module: TradeOutpost
 	Icon: GuiOrbitalIcons::0
 	Distant Icon: OrbitalIcons::0
 
-
 	Build Cost: 300
 	Maintenance: 30
 	Labor Cost: 15
@@ -13,7 +12,6 @@ Module: TradeOutpost
 
 	Health: 4000
 	Armor: 4000
-
 
 	Model: Outpost
 	Material: GenericPBR_Outpost
@@ -30,47 +28,20 @@ Module: TradeOutpost
 	ProtectSystem(90)
 	AddStatus(StartingProtection, Duration = 90)
 
-
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireOnOrbital(MilitaryCore)
 
 	ConsumeCargo(Ore, 500)
+
 Module: AdaptedTradeOutpost
+	Inherit: TradeOutpost
 	Name: #ORB_TRADE_OUTPOST_ADAPTED
-	Blurb: #ORB_TRADE_OUTPOST_BLURB
 	Description: #ORB_TRADE_OUTPOST_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::14
-	Distant Icon: OrbitalIcons::14
 
-
-	Build Cost: 300
-	Maintenance: 30
-	Labor Cost: 15
-	Size: 7
-
-	Health: 4000
-	Armor: 4000
-
-
-	Model: Outpost
-	Material: GenericPBR_Outpost
 	Shield Capacity: 10000
 	Shield Regeneration: 50
-
-	LimitOncePerSystem(OutpostFlag)
-
-	RequireUnlockTag(NylliAdaptation4)
-
-	AddFleetEffectiveness(+2.0)
-	AddSupportBonusHP(+1.0)
-
-	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
-
-	ProtectSystem(90)
-	AddStatus(StartingProtection, Duration = 90)
-
+	
+	private RequireUnlockTag(NylliAdaptation4)
 
 	AllowFreeRaiding()
-	RequireOnOrbital(MilitaryCore)
-	ConsumeCargo(Ore, 500)

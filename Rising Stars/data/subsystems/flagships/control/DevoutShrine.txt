@@ -17,11 +17,24 @@ Subsystem: DevoutShrine
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 100
 	BaseShieldRegen := Size
-	ShieldHexes := Hexes
+	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
+
+	// Apparently default variables don't fully work in templates.
+	ShieldCapacityMod := 1
+	ShieldCapacity := BaseShieldCapacity * ShieldCapacityMod
+	ShieldRegenMod := 1
+	ShieldRegen := BaseShieldRegen * ShieldRegenMod
+
+	// Shield mitigation
+	ShieldCores := 1
+	ShieldMitCap := 0.4
+	ShieldMitExponent := 1.01
 
 	Hex.Resistance := 0.5
 	BaseHP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
+
+	State: boolean = 0
 
 	Effect: ABEMShieldDamage
 

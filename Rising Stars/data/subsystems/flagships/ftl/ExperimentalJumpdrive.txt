@@ -15,7 +15,7 @@ Subsystem: ExperimentalJumpdrive
 	Hex.Resistance := 0.2
 	BaseHP := 12 * HexSize
 
-	JumpRange := 85000 * Size / ShipSize
+	JumpRange := 1700000 * Size / ShipSize
 	Assert: Size >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 	Assert: TagCount.Jumpdrive == 1

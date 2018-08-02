@@ -1267,7 +1267,8 @@ class SpawnStarAt : AbilityHook {
 		vec3d point = destination.fromConstTarget(targs).point;
 		auto@ reg = getRegion(point);
 		if(reg is null)
-			generateNewSystem(point, system_radius.fromRange(), name=name);
+			// DOF - Scaling
+			generateNewSystem(point, radius=system_radius.fromRange() * 15, name=name);
 
 		MakeStar hook;
 		hook.initClass();

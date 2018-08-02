@@ -15,7 +15,7 @@ Subsystem: Jumpdrive
 	Hex.Resistance := 0.2
 	BaseHP := 18 * HexSize
 
-	JumpRange := 170000 * Size / ShipSize
+	JumpRange := 3400000 * Size / ShipSize
 	
 	Requires:
 		Command = max(floor(Hexes / 3), 1)

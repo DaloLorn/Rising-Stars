@@ -17,12 +17,12 @@ Effect: LineDamage
 Effect: DamageShields
 	Value: Amount
 
-	End: heralds_combat::DamageShields
+	End: ABEMCombat::ABEMDamageShields
 
 Effect: ShieldRedirect
 	Value: Percentage
 	
-	GlobalDamage: heralds_combat::ShieldRedirect
+	GlobalDamage: ABEMCombat::ABEMShieldRedirect
 
 Effect: AddBonusShields
 	Value: Amount

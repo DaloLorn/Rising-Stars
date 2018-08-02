@@ -5,8 +5,8 @@ import components.Statuses;
 import ABEM_data;
 from empire import Creeps, Pirates;
 
-DamageFlags DF_FullShieldBleedthrough = DF_Flag6;
-DamageFlags DF_NoShieldBleedthrough = DF_Flag7;
+DamageFlags DF_QuadShieldPenetration = DF_Flag6;
+DamageFlags DF_HalfShieldDamage = DF_Flag7;
 
 int getDamageType(double type) {
 	int iType = int(type);
@@ -34,17 +34,17 @@ int getDRResponse(double type) {
 		case 2:
 			return DF_FullDR;
 		case 3:
-			return DF_FullShieldBleedthrough;
+			return DF_QuadShieldPenetration;
 		case 4:
-			return DF_NoShieldBleedthrough;
+			return DF_HalfShieldDamage;
 		case 5:
-			return DF_IgnoreDR | DF_FullShieldBleedthrough;
+			return DF_IgnoreDR | DF_QuadShieldPenetration;
 		case 6:
-			return DF_FullDR | DF_NoShieldBleedthrough;
+			return DF_FullDR | DF_HalfShieldDamage;
 		case 7:
-			return DF_IgnoreDR | DF_NoShieldBleedthrough;
+			return DF_IgnoreDR | DF_HalfShieldDamage;
 		case 8:
-			return DF_FullDR | DF_FullShieldBleedthrough;
+			return DF_FullDR | DF_QuadShieldPenetration;
 		default: return 0;
 	}
 	return 0;
@@ -514,44 +514,6 @@ DamageEventStatus DefensiveMatrixDamage(DamageEvent& evt, vec2u& position, vec2d
 	return DE_Continue;
 }
 
-DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& endPoint) {
-	if(evt.flags & DF_FullShieldBleedthrough != 0) // This ensures that weapons such as Progenitor drones can go through with impunity. Shield Hardeners still have a chance to block the damage, though.
-		return DE_Continue;
-
-	Ship@ ship = cast<Ship>(evt.target);
-	if(ship !is null && ship.Shield > 0) {
-		double maxShield = ship.MaxShield;
-		if(maxShield <= 0.0)
-			maxShield = ship.Shield;
-	
-		double dmgScale = (evt.damage * ship.Shield) / (maxShield * maxShield);
-		if(dmgScale < 0.01) {
-			//TODO: Simulate this effect on the client
-			if(randomd() < dmgScale / 0.001)
-				playParticleSystem("ShieldImpactLight", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
-		}
-		else if(dmgScale < 0.05) {
-			playParticleSystem("ShieldImpactMedium", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask);
-		}
-		else {
-			playParticleSystem("ShieldImpactHeavy", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
-		}
-		
-		double block;
-		if(ship.MaxShield > 0 && !(evt.flags & DF_NoShieldBleedthrough != 0)) // DF_NoShieldBleedthrough makes sure all damage is applied to shields first.
-			block = min(ship.Shield * min(ship.Shield / maxShield, 1.0), evt.damage);
-		else
-			block = min(ship.Shield, evt.damage);
-		
-		ship.Shield -= block;
-		evt.damage -= block;
-
-		if(evt.damage <= 0.0)
-			return DE_EndDamage;
-	}
-	return DE_Continue;
-}
-
 void GenericDamage(Event& evt, double Amount, double Pierce, double DRResponse, double DamageType, double Spillable) {
 	DamageEvent dmg;
 	dmg.damage = Amount * double(evt.efficiency) * double(evt.partiality);
@@ -598,8 +560,18 @@ void ABEMWarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, 
 
 		if(target.isShip) {
 			Ship@ ship = cast<Ship>(target);
-			if(ship.MaxShield > 0) {
-				deal *= 1.0 - (ship.Shield / ship.MaxShield);
+			// Shield mitigation
+			if(ship.Shield > 0) {
+				//print(deal);
+				double Mitigation = ship.mitigation;
+				//print(Mitigation);
+				double ShieldDmg = deal;
+				//ShieldDmg *= (Mitigation/100);
+				//print(ShieldDmg);
+
+				deal *= (1-Mitigation/100);
+				//print(deal);
+				ship.shieldDamage(ShieldDmg);
 			}
 			// Divide damage by hex count.
 			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes;
@@ -607,3 +579,107 @@ void ABEMWarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, 
 		}
 	}
 }
+
+DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& endPoint) {
+	Ship@ ship = cast<Ship>(evt.target);
+	if(ship !is null && ship.Shield > 0) {
+		double maxShield = ship.MaxShield;
+		if(maxShield <= 0.0)
+			maxShield = ship.Shield;
+	
+		double dmgScale = (evt.damage * ship.Shield) / (maxShield * maxShield);
+		if(dmgScale < 0.01) {
+			//TODO: Simulate this effect on the client
+			if(randomd() < dmgScale / 0.001)
+				playParticleSystem("ShieldImpactLight", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
+		}
+		else if(dmgScale < 0.05) {
+			playParticleSystem("ShieldImpactMedium", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask);
+		}
+		else {
+			playParticleSystem("ShieldImpactHeavy", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
+		}
+
+		double Mitigation = ship.mitigation;
+		double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
+		double BlockFactor = 1;
+
+		// Process shield bleedthrough damage flags.
+		if(evt.flags & DF_QuadShieldPenetration != 0)
+			ShieldPenetration *= 4;
+		if(evt.flags & DF_HalfShieldDamage != 0)
+			BlockFactor = 0.5;
+
+		// If piercing is present, reduce mitigation
+		if(ShieldPenetration > 0)  {
+			double tmp = Mitigation;
+			Mitigation = max(Mitigation - ShieldPenetration, 0.0);
+			ShieldPenetration = max(ShieldPenetration - tmp, 0.0);
+			evt.pierce = min(ShieldPenetration * 4, evt.pierce); // Reduce hull penetration, because we can.
+		}
+
+		// Apply remaining mitigation
+		evt.damage *= 1 - Mitigation;
+
+		double block;
+		block = min(ship.Shield, evt.damage * max(1 - ShieldPenetration, 0.0));
+		
+		ship.Shield -= block * BlockFactor; // Reduce damage taken by shields.
+		evt.damage -= block / BlockFactor; // Increase damage reduction proportionately.
+		// Bleedthrough damage isn't affected by mitigation
+		evt.damage /= 1 - Mitigation;
+
+		if(evt.damage <= 0.0)
+			return DE_EndDamage;
+	}
+	return DE_Continue;
+}
+
+DamageEventStatus ABEMShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direction, double Percentage) {
+	Ship@ ship = cast<Ship>(evt.target);
+	Object@ leader = ship.Leader;
+	if(leader is null || !leader.isShip)
+		return DE_Continue;
+
+	Ship@ flagship = cast<Ship>(leader);
+	double shield = flagship.Shield;
+	if(shield < 0)
+		return DE_Continue;
+
+	//Shield Mitigation
+	double FlagshipMitigation = flagship.mitigation;
+
+	double workingPct = double(evt.destination_status.workingHexes) / double(evt.destination.hexCount);
+	double absorb = min(shield, Percentage * evt.damage * workingPct);
+
+	if(absorb > 0) {
+		evt.damage -= absorb;
+		flagship.shieldDamage(absorb*(1-FlagshipMitigation/100));
+	}
+	return DE_Continue;
+}
+
+void ABEMDamageShields(Event& evt, double Damage) {
+	if(!evt.target.isShip)
+		return;
+
+	Ship@ ship = cast<Ship>(evt.target);
+
+	// Shield Mitigation
+	double Mitigation = ship.mitigation;
+
+	if(ship.MaxShield > 0) {
+		ship.shieldDamage(Damage*(1-Mitigation/100));
+		
+		return;
+	}
+
+	// Special case for shield harmonizers
+	if(ship.blueprint.design.hasTag(ST_ShieldHarmonizer)) {
+		Ship@ leader = cast<Ship>(ship.Leader);
+		if(leader !is null) {
+			Mitigation = leader.mitigation;
+			leader.shieldDamage(Damage*(1-Mitigation/100));
+		}
+	}
+};

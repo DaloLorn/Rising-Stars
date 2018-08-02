@@ -1,7 +1,7 @@
 System: EconomicNebula
 	Frequency: 0
 	
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 	
 	Repeat(2:5)
 		MakeAnomaly()
@@ -21,4 +21,4 @@ System: EconomicNebula
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
 	
 	NoRegionVision()
-	SetStaticSeeableRange(1000*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(3000*$SENSOR_RANGE_MULT)

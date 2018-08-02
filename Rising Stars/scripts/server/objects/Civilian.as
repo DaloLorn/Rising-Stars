@@ -5,8 +5,8 @@ import resources;
 import civilians;
 import statuses;
 
-const double ACC_SYSTEM = 2.0;
-const double ACC_INTERSYSTEM = 65.0;
+const double ACC_SYSTEM = (2.0 + 6.72 * config::NEW_MOVEMENT) * 6.3636;
+const double ACC_INTERSYSTEM = (65.0 + 218.63 * config::NEW_MOVEMENT) * 6.3636;
 const int GOODS_WORTH = 8;
 const double CIV_HEALTH = 25.0;
 const double CIV_REPAIR = 1.0;

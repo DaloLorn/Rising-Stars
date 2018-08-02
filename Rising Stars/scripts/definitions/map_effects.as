@@ -47,7 +47,7 @@ class MakeStar : MapHook {
 			temp = normald(arguments[0].decimal,arguments[1].decimal2);
 		else
 			temp = arguments[0].fromRange();
-		double radius = arguments[1].fromRange();
+		double radius = arguments[1].fromRange() * 10;
 		vec3d pos = arguments[2].fromPosition();
 
 		//Create star
@@ -81,13 +81,13 @@ class MakeStar : MapHook {
 		if(system !is null)
 			node.hintParentObject(system.object, false);
 
-		double hp = AVG_STAR_HEALTH * (radius / 75.0);
+		double hp = AVG_STAR_HEALTH * (radius / 750.0);
 		star.Health = hp;
 		star.MaxHealth = hp;
 
 		//Create light
 		LightDesc lightDesc;
-		lightDesc.att_quadratic = 1.f/(2000.f*2000.f);
+		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
 		lightDesc.position = vec3f(star.position);
 		lightDesc.diffuse = node.color * 1.0f;
 		lightDesc.specular = lightDesc.diffuse;
@@ -116,7 +116,7 @@ class MakeBlackhole : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * 10;
 		vec3d pos = arguments[1].fromPosition();
 
 		//Create star
@@ -349,10 +349,10 @@ class MakePlanet : MapHook {
 		if(resource !is null)
 			markResourceUsed(resource);
 
-		double radius = arguments[1].decimal;
+		double radius = arguments[1].decimal * 10;
 		if(arguments[1].isRange)
-			radius = normald(arguments[1].decimal, arguments[1].decimal2);
-		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE;
+			radius = normald(arguments[1].decimal, arguments[1].decimal2) * 10;
+		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE * 10;
 
 		system.radius += spacing;
 
@@ -373,6 +373,8 @@ class MakePlanet : MapHook {
 		planetDesc.position = system.position + offset;
 
 		if(!physics.boolean) {
+			print("Ringworld radius is " + radius);
+			print("Expected orbit size is " + (500 + radius));
 			planetDesc.flags |= objNoPhysics;
 			planetDesc.flags |= objNoCollide;
 		}
@@ -403,7 +405,9 @@ class MakePlanet : MapHook {
 		const Biome@ biome3 = getDistributedBiome();
 		
 		//Figure out planet size
-		double sizeFact = clamp(radius / 10.0, 0.1, 5.0);
+		// DOF - Scaling: Adding this to constrain the range and average more to the standard range and average
+		double scaledradius = 60 + 100 * (radius - 60) / 240;
+		double sizeFact = clamp(scaledradius / 100.0, 0.1, 5.0);
 		int gridW = round(AVG_PLANET_GRID_WIDTH * sizeFact);
 		int gridH = round(AVG_PLANET_GRID_HEIGHT * sizeFact);
 
@@ -416,7 +420,8 @@ class MakePlanet : MapHook {
 		//Figure out planet type
 		const PlanetType@ planetType = getBestPlanetType(biome1, biome2, biome3);
 		planet.PlanetType = planetType.id;
-		planet.OrbitSize = 100 + radius;
+		// DOF - Scaling: Give a slightly larger OrbitSize
+		planet.OrbitSize = 500 + radius;
 		
 		//Setup orbit
 		planet.orbitAround(system.position, offset.length);
@@ -582,7 +587,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * 25;
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();
@@ -1025,7 +1030,7 @@ class MakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, system.object);
@@ -1467,6 +1472,10 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 	starHook.initClass();
 	starHook.instantiate();
 
+	MakeBlackhole holeHook;
+	holeHook.initClass();
+	holeHook.instantiate();
+
 	MakeAnomaly anomalyHook;
 	anomalyHook.initClass();
 	anomalyHook.instantiate();
@@ -1494,7 +1503,7 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 			obj.wait();
 
 			@plHook.resPossib[0] = getResource(obj.primaryResourceType);
-			plHook.radius.set(obj.radius);
+			plHook.radius.set(obj.radius / 10);
 			plHook.grid_size.set(vec2d(obj.surfaceGridSize));
 
 			plHook.trigger(null, to, current);
@@ -1530,11 +1539,19 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);
 
-			starHook.arguments[0].set(base.temperature);
-			starHook.arguments[1].set(base.radius);
-			starHook.arguments[2].set(destPos - to.position);
+			if(base.temperature == 0.0) {
+				holeHook.arguments[0].set(base.radius / 10);
+				holeHook.arguments[1].set(destPos - to.position);
 
-			starHook.trigger(null, to, current);
+				holeHook.trigger(null, to, current);
+			}
+			else {
+				starHook.arguments[0].set(base.temperature);
+				starHook.arguments[1].set(base.radius / 10);
+				starHook.arguments[2].set(destPos - to.position);
+
+				starHook.trigger(null, to, current);
+			}
 		}
 		else if(obj.isArtifact) {
 			Artifact@ base = cast<Artifact>(obj);
@@ -1632,7 +1649,7 @@ class ForceMakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, system.object);

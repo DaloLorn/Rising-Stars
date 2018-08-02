@@ -12,7 +12,7 @@ Subsystem: PlasmaThrower
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size + 500
+	Range := (Size + 500) * 2
 
 	Duration := 10 * (1.0 + Size/128)
 	DamageOverTime := (Size * 4.0) / Duration
@@ -27,7 +27,7 @@ Subsystem: PlasmaThrower
 		DamageOverTime := DamageOverTime * factor
 
 	Reload := 2.5 * min(1.0 + Size/512, 2.0)
-	Speed := max(200, Range / 10)
+	Speed := max(200, Range / 10) * 2
 	Spread := 0.015 / max(Range / 600, 1)
 	Tracking := 0.2
 	FireArc := 1.5

@@ -6,7 +6,6 @@ Module: AncientReplicator
 	Distant Icon: OrbitalIcons::20
 
 	Core: True
-	Standalone: True
 
 	Size: 9
 

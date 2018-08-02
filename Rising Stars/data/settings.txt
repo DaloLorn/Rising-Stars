@@ -71,6 +71,8 @@ Category: Graphics
 		Default: True
 	Bool: bFXAA
 		Default: False
+	Bool: bRingworldFix
+		Default: False
 Category: Camera
 	Double: dZoomSpeed
 		Default: 1.0

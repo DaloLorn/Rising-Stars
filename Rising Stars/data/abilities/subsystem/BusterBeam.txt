@@ -3,7 +3,7 @@ Ability: BusterBeam
 	Description: #ABL_BUSTER_BEAM_DESC
 	Icon: BusterMachine
 
-	Range: 200
+	Range: 2000
 
 	Target: targ = Object
 	TargetFilterType(targ, Planet)

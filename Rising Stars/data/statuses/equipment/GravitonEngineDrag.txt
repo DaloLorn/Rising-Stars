@@ -1,4 +1,4 @@
 Status: GravitonEngineDrag
 	Visible To: Nobody
 	Unique: True
-	nmp_hooks::ModSpacetimeDragFactor(2.5)
+	nmp_hooks::ModSpacetimeDragFactor(4.0)

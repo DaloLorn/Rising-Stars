@@ -23,6 +23,7 @@ tidy class SurfaceGrid : PlanetSurface {
 	double[] civResources = double[](TR_COUNT, 0);
 	float[] civResourceMods = float[](TR_COUNT, 0.f);
 	bool delta = false;
+	vec2u baseSize;
 
 	SurfaceGrid() {
 		super();
@@ -42,6 +43,7 @@ tidy class SurfaceGrid : PlanetSurface {
 		msg << pressureCap;
 		msg << bldMaintenanceRefund;
 		msg << pressureCapTaken;
+		msg << baseSize;
 
 		msg.writeIdentifier(SI_Biome, baseBiome.id);
 
@@ -89,6 +91,7 @@ tidy class SurfaceGrid : PlanetSurface {
 			msg >> pressureCapTaken;
 		else
 			pressureCapTaken = civsBuilt;
+		msg >> baseSize;
 
 		
 		uint8 baseId = msg.readIdentifier(SI_Biome);
@@ -148,6 +151,9 @@ tidy class SurfaceGrid : PlanetSurface {
 	void create(int width, int height, const Biome@ base) {
 		size.width = width;
 		size.height = height;
+
+		baseSize.width = width;
+		baseSize.height = height;
 
 		uint dsize = width * height;
 		biomes.length = dsize;
@@ -1246,12 +1252,13 @@ tidy class SurfaceGrid : PlanetSurface {
 		if(vertical) {
 			size.y += addSize.y;
 			size.x = max(size.x, addSize.x);
+			baseSize.x = max(baseSize.x, addSize.x);
 
 			biomes.length = size.x * size.y;
 			flags.length = size.x * size.y;
 			tileBuildings.length = size.x * size.y;
 
-			uint offset = (size.x - addSize.x) / 2;
+			uint offset = (baseSize.x - addSize.x) / 2;
 
 			for(uint y = 0; y < size.y; ++y) {
 				for(uint x = 0; x < size.x; ++x) {
@@ -1294,12 +1301,13 @@ tidy class SurfaceGrid : PlanetSurface {
 		else {
 			size.x += addSize.x;
 			size.y = max(size.y, addSize.y);
+			baseSize.y = max(baseSize.y, addSize.y);
 
 			biomes.length = size.x * size.y;
 			flags.length = size.x * size.y;
 			tileBuildings.length = size.x * size.y;
 
-			uint offset = (size.y - addSize.y) / 2;
+			uint offset = (baseSize.y - addSize.y) / 2;
 
 			for(uint x = 0; x < size.x; ++x) {
 				for(uint y = 0; y < size.y; ++y) {

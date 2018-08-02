@@ -12,7 +12,7 @@ Module: SupportStation
 
 	Model: Depot
 	Material: GenericPBR_Depot
-	Standalone: True
+	Core: True
 
 	CannotBuildManually()
 	AddHealthEmpireAttribute(StaticDamageFactor, 5000)

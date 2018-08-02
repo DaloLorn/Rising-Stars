@@ -607,9 +607,17 @@ class GraphicsOptions : OptionsBox {
 
 		y += 32;
 		@tog = GuiEngineToggle(
-			panel, recti_area(20, y,  530, 26),
+			panel, recti_area(20, y,  268, 26),
 			locale::OPT_FILM_GRAIN, "bFilmGrain"
 		);
+		options.insertLast(tog);
+		shaderWatch.insertLast(tog);
+
+		@tog = GuiEngineToggle(
+			panel, recti_area(286, y,  268, 26),
+			locale::OPT_RINGWORLD_FIX, "bRingworldFix"
+		);
+		setMarkupTooltip(tog, locale::OPTTT_RINGWORLD_FIX);
 		options.insertLast(tog);
 		shaderWatch.insertLast(tog);
 

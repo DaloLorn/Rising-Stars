@@ -18,7 +18,18 @@ Subsystem: ProgenitorShrine
 
 	BaseShieldCapacity := Size * 220
 	BaseShieldRegen := Size * 1.25
-	ShieldHexes := Hexes
+	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
+
+	// Apparently default variables don't fully work in templates.
+	ShieldCapacityMod := 1
+	ShieldCapacity := BaseShieldCapacity * ShieldCapacityMod
+	ShieldRegenMod := 1
+	ShieldRegen := BaseShieldRegen * ShieldRegenMod
+
+	// Shield mitigation
+	ShieldCores := 1
+	ShieldMitCap := 0.55
+	ShieldMitExponent := 1.02
 
 	DamageFactor := 1.0 + (Size / ShipSize) * 2
 	RepairFactor := 1.0 + (Size / ShipSize) / 2
@@ -32,6 +43,8 @@ Subsystem: ProgenitorShrine
 	Hex.BuildCost := 2 * HexSize
 	Hex.LaborCost := 5 * HexSize
 	Hex.MaintainCost := 2 * HexSize
+
+	State: boolean = 0
 
 	Effect: ABEMShieldDamage
 

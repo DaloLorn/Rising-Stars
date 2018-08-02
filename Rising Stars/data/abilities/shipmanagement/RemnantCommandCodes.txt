@@ -5,7 +5,7 @@ Ability: RemnantCommandCodes
 
 	Cooldown: 5
 	Energy Cost: 500
-	Range: 1000
+	Range: 2000
 	Target: targ = Object
 
 	Either(ABEM_hooks::TargetRequireCommand(targ), TargetFilterType(targ, Orbital))

@@ -17,11 +17,14 @@ Trait: Technicists
 	UnlockSubsystem(Superstructure)
 	UnlockSubsystem(SupportSuperstructure)
 	UnlockSubsystem(ShieldGen)
+	UnlockTag(ShieldGenerator)
+	UnlockSubsystem(Forcefield)
 
 	AddModifier(ShieldRegenMult(1.20))
 	AddModifier(ShieldCapacityMult(2.1))
 	AddModifier(tag/IsArmor::HpMult(0.5))
 	AddModifier( ShieldHarmonizer::BonusShieldMult(2.1) )
+	AddModifier(BonusMitigation(0.1))
 
 	//ForbidSubsystem
 	ForbidSubsystem(SupportPlateArmor)
@@ -52,6 +55,4 @@ Trait: Technicists
 	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
 
 	///SECRET ARMOR BAN
-	UnlockTag(ShieldGenerator)
-	UnlockSubsystem(Forcefield)
 	RemoveTechnologyNodes(FerrofluidArmor)

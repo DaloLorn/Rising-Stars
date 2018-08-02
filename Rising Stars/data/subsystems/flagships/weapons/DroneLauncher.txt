@@ -12,8 +12,8 @@ Subsystem: DroneLauncher
 	Hull: Flagship, Station
 	
 	Size := HexSize * Hexes
-	Range := Size + 900
-	Speed := 80
+	Range := (Size + 900) * 2
+	Speed := 160
 	Tracking := 3
 	BaseSupplyCost := Size * 3.0
 

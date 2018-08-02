@@ -3,7 +3,7 @@ Ability: FastPrepareForHarvest
 	Description: #ABL_PREPARE_HARVEST_FAST_DESC
 	Icon: QuickbarIcons::7
 
-	Range: 300
+	Range: 500
 
 	Target: targ = Object
 

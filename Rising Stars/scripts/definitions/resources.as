@@ -182,37 +182,37 @@ tidy final class ResourceType {
 
 	void onAdd(Object& obj, Resource@ r) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onAdd(obj, r);
+			hooks[i].onAdd(obj, r, r.data[i]);
 	}
 
 	void onRemove(Object& obj, Resource@ r) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onRemove(obj, r);
+			hooks[i].onRemove(obj, r, r.data[i]);
 	}
 
 	void onTick(Object& obj, Resource@ r, double tick) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onTick(obj, r, tick);
+			hooks[i].onTick(obj, r, tick, r.data[i]);
 	}
 
 	void onOwnerChange(Object& obj, Resource@ r, Empire@ prevOwner, Empire@ newOwner) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onOwnerChange(obj, r, prevOwner, newOwner);
+			hooks[i].onOwnerChange(obj, r, prevOwner, newOwner, r.data[i]);
 	}
 
 	void onRegionChange(Object& obj, Resource@ r, Region@ fromRegion, Region@ toRegion) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onRegionChange(obj, r, fromRegion, toRegion);
+			hooks[i].onRegionChange(obj, r, fromRegion, toRegion, r.data[i]);
 	}
 
 	void save(Resource@ r, SaveFile& file) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].save(r, file);
+			hooks[i].save(r, r.data[i], file);
 	}
 
 	void load(Resource@ r, SaveFile& file) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].load(r, file);
+			hooks[i].load(r, r.data[i], file);
 	}
 
 	void applyGraphics(Object& obj, Node& node) const {
@@ -232,32 +232,31 @@ tidy final class ResourceType {
 
 	void onGenerate(Object& obj, Resource@ native) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onGenerate(obj, native);
+			hooks[i].onGenerate(obj, native, native.data[i]);
 	}
 
 	void onDestroy(Object& obj, Resource@ native) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].onDestroy(obj, native);
+			hooks[i].onDestroy(obj, native, native.data[i]);
 	}
 
 	void nativeTick(Object& obj, Resource@ native, double time) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].nativeTick(obj, native, time);
+			hooks[i].nativeTick(obj, native, time, native.data[i]);
 	}
 
 	void nativeSave(Resource@ r, SaveFile& file) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].nativeSave(r, file);
+			hooks[i].nativeSave(r, r.data[i], file);
 	}
 
 	void nativeLoad(Resource@ r, SaveFile& file) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i)
-			hooks[i].nativeLoad(r, file);
+			hooks[i].nativeLoad(r, r.data[i], file);
 	}
 };
 
 interface IResourceHook {
-	void initialize(ResourceType@ type, uint index);
 	bool canTerraform(Object@ from, Object@ to) const;
 	bool get_hasEffect() const;
 	bool mergesEffect(Object& obj, const IResourceHook@ other) const;
@@ -265,29 +264,27 @@ interface IResourceHook {
 	const IResourceHook@ get_displayHook() const;
 	const IResourceHook@ get_carriedHook() const;
 	bool shouldVanish(Object& obj, Resource@ native) const;
-	void onAdd(Object& obj, Resource@ r) const;
-	void onRemove(Object& obj, Resource@ r) const;
-	void onTick(Object& obj, Resource@ r, double tick) const;
-	void onOwnerChange(Object& obj, Resource@ r, Empire@ prevOwner, Empire@ newOwner) const;
-	void onRegionChange(Object& obj, Resource@ r, Region@ fromRegion, Region@ toRegion) const;
-	void save(Resource@ r, SaveFile& file) const;
-	void load(Resource@ r, SaveFile& file) const;
+	void onAdd(Object& obj, Resource@ r, any@ data) const;
+	void onRemove(Object& obj, Resource@ r, any@ data) const;
+	void onTick(Object& obj, Resource@ r, double tick, any@ data) const;
+	void onOwnerChange(Object& obj, Resource@ r, Empire@ prevOwner, Empire@ newOwner, any@ data) const;
+	void onRegionChange(Object& obj, Resource@ r, Region@ fromRegion, Region@ toRegion, any@ data) const;
+	void save(Resource@ r, any@ data, SaveFile& file) const;
+	void load(Resource@ r, any@ data, SaveFile& file) const;
 	void applyGraphics(Object& obj, Node& node) const;
 	void onTerritoryAdd(Object& obj, Resource@ r, Territory@ terr) const;
 	void onTerritoryRemove(Object& obj, Resource@ r, Territory@ terr) const;
 	void onTradeDeliver(Civilian& civ, Object@ origin, Object@ target) const;
 	void onTradeDestroy(Civilian& civ, Object@ origin, Object@ target, Object@ destroyer) const;
 
-	void onGenerate(Object& obj, Resource@ native) const;
-	void nativeTick(Object&, Resource@ native, double time) const;
-	void onDestroy(Object&, Resource@ native) const;
-	void nativeSave(Resource@ native, SaveFile& file) const;
-	void nativeLoad(Resource@ native, SaveFile& file) const;
+	void onGenerate(Object& obj, Resource@ native, any@ data) const;
+	void nativeTick(Object&, Resource@ native, double time, any@ data) const;
+	void onDestroy(Object&, Resource@ native, any@ data) const;
+	void nativeSave(Resource@ native, any@ data, SaveFile& file) const;
+	void nativeLoad(Resource@ native, any@ data, SaveFile& file) const;
 };
 
 class ResourceHook : Hook, IResourceHook {
-	uint hookIndex = 0;
-	void initialize(ResourceType@ type, uint index) { hookIndex = index; }
 	bool canTerraform(Object@ from, Object@ to) const { return true; }
 	bool get_hasEffect() const { return false; }
 	bool mergesEffect(Object& obj, const IResourceHook@ other) const { return getClass(other) is getClass(this); }
@@ -295,23 +292,23 @@ class ResourceHook : Hook, IResourceHook {
 	const IResourceHook@ get_displayHook() const { return this; }
 	const IResourceHook@ get_carriedHook() const { return null; }
 	bool shouldVanish(Object& obj, Resource@ native) const { return false; }
-	void onAdd(Object& obj, Resource@ r) const {}
-	void onRemove(Object& obj, Resource@ r) const {}
-	void onTick(Object& obj, Resource@ r, double tick) const {}
-	void onOwnerChange(Object& obj, Resource@ r, Empire@ prevOwner, Empire@ newOwner) const {}
-	void onRegionChange(Object& obj, Resource@ r, Region@ fromRegion, Region@ toRegion) const {}
-	void save(Resource@ r, SaveFile& file) const {}
-	void load(Resource@ r, SaveFile& file) const {}
+	void onAdd(Object& obj, Resource@ r, any@ data) const {}
+	void onRemove(Object& obj, Resource@ r, any@ data) const {}
+	void onTick(Object& obj, Resource@ r, double tick, any@ data) const {}
+	void onOwnerChange(Object& obj, Resource@ r, Empire@ prevOwner, Empire@ newOwner, any@ data) const {}
+	void onRegionChange(Object& obj, Resource@ r, Region@ fromRegion, Region@ toRegion, any@ data) const {}
+	void save(Resource@ r, any@ data, SaveFile& file) const {}
+	void load(Resource@ r, any@ data, SaveFile& file) const {}
 	void applyGraphics(Object& obj, Node& node) const {}
 	void onTerritoryAdd(Object& obj, Resource@ r, Territory@ terr) const {};
 	void onTerritoryRemove(Object& obj, Resource@ r, Territory@ terr) const {};
-	void onGenerate(Object& obj, Resource@ native) const {}
-	void nativeTick(Object&, Resource@ native, double time) const {}
-	void onDestroy(Object&, Resource@ native) const {}
+	void onGenerate(Object& obj, Resource@ native, any@ data) const {}
+	void nativeTick(Object&, Resource@ native, double time, any@ data) const {}
+	void onDestroy(Object&, Resource@ native, any@ data) const {}
 	void onTradeDeliver(Civilian& civ, Object@ origin, Object@ target) const {}
 	void onTradeDestroy(Civilian& civ, Object@ origin, Object@ target, Object@ destroyer) const {}
-	void nativeSave(Resource@ native, SaveFile& file) const {}
-	void nativeLoad(Resource@ native, SaveFile& file) const {}
+	void nativeSave(Resource@ native, any@ data, SaveFile& file) const {}
+	void nativeLoad(Resource@ native, any@ data, SaveFile& file) const {}
 };
 
 int integerSum(array<const IResourceHook@>& hooks, int argument) {
@@ -1581,8 +1578,6 @@ void preInit() {
 	resources::totalFrequency = 0.0;
 	for(uint i = 0, cnt = getResourceCount(); i < cnt; ++i) {
 		ResourceType@ type = resources::resources[i];
-		for(uint n = 0, ncnt = type.hooks.length; n < ncnt; ++n)
-			type.hooks[n].initialize(type, n);
 
 		uint lev = clamp(type.level, 0, 3);
 		if(type.rarityLevel != -1)

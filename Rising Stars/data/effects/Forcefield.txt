@@ -7,7 +7,6 @@ Effect: ForcefieldBase
 
 Effect: ForcefieldDamage
 	Value: Capacity
-	Value: UseBleedthrough = 1
 
 	Damage: ABEM_effects::ForcefieldDamage
 

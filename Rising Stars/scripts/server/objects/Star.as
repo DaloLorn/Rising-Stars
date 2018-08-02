@@ -32,7 +32,8 @@ final class StarScript {
 		if(star.owner is null)
 			@star.owner = defaultEmpire;
 
-		lightDesc.att_quadratic = 1.f/(2000.f*2000.f);
+		// DOF - Scaling: Light increase for galaxy scaling
+		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
 		
 		double temp = star.temperature;
 		Node@ node;
@@ -177,13 +178,15 @@ final class StarScript {
 		if(!game_ending) {
 			double explRad = star.radius;
 			if(star.temperature == 0.0) {
-				explRad *= 20.0;
+				// DOF - Scaling: Bigger bang
+				explRad *= 200.0;
 
 				for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 					auto@ sys = getSystem(i);
 					double dist = star.position.distanceTo(sys.position);
-					if(dist < 100000.0) {
-						double factor = sqr(1.0 - (dist / 100000));
+					//DOF - Scaling: Increased range
+					if(dist < 1000000.0) {
+						double factor = sqr(1.0 - (dist / 1000000));
 						sys.object.addStarDPS(factor * star.MaxHealth * 0.08);
 					}
 				}

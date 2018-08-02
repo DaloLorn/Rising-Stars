@@ -12,7 +12,6 @@ Module: AtroanHydroponics
 	Build Cost: 800
 	Labor Cost: 40
 
-
 	RequireUnlockTag(OrbitalControlUnlock)
 
 	Model: Outpost

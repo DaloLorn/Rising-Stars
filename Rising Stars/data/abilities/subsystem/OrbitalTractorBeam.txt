@@ -3,13 +3,13 @@ Ability: OrbitalTractorBeam
 	Description: #ABL_TRACTOR_BEAM_DESC
 	Icon: TractorGun::0
 
-	Range: 500
+	Range:1000
 
 	Target: targ = Object
 	Either(ability_effects::TargetFilterAllowTractor(targ), ABEM_hooks::TargetFilterStatus(targ, ExplicitlyTractorable))
 
 	IsToggleTarget(targ, Check Range = False, Channels = False)
-	TractorObject(targ, Max Distance = 750)
+	TractorObject(targ, Max Distance = 1500)
 	PersistentBeamEffect(targ, #b8b8d8, Tractor)
 
 	ABEM_hooks::TargetFilterNotRemnantOrPirate(targ)

@@ -1,0 +1,21 @@
+Module: RepairYard
+	Name: #ORB_REPAIR_YARD
+	Description: #ORB_REPAIR_YARD_DESC
+	Blurb: #ORB_REPAIR_YARD_BLURB
+	Icon: TechIcons::44
+	Distant Icon: TechIcons::44
+	Strategic Icon: TechIcons::44
+
+	Unique: False
+	Health: 2500
+	Armor: 1500
+	Maintenance: 10
+	Build Cost: 200
+	
+	RequireEither(RequireEither(RequireEither(RequireOnOrbital(EconomyCore), RequireOnOrbital(MilitaryCore)), RequireOnOrbital(Mainframe)), RequireOnOrbital(Shipyard))
+
+	ABEM_orbitals::AddSystemRepair(500)
+	ABEM_orbitals::IfHasModule(ABEM_orbitals::AddSystemRepair(500), Shipyard)
+	ABEM_orbitals::IfHasModule(ABEM_orbitals::AddSystemRepair(500), MilitaryCore)
+
+	ConsumeCargo(Ore, 250)

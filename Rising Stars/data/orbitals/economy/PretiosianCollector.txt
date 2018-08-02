@@ -17,10 +17,7 @@ Module: PretiosianCollector
 	Material: GenericPBR_SolarEngine
 	Unique: False
 
-
 	ABEM_orbitals::LimitTwicePerSystem(PretiosianCollector, PretiosianCollector2)
-
-
 
 	AddMoneyIncome(50)
 	ABEM_orbitals::RequireSystemFlag(EconomicNebula)

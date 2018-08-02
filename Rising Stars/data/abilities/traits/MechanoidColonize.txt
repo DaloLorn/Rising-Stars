@@ -18,7 +18,7 @@ Ability: MechanoidColonize
 	IfTargetOwnedOrSpace(targ, LosePopulation(1))
 	Trigger(targ, GiveMemory())
 
-	ConsumeDistanceFTL(targ, Base Cost = 20, Distance Cost = 0.002, Path Distance = True)
+	ConsumeDistanceFTL(targ, Base Cost = 20, Distance Cost = 0.0001, Path Distance = True)
 
 	AutoCastAsColonizePopTransfer()
 
@@ -41,4 +41,4 @@ Ability: MechanoidColonize5
 	IfTargetOwnedOrSpace(targ, LosePopulation(5))
 	Trigger(targ, GiveMemory())
 
-	ConsumeDistanceFTL(targ, Base Cost = 100, Distance Cost = 0.01, Path Distance = True)
+	ConsumeDistanceFTL(targ, Base Cost = 100, Distance Cost = 0.0005, Path Distance = True)

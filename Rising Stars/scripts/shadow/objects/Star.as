@@ -2,11 +2,11 @@ import regions.regions;
 
 LightDesc lightDesc;
 
-class StarScript {
+tidy class StarScript {
 	void syncInitial(Star& star, Message& msg) {
 		star.temperature = msg.read_float();
 
-		lightDesc.att_quadratic = 1.f/(2000.f*2000.f);
+		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
 		
 		double temp = star.temperature;
 		Node@ node;

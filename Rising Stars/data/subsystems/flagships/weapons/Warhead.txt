@@ -11,10 +11,10 @@ Subsystem: Warhead
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size + 1200
+	Range := (Size + 1200) * 2
 	Damage := Size * 128
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
-	Speed := max(40, Range / 90)
+	Speed := max(40, Range / 90) * 2
 	Tracking := 1.5
 	Radius := 30.0 + (log(Size) / log(2) * 10.0)
 	SupplyCost := 0
