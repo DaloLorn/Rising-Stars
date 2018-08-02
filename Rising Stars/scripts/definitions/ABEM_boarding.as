@@ -134,7 +134,8 @@ class BoardShip : StatusHook {
 		@dmg.obj = status.originObject;
 		dmg.damage = info.boarders;
 		dmg.partiality = BOARDING_TICKRATE;
-		dmg.flags |= DT_Generic | ReachedInternals | DF_FullShieldBleedthrough;
+		dmg.flags |= DT_Generic | ReachedInternals | DF_QuadShieldPenetration;
+		dmg.pierce = 2;
 		if(isShip) {
 			const Subsystem@ location = info.targetShip.blueprint.design.subsystems[info.locationIndex];
 			uint cnt = location.hexCount;

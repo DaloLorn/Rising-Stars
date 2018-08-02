@@ -11,11 +11,11 @@ Subsystem: SubspaceShredder
 	Size := HexSize * Hexes
 	Damage := Size * 15.0
 	Reload := 6.0 * min(1.0 + Size/512, 2.0)
-	Speed := 20
+	Speed := 20 * 2
 	Tracking := 0.2
 	BaseSupplyCost := Size * 2.0
 
-	Range := 5 + Size
+	Range := (5 + Size) * 2
 	TravelRange := (Range * 30) - (28 * Size)
 
 	out DPS := 0.25 * (Damage / Reload)

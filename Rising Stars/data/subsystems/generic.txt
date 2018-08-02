@@ -132,3 +132,7 @@ Template: var/CargoStorage
 		CargoStorage := CargoStorage + Base::CargoStorage * (factor - 1)
 	Modifier: CargoStorageMult(factor)
 		CargoStorage := CargoStorage * factor
+
+Template: var/BonusMitigation
+	Modifier: BonusMitigation(factor)
+		BonusMitigation := BonusMitigation + factor

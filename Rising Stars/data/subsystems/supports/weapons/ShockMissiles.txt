@@ -10,7 +10,7 @@ Subsystem: ShockMissiles
 	Hull: Support, Satellite
 	
 	Size := HexSize * Hexes
-	Range := Size + 800
+	Range := (Size + 800) * 2
 	Damage := Size * 22.0
 	Reload := 6.0 * min(1.0 + Size/512, 2.0)
 	Speed := 125

@@ -29,49 +29,20 @@ Module: SenatorialPalace
 	GloballyVisible()
 	GrantAllVision()
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SenatorialPalace, AdaptedSenatorialPalace))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SenatorialPalace, AdaptedSenatorialPalace))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	GrantAbility(BuyElection)
 	GrantAbility(BuyGalacticUtopia)
 	GrantAbility(BuyGalacticSuperpower)
 	RequireOnOrbital(EconomyCore)
 
 	ConsumeCargo(Ore, 1000)
+	
 Module: AdaptedSenatorialPalace
+	Inherit: SenatorialPalace
 	Name: #ORB_SENATORIAL_PALACE_ADAPTED
-	Blurb: #ORB_SENATORIAL_PALACE_BLURB
 	Description: #ORB_SENATORIAL_PALACE_ADAPTED_DESC
-	Icon: LeaderIcon
-	Distant Icon: LeaderIcon
-
-	Build Cost: 1000
-	Maintenance: 140
-	Labor Cost: 50
-	Size: 15
-
-	ConsumeInfluence(15)
-
-	Health: 40000
-	Armor: 10000
-
-	Model: CommerceStation
-	Material: GenericPBR_CommerceStation
-
-	RequireSenateLeader()
-	RequireConfigOption(ENABLE_INFLUENCE_VICTORY)
-
-	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, Icon = LeaderIcon))
-
-	ModEmpireAttribute(SenatorialPalaceConstructed, Add, 1)
-	RequireAttributeLT(SenatorialPalaceConstructed, 1)
-
-	GloballyVisible()
-	GrantAllVision()
 
 	AddInfluenceStake(3)
-	RequireUnlockTag(NylliAdaptation4)
-	GrantAbility(BuyElection)
-	GrantAbility(BuyGalacticUtopia)
-	GrantAbility(BuyGalacticSuperpower)
-	RequireOnOrbital(EconomyCore)
-	ConsumeCargo(Ore, 1000)
+
+	private RequireUnlockTag(NylliAdaptation4)

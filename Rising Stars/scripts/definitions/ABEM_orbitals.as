@@ -193,8 +193,9 @@ class ModifyOrbitalHealth : StatusHook {
 class ReplaceModule : GenericEffect {
 	Document doc("Replaces all modules on the target orbital with modules of a different kind.");
 	Argument old("Old Module", AT_OrbitalModule, doc="The module type to replace. Attempting to replace core modules will have no effect, unless it is a standalone core, in which case it can only be replaced by a core.");
-	Argument new("New Module", AT_OrbitalModule, doc="The module type to replace it with.  Attempting to replace a module with itself will have no effect.");
+	Argument new("New Module", AT_OrbitalModule, doc="The module type to replace it with. Attempting to replace a module with itself will have no effect.");
 	Argument validate("Validate", AT_Boolean, "True", doc="Whether to check if the new module can be placed before attempting to install it.");
+	Argument strict("Strict", AT_Boolean, "True", doc="Whether to use strict mode. Strict mode checks for *only* the specified module type without checking for subclasses. Disable strict mode only if you know what you're doing.");
 
 #section server
 	void enable(Object& obj, any@ data) const override {
@@ -207,16 +208,16 @@ class ReplaceModule : GenericEffect {
 		}
 		
 		Orbital@ orb = cast<Orbital>(obj);
-		if(orb.hasModule(old.integer)) {
-			orb.replaceModule(old.integer, new.integer, validate.boolean);
+		if(orb.hasModule(old.integer, strict.boolean)) {
+			orb.replaceModule(old.integer, new.integer, validate.boolean, strict.boolean);
 		}
 	}
 #section all
 }
 
 class DestroyModule : GenericEffect {
-	Document doc("Destroys all modules on the target orbital.");
-	Argument old("Old Module", AT_OrbitalModule, doc="The module type to destroy. Destroying core modules will destroy the station itself.");
+	Document doc("Destroys all modules of a specified class on the target orbital.");
+	Argument old("Old Module", AT_OrbitalModule, doc="The module class to destroy. Destroying core modules will destroy the station itself.");
 
 #section server
 	void enable(Object& obj, any@ data) const override {
@@ -235,6 +236,7 @@ class DestroyModule : GenericEffect {
 			array<OrbitalSection> sections;
 			sections.syncFrom(orb.getSections());
 			for(uint i = 0, cnt = sections.length; i < cnt; i++)
+			if(type.isParentOf(sections[i].type))
 				orb.destroyModule(sections[i].id);
 		}
 	}
@@ -269,6 +271,7 @@ class ReplaceModulesInEmpire : EmpireEffect {
 	Argument old("Old Module", AT_OrbitalModule, doc="The module type to replace. Attempting to replace core modules will have no effect, unless it is a standalone core, in which case it can be replaced by a core.");
 	Argument new("New Module", AT_OrbitalModule, doc="The module type to replace it with. Attempting to replace a module with itself will have no effect.");
 	Argument validate("Validate", AT_Boolean, "True", doc="Whether to check if the new module can be placed before attempting to install it.");
+	Argument strict("Strict", AT_Boolean, "True", doc="Whether to use strict mode. Strict mode checks for *only* the specified module type without checking for subclasses. Disable strict mode only if you know what you're doing.");
 
 #section server
 	void tick(Empire& emp, any@ data, double time) const override {
@@ -276,14 +279,14 @@ class ReplaceModulesInEmpire : EmpireEffect {
 			return;
 
 		auto@ type = getOrbitalModule(old.integer);
-		if(type is null || (type.isCore && !type.isStandalone)) {
+		if(type is null) {
 			return;
 		}
 		
 		for(uint i = 0, cnt = emp.orbitalCount; i < cnt; i++) {
 			Orbital@ orb = emp.orbitals[i];
-			if(orb.hasModule(old.integer)) {
-				orb.replaceModule(old.integer, new.integer, validate.boolean);
+			if(orb.hasModule(old.integer, strict.boolean)) {
+				orb.replaceModule(old.integer, new.integer, validate.boolean, strict.boolean);
 			}
 		}
 	}
@@ -320,7 +323,7 @@ class DestroyModulesInEmpire : EmpireEffect {
 }
 
 class IfHasModule : IfHook {
-	Document doc("Only applies the inner hook if the orbital has a given module.");
+	Document doc("Only applies the inner hook if the orbital has a given module or one of its descendants.");
 	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
 	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
 
@@ -344,7 +347,7 @@ class IfHasModule : IfHook {
 }
 
 class IfNotHaveModule : IfHook {
-	Document doc("Only applies the inner hook if the orbital does not have a given module.");
+	Document doc("Only applies the inner hook if the orbital does not have a given module or one of its descendants.");
 	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
 	Argument module("Module", AT_OrbitalModule, doc="The module type to check for.");
 
@@ -363,6 +366,43 @@ class IfNotHaveModule : IfHook {
 			return true;
 
 		return !orb.hasModule(module.integer);
+	}
+#section all
+}
+
+class AddSystemRepair : GenericEffect {
+	Document doc("Adds a certain amount of repair strength to the system containing this object. All ships and orbitals in the system will repair the specified amount of health each second, up to a limit of 1% of their maximum health.");
+	Argument repair(AT_Decimal, doc="How much HP should be repaired each second.");
+
+#section server	
+	void enable(Object& obj, any@ data) const override {
+		if(obj is null || obj.owner is null || obj.region is null)
+			return;
+		obj.region.modRepairRate(obj.owner, repair.decimal);
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(obj is null || obj.owner is null || obj.region is null)
+			return;
+		obj.region.modRepairRate(obj.owner, -repair.decimal);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		if(obj is null || obj.region is null)
+			return;
+		if(prevOwner !is null)
+			obj.region.modRepairRate(prevOwner, -repair.decimal);
+		if(newOwner !is null)
+			obj.region.modRepairRate(newOwner, repair.decimal);
+	}
+
+	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const override {
+		if(obj is null || obj.owner is null)
+			return;
+		if(fromRegion !is null)
+			fromRegion.modRepairRate(obj.owner, -repair.decimal);
+		if(toRegion !is null)
+			toRegion.modRepairRate(obj.owner, repair.decimal);
 	}
 #section all
 }

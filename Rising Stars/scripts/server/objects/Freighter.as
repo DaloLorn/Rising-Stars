@@ -75,7 +75,7 @@ tidy class FreighterScript {
 	}
 
 	void init(Freighter& ship) {
-		ship.maxAcceleration = 2.5;
+		ship.maxAcceleration = (2.5 + 8.409 * config::NEW_MOVEMENT) * 6.3636;
 	}
 
 	void postInit(Freighter& ship) {

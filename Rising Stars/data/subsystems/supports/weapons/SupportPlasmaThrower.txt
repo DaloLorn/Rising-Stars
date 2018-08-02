@@ -11,7 +11,7 @@ Subsystem: SupportPlasmaThrower
 	Hull: Support, Satellite
 
 	Size := HexSize * Hexes
-	Range := Size + 500
+	Range := (Size + 500) * 2
 
 	Duration := 5 * (1.0 + Size/64)
 	DamageOverTime := (Size * 5.0) / Duration
@@ -26,7 +26,7 @@ Subsystem: SupportPlasmaThrower
 		DamageOverTime := DamageOverTime * factor
 
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
-	Speed := max(200, Range / 10)
+	Speed := max(200, Range / 10) * 2
 	Spread := 0.015 / max(Range / 600, 1)
 	Tracking := 0.2
 	FireArc := 1.5

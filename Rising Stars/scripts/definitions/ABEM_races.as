@@ -610,7 +610,7 @@ class SelfDestructOnOwnerChange : BuildingHook {
 	Argument undevelop(AT_Boolean, "False", doc="Whether to undevelop the tiles the building is on.");
 
 #section server
-	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner) const override {
+	void ownerChange(Object& obj, SurfaceBuilding@ bld, Empire@ prevOwner, Empire@ newOwner, any@ data) const override {
 		if(obj.hasSurfaceComponent)
 			obj.forceDestroyBuilding(vec2i(bld.position), undevelop.boolean);
 	}
@@ -665,8 +665,8 @@ class TriggerOnGenerate : ResourceHook {
 	}
 
 #section server
-	void onGenerate(Object& obj, Resource@ native) const override {
-		hook.enable(obj, native.data[hookIndex]);
+	void onGenerate(Object& obj, Resource@ native, any@ data) const override {
+		hook.enable(obj, data);
 	}
 #section all
 };

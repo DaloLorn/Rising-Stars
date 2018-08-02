@@ -5,6 +5,7 @@ import orbitals;
 import saving;
 import util.target_search;
 import ABEMCombat;
+import ABEM_data;
 
 const int STRATEGIC_RING = -1;
 const double RECOVERY_TIME = 3.0 * 60.0;
@@ -639,30 +640,41 @@ tidy class OrbitalScript {
 		else return 1;
 	}
 
-	void replaceModule(Orbital& obj, uint oldId, uint newId, bool validate) {
+	void replaceModule(Orbital& obj, uint oldId, uint newId, bool validate, bool strict = true) {
 		if(contestion != 0)
 			return; // If we continued, we'd add a module without deleting the old one.
 
+		auto@ oldType = getOrbitalModule(oldId);
+		auto@ newType = getOrbitalModule(newId);
+		if(oldType is null || newType is null) // Don't allow null types.
+			return;			
+		if(oldType.isCore != newType.isCore) // Don't replace a core with a non-core or vice versa.
+			return;
+		if(oldType.isCore && sections.length > 1 && (oldType.isStandalone != newType.isStandalone || !oldType.isParentOf(newType))) // Replacing the core with a different subtype or changing its standalone status may cause trouble if it already has modules installed.
+			return;
+
 		for(uint i = 0; i < sections.length; i++) {
-			if(sections[i].type.id == oldId) {
+			if(sections[i].type.id == oldId || (!strict && oldType.isParentOf(sections[i].type))) {
 				obj.destroyModule(sections[i].id);
 				i--;
 				bool canAdd = true;
+				bool breakLoop = false;
 				if(validate) {
-					auto@ type = getOrbitalModule(newId);
-					if(type !is null)
-						canAdd = type.canBuildOn(obj);
+					canAdd = newType.canBuildOn(obj);
 
-					// Special case for replacing standalone cores.
-					if(core.type.isStandalone && type.isCore) {
+					// Special case for replacing cores.
+					if(newType.isCore) { // We already checked if we can safely do this.
 						int coreId = core.id;
 						@core = null;
 						obj.destroyModule(coreId);
-						canAdd = true; // We don't need to decrement 'i' in this case, because the loop's supposed to end now.
+						breakLoop = true;
+						canAdd = true;
 					}
 				}
 				if(canAdd)
 					obj.addSection(newId);
+				if(breakLoop)
+					break;
 			}
 		}
 	}
@@ -801,10 +813,16 @@ tidy class OrbitalScript {
 			yield(sections[i]);
 	}
 
-	bool hasModule(uint typeId) {
+	bool hasModule(uint typeId, bool strict = false) {
+		const OrbitalModule@ type = getOrbitalModule(typeId);
+		if(type is null) {
+			return false;
+		}
 		for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 			OrbitalSection@ sec = sections[i];
 			if(sec.type.id == typeId)
+				return true;
+			else if(!strict && type.isParentOf(sec.type))
 				return true;
 		}
 		return false;
@@ -826,8 +844,16 @@ tidy class OrbitalScript {
 			return;
 
 		if(type.buildCost != 0) {
-			if(obj.owner.consumeBudget(type.buildCost) == -1)
+			if(obj.owner.consumeBudget(type.buildCost * obj.owner.OrbitalBuildCostFactor) == -1)
 				return;
+		}
+
+		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i) {
+			if(!type.hooks[i].consume(obj)) {
+				for(uint j = 0; j < i; ++j)
+					type.hooks[j].reverse(obj, false);
+				return;
+			}
 		}
 
 		addSection(obj, typeId);
@@ -1141,38 +1167,56 @@ tidy class OrbitalScript {
 		obj.engaged = true;
 		
 		if(shield > 0) {
-			if(evt.flags & DF_FullShieldBleedthrough == 0) { // This ensures that weapons such as Progenitor drones can go through with impunity.
-				if(maxShield <= 0.0)
-					maxShield = shield;
-					
-				double dmgScale = (evt.damage * shield) / (maxShield * maxShield);
-				if(dmgScale < 0.01) {
+			if(maxShield <= 0.0)
+				maxShield = shield;
+		
+			double dmgScale = (evt.damage * shield) / (maxShield * maxShield);
+			if(dmgScale < 0.01) {
 				//TODO: Simulate this effect on the client
 				if(randomd() < dmgScale / 0.001)
 					playParticleSystem("ShieldImpactLight", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask, networked=false);
-				}
-				else if(dmgScale < 0.05) {
-					playParticleSystem("ShieldImpactMedium", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask);
-				}
-				else {
-					playParticleSystem("ShieldImpactHeavy", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask, networked=false);
-				}
-				
-				double block;
-				if(maxShield > 0 && evt.flags & DF_NoShieldBleedthrough == 0) // This makes sure all damage is applied to shields first.
-					block = min(shield * min(shield / maxShield, 1.0), evt.damage);
-				else
-					block = min(shield, evt.damage);
-					
-				shield -= block;
-				evt.damage -= block;
-				deltaHP = true;
-				
-				Shield = shield / shieldMod;
-				
-				if(evt.damage <= 0.0)
-					return;
 			}
+			else if(dmgScale < 0.05) {
+				playParticleSystem("ShieldImpactMedium", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask);
+			}
+			else {
+				playParticleSystem("ShieldImpactHeavy", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask, networked=false);
+			}
+			double Mitigation = 0.5;
+			double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
+			double BlockFactor = 1;
+
+			// Process shield bleedthrough damage flags.
+			if(evt.flags & DF_QuadShieldPenetration != 0)
+				ShieldPenetration *= 4;
+			if(evt.flags & DF_HalfShieldDamage != 0)
+				BlockFactor = 0.5;
+
+			// If piercing is present, reduce mitigation
+			if(ShieldPenetration > 0)  {
+				double tmp = Mitigation;
+				Mitigation = max(Mitigation - ShieldPenetration, 0.0);
+				ShieldPenetration = max(ShieldPenetration - tmp, 0.0);
+			}
+
+			// Apply remaining mitigation
+			//print(evt.damage);
+			evt.damage *= 1 - Mitigation;
+			//print(evt.damage);
+
+			double block;
+			block = min(shield, evt.damage * max(1 - ShieldPenetration, 0.0));
+			// Use excess shield penetration to increase bleedthrough
+			
+			shield -= block * BlockFactor; // Reduce damage taken by shields.
+			evt.damage -= block / BlockFactor; // Increase damage reduction proportionately.
+			// Bleedthrough damage isn't affected by mitigation
+			evt.damage /= 1 - Mitigation;
+				
+			Shield = shield / shieldMod;
+				
+			if(evt.damage <= 0.0)
+				return;
 		}
 		
 		if(armor > 0) {

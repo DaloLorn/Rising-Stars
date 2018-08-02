@@ -59,7 +59,7 @@ tidy class CargoShipScript {
 	}
 
 	void init(CargoShip& ship) {
-		ship.maxAcceleration = 2.5;
+		ship.maxAcceleration = (2.5 + 8.409 * config::NEW_MOVEMENT) * 6.3636;
 	}
 
 	void postInit(CargoShip& ship) {

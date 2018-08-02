@@ -19,38 +19,21 @@ Module: SingularityLab
 	LimitOncePerSystem(SingularityLabFlag)
 	RequireBlackHoleSystem()
 
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SingularityLab, AdaptedSingularityLab))
-	ABEM_races::RequireNotUnlockTag(NylliAdaptation4)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(SingularityLab, AdaptedSingularityLab))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	AddResearchIncome(4)
 	AddEnergyIncome(4)
 
 	ConsumeCargo(Ore, 500)
 	RequireOnOrbital(EconomyCore)
+
 Module: AdaptedSingularityLab
+	Inherit: SingularityLab
 	Name: #ORB_SINGULARITY_LAB_ADAPTED
-	Blurb: #ORB_SINGULARITY_LAB_BLURB
 	Description: #ORB_SINGULARITY_LAB_ADAPTED_DESC
-	Icon: GuiOrbitalIcons::12
-	Distant Icon: OrbitalIcons::12
-
-	Build Cost: 600
-	Maintenance: 15
-	Labor Cost: 25
-	Size: 8
-
-	Health: 8000
-	Armor: 6000
-
-	Model: Research_Station
-	Material: GenericPBR_Research_Station
-
-	LimitOncePerSystem(SingularityLabFlag)
-	RequireBlackHoleSystem()
-
-	RequireOnOrbital(EconomyCore)
+	
 	AddRegionStatusEnemies(SingularityDisruption)
 	BlockSystemFTL()
-	RequireUnlockTag(NylliAdaptation4)
-	AddResearchIncome(4)
-	AddEnergyIncome(4)
-	ConsumeCargo(Ore, 500)
+	
+	private RequireUnlockTag(NylliAdaptation4)
+	

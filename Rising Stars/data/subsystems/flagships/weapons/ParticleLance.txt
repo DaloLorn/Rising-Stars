@@ -11,10 +11,10 @@ Subsystem: ParticleLance
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := Size + 500
+	Range := (Size + 500) * 2
 	Damage := Size * 1.25
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
-	Speed := max(60, Range / 30)
+	Speed := max(60, Range / 30) * 2
 	Spread := 0
 	Tracking := 0.1
 	FireArc := 0.1666 * pi

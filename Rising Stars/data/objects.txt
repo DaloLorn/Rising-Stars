@@ -36,6 +36,7 @@ visible:
 	int lastHit = 0
 
 	local safe bool get_isStation();
+	local safe double get_mitigation();
 	
 remote restricted:
 	void scuttle();
@@ -71,6 +72,10 @@ server:
 	Object@ getLastHitBy();
 	void addBonusEffectiveness(float mod);
 	void recordDamage(Object@ source);
+
+	void modShieldCores(double count);
+	void modShieldMitCap(double amount);
+	void modShieldMitFactor(double amount);
 
 	void startRetrofit(Object@ from, const Design@ to);
 	void stopRetrofit(Object@ from);
@@ -155,7 +160,7 @@ local visible:
 	safe bool get_isContested();
 	safe bool get_isDisabled();
 	OrbitalSection@[] getSections();
-	safe bool hasModule(uint typeId);
+	safe bool hasModule(uint typeId, bool strict = false);
 	safe double get_health();
 	safe double get_maxHealth();
 	safe double get_armor();
@@ -189,7 +194,7 @@ server:
 	void setDerelict(bool value);
 	void setContested(bool value);
 	void addSection(uint modId);
-	void replaceModule(uint oldId, uint newId, bool validate);
+	void replaceModule(uint oldId, uint newId, bool validate, bool strict = true);
 	void modMaxArmor(double value);
 	void modMaxHealth(double value);
 	void modMaxShield(double value);

@@ -12,7 +12,6 @@ Module: MonoHydroponics
 	Build Cost: 800
 	Labor Cost: 40
 
-
 	RequireUnlockTag(ZeroGAssemblyUnlock)
 
 	Model: Outpost

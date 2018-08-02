@@ -3,7 +3,7 @@ Ability: GravitonCondenser
 	Description: #ABL_GRAVITON_CONDENSER_DESC
 	Icon: TractorGun::0 * #e45500
 
-	Range: 700
+	Range: 7000
 
 	Target: targ = Object
 	Either(TargetFilterType(targ, Planet), TargetFilterType(targ, Star))

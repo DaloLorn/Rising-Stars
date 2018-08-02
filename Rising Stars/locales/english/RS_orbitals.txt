@@ -89,7 +89,7 @@ ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems. Mobile.
 ORB_TELESCOPE_DESC: <<
 	An array of advanced subspace telescopes, this facility can periodically consume FTL energy to obtain a real-time view of various star systems in its vicinity, and relocate itself to get a closer look.
 
-	Has the 'Telescope' ability. Can slowly move with an acceleration of 0.2 u/s^2.
+	Has the 'Telescope' ability. Can slowly move with an acceleration of 2 u/s^2.
 
 	[i][bbloc=#ABL_TELESCOPEORE_DESC:40000/][/i]
 >>
@@ -169,12 +169,21 @@ ORB_RING_HABITAT_DESC: <<
 ORB_SHIPYARD_DESC: <<|
 	A massive orbital shipyard capable of constructing fleets in space.
 
-	Construction of ships on a shipyard has a 20% cheaper build cost.
+	Construction of ships on a shipyard has a 20% cheaper build cost. Each shipyard in a system increases the out-of-combat repair rate of ships in the system by 2000 HP/s, up to a total maximum of 1% of the ship's maximum health.
 
 	Has 7.5 innate Labor generation per minute. Planets can export their own
 	labor to shipyards within trade range at a 25% reduced rate.
 
 	Gains Labor from Metallurgy factory research at a 25% reduced rate.
+>>
+ORB_REPAIR_YARD: Repair Yard
+ORB_REPAIR_YARD_BLURB: Repairs ships out of combat for up to 500 HP/s.
+ORB_REPAIR_YARD_DESC: <<
+	Facilities, equipment and trained personnel required to repair damaged starships - ranging from better hammers to tugs and military-grade fabricators.
+
+	Each Repair Yard in a system increases the out-of-combat repair rate of ships in the system by 500 HP/s, up to a total maximum of 1% of the ship's maximum health.
+
+	Repair Yards constructed on Military Starbases and Shipyards have double effectiveness.
 >>
 ORB_SHIPYARD_ADAPTED: Advanced Shipyard
 ORB_SHIPYARD_ADAPTED_DESC: <<|
@@ -331,7 +340,7 @@ ORB_SHIELD_ARRAY: Shield Array
 ORB_SHIELD_ARRAY_DESC: <<
 	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 7.5 SP/s.
 
-	This module can be installed multiple times.
+	This module can be installed multiple times. All orbital shields have 50% mitigation.
 >>
 ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 7.5 shield regeneration.
 ORB_TACTICAL_COORDINATORS: Tactical Coordination Suite
@@ -377,4 +386,11 @@ ORB_TARGETING_SATELLITE_DESC: <<
 	A small, fragile satellite designed to identify and mark targets for the weapons installed on the planet's surface. Without it, the planetary defense net is virtually useless, as it cannot receive accurate data about the location and heading of enemy warships.
 
 	Only one Targeting Control Satellite can be orbiting a given planet. If it is destroyed, a new one will be built for free after a 3-minute period.
+>>
+ORB_THRUSTERS: Maneuvering Thrusters
+ORB_THRUSTERS_BLURB: Adds 2.5 u/s^2 to the orbital's acceleration.
+ORB_THRUSTERS_DESC: <<
+	An array of thrusters is installed across the station's exterior, allowing it to move faster.
+
+	Increases the station's acceleration by 2.5 u/s^2.
 >>

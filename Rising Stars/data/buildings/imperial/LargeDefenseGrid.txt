@@ -18,5 +18,5 @@ Building: LargeDefenseGrid
 
 	IfAttributeGTE(Adaptation4, 1, AddLocalDefense(2, Build Satellites = True))
 	ShowAttributeValue(Satellite Defense Generation, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::5, Suffix = #PER_MINUTE, Hide Zero = True)
-	IfHaveStatus(WeaponControl, RepeatExtended(AddTurret(Missile, Range=2000, Damage=125, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	IfHaveStatus(WeaponControl, RepeatExtended(AddTurret(Missile, Range=3000, Damage=125, Reload=1, Speed=225, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
 	IfHaveStatus(WeaponControl, RecordBonusDPS(2500))

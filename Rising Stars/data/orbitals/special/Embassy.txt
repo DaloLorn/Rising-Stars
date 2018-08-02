@@ -5,7 +5,6 @@ Module: Embassy
 	Icon: GuiOrbitalIcons::15
 	Distant Icon: OrbitalIcons::15
 
-
 	Build Cost: 500
 	Maintenance: 200
 	Labor Cost: 15
@@ -16,7 +15,7 @@ Module: Embassy
 
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
-	Standalone: True
+	Core: True
 
 	RequireTrait(Pacifists)
 

@@ -50,6 +50,31 @@ GlobalStat: PlanetMiningRate
 	Suffix: #PER_SECOND
 
 	Variable: PlanetMiningRate
+
+GlobalStat: Mitigation
+	Name: #S_MITIGATION
+	Description: #STT_MITIGATION
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: %
+	Variable: DummyMitigation
+
+GlobalStat: ShieldAbsorb
+	Name: #S_SHIELDABSORB
+	Description: #STT_SHIELDABSORB
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: /s
+
+	Variable: ShieldAbsorbRate
+
+GlobalStat: MitigationOvercap
+	Name: #S_MITIGATIONOVERCAP
+	Description: #STT_MITIGATIONOVERCAP
+	Suffix: %
+
+	Secondary: Mitigation
+	Variable: MitigationOvercap
 	
 // *************************************
 // ******SUBSYSTEM-SPECIFIC STATS*******

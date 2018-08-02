@@ -1554,7 +1554,7 @@ class BuildElement : GuiListElement {
 				if(!orb.canBuildOn(buildOrb))
 					hasError = true;
 			}
-			maintain = orb.maintenance;
+			maintain = orb.maintenance * buildAt.owner.OrbitalMaintMod;
 			energy = 0;
 			icon = orb.icon;
 			isSupport = false;

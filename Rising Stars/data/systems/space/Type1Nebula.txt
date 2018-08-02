@@ -1,7 +1,7 @@
 System: Type1Nebula
 	Frequency: 0
 
-	ExpandSystem(1000)
+	ExpandSystem(5000)
 
 	Repeat(1:7)
 		MakeAnomaly()
@@ -17,6 +17,7 @@ System: Type1Nebula
 
 	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
 	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+	ABEM_nebulae::SetGlobalSystemFlag(Type1Nebula)
 
 	NoRegionVision()
-	SetStaticSeeableRange(500*$SENSOR_RANGE_MULT)
+	SetStaticSeeableRange(1500*$SENSOR_RANGE_MULT)

@@ -20,9 +20,10 @@ vec3d mapLeft;
 vec3d mapRight;
 double galaxyRadius = 0;
 
-const double GALAXY_MIN_SPACING = 60000.0;
-const double GALAXY_MAX_SPACING = 120000.0;
-const double GALAXY_HEIGHT_MARGIN = 50000.0;
+// DOF - Scaling: Adjustments for increased sizing
+const double GALAXY_MIN_SPACING = 2400000.0;
+const double GALAXY_MAX_SPACING = 4800000.0;
+const double GALAXY_HEIGHT_MARGIN = 150000.0;
 
 bool overlaps(Map@ from, vec3d point, Map@ to) {
 	return point.distanceTo(from.origin) < GALAXY_MIN_SPACING + from.radius + to.radius;

@@ -1,4 +1,4 @@
-Subsystem: Forcefield
+﻿Subsystem: Forcefield
 	Name: #S_FORCEFIELD
 	Description: #S_FORCEFIELD_DESC
 	BaseColor: #00a4db
@@ -9,7 +9,7 @@ Subsystem: Forcefield
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
+	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 2) * 2000)) * HexSize
 	BaseHP := 20 * HexSize
 
 	BaseForcefieldRegen := 0.75 * Size
@@ -26,6 +26,10 @@ Subsystem: Forcefield
 	State: double = ForcefieldCapacity
 	State: double = 1
 	State: double = ForcefieldCapacityMult
+
+	Assert: EnergyBuildCost == 0
+		Unique: True
+		Message: #ERROR_FORCEFIELD_NO_BATTERY
 
 	Requires:
 		Command = 1
@@ -76,4 +80,3 @@ Subsystem: Forcefield
 
 	Effect: ForcefieldDamage
 		Capacity = ForcefieldCapacity
-		UseBleedthrough = 1

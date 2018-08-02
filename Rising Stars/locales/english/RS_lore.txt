@@ -132,8 +132,15 @@ That is in the past, though. The Bluuhbi have served the Overlords for a great d
 We are the Vanguard. To fail in our mission is to be exterminated. To achieve this goal before the other races of the Vanguard is to solidify and increase our power and prestige once more.
 >>
 
-RACE_VANGUARD_SWARMERS: Khalerii
-RACE_VANGUARD_SWARMERS_TAGLINE: Overlord victory through boundless numbers.
+RACE_VANGUARD_SWARMER: Khalerii
+RACE_VANGUARD_SWARMER_TAGLINE: Workers of the Vanguard, unite!
+RACE_VANGUARD_SWARMER_LORE: <<
+The Khalerii have always been looked down upon by the other members of the Vanguard. Put down by the fat Bluuhbi and the arrogant Nejjul'har. They look at us from their vast ringworlds and their tall research spires, and see beasts, inferior beings good only for menial labor.
+
+No more! We don't need their hoards, or their labs. They believe they can think hard enough to stay ahead of us? [b]Factories[/b] will win this race - industrialization and hard work - and [b]no one[/b] knows more about industry than we do.
+
+The Overlord invasion can wait. First, we will spread in all directions and put these pigs in their place. Then [b]they[/b] will work for [b]us[/b]...
+>>
 
 RACE_VANGUARD_SCIENTISTS: Nejjul'har
 RACE_VANGUARD_SCIENTISTS_TAGLINE: All particles serve the Overlords.

@@ -17,6 +17,32 @@ void NoRepairNonCore(Event& evt) {
 	}
 }
 
+void ShieldInitMitigation(Event& evt) {
+	auto@ sys = evt.source;
+	auto@ bp = evt.blueprint;
+	Ship@ ship = cast<Ship>(evt.obj);
+	
+	if(!bp.boolean(sys, 0)) {
+		bp.boolean(sys, 0) = true;
+		ship.modShieldCores(sys.variable(SV_ShieldCores));
+		ship.modShieldMitCap(sys.variable(SV_ShieldMitCap));
+		ship.modShieldMitFactor(sys.variable(SV_ShieldMitExponent));
+	}
+}
+
+void ShieldDisableMitigation(Event& evt) {
+	auto@ sys = evt.source;
+	auto@ bp = evt.blueprint;
+	Ship@ ship = cast<Ship>(evt.obj);
+	
+	if(bp.boolean(sys, 0)) {
+		bp.boolean(sys, 0) = false;
+		ship.modShieldCores(-sys.variable(SV_ShieldCores));
+		ship.modShieldMitCap(-sys.variable(SV_ShieldMitCap));
+		ship.modShieldMitFactor(-sys.variable(SV_ShieldMitExponent));
+	}
+}
+
 void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMult) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
@@ -35,12 +61,12 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMu
 	if(shieldFactor != CapacityMult) {
 		double hpMult = (CapacityMult / shieldFactor);
 		double extraHealth = health * hpMult - health;
-		print("Adjusting for multiplier change:");
-		print("Current capacity: " + Capacity);
-		print("Current health: " + health);
-		print("Multipliers: " + shieldFactor + " changing to " + CapacityMult + ", difference " + hpMult);
-		print("Current ship health: " + bp.currentHP);
-		print("Extra capacity: " + extraHealth);
+//		print("Adjusting for multiplier change:");
+//		print("Current capacity: " + Capacity);
+//		print("Current health: " + health);
+//		print("Multipliers: " + shieldFactor + " changing to " + CapacityMult + ", difference " + hpMult);
+//		print("Current ship health: " + bp.currentHP);
+//		print("Extra capacity: " + extraHealth);
 		bp.currentHP -= extraHealth;
 		bp.decimal(sys, 2) = CapacityMult;
 	}
@@ -109,13 +135,10 @@ void sync_health(const Subsystem& sys, Blueprint& bp, double health, double maxH
 	}
 }
 
-DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, double Capacity, double UseBleedthrough) {
-	// This allows us to decide if forcefields can be penetrated by shield bleedthrough, like that from Progenitor drones.
-	bool hasShieldBleedthrough = UseBleedthrough != 0;
-	
+DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, double Capacity) {	
 	auto@ sys = evt.destination;
 	auto@ bp = evt.blueprint;
-	// Has the emitter been destroyed? Are we hitting the emitter;
+	// Has the emitter been destroyed? Are we hitting the emitter? Does the emitter even exist?
 	if(sys.type.hasCore) {
 		if(position == sys.core) {
 			return DE_Continue; // This is the emitter, kill it!
@@ -123,11 +146,6 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 1) {
 			return DE_SkipHex; // Emitter is offline. Forcefields are offline. Everything's offline.
 		}
-	}
-	
-	// Can we bypass this forcefield type?
-	if(evt.flags & DF_FullShieldBleedthrough != 0 && hasShieldBleedthrough) {
-		return DE_SkipHex;
 	}
 	
 	double health = bp.decimal(sys, 0);
@@ -138,14 +156,24 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 
 	//Prevent internal-only effects (I have no idea what this does, just copy-pasting from armor scripts)
 	evt.flags &= ~ReachedInternals;
+
+	// Check if we're getting hit by a shield-piercing weapon. We're using an oversimplified version of mitigation here because forcefields don't technically *have* mitigation.
+	bool hasPenetration = evt.flags & DF_QuadShieldPenetration != 0;
 	
 	// Do damage math.
 	double dmg = evt.damage;
+	if(hasPenetration) {
+		dmg /= 2.0; // Half of the damage moves on as bleedthrough. No, it's not supposed to be a quarter or three quarters or anything else...
+		evt.damage /= 2.0; // ... It's complicated. See the rest of this block.
+	}
 	dmg = max(dmg - health, 0.0);
 	bp.currentHP -= evt.damage - dmg; // This should tell the blueprint that it's been damaged. I think.
 	health = max(health - evt.damage, 0.0);
 	
 	// Store the damage and health values.
+
+	if(hasPenetration)
+		dmg += evt.damage; // We need the extra damage from the bleedthrough.
 	evt.damage = dmg;
 	bp.decimal(sys, 0) = health;
 	

@@ -18,6 +18,7 @@ import icons;
 from overlays.Construction import ConstructionOverlay;
 from obj_selection import isSelected, selectObject, clearSelection, addToSelection;
 from tabs.GalaxyTab import zoomTabTo, openOverlay, toggleSupportOverlay;
+import ABEM_data;
 
 bool SHIP_INFOBAR_EXPANDED = false;
 
@@ -376,7 +377,7 @@ class ShipInfoBar : InfoBar {
 
 		double repair = 0.0, combatMod = 1.0;
 		if(design !is null) {
-			repair = design.total(SV_Repair);
+			repair = ship.blueprint.getEfficiencySum(SV_Repair);
 			combatMod *= min(bp.shipEffectiveness, 1.0);
 		}
 
@@ -395,12 +396,18 @@ class ShipInfoBar : InfoBar {
 
 			shield.progress = min(curShield / max(maxShield, 0.01), 1.0);
 			shield.text = standardize(curShield, true);
-
-			double shieldRegen = design.total(SV_ShieldRegen);
+			// DOF - Shielding
+			double shieldRegen = ship.blueprint.getEfficiencySum(SV_ShieldRegen);
+			double shieldMit = ship.mitigation;
+			double shieldBlock = ship.blueprint.getEfficiencySum(SV_Chance)*100.0;
+			double shieldAbsorb = shieldRegen * (1.0 + shieldMit);
 			tt += "\n\n";
 			tt += format(locale::TT_SHIP_SHIELD,
 				standardize(curShield), standardize(maxShield),
-				standardize(shieldRegen));
+				standardize(shieldRegen), standardize(shieldMit*100.0),
+				standardize(shieldBlock));
+			tt += "\n\n";
+			tt += format(locale::TT_SHIP_SHIELD_ABSORB, standardize(shieldAbsorb));
 		}
 		else {
 			shield.visible = false;

@@ -12,7 +12,7 @@ Subsystem: Railgun
 
 	Size := HexSize * Hexes
 
-	Range := (Size*2) + 525
+	Range := ((Size*2) + 525) * 2
 	Damage := Size * if(MuonEnhanced > 0, 4.0, 3.25)
 	Reload := 2.05 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)

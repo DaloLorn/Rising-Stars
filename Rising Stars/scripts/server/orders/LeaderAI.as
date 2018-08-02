@@ -110,7 +110,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	bool allowSatellites = false;
 
 	bool FreeRaiding = false;
-	double RaidRange = 1000.0;
+	// DOF - Scaling: Adjusting for increased galaxy sizing
+	double RaidRange = 3000.0;
 
 	//Whether to automaticall pluck supports of planets
 	bool autoFill = true;
@@ -502,16 +503,14 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			Ship@ ship = cast<Ship>(obj);
 			auto@ bp = ship.blueprint;
 
-			//hp = bp.currentHP * bp.hpFactor + ship.Shield;
-			//DOF
+			// DOF - Fleet Calc
 			double DestroyerMod = bp.design.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
-			hp = (bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1.0)));
-			
-			dps = ship.DPS * bp.shipEffectiveness;
+			hp = (bp.currentHP * bp.hpFactor + (bp.getEfficiencySum(SV_Repair)/3.0*pow(max(log10(bp.getEfficiencySum(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen))*2.0, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance))) + (bp.design.size/20 * bp.getEfficiencySum(SV_Instances) * (bp.getEfficiencySum(SV_Repair)/3.0 + bp.design.total(SV_ShieldRegen)*(1 - ship.mitigation)/(1 - bp.getEfficiencySum(SV_Chance))));
 
-			//maxHP = bp.design.totalHP - bp.removedHP + ship.MaxShield;
-			//DOF
-			maxHP = (bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0,1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)));
+			dps = ship.DPS * bp.shipEffectiveness;
+			
+			// DOF - Fleet Calc
+			maxHP = (bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0,1.0)) * (ship.MaxShield / (1.0 - bp.design.total(SV_DummyMitigation)/100)) / (1.0 - bp.design.total(SV_Chance))) + (bp.design.size/20 * bp.design.total(SV_Instances) * (bp.design.total(SV_Repair)/3.0 + bp.design.total(SV_ShieldRegen)*(1.0 - bp.design.total(SV_DummyMitigation)/100.0))/(1.0 - bp.design.total(SV_Chance)));
 
 			maxDPS = ship.MaxDPS;
 		}
@@ -523,21 +522,20 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			dps = maxDPS * orb.efficiency;
 		}
 
-		for(uint i = 0, cnt = supports.length; i < cnt; ++i) {
+		for(uint i = 0; i < supports.length; ++i) {
 			Ship@ ship = cast<Ship>(supports[i]);
 			if(ship !is null) {
 				auto@ bp = ship.blueprint;
-				//hp += bp.currentHP * bp.hpFactor + ship.Shield;
-				//DOF
+				// DOF - Fleet Calc
 				ShieldBehaviorMod = 1.0;
 				auto@ settings = cast<const DesignSettings>(bp.design.settings);
 				if (settings !is null && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.Shield / (1.0 - bp.design.total(SV_Chance)) * (ship.Shield/max(ship.MaxShield, 1.0)))) * ShieldBehaviorMod;
-
+				
+				hp += ((bp.currentHP * bp.hpFactor + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
+				
 				dps += ship.DPS * bp.shipEffectiveness;
-				//maxHP += bp.design.totalHP - bp.removedHP + ship.MaxShield;
-				//DOF
-				maxHP += ((bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
+				// DOF - Fleet Calc
+				maxHP += ((bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen))*2.0, 1.0)) * (ship.MaxShield / (1.0 - bp.design.total(SV_DummyMitigation)/100)) / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
 				maxDPS += ship.MaxDPS;
 			}
 		}
@@ -1410,6 +1408,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 		calculateSightRange(obj);
 		formation.reset(obj.radius * 2.0, getFormationRadius(obj));
+		// DOF - Increased min radius for supports that are larger than ourselves.
+		formation.reset(obj.radius * 3.0, getFormationRadius(obj));
 		leaderChangeOwner(obj, null, obj.owner);
 
 		AllowFillFrom = obj.isPlanet;
@@ -1592,7 +1592,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		//Refresh formations
 		if(formationDelta && !obj.inCombat) {
 			if(!obj.hasMover || !obj.isMoving) {
-				double minRad = obj.radius + 2.0;
+				// DOF - Increasing radius for supports larger than flagship
+				double minRad = obj.radius * 3.0;
 				double maxRad = getFormationRadius(obj);
 				formation.reset(minRad, maxRad);
 				for(uint i = 0, cnt = supports.length; i < cnt; ++i) {

@@ -14,7 +14,7 @@ Subsystem: PulseBolt
 	BeamDPS := 10.0 * Size
 	Duration := 1
 	Cooldown := 0
-	Range := Size^0.4 * 6.0
+	Range := (Size^0.4 * 6.0) * 2
 	Tracking := 1.0
 	BaseSupplyCost := Size * 7.0
 	FireArc := 0.4 * pi

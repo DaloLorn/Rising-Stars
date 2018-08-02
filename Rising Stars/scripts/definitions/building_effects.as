@@ -21,7 +21,7 @@ tidy final class TriggerStartConstruction : BuildingHook {
 	}
 
 #section server
-	void startConstruction(Object& obj, SurfaceBuilding@ bld) const {
+	void startConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const {
 		if(eff !is null)
 			eff.activate(obj, obj.owner);
 	}
@@ -43,7 +43,7 @@ tidy final class TriggerCancelConstruction : BuildingHook {
 	}
 
 #section server
-	void cancelConstruction(Object& obj, SurfaceBuilding@ bld) const {
+	void cancelConstruction(Object& obj, SurfaceBuilding@ bld, any@ data) const {
 		if(eff !is null)
 			eff.activate(obj, obj.owner);
 	}
@@ -65,7 +65,7 @@ tidy final class TriggerConstructed : BuildingHook {
 	}
 
 #section server
-	void complete(Object& obj, SurfaceBuilding@ bld) const {
+	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const {
 		if(eff !is null)
 			eff.activate(obj, obj.owner);
 	}
@@ -159,17 +159,7 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 	}
 
 #section server
-	any@ getData(SurfaceBuilding@ bld) const {
-		auto@ data = bld.data[hookIndex];
-		IfData@ info;
-		data.retrieve(@info);
-		if(info is null)
-			return data;
-		else return info.data;
-	}
-
-	void complete(Object& obj, SurfaceBuilding@ bld) const {
-		auto@ data = getData(bld);
+	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const {
 		ConsumeData info;
 		info.enabled = false;
 		data.store(@info);
@@ -186,9 +176,9 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 		}
 	}
 
-	void remove(Object& obj, SurfaceBuilding@ bld) const override {
+	void remove(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
 		ConsumeData@ info;
-		getData(bld).retrieve(@info);
+		data.retrieve(@info);
 
 		bld.disabled = true;
 		bld.delta = true;
@@ -202,8 +192,7 @@ tidy final class ActiveWhenCargoConsumed : GenericEffect {
 		}
 	}
 
-	void tick(Object& obj, SurfaceBuilding@ bld, double time) const {
-		auto@ data = getData(bld);
+	void tick(Object& obj, SurfaceBuilding@ bld, double time, any@ data) const {
 		ConsumeData@ info;
 		data.retrieve(@info);
 

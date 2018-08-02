@@ -3,7 +3,7 @@ Ability: BoardingParty
 	Description: #ABL_BOARDING_PARTY_DESC
 	Icon: ABEMShuttle
 
-	Range: 300
+	Range: 600
 	Hotkey: B
 
 	Target: targ = Object

@@ -13,6 +13,7 @@ Technology: Repair
 	Time Cost: 60
 
 	AddModifier(RepairFactor(1.5))
+	ModAttribute(SystemRepairMod, AddFactor, 0.5)
 
 Technology: Repair2
 	Name: #R_IMP_REPAIR2
@@ -29,3 +30,4 @@ Technology: Repair2
 	Time Cost: 80
 
 	AddModifier( RepairFactor(2.0) )
+	ModAttribute(SystemRepairMod, AddFactor, 1)

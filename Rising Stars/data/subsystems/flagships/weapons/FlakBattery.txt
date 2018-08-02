@@ -13,7 +13,7 @@ Subsystem: FlakBattery
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
-	Range := (ShipSize^(1.0/2.5) * 10 + 20) * 3.5
+	Range := (ShipSize^(1.0/2.5) * 10 + 20) * 3.5 * 2
 
 	Damage := Size * 4.0
 	Reload := 0.3

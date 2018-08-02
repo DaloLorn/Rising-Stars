@@ -12,6 +12,8 @@ Subsystem: MareniumGen
 
 	Size := HexSize * Hexes
 	BasePower := 20 * Size
+	PowerMod := 1
+	Power := BasePower * PowerMod
 	MareniumPower := Power
 
 	BaseSupplyCapacity := Size * 300
