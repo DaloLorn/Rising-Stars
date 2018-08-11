@@ -816,6 +816,9 @@ tidy class SurfaceGrid : PlanetSurface {
 	void downgradeCivilian(Object& obj, SurfaceBuilding@ bld) {
 		destroy(obj, bld);
 		@bld.type = bld.type.base;
+		if(bld.type.hooks.length > 0) {
+			@bld.data = array<any>(bld.type.hooks.length);
+		}
 		complete(obj, bld);
 
 		delta = true;
@@ -1441,6 +1444,9 @@ tidy class SurfaceGrid : PlanetSurface {
 						@bld.type = bld.type.base;
 						destroy(obj, bld);
 						@bld.type = prev;
+						if(bld.type.hooks.length > 0) {
+							@bld.data = array<any>(bld.type.hooks.length);
+						}
 					}
 					complete(obj, bld);
 				}
