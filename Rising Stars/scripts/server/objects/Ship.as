@@ -163,6 +163,9 @@ tidy class ShipScript {
 		file << bonusShield;
 		file << supplyConsumeFactor;
 		file << bonusEffectiveness;
+		file << shieldMitCap;
+		file << shieldMitExponent;
+		file << shieldCores;
 	}
 	
 	void load(Ship& ship, SaveFile& file) {
@@ -268,6 +271,10 @@ tidy class ShipScript {
 
 		if(ship.hasSupportAI)
 			ship.supportPostLoad();
+			
+		file >> shieldMitCap;
+		file >> shieldMitExponent;
+		file >> shieldCores;
 	}
 
 	bool get_isStation(Ship& ship) {
