@@ -137,7 +137,7 @@ class MaintainMiningBase : AbilityHook {
             hauler.Cargo = threshold.decimal;
             @hauler.Origin = abl.obj;
             hauler.rotation = quaterniond_fromVecToVec(vec3d_front(), hauler.position - abl.obj.position, vec3d_up());
-            hauler.maxAcceleration = 2.5 * abl.obj.owner.ModSpeed.value * abl.obj.owner.ColonizerSpeed;
+            hauler.maxAcceleration = (2.5 + 8.409 * config::NEW_MOVEMENT) * 6.3636 * abl.obj.owner.ModSpeed.value * abl.obj.owner.ColonizerSpeed;
             hauler.Health *= abl.obj.owner.ModHP.value;
             hauler.finalizeCreation();
         }

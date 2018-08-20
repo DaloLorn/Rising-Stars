@@ -4651,7 +4651,7 @@ class SpawnFreighters : GenericEffect {
 			colShip.VisitHostile = visit_hostile.boolean;
 			@colShip.Origin = obj;
 			colShip.rotation = quaterniond_fromVecToVec(vec3d_front(), colShip.position - obj.position, vec3d_up());
-			colShip.maxAcceleration = 2.5 * obj.owner.ModSpeed.value * obj.owner.ColonizerSpeed;
+			colShip.maxAcceleration = (2.5 + 8.409 * config::NEW_MOVEMENT) * 6.3636 * obj.owner.ModSpeed.value * obj.owner.ColonizerSpeed;
 			colShip.Health *= obj.owner.ModHP.value;
 			colShip.finalizeCreation();
 		}
