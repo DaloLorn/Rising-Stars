@@ -57,7 +57,7 @@ final class SystemDesc : Serializable, Savable {
 	uint index;
 	string name;
 	vec3d position;
-	double radius;
+	private double radius;
 	Region@ object;
 	uint[] adjacent;
 	double[] adjacentDist;
@@ -68,6 +68,17 @@ final class SystemDesc : Serializable, Savable {
 
 	array<uint> territories(getEmpireCount());
 	array<uint> visibleTerritory(getEmpireCount());
+
+	double get_radius() const {
+		return radius;
+	}
+
+	void set_radius(double Radius) {
+		radius = Radius;
+		if(object !is null) {
+			object.OuterRadius = radius;
+		}
+	}
 
 	void read(Message& msg) {
 		index = msg.readSmall();
