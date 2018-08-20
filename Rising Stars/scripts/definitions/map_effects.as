@@ -970,7 +970,7 @@ class MakeAnomaly : MapHook {
 		if(gen is null)
 			@gen = getDistributedAnomalyType();
 
-		vec2d rpos = random2d(150.0, system.radius - 250.0);
+		vec2d rpos = random2d(1500.0, system.radius - 2500.0);
 		vec3d pos = system.position + vec3d(rpos.x, randomd(-50.0, 50.0), rpos.y);
 		Anomaly@ anomaly = createAnomaly(pos, gen.id);
 		@current = anomaly;
