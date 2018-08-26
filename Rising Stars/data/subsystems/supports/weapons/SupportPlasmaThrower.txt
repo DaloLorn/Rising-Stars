@@ -25,6 +25,31 @@ Subsystem: SupportPlasmaThrower
 	Modifier: DamageMult(factor)
 		DamageOverTime := DamageOverTime * factor
 
+	Modifier: RangeFactor(factor)
+		Range := Range + Base::Range * (factor - 1)
+	Modifier: RangeMult(factor)
+		Range := Range * factor
+	
+	Modifier: ReloadFactor(factor)
+		Reload := Reload + Base::Reload * (factor - 1)
+	Modifier: ReloadMult(factor)
+		Reload := Reload * factor
+		
+	Modifier: SpeedFactor(factor)
+		Speed := Speed + Base::Speed * (factor - 1)
+	Modifier: SpeedMult(factor)
+		Speed := Speed * factor
+	
+	Modifier: TrackingFactor(factor)
+		Tracking := Tracking + Base::Tracking * (factor - 1)
+	Modifier: TrackingMult(factor)
+		Tracking := Tracking * factor
+	
+	Modifier: SpreadFactor(factor)
+		Spread := Spread + Base::Spread * (factor - 1)
+	Modifier: SpreadMult(factor)
+		Spread := Spread * factor
+
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
 	Speed := max(200, Range / 10) * 2
 	Spread := 0.015 / max(Range / 600, 1)
