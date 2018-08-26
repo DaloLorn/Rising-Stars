@@ -1662,5 +1662,8 @@
 				]
 			]
 		}
+	],
+	"appliedSubsystems": [
+		"RevenantHull"
 	]
 }

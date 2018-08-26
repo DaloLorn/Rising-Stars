@@ -1,0 +1,18 @@
+Subsystem: RevenantHull
+	Name: #S_GUARDIANHULL
+	Description: #S_GUARDIANHULL_DESC
+
+	Tags: Applied:Hull, Category:Hulls, NoCore, Disabled
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #a702cc
+
+	Module: Default
+		Sprite: DesignationIcons::16
+		DrawMode: 3
+
+	Hook: EnableModifier( tag/Weapon::RangeFactor(1.75) )
+	Hook: EnableModifier( BuildCostFactor(0.5) )
+	Hook: EnableModifier( SupportCapacityMult(1.25) )
+	Hook: EnableModifier( ThrustMult(2.0) )
+	Hook: EnableModifier( HyperSpeedMult(1.5) )
