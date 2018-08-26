@@ -17,8 +17,7 @@ Module: RevenantCannon
 	Strategic Icon: OrbitalIcons::6
 
 	CannotBuildManually()
-	EnableModifier( tag/Weapon::RangeFactor(1.75) )
-	EnableModifier( tag/Weapon::SpeedFactor(1.75) )
+	EnableModifier( tag/Weapon::RangeMult(1.75) )
 
 	OnDisable( SpawnArtifact(RevenantCannon) )
 	OnDisable( Destroy() )

@@ -17,8 +17,8 @@ Module: RevenantEngine
 	Strategic Icon: OrbitalIcons::27
 
 	CannotBuildManually()
-	EnableModifier( ThrustFactor(2.0) )
-	EnableModifier( Hyperdrive::SpeedFactor(1.5) )
+	EnableModifier( ThrustMult(2.0) )
+	EnableModifier( HyperSpeedMult(1.5) )
 
 	OnDisable( SpawnArtifact(RevenantEngine) )
 	OnDisable( Destroy() )

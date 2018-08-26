@@ -17,7 +17,7 @@ Module: RevenantCore
 	Strategic Icon: OrbitalIcons::26
 
 	CannotBuildManually()
-	EnableModifier( SupportCapacityFactor(1.25) )
+	EnableModifier( SupportCapacityMult(1.25) )
 
 	OnDisable( SpawnArtifact(RevenantCore) )
 	OnDisable( Destroy() )
