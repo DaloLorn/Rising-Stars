@@ -9,6 +9,7 @@ Module: DefenseTurrets
 	Armor: 1500
 	Maintenance: 10
 	Build Cost: 200
+	Labor Cost: 20
 	Strategic Icon: techRailgun
 
 	RequireNot(RequireOnOrbital(Embassy))

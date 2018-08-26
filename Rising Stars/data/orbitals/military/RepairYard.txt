@@ -11,6 +11,7 @@ Module: RepairYard
 	Armor: 1500
 	Maintenance: 10
 	Build Cost: 200
+	Labor Cost: 10
 	
 	RequireEither(RequireEither(RequireEither(RequireOnOrbital(EconomyCore), RequireOnOrbital(MilitaryCore)), RequireOnOrbital(Mainframe)), RequireOnOrbital(Shipyard))
 

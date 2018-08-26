@@ -9,6 +9,7 @@ Module: ArmorPlating
 	Armor: 15000
 	Maintenance: 5
 	Build Cost: 200
+	Labor Cost: 20
 	Strategic Icon: techArmor
 	ConsumeCargo(Ore, 250)
 	ABEM_orbitals::IfHasModule(AddStatus(ArmorPlating), MilitaryCore)

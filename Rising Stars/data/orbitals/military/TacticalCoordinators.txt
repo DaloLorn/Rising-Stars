@@ -9,6 +9,7 @@ Module: TacticalCoordinators
 	Armor: 1500
 	Maintenance: 15
 	Build Cost: 200
+	Labor Cost: 20
 	Strategic Icon: ActionBarIcons::2
 	AddFleetCommand(128)
 	ConsumeCargo(Ore, 250)

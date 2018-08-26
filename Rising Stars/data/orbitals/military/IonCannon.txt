@@ -7,6 +7,7 @@ Module: IonCannon
 	Armor: 1500
 	Maintenance: 50
 	Build Cost: 500
+	Labor Cost: 15
 	Strategic Icon: HexagonSubsystems::6 * #ff8d00
 	Distant Icon: HexagonSubsystems::6 * #ff8d00
 	GrantAbility(IonCannon)

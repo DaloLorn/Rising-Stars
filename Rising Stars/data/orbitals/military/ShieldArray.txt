@@ -9,6 +9,7 @@ Module: ShieldArray
 	Armor: 1500
 	Maintenance: 20
 	Build Cost: 200
+	Labor Cost: 25
 	Strategic Icon: ShieldGen
 	Shield Capacity: 6000
 	Shield Regeneration: 6.25
