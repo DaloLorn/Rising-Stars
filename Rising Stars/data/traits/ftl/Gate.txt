@@ -30,3 +30,6 @@ Trait: Gate
 
 	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	ModAttribute(GateConst, Add, 1)
+	SpawnShip(Gate)
+	SpawnShip(Gate)
+	SpawnShip(Gate)
