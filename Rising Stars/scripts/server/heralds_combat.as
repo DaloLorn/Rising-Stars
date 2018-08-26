@@ -195,16 +195,23 @@ void DamageShields(Event& evt, double Damage) {
 		return;
 
 	Ship@ ship = cast<Ship>(evt.target);
+
+	// Shield Mitigation
+	double Mitigation = ship.mitigation;
+
 	if(ship.MaxShield > 0) {
-		ship.shieldDamage(Damage);
+		ship.shieldDamage(Damage*(1-Mitigation/100));
+		
 		return;
 	}
 
-	//Special case for shield harmonizers
+	// Special case for shield harmonizers
 	if(ship.blueprint.design.hasTag(ST_ShieldHarmonizer)) {
 		Ship@ leader = cast<Ship>(ship.Leader);
-		if(leader !is null)
-			leader.shieldDamage(Damage);
+		if(leader !is null) {
+			Mitigation = leader.mitigation;
+			leader.shieldDamage(Damage*(1-Mitigation/100));
+		}
 	}
 };
 
@@ -219,12 +226,15 @@ DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direc
 	if(shield < 0)
 		return DE_Continue;
 
+	//Shield Mitigation
+	double FlagshipMitigation = flagship.mitigation;
+
 	double workingPct = double(evt.destination_status.workingHexes) / double(evt.destination.hexCount);
 	double absorb = min(shield, Percentage * evt.damage * workingPct);
 
 	if(absorb > 0) {
 		evt.damage -= absorb;
-		flagship.shieldDamage(absorb);
+		flagship.shieldDamage(absorb*(1-FlagshipMitigation/100));
 	}
 	return DE_Continue;
 }
@@ -297,8 +307,25 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 		if(dist > 0.0)
 			deal *= 1.0 - (dist / Radius);
 
-		if(target.isShip)
-			cast<Ship>(target).damageAllHexes(deal, source=source);
+		if(target.isShip) {
+			Ship@ ship = cast<Ship>(target);
+			// Shield mitigation
+			if(ship.Shield > 0) {
+				//print(deal);
+				double Mitigation = ship.mitigation;
+				//print(Mitigation);
+				double ShieldDmg = deal;
+				//ShieldDmg *= (Mitigation/100);
+				//print(ShieldDmg);
+
+				deal *= (1-Mitigation/100);
+				//print(deal);
+				ship.shieldDamage(ShieldDmg);
+			}
+			// Divide damage by hex count.
+			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes;
+			ship.damageAllHexes(deal, source=source);
+		}
 	}
 }
 
