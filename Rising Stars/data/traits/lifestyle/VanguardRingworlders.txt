@@ -42,6 +42,7 @@ Trait: VanguardRingworlders
 	ReplaceTechnologyNodes(DecaySpeed, Construction)
 	ModEmpireAttribute(VictoryType, Add, 1)
 	ModAttribute(ForbidColonization, Add, 1)
+	ModAttribute(CivBldConstructionRate, Multiply, 5)
 
 	ReplaceTechnologyNodes(Terraforming, BluuhbiTerraforming)
 
