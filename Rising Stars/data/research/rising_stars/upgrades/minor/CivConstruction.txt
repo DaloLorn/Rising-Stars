@@ -12,7 +12,7 @@ Technology: CivConstruction
 	Category: Minor Upgrades
 	Symbol: BuildingSprites::0
 
-	ModAttribute(CivBldConstructionRate, Multiply, 1.5)
+	ModAttribute(CivBldConstructionRate, AddFactor, 0.5)
 
 Technology: CivConstruction2
 	Name: #R_IMP_CIV_CONSTRUCT2
@@ -27,4 +27,4 @@ Technology: CivConstruction2
 	Category: Medium Upgrades
 	Symbol: BuildingSprites::0
 
-	ModAttribute(CivBldConstructionRate, Multiply, 2)
+	ModAttribute(CivBldConstructionRate, AddFactor, 1)
