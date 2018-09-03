@@ -147,6 +147,10 @@ NGTT_RESEARCH_DECAY_MULT: <<
 
 	Can be set to 0%, preventing research decay altogether.
 >>
+NG_ENABLE_VANGUARD_VICTORY: Enable Vanguard Victory
+NGTT_ENABLE_VANGUARD_VICTORY: <<
+	Allows Vanguard lifestyles to achieve Vanguard Victory by constructing three Portal Stabilizers on three separate Ringworlds or Artificial Planetoids.
+>>
 DOF_MISSING_BASE: <<
 	You do not appear to have the latest version of the DOF support library installed. This may cause certain assets to fail to load, and will also prevent various shipsets from functioning.
 >>

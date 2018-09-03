@@ -211,3 +211,6 @@ IS_SCENARIO: 0
 
 //Whether New Movement Physics should be fully functional.
 NEW_MOVEMENT: 1
+
+//Vanguard victory
+ENABLE_VANGUARD_VICTORY: 1
