@@ -21,3 +21,4 @@ Building: VanguardPortal
 	ConflictBuilding(VanguardPortal)
 	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
 	RequireUnlockTag(VanguardUnlocks)
+	RequireConfigOption(ENABLE_VANGUARD_VICTORY)

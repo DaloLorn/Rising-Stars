@@ -46,6 +46,7 @@ class GamePage : GameSettingsPage {
 		Toggle(locale::NG_ENABLE_REVENANT_PARTS, "ENABLE_REVENANT_PARTS", tooltip=locale::NGTT_ENABLE_REVENANT_PARTS);
 		if(hasDLC("Heralds"))
 			Toggle(locale::NG_ENABLE_INFLUENCE_VICTORY, "ENABLE_INFLUENCE_VICTORY", tooltip=locale::NGTT_ENABLE_INFLUENCE_VICTORY);
+		Toggle(locale::NG_ENABLE_VANGUARD_VICTORY, "ENABLE_VANGUARD_VICTORY", tooltip=locale::NGTT_ENABLE_VANGUARD_VICTORY);
 
 		//emptyline();
 		//Title(locale::NG_SENSOR_OPTIONS);
