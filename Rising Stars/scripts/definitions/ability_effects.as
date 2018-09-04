@@ -800,9 +800,7 @@ double getMassFor(Object& obj) {
 		case OT_Ship:
 			return cast<Ship>(obj).getBaseMass();
 		case OT_Orbital: {
-			auto@ mod = getOrbitalModule(cast<Orbital>(obj).coreModule);
-			if(mod !is null && mod.mass >= 0)
-				return mod.mass;
+			return cast<Orbital>(obj).baseMass;
 		}
 	}
 #section all
@@ -955,12 +953,20 @@ class TractorObject : AbilityHook {
 				prev.acceleration = vec3d();
 				prev.remakeStandardOrbit();
 			}
-			if(abl.obj !is null && abl.obj.isShip)
-				cast<Ship>(abl.obj).modMass(-getMassFor(prev));
+			if(abl.obj !is null) {
+				if(abl.obj.isShip)
+					cast<Ship>(abl.obj).modMass(-getMassFor(prev));
+				else if(abl.obj.isOrbital)
+					cast<Orbital>(abl.obj).modMass(-getMassFor(prev));
+			}
 		}
 		if(next !is null) {
-			if(abl.obj !is null && abl.obj.isShip)
-				cast<Ship>(abl.obj).modMass(getMassFor(next));
+			if(abl.obj !is null) {
+				if(abl.obj.isShip)
+					cast<Ship>(abl.obj).modMass(getMassFor(next));
+				else if(abl.obj.isOrbital)
+					cast<Orbital>(abl.obj).modMass(getMassFor(next));
+			}
 		}
 
 		TractorData@ td;

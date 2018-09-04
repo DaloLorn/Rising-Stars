@@ -27,6 +27,7 @@ tidy class OrbitalScript {
 	double ShieldRegen = 0;
 	double DR = 2.5;
 	double DPS = 0;
+	double massBonus = 0;
 
 	Orbital@ getMaster() {
 		return master;
@@ -176,6 +177,18 @@ tidy class OrbitalScript {
 		return mod.type.id;
 	}
 
+	double get_mass(Orbital& obj) {
+		return max(obj.baseMass() + massBonus, 0.01f);
+	}
+
+	double get_baseMass(Orbital& obj) {
+		double result = 0;
+		for(uint i = 0; i < sections.length; i++) {
+			result += sections[i].type.mass;
+		}
+		return max(result, 0.01f);
+	}
+
 	bool get_isStandalone() {
 		OrbitalSection@ mod = core;
 		if(mod is null)
@@ -311,6 +324,7 @@ tidy class OrbitalScript {
 		msg >> disabled;
 		msg >> master;
 		msg >> derelict;
+		msg >> massBonus;
 	}
 
 	void _readHP(Orbital& obj, Message& msg) {

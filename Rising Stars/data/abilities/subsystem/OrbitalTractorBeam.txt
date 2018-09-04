@@ -9,7 +9,7 @@ Ability: OrbitalTractorBeam
 	Either(ability_effects::TargetFilterAllowTractor(targ), ABEM_hooks::TargetFilterStatus(targ, ExplicitlyTractorable))
 
 	IsToggleTarget(targ, Check Range = False, Channels = False)
-	TractorObject(targ, Max Distance = 1500)
+	TractorObject(targ, Max Distance = 1500, Allow FTL = True)
 	PersistentBeamEffect(targ, #b8b8d8, Tractor)
 
 	ABEM_hooks::TargetFilterNotRemnantOrPirate(targ)

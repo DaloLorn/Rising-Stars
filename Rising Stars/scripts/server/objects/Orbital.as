@@ -40,6 +40,7 @@ tidy class OrbitalScript {
 	double LastMaint = 0;
 	double DR = 2.5;
 	double DPS = 0;
+	double massBonus = 0;
 
 	Orbital@ master;
 
@@ -106,6 +107,7 @@ tidy class OrbitalScript {
 		}
 
 		file << cast<Savable>(obj.Mover);
+		file << massBonus;
 	}
 
 	void load(Orbital& obj, SaveFile& file) {
@@ -180,6 +182,7 @@ tidy class OrbitalScript {
 			file >> cast<Savable>(obj.Mover);
 		else
 			obj.maxAcceleration = 0;
+		file >> massBonus;
 	}
 
 	void makeFree(Orbital& obj) {
@@ -286,6 +289,23 @@ tidy class OrbitalScript {
 		deltaHP = true;
 	}
 
+	double get_mass(Orbital& obj) {
+		return max(obj.baseMass() + massBonus, 0.01f);
+	}
+
+	double get_baseMass(Orbital& obj) {
+		double result = 0;
+		for(uint i = 0; i < sections.length; i++) {
+			result += sections[i].type.mass;
+		}
+		return max(result, 0.01f);
+	}
+
+	void modMass(double value) {
+		massBonus += value;
+		delta = true;
+	}
+
 	void _write(const Orbital& obj, Message& msg) {
 		uint cnt = sections.length;
 		msg.writeSmall(cnt);
@@ -295,6 +315,7 @@ tidy class OrbitalScript {
 		msg << disabled;
 		msg << master;
 		msg << derelict;
+		msg << massBonus;
 	}
 
 	void _writeHP(const Orbital& obj, Message& msg) {

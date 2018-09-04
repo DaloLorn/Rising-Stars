@@ -171,6 +171,8 @@ local visible:
 	safe double get_shieldMod();
 	safe double get_dps();
 	safe double get_efficiency();
+	safe double get_mass();
+	safe double get_baseMass();
 	safe vec3d get_strategicIconPosition() const;
 	double getValue(uint id);
 	const Design@ getDesign(uint id);
@@ -199,6 +201,7 @@ server:
 	void modMaxHealth(double value);
 	void modMaxShield(double value);
 	void modShieldRegen(double value);
+	void modMass(double value);
 	void modDR(double value);
 	void triggerDelta();
 	void makeFree();
