@@ -807,6 +807,24 @@ double getMassFor(Object& obj) {
 	return 20 * sqr(obj.radius);
 }
 
+boolean checkFTLAllowed(Object& obj) {
+#section server
+	switch(obj.type) {
+		case OT_Artifact:
+		case OT_Asteroid:
+		case OT_Ship:
+			return true;
+		case OT_Orbital: {
+			OrbitalSection@[] modules = cast<Orbital>(obj).getSections();
+			for(uint i = 0; i < modules.length; i++) {
+				if(!modules[i].type.canFling)
+					return false;
+			}
+			return true;
+		}
+	}
+}
+
 class TargetFilterAllowTractor : TargetFilter {
 	Argument objTarget(TT_Object);
 
@@ -929,6 +947,7 @@ class TractorObject : AbilityHook {
 	Argument max_distance(AT_Decimal, "200", doc="Maximum distance to tractor.");
 	Argument allow_ftl(AT_Boolean, "False", doc="Whether to allow tractoring in FTL.");
 	Argument allow_portal(AT_Boolean, "True", doc="Whether to allow tractoring through portals like slipstreams, wormholes, gates.");
+	Argument override_no_ftl(AT_Boolean, "False", doc="If tractoring through FTL or portals is allowed, this decides whether non-FTLable objects such as fling beacons can be tractored.")
 
 #section server
 	void create(Ability@ abl, any@ data) const override {
@@ -992,7 +1011,7 @@ class TractorObject : AbilityHook {
 		data.retrieve(@td);
 
 		bool wasPortal = false;
-		if(allow_portal.boolean) {
+		if(allow_portal.boolean && (override_no_ftl.boolean || checkFTLAllowed(target))) {
 			if(td.hasPath && td.pathDest.distanceTo(abl.obj.position) < (abl.obj.velocity.length + abl.obj.radius) * 2.0)
 				wasPortal = true;
 			td.hasPath = abl.obj.hasMovePortal;
@@ -1015,7 +1034,7 @@ class TractorObject : AbilityHook {
 			}
 		}
 
-		if(!allow_ftl.boolean && abl.obj.inFTL) {
+		if((!allow_ftl.boolean || (!override_no_ftl.boolean && !checkFTLAllowed(target))) && abl.obj.inFTL) {
 			Target newTarg = storeTarg;
 			@newTarg.obj = null;
 			abl.changeTarget(objTarg, newTarg);
