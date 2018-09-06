@@ -31,7 +31,7 @@ Module: Mainframe
 	IfInOwnedSpace(RepeatExtended(AddTurret(Missile, Range=900, Damage=25, Reload=1, Speed=300, Tracking=6), Base = 4, Multiply Attribute = StaticDamageFactor), Allow Allies = True) #version>=117
 	IfInOwnedSpace(RepeatExtended(AddTurret(Laser, Range=600, DPS=10, Duration=2, Cooldown=0, Tracking=0.4), Base = 4, Multiply Attribute = StaticDamageFactor), Allow Allies = True) #version>=117
 
-	AddAccelerationBonus(4.0) #version>=117
+	AddAccelerationBonus(8.0) #version>=117
 
 	RepeatExtended(RecordBonusDPS(25), Base = 4, Multiply Attribute = StaticDamageFactor)
 	RepeatExtended(RecordBonusDPS(10), Base = 4, Multiply Attribute = StaticDamageFactor)

@@ -3,7 +3,7 @@ Status: GatePacked
 	Description: #STATUS_GATE_PACKED_DESC
 	Icon: ActionBarIcons::7 * #ff0000
 
-	AddAccelerationBonus(3.0)
+	AddAccelerationBonus(6.0)
 
 	AddBonusHP(-0.5)
 

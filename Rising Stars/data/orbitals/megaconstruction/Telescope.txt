@@ -23,7 +23,7 @@ Module: Telescope
 
 	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(Telescope, AdaptedTelescope))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
-	AddAccelerationBonus(2)
+	AddAccelerationBonus(4)
 	ShowRange(400000, #00ff00)
 	GrantAbility(TelescopeOre)
 

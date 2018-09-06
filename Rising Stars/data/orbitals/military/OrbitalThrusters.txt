@@ -15,6 +15,6 @@ Module: OrbitalThrusters
 
 	RequireEither(RequireEither(RequireOnOrbital(AncientReplicator), RequireOnOrbital(Telescope)), RequireOnOrbital(Mainframe))
 
-	AddAccelerationBonus(2.5)
+	AddAccelerationBonus(5)
 
 	ConsumeCargo(Ore, 250)
