@@ -1209,7 +1209,7 @@ class SpawnArtifactAround : AbilityHook {
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
 		vec3d center = destination.fromConstTarget(targs).point;
 		vec3d point = center;
-		vec2d offset = random2d(radius.fromRange());
+		vec2d offset = random2d(radius.fromRange() * 20);
 		point.x += offset.x;
 		point.z += offset.y;
 
