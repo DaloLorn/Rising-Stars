@@ -27,6 +27,7 @@ Subsystem: FlagshipHull
 
 	Hex.Mass := 0
 	AddPostModifier: AddMass(ShipSize * (1.0 - min(max((ShipTotalHexes - Ship.ExternalHexes) / Sum.HexLimit, 0.0), 1.0)))
+	AddPostModifier: AddMass(if(HexSum.Mass < 0, HexSum.Mass * -1 + 0.01, 0))
 
 	OnCheckErrors: designs::checkGlobalDesign
 
