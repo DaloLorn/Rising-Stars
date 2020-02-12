@@ -27,6 +27,7 @@ Subsystem: SupportHull
 
 	Hex.Mass := 0
 	AddPostModifier: AddMass(ShipSize * (1.0 - max((ShipTotalHexes - Ship.ExternalHexes) / HexLimit, 0.0)))
+	AddPostModifier: AddMass(if(HexSum.Mass < 0, HexSum.Mass * -1 + 0.01, 0))
 
 	Assert: ShipTotalHexes - Ship.ExternalHexes < Sum.HexLimit + 0.001
 		Message: #ERROR_HEX_COUNT
