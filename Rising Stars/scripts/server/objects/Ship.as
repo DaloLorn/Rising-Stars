@@ -44,7 +44,7 @@ tidy class ShipScript {
 	Object@ lastHitBy;
 	Empire@ killCredit;
 	uint bpStatusID = 0;
-	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false, mitDelta = false;
+	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false, mitDelta = false, massDelta = false;
 	int prevSupply = 0;
 	int currentMaintenance = 0;
 	float mass = 0.f;
@@ -310,6 +310,7 @@ tidy class ShipScript {
 	void modMass(Ship& ship, float amount) {
 		massBonus += amount;
 		ship.blueprint.statusID++;
+		massDelta = true;
 	}
 
 	float getMass() {
@@ -518,7 +519,7 @@ tidy class ShipScript {
 	void updateAccel(Ship& ship) {
 		float thrust = curThrust;
 		if(ship.hasLeaderAI) {
-			float leaderAccel = thrust / max(mass + massBonus, 0.01f);
+			float leaderAccel = thrust / getMass();
 			float supportAccel = ship.slowestSupportAccel;
 
 			float resultAccel = leaderAccel;
@@ -532,7 +533,7 @@ tidy class ShipScript {
 		else {
 			if(ship.isRaiding)
 				thrust += ship.blueprint.getEfficiencySum(SV_BoostThrust);
-			float accel = thrust / max(mass + massBonus, 0.01f);
+			float accel = thrust / getMass();
 			ship.maxAcceleration = accel;
 		}
 	}
@@ -545,10 +546,10 @@ tidy class ShipScript {
 		curTurnThrust = ship.blueprint.getEfficiencySum(SV_TurnThrust);
 
 		if(curTurnThrust != 0)
-			ship.rotationSpeed = max(curTurnThrust / max(mass, 0.01f), 0.005f);
+			ship.rotationSpeed = max(curTurnThrust / getMass(), 0.005f);
 
 		if(init)
-			ship.maxAcceleration = curThrust / max(mass + massBonus, 0.01f);
+			ship.maxAcceleration = curThrust / getMass();
 		else
 			updateAccel(ship);
 
@@ -1520,6 +1521,9 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+
+		msg << mass;
+		msg << massBonus;
 	}
 
 	void retrofit(Ship& ship, const Design@ newDesign) {
@@ -1589,6 +1593,8 @@ tidy class ShipScript {
 		msg << shieldCores;
 		msg << shieldMitCap;
 		msg << shieldMitExponent;
+		msg << mass;
+		msg << massBonus;
 	}
 
 	bool prevFTL = false, prevCombat = false;
@@ -1699,6 +1705,14 @@ tidy class ShipScript {
 			msg << shieldCores;
 			msg << shieldMitCap;
 			msg << shieldMitExponent;
+		}
+
+		msg.writeBit(massDelta);
+		if(massDelta) {
+			used = true;
+			massDelta = false;
+			msg << mass;
+			msg << massBonus;
 		}
 
 		return used;

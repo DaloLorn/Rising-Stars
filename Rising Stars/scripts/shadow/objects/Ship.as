@@ -8,6 +8,8 @@ tidy class ShipScript {
 	double shieldMitCap = 0;
 	double shieldMitExponent = 0;
 	double shieldCores = 0;
+	float mass = 0.f;
+	float massBonus = 0.f;
 	
 	bool hasGraphics = false;
 
@@ -27,6 +29,14 @@ tidy class ShipScript {
 			return 0;
 		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - adjustedCores) - 1, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
 		return mitigation;
+	}
+
+	float getMass() {
+		return max(mass + massBonus, 0.01f);
+	}
+
+	float getBaseMass() {
+		return max(mass, 0.01f);
 	}
 
 	double tick(Ship& ship, double time) {
@@ -145,6 +155,9 @@ tidy class ShipScript {
 			ship.activateOrbit();
 			ship.readOrbit(msg);
 		}
+
+		msg >> mass;
+		msg >> massBonus;
 		
 		createGraphics(ship, ship.blueprint.design);
 	}
@@ -187,6 +200,8 @@ tidy class ShipScript {
 		msg >> shieldCores;
 		msg >> shieldMitCap;
 		msg >> shieldMitExponent;
+		msg >> mass;
+		msg >> massBonus;
 	}
 
 	void updateStats(Ship& ship) {
@@ -264,6 +279,10 @@ tidy class ShipScript {
 			msg >> shieldCores;
 			msg >> shieldMitCap;
 			msg >> shieldMitExponent;
+		}
+		if(msg.readBit()) {
+			msg >> mass;
+			msg >> massBonus;
 		}
 	}
 };

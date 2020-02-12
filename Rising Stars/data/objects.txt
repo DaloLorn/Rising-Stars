@@ -37,6 +37,8 @@ visible:
 
 	local safe bool get_isStation();
 	local safe double get_mitigation();
+	local safe float getMass();
+	local safe float getBaseMass();
 	
 remote restricted:
 	void scuttle();
@@ -55,8 +57,6 @@ server:
 	void modSupplyBonus(float amount);
 	void modMass(float amount);
 	void grantDestructionRewards();
-	safe float getMass();
-	safe float getBaseMass();
 	int get_maintenanceCost();
 	void startEffects();
 	void setHoldFire(bool value);

@@ -290,7 +290,7 @@ tidy class OrbitalScript {
 	}
 
 	double get_mass(Orbital& obj) {
-		return max(obj.baseMass() + massBonus, 0.01f);
+		return max(obj.baseMass + massBonus, 0.01f);
 	}
 
 	double get_baseMass(Orbital& obj) {
