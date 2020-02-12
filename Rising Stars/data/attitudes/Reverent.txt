@@ -35,6 +35,7 @@ Attitude: Reverent
 		Threshold: 15
 
 		ModEmpireAttribute(FTLCostFactor, Multiply, 0.7)
+		EnableModifier(FTLCostFactor(0.7))
 
 	Level:
 		Description: #ATT_REVERENT_L5

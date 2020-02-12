@@ -42,7 +42,11 @@ Subsystem: FlagshipHull
 
 	HasFTLCost := 0
 	FTLBuildCost := 0
-	AddPostModifier: AddFTLBuildCost(if(HasFTLCost, ShipSize*0.65, 0)))
+	FTLCostMultiplier := 1
+	AddPostModifier: AddFTLBuildCost(if(HasFTLCost, ShipSize*0.65*FTLCostMultiplier, 0)))
+
+	Modifier: FTLCostFactor(factor)
+		FTLCostMultiplier := FTLCostMultiplier * factor
 
 	Modifier: IncreaseHexLimit(Hexes)
 		HexLimit := HexLimit + Hexes
