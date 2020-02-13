@@ -22,6 +22,6 @@ Module: TradeStationCore
 	Build Cost: 650
 
 	RequireNotManual()
-	OnEnable(ABEM_orbitals::AddModule(TradeStation))
+	ABEM_orbitals::AddModule(TradeStation)
 
 	AI: RegisterForTradeUse(TradeStation)
