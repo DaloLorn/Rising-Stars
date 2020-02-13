@@ -15,10 +15,11 @@ import empire_ai.weasel.Systems;
 import empire_ai.weasel.Planets;
 import empire_ai.weasel.Resources;
 
-import ABEM_data;
-import util.lookup;
 import ai.construction;
 import ai.events;
+
+import ABEM_data;
+import util.lookup;
 
 from ai.orbitals import RegisterForTradeUse;
 
@@ -68,12 +69,16 @@ final class OwnedSystemEvents : IOwnedSystemEvents {
 		 @this.infrastructure = infrastructure;
 	}
 
-	void onOwnedSystemAdded(SystemAI& ai) {
-		infrastructure.registerOwnedSystemAdded(ai);
+	void onOwnedSystemAdded(ref& sender, EventArgs& args) {
+		SystemAI@ ai = cast<SystemAI>(sender);
+		if (ai !is null)
+			infrastructure.registerOwnedSystemAdded(ai);
 	}
 
-	void onOwnedSystemRemoved(SystemAI& ai) {
-		infrastructure.registerOwnedSystemRemoved(ai);
+	void onOwnedSystemRemoved(ref& sender, EventArgs& args) {
+		SystemAI@ ai = cast<SystemAI>(sender);
+		if (ai !is null)
+			infrastructure.registerOwnedSystemRemoved(ai);
 	}
 };
 
@@ -84,12 +89,16 @@ final class OutsideBorderSystemEvents : IOutsideBorderSystemEvents {
 		@this.infrastructure = infrastructure;
 	}
 
-	void onOutsideBorderSystemAdded(SystemAI& ai) {
-		infrastructure.registerOutsideBorderSystemAdded(ai);
+	void onOutsideBorderSystemAdded(ref& sender, EventArgs& args) {
+		SystemAI@ ai = cast<SystemAI>(sender);
+		if (ai !is null)
+			infrastructure.registerOutsideBorderSystemAdded(ai);
 	}
 
-	void onOutsideBorderSystemRemoved(SystemAI& ai) {
-		infrastructure.registerOutsideBorderSystemRemoved(ai);
+	void onOutsideBorderSystemRemoved(ref& sender, EventArgs& args) {
+		SystemAI@ ai = cast<SystemAI>(sender);
+		if (ai !is null)
+			infrastructure.registerOutsideBorderSystemRemoved(ai);
 	}
 };
 
@@ -100,12 +109,16 @@ final class PlanetEvents : IPlanetEvents {
 		@this.infrastructure = infrastructure;
 	}
 
-	void onPlanetAdded(PlanetAI& ai) {
-		infrastructure.registerPlanetAdded(ai);
+	void onPlanetAdded(ref& sender, EventArgs& args) {
+		PlanetAI@ ai = cast<PlanetAI>(sender);
+		if (ai !is null)
+			infrastructure.registerPlanetAdded(ai);
 	}
 
-	void onPlanetRemoved(PlanetAI& ai) {
-		infrastructure.registerPlanetRemoved(ai);
+	void onPlanetRemoved(ref& sender, EventArgs& args) {
+		PlanetAI@ ai = cast<PlanetAI>(sender);
+		if (ai !is null)
+			infrastructure.registerPlanetRemoved(ai);
 	}
 };
 
@@ -276,10 +289,13 @@ final class SystemCheck : Check {
 	SystemCheck(Infrastructure& infrastructure, SystemAI& ai) {
 		super();
 		@this.ai = ai;
+		if (ai.obj.isNebula)
+			_nebulaFlag = infrastructure.identifyNebula(ai.obj);
 	}
 
 	double get_weight() const { return _weight; }
 	bool get_isUnderAttack() const { return _isUnderAttack; }
+	int get_nebulaFlag() const { return _nebulaFlag; }
 	bool get_isBuilding() const { return orders.length > 0; }
 
 	void save(Infrastructure& infrastructure, SaveFile& file) {
@@ -293,6 +309,7 @@ final class SystemCheck : Check {
 		file << _checkInTime;
 		file << _weight;
 		file << _isUnderAttack;
+		file << _nebulaFlag;
 	}
 
 	void load(Infrastructure& infrastructure, SaveFile& file) {
@@ -309,6 +326,7 @@ final class SystemCheck : Check {
 		file >> _checkInTime;
 		file >> _weight;
 		file >> _isUnderAttack;
+		file >> _nebulaFlag;
 	}
 
 	void tick(AI& ai, Infrastructure& infrastructure, double time) {
@@ -736,6 +754,7 @@ final class Infrastructure : AIComponent {
 	//Unlock tracking
 	bool canBuildGate = false;
 	bool canBuildMoonBase = true;
+	bool canBuildArtificialMoon = false;
 
 	void create() {
 		@events = cast<Events>(ai.events);
@@ -1272,6 +1291,36 @@ final class Infrastructure : AIComponent {
 				if (orbital.module is module)
 					return true;
 			}
+		}
+		return false;
+	}
+
+	bool isBuilding(const ConstructionType@ consType) {
+		for (uint i = 0, cnt = PlanetCheck::allOrders.length; i < cnt; ++i) {
+			auto@ generic = cast<IGenericConstruction>(PlanetCheck::allOrders[i].info);
+			if (generic !is null) {
+				if (generic.construction is consType)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	bool isBuilding(PlanetCheck& pl, const ConstructionType@ consType) {
+		for (uint i = 0, cnt = pl.orders.length; i < cnt; ++i) {
+			auto@ generic = cast<IGenericConstruction>(pl.orders[i].info);
+			if (generic !is null) {
+				if (generic.construction is consType)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	bool hasPendingTradeRoute(Territory@ territoryA, Territory@ territoryB) {
+		for (uint i = 0, cnt = pendingRoutes.length; i < cnt; ++i) {
+			if (pendingRoutes[i].territoryA is territoryA && pendingRoutes[i].territoryB is territoryB)
+				return true;
 		}
 		return false;
 	}
