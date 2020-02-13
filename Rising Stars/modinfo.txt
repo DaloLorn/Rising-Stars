@@ -54,3 +54,4 @@ Amidst the chaos, a world of machines awakens from its indifference. The last re
 		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/812827373/133256959375200731/
 	>>
 	Compatibility: 200
+	Derives From: SR2 Community Patch
