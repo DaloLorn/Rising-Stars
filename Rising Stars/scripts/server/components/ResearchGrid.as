@@ -121,7 +121,7 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 			genPts *= ResearchEfficiency;
 		points += genPts;
 		if(penalized)
-			totalGenerated += genPts;
+			totalGenerated += genPts * emp.ResearchDecaySpeed * config::RESEARCH_EFFICIENCY_DECAY_MULT;
 	}
 
 	bool consumeResearchPoints(int amount) {
@@ -137,9 +137,9 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 		points += amount;
 	}
 
-	void reduceResearchPenalty(int points) {
+	void reduceResearchPenalty(Empire& emp, int points) {
 		WriteLock lock(mtx);
-		totalGenerated = max(0.0, totalGenerated - points);
+		totalGenerated = max(0.0, totalGenerated - points * emp.ResearchDecaySpeed * config::RESEARCH_EFFICIENCY_DECAY_MULT);
 	}
 
 	void initResearch(Empire& emp) {
@@ -268,7 +268,7 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 			if(!node.consumeSecondary(emp))
 				return;
 			node.secondaryUnlock = true;
-			totalGenerated += node.getPointCost(emp);
+			totalGenerated += node.getPointCost(emp) * emp.ResearchDecaySpeed * config::RESEARCH_EFFICIENCY_DECAY_MULT;
 		}
 		else {
 			if(cost == 0)

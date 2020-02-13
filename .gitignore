@@ -2,3 +2,4 @@
 .steam
 modinfo.*
 *.bat
+*.code-workspace
