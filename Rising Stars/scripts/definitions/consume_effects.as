@@ -582,7 +582,8 @@ class ConsumeStatus : ConsumeEffect {
 	}
 
 	void reverse(Object& obj, const Targets@ targs, bool cancel) const override {
-		obj.addStatus(type.integer);
+		for(int i = 0; i < amount.integer; ++i)
+			obj.addStatus(type.integer);
 	}
 #section all
 };

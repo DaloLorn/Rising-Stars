@@ -25,3 +25,5 @@ Building: ResearchComplex
 	ShowAttributeValue(Additional Research Production, ResearchProductionBoost, Multiplier = 0.1, Icon = ResourceIcon::4, Suffix = / s, Hide Zero = True)
 	RepeatExtended(AddResource(Research, 0.1), Base Attribute = ResearchProductionBoost)
 	AddPressureEmpireAttribute(Research, ResearchComplexExtraPressure) #version>=147
+
+	AI:AsResearchGeneration()

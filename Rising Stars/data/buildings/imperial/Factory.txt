@@ -22,4 +22,4 @@ Building: Factory
 
 	IfAttributeGTE(Adaptation4, 1, MultConstructionCost(Factor = 0.98))
 	ShowAttributeValue(Construction Cost Reduction, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::6, Suffix = %, Hide Zero = True)
-	AI:RegisterForUse(Factory)
+	AI:RegisterForLaborUse(Factory)

@@ -1,4 +1,5 @@
 import version;
+import CP_version;
 
 // ABEMMOD's last revision was 724.
 const string MOD_REVISION = "937"; 
@@ -10,6 +11,15 @@ const array<string> REVISIONS = {
 	"5101",
 	"5095",
 };
+
+const array<string> CP_VERSIONS = {
+	"SR2 Community Patch v1.0.0"
+};
+
+const array<string> CP_REVISIONS = {
+	"1"
+};
+
 const string MOD_NAME = "Rising Stars v1.3.0";
 const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0] + ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ")";
 
@@ -21,6 +31,7 @@ string getLowestSupported(string input) {
 bool checkSupported() {
 	bool resultA = false;
 	bool resultB = false;
+	bool CPSupported = CommunityPatch::checkSupported() && checkCPSupported();
 	for(uint i = 0; i < VERSIONS.length; ++i) {
 		if(VERSIONS[i].equals_nocase(GAME_VERSION)) {
 			resultA = true;
@@ -36,9 +47,34 @@ bool checkSupported() {
 		}
 	}
 	if(resultA && resultB)
-		return true;
+		return CPSupported;
 	else {
 		error("Mod " + MOD_NAME + " does not support current game version " + GAME_VERSION + "(" + SCRIPT_VERSION + "), use with caution!");
+		return false;
+	}
+}
+
+bool checkCPSupported() {
+	bool resultA = false;
+	bool resultB = false;
+	for(uint i = 0; i < CP_VERSIONS.length; ++i) {
+		if(CP_VERSIONS[i].equals_nocase(CommunityPatch::MOD_NAME)) {
+			resultA = true;
+			break;
+		}
+	}
+	if(resultA) {
+		for(uint i = 0; i < CP_REVISIONS.length; ++i) {
+			if((CP_REVISIONS[i]).equals_nocase(CommunityPatch::MOD_REVISION)) {
+				resultB = true;
+				break;
+			}
+		}
+	}
+	if(resultA && resultB)
+		return true;
+	else {
+		error("Mod " + MOD_NAME + " does not support current Community Patch version \"" + CommunityPatch::MOD_NAME + "\"(r" + CommunityPatch::MOD_REVISION + "), use with caution!");
 		return false;
 	}
 }

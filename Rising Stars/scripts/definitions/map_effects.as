@@ -1524,6 +1524,17 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 		else if(obj.isAsteroid) {
 			Asteroid@ base = cast<Asteroid>(obj);
 			base.wait();
+			
+			//This avoids asteroids always having resource asteroid icons
+			if (base.cargoTypes != 0) {
+				roidHook.arguments[0].integer = base.cargoType[0];
+				roidHook.arguments[1].set(base.getCargoStored(base.cargoType[0]));
+				roidHook.noResource = false;
+			}
+			else {
+				roidHook.arguments[0].integer = -1;
+				roidHook.noResource = true;
+			}
 
 			roidHook.trigger(null, to, current);
 
@@ -1532,9 +1543,6 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 
 			for(uint i = 0, cnt = base.getAvailableCount(); i < cnt; ++i)
 				roid.addAvailable(base.getAvailable(i), base.getAvailableCost(i));
-
-			for(uint i = 0, cnt = base.cargoTypes; i < cnt; ++i)
-				roid.addCargo(base.cargoType[i], base.getCargoStored(base.cargoType[i]));
 		}
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);

@@ -2,8 +2,8 @@ Module: TradeOutpost
 	Name: #ORB_TRADE_OUTPOST
 	Blurb: #ORB_TRADE_OUTPOST_BLURB
 	Description: #ORB_TRADE_OUTPOST_DESC
-	Icon: GuiOrbitalIcons::0
-	Distant Icon: OrbitalIcons::0
+	Icon: GuiOrbitalIcons::14
+	Distant Icon: OrbitalIcons::14
 
 	Build Cost: 300
 	Maintenance: 30
@@ -18,15 +18,15 @@ Module: TradeOutpost
 
 	RequireNotTrait(Evangelical)
 
-	LimitOncePerSystem(OutpostFlag)
+	LimitOncePerSystem(OutpostFlag) #version>=94
 
-	AddFleetEffectiveness(+2.0)
-	AddSupportBonusHP(+1.0)
+	AddFleetEffectiveness(+2.0) #version>=94
+	AddSupportBonusHP(+1.0) #version>=147
 
 	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94
 
-	ProtectSystem(90)
-	AddStatus(StartingProtection, Duration = 90)
+	ProtectSystem(90) #version>=94
+	AddStatus(StartingProtection, Duration = 90) #version>=94
 
 	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(TradeOutpost, AdaptedTradeOutpost))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())

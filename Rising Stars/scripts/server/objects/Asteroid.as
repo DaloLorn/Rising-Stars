@@ -349,7 +349,6 @@ tidy class AsteroidScript {
 			return;
 		bool isCargo = obj.cargoTypes != 0;
 		if(!isCargo) {
-		
 			const ResourceType@ type = getResource(resource);
 			if(type is null)
 				return;
