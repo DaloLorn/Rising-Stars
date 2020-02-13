@@ -16,3 +16,12 @@ Module: EconomyCore
 	GiveTrade()
 
 	AI: RegisterForUse(EconomyCore)
+
+Module: TradeStationCore
+	Inherit: EconomyCore
+	Build Cost: 650
+
+	RequireNotManual()
+	OnEnable(ABEM_orbitals::AddModule(TradeStation))
+
+	AI: RegisterForTradeUse(TradeStation)
