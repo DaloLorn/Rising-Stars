@@ -1,0 +1,9 @@
+{
+    "dependencies":[
+        {
+            "name":"SR2 Community Patch",
+            "repository":"github.com/sol-oriens/SR2-Community-Patch",
+            "branch":"Main"
+        }
+    ]
+}
