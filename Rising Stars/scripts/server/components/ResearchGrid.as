@@ -74,6 +74,10 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 		return points;
 	}
 
+	double get_TotalResearch() {
+		return totalGenerated;
+	}
+
 	double get_ResearchEfficiency() {
 		return 2000.0 / (2000.0 + totalGenerated);
 	}

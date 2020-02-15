@@ -707,7 +707,7 @@ tidy class ShipScript {
 		if(killCredit !is null && killCredit !is ship.owner && killCredit.valid) {
 			killCredit.recordStatDelta(stat::ShipsDestroyed, 1);
 			if(killCredit.ResearchFromKill != 0 && ship.blueprint.design.total(HV_LaborCost) != 0)
-				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill, 1.0));
+				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill * max(ship.owner.TotalResearch, 2000) / max(killCredit.TotalResearch, 2000), 1.0), false);
 			if(killCredit.GloryMode == 1) {
 				killCredit.Glory += ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult);
 			}

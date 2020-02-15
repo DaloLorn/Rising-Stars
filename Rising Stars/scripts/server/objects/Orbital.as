@@ -982,7 +982,8 @@ tidy class OrbitalScript {
 			for(uint i = 0, cnt = sections.length; i < cnt; ++i) {
 				laborCost += sections[i].type.laborCost;
 			}
-			killCredit.generatePoints(laborCost * killCredit.ResearchFromKill * 4);
+			if(killCredit.ResearchFromKill != 0 && laborCost != 0)
+				killCredit.generatePoints(laborCost * killCredit.ResearchFromKill * 4 * max(obj.owner.TotalResearch, 2000) / max(killCredit.TotalResearch, 2000), false);
 			if(killCredit.GloryMode == 1) {
 				killCredit.Glory += laborCost * 4;
 			}

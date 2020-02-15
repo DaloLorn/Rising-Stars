@@ -17,6 +17,7 @@ restricted remote:
 	void setResearchQueued(int id, bool queued = true);
 
 server:
+	double get_TotalResearch();
 	void modResearchRate(double mod);
 	void generatePoints(double pts, bool modified = true, bool penalized = true);
 	void initResearch();
