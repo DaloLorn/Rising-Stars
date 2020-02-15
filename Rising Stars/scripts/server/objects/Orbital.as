@@ -716,8 +716,7 @@ tidy class OrbitalScript {
 			@core = sec;
 			obj.name = type.name;
 			obj.orbitSpin(type.spin);
-			if(type.isStandalone)
-				obj.setImportEnabled(false);
+			obj.setImportEnabled(false);
 
 			if(type.strategicIcon.valid) {
 				@icon = StrategicIconNode();
