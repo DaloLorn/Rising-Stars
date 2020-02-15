@@ -167,3 +167,8 @@ BLD_PLANET_CANNON_DESC: <<
 
 	If there are enemy fleets in orbit and you do not have any remaining support ships to protect the planet, the satellite will not be replaced.[/i]
 >>
+BLD_PLANET_ENGINE_DESC: <<
+	A ludicrously large thruster constructed on the planet's surface allows the planet to accelerate itself slightly.
+
+	Gives the planet 2 u/s² of acceleration to move with. Multiple planetary thrusters further increase acceleration.
+>>

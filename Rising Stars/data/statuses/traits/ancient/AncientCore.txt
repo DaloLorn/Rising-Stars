@@ -1,6 +1,9 @@
 Status: AncientCore
 	Visible To: Nobody
 
+	OnDisable(RemoveStatus(CoreProgrammed))
+	OnDisable(RemoveStatus(CoreAdapted))
+	OnDisable(RemoveStatus(CoreSpecialized))
 Status: AncientTransmuter
 	Visible To: Nobody
 

@@ -1,4 +1,4 @@
-﻿ORB_SHIELD_CHARGER: Power Transmitter
+ORB_SHIELD_CHARGER: Power Transmitter
 ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.
 ORB_SHIELD_CHARGER_DESC: <<
 	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
@@ -89,7 +89,7 @@ ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems. Mobile.
 ORB_TELESCOPE_DESC: <<
 	An array of advanced subspace telescopes, this facility can periodically consume FTL energy to obtain a real-time view of various star systems in its vicinity, and relocate itself to get a closer look.
 
-	Has the 'Telescope' ability. Can slowly move with an acceleration of 2 u/s^2.
+	Has the 'Telescope' ability. Can slowly move with an acceleration of 4 u/s^2.
 
 	[i][bbloc=#ABL_TELESCOPEORE_DESC:40000/][/i]
 >>
@@ -392,5 +392,5 @@ ORB_THRUSTERS_BLURB: Adds 2.5 u/s^2 to the orbital's acceleration.
 ORB_THRUSTERS_DESC: <<
 	An array of thrusters is installed across the station's exterior, allowing it to move faster.
 
-	Increases the station's acceleration by 2.5 u/s^2.
+	Increases the station's acceleration by 5 u/s^2.
 >>

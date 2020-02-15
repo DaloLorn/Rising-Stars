@@ -2,6 +2,13 @@ Status: CoreProgrammed
 	Visible To: Nobody
 	Unique: True
 
+	OnDisable(RemoveStatus(CoreMoney))
+	OnDisable(RemoveStatus(CoreEnergy))
+	OnDisable(RemoveStatus(CoreInfluence))
+	OnDisable(RemoveStatus(CoreLabor))
+	OnDisable(RemoveStatus(CoreDefense))
+	OnDisable(RemoveStatus(CoreResearch))
+
 Status: CoreAdapted
 	Name: #S_CORE_ADAPTED
 	Description: #S_CORE_ADAPTED_DESC
