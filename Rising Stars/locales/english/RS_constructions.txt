@@ -1,4 +1,4 @@
-﻿MECH_BUILD_POPULATION: Construct $1B Population
+MECH_BUILD_POPULATION: Construct $1B Population
 MECH_BUILD_POPULATION_DESC: <<
 	Construct $1B new mechanoid population on this planet.
 
@@ -150,4 +150,11 @@ CONS_CORE_MONEY_DESC: <<
 	Reconfigure the planet's Core to minimize resource consumption and allocate excess resources wherever they are needed.
 
 	[bbloc=#CONS_CORE_PROGRAM:Money:1.5/]
+>>
+CONS_BEACON_LABOR_DESC: <<
+	Increases the Labor generation of your beacons by 3.
+
+	Also increases the Labor generation of your beacons by 60% of the total amount granted by [b]Metallurgy[/b] technologies you've researched.
+
+	[bbloc=#TIP_RESEARCH_UNITS/]
 >>

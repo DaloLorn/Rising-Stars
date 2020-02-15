@@ -12,7 +12,8 @@ Module: GuardianShipyard
 	Shield Regeneration: 50
 	Model: Shipyard
 	Material: GenericPBR_Shipyard
-	Can Fling: False
+	Can Fling: True
+	Mass: 50000
 	Spin: 0
 	Standalone: True
 	Core: True

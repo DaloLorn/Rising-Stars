@@ -581,7 +581,9 @@ tidy final class OrbitalRequirements {
 void addOrbitalModule(OrbitalModule@ mod) {
 	mod.id = modules.length;
 	if(mod.mass == -1.0) {
-		mod.mass = mod.size;
+		mod.mass = mod.size * 10;
+		if(mod.isCore)
+			mod.mass *= 10;
 	}
 	modules.insertLast(mod);
 	idents.set(mod.ident, @mod);

@@ -18,7 +18,7 @@ Module: Beacon
 	Model: Beacon
 	Material: GenericPBR_Beacon
 
-	AutoMasterSlave()
+	AddLaborFactor(0.66)
 
 	AddResistance(10)
 	AddFleetCommand(256)
@@ -30,15 +30,14 @@ Module: Beacon
 	CannotBuildManually()
 	CountAsPlanet()
 
-	IfMaster(AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Enable Fill From = True))
-	IfNotMaster(AllowConstruction(Ships = False, Supports Only = True, Enable Fill From = True))
-	IfMaster(AddLaborIncome(5))
-	IfMaster(AddLaborEmpireAttribute(FactoryLaborMod))
+	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Enable Fill From = True)
+	AddLaborIncome(5)
+	AddLaborEmpireAttribute(FactoryLaborMod)
 	CopyLaborFromMaster()
 	ForbidLaborExport()
 
-	IfMaster(RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborIncome(3)))
-	IfMaster(RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborEmpireAttribute(FactoryLaborMod)))
+	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborIncome(5))
+	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborEmpireAttribute(FactoryLaborMod))
 
 	SetSystemFlag(JumpdriveSafety)
 
@@ -47,9 +46,7 @@ Module: Beacon
 
 	gameplay.extragalactic::RefugeeColonization()
 
-	CopyPressureToMaster()
-	MoveCargoToMaster()
-	MoveImportsToMaster()
+	RepeatEmpireAttribute(BeaconLaborPressure, AddLaborIncome(0.75))
 
 	AddHealthEmpireAttribute(BeaconHealthUpgrades, 50000)
 	AddArmorEmpireAttribute(BeaconArmorUpgrades, 50000)
@@ -59,7 +56,7 @@ Module: Beacon
 	RepeatExtended(AddTurret(Laser, Range=300, DPS=5, Duration=2, Cooldown=0, Tracking=0.4), Base Attribute = BeaconWeaponUpgrades, Multiplier = 4)
 	RepeatEmpireAttribute(BeaconWeaponUpgrades, RecordBonusDPS(100))
 
-	IfMaster(RepeatPressure(Labor, AddLaborIncome(0.75)))
-	IfMaster(RepeatPressure(Defense, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(DefenseCargo, 1), Interval = 6)))
-	IfMaster(RepeatPressure(Research, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(ResearchCargo, 1), Interval = 6)))
-	IfMaster(RepeatPressure(Energy, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(EnergyCargo, 1), Interval = 6)))
+	RepeatPressure(Labor, ModEmpireAttribute(BeaconLaborPressure, Add, 1))
+	RepeatPressure(Defense, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(DefenseCargo, 1), Interval = 6))
+	RepeatPressure(Research, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(ResearchCargo, 1), Interval = 6))
+	RepeatPressure(Energy, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(EnergyCargo, 1), Interval = 6))

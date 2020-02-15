@@ -127,7 +127,7 @@ int flingCost(Object& obj, vec3d position) {
 	}
 	else {
 		if(obj.isOrbital)
-			return ceil(FLING_COST * cast<Orbital>(obj).mass * 3.0 * owner.FTLCostFactor);
+			return ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor);
 		else if(obj.isPlanet)
 			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor);
 		return INFINITY;
