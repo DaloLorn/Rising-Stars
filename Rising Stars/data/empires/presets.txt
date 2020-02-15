@@ -139,6 +139,9 @@ Preset: First
 
 	Trait: Empire
 	Trait: Sublight
+	Trait: Innovative
+	Trait: Prideful
+	Trait: SpaceProgram
 	Trait: Ancient
 	Trait: Workshop
 

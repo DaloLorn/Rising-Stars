@@ -5,7 +5,6 @@ Trait: Lavish
 	Order: 3
 
 	Conflict: Frugal
-	Conflict: Ancient
 
 	Color: #ffaaaa
 	Icon: ResourceIconsSmall::32

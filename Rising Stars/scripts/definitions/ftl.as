@@ -325,7 +325,7 @@ bool canFluxTo(Object& obj, const vec3d& pos) {
 		return false;
 	if(isFTLBlocked(obj) || isFTLBlocked(obj, pos))
 		return false;
-	if(obj.maxAcceleration < 4)
+	if(obj.maxAcceleration < 2)
 		return false;
 	if(obj.hasStatuses) {
 		if(obj.hasStatusEffect(fluxStatus))
