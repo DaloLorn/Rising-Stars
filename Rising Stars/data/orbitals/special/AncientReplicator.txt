@@ -25,7 +25,7 @@ Module: AncientReplicator
 
 	CountAsPlanet()
 
-	AddAccelerationBonus(10.0)
+	AddAccelerationBonus(16.0)
 
 	AddStatusToOrbitingPlanet(AncientReplicator, Only Owned = True, Allow Space = True, Set Origin Empire = True)
 
