@@ -1,4 +1,4 @@
-﻿Subsystem: Forcefield
+Subsystem: Forcefield
 	Name: #S_FORCEFIELD
 	Description: #S_FORCEFIELD_DESC
 	BaseColor: #00a4db
@@ -8,21 +8,22 @@
 	Tags: Forcefield, HasInternals, ExternalSpace
 	Hull: Flagship, Station
 
-	Size := HexSize * Hexes
-	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 2) * 2000)) * HexSize
+	EmitterCount := 1
+	Size := HexSize * EmitterCount
+	PowerUse := 30 * Size
 	BaseHP := 20 * HexSize
 
-	BaseForcefieldRegen := 0.75 * Size
+	BaseForcefieldRegen := 2 * Size
 	ForcefieldRegenMod := 1
 	ForcefieldRegen := BaseForcefieldRegen * ForcefieldRegenMod
 
-	BaseForcefieldCapacity := 15 * HexSize * (Hexes - 1)
+	BaseForcefieldCapacity := 100 * Size
 	BaseForcefieldMult := 1
 	ForcefieldCapacityMod := 1
 	ForcefieldCapacity := BaseForcefieldCapacity * ForcefieldCapacityMod
 	ForcefieldCapacityMult := BaseForcefieldMult * ForcefieldCapacityMod
 
-	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
+	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - EmitterCount
 	State: double = ForcefieldCapacity
 	State: double = 1
 	State: double = ForcefieldCapacityMult
@@ -30,6 +31,12 @@
 	Assert: EnergyBuildCost == 0
 		Unique: True
 		Message: #ERROR_FORCEFIELD_NO_BATTERY
+
+	Assert: Hexes <= EmitterCount * 6
+		Unique: True
+		Message: #ERROR_FORCEFIELD_EMITTERCOUNT
+
+	OnCheckErrors: designs::checkForcefield
 
 	Requires:
 		Command = 1
@@ -40,23 +47,41 @@
 		Hex.Mass := 3 * HexSize
 		Hex.Resistance := 0.1
 
-		Hex.BuildCost := 6.0 * HexSize
-		Hex.LaborCost := 1.5 * HexSize
-		Hex.MaintainCost := 4 * HexSize
+		Hex.BuildCost := 3 * HexSize
+		Hex.LaborCost := 2 * HexSize
+		Hex.MaintainCost := 2 * HexSize
+		Hex.IsEmitter := 1
 		Color: #00a4db
+
+	Module: Emitter
+		Sprite: SupportShield*#50ffff
+		Hex.Mass := 3 * HexSize
+		Hex.Resistance := 0.1
+
+		Hex.BuildCost := 3 * HexSize
+		Hex.LaborCost := 2 * HexSize
+		Hex.MaintainCost := 2 * HexSize
+		Hex.IsEmitter := 1
+		Color: #00a4db
+		Vital: True
+		DefaultUnlock: True
+		Name: #FORCEFIELD_EMITTER
+		Description: #FORCEFIELD_EMITTER_DESC
+
+		EmitterCount := EmitterCount + 1
 
 	Module: Default
 		Sprite: Forcefield*#00a4db
-		Hex.HP := ForcefieldCapacity / (Hexes - 1)
+		Hex.HP := ForcefieldCapacity / (Hexes - EmitterCount)
 		Hex.Resistance := 99
 		Hex.Mass := 0
 
-		Hex.BuildCost := 2.0 * HexSize
-		Hex.LaborCost := 0.25 * HexSize
+		Hex.BuildCost := 0
+		Hex.LaborCost := 0
 		Hex.MaintainCost := 0
 
 	Modifier: AddHP(amount)
-		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
+		Hex.HP := if(Hex.IsEmitter > 0, Hex.HP + amount, Hex.HP)
 
 	Modifier: ShieldCapacityFactor(factor)
 		BaseForcefieldCapacity := BaseForcefieldCapacity + Base::BaseForcefieldCapacity * (factor - 1)
@@ -69,7 +94,7 @@
 	Modifier: ShieldRegenMult(factor)
 		ForcefieldRegenMod := ForcefieldRegenMod * factor
 
-	Effect: NoRepairNonCore
+	Effect: ForcefieldNoRepair
 
 	Effect: ForcefieldBase
 		Regen = ForcefieldRegen

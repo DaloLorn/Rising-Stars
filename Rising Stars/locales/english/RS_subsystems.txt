@@ -30,6 +30,8 @@ ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
 ERROR_FORCEFIELD_NO_BATTERY: Forcefields may not have any Quantum Batteries.
+ERROR_FORCEFIELD_SHAPE: Forcefield emitters may not be completely surrounded by their own forcefield, nor may they touch more than two forcefield hexes!
+ERROR_FORCEFIELD_EMITTERCOUNT: Forcefields may not have more than 5 hexes per emitter!
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -402,10 +404,22 @@ S_FORCEFIELD_DESC: <<
 	An advanced shielding system capable of projecting a highly cohesive, geometrically complex plasma field to defend key sections of the ship.
 
 	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier. Additionally, each hex will halve the bleedthrough from shield-penetrating weapons such as Boring Drones.[/img]
-	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
+	[img=Plus]Only emitters count towards the ship's hex limit, power consumption, and costs. Additional emitters increase the amount of damage a forcefield can absorb before failing.[/img]
 	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
-	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
+	[img=MenuIcons::3;22]Each forcefield emitter may support 5 forcefield hexes. No emitter may be completely surrounded by its own forcefield or touch more than two hexes of that forcefield.[/img]
+	[img=Minus]Extremely inefficient compared to standard shield systems, with high build costs and power consumption.[/img]
+	[img=Minus]Destroying any forcefield emitter will deactivate the forcefield immediately.[/img]
 	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
+>>
+FORCEFIELD_EMITTER: Forcefield Emitter
+FORCEFIELD_EMITTER_DESC: <<
+	This emitter improves the projection range and resilience of a forcefield, allowing it to cover a greater area and withstand more damage.
+
+	[img=Plus]Allows another 5 hexes to be added to the forcefield.[/img]
+	[img=Plus]Significantly increases the effectiveness of the forcefield.[/img]
+	[img=MenuIcons::3;22]No emitter may be completely surrounded by its own forcefield.[/img]
+	[img=MenuIcons::3;22]No emitter may touch more than two hexes - including other emitters - of its own forcefield.[/img]
+	[img=Minus]Significantly increases the cost and power consumption of the forcefield.[/img]
 >>
 
 TARGETINGSENSOR_DESC: <<

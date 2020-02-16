@@ -203,14 +203,7 @@ bool checkSinew(Design& design, Subsystem& sys) {
 }
 
 bool checkExposedLeftRight(Design& design, Subsystem& sys) {
-	array<bool> hasExposed(6, false);
-	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
-		vec2u hex = sys.hexagon(i);
-		for(uint n = 0; n < 6; ++n) {
-			if(design.hull.isExteriorInDirection(hex, HexGridAdjacency(n)))
-				hasExposed[n] = true;
-		}
-	}
+	array<bool> hasExposed = getExposedDirections(design, sys);
 	if(!hasExposed[HEX_UpLeft] && !hasExposed[HEX_DownLeft]) {
 		design.addError(true, format(locale::ERROR_EXPOSE_LEFT_RIGHT, sys.type.name), sys, null, vec2u());
 		return true;
@@ -220,6 +213,78 @@ bool checkExposedLeftRight(Design& design, Subsystem& sys) {
 		return true;
 	}
 	return false;
+}
+
+array<bool> getExposedDirections(Design& design, Subsystem& sys) {
+	array<bool> hasExposed(6, false);
+	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
+		vec2u hex = sys.hexagon(i);
+		for(uint n = 0; n < 6; ++n) {
+			if(design.hull.isExteriorInDirection(hex, HexGridAdjacency(n)))
+				hasExposed[n] = true;
+		}
+	}
+	return hasExposed;
+}
+
+bool checkForcefield(Design& design, Subsystem& sys) {
+	auto@ emitter = sys.type.module("Emitter");
+	bool failed = false;
+	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
+		vec2u hex = sys.hexagon(i);
+		if(sys.module(i) is emitter || sys.core == hex) {
+			if(!forcefieldExposedInOneDirection(design, sys, hex)) {
+				failed = true;
+				design.addErrorHex(hex);
+				continue;
+			}
+			if(!isTouchingOnlyTwoOfSelf(design, sys, hex)) {
+				failed = true;
+				design.addErrorHex(hex);
+				continue;
+			}
+		}
+	}
+
+	if(failed) {
+		design.addError(true, locale::ERROR_FORCEFIELD_SHAPE, null, null, vec2u());
+		return true;
+	}
+	return false;
+}
+
+bool forcefieldExposedInOneDirection(Design& design, Subsystem& sys, const vec2u& hex) {
+	auto@ emitter = sys.type.module("Emitter");
+	vec2u other;
+	for(uint i = 0; i < 6; ++i) {
+		other = hex;
+		while(design.hull.active.valid(other)) {
+			auto@ otherSys = design.subsystem(other);
+			if(otherSys is sys && sys.module(i) !is emitter && sys.core != other) {
+				break;
+			}
+			if(!design.hull.active.advance(other, HexGridAdjacency(i)))
+				return true;
+		}
+	}
+	return false;
+}
+
+bool isTouchingOnlyTwoOfSelf(Design& design, Subsystem& sys, const vec2u& hex) {
+	uint touchCount = 0;
+	for(uint i = 0; i < 6; ++i) {
+		vec2u other = hex;
+		if(design.hull.active.advance(other, HexGridAdjacency(i))) {
+			auto@ otherSys = design.subsystem(other);
+			if(otherSys is sys) {
+				touchCount++;
+				if(touchCount > 2) {
+					return false;
+				}
+			}
+		}
+	}
+	return true;
 }
 
 #section server-side

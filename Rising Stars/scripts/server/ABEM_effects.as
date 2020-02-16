@@ -17,6 +17,23 @@ void NoRepairNonCore(Event& evt) {
 	}
 }
 
+void ForcefieldNoRepair(Event& evt) {
+	auto@ sys = evt.source;
+	auto@ bp = evt.blueprint;
+	auto@ emitter = sys.type.module("Emitter");
+
+	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
+		vec2u pos = sys.hexagon(i);
+		if(sys.module(i) !is emitter && pos != sys.core) {
+			HexStatus@ stat = bp.getHexStatus(pos.x, pos.y);
+			if(stat is null)
+				continue;
+
+			stat.flags |= HF_NoRepair;
+		}
+	}
+}
+
 void ShieldInitMitigation(Event& evt) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
@@ -46,11 +63,11 @@ void ShieldDisableMitigation(Event& evt) {
 void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMult) {
 	auto@ sys = evt.source;
 	auto@ bp = evt.blueprint;
-	if(sys.type.hasCore) {
-		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 1) {
-			return; // Emitter is offline. Forcefields are offline. Everything's offline.
-		}
-	}
+	auto@ emitter = sys.type.module("Emitter");
+	
+	if(bp.getSysStatus(sys.index).status == ES_Ended)
+		return; // One of the emitters is offline!
+
 	double health = bp.decimal(sys, 0); // Get current shield integrity.
 	double healthFactor = bp.decimal(sys, 1); // Get ship health factor.
 	if(healthFactor != bp.hpFactor) {
@@ -73,7 +90,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMu
 	// We need to account for various effects that could have changed the field's health, because I'm bound to miss something somewhere. Too many ways to damage the damn thing without triggering ForcefieldDamage.
 	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
 		vec2u hex = sys.hexagon(i);
-		if(hex != sys.core) {
+		if(sys.module(i) !is emitter && hex != sys.core) {
 			HexStatus@ field = bp.getHexStatus(hex.x, hex.y);
 			if(field is null)
 				continue;
@@ -91,7 +108,7 @@ void ForcefieldTick(Event& evt, double Regen, double Capacity, double CapacityMu
 	bp.currentHP += regeneratedHP; // The blueprint needs to know we've been patching it up.
 	bp.decimal(sys, 0) = health; // Store new shield integrity.
 	
-	sync_health_nocore(sys, bp, health, Capacity * bp.hpFactor); // Synchronize hex health with new shield integrity.
+	sync_health_forcefield(sys, bp, health, Capacity * bp.hpFactor); // Synchronize hex health with new shield integrity.
 }
 
 // Sets forcefield health to 0.
@@ -101,7 +118,22 @@ void ForcefieldShutdown(Event& evt) {
 	bp.currentHP -= bp.decimal(sys, 0); // We need to remove all of our remaining HP from the blueprint or all hell will break loose.
 	bp.decimal(sys, 0) = 0; // Store new shield integrity.
 	
-	sync_health_nocore(sys, bp, 0, 1); // Synchronize hex health with new shield integrity.
+	sync_health_forcefield(sys, bp, 0, 1); // Synchronize hex health with new shield integrity.
+}
+
+void sync_health_forcefield(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
+	auto@ emitter = sys.type.module("Emitter");
+	uint healthPct = uint((health / maxHealth) * 255);
+	for(uint i = 0, cnt = sys.hexCount; i < cnt; ++i) {
+		vec2u pos = sys.hexagon(i);
+		if(sys.module(i) !is emitter && pos != sys.core) {
+			HexStatus@ stat = bp.getHexStatus(pos.x, pos.y);
+			if(stat is null)
+				continue;
+
+			stat.hp = healthPct;
+		}
+	}
 }
 
 void sync_health_nocore(const Subsystem& sys, Blueprint& bp, double health, double maxHealth) {
@@ -138,14 +170,15 @@ void sync_health(const Subsystem& sys, Blueprint& bp, double health, double maxH
 DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, double Capacity) {	
 	auto@ sys = evt.destination;
 	auto@ bp = evt.blueprint;
+	auto@ emitter = sys.type.module("Emitter");
 	// Has the emitter been destroyed? Are we hitting the emitter? Does the emitter even exist?
-	if(sys.type.hasCore) {
-		if(position == sys.core) {
+	if(emitter !is null || sys.type.hasCore) {
+		if(bp.design.module(position) is emitter || position == sys.core) {
 			return DE_Continue; // This is the emitter, kill it!
 		}
-		if(bp.getHexStatus(sys.core.x, sys.core.y).hp < 1) {
-			return DE_SkipHex; // Emitter is offline. Forcefields are offline. Everything's offline.
-		}
+	}
+	if(bp.getSysStatus(position.x, position.y).status == ES_Ended) {
+		return DE_SkipHex; // Emitter is offline. Forcefields are offline. Everything's offline.
 	}
 	
 	double health = bp.decimal(sys, 0);
@@ -178,7 +211,7 @@ DamageEventStatus ForcefieldDamage(DamageEvent& evt, const vec2u& position, doub
 	bp.decimal(sys, 0) = health;
 	
 	// Postprocessing.
-	sync_health_nocore(sys, bp, health, Capacity * bp.hpFactor); // Sync the damaged forcefield's health.
+	sync_health_forcefield(sys, bp, health, Capacity * bp.hpFactor); // Sync the damaged forcefield's health.
 	cast<Ship>(evt.target).recordDamage(evt.obj);
 	if(dmg <= 0.0) // Send the diminished damage (if any) on its merry way.
 		return DE_EndDamage;

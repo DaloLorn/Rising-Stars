@@ -13,3 +13,6 @@ Effect: ForcefieldDamage
 Effect: ForcefieldShutdown
 
 	End: ABEM_effects::ForcefieldShutdown
+
+Effect: ForcefieldNoRepair
+	Start: ABEM_effects::ForcefieldNoRepair
