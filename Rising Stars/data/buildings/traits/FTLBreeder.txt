@@ -11,14 +11,14 @@ Building: FTLBreeder
 	Base Maintenance: 40
 	Tile Maintenance: 10
 	
-	ConsumeCargo(Ore, 350)
+	ConsumeCargo(Ore, 500)
 	
 	RequireTrait(Mechanoid)
 	RequireNotTrait(Flux)
-	AddFTLIncome(0.35)
+	AddFTLIncome(0.5)
 	//TriggerConstructed(LosePopulation(1))  Intentionally removed.
 
-	ShowFTLValue(0.35, Suffix = #PER_SECOND)
+	ShowFTLValue(0.5, Suffix = #PER_SECOND)
 
 	
 Building: FTLBreederFLUX
@@ -35,7 +35,7 @@ Building: FTLBreederFLUX
 	Tile Maintenance: 10
 	ConsumeCargo(Ore, 500)
 	
-	RequireTrait(Flux)
+	RequireEither(RequireTrait(Flux), RequireAttributeGTE(GateConst))
 
 	AddFTLIncome(0.5)
 	//TriggerConstructed(LosePopulation(1))
