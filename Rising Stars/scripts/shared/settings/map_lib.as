@@ -74,7 +74,7 @@ final class SystemDesc : Serializable, Savable {
 	}
 
 	void set_radius(double Radius) {
-		print("System " + name + ": Radius " + _radius + " changed to " + Radius);
+		//print("System " + name + ": Radius " + _radius + " changed to " + Radius);
 		_radius = Radius;
 		if(object !is null) {
 			object.OuterRadius = _radius;
