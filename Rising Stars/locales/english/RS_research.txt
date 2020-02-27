@@ -462,6 +462,14 @@ R_SYS_PROGENITOR_SHRINE_DESC: <<
 	[bbloc=#S_PROGENITOR_SHRINE_DESC/]
 >>
 
+R_IMP_REPLICATOR_CONSTRUCTION: Replicator Manufacturing
+R_IMP_REPLICATOR_CONSTRUCTION_2: Replicator Manufacturing 2
+R_IMP_REPLICATOR_CONSTRUCTION_DESC: <<
+	[color=#aaa][i]New replicator designs allow us to construct a viable orbital replicator with smaller stockpiles of rare ores.[/i][/color]
+
+	Reduces the Ore cost of Orbital Replicators by $1.
+>>
+
 ************************************
 *** SPECIALIZATION TECHS GO HERE ***
 ************************************

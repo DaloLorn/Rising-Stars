@@ -24,3 +24,32 @@ Technology: FoundryLabor2
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 
 	ModAttribute(FactoryLaborMod, Add, 5)
+
+Technology: ReplicatorConstruction
+	Name: #R_IMP_REPLICATOR_CONSTRUCTION
+	Description: #R_IMP_REPLICATOR_CONSTRUCTION_DESC:500
+
+	Icon: techConstruction*#3accae
+	Color: #3accae
+
+	Point Cost: 500
+	Time Cost: 100
+	Class: Boost
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Symbol: OrbitalIcons::20
+
+	ModAttribute(ReplicatorCostReduction, Add, 500)
+
+Technology: ReplicatorConstruction2
+	Name: #R_IMP_REPLICATOR_CONSTRUCTION2
+	Description: #R_IMP_REPLICATOR_CONSTRUCTION_DESC:1000
+	
+	Icon: techConstruction*#3accae
+	Color: #3accae
+
+	Point Cost: 800
+	Time Cost: 140
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Symbol: OrbitalIcons::20
+
+	ModAttribute(ReplicatorCostReduction, Add, 1000)

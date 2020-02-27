@@ -11,7 +11,7 @@ Module: AncientReplicator
 
 	Build Cost: 1000
 	Labor Cost: 111
-	ConsumeCargo(Ore, 3500)
+	ConsumeCargoAttribute(Ore, ReplicatorCostReduction, 3500, -1)
 
 	Health: 50000
 	Armor: 50000
