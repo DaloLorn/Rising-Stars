@@ -1004,6 +1004,7 @@ class MakeCreepCamp : MapHook {
 	Document doc("Creates a creep camp in the system.");
 	Argument campID("Type", AT_Custom, "distributed", doc="Type of camp to create.");
 	Argument offset(AT_Decimal, "0", doc="Minimum offset from the edge of the system to the camp.");
+	Argument forceAggression("Force Aggression", AT_Boolean, "False", doc="Whether the camp's contents should be aggressive regardless of the Remnant Aggression setting.");
 	const CampType@ campType;
 
 	MakeCreepCamp() {
@@ -1033,13 +1034,13 @@ class MakeCreepCamp : MapHook {
 		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
-		makeCreepCamp(pos, type, system.object);
+		makeCreepCamp(pos, type, forceAggression.boolean, system.object);
 	}
 #section all
 };
 
 #section server
-void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null) {
+void makeCreepCamp(const vec3d& pos, const CampType@ type, bool forceAggression = false, Region@ region = null) {
 	//Create pickup
 	Pickup@ pickup;
 	double roll = randomd(0.0, type.pickupFrequency);
@@ -1086,7 +1087,7 @@ void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null
 					leaderPos += random3d(10.0, 40.0);
 
 				@lastLeader = createShip(leaderPos, dsg, Creeps, free=true, memorable=true);
-				lastLeader.setAutoMode(config::REMNANT_AGGRESSION == 0 ? AM_HoldPosition : AM_RegionBound);
+				lastLeader.setAutoMode(config::REMNANT_AGGRESSION == 0 && !forceAggression ? AM_HoldPosition : AM_RegionBound);
 				lastLeader.sightRange = 0;
 				lastLeader.setRotation(quaterniond_fromAxisAngle(vec3d_up(), randomd(-pi, pi)));
 
@@ -1155,6 +1156,7 @@ class MakeAdjacentCreepCamp : MapHook {
 	Document doc("Creates a creep camp in an adjacent system.");
 	Argument campID("Type", AT_Custom, "distributed", doc="Type of camp to create.");
 	Argument placeFar("Place Far", AT_Boolean, "True", doc="Whether the camp should be pushed to the edge of the system.");
+	Argument forceAggression("Force Aggression", AT_Boolean, "False", doc="Whether the camp's contents should be aggressive regardless of the Remnant Aggression setting.");
 	const CampType@ campType;
 
 	bool instantiate() {
@@ -1191,7 +1193,7 @@ class MakeAdjacentCreepCamp : MapHook {
 
 		vec3d pos = other.position + vec3d(campPos.x, 0, campPos.y);
 
-		makeCreepCamp(pos, type);
+		makeCreepCamp(pos, type, forceAggression.boolean);
 	}
 #section all
 };
@@ -1637,6 +1639,7 @@ class ForceMakeCreepCamp : MapHook {
 	Document doc("Creates a creep camp in the system, even if Remnant occurrence is set to zero.");
 	Argument campID("Type", AT_Custom, "distributed", doc="Type of camp to create.");
 	Argument offset(AT_Decimal, "0", doc="Minimum offset from the edge of the system to the camp.");
+	Argument forceAggression("Force Aggression", AT_Boolean, "False", doc="Whether the camp's contents should be aggressive regardless of the Remnant Aggression setting.");
 	const CampType@ campType;
 
 	bool instantiate() {
@@ -1660,7 +1663,7 @@ class ForceMakeCreepCamp : MapHook {
 		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
-		makeCreepCamp(pos, type, system.object);
+		makeCreepCamp(pos, type, forceAggression.boolean, system.object);
 	}
 #section all
 };

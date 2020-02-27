@@ -31,6 +31,8 @@ System: Orathi
 		AddPlanetResource(Fruit)
 
 	ExpandSystem(7500)
+	
+	ForceMakeCreepCamp(BlackHoleCamp, Force Aggression = True)
 
 	MakeAsteroid()
 	MakeAsteroid()

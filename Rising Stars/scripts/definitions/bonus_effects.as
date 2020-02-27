@@ -38,7 +38,7 @@ from game_start import generateNewSystem, SystemGenerateHook;
 import object_creation;
 import systems;
 import influence_global;
-import void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null) from "map_effects";
+import void makeCreepCamp(const vec3d& pos, const CampType@ type, bool forceAggression = false, Region@ region = null) from "map_effects";
 import Planet@ spawnPlanetSpec(const vec3d& point, const string& resourceSpec, bool distributeResource = true, double radius = 0.0, bool physics = true) from "map_effects";
 import achievements;
 from construction.Constructible import Constructible;
@@ -694,6 +694,7 @@ class MoveToSystemCenter : BonusEffect {
 class SpawnCreepCamp : BonusEffect {
 	Document doc("Spawn a creep capm at the target object's poistion.");
 	Argument type("Camp Type", AT_CreepCamp, "distributed", doc="Type of creep camp to spawn. Defaults to randomized.");
+	Argument forceAggression("Force Aggression", AT_Boolean, "False", doc="Whether the camp's contents should be aggressive regardless of the Remnant Aggression setting.");
 
 	const CampType@ campType;
 
@@ -714,7 +715,7 @@ class SpawnCreepCamp : BonusEffect {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		makeCreepCamp(obj.position, type);
+		makeCreepCamp(obj.position, type, forceAggression.boolean);
 	}
 #section all
 };
