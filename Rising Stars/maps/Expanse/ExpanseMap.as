@@ -407,7 +407,7 @@ class ExpanseMap : Map {
 		vec2d campPos = random2d(500.0, (orathiExpanse.system.radius) * 0.85);
 		vec3d pos = orathiExpanse.system.position + vec3d(campPos.x, 0, campPos.y);
 
-		makeCreepCamp(pos, guardianType, orathiExpanse.system.object);
+		makeCreepCamp(pos, guardianType, false, orathiExpanse.system.object);
 		
 		for(uint i = 0, cnt = rooms[0].systems.length; i < cnt; ++i) {
 			auto@ sys = getSystem(systems[0].index + rooms[0].systems[i].index);
