@@ -1089,6 +1089,8 @@ class TractorObject : AbilityHook {
 			double tracForce = 0.0;
 			if(abl.obj.hasMover)
 				tracForce = abl.obj.maxAcceleration * time;
+			else 
+				tracForce = getMassFor(abl.obj) * 0.1 * time;
 
 			vec3d force = dir.normalized(min(tracForce, dir.length));
 			target.impulse(force);
