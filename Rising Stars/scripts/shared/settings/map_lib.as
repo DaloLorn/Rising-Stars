@@ -57,7 +57,7 @@ final class SystemDesc : Serializable, Savable {
 	uint index;
 	string name;
 	vec3d position;
-	private double radius;
+	private double _radius;
 	Region@ object;
 	uint[] adjacent;
 	double[] adjacentDist;
@@ -70,20 +70,21 @@ final class SystemDesc : Serializable, Savable {
 	array<uint> visibleTerritory(getEmpireCount());
 
 	double get_radius() const {
-		return radius;
+		return _radius;
 	}
 
 	void set_radius(double Radius) {
-		radius = Radius;
+		print("System " + name + ": Radius " + _radius + " changed to " + Radius);
+		_radius = Radius;
 		if(object !is null) {
-			object.OuterRadius = radius;
+			object.OuterRadius = _radius;
 		}
 	}
 
 	void read(Message& msg) {
 		index = msg.readSmall();
 		position = msg.readMedVec3();
-		radius = msg.read_float();
+		_radius = msg.read_float();
 		msg >> object;
 		msg >> name;
 		msg >> donateVision;
@@ -138,7 +139,7 @@ final class SystemDesc : Serializable, Savable {
 	void write(Message& msg) {
 		msg.writeSmall(index);
 		msg.writeMedVec3(position);
-		msg << float(radius);
+		msg << float(_radius);
 		msg << object;
 		msg << name;
 		msg << donateVision;
@@ -160,7 +161,7 @@ final class SystemDesc : Serializable, Savable {
 		msg >> index;
 		msg >> name;
 		msg >> position;
-		msg >> radius;
+		msg >> _radius;
 		msg >> object;
 		if(msg >= SV_0082)
 			msg >> contestation;
@@ -191,7 +192,7 @@ final class SystemDesc : Serializable, Savable {
 		msg << index;
 		msg << name;
 		msg << position;
-		msg << radius;
+		msg << _radius;
 		msg << object;
 		msg << contestation;
 		msg << donateVision;
