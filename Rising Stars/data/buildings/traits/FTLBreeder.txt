@@ -10,9 +10,9 @@ Building: FTLBreeder
 	Tile Cost: 40
 	Base Maintenance: 40
 	Tile Maintenance: 10
-	
+
 	ConsumeCargo(Ore, 500)
-	
+
 	RequireTrait(Mechanoid)
 	RequireNotTrait(Flux)
 	AddFTLIncome(0.5)
@@ -20,7 +20,8 @@ Building: FTLBreeder
 
 	ShowFTLValue(0.5, Suffix = #PER_SECOND)
 
-	
+
+	RequireNotTrait(Ancient)
 Building: FTLBreederFLUX
 	Name: #BLD_FTLBREEDER
 	Description: #BLD_FTLBREEDER_DESC
@@ -34,10 +35,11 @@ Building: FTLBreederFLUX
 	Base Maintenance: 40
 	Tile Maintenance: 10
 	ConsumeCargo(Ore, 500)
-	
+
 	RequireEither(RequireTrait(Flux), RequireAttributeGTE(GateConst))
 
 	AddFTLIncome(0.5)
 	//TriggerConstructed(LosePopulation(1))
 
+	RequireNotTrait(Ancient)
 	ShowFTLValue(0.5), Suffix = #PER_SECOND)

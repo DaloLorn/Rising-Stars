@@ -5,13 +5,14 @@ Building: AncientSenate
 	Category: Infrastructure
 
 	Base Cost: 2000
-	Base Maintenance: 500
-	Labor Cost: 125
 
 	Sprite: CoreBuilding*#adf
 	Size: 6x6
+	In Queue: True
+	Build Time: 300
 
-	RepeatEmpirePopulation(20, AddInfluenceStake(1))
+	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 0.5, 6, RepeatEmpirePopulation(20, AddInfluenceStake(1)), Inactive Status = AncientRequireBaseMat, Allow Global = False))
+	IfNotHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 0.5, 6, RepeatEmpirePopulation(20, AddInfluenceStake(1)), Inactive Status = AncientRequireBaseMat))
 	ShowTotalPopulation(Potential Population, Icon = ResourceIcon::8)
 
 	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(GainRandomInfluenceCards(1), Interval = 60))

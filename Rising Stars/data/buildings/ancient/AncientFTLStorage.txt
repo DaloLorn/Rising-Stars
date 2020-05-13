@@ -1,0 +1,21 @@
+Building: AncientFTLStorage
+	Name: #BLD_FTLSTORE
+	Description: #BLD_ANCIENT_FTLSTORE_DESC
+	Sprite: Depot*#fdd
+
+	Category: Infrastructure
+	Build Affinity: Crystallic
+
+	Size: 3x3
+	Base Cost: 150
+	Tile Cost: 8
+	Base Maintenance: 50
+	In Queue: True
+	Build Time: 60
+
+	AddFTLStorage(400)
+	IfNative(FTL, AddFTLStorage(400))
+
+	RequireTrait(Ancient)
+	IfAttributeGTE(Adaptation4, 1, AddResource(Research, 0.8))
+	ShowAttributeValue(Research Generation, Adaptation4, Multiplier = 0.8, Icon = ResourceIcon::4, Suffix = #PER_SECOND, Hide Zero = True)

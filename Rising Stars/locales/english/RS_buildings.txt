@@ -176,4 +176,17 @@ F_ANCIENT_SENATE_DESC: <<
 	[color=#aaa][i]Centralized Coordination Complexes, or 'C3s' as they're sometimes called, coordinate and monitor the activities of the empire's government, attempting to remove excessive red tape and corrupt officials. The procedures used vary wildly from empire to empire, but the net effect is always an improvement of the government's ability to look outward - and to focus its power and influence on more important matters.[/i][/color]
 
 	Generates 1 Influence Stake for every 20 billion inhabitants your planets would support if they were owned by a non-Ancient empire.
+
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:50/]
+>>
+BLD_ANCIENT_FTLSTORE_DESC: <<
+	A large storage chamber built inside a subspace isolation field to store FTL crystals.
+
+	Stores 400 FTL Energy.
+	Storage doubled when placed on a planet with native FTL crystals.
+>>
+BLD_ANCIENT_FTLBREEDER_DESC: <<
+	A large reactor that uses FTL energy to excite and extract more FTL energy from the hyperfield, giving off radiation hazardous to all organic life in the process.
+
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:5/]
 >>

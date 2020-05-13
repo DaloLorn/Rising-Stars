@@ -15,6 +15,7 @@ Building: FTLStorage
 	AddFTLStorage(250)
 	IfNative(FTL, AddFTLStorage(250))
 
+	RequireNotTrait(Ancient)
 	IfAttributeGTE(Adaptation4, 1, AddResource(Research, 0.5))
 	ShowAttributeValue(Research Generation, Adaptation4, Multiplier = 0.5, Icon = ResourceIcon::4, Suffix = #PER_SECOND, Hide Zero = True)
 	AI:AsFTLStorage()
