@@ -1,5 +1,6 @@
 import settings.map_lib;
 import settings.game_settings;
+import attitudes;
 import empire_data;
 import ftl;
 import orbitals;
