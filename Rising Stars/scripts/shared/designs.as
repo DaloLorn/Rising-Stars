@@ -257,7 +257,7 @@ bool forcefieldExposedInOneDirection(Design& design, Subsystem& sys, const vec2u
 	auto@ emitter = sys.type.module("Emitter");
 	vec2u other;
 	for(uint i = 0; i < 6; ++i) {
-		other = hex;¸
+		other = hex;
 		if(!design.hull.active.advance(other, HexGridAdjacency(i)))
 			return true;
 		while(design.hull.active.valid(other)) {
