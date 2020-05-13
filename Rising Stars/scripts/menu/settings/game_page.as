@@ -47,6 +47,7 @@ class GamePage : GameSettingsPage {
 		if(hasDLC("Heralds"))
 			Toggle(locale::NG_ENABLE_INFLUENCE_VICTORY, "ENABLE_INFLUENCE_VICTORY", tooltip=locale::NGTT_ENABLE_INFLUENCE_VICTORY);
 		Toggle(locale::NG_ENABLE_VANGUARD_VICTORY, "ENABLE_VANGUARD_VICTORY", tooltip=locale::NGTT_ENABLE_VANGUARD_VICTORY);
+		Toggle(locale::NG_EVERYONE_IS_VANGUARD, "EVERYONE_IS_VANGUARD", tooltip=locale::NGTT_EVERYONE_IS_VANGUARD);
 
 		//emptyline();
 		//Title(locale::NG_SENSOR_OPTIONS);

@@ -20,5 +20,5 @@ Building: VanguardPortal
 	ConsumeCargo(Ore, 10000)
 	ConflictBuilding(VanguardPortal)
 	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
-	RequireUnlockTag(VanguardUnlocks)
+	RequireEither(RequireUnlockTag(VanguardUnlocks), RequireConfigOption(EVERYONE_IS_VANGUARD))
 	RequireConfigOption(ENABLE_VANGUARD_VICTORY)

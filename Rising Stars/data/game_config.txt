@@ -214,3 +214,6 @@ NEW_MOVEMENT: 1
 
 //Vanguard victory
 ENABLE_VANGUARD_VICTORY: 1
+
+//Whether everyone can attempt Vanguard Victory, even if they're not Vanguard lifestyles.
+EVERYONE_IS_VANGUARD: 0
