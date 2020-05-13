@@ -36,5 +36,6 @@ Technology: FeyhShieldGen
 
 	UnlockSubsystem(BattleShrine)
 	SkipOnUnlockedSubsystem(BattleShrine)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 
 	SecondaryEnergyCost(1000)

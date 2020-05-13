@@ -24,6 +24,7 @@ Technology: NylliRecall
 	Color: #bc12de
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	UnlockTag(Recall)
+	ModAttribute(ProgenitorTechProgress, Add, 15)
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(Recall)
 	UnlockSubsystem(RecallDevice)

@@ -27,3 +27,4 @@ Technology: NylliSenate
 	SecondaryMoneyCost(1500)
 	SkipOnUnlockedTag(NylliSenate)
 	UnlockTag(NylliSenate)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

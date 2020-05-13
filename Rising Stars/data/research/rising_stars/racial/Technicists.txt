@@ -8,3 +8,4 @@ Technology: ImprovedLabs
 	Point Cost: 500
 	Time Cost: 90
 	ModAttribute(ResearchProductionBoost, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.3)

@@ -27,6 +27,7 @@ Technology: AtroanMegacity
 	Color: #00f3ff
 
 	UnlockTag(AdvancedCores)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 	SkipOnUnlockedTag(AdvancedCores)
 
 Technology: NylliMegacity
@@ -42,4 +43,5 @@ Technology: NylliMegacity
 	Time Cost: 90
 
 	SkipOnUnlockedTag(NylliNutrients)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
 	UnlockTag(NylliNutrients)

@@ -21,6 +21,7 @@ Technology: FeyhProgenitorShield
 	Time Cost: 180
 	Class: Unlock
 	Color: #000bde
+	ModAttribute(ProgenitorTechProgress, Add, 15)
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(RemnantShield)

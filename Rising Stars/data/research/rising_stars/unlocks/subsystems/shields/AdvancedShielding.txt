@@ -25,4 +25,5 @@ Technology: FeyhAdvancedShielding
 	UnlockTag(ShieldCharger)
 	UnlockTag(StellarShieldOrbital)
 	UnlockSubsystem(GrandShrine)
+	ModAttribute(ProgenitorTechProgress, Add, 5)
 	SecondaryEnergyCost(1500)

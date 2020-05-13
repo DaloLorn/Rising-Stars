@@ -36,6 +36,7 @@ Technology: AtroanHydroponics
 	SecondaryInfluenceCost(10)
 	UnlockTag(OrbitalControlUnlock)
 	SkipOnUnlockedTag(OrbitalControlUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)
 
 Technology: MonoHydroponics
 	Name: #R_ORB_ZEROGRAV_ASSEMBLY
@@ -55,3 +56,4 @@ Technology: MonoHydroponics
 	SecondaryInfluenceCost(10)
 	UnlockTag(ZeroGAssemblyUnlock)
 	SkipOnUnlockedTag(ZeroGAssemblyUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)
