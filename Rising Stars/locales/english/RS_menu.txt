@@ -1,4 +1,4 @@
-OPT_AUTO_IRC: Automatically Connect to IRC
+﻿OPT_AUTO_IRC: Automatically Connect to IRC
 OPTTT_AUTO_IRC: When toggled on, the game will automatically connect to the IRC and join the #starruler and #abem channels when started.
 OPT_MTE: Use Multiple Themes
 OPTTT_MTE: <<
@@ -155,6 +155,11 @@ NG_EVERYONE_IS_VANGUARD: Unrestricted Vanguard Victory
 NGTT_EVERYONE_IS_VANGUARD: <<
 	Allows non-Vanguard lifestyles to achieve Vanguard Victory. Requires "Enable Vanguard Victory" in order to have any effect.
 >>
+NG_PROGENITOR_TECH_UNLOCKABLE: Unrestricted Progenitor Discovery
+NGTT_PROGENITOR_TECH_UNLOCKABLE: <<
+	Allows non-Progenitor lifestyles to unlock the Progenitor tech tree by researching enough technologies, just like a Progenitor race.
+>>
+
 DOF_MISSING_BASE: <<
 	You do not appear to have the latest version of the DOF support library installed. This may cause certain assets to fail to load, and will also prevent various shipsets from functioning.
 >>

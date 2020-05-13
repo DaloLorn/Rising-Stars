@@ -42,6 +42,8 @@ void init() {
 		emp.cheatLevel = 0;
 		if(emp.shipset is null || !emp.shipset.available)
 			@emp.shipset = getShipset(DEFAULT_SHIPSET);
+		if(config::PROGENITOR_TECH_UNLOCKABLE != 0)
+			emp.forceAttitude(getAttitudeID("ProgenitorTech"));
 
 		//Check if we have a player
 		if(settings.playerId != -1) {

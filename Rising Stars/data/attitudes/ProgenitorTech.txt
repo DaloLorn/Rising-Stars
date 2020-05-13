@@ -1,0 +1,11 @@
+Attitude: ProgenitorTech
+	Sort: 10000
+	Name: Progenitor Tech Unlock
+	Description: This attitude should not be visible.
+	Progress: Report the presence of this attitude as a bug.
+	ABEM_glory::ConsumeAttributeToProgress(ProgenitorTechProgress, Multiplier = , UseProgressFactor = False)
+	Level:
+		Threshold: 100
+		UnlockTag(ProgenitorTech)
+		SendMessage(#EVT_PROGENITOR_BREAKTHROUGH_DESC, Title = #EVT_PROGENITOR_BREAKTHROUGH)
+		NotifyAll(#EVT_NOTIFY_PROGENITOR_BREAKTHROUGH, Description = #EVT_NOTIFY_PROGENITOR_BREAKTHROUGH_DESC, Icon = emp_portrait_cloak)
