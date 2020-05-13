@@ -89,3 +89,4 @@ STATUS_HAS_DEFENSES_DESC: <<
 STATUS_PSIONIC_PROTECTED_DESC: <<
 	This planet is shielded from capture by psionic reagents imported to one of the planets in this system, resulting in an additional 10 Loyalty.
 >>
+COND_ANCIENT_RUINS_DESC: When first colonized, gain a number of free research points. Additionally, Ancient Ruins on the planet's surface attach additional random pressures to the planet's native resource until destroyed.

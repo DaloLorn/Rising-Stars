@@ -190,3 +190,8 @@ BLD_ANCIENT_FTLBREEDER_DESC: <<
 
 	[bbloc=#TIP_CONSUME_BASE_MATERIAL:5/]
 >>
+BLD_ANCIENT_RUINS_DESC: <<
+	The ancient ruins of a military outpost constructed by an advanced race eons ago.
+
+	In addition to its usual effects, this planet's native resource will add 1 pressure of 3 randomly selected types. The selected pressure types are not unique, and will change every 3 minutes.
+>>

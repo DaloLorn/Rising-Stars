@@ -1,0 +1,11 @@
+Building: AncientRuins
+	Name: #BLD_ANCIENT_RUINS
+	Description: #BLD_ANCIENT_RUINS_DESC
+	Sprite: AncientRuin
+
+	Size: 4x3
+
+	AddToNativeResource(AddRandomPressure(1, 180, 0))
+	AddToNativeResource(AddRandomPressure(1, 180, 0))
+	AddToNativeResource(AddRandomPressure(1, 180, 0))
+	CannotBuildManually()
