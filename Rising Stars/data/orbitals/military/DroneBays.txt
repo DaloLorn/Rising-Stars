@@ -1,0 +1,24 @@
+Module: DroneBays
+	Name: #ORB_DRONE_BAYS
+	Description: #ORB_DRONE_BAYS_DESC
+	Blurb: #ORB_DRONE_BAYS_BLURB
+	Unique: False
+	Distant Icon: RocketPod::0
+	Icon: RocketPod::0
+	Health: 2000
+	Armor: 2000
+	Maintenance: 20
+	Build Cost: 300
+	Labor Cost: 30
+	Strategic Icon: RocketPod::0
+
+	RequireNot(RequireOnOrbital(Embassy))
+	RequireNot(RequireOnOrbital(Temple))
+
+	ABEM_orbitals::IfNotHaveModule(Repeat(2, AddTurret(DroneLauncher, Range=1200, Damage=50, FireDelay=10, Speed=160, Tracking=3, Lifetime=30, DroneCount=3)), MilitaryCore)
+	ABEM_orbitals::IfNotHaveModule(RecordBonusDPS(50), MilitaryCore)
+
+	RequireSubsystemUnlocked(DroneLauncher)
+	ABEM_orbitals::IfHasModule(Repeat(2, AddTurret(DroneLauncher, Range=1200, Damage=50, FireDelay=5, Speed=160, Tracking=3, Lifetime=30, DroneCount=6)), MilitaryCore)
+	ABEM_orbitals::IfHasModule(RecordBonusDPS(100), MilitaryCore)
+	ConsumeCargo(Ore, 400)

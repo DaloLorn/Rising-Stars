@@ -300,7 +300,7 @@ ORB_CORE_MILITARY_BLURB: Moderately armed defense platform. Can be upgraded to p
 ORB_CORE_MILITARY_DESC: <<
 	A well-armed defense platform capable of supporting a variety of useful tactical subsystems. In its default configuration, this starbase boasts a variety of basic weapons and can command a small support fleet.
 
-	Weapons installed on the Military Starbase will deal double damage. Other generic tactical upgrades will also be twice as effective.
+	Weapons installed on the Military Starbase will deal double damage. Other generic tactical upgrades will also be twice as effective, and some weapon upgrades can only be installed on this starbase.
 >>
 ORB_TRADE_OUTPOST_BLURB: Generates defense ships and protects planets in the system from being captured.
 ORB_TRADE_OUTPOST_DESC: <<
@@ -394,3 +394,24 @@ ORB_THRUSTERS_DESC: <<
 
 	Increases the station's acceleration by 5 u/s^2.
 >>
+ORB_TORPEDO_BAYS: Torpedo Bays
+ORB_TORPEDO_BAYS_DESC: <<
+	A handful of torpedo launch bays are installed onto the station's exterior, improving its ability to fend off large swarms of enemies.
+
+	This module can be installed multiple times.
+>>
+ORB_TORPEDO_BAYS_BLURB: Adds torpedo launchers to the station.
+ORB_PARTICLE_LANCE: Particle Lance
+ORB_PARTICLE_LANCE_DESC: <<
+	A large particle lance turret is installed on the station's exterior, providing an excellent defense against unshielded opponents.
+
+	This module can be installed multiple times.
+>>
+ORB_PARTICLE_LANCE_BLURB: Adds a particle lance to the station.
+ORB_DRONE_BAYS: Drone Bays
+ORB_DRONE_BAYS_DESC: <<
+	Several drone bays are installed on the station's exterior, improving its ability to defend itself.
+
+	This module can be installed multiple times.
+>>
+ORB_DRONE_BAYS_BLURB: Adds drone launchers to the station.

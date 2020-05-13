@@ -1,0 +1,20 @@
+Module: ParticleLance
+	Name: #ORB_PARTICLE_LANCE
+	Description: #ORB_PARTICLE_LANCE_DESC
+	Blurb: #ORB_PARTICLE_LANCE_BLURB
+	Unique: False
+	Distant Icon: TechIcons::18
+	Icon: TechIcons::18
+	Health: 2000
+	Armor: 2000
+	Maintenance: 25
+	Build Cost: 400
+	Labor Cost: 40
+	Strategic Icon: TechIcons::18
+
+	RequireOnOrbital(MilitaryCore)
+
+	RequireSubsystemUnlocked(ParticleLance)
+	AddTurret(ParticleLance, Range=900, Damage=500, Reload=5, Speed=180, Tracking=3, FireArc=3.14, Spread=0)
+	RecordBonusDPS(100)
+	ConsumeCargo(Ore, 500)

@@ -1,0 +1,20 @@
+Module: TorpedoBays
+	Name: #ORB_TORPEDO_BAYS
+	Description: #ORB_TORPEDO_BAYS_DESC
+	Blurb: #ORB_TORPEDO_BAYS_BLURB
+	Unique: False
+	Distant Icon: TechIcons::0
+	Icon: TechIcons::0
+	Health: 2000
+	Armor: 1000
+	Maintenance: 15
+	Build Cost: 250
+	Labor Cost: 25
+	Strategic Icon: TechIcons::0
+
+	RequireOnOrbital(MilitaryCore)
+
+
+	Repeat(2, AddTurret(Torpedo, Range=3000, Damage=400, Reload=4, Speed=200, Tracking=3, Radius=50))
+	RecordBonusDPS(100)
+	ConsumeCargo(Ore, 250)
