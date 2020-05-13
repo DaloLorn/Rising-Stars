@@ -172,3 +172,8 @@ BLD_PLANET_ENGINE_DESC: <<
 
 	Gives the planet 2 u/s² of acceleration to move with. Multiple planetary thrusters further increase acceleration.
 >>
+F_ANCIENT_SENATE_DESC: <<
+	[color=#aaa][i]Centralized Coordination Complexes, or 'C3s' as they're sometimes called, coordinate and monitor the activities of the empire's government, attempting to remove excessive red tape and corrupt officials. The procedures used vary wildly from empire to empire, but the net effect is always an improvement of the government's ability to look outward - and to focus its power and influence on more important matters.[/i][/color]
+
+	Generates 1 Influence Stake for every 20 billion inhabitants your planets would support if they were owned by a non-Ancient empire.
+>>
