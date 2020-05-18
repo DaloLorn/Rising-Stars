@@ -27,6 +27,7 @@ Technology: NylliAdaptationSpec1
 	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.5)
 	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.8)
 	ModAttribute(OrbitalMaintMod, Multiply, 0.9)
+	AddModifier(hull/Station::MaintCostFactor(0.9))
 
 	SecondaryMoneyCost(500)
 Technology: NylliTerraformSpec2

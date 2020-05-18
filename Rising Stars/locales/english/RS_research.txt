@@ -703,7 +703,7 @@ R_SPEC_NYLLI_TERRAFORM1_DESC: <<
 R_SPEC_NYLLI_ADAPTATION1_DESC: <<
 	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
 
-	Halves the Labor cost of all orbitals. Additionally, reduces the base construction and maintenance costs of orbitals by $1 and $2, respectively.
+	Halves the Labor cost of all orbitals and stations. Additionally, reduces the base construction and maintenance costs of orbitals and stations by $1 and $2, respectively.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Terraforming/]
 >>

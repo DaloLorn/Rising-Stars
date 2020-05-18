@@ -584,6 +584,10 @@ class DesignElement : BaseGuiElement {
 		int build = 0, maintain = 0;
 		double labor = 0;
 		getBuildCost(dsg, build, maintain, labor);
+		if(dsg.hasTag(ST_Station)) {
+			build *= playerEmpire.OrbitalBuildCostFactor;
+			labor *= playerEmpire.OrbitalLaborCostFactor;
+		}
 
 		moneyBox.text = formatMoney(build, maintain);
 		laborBox.text = standardize(labor);

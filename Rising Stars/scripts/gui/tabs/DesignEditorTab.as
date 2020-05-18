@@ -3230,6 +3230,10 @@ class Concept : BaseGuiElement {
 		int maintainCost = 0;
 		double laborCost = 0;
 		getBuildCost(editor.design, buildCost, maintainCost, laborCost);
+		if(editor.design.hasTag(ST_Station)) {
+			buildCost *= playerEmpire.OrbitalBuildCostFactor;
+			laborCost *= playerEmpire.OrbitalLaborCostFactor;
+		}
 
 		moneyValue.text = formatMoney(buildCost, maintainCost);
 		laborValue.text = standardize(laborCost, true);
