@@ -314,8 +314,7 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 				//print(deal);
 				double Mitigation = ship.mitigation;
 				//print(Mitigation);
-				double ShieldDmg = deal;
-				ShieldDmg *= (Mitigation);
+				double ShieldDmg = deal * Mitigation;
 				//print(ShieldDmg);
 
 				deal *= (1-Mitigation);
