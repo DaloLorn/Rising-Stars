@@ -400,7 +400,7 @@ class ShipInfoBar : InfoBar {
 			double shieldRegen = ship.blueprint.getEfficiencySum(SV_ShieldRegen);
 			double shieldMit = ship.mitigation;
 			double shieldBlock = ship.blueprint.getEfficiencySum(SV_Chance)*100.0;
-			double shieldAbsorb = shieldRegen * (1.0 + shieldMit);
+			double shieldAbsorb = shieldRegen / (1.0 - shieldMit);
 			tt += "\n\n";
 			tt += format(locale::TT_SHIP_SHIELD,
 				standardize(curShield), standardize(maxShield),

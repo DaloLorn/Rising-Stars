@@ -72,4 +72,4 @@ Subsystem: StationHull
 	Modifier: CalculateMitigation()
 		DummyMitigation := (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation) * 100
 		MitigationOvercap := max((pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1 - Sum.ShieldMitCap / Sum.ShieldCores) * 100, 0.0)
-		ShieldAbsorbRate := Sum.ShieldRegen * (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation + 1)
+		ShieldAbsorbRate := Sum.ShieldRegen / (1 - (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation))

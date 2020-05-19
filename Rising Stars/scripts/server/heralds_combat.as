@@ -200,7 +200,7 @@ void DamageShields(Event& evt, double Damage) {
 	double Mitigation = ship.mitigation;
 
 	if(ship.MaxShield > 0) {
-		ship.shieldDamage(Damage*(1-Mitigation/100));
+		ship.shieldDamage(Damage*(1-Mitigation));
 		
 		return;
 	}
@@ -210,7 +210,7 @@ void DamageShields(Event& evt, double Damage) {
 		Ship@ leader = cast<Ship>(ship.Leader);
 		if(leader !is null) {
 			Mitigation = leader.mitigation;
-			leader.shieldDamage(Damage*(1-Mitigation/100));
+			leader.shieldDamage(Damage*(1-Mitigation));
 		}
 	}
 };
@@ -234,7 +234,7 @@ DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direc
 
 	if(absorb > 0) {
 		evt.damage -= absorb;
-		flagship.shieldDamage(absorb*(1-FlagshipMitigation/100));
+		flagship.shieldDamage(absorb*(1-FlagshipMitigation));
 	}
 	return DE_Continue;
 }
@@ -315,10 +315,10 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 				double Mitigation = ship.mitigation;
 				//print(Mitigation);
 				double ShieldDmg = deal;
-				//ShieldDmg *= (Mitigation/100);
+				ShieldDmg *= (Mitigation);
 				//print(ShieldDmg);
 
-				deal *= (1-Mitigation/100);
+				deal *= (1-Mitigation);
 				//print(deal);
 				ship.shieldDamage(ShieldDmg);
 			}
