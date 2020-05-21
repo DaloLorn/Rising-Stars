@@ -262,7 +262,7 @@ bool forcefieldExposedInOneDirection(Design& design, Subsystem& sys, const vec2u
 			return true;
 		while(design.hull.active.valid(other)) {
 			auto@ otherSys = design.subsystem(other);
-			if(otherSys != null) {
+			if(otherSys !is null) {
 				uint j = 0;
 				while(other != otherSys.hexagon(j)) {
 					j++; // We can't directly check which module is attached to a certain hex. Instead, we need to find the hex first, *then* check its module.
