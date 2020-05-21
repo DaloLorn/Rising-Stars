@@ -262,13 +262,15 @@ bool forcefieldExposedInOneDirection(Design& design, Subsystem& sys, const vec2u
 			return true;
 		while(design.hull.active.valid(other)) {
 			auto@ otherSys = design.subsystem(other);
-			uint j = 0;
-			while(other != sys.hexagon(j)) {
-				j++; // We can't directly check which module is attached to a certain hex. Instead, we need to find the hex first, *then* check its module.
-			}
+			if(otherSys != null) {
+				uint j = 0;
+				while(other != otherSys.hexagon(j)) {
+					j++; // We can't directly check which module is attached to a certain hex. Instead, we need to find the hex first, *then* check its module.
+				}
 
-			if(otherSys is sys && sys.module(j) !is emitter && sys.core != other) {
-				break;
+				if(otherSys is sys && sys.module(j) !is emitter && sys.core != other) {
+					break;
+				}
 			}
 			if(!design.hull.active.advance(other, HexGridAdjacency(i)))
 				return true;
