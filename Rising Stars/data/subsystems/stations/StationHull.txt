@@ -46,9 +46,9 @@ Subsystem: StationHull
 	StationHPMod := 1.0
 	LaborMod := 1.0
 
-	AddShipModifier: BuildCostFactor(0.75)
-	AddShipModifier: !tag/StaticMaintenance::MaintCostFactor(0.2 * MaintenanceMod)
-	AddShipModifier: LaborCostFactor(0.3 * LaborMod)
+	AddShipModifier: BuildCostFactor(0.75 * OrbitalBuildCostMult)
+	AddShipModifier: !tag/StaticMaintenance::MaintCostFactor(0.2 * MaintenanceMod * OrbitalMaintMult)
+	AddShipModifier: LaborCostFactor(0.3 * LaborMod * OrbitalLaborCostMult)
 	AddShipModifier: SupportCapacityMult(0.33)
 	AddShipModifier: HpMult(4.0 * StationHPMod)
 	AddShipModifier: ShieldCapacityMult(4.0)
@@ -66,6 +66,10 @@ Subsystem: StationHull
 	DummyMitigation := 0
 	MitigationOvercap := 0
 	ShieldAbsorbRate := 0
+
+	OrbitalBuildCostMult := 1
+	OrbitalLaborCostMult := 1
+	OrbitalMaintMult := 1
 	
 	AddPostModifier: CalculateMitigation()
 

@@ -46,11 +46,11 @@ Trait: VanguardSwarmers
 	AddModifier(TroopPods::MaxLoyaltyFactor(0.5))
 
 	// These modifiers negate the cost reductions for Support Command.
-	AddModifier(var/BaseSupportCapacity, !hull/Station::BuildCostFactor(4.0))
-	AddModifier(var/BaseSupportCapacity::MaintCostFactor(4.0))
-	AddModifier(var/BaseSupportCapacity, !hull/Station::LaborCostFactor(4.0))
+	AddModifier(SupportCapModule::BuildCostFactor(4.0))
+	AddModifier(SupportCapModule::MaintCostFactor(4.0))
+	AddModifier(SupportCapModule::LaborCostFactor(4.0))
 
 	// These modifiers prevent Khalerii stations from double-dipping on various discounts.
 	// Maintenance costs are immune to this sort of issue, so no correction is needed.
-	AddModifier(hull/Station::BuildCostFactor(4.0))
-	AddModifier(hull/Station::LaborCostFactor(4.0))
+	AddModifier(StationHull::OrbitalBuildCostMultFactor(5.0))
+	AddModifier(StationHull::OrbitalLaborCostMultFactor(5.0))
