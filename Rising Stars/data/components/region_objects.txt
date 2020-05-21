@@ -62,6 +62,9 @@ server:
 	void revokeVision(Empire@ emp);
 	void grantTrade(Empire@ emp);
 	void revokeTrade(Empire@ emp);
+	void grantTradeInner(Empire@ emp);
+	void revokeTradeInner(Empire@ emp);
+	int getTradeGrants(Empire@ emp);
 	void addTemporaryVision(Empire@ emp, double timer);
 
 	void initRegion();
@@ -99,7 +102,7 @@ server:
 	void regionPostLoad();
 
 	safe bool get_isNebula();
-	Macronebula@ get_macronebula();
+	safe Macronebula@ get_macronebula();
 	relocking void setMacronebula(Macronebula& nebula);
 	relocking void initMacronebula();
 

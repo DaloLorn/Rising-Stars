@@ -67,6 +67,8 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	int[] objectCounts(getEmpireCount(), 0);
 	int[] visionGrants(getEmpireCount(), 0);
 	int[] tradeGrants(getEmpireCount(), 0);
+	Empire@[] queuedTradeGrants;
+	Empire@[] queuedTradeRevocations;
 	Empire@[] primaryVision(getEmpireCount(), defaultEmpire);
 	Empire@ primaryEmpire;
 
@@ -384,13 +386,11 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			
 		for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
 			Region@ other = getSystem(system.adjacent[i]).object;
-			if(other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsNebula(other)) {
+			if(other.isNebula && !macronebula.containsNebula(other)) {
 				other.setMacronebula(macronebula);
 			}
-			else if(!other.getSystemFlagAny(NEBULA_FLAG) && !macronebula.containsEdge(other)) {
-				macronebula.addEdge(other);
-			}
 		}
+		shouldInitMacronebula = false;
 	}
 	
 	void setMacronebula(Object& obj, Macronebula& nebula) {
@@ -531,6 +531,28 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		if(shouldInitMacronebula) {
 			cast<Region>(region).initMacronebula();
 			shouldInitMacronebula = false;
+		}
+
+		// Dequeue all currently queued trade grants and revocations.
+		// If we're not ready to execute them yet, they'll be requeued immediately, so
+		// we need to be careful not to enter an infinite loop.
+		//
+		// Removing no more than `cnt` items from the array, in the order they were inserted,
+		// seems to be the safest option. (But not a very efficient way of clearing arrays.
+		// Maybe I should create a linked list class...)
+		//
+		// Mind you, since macronebula initialization is currently the only thing that
+		// needs to be done before trade grants/revocations, I'm probably just being paranoid.
+		// On the bright side, this should only be an issue if a homeworld starts adjacent 
+		// to a nebula, so we're not wasting too many resources here either way.
+		for(int i = 0, cnt = queuedTradeGrants.length; i < cnt; i++) {
+			cast<Region>(region).grantTrade(queuedTradeGrants[0]);
+			queuedTradeGrants.removeAt(0);
+		}
+
+		for(int i = 0, cnt = queuedTradeRevocations.length; i < cnt; i++) {
+			cast<Region>(region).revokeTrade(queuedTradeRevocations[0]);
+			queuedTradeRevocations.removeAt(0);
 		}
 	
 		if(plane !is null && !planeParented) {
@@ -1763,11 +1785,13 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			case OT_Planet:
 				if(prevOwner !is null && prevOwner.valid) {
 					planetCounts[prevOwner.index] -= 1;
+					region.revokeTrade(prevOwner);
 				}
 				
 				if(newOwner !is null && newOwner.valid) {
 					planetCounts[newOwner.index] += 1;
 					cast<Planet>(obj).setLoyaltyBonus(empLoyaltyBonus[obj.owner.index]);
+					region.grantTrade(newOwner);
 				}
 				else {
 					cast<Planet>(obj).setLoyaltyBonus(0);
@@ -1836,8 +1860,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 				Planet@ pl = cast<Planet>(obj);
 				planetList.remove(pl);
 				planetBucket.remove(pl);
-				if(obj.owner !is null && obj.owner.valid)
+				if(obj.owner !is null && obj.owner.valid) {
 					planetCounts[obj.owner.index] -= 1;
+					region.revokeTrade(obj.owner);
+				}
 				calculatePlanets(region);
 			}
 			break;
@@ -1926,8 +1952,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 				Planet@ pl = cast<Planet>(obj);
 				planetList.insertLast(pl);
 				planetBucket.add(pl);
-				if(obj.owner !is null && obj.owner.valid)
+				if(obj.owner !is null && obj.owner.valid) {
 					planetCounts[obj.owner.index] += 1;
+					region.grantTrade(obj.owner);
+				}
 				calculatePlanets(region);
 			}
 			break;
@@ -2202,12 +2230,6 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		Region@ region = cast<Region>(obj);
 		
 		uint mask = 0;
-		for(uint i = 0, cnt = planetList.length; i < cnt; ++i) {
-			Planet@ pl = planetList[i];
-			if(pl.owner is null || !pl.owner.valid)
-				continue;
-			mask |= pl.owner.mask;
-		}
 		for(uint i = 0, cnt = tradeGrants.length; i < cnt; ++i) {
 			if(tradeGrants[i] > 0)
 				mask |= getEmpire(i).mask;
@@ -2237,6 +2259,33 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	void grantTrade(Object& obj, Empire@ emp) {
+		if(macronebula is null) {
+			Macronebula@[] nebulae;
+			for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
+				Region@ other = getSystem(system.adjacent[i]).object;
+				if(other.isNebula) {
+					if(other.macronebula is null) { // We're still initializing - postpone the grant until macronebulae have formed.
+						queuedTradeGrants.insertLast(emp);
+						return;
+					}
+					else if(nebulae.find(other.macronebula) < 0) {
+						nebulae.insertLast(other.macronebula);
+						for(uint j = 0, nebulaSize = other.macronebula.nebulaCount; j < nebulaSize; j++) {
+							other.macronebula.nebulae[j].grantTradeInner(emp);
+						}
+					}
+				}
+			}
+			obj.grantTradeInner(emp);
+		}
+		else {
+			for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; i++) {
+				macronebula.nebulae[i].grantTradeInner(emp);
+			}
+		}
+	}
+
+	void grantTradeInner(Object& obj, Empire@ emp) {
 		if(emp !is null && emp.valid) {
 			tradeGrants[emp.index] += 1;
 			calculateTradeAccess(obj);
@@ -2244,10 +2293,41 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	void revokeTrade(Object& obj, Empire@ emp) {
+		if(macronebula is null) {
+			Macronebula@[] nebulae;
+			for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
+				Region@ other = getSystem(system.adjacent[i]).object;
+				if(other.isNebula) {
+					if(other.macronebula is null) { // We're still initializing - postpone the revocation until macronebulae have formed. (Why would we even revoke trade access this early?!)
+						queuedTradeRevocations.insertLast(emp);
+						return;
+					}
+					else if(nebulae.find(other.macronebula) < 0) {
+						nebulae.insertLast(other.macronebula);
+						for(uint j = 0, nebulaSize = other.macronebula.nebulaCount; j < nebulaSize; j++) {
+							other.macronebula.nebulae[j].revokeTradeInner(emp);
+						}
+					}
+				}
+			}
+			obj.revokeTradeInner(emp);
+		}
+		else {
+			for(uint i = 0, cnt = macronebula.nebulaCount; i < cnt; i++) {
+				macronebula.nebulae[i].revokeTradeInner(emp);
+			}
+		}
+	}
+
+	void revokeTradeInner(Object& obj, Empire@ emp) {
 		if(emp !is null && emp.valid) {
 			tradeGrants[emp.index] -= 1;
 			calculateTradeAccess(obj);
 		}
+	}
+
+	int getTradeGrants(Empire@ emp) {
+		return tradeGrants[emp.index];
 	}
 
 	void forceSiegeAllPlanets(Empire@ emp, uint mask, uint doMask = ~0) {

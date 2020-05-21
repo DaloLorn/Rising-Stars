@@ -7,8 +7,6 @@ uint macronebulaCount = 0;
 tidy class MacronebulaScript {
 	uint idInternal;
 	array<Region@> nebulae;
-	array<Region@> edges;
-	array<Territory@> territories;
 
 	MacronebulaScript() {
 		idInternal = macronebulaCount++;
@@ -24,43 +22,33 @@ tidy class MacronebulaScript {
 		return nebulae[index];
 	}
 
-	Region@ get_edges(uint index) {
-		if(index >= edges.length)
-			return null;
-		return edges[index];
-	}
-
 	bool containsNebula(Region@ region) {
 		return nebulae.find(region) >= 0;
-	}
-
-	bool containsEdge(Region@ region) {
-		return edges.find(region) >= 0;
 	}
 
 	uint get_nebulaCount() {
 		return nebulae.length;
 	}
 
-	uint get_edgeCount() {
-		return edges.length;
-	}
-
 	void addNebula(Region@ region) {
 		nebulae.insertLast(region);
-		for(uint i = 0, cnt = territories.length; i < cnt; ++i) {
-			territories[i].add(region);
+		if(nebulae.length == 1) return;
+
+		// Synchronize the macronebula's trade grants.
+		// We don't need to do this if this is our first nebula.
+		for(uint i = 0, cnt = nebulae.length-1; i < cnt; i++) {
+			for(uint j = 0, empires = getEmpireCount(); j < empires; j++) {
+				Empire@ emp = getEmpire(j);
+				for(uint k = 0, repeats = region.getTradeGrants(emp); k < repeats; k++) {
+					nebulae[i].grantTradeInner(emp);
+				}
+			}
 		}
-	}
-	
-	void claimMacronebula(Territory@ territory) {
-		territories.insertLast(territory);
-	}
-	
-	void unclaimMacronebula(Territory@ territory) {
-		int index = territories.find(territory);
-		if(index >= 0) {
-			territories.removeAt(index);
+		for(uint i = 0, empires = empires = getEmpireCount(); i < empires; i++) {
+			Empire@ emp = getEmpire(i);
+			for(uint j = 0, repeats = nebulae[0].getTradeGrants(emp); j < repeats; j++) {
+				region.grantTradeInner(emp);
+			}
 		}
 	}
 
@@ -74,26 +62,6 @@ tidy class MacronebulaScript {
 		if(index >= 0)
 		{
 			nebulae.removeAt(index);
-		}
-	}
-
-	void addEdge(Macronebula& obj, Region@ region) {
-		edges.insertLast(region);
-		for(uint i = 0, cnt = territories.length; i < cnt; ++i) {
-			territories[i].addNebulaEdges(obj);
-		}
-	}
-
-	void removeEdge(uint index) {
-		if(index < edges.length)
-			edges.removeAt(index);
-	}
-	
-	void removeEdgeSpecific(Region@ region) {
-		int index = edges.find(region);
-		if(index >= 0)
-		{
-			edges.removeAt(index);
 		}
 	}
 }
