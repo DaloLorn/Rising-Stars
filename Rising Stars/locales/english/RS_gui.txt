@@ -29,3 +29,12 @@ TT_SHIP_SHIELD: <<
 TT_SHIP_SHIELD_ABSORB: <<
 	[b]Total Shield Absorption Rate[/b] [offset=230]$1/sec[/offset]
 >>
+
+AVG_FLUX_COOLDOWN: Average Reflux Time from $2: $1
+AVG_FLUX_COOLDOWN_JAMMED: Average Reflux Time from $2: $1 (jammed)
+CANNOT_FLUX: Flux Jump Impossible
+UNFLUXABLE_DESTINATION: $1 can't identify target
+UNFLUXABLE_OBJECT: $1 is too slow
+FLUX_CHARGING: $1 is recharging ($2)
+FLUX_CHARGING_JAMMED: $1 is recharging ($2 - jammed)
+FLUX_UNKNOWN_ERROR: Unknown error on $1

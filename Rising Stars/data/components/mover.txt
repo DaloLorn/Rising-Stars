@@ -2,6 +2,7 @@ Object.Mover : components.Mover::Mover {
 local safe:
 	bool get_inFTL() const;
 	bool get_isMoving() const;
+	double get_fluxCooldown() const;
 	double get_maxAcceleration() const;
 
 restricted local:
@@ -62,6 +63,8 @@ server:
 	void modSpacetimeDrag(double mod);
 	void setRelativisticAccel(const bool value);
 	void modLightspeed(double mod);
+
+	void modFluxCooldown(double amount);
 
 shadow:
 	void readMoverDelta(Message& msg);

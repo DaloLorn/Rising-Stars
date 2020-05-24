@@ -1,8 +1,9 @@
 import systems;
 import navigation.SmartCamera;
 from navigation.elevation import getElevationIntersect, getElevation;
-from input import activeCamera;
+from input import activeCamera, mouseToGrid;
 import ftl;
+import util.formatting;
 import tabs.Tab;
 import orbitals;
 import orders;

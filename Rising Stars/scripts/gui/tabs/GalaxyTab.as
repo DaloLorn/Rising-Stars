@@ -152,6 +152,88 @@ class PopupRoot : BaseGuiElement {
 			tab.infoBar.draw();
 		if(tab.gloryBar !is null && tab.gloryBar.visible)
 			tab.gloryBar.draw();
+
+		// Update flux indicators
+		if(hoveredObject !is null) return; // Let's not draw over other UI elements if we can afford it.
+		vec3d destination = mouseToGrid(mousePos);
+		Object@ obj;
+		int fluxCount = 0;
+		array<uint> invalidObjs;
+		bool canFlux = true, showFlux = false, isJammed = false;
+		double cooldown, avgCooldown = 0.0;
+
+		for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
+			@obj = selectedObjects[i];
+			if(getRegion(destination) !is getRegion(obj.position)) {
+				if(obj.hasMover && obj.owner.HasFlux != 0 && !obj.hasSupportAI) {
+					showFlux = true;
+					if(!canFluxTo(obj, destination)) {
+						canFlux = false;
+						invalidObjs.insertLast(i);
+					}
+					else {
+						cooldown = calculateFluxCooldown(obj, getFluxDest(obj, destination));
+						if(isFTLBlocked(obj, destination)) {
+							cooldown *= 4;
+							isJammed = true;
+						}
+						avgCooldown += cooldown;
+						fluxCount++;
+					}
+				}
+			}
+		}
+		avgCooldown /= fluxCount;
+
+		Color color;
+		if(canFlux)
+			color = FTL_BEAM_COLOR;
+		else
+			color = DISABLED_BEAM_COLOR;
+
+		if(showFlux) {
+			if(canFlux) {
+				string text = locale::AVG_FLUX_COOLDOWN;
+				if(isJammed)
+					text = locale::AVG_FLUX_COOLDOWN_JAMMED;
+				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
+					format(text, formatTime(avgCooldown), getRegion(destination).name),
+					color);
+			}
+			else {
+				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
+					locale::CANNOT_FLUX,
+					color);
+				for(uint i = 0, cnt = invalidObjs.length; i < cnt; ++i) {
+					@obj = selectedObjects[invalidObjs[i]];
+					vec2i drawPos = mousePos + vec2i(16, 16 + 16*i);
+					if(!isFluxableDestination(obj, getRegion(destination), getRegion(obj.position)))
+						font::OpenSans_11_Italic.draw(drawPos,
+							format(locale::UNFLUXABLE_DESTINATION, obj.name),
+							color);
+					else if(!isFluxableObject(obj))
+						font::OpenSans_11_Italic.draw(drawPos,
+							format(locale::UNFLUXABLE_OBJECT, obj.name),
+							color);
+					else if(obj.hasMover) {
+						double cooldownMod = 1;
+						string text = locale::FLUX_CHARGING;
+						if(isFTLBlocked(obj)) {
+							cooldownMod = 4;
+							text = locale::FLUX_CHARGING_JAMMED;
+						}
+						font::OpenSans_11_Italic.draw(drawPos,
+							format(text, obj.name, formatTime(obj.fluxCooldown * cooldownMod, true)),
+							color);
+					}
+					else {
+						font::OpenSans_11_Italic.draw(drawPos,
+							format(locale::FLUX_UNKNOWN_ERROR, obj.name),
+							color);
+					}
+				}
+			}
+		}
 	}
 };
 

@@ -238,6 +238,7 @@ tidy class Mover : Component_Mover, Savable {
 
 	bool FTL = false;
 	double FTLSpeed = 1.0;
+	double fluxCD = 0;
 	
 	bool spacetimeDrag = config::NEW_MOVEMENT > 0;
 	double spacetimeDragCoefficient = baseSpacetimeDragCoefficient;
@@ -279,6 +280,7 @@ tidy class Mover : Component_Mover, Savable {
 		data >> spacetimeDragCoefficient;
 		data >> relativisticAccel;
 		data >> lightspeed;
+		data >> fluxCD;
 			
 			
 		if(data >= SV_0009) {
@@ -321,6 +323,7 @@ tidy class Mover : Component_Mover, Savable {
 		data << spacetimeDragCoefficient;
 		data << relativisticAccel;
 		data << lightspeed;
+		data << fluxCD;
 
 		uint cnt = path is null ? 0 : path.length;
 		data << cnt;
@@ -405,6 +408,14 @@ tidy class Mover : Component_Mover, Savable {
 		stopMoving(obj);
 		moverDelta = true;
 		posDelta = true;
+	}
+
+	double get_fluxCooldown() const {
+		return fluxCD;
+	}
+
+	void modFluxCooldown(double amount) {
+		fluxCD = max(fluxCD + amount, 0.0);
 	}
 	
 	bool get_isColliding() const {
@@ -621,6 +632,14 @@ tidy class Mover : Component_Mover, Savable {
 	double moverTick(Object& obj, double time) {
 		if(time <= 0)
 			return 0.1;
+
+		bool isFlux = obj.owner.HasFlux != 0 && !obj.hasSupportAI;
+		if(isFlux && fluxCD > 0) {
+			double cooldownRecovery = time;
+			if(isFTLBlocked(obj))
+				cooldownRecovery *= 0.25;
+			fluxCD = max(fluxCD - cooldownRecovery, 0.0);
+		}
 
 		if(!moving && !inFTL && obj.hasOrbit && obj.inOrbit) {
 			obj.orbitTick(time);
@@ -989,7 +1008,7 @@ tidy class Mover : Component_Mover, Savable {
 		}
 		else {
 			//Deal with flux
-			if(obj.owner.HasFlux != 0 && !obj.hasSupportAI) {
+			if(isFlux) {
 				Region@ reg = obj.region;
 				if(reg !is null) {
 					if(dest.distanceToSQ(reg.position) > reg.radius*reg.radius) {
@@ -1409,6 +1428,7 @@ tidy class Mover : Component_Mover, Savable {
 	}
 	
 	bool writeMoverDelta(const Object& obj, Message& msg) {
+		bool used = false;
 		const Ship@ ship = cast<const Ship@>(obj);
 		if(syncedID != moveID || moverDelta) {
 			msg.write1();
@@ -1427,7 +1447,7 @@ tidy class Mover : Component_Mover, Savable {
 			syncedID = moveID;
 			moverDelta = false;
 			facingDelta = false;
-			return true;
+			used = true;
 		}
 		else if(facingDelta) {
 			msg.write1();
@@ -1442,7 +1462,7 @@ tidy class Mover : Component_Mover, Savable {
 					msg.writeRotation(targFacing);
 			}
 			facingDelta = false;
-			return true;
+			used = true;
 		}
 		else if(ship !is null && prevFormationDest != ship.formationDest) {
 			msg.write1();
@@ -1453,9 +1473,9 @@ tidy class Mover : Component_Mover, Savable {
 			else
 				msg.writeSmallVec3(ship.formationDest.xyz);
 			prevFormationDest = ship.formationDest;
-			return true;
+			used = true;
 		}
-		return false;
+		return used;
 	}
 
 	void readMoverDelta(Object& obj, Message& msg) {

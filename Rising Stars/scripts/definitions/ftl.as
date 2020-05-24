@@ -307,13 +307,7 @@ bool canJumpdriveTo(Object& obj, const vec3d& pos) {
 
 const double FLUX_CD_RANGE = 6000.0;
 
-bool canFluxTo(Object& obj, const vec3d& pos) {
-	if(obj.owner.HasFlux == 0)
-		return false;
-
-	auto@ reg = getRegion(pos);
-	auto@ curReg = obj.region;
-
+bool isFluxableDestination(Object& obj, Region@ reg, Region@ curReg) {
 	if(curReg is null)
 		return false;
 	if(reg is null)
@@ -323,14 +317,35 @@ bool canFluxTo(Object& obj, const vec3d& pos) {
 
 	if(reg.VisionMask & obj.owner.mask == 0)
 		return false;
-	if(isFTLBlocked(obj) || isFTLBlocked(obj, pos))
+	return true;
+}
+
+bool isFluxableObject(Object& obj) {
+	if(!obj.hasMover || obj.maxAcceleration < 2)
 		return false;
-	if(obj.maxAcceleration < 2)
+	return true;
+}
+
+bool isFluxCharging(Object& obj) {
+	if(obj.hasMover && obj.fluxCooldown > 0)
+		return true;
+	return false;
+}
+
+bool canFluxTo(Object& obj, const vec3d& pos) {
+	if(obj.owner.HasFlux == 0)
 		return false;
-	if(obj.hasStatuses) {
-		if(obj.hasStatusEffect(fluxStatus))
-			return false;
-	}
+
+	auto@ reg = getRegion(pos);
+	auto@ curReg = obj.region;
+
+	if(!isFluxableDestination(obj, reg, curReg))
+		return false;
+
+	if(!isFluxableObject(obj))
+		return false;
+	if(isFluxCharging(obj))
+		return false;
 	return true;
 }
 
@@ -350,10 +365,13 @@ vec3d getFluxDest(Object& obj, const vec3d& pos) {
 		return pos;
 }
 
-from statuses import getStatusID;
-int fluxStatus = -1;
-void init() {
-	fluxStatus = getStatusID("FluxCooldown");
+double calculateFluxCooldown(Object& obj, const vec3d& fluxPos) {
+	if(obj.hasLeaderAI && obj.hasMover) {
+		double dist = fluxPos.distanceTo(obj.position);
+		double cd = dist / FLUX_CD_RANGE;
+		return cd;
+	}
+	return INFINITY;
 }
 
 #section server-side
@@ -365,10 +383,8 @@ void commitFlux(Object& obj, const vec3d& pos) {
 	playParticleSystem("FluxJump", fluxPos, obj.rotation, obj.radius * 4.0, obj.visibleMask);
 #section server-side
 
-	if(obj.hasStatuses) {
-		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE;
-		obj.addStatus(fluxStatus, timer=cd);
+	if(obj.hasLeaderAI && obj.hasMover) {
+		obj.modFluxCooldown(calculateFluxCooldown(obj, fluxPos));
 	}
 
 	if(obj.hasLeaderAI) {
