@@ -303,8 +303,8 @@ class MakePlanet : MapHook {
 
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
-	Argument radius(AT_Range, "6:14", doc="Size of the planet, can be a random range.");
-	Argument orbit_spacing(AT_Range, "125:275", doc="Distance from the previous planet.");
+	Argument radius(AT_Range, "6:30", doc="Size of the planet, can be a random range.");
+	Argument orbit_spacing(AT_Range, "180:300", doc="Distance from the previous planet.");
 	Argument grid_size(AT_Position2D, "(-1, -1)", doc="Size of the planet's surface grid. (-1,-1) to randomize based on radius.");
 	Argument conditions(AT_Boolean, "True", doc="Whether to let the planet randomly generate a condition.");
 	Argument distribute_resource(AT_Boolean, "False", doc="Whether or not the selected resources should be frequency distributed.");
