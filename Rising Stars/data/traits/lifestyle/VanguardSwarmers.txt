@@ -30,6 +30,7 @@ Trait: VanguardSwarmers
 	ModAttribute(FTLCostFactor, AddBase, -0.75)
 	ModAttribute(BuildingCostFactor, AddBase, -0.75)
 	ModAttribute(BuildingMaintFactor, AddBase, -0.75)
+	ModAttribute(ScoreMult, AddBase, -0.5)
 
 	AddModifier(BoardingStrengthFactor(0.5))
 	AddModifier(DamageMult(0.5))

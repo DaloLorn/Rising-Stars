@@ -76,6 +76,8 @@ class SightModifier : Savable {
 //Factor of new design cost as minimum for retrofit
 const double RETROFIT_MIN_PCT = 0.3;
 
+const double SHARED_XP_PCT = 0.1;
+
 tidy class LeaderAI : Component_LeaderAI, Savable {
 	Order@ order;
 	bool orderDelta = false;
@@ -399,11 +401,19 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		fleetEffectiveness = value;
 	}
 
-	void addExperience(Object& obj, double amount) {
+	void addExperience(Object& obj, double amount, bool forClass = false) {
 		double size = 500.0;
 		if(obj.isShip) {
 			Ship@ ship = cast<Ship>(obj);
 			size = ship.blueprint.design.size;
+			if(forClass) {
+				for(int i = 0, cnt = obj.owner.getActiveShips(ship); i < cnt; i++) {
+					Ship@ other = obj.owner.getShipOfType(ship, i);
+					if(other is ship)
+						continue;
+					other.addExperience(amount * SHARED_XP_PCT);
+				}
+			}
 		}
 
 		amount *= obj.owner.ExperienceGainFactor;

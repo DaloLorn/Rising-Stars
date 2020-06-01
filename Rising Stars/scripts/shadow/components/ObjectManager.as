@@ -16,6 +16,139 @@ tidy class ColonizationEvent : Serializable {
 	}
 };
 
+tidy class DesignManager : Serializable {
+dictionary[] designClasses;
+
+	DesignManager() {
+		designClasses.length = getEmpireCount();
+	}
+
+	uint getQueuedShips(string& name, int& revision, uint8& empireId) {
+		DesignRevision@[] cls;
+		if(!designClasses[empireId].exists(name))
+			return 0;
+		else designClasses[empireId].get(name, cls);
+		if(int(cls.length) < revision)
+			return 0;
+		if(cls[revision] is null)
+			return 0;
+		
+		return cls[revision].queued + cls[revision].built;
+	}
+
+	uint getBuiltShips(const Design@ dsg) {
+		return getBuiltShips(dsg.name, dsg.revision, dsg.owner.id);
+	}
+
+	uint getBuiltShips(string& name, int& revision, uint8& empireId) {
+		DesignRevision@[] cls;
+		if(!designClasses[empireId].exists(name))
+			return 0;
+		else designClasses[empireId].get(name, cls);
+		if(int(cls.length) < revision)
+			return 0;
+		if(cls[revision] is null)
+			return 0;
+		
+		return cls[revision].built;
+	}
+
+	uint getActiveShips(const Design@ dsg) {
+		return getActiveShips(dsg.name, dsg.revision, dsg.owner.id);
+	}
+
+	uint getActiveShips(string& name, int& revision, uint8& empireId) {
+		DesignRevision@[] cls;
+		if(!designClasses[empireId].exists(name))
+			return 0;
+		else designClasses[empireId].get(name, cls);
+		if(int(cls.length) < revision)
+			return 0;
+		if(cls[revision] is null)
+			return 0;
+		
+		return cls[revision].ships.length;
+	}
+
+	DesignRevision@[] getClass(string key, uint index, uint8 empireId) {
+		DesignRevision@[] cls;
+		string[] keys = designClasses[empireId].getKeys();
+		if(keys.length > index)
+			designClasses[empireId].get(keys[index], cls);
+		return cls;
+	}
+
+	void write(Message& msg) {
+		msg << designClasses.length;
+		for(uint8 i = 0, cnt = designClasses.length; i < cnt; ++i) {
+			msg << designClasses[i].getSize();
+			for(uint j = 0, jcnt = designClasses[i].getSize(); j < jcnt; ++j) {
+				string key = designClasses[i].getKeys()[j];
+				msg << key;
+				DesignRevision@[] cls = getClass(key, j, i);
+				msg << cls.length;
+				for(uint k = 0, kcnt = cls.length; k < kcnt; ++k) {
+					msg << cls[k];
+				}
+			}
+		}
+	}
+
+	void read(Message& msg) {
+		uint cnt = 0;
+		msg >> cnt;
+		designClasses.length = cnt;
+		for(uint8 i = 0; i < cnt; ++i) {
+			designClasses[i].deleteAll();
+			uint jcnt = 0;
+			msg >> jcnt;
+			for(uint j = 0; j < jcnt; ++j) {
+				string key;
+				uint kcnt = 0;
+				msg >> key;
+				msg >> kcnt;
+				DesignRevision@[] cls;
+				for(uint k = 0; k < kcnt; ++k) {
+					msg >> cls[k];
+				}
+				designClasses[i].set(key, cls);
+			}
+		}
+	}
+}
+
+tidy class DesignRevision : Serializable {
+	uint built;
+	uint queued;
+	Ship@[] ships;
+
+	Ship@ get_ships(uint index) {
+		return ships[index];
+	}
+
+	uint get_active() {
+		return ships.length;
+	}
+
+	void write(Message& msg) {
+		msg << built;
+		msg << queued;
+		msg << active;
+		for(uint i = 0; i < active; ++i)
+			msg << ships[i];
+	}
+
+	void read(Message& msg) {
+		msg >> built;
+		msg >> queued;
+		uint cnt = 0;
+		msg >> cnt;
+		ships.length = cnt;
+		for(uint i = 0; i < cnt; ++i)
+			msg >> ships[i];
+	}
+}
+
 tidy class ObjectManager : Component_ObjectManager {
 	ReadWriteMutex plMutex;
 	Planet@[] planets;
@@ -30,6 +163,9 @@ tidy class ObjectManager : Component_ObjectManager {
 
 	Mutex artifMutex;
 	Artifact@[] artifacts;
+
+	ReadWriteMutex designMutex;
+	DesignManager@ designs;
 
 	ColonizationEvent@[] colonizations;
 	ColonizationEvent@[] queuedAutoColonizations;
@@ -96,6 +232,37 @@ tidy class ObjectManager : Component_ObjectManager {
 			}
 		}
 		return closest;
+	}
+
+	uint getQueuedShips(string name, int revision, Empire@ emp) {
+		ReadLock lock(designMutex);
+		return designs.getQueuedShips(name, revision, emp.id);
+	}
+
+	uint getBuiltShips(Empire& emp, Ship@ ship) {
+		if(!ship.valid || ship.owner !is emp)
+			return 0;
+
+		ReadLock lock(designMutex);
+		return designs.getBuiltShips(ship.blueprint.design);
+	}
+
+	uint getBuiltShips(string name, int revision, Empire@ emp) {
+		ReadLock lock(designMutex);
+		return designs.getBuiltShips(name, revision, emp.id);
+	}
+
+	uint getActiveShips(Empire& emp, Ship@ ship) {
+		if(!ship.valid || ship.owner !is emp)
+			return 0;
+		
+		ReadLock lock(designMutex);
+		return designs.getActiveShips(ship.blueprint.design);
+	}
+
+	uint getActiveShips(string name, int revision, Empire@ emp) {
+		ReadLock lock(designMutex);
+		return designs.getActiveShips(name, revision, emp.id);
 	}
 
 	bool isFlingBeacon(Object@ obj) {
@@ -389,6 +556,10 @@ tidy class ObjectManager : Component_ObjectManager {
 			autoImports.length = cnt;
 			for(uint i = 0; i < cnt; ++i)
 				msg >> autoImports[i];
+		}
+
+		if(msg.readBit()) {
+			msg >> designs;
 		}
 	}
 };

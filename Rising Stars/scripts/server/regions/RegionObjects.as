@@ -849,7 +849,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 		if(objects.length != 0) {
 			amount /= double(objects.length);
 			for(uint i = 0, cnt = objects.length; i < cnt; ++i)
-				objects[i].addExperience(amount);
+				objects[i].addExperience(amount, true);
 		}
 	}
 

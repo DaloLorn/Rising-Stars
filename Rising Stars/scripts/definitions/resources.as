@@ -5,6 +5,10 @@ import hooks;
 from saving import SaveIdentifier, SaveVersion;
 import bool readLevelChain(ReadFile& file) from "planet_levels";
 
+// Discounts from owning multiples of a ship.
+const double MAX_DISCOUNT = 0.4;
+const uint MAX_DISCOUNT_SHIPS = 10;
+
 const double[] LEVEL_DISTRIBUTION = {0.76, 0.15, 0.06, 0.03};
 const double[] RARITY_DISTRIBUTION = {
 	0.88, 0.09, 0.02, 0.01, 0.05, 0.00002, //Level 0
@@ -492,6 +496,7 @@ void getBuildCost(const Design@ dsg, int&out buildCost, int&out maintainCost, do
 	double labor = 0;
 
 	uint cnt = dsg.subsystemCount;
+	Empire@ builder = dsg.owner;
 	for(uint i = 0; i < cnt; ++i) {
 		const Subsystem@ sys = dsg.subsystems[i];
 		for(uint j = 0, hexCnt = sys.hexCount; j < hexCnt; ++j) {
@@ -506,6 +511,12 @@ void getBuildCost(const Design@ dsg, int&out buildCost, int&out maintainCost, do
 	if(obj !is null) {
 		build *= double(obj.shipBuildCost) / 100.0;
 		build *= obj.constructionCostMod;
+		@builder = obj.owner;
+	}
+	if(dsg.owner.valid && builder.valid) {
+		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		labor -= labor * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		maintain -= maintain * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
 	}
 
 	buildCost = max(ceil(build), 0.0);
@@ -527,6 +538,7 @@ void getBuildCost(const Design@ dsg, int&out buildCost, int&out maintainCost, do
 int getBuildCost(const Design@ dsg, int count = 1, Object@ buildAt = null) {
 	double build = 0;
 	uint cnt = dsg.subsystemCount;
+	Empire@ builder = dsg.owner;
 	for(uint i = 0; i < cnt; ++i) {
 		const Subsystem@ sys = dsg.subsystems[i];
 		if(!sys.has(HV_BuildCost))
@@ -537,6 +549,10 @@ int getBuildCost(const Design@ dsg, int count = 1, Object@ buildAt = null) {
 	if(buildAt !is null) {
 		build *= double(buildAt.shipBuildCost) / 100.0;
 		build *= buildAt.constructionCostMod;
+		@builder = buildAt.owner;
+	}
+	if(dsg.owner.valid && builder.valid) {
+		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
 	}
 
 	int v = ceil(build);

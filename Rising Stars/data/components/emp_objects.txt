@@ -24,6 +24,12 @@ restricted local:
 	double get_globalDefenseStorage();
 	double get_globalDefenseStored();
 
+	uint getQueuedShips(string name, int revision, Empire@ emp);
+	uint getBuiltShips(Ship@ ship);
+	uint getBuiltShips(string name, int revision, Empire@ emp);
+	uint getActiveShips(Ship@ ship);
+	uint getActiveShips(string name, int revision, Empire@ emp);
+
 	safe uint get_planetCount();
 	Planet@ get_planetList(uint index);
 
@@ -71,6 +77,12 @@ server:
 
 	async void registerArtifact(Artifact@ obj);
 	async void unregisterArtifact(Artifact@ obj);
+
+	async void registerShip(Ship@ ship);
+	async void queueShip(string name, int revision, Empire@ emp);
+	async void unregisterShip(Ship@ ship);
+	async void dequeueShip(string name, int revision, Empire@ emp);
+	Ship@ getShipOfType(Ship@ ship, uint i);
 
 	async void checkAutoImport(Object@ from);
 	async void gotImportFor(Object@ forObj, uint resId);

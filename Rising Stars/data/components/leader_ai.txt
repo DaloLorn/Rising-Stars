@@ -94,7 +94,7 @@ restricted remote:
 	void set_autoFillSupports(bool value);
 	void set_allowFillFrom(bool value);
 
-	void addExperience(double amount);
+	void addExperience(double amount, bool forClass = false);
 	void resetLevelExperience(bool resetLevels = false);
 	void recalculateLevels(int prevSize, int newSize);
 	void convertRandomSupport(Object@ toLeader, Empire@ toEmpire, int maxSize);

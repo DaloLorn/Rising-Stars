@@ -388,8 +388,10 @@ tidy class ShipScript {
 			ship.activateStatuses();
 			ship.activateAbilities();
 
-			if(ship.owner.valid)
+			if(ship.owner.valid) {
+				ship.owner.registerShip(ship);
 				ship.owner.recordStatDelta(statType(ship), 1);
+			}
 			auto@ node = ship.getNode();
 			if(node !is null)
 				node.animInvis = true;
@@ -400,7 +402,7 @@ tidy class ShipScript {
 
 		if(ship.owner !is null && ship.owner.valid) {
 			if(ship.hasLeaderAI)
-				ship.owner.points += int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
+				ship.owner.points += int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS * ship.blueprint.design.total(SV_TechMult) * ship.owner.ScoreMult);
 
 			if(ship.hasLeaderAI) {
 				ship.owner.TotalFlagshipsBuilt += 1;
@@ -457,6 +459,7 @@ tidy class ShipScript {
 		if(ship.isFree) {
 			if(ship.owner !is null && ship.owner.valid) {
 				currentMaintenance = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
+				currentMaintenance -= double(currentMaintenance) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS)) * double(max(ship.owner.getBuiltShips(ship) - 1, double(MAX_DISCOUNT_SHIPS)));
 				ship.owner.modMaintenance(currentMaintenance, moneyType(ship));
 			}
 			else {
@@ -660,6 +663,7 @@ tidy class ShipScript {
 		//Check if we should update our maintenance
 		if(!ship.isFree && ship.owner !is null && ship.owner.valid) {
 			int maint = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
+			maint -= double(maint) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS)) * double(min(ship.owner.getBuiltShips(ship) - 1, MAX_DISCOUNT_SHIPS));
 			if(maint != currentMaintenance) {
 				ship.owner.modMaintenance(maint - currentMaintenance, moneyType(ship));
 				currentMaintenance = maint;
@@ -715,7 +719,7 @@ tidy class ShipScript {
 	
 		if(ship.owner !is null && ship.owner.valid) {
 			if(ship.hasLeaderAI) {
-				ship.owner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
+				ship.owner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS * ship.blueprint.design.total(SV_TechMult) * ship.owner.ScoreMult);
 				ship.owner.recordStatDelta(statType(ship), -1);
 			}
 			if(killCredit !is ship.owner) {
@@ -728,16 +732,21 @@ tidy class ShipScript {
 	}
 	
 	void destroy(Ship& ship) {
-		if(ship.owner !is null && ship.owner.valid && currentMaintenance != 0)
-			ship.owner.modMaintenance(-currentMaintenance, moneyType(ship));
+		if(ship.owner !is null && ship.owner.valid) {
+			if(currentMaintenance != 0) 
+				ship.owner.modMaintenance(-currentMaintenance, moneyType(ship));
 
-		if(ship.inCombat) {
-			double regain = ship.owner.ShipCostRegain;
-			if(regain > 0.001) {
-				regain = floor(regain * getBuildCost(ship.blueprint.design));
-				if(regain >= 1.0)
-					ship.owner.addBonusBudget(int(regain));
+			if(ship.inCombat) {
+				double regain = ship.owner.ShipCostRegain;
+				if(regain > 0.001) {
+					regain = floor(regain * getBuildCost(ship.blueprint.design));
+					if(regain >= 1.0)
+						ship.owner.addBonusBudget(int(regain));
+				}
 			}
+
+			if(ship.hasLeaderAI)
+				ship.owner.unregisterShip(ship);
 		}
 
 		//Assuming we've been hit recently, the likely cause of death is explosion
@@ -796,9 +805,10 @@ tidy class ShipScript {
 				prevOwner.modMaintenance(-currentMaintenance, moneyType(ship));
 
 			if(ship.hasLeaderAI) {
+				prevOwner.unregisterShip(ship);
 				prevOwner.TotalFlagshipsActive -= 1;
 				prevOwner.recordStatDelta(statType(ship), -1);
-				prevOwner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
+				prevOwner.points -= int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS * ship.blueprint.design.total(SV_TechMult) * ship.owner.ScoreMult);
 			}
 			else
 				prevOwner.TotalSupportsActive -= 1;
@@ -809,9 +819,10 @@ tidy class ShipScript {
 				ship.owner.modMaintenance(currentMaintenance, moneyType(ship));
 
 			if(ship.hasLeaderAI) {
+				ship.owner.registerShip(ship);
 				ship.owner.TotalFlagshipsActive += 1;
 				ship.owner.recordStatDelta(statType(ship), 1);
-				ship.owner.points += int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS);
+				ship.owner.points += int(double(ship.blueprint.design.size) * SHIP_SIZE_POINTS * ship.blueprint.design.total(SV_TechMult) * ship.owner.ScoreMult);
 			}
 			else
 				ship.owner.TotalSupportsActive += 1;
@@ -1527,6 +1538,8 @@ tidy class ShipScript {
 	}
 
 	void retrofit(Ship& ship, const Design@ newDesign) {
+		if(newDesign.base() !is ship.blueprint.design.base() && ship.hasLeaderAI)
+			ship.owner.unregisterShip(ship);
 		const Design@ prevDesign = ship.blueprint.design;
 		ship.blueprint.retrofit(ship, newDesign);
 		cacheStats(ship);
@@ -1535,6 +1548,7 @@ tidy class ShipScript {
 			ship.initAbilities(ship.blueprint.design);
 		if(newDesign.base() !is prevDesign.base()) {
 			if(ship.hasLeaderAI) {
+				ship.owner.registerShip(ship);
 				ship.recalculateLevels(prevDesign.size, newDesign.size);
 			}
 			else if(ship.hasSupportAI) {
@@ -1546,8 +1560,7 @@ tidy class ShipScript {
 		ship.Supply = min(ship.Supply, ship.MaxSupply);
  		ship.Shield = min(ship.Shield, ship.MaxShield);
  		ship.compEngageRange();
-		barDelta = true;
-	
+		barDelta = true;	
 	}
 
 	void syncDetailed(const Ship& ship, Message& msg) {
