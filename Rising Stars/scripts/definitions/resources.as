@@ -514,9 +514,9 @@ void getBuildCost(const Design@ dsg, int&out buildCost, int&out maintainCost, do
 		@builder = obj.owner;
 	}
 	if(dsg.owner.valid && builder.valid) {
-		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
-		labor -= labor * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
-		maintain -= maintain * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		labor -= labor * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		maintain -= maintain * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
 	}
 
 	buildCost = max(ceil(build), 0.0);
@@ -552,7 +552,7 @@ int getBuildCost(const Design@ dsg, int count = 1, Object@ buildAt = null) {
 		@builder = buildAt.owner;
 	}
 	if(dsg.owner.valid && builder.valid) {
-		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder), MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		build -= build * double(min(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
 	}
 
 	int v = ceil(build);
