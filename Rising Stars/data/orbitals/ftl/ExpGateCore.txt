@@ -31,3 +31,4 @@ Module: EXP_GateCore
 	ConsumeCargo(Ore, 5000)
 	FTLMaintenance(0.15)
 	DisableOnFTLBlock()
+	AddStatus(Untractorable)
