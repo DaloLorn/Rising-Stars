@@ -85,8 +85,8 @@ TRAIT_DEVOUT_DESC: <<|
 >>
 TRAIT_VANGUARD_SWARMER: Vanguard (Swarmers)
 TRAIT_VANGUARD_SWARMER_DESC: <<
-	[vspace=3/][img=Industrious;22]All orbitals and ship systems (except Support Command) cost 75% less money and Labor. FTL costs are similarly reduced.[/img]
-	[vspace=6/][img=SequesteredSociety;22]Population growth, tile development and civilian construction are twice as fast.[/img]
+	[vspace=3/][img=Industrious;22]All orbitals and ship systems (except Support Command) cost 50% less money and Labor. FTL costs are similarly reduced.[/img]
+	[vspace=6/][img=SequesteredSociety;22]Population growth, tile development and civilian construction are twice as fast. Imperial buildings cost 50% less to build, and 20% less to maintain.[/img]
 	[vspace=6/][img=ResourceIcon::4*#f88;22]Research costs are increased by 50%.[/img]
 	[vspace=6/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 50%.[/img]
 	[vspace=6/][img=HullSubsystems::6;22]All mining rates and cargo storage are increased by 50%. Also starts with the Miner Hull unlocked at the beginning of the game.[/img]

@@ -124,6 +124,15 @@ STT_CHANNELPERCENTAGE: <<
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
 
+S_GATE_MODULE_DESC: <<
+	An FTL gate module that can be added to a station.
+
+	[img=Plus]Allows ships to move from any gate to any other gate.[/img]
+	[img=Plus]Can be packed up and moved, then unpacked at a new location.[/img]
+	[img=Minus]Must cover at least a third of the entire station.[/img]
+	[img=MenuIcons::3;20]Active gates cannot be tractored.[/img]
+	[img=$FTL]Costs 0.05 FTL/s upkeep. Gates get disabled when you run out of FTL.[/img]
+>>
 
 S_PLANET_MINING_LASER: Planet Devourer
 S_PLANET_MINING_LASER_DESC: <<

@@ -71,9 +71,9 @@ ABL_GUARDIAN_BUILD: Commence Guardian Construction
 ABL_GUARDIAN_BUILD_DESC: <<
 	Uses the ancient blueprints stored in the facility's databanks to construct the components for a powerful Remnant Guardian. This construction project will take a substantial amount of time and resources, and we will not be able to use the facility for any other purpose.
 
-	Building a Guardian takes a minimum of 15 minutes, during which the Guardian Facility will no longer be able to use or store Labor, stop generating Research, and consume 10 Energy per second, 2.5 FTL Crystals per second, and incur a maintenance of §2M per budget cycle.
+	Building a Guardian takes a minimum of 15 minutes, during which the Guardian Facility will no longer be able to use or store Labor, stop generating Research, and consume 10 Energy per second, 2.5 FTL per second, and incur a maintenance of §2M per budget cycle.
 
-	Once ready, the Guardian's construction will require a bulk payment of 2000 Energy, 1000 FTL Crystals and §5M to finalize.
+	Once ready, the Guardian's construction will require a bulk payment of 2000 Energy, 1000 FTL and §5M to finalize.
 
 	[b][color=#f00]WARNING: Losing the Guardian Facility for any reason while construction is in progress will cancel the project without refunding any spent resources! Aside from this, there is no way of canceling construction of a Guardian, so be absolutely certain you want to do it!
 
@@ -139,4 +139,10 @@ ABL_PREPARE_HARVEST_FAST_DESC: <<
 	Tags any and all valuable resources on the planet surface for collection by a Ringworld. The process is a lengthy one; the beam must remain active for 4 consecutive minutes.
 
 	[img=MenuIcons::3;20]Cannot target Barren planets, Ringworlds or Artificial Planetoids.[/img]
+>>
+ABL_GATE_UNPACK: Unpack Gate
+ABL_GATE_UNPACK_DESC: <<
+	Unpack the gate at the targeted location. The gate will move there using its maneuvering thrusters, then unpack and reactivate itself. Activating a gate has a single-time FTL cost.
+
+	Active gates cannot be tractored.
 >>

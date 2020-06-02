@@ -19,7 +19,7 @@ ORB_EXPERIMENTAL_GATE_BLURB: Allows instantaneous travel to any other gate. Can 
 ORB_EXPERIMENTAL_GATE_DESC: <<|
 	This expensive, oversized research facility allows instantaneous travel to any other gate.
 
-	[b][color=#00c0ff]Prototype Stargates are required to research designable gates, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
+	[b][color=#00c0ff]Prototype Stargates are required to research designable gates, and have an upkeep cost of 0.15 FTL/s. They cannot be tractored.[/color][/b]
 >>
 ORB_GUARDIAN: Guardian Facility
 ORB_GUARDIAN_BLURB: Acts as a Research-generating super-shipyard, or constructs a powerful Guardian.
