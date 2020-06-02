@@ -1,6 +1,6 @@
 Technology: InfiniteShields
 	Name: #R_INFINITE_SHIELDS
-	Description: #R_INFINITE_SHIELDS_DESC:+15%
+	Description: #R_INFINITE_SHIELDS_DESC:+5%
 
 	Icon: techPhaseContainment * #78a9ff
 	Symbol: EditIcons::7
@@ -17,8 +17,8 @@ Technology: InfiniteShields
 
 	ResetWhenUnlocked()
 
-	AddModifier(ShieldCapacityFactor(1.15))
-	AddModifier(ShieldRegenFactor(1.15))
+	AddModifier(ShieldCapacityFactor(1.05))
+	AddModifier(ShieldRegenFactor(1.05))
 
 	ModAttribute(InfiniteShieldsTaken, Add, 1)
-	ModAttribute(OrbitalShieldMod, AddFactor, 0.15)
+	ModAttribute(OrbitalShieldMod, AddFactor, 0.05)
