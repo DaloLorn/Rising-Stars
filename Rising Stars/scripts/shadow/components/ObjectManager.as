@@ -23,12 +23,17 @@ dictionary[] designClasses;
 		designClasses.length = getEmpireCount();
 	}
 
-	uint getQueuedShips(string& name, int& revision, uint8& empireId) {
+	uint getQueuedShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
+		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses[empireId] is null) {
+			designClasses[empireId] = dictionary();
+			return 0;
+		}
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) < revision)
+		if(int(cls.length) <= revision)
 			return 0;
 		if(cls[revision] is null)
 			return 0;
@@ -37,15 +42,20 @@ dictionary[] designClasses;
 	}
 
 	uint getBuiltShips(const Design@ dsg) {
-		return getBuiltShips(dsg.name, dsg.revision, dsg.owner.id);
+		return getBuiltShips(dsg.name, dsg.revision, dsg.owner.index);
 	}
 
-	uint getBuiltShips(string& name, int& revision, uint8& empireId) {
+	uint getBuiltShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
+		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses[empireId] is null) {
+			designClasses[empireId] = dictionary();
+			return 0;
+		}
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) < revision)
+		if(int(cls.length) <= revision)
 			return 0;
 		if(cls[revision] is null)
 			return 0;
@@ -54,15 +64,20 @@ dictionary[] designClasses;
 	}
 
 	uint getActiveShips(const Design@ dsg) {
-		return getActiveShips(dsg.name, dsg.revision, dsg.owner.id);
+		return getActiveShips(dsg.name, dsg.revision, dsg.owner.index);
 	}
 
-	uint getActiveShips(string& name, int& revision, uint8& empireId) {
+	uint getActiveShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
+		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses[empireId] is null) {
+			designClasses[empireId] = dictionary();
+			return 0;
+		}
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) < revision)
+		if(int(cls.length) <= revision)
 			return 0;
 		if(cls[revision] is null)
 			return 0;
@@ -236,7 +251,7 @@ tidy class ObjectManager : Component_ObjectManager {
 
 	uint getQueuedShips(string name, int revision, Empire@ emp) {
 		ReadLock lock(designMutex);
-		return designs.getQueuedShips(name, revision, emp.id);
+		return designs.getQueuedShips(name, revision, emp.index);
 	}
 
 	uint getBuiltShips(Empire& emp, Ship@ ship) {
@@ -249,7 +264,7 @@ tidy class ObjectManager : Component_ObjectManager {
 
 	uint getBuiltShips(string name, int revision, Empire@ emp) {
 		ReadLock lock(designMutex);
-		return designs.getBuiltShips(name, revision, emp.id);
+		return designs.getBuiltShips(name, revision, emp.index);
 	}
 
 	uint getActiveShips(Empire& emp, Ship@ ship) {
@@ -262,7 +277,7 @@ tidy class ObjectManager : Component_ObjectManager {
 
 	uint getActiveShips(string name, int revision, Empire@ emp) {
 		ReadLock lock(designMutex);
-		return designs.getActiveShips(name, revision, emp.id);
+		return designs.getActiveShips(name, revision, emp.index);
 	}
 
 	bool isFlingBeacon(Object@ obj) {
