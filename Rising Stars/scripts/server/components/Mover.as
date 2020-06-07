@@ -637,6 +637,8 @@ tidy class Mover : Component_Mover, Savable {
 		if(isFlux && fluxCD > 0) {
 			double cooldownRecovery = time;
 			if(isFTLBlocked(obj))
+				cooldownRecovery = 0;
+			else if(isFTLSuppressed(obj))
 				cooldownRecovery *= 0.25;
 			fluxCD = max(fluxCD - cooldownRecovery, 0.0);
 		}

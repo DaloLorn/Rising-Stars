@@ -8,6 +8,9 @@ tidy class RegionScript {
 	array<int> systemFlags(getEmpireCount() * getSystemFlagCount(), 0);
 	bool flagDelta = false;
 
+	int[] ftlBlocks(getEmpireCount(), 0);
+	int[] ftlSuppressions(getEmpireCount(), 0);
+
 	void postInit(Region& region) {
 		region.initRegion();
 	}
@@ -33,6 +36,7 @@ tidy class RegionScript {
 		file << region.BasicVisionMask;
 		file << region.TargetCostMod;
 		file << region.BlockFTLMask.value;
+		file << region.SuppressFTLMask.value;
 		file << region.EngagedMask;
 		file << region.CombatMask;
 		file << region.SeenMask;
@@ -46,6 +50,12 @@ tidy class RegionScript {
 			file.writeIdentifier(SI_SystemFlag, i);
 			for(uint n = 0, ncnt = getEmpireCount(); n < ncnt; ++n)
 				file << systemFlags[i*ncnt + n];
+		}
+
+		uint cnt = getEmpireCount();
+		for(uint i = 0; i < cnt; ++i) {
+			file << ftlBlocks[i];
+			file << ftlSuppressions[i];
 		}
 	}
 
@@ -72,6 +82,7 @@ tidy class RegionScript {
 		file >> region.BasicVisionMask;
 		file >> region.TargetCostMod;
 		file >> region.BlockFTLMask.value;
+		file >> region.SuppressFTLMask.value;
 		file >> region.EngagedMask;
 		file >> region.CombatMask;
 		if(file >= SV_0047)
@@ -105,6 +116,12 @@ tidy class RegionScript {
 				}
 			}
 		}
+
+		uint cnt = getEmpireCount();
+		for(uint i = 0; i < cnt; ++i) {
+			file >> ftlBlocks[i];
+			file >> ftlSuppressions[i];
+		}
 	}
 
 	void postLoad(Region& region) {
@@ -112,6 +129,38 @@ tidy class RegionScript {
 		auto cnode = region.getNode();
 		if(cnode !is null)
 			cnode.reparent(getCullingNode(region.position));
+	}
+
+	void blockFTL(Region& region, Empire@ emp) {
+		if(emp is null || !emp.valid)
+			return;
+		ftlBlocks[emp.index]++;
+		if(ftlBlocks[emp.index] > 0)
+			region.BlockFTLMask |= emp.mask;
+	}
+
+	void unblockFTL(Region& region, Empire@ emp) {
+		if(emp is null || !emp.valid)
+			return;
+		ftlBlocks[emp.index]--;
+		if(ftlBlocks[emp.index] <= 0)
+			region.BlockFTLMask &= ~emp.mask;
+	}
+
+	void suppressFTL(Region& region, Empire@ emp) {
+		if(emp is null || !emp.valid)
+			return;
+		ftlSuppressions[emp.index]++;
+		if(ftlSuppressions[emp.index] > 0)
+			region.SuppressFTLMask |= emp.mask;
+	}
+
+	void unsuppressFTL(Region& region, Empire@ emp) {
+		if(emp is null || !emp.valid)
+			return;
+		ftlSuppressions[emp.index]--;
+		if(ftlSuppressions[emp.index] <= 0)
+			region.SuppressFTLMask &= ~emp.mask;
 	}
 
 	double tick(Region& region, double time) {
@@ -134,6 +183,7 @@ tidy class RegionScript {
 		writeTypicalMask(msg, region.SiegingMask.value);
 		writeTypicalMask(msg, region.GateMask.value);
 		writeTypicalMask(msg, region.BlockFTLMask.value);
+		writeTypicalMask(msg, region.SuppressFTLMask.value);
 		writeTypicalMask(msg, region.CombatMask);
 		writeTypicalMask(msg, region.TradeMask);
 		writeTypicalMask(msg, region.MemoryMask);
@@ -196,7 +246,7 @@ tidy class RegionScript {
 		delta = true;
 	}
 
-	int prevProtected = 0, prevFTL = 0, prevSieged = 0, prevSieging = 0, prevGate = 0, prevBlock = 0, prevCombat = 0;
+	int prevProtected = 0, prevFTL = 0, prevSieged = 0, prevSieging = 0, prevGate = 0, prevBlock = 0, prevSuppress = 0, prevCombat = 0;
 	uint prevVision = 0, prevTrade = 0;
 	
 	bool syncDelta(const Region& region, Message& msg) {
@@ -205,7 +255,7 @@ tidy class RegionScript {
 				|| prevSieged != region.SiegedMask.value || prevSieging != region.SiegingMask.value
 				|| prevVision != region.VisionMask || prevGate != region.GateMask.value
 				|| prevBlock != region.BlockFTLMask.value || prevCombat != region.CombatMask
-				|| prevTrade != region.TradeMask
+				|| prevTrade != region.TradeMask || prevSuppress != region.SuppressFTLMask.value
 				|| delta)
 		{
 			msg.write1();
@@ -219,6 +269,7 @@ tidy class RegionScript {
 			prevVision = region.VisionMask;
 			prevGate = region.GateMask.value;
 			prevBlock = region.BlockFTLMask.value;
+			prevSuppress = region.SuppressFTLMask.value;
 			prevCombat = region.CombatMask;
 			prevTrade = region.TradeMask;
 			delta = false;

@@ -3,6 +3,7 @@ import saving;
 import oddity_navigation;
 import systems;
 import oddities;
+import ftl;
 
 void createSlipstream(const vec3d& from, const vec3d& to, double timer = -1.0, Empire@ revealEmp = null) {
 	ObjectDesc desc;
@@ -36,6 +37,11 @@ void createSlipstream(const vec3d& from, const vec3d& to, double timer = -1.0, E
 
 	input.linkVision(true);
 	output.linkVision(true);
+
+	if(timer <= 0) {
+		input.setSuperior(true);
+		output.setSuperior(true);
+	}
 }
 
 void createWormhole(SystemDesc@ from, SystemDesc@ to) {
@@ -112,6 +118,7 @@ tidy class OddityScript {
 	Region@ visionRegion;
 	uint visionMask = 0;
 	uint prevMemory = 0;
+	bool wasSuppressed = false;
 
 	bool delta = false;
 
@@ -127,6 +134,7 @@ tidy class OddityScript {
 		file << superior;
 		file << prevMemory;
 		file << visualColor;
+		file << wasSuppressed;
 	}
 
 	void load(Oddity& obj, SaveFile& file) {
@@ -144,6 +152,7 @@ tidy class OddityScript {
 			file >> prevMemory;
 		if(file >= SV_0099)
 			file >> visualColor;
+		file >> wasSuppressed;
 
 		makeVisuals(obj, visualType, fromCreation=false, color=visualColor);
 		if(gate)
@@ -219,6 +228,12 @@ tidy class OddityScript {
 		@icon = makeOddityVisuals(obj, type, fromCreation, color=color);
 	}
 
+	void postInit(Oddity& obj) {
+		if(obj.region !is null) {
+			wasSuppressed = isFTLSuppressed(obj);
+		}
+	}
+
 	void destroy(Oddity& obj) {
 		if(obj.region !is null)
 			obj.region.removeStrategicIcon(-1, icon);
@@ -236,16 +251,23 @@ tidy class OddityScript {
 			return;
 		if(fromMask == toMask)
 			return;
+		bool shareTrade = gate && superior;
 
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 			Empire@ emp = getEmpire(i);
 			if(fromMask & emp.mask != 0) {
-				if(toMask & emp.mask == 0)
+				if(toMask & emp.mask == 0) {
 					onRegion.revokeVision(emp);
+					if(shareTrade)
+						onRegion.revokeTrade(emp);
+				}
 			}
 			else {
-				if(toMask & emp.mask != 0)
+				if(toMask & emp.mask != 0) {
 					onRegion.grantVision(emp);
+					if(shareTrade)
+						onRegion.grantTrade(emp);
+				}
 			}
 		}
 	}
@@ -306,11 +328,24 @@ tidy class OddityScript {
 		}
 
 		//Kill the oddity gate if the region blocks ftl at all
-		if(gate && !superior && prevRegion !is null) {
-			if(prevRegion.BlockFTLMask.value & obj.owner.mask != 0) {
+		// Oooor if the region has started being suppressed.
+		// Also, while the original comment says "at all", 
+		// the code did not enforce the "at all" part. It only checked if the owner was blocked.
+		// (This is still the case now.)
+		if(gate && !superior) {
+			if(isFTLBlocked(obj) || (!wasSuppressed && isFTLSuppressed(obj))) {
 				if(link !is null)
 					link.destroy();
 				obj.destroy();
+			}
+			// But if it was simply created in a suppressed region, decay four times faster instead.
+			if(isFTLSuppressed(obj)) {
+				time *= 4;
+			}
+			else wasSuppressed = false; // If the suppression goes away, we want the next suppressor to kill us.
+			// Also decay faster if the other end is being suppressed!
+			if(link !is null && isFTLSuppressed(link)) {
+				time *= 4;
 			}
 		}
 

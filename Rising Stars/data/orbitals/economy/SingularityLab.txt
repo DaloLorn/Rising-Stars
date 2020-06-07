@@ -33,7 +33,7 @@ Module: AdaptedSingularityLab
 	Description: #ORB_SINGULARITY_LAB_ADAPTED_DESC
 	
 	AddRegionStatusEnemies(SingularityDisruption)
-	BlockSystemFTL()
+	SuppressSystemFTL()
 	
 	private RequireUnlockTag(NylliAdaptation4)
 	

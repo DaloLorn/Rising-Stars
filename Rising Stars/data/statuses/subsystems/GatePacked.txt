@@ -7,6 +7,6 @@ Status: GatePacked
 
 	AddBonusHP(-0.5)
 
-	GrantAbility(GateUnpack)
+	IfNotFTLSuppressed(GrantAbility(GateUnpack))
 
 	ForceHoldFire()

@@ -1,6 +1,14 @@
 Status: GateModule
 	Visible To: Nobody
 
-	OnEnable(AddStatus(GateUnpacked))
+	OnEnable(AddStatus(GateInit))
 	OnDisable(RemoveStatus(GateUnpacked))
 	OnDisable(RemoveStatus(GatePacked))
+
+Status: GateInit
+	Visible To: Nobody
+
+	OnEnable(AddStatus(GatePacked))
+	IfNotFTLSuppressed(OnEnable(AddStatus(GateUnpacked)))
+	IfNotFTLSuppressed(OnEnable(RemoveStatus(GatePacked)))
+	IfNotFTLSuppressed(OnEnable(RemoveStatus(GateInit)))

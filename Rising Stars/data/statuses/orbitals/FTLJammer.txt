@@ -1,0 +1,6 @@
+Status: FTLJammer
+	Name: #STATUS_FTL_JAMMER
+	Description: #STATUS_FTL_JAMMER_DESC
+	Color: #f00
+	Icon: FtlIcon
+	BlockSystemFTL()

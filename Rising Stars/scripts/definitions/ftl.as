@@ -223,6 +223,8 @@ bool isFTLBlocked(Object& obj, const vec3d& point) {
 	auto@ reg = getRegion(point);
 	if(reg is null)
 		return false;
+	if(obj.owner is null)
+		return false;
 	if(reg.BlockFTLMask & obj.owner.mask != 0)
 		return true;
 	return false;
@@ -232,7 +234,31 @@ bool isFTLBlocked(Object& obj) {
 	auto@ reg = obj.region;
 	if(reg is null)
 		return false;
+	if(obj.owner is null)
+		return false;
 	if(reg.BlockFTLMask & obj.owner.mask != 0)
+		return true;
+	return false;
+}
+
+bool isFTLSuppressed(Object& obj, const vec3d& point) {
+	auto@ reg = getRegion(point);
+	if(reg is null)
+		return false;
+	if(obj.owner is null)
+		return false;
+	if(reg.SuppressFTLMask & obj.owner.mask != 0)
+		return true;
+	return false;
+}
+
+bool isFTLSuppressed(Object& obj) {
+	auto@ reg = obj.region;
+	if(reg is null)
+		return false;
+	if(obj.owner is null)
+		return false;
+	if(reg.SuppressFTLMask & obj.owner.mask != 0)
 		return true;
 	return false;
 }
@@ -317,11 +343,15 @@ bool isFluxableDestination(Object& obj, Region@ reg, Region@ curReg) {
 
 	if(reg.VisionMask & obj.owner.mask == 0)
 		return false;
+	if(reg.BlockFTLMask & obj.owner.mask != 0)
+		return false;
 	return true;
 }
 
 bool isFluxableObject(Object& obj) {
 	if(!obj.hasMover || obj.maxAcceleration < 2)
+		return false;
+	if(isFTLBlocked(obj))
 		return false;
 	return true;
 }

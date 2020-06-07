@@ -31,10 +31,12 @@ TT_SHIP_SHIELD_ABSORB: <<
 >>
 
 AVG_FLUX_COOLDOWN: Average Reflux Time from $2: $1
-AVG_FLUX_COOLDOWN_JAMMED: Average Reflux Time from $2: $1 (jammed)
+AVG_FLUX_COOLDOWN_SUPPRESSED: Average Reflux Time from $2: $1 (Suppression Detected)
 CANNOT_FLUX: Flux Jump Impossible
 UNFLUXABLE_DESTINATION: $1 can't identify target
+FLUX_JAMMED_DESTINATION: Jamming detected at $1
 UNFLUXABLE_OBJECT: $1 is too slow
+FLUX_JAMMED_ORIGIN: $1's flux connection is jammed
 FLUX_CHARGING: $1 is recharging ($2)
-FLUX_CHARGING_JAMMED: $1 is recharging ($2 - jammed)
+FLUX_CHARGING_SUPPRESSED: $1 is recharging ($2 - Suppression Detected)
 FLUX_UNKNOWN_ERROR: Unknown error on $1

@@ -218,6 +218,7 @@ visible:
 	locked_int ProtectedMask = 0
 	locked_int FreeFTLMask = 0
 	locked_int BlockFTLMask = 0
+	locked_int SuppressFTLMask = 0
 	locked_int GateMask = 0
 	locked_int ScoutingMask = 0
 	int EngagedMask = 0
@@ -248,6 +249,10 @@ server:
 	uint SeenMask = 0
 
 	void setSystemFlag(Empire@ emp, uint flagIndex, bool value);
+	void blockFTL(Empire@ emp);
+	void unblockFTL(Empire@ emp);
+	void suppressFTL(Empire@ emp);
+	void unsuppressFTL(Empire@ emp);
 	void modTargetCostMod(int mod);
 }
 

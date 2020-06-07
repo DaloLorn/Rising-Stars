@@ -159,11 +159,12 @@ class PopupRoot : BaseGuiElement {
 		Object@ obj;
 		int fluxCount = 0;
 		array<uint> invalidObjs;
-		bool canFlux = true, showFlux = false, isJammed = false;
+		bool canFlux = true, showFlux = false, isSuppressed = false;
 		double cooldown, avgCooldown = 0.0;
 
 		for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
 			@obj = selectedObjects[i];
+			if(obj.owner !is playerEmpire) continue;
 			if(getRegion(destination) !is getRegion(obj.position)) {
 				if(obj.hasMover && obj.owner.HasFlux != 0 && !obj.hasSupportAI) {
 					showFlux = true;
@@ -173,9 +174,9 @@ class PopupRoot : BaseGuiElement {
 					}
 					else {
 						cooldown = calculateFluxCooldown(obj, getFluxDest(obj, destination));
-						if(isFTLBlocked(obj, destination)) {
+						if(isFTLSuppressed(obj, destination)) {
 							cooldown *= 4;
-							isJammed = true;
+							isSuppressed = true;
 						}
 						avgCooldown += cooldown;
 						fluxCount++;
@@ -194,8 +195,8 @@ class PopupRoot : BaseGuiElement {
 		if(showFlux) {
 			if(canFlux) {
 				string text = locale::AVG_FLUX_COOLDOWN;
-				if(isJammed)
-					text = locale::AVG_FLUX_COOLDOWN_JAMMED;
+				if(isSuppressed)
+					text = locale::AVG_FLUX_COOLDOWN_SUPPRESSED;
 				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
 					format(text, formatTime(avgCooldown), getRegion(destination).name),
 					color);
@@ -207,20 +208,27 @@ class PopupRoot : BaseGuiElement {
 				for(uint i = 0, cnt = invalidObjs.length; i < cnt; ++i) {
 					@obj = selectedObjects[invalidObjs[i]];
 					vec2i drawPos = mousePos + vec2i(16, 16 + 16*i);
-					if(!isFluxableDestination(obj, getRegion(destination), getRegion(obj.position)))
+					if(!isFluxableDestination(obj, getRegion(destination), getRegion(obj.position))) {
+						string text = format(locale::UNFLUXABLE_DESTINATION, obj.name);
+						if(isFTLBlocked(obj, destination))
+							text = format(locale::FLUX_JAMMED_DESTINATION, getRegion(destination).name);
+						font::OpenSans_11_Italic.draw(drawPos, text, color);
+						break;
+					}
+					else if(!isFluxableObject(obj)) {
+						string text = locale::UNFLUXABLE_OBJECT;
+						if(isFTLBlocked(obj))
+							text = locale::FLUX_JAMMED_ORIGIN;
 						font::OpenSans_11_Italic.draw(drawPos,
-							format(locale::UNFLUXABLE_DESTINATION, obj.name),
+							format(text, obj.name),
 							color);
-					else if(!isFluxableObject(obj))
-						font::OpenSans_11_Italic.draw(drawPos,
-							format(locale::UNFLUXABLE_OBJECT, obj.name),
-							color);
+					}
 					else if(obj.hasMover) {
 						double cooldownMod = 1;
 						string text = locale::FLUX_CHARGING;
-						if(isFTLBlocked(obj)) {
+						if(isFTLSuppressed(obj)) {
 							cooldownMod = 4;
-							text = locale::FLUX_CHARGING_JAMMED;
+							text = locale::FLUX_CHARGING_SUPPRESSED;
 						}
 						font::OpenSans_11_Italic.draw(drawPos,
 							format(text, obj.name, formatTime(obj.fluxCooldown * cooldownMod, true)),

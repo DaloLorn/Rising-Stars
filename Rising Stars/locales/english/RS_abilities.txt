@@ -1,4 +1,4 @@
-﻿ABL_ANCIENT_BUILD_ORE_TRANSMUTER: Attempt to Build Ore Transmuter
+ABL_ANCIENT_BUILD_ORE_TRANSMUTER: Attempt to Build Ore Transmuter
 ABL_ANCIENT_BUILD_ORE_TRANSMUTER_DESC: Move to the target planet and attempt to build an Ore Transmuter on it. Building will fail if insufficient funds are available.
 ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
 ABL_SCUTTLEDERELICT_DESC: <<
@@ -146,3 +146,5 @@ ABL_GATE_UNPACK_DESC: <<
 
 	Active gates cannot be tractored.
 >>
+ABL_FTL_JAMMER: FTL Jammer Overcharge
+ABL_FTL_JAMMER_DESC: Prevents all hostile FTL in this system for 3 minutes. Costs 200 FTL.

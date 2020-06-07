@@ -72,6 +72,10 @@ tidy class HyperdriveOrder : Order {
 		if(!obj.hasMover)
 			return OS_COMPLETED;
 
+		bool isSuppressed = isFTLSuppressed(obj);
+		if(isSuppressed)
+			time *= 0.5; // Slow the charge rate.
+
 		//Pay for the FTL
 		Ship@ ship = cast<Ship>(obj);
 		if(ship !is null && ship.delayFTL && charge >= 0) {
@@ -146,6 +150,8 @@ tidy class HyperdriveOrder : Order {
 
 		//Do actual hyperdriving
 		double speed = hyperdriveSpeed(obj);
+		if(isSuppressed)
+			speed *= 0.5;
 		bool wasMoving = moveId != -1;
 		bool arrived = obj.FTLTo(destination, speed, moveId);
 		if(!wasMoving) {

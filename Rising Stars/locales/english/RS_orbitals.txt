@@ -415,3 +415,29 @@ ORB_DRONE_BAYS_DESC: <<
 	This module can be installed multiple times.
 >>
 ORB_DRONE_BAYS_BLURB: Adds drone launchers to the station.
+ORB_FTL_SUPPRESSOR_ADAPTED: Redistributing FTL Suppressor
+ORB_FTL_SUPPRESSOR_ADAPTED_DESC: <<
+	[bbloc=#ORB_FTL_SUPPRESSOR_DESC/]
+
+	[bbloc=#ORB_ADAPTED:FTL Suppressor:Generates 1 Energy per second/]
+>>
+ORB_FTL_JAMMER_BLURB: Slows down hostile empires trying to engage their FTL drives in this system. Can periodically prevent FTL activity.
+ORB_FTL_JAMMER_DESC: <<
+	An array of precise hyperfield excitors calibrated to specific frequencies can block the use of particular makes of FTL drive.
+
+	Empires you are at war with will have FTL speeds and charge rates greatly reduced in this system. Activating additional gates in the system will no longer be possible, and slipstream tears will decay faster.
+
+	The jammer can be temporarily overcharged to completely block enemy FTL systems for a short time.
+
+	[b][color=#00c0ff]Costs 0.15 FTL per second to maintain.[/color][/b]
+>>
+ORB_FTL_SUPPRESSOR: FTL Suppressor
+ORB_FTL_SUPPESSOR_DESC: <<
+	An array of precise hyperfield excitors calibrated to specific frequencies can block the use of particular makes of FTL drive.
+
+	Empires you are at war with will have FTL speeds and charge rates greatly reduced in this system. Activating additional gates in the system will no longer be possible, and slipstream tears will decay faster.
+
+	Unlike the larger jamming stations, FTL suppression arrays aren't powerful enough to fully block FTL systems.
+
+	[b][color=#00c0ff]Costs 0.25 FTL per second to maintain.[/color][/b]
+>>

@@ -1,0 +1,7 @@
+Ability: FTLJammer
+	Name: #ABL_FTL_JAMMER
+	Description: #ABL_FTL_JAMMER_DESC
+	Cooldown: 360
+	Icon: FtlIcon*#f00
+	ConsumeFTL(200)
+	AddStatusSelf(FTLJammer, Duration = 180)

@@ -273,9 +273,10 @@ class ConsumeDistanceFTL : AbilityHook {
 	Argument base_cost(AT_Decimal, "0", doc="Base FTL Cost.");
 	Argument distance_cost(AT_Decimal, "0", doc="FTL Cost per unit of distance.");
 	Argument sqrt_cost(AT_Decimal, "0", doc="FTL Cost per square root unit of distance.");
-	Argument obey_free_ftl(AT_Boolean, "True", doc="Whether to reduce the cost to 0 if departing from a free ftl system.");
-	Argument obey_block_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in a blocked ftl system.");
+	Argument obey_free_ftl(AT_Boolean, "True", doc="Whether to reduce the cost to 0 if departing from a free-FTL system.");
+	Argument obey_block_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in an FTL-blocked system.");
 	Argument path_distance(AT_Boolean, "False", doc="If set, use total path distance taking into account gates, slipstreams and wormholes.");
+	Argument obey_suppress_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in an FTL-suppressed system.");
 
 	double getCost(const Ability@ abl, const Targets@ targs) const{
 		double cost = base_cost.decimal;
@@ -303,14 +304,24 @@ class ConsumeDistanceFTL : AbilityHook {
 	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
 		if(ignoreCost || targs is null)
 			return true;
-		if(obey_block_ftl.boolean && abl.emp !is null) {
+		if((obey_block_ftl.boolean || obey_suppress_ftl.boolean) && abl.emp !is null) {
+			int mask = 0;
 			auto@ t = targ.fromConstTarget(targs);
 			if(t !is null && t.obj !is null && abl.obj !is null) {
 				Region@ myReg = abl.obj.region;
-				if(myReg !is null && myReg.BlockFTLMask & abl.emp.mask != 0)
+				if(obey_block_ftl.boolean)
+					mask |= myReg.BlockFTLMask.value;
+				if(obey_suppress_ftl.boolean)
+					mask |= myReg.SuppressFTLMask.value;
+				if(myReg !is null && mask & abl.emp.mask != 0)
 					return false;
+				mask = 0;
 				Region@ targReg = t.obj.region;
-				if(targReg !is null && targReg.BlockFTLMask & abl.emp.mask != 0)
+				if(obey_block_ftl.boolean)
+					mask |= targReg.BlockFTLMask.value;
+				if(obey_suppress_ftl.boolean)
+					mask |= targReg.SuppressFTLMask.value;
+				if(targReg !is null && mask & abl.emp.mask != 0)
 					return false;
 			}
 		}

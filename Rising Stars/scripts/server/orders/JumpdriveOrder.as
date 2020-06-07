@@ -80,6 +80,11 @@ tidy class JumpdriveOrder : Order {
 		if(!obj.hasMover)
 			return OS_COMPLETED;
 
+		if(isFTLSuppressed(obj))
+			time *= 0.25;
+		if(isFTLSuppressed(obj, destination))
+			time *= 0.25;
+
 		//Pay for the FTL
 		Ship@ ship = cast<Ship>(obj);
 		if(ship !is null && ship.delayFTL && charge >= 0) {

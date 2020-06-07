@@ -33,6 +33,17 @@ class SetGlobalSystemFlag : MapHook {
 #section all
 }
 
+class SuppressAllFTL : MapHook {
+	Document doc("Permanently suppress FTL in this system for all empires.");
+
+#section server
+	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const {
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			system.object.suppressFTL(getEmpire(i));
+		}
+	}
+}
+
 class DisableShields : StatusHook {
 	Document doc("Disables the shields of the ship or orbital affected by this status.");
 	Argument preserve("Preserve Power", AT_Boolean, "False", doc="Whether the object's shields should be set to their previous strength once the status is disabled.");
@@ -384,23 +395,6 @@ class StatusFreeFTLSystem : StatusHook {
 		Empire@ owner = obj.owner;
 		if(region !is null && owner !is null && owner.valid)
 			region.FreeFTLMask |= owner.mask;
-		return true;
-	}
-	
-	bool onRegionChange(Object& obj, Status@ status, any@ data, Region@ prevRegion, Region@ newRegion) override {
-		return false;
-	}
-#section all
-}
-
-class StatusBlockFTLSystem : StatusHook {
-	Document doc("Objects in the system this status is active in cannot FTL at all. NOTE: DO NOT USE THIS IN ANYTHING EXCEPT AddRegionStatus() HOOKS CALLED DURING SYSTEM GENERATION WITHOUT CONSULTING OE OR MORE STAR RULER 2 DEVELOPERS. AND PREFERABLY NOT EVEN THEN. IT MAY BREAK.");
-	
-#section server
-	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
-		if(obj.region !is null && obj.owner !is null && obj.owner.valid) {
-			obj.region.BlockFTLMask |= obj.owner.mask;
-		}
 		return true;
 	}
 	

@@ -1,16 +1,16 @@
-Module: FTLJammer
-	Name: #ORB_FTL_JAMMER
-	Blurb: #ORB_FTL_JAMMER_BLURB
-	Description: #ORB_FTL_JAMMER_DESC
+Module: FTLSuppressor
+	Name: #ORB_FTL_SUPPRESSOR
+	Blurb: #ORB_FTL_SUPPRESSOR_BLURB
+	Description: #ORB_FTL_SUPPESSOR_DESC
 	Icon: OrbitalIcons::9
 
 	Core: True
 
 	Build Cost: 500
-	Maintenance: 50
-	Labor Cost: 20
+	Maintenance: 70
+	Labor Cost: 30
 
-	Health: 5000
+	Health: 2500
 	Armor: 2500
 
 	Model: FTLJammer
@@ -19,20 +19,19 @@ Module: FTLJammer
 	Strategic Icon: OrbitalIcons::9
 
 	IfNotFTLShortage(SuppressSystemFTL())
-	FTLMaintenance(0.15)
+	FTLMaintenance(0.25)
 
-	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLJammer, AdaptedFTLJammer))
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLSuppressor, AdaptedFTLSuppressor))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	IfAttributeGTE(FTLJammerCombat, 1, AddRegionStatusEnemies(FTLJammerCombat)) #version>=147
 
 	ConsumeCargo(Ore, 500)
 
-	GrantAbility(FTLJammer)
-	LimitOncePerSystem(FTLJammerFlag, Any Empire = True)
-Module: AdaptedFTLJammer
+	RequireOnOrbital(MilitaryCore)
+Module: AdaptedFTLSuppressor
 	Inherit: FTLJammer
-	Name: #ORB_FTL_JAMMER_ADAPTED
-	Description: #ORB_FTL_JAMMER_ADAPTED_DESC
+	Name: #ORB_FTL_SUPPRESSOR_ADAPTED
+	Description: #ORB_FTL_SUPPRESSOR_ADAPTED_DESC
 
 	AddEnergyIncome(1)
 

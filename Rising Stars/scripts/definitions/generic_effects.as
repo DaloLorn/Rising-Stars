@@ -714,6 +714,12 @@ class ProtectSystem : GenericEffect {
 #section all
 };
 
+class FTLEffectData {
+	bool enabled = false;
+	uint prevHostileMask = 0;
+	any@ data;
+}
+
 //BlockSystemFTL(<Block Owner> = False, <Block Friendly> = False, <Timer> = 0)
 // Prevent any FTL from being activat
 class BlockSystemFTL : GenericEffect {
@@ -724,55 +730,254 @@ class BlockSystemFTL : GenericEffect {
 
 #section server
 	void enable(Object& obj, any@ data) const override {
+		FTLEffectData info;
 		double timer = 0.0;
-		data.store(timer);
+		info.data.store(timer);
+		data.store(@info);
 	}
 
 	void disable(Object& obj, any@ data) const override {
-		if(obj.region !is null)
-			obj.region.BlockFTLMask = 0;
+		if(obj.region !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is obj.owner) {
+					if(arguments[0].boolean)
+						obj.region.unblockFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					obj.region.unblockFTL(emp);
+				else if(obj.owner !is null && obj.owner.isHostile(emp))
+					obj.region.unblockFTL(emp);
+			}
+		}
 	}
 
 	void tick(Object& obj, any@ data, double tick) const override {
+		FTLEffectData@ info;
 		double timer = 0.0;
-		data.retrieve(timer);
+		data.retrieve(@info);
+		info.data.retrieve(timer);
 
 		if(timer >= arguments[2].decimal) {
 			if(obj.region !is null) {
-				uint mask = ~0;
-				if(!arguments[0].boolean && obj.owner !is null)
-					mask &= ~obj.owner.mask;
-				if(!arguments[1].boolean && obj.owner !is null)
-					mask &= obj.owner.hostileMask;
-				obj.region.BlockFTLMask |= mask;
+				if(!info.enabled || (!arguments[1].boolean && obj.owner !is null && obj.owner.hostileMask != info.prevHostileMask)) {
+					for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+						Empire@ emp = getEmpire(i);
+						if(emp is obj.owner) {
+							if(arguments[0].boolean && !info.enabled)
+								obj.region.blockFTL(emp);
+						}
+						else if(arguments[1].boolean)
+							obj.region.blockFTL(emp);
+						else if(obj.owner !is null) {
+							if(obj.owner.isHostile(emp) && info.prevHostileMask & emp.mask == 0)
+								obj.region.blockFTL(emp);
+							else if(!obj.owner.isHostile(emp) && info.prevHostileMask & emp.mask != 0)	
+								obj.region.unblockFTL(emp);
+						}
+					}
+					info.enabled = true;
+					if(!arguments[1].boolean && obj.owner !is null)
+						info.prevHostileMask = obj.owner.hostileMask;
+				}
 			}
 		}
 		else {
 			timer += tick;
-			data.store(timer);
+			info.data.store(timer);
+			data.store(@info);
 		}
 	}
 
 	void save(any@ data, SaveFile& file) const override {
+		FTLEffectData@ info;
 		double timer = 0.0;
-		data.retrieve(timer);
+		data.retrieve(@info);
+		info.data.retrieve(timer);
+		file << info.enabled;
+		file << info.prevHostileMask;
 		file << timer;
 	}
 
 	void load(any@ data, SaveFile& file) const override {
+		FTLEffectData info;
 		double timer = 0.0;
+		file >> info.enabled;
+		file >> info.prevHostileMask;
 		file >> timer;
-		data.store(timer);
+		info.data.store(timer);
+		data.store(@info);
 	}
 
 	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
-		if(obj.region !is null)
-			obj.region.BlockFTLMask = 0;
+		FTLEffectData@ info;
+		data.retrieve(@info);
+		info.enabled = false;
+		info.prevHostileMask = 0;
+		if(obj.region !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is prevOwner) {
+					if(arguments[0].boolean)
+						obj.region.unblockFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					obj.region.unblockFTL(emp);
+				else if(prevOwner !is null && prevOwner.isHostile(emp))
+					obj.region.unblockFTL(emp);
+			}
+		}
+		data.store(@info);
 	}
 
 	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const override {
-		if(fromRegion !is null)
-			fromRegion.BlockFTLMask = 0;
+		FTLEffectData@ info;
+		data.retrieve(@info);
+		info.enabled = false;
+		info.prevHostileMask = 0;
+		if(fromRegion !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is obj.owner) {
+					if(arguments[0].boolean)
+						fromRegion.unblockFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					fromRegion.unblockFTL(emp);
+				else if(obj.owner !is null && obj.owner.isHostile(emp))
+					fromRegion.unblockFTL(emp);
+			}
+		}
+	}
+#section all
+};
+
+class SuppressSystemFTL : GenericEffect {
+	Document doc("Suppress FTL travel from hostile empires in the system this effect is active in.");
+	Argument block_owner(AT_Boolean, "False", doc="Whether to also suppress the owner of the effect from using FTL.s");
+	Argument block_friendly(AT_Boolean, "False", doc="Whether to also suppress empires that are not at war with the effect's owner from using FTL.");
+	Argument timer(AT_Decimal, "0", doc="Delay timer before the effect starts working after being enabled.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		FTLEffectData info;
+		double timer = 0.0;
+		info.data.store(timer);
+		data.store(@info);
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(obj.region !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is obj.owner) {
+					if(arguments[0].boolean)
+						obj.region.unsuppressFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					obj.region.unsuppressFTL(emp);
+				else if(obj.owner !is null && obj.owner.isHostile(emp))
+					obj.region.unsuppressFTL(emp);
+			}
+		}
+	}
+
+	void tick(Object& obj, any@ data, double tick) const override {
+		FTLEffectData@ info;
+		double timer = 0.0;
+		data.retrieve(@info);
+		info.data.retrieve(timer);
+
+		if(timer >= arguments[2].decimal) {
+			if(obj.region !is null) {
+				if(!info.enabled || (!arguments[1].boolean && obj.owner !is null && obj.owner.hostileMask != info.prevHostileMask)) {
+					for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+						Empire@ emp = getEmpire(i);
+						if(emp is obj.owner) {
+							if(arguments[0].boolean && !info.enabled)
+								obj.region.suppressFTL(emp);
+						}
+						else if(arguments[1].boolean)
+							obj.region.suppressFTL(emp);
+						else if(obj.owner !is null) {
+							if(obj.owner.isHostile(emp) && info.prevHostileMask & emp.mask == 0)
+								obj.region.suppressFTL(emp);
+							else if(!obj.owner.isHostile(emp) && info.prevHostileMask & emp.mask != 0)	
+								obj.region.unsuppressFTL(emp);
+						}
+					}
+					info.enabled = true;
+					if(!arguments[1].boolean && obj.owner !is null)
+						info.prevHostileMask = obj.owner.hostileMask;
+				}
+			}
+		}
+		else {
+			timer += tick;
+			info.data.store(timer);
+			data.store(@info);
+		}
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		FTLEffectData@ info;
+		double timer = 0.0;
+		data.retrieve(@info);
+		info.data.retrieve(timer);
+		file << info.enabled;
+		file << info.prevHostileMask;
+		file << timer;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		FTLEffectData info;
+		double timer = 0.0;
+		file >> info.enabled;
+		file >> info.prevHostileMask;
+		file >> timer;
+		info.data.store(timer);
+		data.store(@info);
+	}
+
+	void ownerChange(Object& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
+		FTLEffectData@ info;
+		data.retrieve(@info);
+		info.enabled = false;
+		info.prevHostileMask = 0;
+		if(obj.region !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is prevOwner) {
+					if(arguments[0].boolean)
+						obj.region.unsuppressFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					obj.region.unsuppressFTL(emp);
+				else if(prevOwner !is null && prevOwner.isHostile(emp))
+					obj.region.unsuppressFTL(emp);
+			}
+		}
+		data.store(@info);
+	}
+
+	void regionChange(Object& obj, any@ data, Region@ fromRegion, Region@ toRegion) const override {
+		FTLEffectData@ info;
+		data.retrieve(@info);
+		info.enabled = false;
+		info.prevHostileMask = 0;
+		if(fromRegion !is null) {
+			for(int i = 0, cnt = getEmpireCount(); i < cnt; i++) {
+				Empire@ emp = getEmpire(i);
+				if(emp is obj.owner) {
+					if(arguments[0].boolean)
+						fromRegion.unsuppressFTL(emp);
+				}
+				else if(arguments[1].boolean) 
+					fromRegion.unsuppressFTL(emp);
+				else if(obj.owner !is null && obj.owner.isHostile(emp))
+					fromRegion.unsuppressFTL(emp);
+			}
+		}
 	}
 #section all
 };
@@ -3409,6 +3614,28 @@ tidy final class IfNotFTLBlocked : IfHook {
 		if(region is null)
 			return true;
 		if(region.BlockFTLMask & obj.owner.mask != 0)
+			return false;
+		return true;
+	}
+#section all
+};
+
+tidy final class IfNotFTLSuppressed : IfHook {
+	Document doc("Only applies the inner hook if the current object is not being FTL suppressed.");
+	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
+
+	bool instantiate() override {
+		if(!withHook(hookID.str))
+			return false;
+		return GenericEffect::instantiate();
+	}
+
+#section server
+	bool condition(Object& obj) const override {
+		Region@ region = obj.region;
+		if(region is null)
+			return true;
+		if(region.SuppressFTLMask & obj.owner.mask != 0)
 			return false;
 		return true;
 	}

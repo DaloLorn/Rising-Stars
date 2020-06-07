@@ -11,6 +11,7 @@ tidy class FlingOrder : Order {
 	int cost = 0;
 	double speed = 0.0;
 	int moveId = -1;
+	bool wasSuppressed = false;
 
 	FlingOrder(Object& beacon, vec3d pos) {
 		@this.beacon = beacon;
@@ -26,6 +27,7 @@ tidy class FlingOrder : Order {
 		msg >> cost;
 		msg >> beacon;
 		msg >> speed;
+		msg >> wasSuppressed;
 	}
 
 	void save(SaveFile& msg) override {
@@ -37,6 +39,7 @@ tidy class FlingOrder : Order {
 		msg << cost;
 		msg << beacon;
 		msg << speed;
+		msg << wasSuppressed;
 	}
 
 	OrderType get_type() override {
@@ -79,6 +82,10 @@ tidy class FlingOrder : Order {
 		if(!obj.hasMover || !canFling(obj))
 			return OS_COMPLETED;
 
+		bool isSuppressed = isFTLSuppressed(obj);
+		if(isSuppressed)
+			time *= 0.5; // Slow the charge rate.
+
 		//Pay for the FTL
 		Ship@ ship = cast<Ship>(obj);
 		if(ship !is null && ship.delayFTL && charge >= 0) {
@@ -90,19 +97,20 @@ tidy class FlingOrder : Order {
 			cost = flingCost(obj, destination);
 			speed = flingSpeed(obj, destination);
 
+			//Make sure we have a beacon in range
+			// ... *before* trying to pay for it.
+			if(beacon is null || beacon.position.distanceToSQ(obj.position) > FLING_BEACON_RANGE_SQ) {
+				@beacon = obj.owner.getClosestFlingBeacon(obj.position);
+				if(beacon is null || beacon.position.distanceToSQ(obj.position) > FLING_BEACON_RANGE_SQ)
+					return OS_COMPLETED;
+			}
+
 			if(cost > 0) {
 				double consumed = obj.owner.consumeFTL(cost, false, record=false);
 				if(consumed < cost)
 					return OS_COMPLETED;
 			}
 			charge = 0.001;
-
-			//Make sure we have a beacon in range
-			if(beacon is null || beacon.position.distanceToSQ(obj.position) > FLING_BEACON_RANGE_SQ) {
-				@beacon = obj.owner.getClosestFlingBeacon(obj.position);
-				if(beacon is null || beacon.position.distanceToSQ(obj.position) > FLING_BEACON_RANGE_SQ)
-					return OS_COMPLETED;
-			}
 
 			//Mark ship as FTLing
 			if(ship !is null)
@@ -140,7 +148,10 @@ tidy class FlingOrder : Order {
 
 		//Do actual flinging
 		bool wasMoving = moveId != -1;
-		bool arrived = obj.FTLTo(destination, speed, moveId);
+		double currentSpeed = speed;
+		if(isSuppressed)
+			currentSpeed *= 0.5;
+		bool arrived = obj.FTLTo(destination, currentSpeed, moveId);
 		if(!wasMoving) {
 			if(obj.hasOrbit)
 				obj.stopOrbit();
@@ -150,10 +161,20 @@ tidy class FlingOrder : Order {
 			uint cnt = obj.supportCount;
 			for(uint i = 0; i < cnt; ++i) {
 				Object@ support = obj.supportShip[i];
-				support.FTLTo(destination + (support.position - obj.position), speed);
+				support.FTLTo(destination + (support.position - obj.position), currentSpeed);
 			}
 			
 			playParticleSystem("FTLEnter", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);
+		}
+		else {
+			if(isSuppressed != wasSuppressed) {
+				obj.ftlSpeed = currentSpeed;
+				uint cnt = obj.supportCount;
+				for(uint i = 0; i < cnt; ++i) {
+					Object@ support = obj.supportShip[i];
+					support.ftlSpeed = currentSpeed;
+				}
+			}
 		}
 
 		if(arrived) {
@@ -167,7 +188,7 @@ tidy class FlingOrder : Order {
 			uint cnt = obj.supportCount;
 			for(uint i = 0; i < cnt; ++i) {
 				Ship@ support = cast<Ship>(obj.supportShip[i]);
-				support.FTLTo(destination + (support.position - obj.position), speed);
+				support.FTLTo(destination + (support.position - obj.position), currentSpeed);
 				support.blueprint.clearTracking(support);
 			}
 			//Set rotation on arrival
