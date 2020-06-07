@@ -182,7 +182,7 @@ tidy class DesignManager : Savable, Serializable {
 
 	uint getQueuedShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
@@ -204,7 +204,7 @@ tidy class DesignManager : Savable, Serializable {
 
 	uint getBuiltShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
@@ -226,7 +226,7 @@ tidy class DesignManager : Savable, Serializable {
 
 	uint getActiveShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
@@ -245,7 +245,7 @@ tidy class DesignManager : Savable, Serializable {
 	Ship@ getShipOfType(const Design@ dsg, uint i) {
 		DesignRevision@[] cls;
 		DesignRevision@ revision;
-		if(designClasses.length <= dsg.owner.index) designClasses.length = dsg.owner.index+1;
+		if(designClasses.length <= uint(dsg.owner.index)) designClasses.length = uint(dsg.owner.index)+1;
 		if(designClasses[dsg.owner.index] is null) {
 			designClasses[dsg.owner.index] = dictionary();
 			return null;
@@ -266,7 +266,7 @@ tidy class DesignManager : Savable, Serializable {
 	void registerShip(const Design@ dsg, Ship@ ship) {
 		DesignRevision@[] cls;
 		DesignRevision@ revision;
-		if(designClasses.length <= dsg.owner.index) designClasses.length = dsg.owner.index+1;
+		if(designClasses.length <= uint(dsg.owner.index)) designClasses.length = uint(dsg.owner.index)+1;
 		if(designClasses[dsg.owner.index] is null)
 			designClasses[dsg.owner.index] = dictionary();
 		if(designClasses[dsg.owner.index].exists(dsg.name))
@@ -287,7 +287,7 @@ tidy class DesignManager : Savable, Serializable {
 	void queueShip(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
 		DesignRevision@ dsgRevision;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null)
 			designClasses[empireId] = dictionary();
 		if(designClasses[empireId].exists(name))
@@ -305,7 +305,7 @@ tidy class DesignManager : Savable, Serializable {
 	void unregisterShip(const Design@ dsg, Ship@ ship) {
 		DesignRevision@[] cls;
 		DesignRevision@ revision;
-		if(designClasses.length <= dsg.owner.index) designClasses.length = dsg.owner.index+1;
+		if(designClasses.length <= uint(dsg.owner.index)) designClasses.length = uint(dsg.owner.index)+1;
 		if(designClasses[dsg.owner.index] is null)
 			designClasses[dsg.owner.index] = dictionary();
 		if(designClasses[dsg.owner.index].exists(dsg.name))
@@ -329,7 +329,7 @@ tidy class DesignManager : Savable, Serializable {
 	void dequeueShip(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
 		DesignRevision@ dsgRevision;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return;

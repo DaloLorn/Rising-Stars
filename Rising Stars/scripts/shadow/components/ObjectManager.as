@@ -25,7 +25,7 @@ dictionary[] designClasses;
 
 	uint getQueuedShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
@@ -47,7 +47,7 @@ dictionary[] designClasses;
 
 	uint getBuiltShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
@@ -69,7 +69,7 @@ dictionary[] designClasses;
 
 	uint getActiveShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
-		if(designClasses.length <= empireId) designClasses.length = empireId+1;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
 		if(designClasses[empireId] is null) {
 			designClasses[empireId] = dictionary();
 			return 0;
