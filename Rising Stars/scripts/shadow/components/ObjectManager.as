@@ -33,12 +33,12 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) <= revision)
+		if(int(cls.length) <= revision-1)
 			return 0;
-		if(cls[revision] is null)
+		if(cls[revision-1] is null)
 			return 0;
 		
-		return cls[revision].queued + cls[revision].built;
+		return cls[revision-1].queued + cls[revision-1].built;
 	}
 
 	uint getBuiltShips(const Design@ dsg) {
@@ -55,12 +55,12 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) <= revision)
+		if(int(cls.length) <= revision-1)
 			return 0;
-		if(cls[revision] is null)
+		if(cls[revision-1] is null)
 			return 0;
 		
-		return cls[revision].built;
+		return cls[revision-1].built;
 	}
 
 	uint getActiveShips(const Design@ dsg) {
@@ -77,12 +77,12 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
-		if(int(cls.length) <= revision)
+		if(int(cls.length) <= revision-1)
 			return 0;
-		if(cls[revision] is null)
+		if(cls[revision-1] is null)
 			return 0;
 		
-		return cls[revision].ships.length;
+		return cls[revision-1].ships.length;
 	}
 
 	DesignRevision@[] getClass(string key, uint index, uint8 empireId) {
@@ -103,6 +103,8 @@ dictionary[] designClasses;
 				DesignRevision@[] cls = getClass(key, j, i);
 				msg << cls.length;
 				for(uint k = 0, kcnt = cls.length; k < kcnt; ++k) {
+					if(cls[k] is null)
+						@cls[k] = DesignRevision();
 					msg << cls[k];
 				}
 			}
