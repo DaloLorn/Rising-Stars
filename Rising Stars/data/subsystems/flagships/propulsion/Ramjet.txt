@@ -11,8 +11,8 @@ Subsystem: Ramjet
 	Hull: Flagship
 
 	Size := HexSize * Hexes
-	BaseThrust := 18 * Size
-	BaseTurnThrust := 0.75 * Size
+	BaseThrust := 9 * Size
+	BaseTurnThrust := 0.375 * Size
 
 	SupplyGain := 0
 
@@ -27,7 +27,7 @@ Subsystem: Ramjet
 	OnCheckErrors: heralds_designs::checkRamjet
 
 	// Controls the maintenance formula.
-	BussardMaintMult := -1.4
+	BussardMaintMult := -1.2
 	// The ship size at which the formula maxes out.
 	BussardPeakSize := 86
 
@@ -70,7 +70,7 @@ Subsystem: Ramjet
 		Hex.LaborCost := 25 * Hex.LaborCost
 		Hex.HP := CoreHP * CoreHPMod
 
-		SupplyGain := SupplyGain + HexSize * 200
+		SupplyGain := SupplyGain + HexSize * 400
 
 		Requires:
 			Command = 2
