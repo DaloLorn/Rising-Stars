@@ -1,6 +1,6 @@
 import resources;
 import ftl;
-from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale;
+from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale, FTL_BEAM_COLOR;
 import targeting.PointTarget;
 import targeting.targeting;
 from targeting.MoveTarget import getFleetTargetPositions;
@@ -10,6 +10,8 @@ class FlingTarget : PointTarget {
 	int scale = 1;
 	Object@ obj;
 	Object@ beacon;
+	array<uint> invalidObjs;
+	array<uint> validObjs;
 	array<Object@> objs;
 	bool inRange = false;
 
@@ -33,22 +35,32 @@ class FlingTarget : PointTarget {
 
 	bool hover(const vec2i& mpos) override {
 		PointTarget::hover(mpos);
-		if(selectedObjects.length > 1) {
+		//if(selectedObjects.length > 1) {
 			auto@ positions = getFleetTargetPositions(objs, hovered, isFTL=true);
 			cost = 0;
-			for(uint i = 0, cnt = objs.length; i < cnt; ++i)
-				cost += flingCost(objs[i], positions[i]);
+			invalidObjs.length = 0;
+			validObjs.length = 0;
+			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
+				Object@ obj = objs[i];
+				if(canFling(obj)) {
+					cost += flingCost(obj, positions[i]);
+					validObjs.insertLast(i);
+				}
+				else if(obj.hasLeaderAI) {
+					invalidObjs.insertLast(i);
+				}
+			}
 			range = cost > playerEmpire.FTLStored ? 0.0 : INFINITY;
-		}
-		else {
-			range = flingRange(obj);
-			cost = flingCost(obj, hovered);
-		}
+		//}
+		//else {
+		//	range = flingRange(obj);
+		//	cost = flingCost(obj, hovered);
+		//}
 		if(shiftKey)
 			return canFlingTo(obj, hovered);
 		if(beacon is null || !inRange)
 			return false;
-		return canFlingTo(obj, hovered) && distance <= range;
+		return distance <= range;
 	}
 
 	bool click() override {
@@ -85,13 +97,21 @@ class FlingDisplay : PointDisplay {
 
 		Color color;
 		if(ht.distance <= ht.range && ht.inRange && ht.valid)
-			color = Color(0x00ff00ff);
+			color = colors::Green;
 		else
-			color = Color(0xff0000ff);
+			color = colors::Red;
+
+		auto@ reg = getRegion(ht.hovered);
+		string text = locale::FTL_COST_INDICATOR;
+		if(isFTLBlocked(ht.obj, ht.hovered))
+			text = locale::FTL_COST_INDICATOR_JAMMED;
 
 		font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
-			toString(int(ht.cost)) + " " + locale::FTL
-			 + " (" + toString(ht.distance, 0) + "u)",
+			format(text,
+				int(ht.cost),
+				ht.distance,
+				reg !is null ? reg.name : ""
+				),
 			color);
 		
 		if(ht.beacon is null) {
@@ -108,6 +128,34 @@ class FlingDisplay : PointDisplay {
 			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
 				locale::INSUFFICIENT_FTL,
 				color);
+		}
+		else {
+			double avgChargeTime = 0;
+			double chargeTime = 0;
+			bool suppressed = false;
+			for(uint i = 0, cnt = ht.validObjs.length; i < cnt; ++i) {
+				Object@ obj = ht.objs[ht.validObjs[i]];
+				chargeTime = FLING_CHARGE_TIME;
+				if(isFTLSuppressed(obj)) {
+					chargeTime *= 2;
+					suppressed = true;
+				}
+				avgChargeTime += chargeTime;
+			}
+			text = locale::AVG_HYPERJUMP_TIME;
+			if(suppressed) 
+				text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				format(text, formatTime(avgChargeTime)),
+				FTL_BEAM_COLOR);
+		}
+		for(uint i = 0, cnt = ht.invalidObjs.length; i < cnt; ++i) {
+			Object@ obj = ht.objs[ht.invalidObjs[i]];
+			vec2i drawPos = mousePos + vec2i(16, 32 + 16*i);
+			if(isFTLBlocked(obj))
+				text = locale::FTL_JAMMED_ORIGIN;
+			else text = locale::UNFLINGABLE_OBJECT;
+			font::OpenSans_11_Italic.draw(drawPos, format(text, obj.name), colors::Red);
 		}
 	}
 

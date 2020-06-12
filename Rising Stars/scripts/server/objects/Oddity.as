@@ -181,8 +181,20 @@ tidy class OddityScript {
 		return link;
 	}
 
-	double getTimer() {
-		return timer;
+	double getTimer(Oddity& obj) {
+		bool suppressed = false;
+		bool doubleSuppressed = false;
+		double factor = 1;
+		if(isFTLSuppressed(obj))
+			suppressed = true;
+		if(link !is null && isFTLSuppressed(link)) {
+			doubleSuppressed = suppressed;
+			suppressed = true;
+		}
+		if(doubleSuppressed)
+			factor = 0.125;
+		else if(suppressed) factor = 0.25;
+		return timer * factor;
 	}
 
 	void setGate(Oddity& obj, bool value) {

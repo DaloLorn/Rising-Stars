@@ -93,10 +93,18 @@ tidy class SlipstreamOrder : Order {
 		if(!canSlipstreamTo(obj, destination))
 			return OS_COMPLETED;
 
+		bool suppressed = false, doubleSuppressed = false;
 		if(isFTLSuppressed(obj))
+			suppressed = true;
+		if(isFTLSuppressed(obj, destination)) {
+			doubleSuppressed = suppressed;
+			suppressed = true;
+		}
+
+		if(suppressed)
 			time *= 0.25;
-		if(isFTLSuppressed(obj, destination))
-			time *= 0.25;
+		if(doubleSuppressed)
+			time *= 0.5; // Add another +400% to the charge time, rather than the +1200% we'd get by multiplying with 0.25 again.
 
 		//Pay for the FTL
 		Ship@ ship = cast<Ship>(obj);

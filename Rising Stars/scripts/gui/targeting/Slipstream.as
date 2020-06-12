@@ -1,6 +1,6 @@
 import resources;
 import ftl;
-from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale;
+from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale, FTL_BEAM_COLOR;
 import targeting.PointTarget;
 import targeting.targeting;
 
@@ -47,19 +47,64 @@ class SlipstreamDisplay : PointDisplay {
 
 		Color color;
 		if(ht.distance <= ht.range && ht.valid)
-			color = Color(0x00ff00ff);
+			color = colors::Green;
 		else
-			color = Color(0xff0000ff);
+			color = colors::Red;
+
+		string text = locale::FTL_COST_INDICATOR;
 
 		font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
-			toString(int(ht.cost)) + " " + locale::FTL
-			 + " (" + toString(ht.distance, 0) + "u)",
+			format(text,
+				int(ht.cost),
+				ht.distance
+				),
 			color);
 		
 		if(ht.distance > ht.range) {
 			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
 				locale::INSUFFICIENT_FTL,
 				color);
+		}
+		else if(isFTLBlocked(ht.obj)) 
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				format(locale::FTL_JAMMED_ORIGIN, ht.obj.name),
+				color);
+		else if(isFTLBlocked(ht.obj, ht.hovered))
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				format(locale::FTL_JAMMED_DESTINATION, getRegion(ht.hovered).name),
+				color);
+		else {
+			Object@ obj = ht.obj;
+			double chargeTime = SLIPSTREAM_CHARGE_TIME;
+			double lifetime = slipstreamLifetime(obj);
+			string chargeText = locale::AVG_HYPERJUMP_TIME;
+			string lifeText = locale::ESTIMATED_SLIPSTREAM_LIFETIME;
+			bool suppressed = false, doubleSuppressed = false;
+			if(isFTLSuppressed(obj)) {
+				suppressed = true;
+			}
+			if(isFTLSuppressed(obj, ht.hovered)) {
+				doubleSuppressed = suppressed;
+				suppressed = true;
+			}
+			if(doubleSuppressed) {
+				chargeTime *= 8;
+				lifetime *= 0.125;
+				chargeText = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED;
+				lifeText = locale::ESTIMATED_SLIPSTREAM_LIFETIME_DOUBLE_SUPPRESSED;
+			}
+			else if(suppressed) {
+				chargeTime *= 4;
+				lifetime *= 0.25;
+				chargeText = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
+				lifeText = locale::ESTIMATED_SLIPSTREAM_LIFETIME_SUPPRESSED;
+			}
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				format(chargeText, formatTime(chargeTime)),
+				FTL_BEAM_COLOR);
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 32),
+				format(lifeText, formatTime(lifetime)),
+				FTL_BEAM_COLOR);
 		}
 	}
 

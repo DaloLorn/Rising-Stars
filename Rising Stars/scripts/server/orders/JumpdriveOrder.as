@@ -80,10 +80,18 @@ tidy class JumpdriveOrder : Order {
 		if(!obj.hasMover)
 			return OS_COMPLETED;
 
+		bool suppressed = false, doubleSuppressed = false;
 		if(isFTLSuppressed(obj))
+			suppressed = true;
+		if(isFTLSuppressed(obj, destination)) {
+			doubleSuppressed = suppressed;
+			suppressed = true;
+		}
+
+		if(suppressed)
 			time *= 0.25;
-		if(isFTLSuppressed(obj, destination))
-			time *= 0.25;
+		if(doubleSuppressed)
+			time *= 0.5; // Add another +400% to the charge time, rather than the +1200% we'd get by multiplying with 0.25 again.
 
 		//Pay for the FTL
 		Ship@ ship = cast<Ship>(obj);
@@ -136,7 +144,7 @@ tidy class JumpdriveOrder : Order {
 			bool isFacing = obj.rotateTo(facing, moveId);
 
 			// Minimum of 4.0 seconds, maximum of JUMPDRIVE_CHARGE_TIME, otherwise scaled by ratio of distance to range.  Halved when not in combat, including minimum.
-			chargeTime = min(max(4.0, JUMPDRIVE_CHARGE_TIME * (distance / range)), JUMPDRIVE_CHARGE_TIME);
+			chargeTime = jumpdriveChargeTime(obj, destination);
 			
 			//Charge up the jumpdrive for a while first
 			if(charge < chargeTime)

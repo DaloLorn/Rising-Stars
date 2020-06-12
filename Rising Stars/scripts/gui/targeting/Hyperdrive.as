@@ -1,6 +1,6 @@
 import resources;
 import ftl;
-from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale;
+from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale, FTL_BEAM_COLOR;
 import targeting.PointTarget;
 import targeting.targeting;
 from targeting.MoveTarget import getFleetTargetPositions;
@@ -9,6 +9,8 @@ class HyperdriveTarget : PointTarget {
 	double cost = 0.0;
 	Object@ obj;
 	array<vec3d>@ offsets;
+	array<uint> invalidObjs;
+	array<uint> validObjs;
 	array<Object@> objs;
 
 	HyperdriveTarget(Object@ Obj) {
@@ -34,15 +36,25 @@ class HyperdriveTarget : PointTarget {
 		//if(selectedObjects.length > 1) {
 			auto@ positions = getFleetTargetPositions(objs, hovered);
 			cost = 0;
-			for(uint i = 0, cnt = objs.length; i < cnt; ++i)
-				cost += hyperdriveCost(objs[i], positions[i]);
+			invalidObjs.length = 0;
+			validObjs.length = 0;
+			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
+				Object@ obj = objs[i];
+				if(canHyperdrive(obj)) {
+					validObjs.insertLast(i);
+					cost += hyperdriveCost(obj, positions[i]);
+				}
+				else if(obj.hasLeaderAI) {
+					invalidObjs.insertLast(i);
+				}
+			}
 			range = cost > playerEmpire.FTLStored ? 0.0 : INFINITY;
 		//}
 		//else {
 		//	range = hyperdriveRange(obj);
 		//	cost = hyperdriveCost(obj, hovered);
 		//}
-		return canHyperdriveTo(obj, hovered) && (distance <= range || shiftKey);
+		return distance <= range || shiftKey;
 	}
 
 	bool click() override {
@@ -60,19 +72,70 @@ class HyperdriveDisplay : PointDisplay {
 
 		Color color;
 		if(ht.distance <= ht.range && ht.valid)
-			color = Color(0x00ff00ff);
+			color = colors::Green;
 		else
-			color = Color(0xff0000ff);
+			color = colors::Red;
+
+		auto@ reg = getRegion(ht.hovered);
+		string text = locale::FTL_COST_INDICATOR;
+		if(isFTLBlocked(ht.obj, ht.hovered))
+			text = locale::FTL_COST_INDICATOR_JAMMED;
 
 		font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
-			toString(int(ht.cost)) + " " + locale::FTL
-			 + " (" + toString(ht.distance, 0) + "u)",
+			format(text,
+				int(ht.cost),
+				ht.distance,
+				reg !is null ? reg.name : ""
+				),
 			color);
 		
 		if(ht.distance > ht.range) {
 			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
 				locale::INSUFFICIENT_FTL,
 				color);
+		}
+		else {
+			if(playerEmpire.HyperdriveNeedCharge == 0) {
+				font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+					locale::INSTANT_HYPERJUMP,
+					color);
+			}
+			else {
+				double avgChargeTime = 0;
+				double chargeTime = 0;
+				bool suppressed = false;
+				bool combat = true;
+				for(uint i = 0, cnt = ht.validObjs.length; i < cnt; ++i) {
+					Object@ obj = ht.objs[ht.validObjs[i]];
+					chargeTime = HYPERDRIVE_CHARGE_TIME;
+					if(!obj.inCombat) {
+						chargeTime *= 0.5;
+						combat = false;
+					}
+					if(isFTLSuppressed(obj)) {
+						chargeTime *= 2;
+						suppressed = true;
+					}
+					avgChargeTime += chargeTime;
+				}
+				text = locale::AVG_HYPERJUMP_TIME;
+				if(suppressed) {
+					if(combat) text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT;
+					else text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
+				}
+				else if(combat) text = locale::AVG_HYPERJUMP_TIME_COMBAT;
+				font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+					format(text, formatTime(avgChargeTime)),
+					FTL_BEAM_COLOR);
+			}
+		}
+		for(uint i = 0, cnt = ht.invalidObjs.length; i < cnt; ++i) {
+			Object@ obj = ht.objs[ht.invalidObjs[i]];
+			vec2i drawPos = mousePos + vec2i(16, 32 + 16*i);
+			if(isFTLBlocked(obj))
+				text = locale::FTL_JAMMED_ORIGIN;
+			else text = locale::NO_FTL_DRIVE;
+			font::OpenSans_11_Italic.draw(drawPos, format(text, obj.name), colors::Red);
 		}
 	}
 

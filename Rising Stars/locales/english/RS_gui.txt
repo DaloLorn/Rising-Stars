@@ -40,3 +40,19 @@ FLUX_JAMMED_ORIGIN: $1's flux connection is jammed
 FLUX_CHARGING: $1 is recharging ($2)
 FLUX_CHARGING_SUPPRESSED: $1 is recharging ($2 - Suppression Detected)
 FLUX_UNKNOWN_ERROR: Unknown error on $1
+FTL_COST_INDICATOR: $1 [bbloc=#FTL] ($2u)
+FTL_COST_INDICATOR_JAMMED: $1 [bbloc=#FTL] ($2u - WARNING: Jamming at $3 may cause premature FTL termination!)
+INSTANT_HYPERJUMP: Will jump after rotation
+AVG_HYPERJUMP_TIME: Average Charge Time: $1
+AVG_HYPERJUMP_TIME_SUPPRESSED: Average Charge Time: $1 (Suppression Detected)
+AVG_HYPERJUMP_TIME_COMBAT: Average Charge Time: $1 (Weapon Interference Detected)
+AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT: Average Charge Time: $1 (Suppression & Weapon Interference Detected)
+AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED: Average Charge Time: $1 (Bilateral Suppression Detected)
+AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED_COMBAT: Average Charge Time: $1 (Bilateral Suppression & Weapon Interference Detected)
+NO_FTL_DRIVE: $1 does not have FTL capabilities
+FTL_JAMMED_ORIGIN: $1's FTL systems are being jammed
+FTL_JAMMED_DESTINATION: Jamming detected at $1
+UNFLINGABLE_OBJECT: $1 cannot be flung
+ESTIMATED_SLIPSTREAM_LIFETIME: Projected Slipstream Duration: $1
+ESTIMATED_SLIPSTREAM_LIFETIME_SUPPRESSED: Projected Slipstream Duration: $1 (Suppression Detected)
+ESTIMATED_SLIPSTREAM_LIFETIME_DOUBLE_SUPPRESSED: Projected Slipstream Duration: $1 (Bilateral Suppression Detected)

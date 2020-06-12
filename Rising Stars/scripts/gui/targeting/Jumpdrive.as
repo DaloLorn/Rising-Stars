@@ -1,6 +1,6 @@
 import resources;
 import ftl;
-from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale;
+from obj_selection import selectedObject, selectedObjects, getSelectionPosition, getSelectionScale, FTL_BEAM_COLOR;
 import targeting.PointTarget;
 import targeting.targeting;
 from targeting.MoveTarget import getFleetTargetPositions;
@@ -9,6 +9,8 @@ import system_flags;
 class JumpdriveTarget : PointTarget {
 	double cost = 0.0;
 	Object@ obj;
+	array<uint> invalidObjs;
+	array<uint> validObjs;
 	array<Object@> objs;
 
 	JumpdriveTarget(Object@ obj) {
@@ -28,25 +30,34 @@ class JumpdriveTarget : PointTarget {
 	}
 
 	bool hover(const vec2i& mpos) override {
-		if(selectedObjects.length > 1) {
+		//if(selectedObjects.length > 1) {
 			auto@ positions = getFleetTargetPositions(objs, hovered, isFTL=true);
 			cost = 0;
-			for(uint i = 0, cnt = objs.length; i < cnt; ++i)
-				cost += jumpdriveCost(objs[i], positions[i]);
-		}
-		else {
-			cost = jumpdriveCost(obj, hovered);
-		}
+			invalidObjs.length = 0;
+			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
+				Object@ obj = objs[i];
+				if(canJumpdrive(obj)) {
+					validObjs.insertLast(i);
+					cost += jumpdriveCost(obj, positions[i]);
+				}
+				else if(obj.hasLeaderAI) {
+					invalidObjs.insertLast(i);
+				}
+			}
+		//}
+		//else {
+		//	cost = jumpdriveCost(obj, hovered);
+		//}
 		if(cost <= playerEmpire.FTLStored)
 			range = INFINITY;
 		else
 			range = 0;
 		PointTarget::hover(mpos);
-		return canFlingTo(obj, hovered);
+		return canJumpdriveTo(obj, hovered) && (distance <= range || shiftKey);
 	}
 
 	bool click() override {
-		return true;
+		return shiftKey || distance <= range;
 	}
 };
 
@@ -86,23 +97,36 @@ class JumpdriveDisplay : PointDisplay {
 
 		Color color;
 		if(!ht.valid || ht.cost > playerEmpire.FTLStored)
-			color = Color(0xff0000ff);
+			color = colors::Red;
 		else if(ht.distance >= jumpRange && !isSafe)
-			color = Color(0xff8000ff);
+			color = colors::Orange;
 		else
-			color = Color(0x00ff00ff);
+			color = colors::Green;
+
+		string text = locale::FTL_COST_INDICATOR;
 
 		font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
-			toString(int(ht.cost)) + " " + locale::FTL
-			 + " (" + toString(ht.distance, 0) + "u)",
+			format(text,
+				int(ht.cost),
+				ht.distance
+				),
 			color);
 		
+		int y = 16;
 		if(ht.cost > playerEmpire.FTLStored) {
+			y += 16;
 			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
 				locale::INSUFFICIENT_FTL,
 				color);
 		}
+		else if(isFTLBlocked(ht.obj, ht.hovered)) {
+			y += 16;
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				format(locale::FTL_JAMMED_DESTINATION, reg.name),
+				colors::Red);
+		}
 		else if(ht.distance >= jumpRange && !isSafe) {
+			y += 16;
 			if(ht.distance >= jumpRange * 2.0) {
 				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 16),
 					locale::JUMPDRIVE_SAFETY_WARNING_SEVERE,
@@ -113,6 +137,54 @@ class JumpdriveDisplay : PointDisplay {
 					locale::JUMPDRIVE_SAFETY_WARNING,
 					Color(0xff0000ff));
 			}
+		}
+
+		double avgChargeTime = 0;
+		double chargeTime = 0;
+		bool suppressed = false;
+		bool doubleSuppressed = false;
+		bool combat = true;
+		for(uint i = 0, cnt = ht.validObjs.length; i < cnt; ++i) {
+			Object@ obj = ht.objs[ht.validObjs[i]];
+			chargeTime = jumpdriveChargeTime(obj, ht.hovered);
+			if(!obj.inCombat) {
+				chargeTime *= 0.5;
+				combat = false;
+			}
+			if(isFTLSuppressed(obj)) {
+				suppressed = true;
+			}
+			if(isFTLSuppressed(obj, ht.hovered)) {
+				doubleSuppressed = suppressed;
+				suppressed = true;
+			}
+			if(doubleSuppressed)
+				chargeTime *= 8;
+			else if(suppressed)
+				chargeTime *= 4;
+			avgChargeTime += chargeTime;
+		}
+		text = locale::AVG_HYPERJUMP_TIME;
+		if(doubleSuppressed) {
+			if(combat) text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED_COMBAT;
+			else text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED;
+		}
+		else if(suppressed) {
+			if(combat) text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT;
+			else text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
+		}
+		else if(combat) text = locale::AVG_HYPERJUMP_TIME_COMBAT;
+		font::OpenSans_11_Italic.draw(mousePos + vec2i(16, y),
+			format(text, formatTime(avgChargeTime)),
+			FTL_BEAM_COLOR);
+
+		for(uint i = 0, cnt = ht.invalidObjs.length; i < cnt; ++i) {
+			Object@ obj = ht.objs[ht.invalidObjs[i]];
+			vec2i drawPos = mousePos + vec2i(16, y + 16*i);
+			if(isFTLBlocked(obj))
+				text = locale::FTL_JAMMED_ORIGIN;
+			else text = locale::NO_FTL_DRIVE;
+			font::OpenSans_11_Italic.draw(drawPos, format(text, obj.name), colors::Red);
 		}
 	}
 

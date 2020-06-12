@@ -331,6 +331,10 @@ bool canJumpdriveTo(Object& obj, const vec3d& pos) {
 	return !isFTLBlocked(obj, pos);
 }
 
+double jumpdriveChargeTime(Object& obj, const vec3d& pos) {
+	return min(max(4.0, JUMPDRIVE_CHARGE_TIME * (pos.distanceTo(obj.position) / jumpdriveRange(obj))), JUMPDRIVE_CHARGE_TIME);
+}
+
 const double FLUX_CD_RANGE = 6000.0;
 
 bool isFluxableDestination(Object& obj, Region@ reg, Region@ curReg) {
