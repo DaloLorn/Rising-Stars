@@ -2028,7 +2028,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		if(initial || designDelta) {
 			msg.write1();
 			if(designs is null)
-				designs = DesignManager();
+				@designs = DesignManager();
 			msg << designs;
 
 			if(!initial)
