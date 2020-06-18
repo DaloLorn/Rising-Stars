@@ -2027,8 +2027,13 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 
 		if(initial || designDelta) {
 			msg.write1();
-			if(designs is null)
+			if(designs is null) {
+				print("Forcibly initializing design manager...")
 				@designs = DesignManager();
+				print("New design manager:");
+				print(designs);
+			}
+			ReadLock lock(designMutex);
 			msg << designs;
 
 			if(!initial)
