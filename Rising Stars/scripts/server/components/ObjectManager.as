@@ -2025,7 +2025,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			msg.write0();
 		}
 
-		if(initial || designDelta) {
+		/*if(initial || designDelta) {
 			msg.write1();
 			if(designs is null) {
 				print("Forcibly initializing design manager...");
@@ -2041,6 +2041,6 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		}
 		else {
 			msg.write0();
-		}
+		}*/
 	}
 };

@@ -252,11 +252,14 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getQueuedShips(string name, int revision, Empire@ emp) {
+		if(true) return 0;
+
 		ReadLock lock(designMutex);
 		return designs.getQueuedShips(name, revision, emp.index);
 	}
 
 	uint getBuiltShips(Empire& emp, Ship@ ship) {
+		if(true) return 0;
 		if(!ship.valid || ship.owner !is emp)
 			return 0;
 
@@ -265,11 +268,13 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getBuiltShips(string name, int revision, Empire@ emp) {
+		if(true) return 0;
 		ReadLock lock(designMutex);
 		return designs.getBuiltShips(name, revision, emp.index);
 	}
 
 	uint getActiveShips(Empire& emp, Ship@ ship) {
+		if(true) return 0;
 		if(!ship.valid || ship.owner !is emp)
 			return 0;
 		
@@ -278,6 +283,7 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getActiveShips(string name, int revision, Empire@ emp) {
+		if(true) return 0;
 		ReadLock lock(designMutex);
 		return designs.getActiveShips(name, revision, emp.index);
 	}
@@ -575,8 +581,8 @@ tidy class ObjectManager : Component_ObjectManager {
 				msg >> autoImports[i];
 		}
 
-		if(msg.readBit()) {
+		/*if(msg.readBit()) {
 			msg >> designs;
-		}
+		}*/
 	}
 };
