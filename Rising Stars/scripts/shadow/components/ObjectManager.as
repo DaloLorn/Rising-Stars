@@ -94,44 +94,27 @@ dictionary[] designClasses;
 	}
 
 	void write(Message& msg) {
-		msg << designClasses.length;
-		for(uint i = 0, cnt = designClasses.length; i < cnt; ++i) {
-			msg << designClasses[i].getSize();
-			for(uint j = 0, jcnt = designClasses[i].getSize(); j < jcnt; ++j) {
-				string key = designClasses[i].getKeys()[j];
-				msg << key;
-				DesignRevision@[] cls = getClass(key, j, i);
-				msg << cls.length;
-				for(uint k = 0, kcnt = cls.length; k < kcnt; ++k) {
-					if(cls[k] is null)
-						@cls[k] = DesignRevision();
-					msg << cls[k];
-				}
-			}
-		}
+		// We're the client, we don't write.
 	}
 
 	void read(Message& msg) {
 		uint cnt = 0;
 		msg >> cnt;
 		designClasses.length = cnt;
-		print("Reading " + designClasses.length + " empires...");
 		for(uint i = 0; i < cnt; ++i) {
 			designClasses[i].deleteAll();
 			uint jcnt = 0;
 			msg >> jcnt;
-			print("Current empire has owned " + designClasses[i].getSize() + " classes belonging to empire " + i + "...");
 			for(uint j = 0; j < jcnt; ++j) {
 				string key;
 				uint kcnt = 0;
 				msg >> key;
-				print("Reading class " + key + " belonging to empire " + i + ", design " + j + " of " + jcnt + "...");
 				msg >> kcnt;
-				print("Class " + key + " contains " + kcnt + " revisions...");
 				DesignRevision@[] cls;
+				cls.length = kcnt;
 				for(uint k = 0; k < kcnt; ++k) {
+					@cls[k] = DesignRevision();
 					msg >> cls[k];
-					print("Reading revision " + k + " of class " + key + " from empire " + i + ", out of " + kcnt + " revisions...");
 				}
 				designClasses[i].set(key, cls);
 			}
@@ -153,11 +136,7 @@ tidy class DesignRevision : Serializable {
 	}
 
 	void write(Message& msg) {
-		msg << built;
-		msg << queued;
-		msg << active;
-		for(uint i = 0; i < active; ++i)
-			msg << ships[i];
+		// We're the client, we don't write.
 	}
 
 	void read(Message& msg) {
@@ -166,11 +145,8 @@ tidy class DesignRevision : Serializable {
 		uint cnt = 0;
 		msg >> cnt;
 		ships.length = cnt;
-		print("Class has " + built + " built ships, " + queued + " queued ships, and " + cnt + " active ships...");
 		for(uint i = 0; i < cnt; ++i) {
 			msg >> ships[i];
-			print("Reading ship " + i + " of " + cnt + "...");
-			print(ships[i]);
 		}
 	}
 }
@@ -191,7 +167,7 @@ tidy class ObjectManager : Component_ObjectManager {
 	Artifact@[] artifacts;
 
 	ReadWriteMutex designMutex;
-	DesignManager@ designs;
+	DesignManager@ designs = DesignManager();
 
 	ColonizationEvent@[] colonizations;
 	ColonizationEvent@[] queuedAutoColonizations;
@@ -587,6 +563,10 @@ tidy class ObjectManager : Component_ObjectManager {
 		}
 
 		if(msg.readBit()) {
+			if(designs is null) {
+				@designs = DesignManager();
+			}
+			ReadLock lock(designMutex);
 			msg >> designs;
 		}
 	}
