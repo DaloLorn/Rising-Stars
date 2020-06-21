@@ -2259,6 +2259,9 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	}
 
 	void grantTrade(Object& obj, Empire@ emp) {
+// This method and the rest of this section block (namely grantTradeInner()) are only 
+// allowed for the server, so let's dummy it out as cleanly as possible.
+#section server
 		if(macronebula is null) {
 			Macronebula@[] nebulae;
 			for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
@@ -2290,9 +2293,14 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 			tradeGrants[emp.index] += 1;
 			calculateTradeAccess(obj);
 		}
+#section all
 	}
 
 	void revokeTrade(Object& obj, Empire@ emp) {
+// This method and the rest of this section block (namely grantTradeInner() 
+// and getTradeGrants()) are only allowed for the server,
+// so let's dummy it out as cleanly as possible.
+#section server
 		if(macronebula is null) {
 			Macronebula@[] nebulae;
 			for(uint i = 0, cnt = system.adjacent.length; i < cnt; ++i) {
@@ -2329,6 +2337,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 	int getTradeGrants(Empire@ emp) {
 		return tradeGrants[emp.index];
 	}
+#section all
 
 	void forceSiegeAllPlanets(Empire@ emp, uint mask, uint doMask = ~0) {
 		for(uint i = 0, cnt = planetList.length; i < cnt; ++i) {
