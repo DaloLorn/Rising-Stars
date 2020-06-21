@@ -166,7 +166,7 @@ tidy class DesignRevision : Serializable {
 		uint cnt = 0;
 		msg >> cnt;
 		ships.length = cnt;
-		print("Class has " + built + " built ships, " + queued + " queued ships, and " + cnt + "active ships...");
+		print("Class has " + built + " built ships, " + queued + " queued ships, and " + cnt + " active ships...");
 		for(uint i = 0; i < cnt; ++i) {
 			msg >> ships[i];
 			print("Reading ship " + i + " of " + cnt + "...");

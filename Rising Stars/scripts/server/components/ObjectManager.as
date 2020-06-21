@@ -469,7 +469,7 @@ tidy class DesignRevision : Savable, Serializable {
 		msg << built;
 		msg << queued;
 		msg << active;
-		print("Class has " + built + " built ships, " + queued + " queued ships, and " + active + "active ships...");
+		print("Class has " + built + " built ships, " + queued + " queued ships, and " + active + " active ships...");
 		for(uint i = 0; i < active; ++i) {
 			msg << ships[i];
 			print("Writing ship " + i + " of " + active + "...");
