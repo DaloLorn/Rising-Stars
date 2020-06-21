@@ -359,17 +359,25 @@ tidy class DesignManager : Savable, Serializable {
 
 	void write(Message& msg) {
 		msg << designClasses.length;
+		print("Writing " + designClasses.length + " empires...");
 		for(uint i = 0, cnt = designClasses.length; i < cnt; ++i) {
 			msg << designClasses[i].getSize();
+			print("Current empire has owned " + designClasses[i].getSize() + " classes belonging to empire " + i + "...");
 			for(uint j = 0, jcnt = designClasses[i].getSize(); j < jcnt; ++j) {
 				string key = designClasses[i].getKeys()[j];
 				msg << key;
+				print("Writing class " + key + " belonging to empire " + i + ", design " + j + " of " + jcnt + "...");
 				DesignRevision@[] cls = getClass(key, j, i);
 				msg << cls.length;
+				print("Class " + key + " contains " + cls.length + " revisions...");
 				for(uint k = 0, kcnt = cls.length; k < kcnt; ++k) {
-					if(cls[k] is null)
+					if(cls[k] is null) {
 						@cls[k] = DesignRevision();
+						print("Revision " + k + " of class " + key + " from empire " + i + " does not exist in current empire...");
+					}
 					msg << cls[k];
+					print("Writing revision " + k + " of class " + key + " from empire " + i + ", out of " + kcnt + " revisions...");
+					print(cls[k]);
 				}
 			}
 		}
@@ -399,7 +407,7 @@ tidy class DesignManager : Savable, Serializable {
 
 	void save(SaveFile& file) {
 		file << designClasses.length;
-		for(uint8 i = 0, cnt = designClasses.length; i < cnt; ++i) {
+		for(uint i = 0, cnt = designClasses.length; i < cnt; ++i) {
 			file << designClasses[i].getSize();
 			for(uint j = 0, jcnt = designClasses[i].getSize(); j < jcnt; ++j) {
 				string key = designClasses[i].getKeys()[j];
@@ -419,7 +427,7 @@ tidy class DesignManager : Savable, Serializable {
 		uint cnt = 0;
 		file >> cnt;
 		designClasses.length = cnt;
-		for(uint8 i = 0; i < cnt; ++i) {
+		for(uint i = 0; i < cnt; ++i) {
 			designClasses[i].deleteAll();
 			uint jcnt = 0;
 			file >> jcnt;
@@ -461,8 +469,12 @@ tidy class DesignRevision : Savable, Serializable {
 		msg << built;
 		msg << queued;
 		msg << active;
-		for(uint i = 0; i < active; ++i)
+		print("Class has " + built + " built ships, " + queued + " queued ships, and " + active + "active ships...");
+		for(uint i = 0; i < active; ++i) {
 			msg << ships[i];
+			print("Writing ship " + i + " of " + active + "...");
+			print(ships[i]);
+		}
 	}
 
 	void read(Message& msg) {
@@ -2025,7 +2037,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			msg.write0();
 		}
 
-		/*if(initial || designDelta) {
+		if(initial || designDelta) {
 			msg.write1();
 			if(designs is null) {
 				print("Forcibly initializing design manager...");
@@ -2041,6 +2053,6 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		}
 		else {
 			msg.write0();
-		}*/
+		}
 	}
 };

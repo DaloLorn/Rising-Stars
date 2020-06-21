@@ -85,7 +85,7 @@ dictionary[] designClasses;
 		return cls[revision-1].ships.length;
 	}
 
-	DesignRevision@[] getClass(string key, uint index, uint8 empireId) {
+	DesignRevision@[] getClass(string key, uint index, int empireId) {
 		DesignRevision@[] cls;
 		string[] keys = designClasses[empireId].getKeys();
 		if(keys.length > index)
@@ -95,7 +95,7 @@ dictionary[] designClasses;
 
 	void write(Message& msg) {
 		msg << designClasses.length;
-		for(uint8 i = 0, cnt = designClasses.length; i < cnt; ++i) {
+		for(uint i = 0, cnt = designClasses.length; i < cnt; ++i) {
 			msg << designClasses[i].getSize();
 			for(uint j = 0, jcnt = designClasses[i].getSize(); j < jcnt; ++j) {
 				string key = designClasses[i].getKeys()[j];
@@ -115,18 +115,23 @@ dictionary[] designClasses;
 		uint cnt = 0;
 		msg >> cnt;
 		designClasses.length = cnt;
-		for(uint8 i = 0; i < cnt; ++i) {
+		print("Reading " + designClasses.length + " empires...");
+		for(uint i = 0; i < cnt; ++i) {
 			designClasses[i].deleteAll();
 			uint jcnt = 0;
 			msg >> jcnt;
+			print("Current empire has owned " + designClasses[i].getSize() + " classes belonging to empire " + i + "...");
 			for(uint j = 0; j < jcnt; ++j) {
 				string key;
 				uint kcnt = 0;
 				msg >> key;
+				print("Reading class " + key + " belonging to empire " + i + ", design " + j + " of " + jcnt + "...");
 				msg >> kcnt;
+				print("Class " + key + " contains " + kcnt + " revisions...");
 				DesignRevision@[] cls;
 				for(uint k = 0; k < kcnt; ++k) {
 					msg >> cls[k];
+					print("Reading revision " + k + " of class " + key + " from empire " + i + ", out of " + kcnt + " revisions...");
 				}
 				designClasses[i].set(key, cls);
 			}
@@ -161,8 +166,12 @@ tidy class DesignRevision : Serializable {
 		uint cnt = 0;
 		msg >> cnt;
 		ships.length = cnt;
-		for(uint i = 0; i < cnt; ++i)
+		print("Class has " + built + " built ships, " + queued + " queued ships, and " + cnt + "active ships...");
+		for(uint i = 0; i < cnt; ++i) {
 			msg >> ships[i];
+			print("Reading ship " + i + " of " + cnt + "...");
+			print(ships[i]);
+		}
 	}
 }
 
@@ -259,7 +268,6 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getBuiltShips(Empire& emp, Ship@ ship) {
-		if(true) return 0;
 		if(!ship.valid || ship.owner !is emp)
 			return 0;
 
@@ -268,13 +276,11 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getBuiltShips(string name, int revision, Empire@ emp) {
-		if(true) return 0;
 		ReadLock lock(designMutex);
 		return designs.getBuiltShips(name, revision, emp.index);
 	}
 
 	uint getActiveShips(Empire& emp, Ship@ ship) {
-		if(true) return 0;
 		if(!ship.valid || ship.owner !is emp)
 			return 0;
 		
@@ -283,7 +289,6 @@ tidy class ObjectManager : Component_ObjectManager {
 	}
 
 	uint getActiveShips(string name, int revision, Empire@ emp) {
-		if(true) return 0;
 		ReadLock lock(designMutex);
 		return designs.getActiveShips(name, revision, emp.index);
 	}
@@ -581,8 +586,8 @@ tidy class ObjectManager : Component_ObjectManager {
 				msg >> autoImports[i];
 		}
 
-		/*if(msg.readBit()) {
+		if(msg.readBit()) {
 			msg >> designs;
-		}*/
+		}
 	}
 };
