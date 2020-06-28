@@ -65,6 +65,7 @@ tidy class AttitudeType {
 	array<AttitudeLevel@> levels;
 	
 	bool hidden = false;
+	bool secret = false;
 
 	bool canTake(Empire& emp) const {
 		if(emp.hasAttitude(id))
@@ -418,6 +419,8 @@ bool loadAttitude(ReadFile@ file) {
 				att.sort = toInt(file.value);
 			}
 			else if(file.key.equals_nocase("Secret")) {
+				att.secret = toBool(file.value);
+			else if(file.key.equals_nocase("Hidden")) {
 				att.hidden = toBool(file.value);
 			}
 			else {
@@ -484,6 +487,7 @@ void init() {
 	auto@ list = attitudeTypes;
 	for(uint i = 0, cnt = list.length; i < cnt; ++i) {
 		auto@ type = list[i];
+		if(type.hidden) type.secret = true;
 		for(uint n = 0, ncnt = type.hooks.length; n < ncnt; ++n)
 			if(!cast<Hook>(type.hooks[n]).instantiate())
 				error("Could not instantiate hook: "+addrstr(type.hooks[n])+" in "+type.ident);

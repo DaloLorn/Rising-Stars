@@ -305,8 +305,10 @@ class AttitudesTab : Tab {
 
 		uint prevCnt = boxes.length;
 		uint newCnt = attitudes.length;
-		if(hasGlory)
-			newCnt -= 1;
+		for(uint i = 0; i < newCnt; ++i) {
+			if(attitudes[i].type.hidden || (hasGlory && attitudes[i].type.id != gloryID))
+				newCnt -= 1;
+		}
 		for(uint i = newCnt; i < prevCnt; ++i)
 			boxes[i].remove();
 		boxes.length = newCnt;
@@ -316,8 +318,8 @@ class AttitudesTab : Tab {
 		uint offset = 0;
 		int y = 216, h = 150;
 		for(uint i = 0; i < newCnt; ++i) {
-			if(hasGlory && attitudes[i].type.id == gloryID)
-				offset = 1; // There can be only one attitude of a given type, thankfully.
+			if((hasGlory && attitudes[i].type.id == gloryID) || attitudes[i].type.hidden)
+				offset++; // There can be only one attitude of a given type, thankfully.
 			@boxes[i].att = attitudes[i+offset];
 			@boxes[i].alignment = Alignment(Left+0.1f, Top+y, Right-0.1f, Top+y+h);
 			boxes[i].update();
@@ -327,7 +329,7 @@ class AttitudesTab : Tab {
 		bool haveTakeable = false;
 		for(uint i = 0, cnt = getAttitudeTypeCount(); i < cnt; ++i) {
 			auto@ att = getAttitudeType(i);
-			if(!att.hidden && att.canTake(playerEmpire)) {
+			if(!att.secret && att.canTake(playerEmpire)) {
 				haveTakeable = true;
 				break;
 			}
@@ -437,7 +439,7 @@ class TakeAttitudeOverlay : GuiOverlay {
 		for(uint i = 0, cnt = getAttitudeTypeCount(); i < cnt; ++i) {
 			auto@ att = getAttitudeType(i);
 			/*if(att.canTake(playerEmpire))*/
-			if(!att.hidden)
+			if(!att.secret)
 				attitudes.insertLast(att);
 		}
 		attitudes.sortAsc();
