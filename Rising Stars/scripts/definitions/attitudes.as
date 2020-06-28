@@ -420,6 +420,7 @@ bool loadAttitude(ReadFile@ file) {
 			}
 			else if(file.key.equals_nocase("Secret")) {
 				att.secret = toBool(file.value);
+			}
 			else if(file.key.equals_nocase("Hidden")) {
 				att.hidden = toBool(file.value);
 			}

@@ -2336,8 +2336,8 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 
 	int getTradeGrants(Empire@ emp) {
 		return tradeGrants[emp.index];
-	}
 #section all
+	}
 
 	void forceSiegeAllPlanets(Empire@ emp, uint mask, uint doMask = ~0) {
 		for(uint i = 0, cnt = planetList.length; i < cnt; ++i) {
