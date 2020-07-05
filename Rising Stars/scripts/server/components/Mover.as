@@ -1536,6 +1536,7 @@ tidy class Mover : Component_Mover, Savable {
 		msg << FTL;
 		if(FTL)
 			msg << float(FTLSpeed);
+		msg << fluxCD;
 		msg << inCombat;
 		if(inCombat)
 			msg.writeRotation(combatFacing);
@@ -1613,6 +1614,7 @@ tidy class Mover : Component_Mover, Savable {
 		msg >> FTL;
 		if(FTL)
 			FTLSpeed = msg.read_float();
+		msg >> fluxCD;
 		
 		msg >> inCombat;
 		if(inCombat)
