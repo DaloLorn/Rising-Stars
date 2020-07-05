@@ -664,6 +664,8 @@ tidy class OrbitalScript {
 	void replaceModule(Orbital& obj, uint oldId, uint newId, bool validate, bool strict = true) {
 		if(contestion != 0)
 			return; // If we continued, we'd add a module without deleting the old one.
+		if(obj.inCombat)
+			return; // We're not allowed to replace while in combat.
 
 		auto@ oldType = getOrbitalModule(oldId);
 		auto@ newType = getOrbitalModule(newId);

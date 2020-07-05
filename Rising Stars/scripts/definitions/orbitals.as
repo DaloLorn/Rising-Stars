@@ -164,6 +164,8 @@ tidy final class OrbitalModule {
 			return false;
 		if(isCore)
 			return false;
+		if(orbital.inCombat)
+			return false;
 		if(isUnique) {
 			if(orbital.hasModule(id))
 				return false;
