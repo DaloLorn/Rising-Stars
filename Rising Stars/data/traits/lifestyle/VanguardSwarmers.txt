@@ -17,7 +17,7 @@ Trait: VanguardSwarmers
 
 	ModAttribute(VictoryType, Add, 1)
 	ModAttribute(ResearchCostFactor, AddBase, 0.5)
-	ModAttribute(PopulationGrowthFactor, AddBase, 1)
+	ModAttribute(PopulationGrowthFactor, AddBase, 0.5)
 	ModAttribute(TileDevelopmentFactor, AddBase, 1)
 	ModAttribute(BuildingConstructionRate, AddBase, 1)
 	ModAttribute(OrbitalHealthMod, AddBase, -0.5)
