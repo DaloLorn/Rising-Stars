@@ -17,6 +17,9 @@ Subsystem: NanoMesh
 	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
 	AddPostModifier: HpMult(0.0)
 
+	Modifier: AddHP(amount)
+		Hex.HP := Hex.HP
+
 	Hex.LaborCost := 0.6 * HexSize
 	Hex.BuildCost := 4.0  * HexSize
 	Hex.MaintainCost := 4.0 * HexSize / ShipSize^0.5

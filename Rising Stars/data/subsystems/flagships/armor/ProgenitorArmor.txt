@@ -29,6 +29,13 @@ Subsystem: ProgenitorArmor
 		MaxDamage = ImpactLevel
 		MinimumPercent = 1/6
 	Hook: ABEM_hooks::Regeneration(RegenPerSecond)
+
+	Modifier: ArmorRegenFactor(factor)
+		RegenPerSecond := RegenPerSecond * factor
+
+	Modifier: ImpactFactor(factor)
+		MinPct := MinPct / factor
+
 	Requires:
 		Power = PowerUse
 	Effect: DamageResist

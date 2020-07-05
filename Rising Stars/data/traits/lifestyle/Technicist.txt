@@ -23,6 +23,7 @@ Trait: Technicists
 	AddModifier(ShieldRegenMult(1.20))
 	AddModifier(ShieldCapacityMult(2.1))
 	AddModifier(tag/IsArmor::HpMult(0.5))
+	AddModifier(ArmorRegenFactor(0.5))
 	AddModifier( ShieldHarmonizer::BonusShieldMult(2.1) )
 	AddModifier(BonusMitigation(0.1))
 

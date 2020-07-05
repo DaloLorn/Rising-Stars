@@ -45,6 +45,9 @@ Trait: VanguardSwarmers
 	AddModifier(LaborCostFactor(0.5))
 	AddModifier(FTLCostFactor(0.5))
 	AddModifier(TroopPods::MaxLoyaltyFactor(0.5))
+	AddModifier(ImpactFactor(0.5))
+	AddModifier(DamageResistMult(0.5))
+	AddModifier(ArmorRegenFactor(0.5))
 
 	// These modifiers negate the cost reductions for Support Command.
 	AddModifier(SupportCapModule::BuildCostFactor(2.0))
