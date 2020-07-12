@@ -171,6 +171,10 @@ tidy class OddityScript {
 		return gate;
 	}
 
+	bool isSuperior() {
+		return superior;
+	}
+
 	vec3d getGateDest() {
 		if(link !is null)
 			return link.position;
@@ -263,22 +267,17 @@ tidy class OddityScript {
 			return;
 		if(fromMask == toMask)
 			return;
-		bool shareTrade = gate && superior;
 
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 			Empire@ emp = getEmpire(i);
 			if(fromMask & emp.mask != 0) {
 				if(toMask & emp.mask == 0) {
 					onRegion.revokeVision(emp);
-					if(shareTrade)
-						onRegion.revokeTrade(emp);
 				}
 			}
 			else {
 				if(toMask & emp.mask != 0) {
 					onRegion.grantVision(emp);
-					if(shareTrade)
-						onRegion.grantTrade(emp);
 				}
 			}
 		}

@@ -352,6 +352,7 @@ server:
 	void setSuperior(bool value);
 	uint getVisualType();
 	uint getVisualColor();
+	bool isSuperior();
 }
 
 Freighter : objects.Freighter::FreighterScript {
