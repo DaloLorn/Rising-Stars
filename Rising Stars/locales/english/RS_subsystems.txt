@@ -663,10 +663,12 @@ S_FERROFLUIDARMOR_DESC: <<
 >>
 NANOMESH_NAME: Nanomesh
 NANOMESH_DESC: <<
-	A finely weaved mesh of nanobots strengthen the integrity of nearby subsystems.
+	A finely weaved mesh of nanobots strengthen the integrity of - and perform maintenance on - nearby subsystems.
 	
 	[img=Plus]Increases the [b][color=#80ff80]health[/color][/b] of surrounding hexes.[/img]
 	[img=Plus]Health bonus is improved by armor health research.[/img]
+	[img=Plus]Regenerates the health of surrounding hexes over time. If a hex is empty or undamaged, the surplus regeneration is shared to other hexes adjacent to the nanomesh.[/img]
+	[img=Minus]Forcefield emitters cannot benefit from nanite repairs, and forcefields themselves are not improved by the nanomesh.[/img]
 	[img=Minus]Always uses internal space.[/img]
 	[img=Minus]The nanomesh itself has no health.[/img]
 >>

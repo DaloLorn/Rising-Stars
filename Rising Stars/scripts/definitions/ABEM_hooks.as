@@ -54,31 +54,112 @@ import empire;
 class Regeneration : SubsystemEffect {
 	Document doc("Regenerates itself over time.");
 	Argument amount(AT_Decimal, doc="Amount of health to heal per second.");
-	Argument spread(AT_Boolean, "False", doc="If false, regeneration amount is applied to each hex individually. Otherwise, it is spread evenly across all the hexes.");
+	Argument spread(AT_Boolean, "False", doc="If false, regeneration amount is applied to each hex individually. Otherwise, it is spread evenly across all the hexes. (Surplus healing will then be divided equally across remaining damaged hexes until it is depleted or there are no damaged hexes left.)");
 
 #section server
 	void tick(SubsystemEvent& event, double time) const override {
 		uint Hexes = event.subsystem.hexCount;
 		uint i = 0;
 		double amount = arguments[0].decimal * time;
-		double excess = 0;
-		if(arguments[1].boolean) {
+		double excess = 0, lastExcess;
+		if(spread.boolean) {
 			amount = amount / Hexes;
 		}
-		for(i; i < Hexes; i++) {
-			excess = event.blueprint.repair(event.obj, event.subsystem.hexagon(i), amount + excess);
-			if(!arguments[1].boolean) {
-				excess = 0;
-			}
-		}
-		if(arguments[1].boolean) {
+		do {
+			lastExcess = excess;
 			for(i; i < Hexes; i++) {
-				excess = event.blueprint.repair(event.obj, event.subsystem.hexagon(i), excess);
+				double surplus;
+				surplus = event.blueprint.repair(event.obj, event.subsystem.hexagon(i), amount);
+
+				if(spread.boolean) {
+					excess += surplus;
+				}
 			}
-		}
+			if(spread.boolean)
+				amount = excess / Hexes;
+		} while(excess > 0 && lastExcess != excess);
 	}
 #section all
 };
+
+class RegenerateAdjacentHexes : SubsystemEffect {
+	Document doc("Hexes of this subsystem regenerate adjacent hexes over time.");
+	Argument amount(AT_Decimal, doc="Amount of health to heal per second.");
+	Argument spread(AT_Boolean, "False", doc="If false, regeneration amount is applied to each adjacent hex individually. Otherwise, it is spread evenly across all the hexes. (Surplus healing will then be divided equally across remaining damaged hexes until it is depleted or there are no damaged hexes left.)");
+	Argument can_heal_self(AT_Boolean, "False", doc="If true, hexes of this subsystem that are adjacent to each other will heal each other. If not, they will be treated as empty.");
+	Argument no_overflow(AT_Boolean, "True", doc="If true, any excess healing from a hex's adjacencies will be spread out among other adjacent hexes as necessary.");
+
+#section server
+	void tick(SubsystemEvent& event, double time) const override {
+		uint Hexes = event.subsystem.hexCount;
+		uint i = 0;
+		double amount = arguments[0].decimal * time;
+		double excess = 0, lastExcess;
+		double hexExcess = 0;
+		if(spread.boolean) {
+			amount = amount / Hexes;
+		}
+
+		do {
+			// If spread is true, this is used to check if we're trying to repair 
+			// a collection of hexes whose members are *all* at full health.
+			// (i.e. `excess` has stopped changing.)
+			lastExcess = excess;
+
+			for(uint i = 0; i < Hexes; i++) {
+				vec2u origin = event.subsystem.hexagon(i);
+				vec2u[] adjacencies;
+				for(uint d = 0; d < 6; d++) {
+					vec2u other = origin;
+					if(event.design.hull.active.advance(other, HexGridAdjacency(d))) {
+						auto@ otherSys = event.design.subsystem(other);
+						if(otherSys !is null) {
+							if(otherSys is event.subsystem && !can_heal_self.boolean)
+								continue;
+							if(otherSys.type.hasTag(ST_Forcefield))
+								continue; // Forcefields do not obey normal repair rules. TODO: Allow forcefield emitters to be repaired anyways!
+							adjacencies.insertLast(other);
+						}
+					}
+				}
+				if(adjacencies.length < 1) {
+					if(spread.boolean)
+						excess += amount;
+					continue;
+				}
+
+				double hexHeal = amount;
+				if(spread.boolean) {
+					hexHeal = hexHeal / adjacencies.length;
+				}
+
+				while(hexHeal > 0) {
+					// Either we're remembering regeneration overflows from a previous hex,
+					// or we've started a second regeneration pass on this one.
+					// Either way, the data has been stored elsewhere and we need to
+					// clear this space for fresh data.
+					hexExcess = 0;
+
+					for(uint j = adjacencies.length-1; j >= 0; --j) {
+						vec2u other = adjacencies[j];
+						double surplus = event.blueprint.repair(event.obj, other, hexHeal);
+						if(surplus > 0)
+							hexExcess += surplus; // Store this for use by any acceptable overflow-spreading mechanisms.
+						if(no_overflow.boolean || surplus <= 0)
+							adjacencies.removeLast();
+					}
+					if(adjacencies.length > 0)
+						hexHeal = hexExcess / adjacencies.length;
+					else break;
+				}
+				if(spread.boolean) {
+					excess += hexExcess;
+				}
+			}
+		} while(excess > 0 && excess != lastExcess);
+	}
+#section all
+}
 
 class AddThrustBonus : GenericEffect, TriggerableGeneric {
 	Document doc("Add a bonus amount of thrust to the object. In case it is a planet, also allow the planet to move.");

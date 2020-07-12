@@ -13,12 +13,15 @@ Subsystem: NanoMesh
 
 	BaseHP := 200 * HexSize
 	Hex.Mass := 2.0 * HexSize
+	RegenPerSecond := 2 * HexSize / 6.0
 
 	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
 	AddPostModifier: HpMult(0.0)
 
 	Modifier: AddHP(amount)
 		Hex.HP := Hex.HP
+
+	Hook: ABEM_hooks::RegenerateAdjacentHexes(RegenPerSecond, false, false, true);
 
 	Hex.LaborCost := 0.6 * HexSize
 	Hex.BuildCost := 4.0  * HexSize
