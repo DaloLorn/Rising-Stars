@@ -91,6 +91,7 @@ S_FORCEFIELDREGEN: Forcefield Regeneration
 S_DAMAGEFACTOR: Damage Multiplier
 S_REPAIRFACTOR: Repair Multiplier
 S_MITIGATION: Shield Mitigation
+S_SHARED_HP: Shared Health
 STT_MITIGATION: <<
 	A measure of how much damage is ignored by the ship's shields. Piercing weapons such as Railguns or Muon Cannons behave as 'negative mitigation' for the purposes of shield mitigation, with any leftover penetration being turned into bleedthrough damage.
 

@@ -13,23 +13,22 @@ Subsystem: NanoMesh
 
 	BaseHP := 200 * HexSize
 	Hex.Mass := 2.0 * HexSize
-	RegenPerSecond := 2 * HexSize / 6.0
+	RegenPerSecond := 2 * HexSize
 
-	AddAdjacentModifier: AddHP(Hex.HP / 6.0)
-	AddPostModifier: HpMult(0.0)
+	AddAdjacentModifier: AddHP(BaseHP / 6.0)
 
 	Modifier: AddHP(amount)
 		Hex.HP := Hex.HP
 
 	Hook: ABEM_hooks::RegenerateAdjacentHexes(RegenPerSecond, false, false, true);
 
-	Hex.LaborCost := 0.6 * HexSize
-	Hex.BuildCost := 4.0  * HexSize
+	Hex.LaborCost := 0.6 * HexSize * 2
+	Hex.BuildCost := 4.0  * HexSize * 3
 	Hex.MaintainCost := 4.0 * HexSize / ShipSize^0.5
 	PowerUse := 8 * Size
 	Requires:
 		Power = PowerUse
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 3
-		Hex.LaborCost := Hex.LaborCost * 2
+		Hex.SharedHP := BaseHP / 6.0
+		Hex.HP := 0
 		Sprite: NanoMesh

@@ -22,6 +22,8 @@ Template: var/BaseHP
 		HPMod := HPMod * factor
 	Modifier: AddHP(amount)
 		Hex.HP := Hex.HP + amount
+	Modifier: AddCoreHP(amount)
+		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
 	Modifier: CoreHealthFactor(factor)
 		CoreHP := CoreHP + Base::CoreHP * (factor - 1)
 	Modifier: CoreHealthMult(factor)

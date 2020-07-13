@@ -254,4 +254,9 @@ SubsystemStat: RepairFactor
 // *********HEX-SPECIFIC STATS**********
 // *************************************
 
-// NONE AVAILABLE AT THE MOMENT.
+HexStat: SharedHP
+	Name: #S_SHARED_HP
+	Icon: AttributeIcons::6
+	Color: #80ff80
+
+	Variable: Hex.SharedHP

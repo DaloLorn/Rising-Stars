@@ -140,12 +140,12 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 					// clear this space for fresh data.
 					hexExcess = 0;
 
-					for(uint j = adjacencies.length-1; j >= 0; --j) {
+					for(int j = adjacencies.length-1; j >= 0; --j) {
 						vec2u other = adjacencies[j];
 						double surplus = event.blueprint.repair(event.obj, other, hexHeal);
 						if(surplus > 0)
 							hexExcess += surplus; // Store this for use by any acceptable overflow-spreading mechanisms.
-						if(no_overflow.boolean || surplus <= 0)
+						if(!no_overflow.boolean || surplus <= 0)
 							adjacencies.removeLast();
 					}
 					if(adjacencies.length > 0)
