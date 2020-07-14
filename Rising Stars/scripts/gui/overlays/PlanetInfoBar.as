@@ -7,6 +7,7 @@ import elements.GuiText;
 import elements.GuiMarkupText;
 import elements.Gui3DObject;
 import elements.GuiSkinElement;
+import elements.GuiPanel;
 import elements.MarkupTooltip;
 import constructible;
 import resources;
@@ -48,6 +49,7 @@ class PlanetInfoBar : InfoBar {
 	GuiResourceReqGrid@ reqDisplay;
 
 	GuiSkinElement@ resourceBox;
+	GuiPanel@ resourcePanel;
 	GuiResourceGrid@ resources;
 	GuiMarkupText@ resourceDesc;
 
@@ -58,6 +60,7 @@ class PlanetInfoBar : InfoBar {
 	GuiSkinElement@ consBox;
 
 	GuiSkinElement@ statusBox;
+	GuiPanel@ statusPanel;
 	GuiMarkupText@ statusText;
 
 	GuiSkinElement@ actionBG;
@@ -80,14 +83,14 @@ class PlanetInfoBar : InfoBar {
 		@actions = ActionBar(this, vec2i(385, 172));
 		actions.noClip = true;
 
-		int y = 40;
+		int y = 37;
 		@nameBox = GuiSkinElement(this, Alignment(Left+5, Top+y, Left+0.4f-4, Top+y+34), SS_PlainOverlay);
 		nameBox.color = boxColors;
 		@name = GuiText(nameBox, Alignment().padded(10, 0));
 		name.font = FT_Medium;
 		name.stroke = colors::Black;
 
-		y += 40;
+		y += 37;
 		@levelBox = GuiSkinElement(this, Alignment(Left+5, Top+y, Left+0.22f-4, Top+y+34), SS_PlainOverlay);
 		levelBox.color = boxColors;
 		@level = GuiText(levelBox, Alignment().padded(8, 0));
@@ -114,7 +117,7 @@ class PlanetInfoBar : InfoBar {
 		@popReq = GuiMarkupText(requireBox, Alignment(Left+4, Top+8, Right-4, Bottom));
 		popReq.visible = false;
 
-		y += 38;
+		y += 37;
 
 		@resourceBox = GuiSkinElement(this, Alignment(), SS_PlainOverlay);
 		resourceBox.color = boxColors;
@@ -122,17 +125,25 @@ class PlanetInfoBar : InfoBar {
 		resources.spacing.x = 6;
 		resources.horizAlign = 0.0;
 		resources.vertAlign = 0.0;
-		@resourceDesc = GuiMarkupText(resourceBox, Alignment(Left+8, Bottom-42, Right-8, Bottom));
-		resourceDesc.visible = false;
+		@resourcePanel = GuiPanel(resourceBox, Alignment(Left+8, Bottom-44, Right-8, Bottom));
+		resourcePanel.horizType = ST_Never;
+		resourcePanel.setScrollPane(true, true);
+		resourcePanel.visible = false;
+		@resourceDesc = GuiMarkupText(resourcePanel, recti(0, 0, 500, 100));
+		resourceDesc.fitWidth = true;
 		resourceDesc.defaultColor = Color(0xaaaaaaff);
 
-		@statusList = GuiSkinElement(this, Alignment(Left+295, Top+118, Left+295+34, Top+118+70), SS_PlainBox);
+		@statusList = GuiSkinElement(this, Alignment(Left+315, Top+111, Left+315+34, Top+111+77), SS_PlainBox);
 		statusList.noClip = true;
 		statusList.visible = false;
 
-		@statusBox = GuiSkinElement(this, Alignment(Left+5, Top+153, Left+295, Bottom-2), SS_PlainOverlay);
+		@statusBox = GuiSkinElement(this, Alignment(Left+5, Top+153, Left+315, Bottom-2), SS_PlainOverlay);
 		statusBox.color = boxColors;
-		@statusText = GuiMarkupText(statusBox, Alignment().padded(2,0));
+		@statusPanel = GuiPanel(statusBox, Alignment().padded(2,0));
+		statusPanel.horizType = ST_Never;
+		statusPanel.setScrollPane(true, true);
+		@statusText = GuiMarkupText(statusPanel, recti(0, 0, 500, 100));
+		statusText.fitWidth = true;
 		statusBox.visible = false;
 
 		int x = 5;
@@ -335,11 +346,11 @@ class PlanetInfoBar : InfoBar {
 					}
 				}
 				resourceDesc.text = desc;
-				resourceDesc.visible = true;
+				resourcePanel.visible = true;
 			}
 			else {
 				resources.alignment.bottom.pixels = 2;
-				resourceDesc.visible = false;
+				resourcePanel.visible = false;
 			}
 
 			//Update statuses
@@ -371,14 +382,16 @@ class PlanetInfoBar : InfoBar {
 				else {
 					statusList.visible = false;
 				}
-				resourceBox.alignment = Alignment(Left+5, Top+118, Left+295, Top+118+70);
+				resourceBox.alignment = Alignment(Left+5, Top+111, Left+315, Top+111+77);
 				resourceBox.updateAbsolutePosition();
+				resourcePanel.updateAbsolutePosition();
 				statusBox.visible = false;
 				resourceBox.visible = resources.length != 0;
 			}
 			else {
-				resourceBox.alignment = Alignment(Left+5, Top+80, Left+295, Top+80+70);
+				resourceBox.alignment = Alignment(Left+5, Top+73, Left+315, Top+73+77);
 				resourceBox.updateAbsolutePosition();
+				resourcePanel.updateAbsolutePosition();
 				statusList.visible = false;
 				statusBox.visible = true;
 				resourceBox.visible = resources.length != 0;
@@ -395,6 +408,7 @@ class PlanetInfoBar : InfoBar {
 						"\n[offset=6][vspace=4][color=#aaa]$2[/color][/vspace][/offset]",
 					status.name, status.description,
 					getSpriteDesc(status.icon), toString(status.color));
+				statusPanel.updateAbsolutePosition();
 			}
 
 			//Update population display
