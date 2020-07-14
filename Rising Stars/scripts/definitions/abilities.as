@@ -102,7 +102,12 @@ tidy class Ability : Serializable, Savable {
 	}
 
 	double getRange(const Targets@ targs = null) const {
-		return type.range;
+		double result = type.range;
+		if(obj !is null)
+			result += obj.radius;
+		if(targs !is null && targs[0].type == TT_Object && targs[0].obj !is null)
+			result += targs[0].obj.radius;
+		return result;
 	}
 
 	bool isChanneling() const {
