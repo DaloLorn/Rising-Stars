@@ -19,6 +19,7 @@ const int MUTARA_NEBULA_FLAG = getSystemFlag("MutaraNebula");
 const int RADIOACTIVE_NEBULA_FLAG = getSystemFlag("RadioactiveNebula");
 const int TACHYON_NEBULA_FLAG = getSystemFlag("TachyonNebula");
 const int TYPE_1_NEBULA_FLAG = getSystemFlag("Type1Nebula");
+const int EARLY_WARNING_FLAG = getSystemFlag("EarlyWarningSystem");
 
 enum ABEMVictoryTypes {
 	VType_Standard = 1,
@@ -46,7 +47,7 @@ const string getRSParticleSystem(int index) {
 
 const StatusType@ getABEMStatus(int index) {
 	switch(index) {
-		case SType_VoidRay: // This status hasn't been ported because we haven't restored Adaptive Lasers to the mod.
+		case SType_VoidRay:
 			return getStatusType("VoidRay");
 		case SType_FiringMeleeRailguns:
 			return getStatusType("FiringRailgunsCloseIn");

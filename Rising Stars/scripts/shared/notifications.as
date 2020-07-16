@@ -396,6 +396,8 @@ class WarStatusNotification : Notification {
 enum WarEventType {
 	WET_ContestedSystem,
 	WET_LostPlanet,
+	WET_IncomingHostiles,
+	WET_HostilesInSystem,
 };
 
 class WarEventNotification : Notification {
@@ -460,6 +462,10 @@ class WarEventNotification : Notification {
 				return format(locale::WAR_EVT_CONTEST, obj.name);
 			case WET_LostPlanet:
 				return format(locale::WAR_EVT_LOST, obj.name);
+			case WET_IncomingHostiles:
+				return format(locale::WAR_EVT_HOSTILES_INCOMING, obj.name);
+			case WET_HostilesInSystem:
+				return format(locale::WAR_EVT_HOSTILES_ARRIVED, obj.name);
 		}
 		return "--";
 	}

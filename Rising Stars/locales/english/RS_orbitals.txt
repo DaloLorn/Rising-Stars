@@ -301,6 +301,8 @@ ORB_CORE_MILITARY_DESC: <<
 	A well-armed defense platform capable of supporting a variety of useful tactical subsystems. In its default configuration, this starbase boasts a variety of basic weapons and can command a small support fleet.
 
 	Weapons installed on the Military Starbase will deal double damage. Other generic tactical upgrades will also be twice as effective, and some weapon upgrades can only be installed on this starbase.
+
+	Military starbases also contain an array of hyperfield sensors and early warning systems to provide timely information about the imminent arrival of hostile forces. The starbase will warn you whenever enemy fleets enter or start FTLing into the system.
 >>
 ORB_TRADE_OUTPOST_BLURB: Generates defense ships and protects planets in the system from being captured.
 ORB_TRADE_OUTPOST_DESC: <<
@@ -338,11 +340,11 @@ ORB_ION_CANNON_DESC: <<
 ORB_ION_CANNON_BLURB: Grants the Ion Cannon ability.
 ORB_SHIELD_ARRAY: Shield Array
 ORB_SHIELD_ARRAY_DESC: <<
-	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 7.5 SP/s.
+	An array of shield generators is installed throughout the station, increasing its shield strength by 6000 and boosting its shield regeneration by 6.25 SP/s.
 
 	This module can be installed multiple times. All orbital shields have 50% mitigation.
 >>
-ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 7.5 shield regeneration.
+ORB_SHIELD_ARRAY_BLURB: Adds 6000 shield capacity and 6.25 shield regeneration.
 ORB_TACTICAL_COORDINATORS: Tactical Coordination Suite
 ORB_TACTICAL_COORDINATORS_DESC: <<
 	Additional tactical coordination computers are installed in the starbase, allowing it to manage a greater amount of defending ships. Increases the station's support capacity by 128.
@@ -423,21 +425,37 @@ ORB_FTL_SUPPRESSOR_ADAPTED_DESC: <<
 >>
 ORB_FTL_JAMMER_BLURB: Slows down hostile empires trying to engage their FTL drives in this system. Can periodically prevent FTL activity.
 ORB_FTL_JAMMER_DESC: <<
-	An array of precise hyperfield excitors calibrated to specific frequencies can block the use of particular makes of FTL drive.
+	An array of precise hyperfield exciters calibrated to specific frequencies can block the use of particular makes of FTL drive.
 
 	Empires you are at war with will have FTL speeds and charge rates greatly reduced in this system. Activating additional gates in the system will no longer be possible, and slipstream tears will decay faster.
 
 	The jammer can be temporarily overcharged to completely block enemy FTL systems for a short time.
 
+	The jammer's hyperfield exciters can also be used as a sensor system, allowing it to provide timely information about the imminent arrival of hostile forces. The jammer will warn you whenever enemy fleets enter or start FTLing into the system.
+
 	[b][color=#00c0ff]Costs 0.15 FTL per second to maintain.[/color][/b]
 >>
 ORB_FTL_SUPPRESSOR: FTL Suppressor
 ORB_FTL_SUPPESSOR_DESC: <<
-	An array of precise hyperfield excitors calibrated to specific frequencies can block the use of particular makes of FTL drive.
+	An array of precise hyperfield exciters calibrated to specific frequencies can block the use of particular makes of FTL drive.
 
 	Empires you are at war with will have FTL speeds and charge rates greatly reduced in this system. Activating additional gates in the system will no longer be possible, and slipstream tears will decay faster.
 
 	Unlike the larger jamming stations, FTL suppression arrays aren't powerful enough to fully block FTL systems.
 
 	[b][color=#00c0ff]Costs 0.25 FTL per second to maintain.[/color][/b]
+>>
+ORB_WARNING_BEACON: Tactical Detection Node
+ORB_WARNING_BEACON_BLURB: Provides early warning against incoming enemies.
+ORB_WARNING_BEACON_DESC: <<
+	A small sensor buoy packed with hyperfield sensors capable of detecting incoming FTL activity. Its early warning systems will warn you whenever enemy fleets enter or start FTLing into the system it is in.
+	
+	Although TDNs are easy to manufacture and maintain, they are also utterly defenseless, and will likely need to be replaced after an enemy attack.
+>>
+ORB_WARNING_BEACON_ADAPTED: Tactical Deterrence Node
+ORB_WARNING_BEACON_ADAPTED_BLURB: Provides early warning and minor defense against incoming enemies.
+ORB_WARNING_BEACON_ADAPTED_DESC: <<
+	[bbloc=#ORB_WARNING_BEACON_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Tactical Detection Node:Boasts improved armor, a shield generator, and a sentry gun for defense against enemy raiders/]
 >>

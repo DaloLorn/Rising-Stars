@@ -22,3 +22,4 @@ Module: MilitaryCore
 	AddHealthEmpireAttribute(OutpostBoost, 10000)
 	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
 	AddFleetCommand(128)
+	SetSystemFlag(EarlyWarningSystem)

@@ -1,0 +1,30 @@
+Module: WarningBeacon
+	Name: #ORB_WARNING_BEACON
+	Description: #ORB_WARNING_BEACON_DESC
+	Blurb: #ORB_WARNING_BEACON_BLURB
+	Icon Size: 0.01
+	Icon: GuiOrbitalIcons::12
+	Size: 1
+	Standalone: True
+	Maintenance: 1
+	Build Cost: 10
+	Labor Cost: 1
+	Health: 500
+	Model: Research_Station
+	Material: GenericPBR_Research_Station
+	Distant Icon: OrbitalIcons::12
+	Strategic Icon: OrbitalIcons::12
+	SetSystemFlag(EarlyWarningSystem)
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(WarningBeacon, AdaptedWarningBeacon))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+Module: AdaptedWarningBeacon
+	Inherit: WarningBeacon
+	Name: #ORB_WARNING_BEACON_ADAPTED
+	Description: #ORB_WARNING_BEACON_ADAPTED_DESC
+	Blurb: #ORB_WARNING_BEACON_ADAPTED_BLURB
+	Armor: 500
+	Shield Capacity: 1000
+	Shield Regeneration: 1
+	RecordBonusDPS(4)
+	AddTurret(Railgun, Range=1200, Damage=4, Reload=1, Speed=300, Spread=0.03, FireArc=3.14, Tracking=0.4, FireTolerance=0.78)
+	private RequireUnlockTag(NylliAdaptation4)

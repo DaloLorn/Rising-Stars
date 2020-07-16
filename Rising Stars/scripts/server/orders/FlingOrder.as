@@ -2,6 +2,8 @@ import orders.Order;
 import resources;
 import attributes;
 import ftl;
+import ABEM_data;
+import notifications;
 
 tidy class FlingOrder : Order {
 	Object@ beacon;
@@ -115,6 +117,15 @@ tidy class FlingOrder : Order {
 			//Mark ship as FTLing
 			if(ship !is null)
 				ship.isFTLing = true;
+
+			auto@ region = getRegion(destination);
+			if(region !is obj.region && region !is null && obj.owner !is null && obj.owner.valid) {
+				for(uint i = 0; i < getEmpireCount(); i++) {
+					Empire@ other = getEmpire(i);
+					if(other !is obj.owner && other.major && other.valid && region.getSystemFlag(other, EARLY_WARNING_FLAG) && other.isHostile(obj.owner))
+						other.notifyWarEvent(region, WET_IncomingHostiles);
+				}
+			}
 
 			//Calculate needed facing
 			facing = quaterniond_fromVecToVec(vec3d_front(), destination - obj.position);
