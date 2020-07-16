@@ -4,7 +4,7 @@ Module: WeaponControlSatellite
 	Blurb: #ORB_TARGETING_SATELLITE_BLURB
 	Size: 6
 	Model: DefenseStation
-	Material: VolkurGenericPBR
+	Material: GenericPBR_Defense_Station
 	Health: 5000
 	Armor: 5000
 

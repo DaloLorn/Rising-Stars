@@ -14,7 +14,7 @@ Module: RemnantDefenseCore
 	Armor: 2000
 
 	Model: DefenseStation
-	Material: VolkurGenericPBR
+	Material: GenericPBR_Defense_Station
 
 	CannotBuildManually()
 

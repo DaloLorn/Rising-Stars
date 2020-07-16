@@ -12,7 +12,7 @@ Module: ShieldCharger
 	Armor: 6000
 
 	Model: DefenseStation
-	Material: VolkurGenericPBR
+	Material: GenericPBR_Defense_Station
 
 	Strategic Icon: OrbitalIcons::7
 
