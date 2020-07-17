@@ -164,6 +164,7 @@ class JumpdriveDisplay : PointDisplay {
 				chargeTime *= 4;
 			avgChargeTime += chargeTime;
 		}
+		avgChargeTime /= ht.validObjs.length;
 		text = locale::AVG_HYPERJUMP_TIME;
 		if(doubleSuppressed) {
 			if(combat) text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED_COMBAT;

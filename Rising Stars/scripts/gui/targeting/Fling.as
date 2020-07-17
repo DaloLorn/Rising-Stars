@@ -142,6 +142,7 @@ class FlingDisplay : PointDisplay {
 				}
 				avgChargeTime += chargeTime;
 			}
+			avgChargeTime /= ht.validObjs.length;
 			text = locale::AVG_HYPERJUMP_TIME;
 			if(suppressed) 
 				text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;

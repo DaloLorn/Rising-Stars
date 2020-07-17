@@ -118,6 +118,7 @@ class HyperdriveDisplay : PointDisplay {
 					}
 					avgChargeTime += chargeTime;
 				}
+				avgChargeTime /= ht.validObjs.length;
 				text = locale::AVG_HYPERJUMP_TIME;
 				if(suppressed) {
 					if(combat) text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT;
