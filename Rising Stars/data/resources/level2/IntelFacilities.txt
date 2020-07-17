@@ -7,10 +7,15 @@ Resource: IntelFacilities
 	Native Biome: Mountains
 	Level: 2
 	Pressure: 2 Defense
+	Pressure: 2 Research
+	Pressure: 2 Money
+	Pressure: 2 Influence
+	Exportable: False
 	Artificial: True
-	Affinity: Defense
+	Affinity: ALL
 	Rarity: Uncommon
-	Require Contestation: 30
+	Limitless Level: True
+	Require Contestation: 60
 	PeriodicNearbyIntelligence()
 	GrantAbility(Telescope)
 	GiveNeighbourVision()

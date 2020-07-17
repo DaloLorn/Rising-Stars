@@ -213,7 +213,7 @@ bool parseResourceSpec(array<const ResourceType@>@ resPossib, const string& v) {
 			for(uint i = 0, cnt = cls.types.length; i < cnt; ++i) {
 				if(rarity != INT_MAX && cls.types[i].rarity != rarity)
 					continue;
-				if(cls.types[i].artificial || cls.types[i].distribution <= 0)
+				if(cls.types[i].distribution <= 0)
 					continue;
 				if(cls.types[i].unique)
 					continue;
@@ -231,7 +231,7 @@ bool parseResourceSpec(array<const ResourceType@>@ resPossib, const string& v) {
 					continue;
 				if(rarity != INT_MAX && res.rarity != rarity)
 					continue;
-				if(res.artificial || res.unique)
+				if(res.unique)
 					continue;
 				if(res.limitlessLevel)
 					continue;
@@ -248,7 +248,7 @@ bool parseResourceSpec(array<const ResourceType@>@ resPossib, const string& v) {
 				auto@ res = getResource(i);
 				if(rarity != INT_MAX && res.rarity != rarity)
 					continue;
-				if(res.artificial || res.unique)
+				if(res.unique)
 					continue;
 				if(res.frequency <= 0 || res.distribution <= 0)
 					continue;
@@ -266,7 +266,7 @@ bool parseResourceSpec(array<const ResourceType@>@ resPossib, const string& v) {
 					continue;
 				if(rarity != INT_MAX && res.rarity != rarity)
 					continue;
-				if(res.artificial || res.unique)
+				if(res.unique)
 					continue;
 				if(res.limitlessLevel)
 					continue;

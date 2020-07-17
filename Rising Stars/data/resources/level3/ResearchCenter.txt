@@ -6,9 +6,10 @@ Resource: ResearchCenter
 	Icon: ResourceIcon::3
 	Native Biome: Crystallic
 	Level: 3
-	Pressure: 7 Research
+	Pressure: 16 Research
 	Exportable: False
 	Affinity: Research
+	Limitless Level: True
 	Artificial: True
 	Unique: True
 	Rarity: Uncommon

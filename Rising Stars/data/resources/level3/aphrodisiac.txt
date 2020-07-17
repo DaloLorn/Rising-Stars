@@ -7,9 +7,10 @@ Resource: Aphrodisiac
 	Native Biome: Forest
 	Level: 3
 	Exportable: False
-	Pressure: 5 Money
-	Pressure: 5 Influence
+	Pressure: 8 Money
+	Pressure: 8 Influence
 	Affinity: Money + Influence
+	Limitless Level: True
 	Unique: True
 	Rarity: Uncommon
 	ModCivResourceMult(Labor, -0.5)

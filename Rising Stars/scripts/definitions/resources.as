@@ -1467,8 +1467,6 @@ void loadResources(const string& filename) {
 		}
 		else if(key.equals_nocase("Artificial")) {
 			r.artificial = toBool(value);
-			if(r.artificial)
-				r.distribution = 0.0;
 		}
 		else if(key.equals_nocase("Exportable")) {
 			r.exportable = toBool(value);

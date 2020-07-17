@@ -1,9 +1,9 @@
 Trait: Handicap1
-	Name: Just got the game on Steam!
+	Name: #HANDICAP1
 	Icon: PlanetLevelIcons::2
 	Color: #50ff1a
 	Category: Handicaps
-	Description: Increases Fleet Eficiency by 30%, adds §450k income, and increases all civilian resource generation by 30%.
+	Description: #HANDICAP1_DESC
 
 
 	Unique: Handicap
@@ -14,8 +14,8 @@ Trait: Handicap2
 
 	Category: Handicaps
 	Icon: PlanetLevelIcons::1
-	Name: Newbie
-	Description: Increases Fleet Eficiency by 20%, adds §300k income, and increases all civilian resource generation by 20%.
+	Name: #HANDICAP2
+	Description: #HANDICAP2_DESC
 	ModAttribute(FleetEfficiencyFactor, Add, 0.2)
 	AddMoneyIncome(300)
 
@@ -25,8 +25,8 @@ Trait: Handicap2
 Trait: Handicap3
 	Color: #ff0000
 	Icon: PlanetLevelIcons::0
-	Name: Casual Gamer
-	Description: Increases Fleet Eficiency by 10%, adds §150k income, and increases civilian resource generation by 10%.
+	Name: #HANDICAP3
+	Description: #HANDICAP3_DESC
 	Category: Handicaps
 	ModAttribute(FleetEfficiencyFactor, Add, 0.1)
 	AddMoneyIncome(150)
@@ -37,19 +37,19 @@ Trait: Handicap3
 Trait: Handicap0
 	Color: #ff0000
 	Icon: HappyFace
-	Name: Normal
-	Description: I will handle this myself!
+	Name: #HANDICAP0
+	Description: #HANDICAP0_DESC
 	Category: Handicaps
 	Default: True
 
 
 	Unique: Handicap
 Trait: Handicap4
-	Name: Veteran Player
+	Name: #HANDICAP4
 	Icon: PlanetLevelIcons::0*#ff1b0f
 	Color: #ff1b0f
 	Category: Handicaps
-	Description: Reduces Fleet Eficiency by 10%.
+	Description: #HANDICAP4_DESC
 	ModAttribute(FleetEfficiencyFactor, Add, -0.1)
 
 
@@ -59,8 +59,8 @@ Trait: Handicap4
 Trait: Handicap5
 	Category: Handicaps
 	Icon: PlanetLevelIcons::1*#ff1b0f
-	Name: Hardcore Player
-	Description: Reduces Fleet Eficiency by 20%.
+	Name: #HANDICAP5
+	Description: #HANDICAP5_DESC
 	Color: #ff1b0f
 	ModAttribute(FleetEfficiencyFactor, Add, -0.2)
 
@@ -69,8 +69,8 @@ Trait: Handicap5
 Trait: Handicap6
 	Color: #ff0000
 	Icon: PlanetLevelIcons::2*#ff1b0f
-	Name: Monster
-	Description: Stop the bears and dinosaurs. Reduces Fleet Efficiency by 30%.
+	Name: #HANDICAP6
+	Description: #HANDICAP6_DESC
 	Category: Handicaps
 	ModAttribute(FleetEfficiencyFactor, Add, -0.3)
 

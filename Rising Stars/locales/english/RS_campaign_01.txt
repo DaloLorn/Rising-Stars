@@ -1,6 +1,6 @@
 ﻿CAMPAIGN_MONO: Mono Collective - Unit-00 (Tutorial)
 CAMPAIGN_MONO_DESC: <<
-	Sometime around 30000-5000 BP, the artificial construct now known as 'Mono Unit-00' malfunctioned and crashed on the remote world of Arith Prime. Unable to determine where it came from, how it came here, or what it was meant to do, it began building duplicates of itself to help in its search for a Creator... or a Purpose to execute.
+	Sometime between 30000-5000 BP, the artificial construct now known as 'Mono Unit-00' malfunctioned and crashed on the remote world of Arith Prime. Unable to determine where it came from, how it came here, or what it was meant to do, it began building duplicates of itself to help in its search for a Creator... or a Purpose to execute.
 
 	This is the story of how its creations, the Mono, became a small spacefaring empire from a battered husk in an impact crater. This is the story of the beginnings of the Mono Collective.
 

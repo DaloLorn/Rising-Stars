@@ -7,6 +7,7 @@ Resource: ClearWater
 	Icon: ResourceIconsSmall::100
 	Small Icon: ResourceIconsSmall::100
 
+	Distribution: 0
 	Artificial: True
 	Level: 0
 

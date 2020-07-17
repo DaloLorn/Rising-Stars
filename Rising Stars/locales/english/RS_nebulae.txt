@@ -16,7 +16,7 @@ NEBULA_METAPHASIC_DESC: <<
 NEBULA_CERULEAN_DESC: <<
 	Nebulae like these wreak havoc upon most combat systems, making them a safe haven for ships in need of repairs.
 	
-	Disables shields, cloaking, FTL and weapons systems. Does not disable Boarding Parties or any form of planet killer.
+	Disables shields, cloaking, and weapons systems. Suppresses all forms of FTL. Does not disable Boarding Parties or any form of planet killer.
 >>
 NEBULA_METREON_DESC: <<
 	Exceptional concentrations of metreon gas in nebulae like this one have a highly damaging effect on starship hulls. Shields slow the process down, but unless the shield generator is a powerful one, the ship will invariably have to leave to avoid destruction.

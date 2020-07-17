@@ -6,16 +6,17 @@ Resource: Ancient Shipyard
 
 	Level: 3
 	
-	Pressure: 7 Defense
+	Pressure: 16 Defense
 	Small Icon: TechIcons::33
 	Affinity: Defense
 	Exportable: False
 	Artificial: True
+	Limitless Level: True
 	Unique: True
 	
 	Native Biome: Mountains
 	Rarity Level: 2
-	Rarity: Common
+	Rarity: Uncommon
 	Require Contestation: 30
 	AddLaborIncome(Amount = 16)
 	GrantAbility(OverchargeFleet)

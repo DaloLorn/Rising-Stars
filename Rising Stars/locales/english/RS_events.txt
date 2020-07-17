@@ -148,7 +148,7 @@ EVT_PEDDLER_TRINKETS_JUNK: <<
 EVT_PEDDLER_TRINKETS_ARTIFACT: <<
 	The item seems fairly worthless - but the first archaeologist to lay eyes upon it recognizes it as a cultural artifact of tremendous significance. Before long, the artifact is put on display in a museum for countless tourists from all over the galaxy to marvel at.
 
-	[b]Received +5 Influence generation.[/b]
+	[b]Received +5 Influence stake.[/b]
 >>
 EVT_PEDDLER_TRINKETS_KNOWLEDGE: <<
 	Detailed examination of the item you purchased reveals it to be a data storage device. Within is a treasure trove of ancient knowledge regarding all sorts of aspects of civilization, but very little of any technological value.
@@ -168,7 +168,7 @@ EVT_PEDDLER_TRINKETS_FTL: <<
 EVT_PEDDLER_ORE: <<
 	Buy out the merchant's ore stockpile.
 
-	[b]You will receive 2500 Ore on [target=Location/] and lose §500k.[/b]
+	[b]You will receive 2500 Ore and lose §500k.[/b]
 EVT_PEDDLER_INFO: <<
 	Trade for the information.
 

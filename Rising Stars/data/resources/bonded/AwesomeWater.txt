@@ -7,6 +7,7 @@ Resource: AwesomeWater
 	Icon: ResourceIconsSmall::102
 	Small Icon: ResourceIconsSmall::102
 
+	Distribution: 0
 	Artificial: True
 	Level: 0
 

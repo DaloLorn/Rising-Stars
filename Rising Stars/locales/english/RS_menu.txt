@@ -39,7 +39,7 @@ NG_FTL_MULT: FTL Storage/Generation Multiplier
 NGTT_FTL_MULT: <<
 	The number by which the storage capacity and generation rate of FTL Energy on a starship are multiplied. Increases the amount of FTL Energy generated from one FTL Crystal.
 
-	Useful when modifying galaxy spacing. For every 6500 units of spacing added, it is recommended that you increase this number by approximately 1.0. (Developer note: For example, 6500 spacing is 1.0, 13000 spacing is 2.0... you get the point.)
+	Useful when modifying galaxy spacing. For every 130000 units of spacing added, it is recommended that you increase this number by approximately 1.0. (Developer note: For example, 130000 spacing is 1.0, 260000 spacing is 2.0... you get the point.)
 >>
 
 NG_LEGACY_EXPLORATION: Legacy Exploration Mode

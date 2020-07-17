@@ -8,6 +8,7 @@ Resource: Altar
 	Icon: ResourceIconsSmall::53
 	Small Icon: ResourceIconsSmall::53
 
+	Distribution: 0
 	Level: 0
 	Limitless Level: True
 	Can Be Terraformed: False

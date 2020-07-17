@@ -7,8 +7,10 @@ Resource: AncientCity
 	Small Icon: ResourceIconsSmall::38
 
 	Level: 2
+	Limitless Level: True
 	Rarity: Uncommon
 	Exportable: False
+	Artificial: True
 	Affinity: Influence + Research
 
 	Pressure: 8 Influence

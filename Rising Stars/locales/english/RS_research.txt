@@ -21,7 +21,7 @@ R_CAT_INDUSTRY_DESC: <<
 	[color=#aaa][i]Discovering a method for building galaxy-sized starships, one star at a time.[/i][/color]
 >>
 R_CAT_PROPULSION_DESC: <<
-	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous--- AAAAARGH![/i][/color]
+	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous SpeAAAAARGH![/i][/color]
 >>
 R_NYLLI_FOOD: Nutrient Recyclers
 R_NYLLI_FOOD_DESC: <<

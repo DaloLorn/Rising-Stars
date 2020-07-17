@@ -7,6 +7,7 @@ Resource: BoostWater
 	Icon: ResourceIconsSmall::101
 	Small Icon: ResourceIconsSmall::101
 
+	Distribution: 0
 	Artificial: True
 	Level: 0
 	ModResourceEfficiencyBonus(+1.5)

@@ -1,1 +1,15 @@
 ﻿TRAIT_CAT_Handicaps:Handicaps
+HANDICAP1: Just got the game on Steam!
+HANDICAP1_DESC: Increases fleet efficiency by 30%, adds §450k income, and increases all civilian resource generation by 30%.
+HANDICAP2: Newbie
+HANDICAP2_DESC: Increases fleet efficiency by 20%, adds §300k income, and increases all civilian resource generation by 20%.
+HANDICAP3: Casual Gamer
+HANDICAP3_DESC: Increases fleet efficiency by 10%, adds §150k income, and increases civilian resource generation by 10%.
+HANDICAP0: Normal
+HANDICAP0_DESC: I will deal with this myself!
+HANDICAP4: Veteran Player
+HANDICAP4_DESC: Reduces fleet efficiency by 10%.
+HANDICAP5: Hardcore Player
+HANDICAP5_DESC: Reduces fleet efficiency by 20%.
+HANDICAP6: Monster
+HANDICAP6_DESC: Stop the bears and dinosaurs. Reduces fleet efficiency by 30%.

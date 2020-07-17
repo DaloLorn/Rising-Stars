@@ -82,7 +82,7 @@ ORB_EMBASSY_DESC: <<
 
 	High levels of diplomatic activity in the Embassy grant 2 Influence Stake, and a 5% chance of receiving a random influence card every minute.
 
-	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
+	Embassies act as Commerce Hubs and Economic Starbases in that they allow trade between separated territories, and expand your empire's borders, respectively.
 >>
 ORB_TELESCOPE: Subspace Telescope Array
 ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems. Mobile.
@@ -201,7 +201,7 @@ ORB_SINGULARITY_LAB_ADAPTED: Advanced Singularity Lab
 ORB_SINGULARITY_LAB_ADAPTED_DESC: <<
 	[bbloc=#ORB_SINGULARITY_LAB_DESC/]
 
-	[bbloc=#ORB_ADAPTED:Singularity Lab:Creates system-wide hyperfield distortions, effectively blocking enemy FTL in the system it is located in and dealing heavy shield damage/]
+	[bbloc=#ORB_ADAPTED:Singularity Lab:Creates system-wide hyperfield distortions, effectively suppressing enemy FTL in the system it is located in and dealing heavy shield damage/]
 >>
 ORB_TRADE_OUTPOST_ADAPTED: Fortified Command Post
 ORB_TRADE_OUTPOST_ADAPTED_DESC: <<
@@ -257,7 +257,7 @@ ORB_SUPPLY_DEPOT_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:Supply Depot:Grants 50 Defense Reserve/]
 >>
-ORB_FTL_STORAGE_ADAPTED: Advanced FTL Storage
+ORB_FTL_STORAGE_ADAPTED: FTL Storage Lab
 ORB_FTL_STORAGE_ADAPTED_DESC: <<
 	[bbloc=#ORB_FTL_STORAGE_DESC/]
 

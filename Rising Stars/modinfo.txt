@@ -8,7 +8,7 @@
 
 		[b][h1]Current version: 1.3.0 (The Khalerii Endeavour)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
-		[*]Five new lifestyles with various pros and cons[list]
+		[*]Six new lifestyles with various pros and cons[list]
 		[*]Berserkers, exemplified by the warlike Rahta race[list]
 		[*][i]Be the finest warriors in the galaxy, but be wary of galactic peace, for your internal strife will cripple you[/i][/list]
 		[*]Pacifists, such as the telepathic Fasshi[list]
@@ -19,20 +19,30 @@
 		[*][i]Rebuild your broken civilization and awaken the Remnants to reclaim your heritage[/i][/list]
 		[*]Ringworlders, the first 'Vanguard' race, exemplified by the hedonistic, sedentary Bluuhbi[list]
 		[*][i]Funnel the galaxy's resources to your Ringworlds as you work to reassert your dominance over the Vanguard and gain the favor of the Overlords by ensuring their conquest of this galaxy[/i][/list]
+		[*]Swarmers, the second Vanguard race, represented by the industrious Khalerii[list]
+		[*][i]Wield unparalleled industrial capabilities in your quest to prove yourself an equal of the other, "superior" Vanguard races[/i][/list]
 		[/list]
 		[*]A fully transformed tech grid, bringing back the organized nature of the ABEM grid and reintroducing its specialization system
 		[*]More than a dozen new subsystems, including Ferrofluid Armor, Miner Hulls, Covariant Shield Generators, and Singularity Cores
 		[*]A complete overhaul of weapon balancing
+		[*]Several new resources, such as Technofarms, Ancient Shipyards, and Tropical Paradises
 		[*]Several new orbital modules - Stellar Shield Generators, Power Transmitters, Subspace Telescope Arrays, and others
 		[*]Several new buildings, including Command Centers and Centralized Coordination Complexes
 		[*]Increased control over the way the game plays, with settings such as First Contact Mode, Research Effectiveness Decay, and more being changeable during game configuration
 		[*]New gameplay mechanics:[list]
+			[*]Flux - [i]an FTL type originally developed for WotH before being polished up in RS, Flux ships can periodically teleport between star systems for free, but cost FTL to build, and can neither use other FTL types nor travel through the interstellar void[/i]
 			[*]Derelicts - [i]flagships not using Sinew now have a chance of being disabled rather than destroyed when they lose all their Control, depending on how badly damaged they are[/i]
-			[*]Stellar phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
+			[*]Stellar Phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
 			[*]Boarding - [i]send troops to attack the enemy from within and take their ships for yourself[/i]
-			[*]Vanguard Victory - [i]races such as the Bluuhbi can construct Portal Stabilizers on Ringworlds and Artificial Planetoids, working to summon an unstoppable alien armada[/i]
+			[*]Vanguard Victory - [i]races such as the Bluuhbi and Khalerii can construct Portal Stabilizers on Ringworlds and Artificial Planetoids, working to summon an unstoppable alien armada[/i]
+			[*]Linear Research Scaling - [i]most research effects now stack additively rather than multiplicatively, radically reducing the penalty for researching a more diverse range of effects[/i]
 			[*]Materials - [i]resources such as Ore can now be stored and used in a global resource pool, and are now used more frequently[/i]
 			[*]Starbases - [i]most orbitals have been converted into modules for large, upgradeable 'Starbase' orbitals, capable of performing a variety of functions and potentially resilient enough to repel raiding parties[/i]
+			[*]Mining Complexes - [i]an Economic Starbase module that tractors a nearby Ore asteroid and provides a steady flow of Ore, the Mining Complex can mine a depleted asteroid at a reduced rate indefinitely[/i]
+			[*]New Movement Physics - [i]includes Darloth's "New Movement Physics" and "NMP Graviton Adjust" mods to improve the tactical feasibility and versatility of sublight drives[/i]
+			[*]Shield Mitigation - [i]similarly to Dolynick's Faction Addon, RS shields reduce incoming damage and do not suffer bleedthrough against most weapons, becoming a viable primary defense in their own right[/i]
+			[*]FTL Suppression - [i]most FTL jamming effects now only impede FTL travel instead of preventing it, though the standalone FTL Jammer can still temporarily block transit[/i]
+			[*]Logistics - [i]building multiple ships of the same design grants scaling cost reductions and partial XP sharing, while early warning orbitals complicate surprise attacks[/i]
 			[/list]
 		[*]New maps:[list]
 			[*]Precious Clouds - [i]4-player map; race to rule the rich nebulae at the heart of this small sector[/i]

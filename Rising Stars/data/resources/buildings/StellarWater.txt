@@ -8,6 +8,7 @@ Resource: StellarWater
 	Small Icon: ResourceIconsSmall::103
 	Display Weight: -10
 
+	Distribution: 0
 	Level: 0
 	Exportable: False
 	Artificial: True

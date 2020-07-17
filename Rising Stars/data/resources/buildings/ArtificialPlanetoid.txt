@@ -10,6 +10,7 @@ Resource: ArtificialPlanetoid
 	Can Be Terraformed: False
 	Exportable: False
 	Stealable: False
+	Distribution: 0
 
 	ABEM_races::TriggerOnGenerate(IfNotHaveStatus(NoSurfaceRegen, IfNotHaveStatus(MoonBase, IfNotHaveStatus(FloatingContinent, IfNotHaveStatus(TerraformStacks, ABEM_hooks::ResourcelessRegenSurface(10, 8, Biome Count = 1, Force Biome = Artificial))))))
 	AddStatus(NoSurfaceRegen)
