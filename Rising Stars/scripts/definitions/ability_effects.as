@@ -802,6 +802,8 @@ class IsToggleTarget : AbilityHook {
 };
 
 double getMassFor(Object& obj) {
+	if(obj is null)
+		return 0;
 #section server
 	switch(obj.type) {
 		case OT_Artifact:
@@ -948,6 +950,7 @@ class TriggerBeamEffect : AbilityHook {
 tidy final class TractorData {
 	bool hasOffset = false;
 	vec3d offset;
+	double mass = 0;
 	bool hasPath = false;
 	vec3d pathDest;
 	vec3d prevPosition;
@@ -978,6 +981,9 @@ class TractorObject : AbilityHook {
 		if(prev is next)
 			return;
 
+		TractorData@ td;
+		data.retrieve(@td);
+
 		if(prev !is null) {
 			if(prev.hasOrbit) {
 				prev.velocity = vec3d();
@@ -986,22 +992,20 @@ class TractorObject : AbilityHook {
 			}
 			if(abl.obj !is null) {
 				if(abl.obj.isShip)
-					cast<Ship>(abl.obj).modMass(-getMassFor(prev));
+					cast<Ship>(abl.obj).modMass(-td.mass);
 				else if(abl.obj.isOrbital)
-					cast<Orbital>(abl.obj).modMass(-getMassFor(prev));
+					cast<Orbital>(abl.obj).modMass(-td.mass);
 			}
 		}
+		td.mass = getMassFor(next);
 		if(next !is null) {
 			if(abl.obj !is null) {
 				if(abl.obj.isShip)
-					cast<Ship>(abl.obj).modMass(getMassFor(next));
+					cast<Ship>(abl.obj).modMass(td.mass);
 				else if(abl.obj.isOrbital)
-					cast<Orbital>(abl.obj).modMass(getMassFor(next));
+					cast<Orbital>(abl.obj).modMass(td.mass);
 			}
 		}
-
-		TractorData@ td;
-		data.retrieve(@td);
 
 		td.hasOffset = false;
 		td.hasPath = false;
@@ -1021,6 +1025,18 @@ class TractorObject : AbilityHook {
 
 		TractorData@ td;
 		data.retrieve(@td);
+
+		double targMass = getMassFor(target);
+		if(targMass != td.mass) {
+			double diff = targMass - td.mass;	
+			td.mass += diff;
+			if(abl.obj !is null) {
+				if(abl.obj.isShip)
+					cast<Ship>(abl.obj).modMass(diff);
+				else if(abl.obj.isOrbital)
+					cast<Orbital>(abl.obj).modMass(diff);
+			}
+		}
 
 		bool wasPortal = false;
 		if(allow_portal.boolean && (override_no_ftl.boolean || checkFTLAllowed(target))) {
