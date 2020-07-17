@@ -40,8 +40,8 @@ FLUX_JAMMED_ORIGIN: $1's flux connection is jammed
 FLUX_CHARGING: $1 is recharging ($2)
 FLUX_CHARGING_SUPPRESSED: $1 is recharging ($2 - Suppression Detected)
 FLUX_UNKNOWN_ERROR: Unknown error on $1
-FTL_COST_INDICATOR: $1 [bbloc=#FTL] ($2u)
-FTL_COST_INDICATOR_JAMMED: $1 [bbloc=#FTL] ($2u - WARNING: Jamming at $3 may cause premature FTL termination!)
+FTL_COST_INDICATOR: $1 FTL ($2u)
+FTL_COST_INDICATOR_JAMMED: $1 FTL ($2u - WARNING: Jamming at $3 may cause premature FTL termination!)
 INSTANT_HYPERJUMP: Will jump after rotation
 AVG_HYPERJUMP_TIME: Average Charge Time: $1
 AVG_HYPERJUMP_TIME_SUPPRESSED: Average Charge Time: $1 (Suppression Detected)
