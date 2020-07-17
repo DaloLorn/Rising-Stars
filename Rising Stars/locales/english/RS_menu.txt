@@ -200,3 +200,9 @@ PRECIOUS_CLOUDS_DESC: <<
 
 	Designed for up to four players. Recommended configurations: 2v2, 1v1, 1v1v1v1
 >>
+
+NGTT_ENABLE_TERRAFORMING: <<
+	When terraforming is enabled, empires will be able to change the resources on their planets to any basic Tier 1 resource after researching the prerequisite technology. The terraforming specialization tree may also be used to unlock advanced Tier 1 and basic Tier 2 resources.
+
+	To terraform a resource, select a planet with labor and right click another planet to terraform.
+>>
