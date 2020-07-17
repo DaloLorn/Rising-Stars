@@ -199,8 +199,11 @@ class VictoryTab : Tab {
 				else if(emp.Victory >= 1) {
 					if(emp.Victory == 1)
 						victory = format("[color=#0f0]$1[/color]", locale::V_WON_TITLE);
-					else if(emp.Victory == 2)
-						victory = format("[color=#0f0]$1[/color]", locale::V_VANGUARD_TITLE);
+					else if(emp.Victory == 2) {
+						if(emp.VanguardVictoryRequirement <= 0)
+							victory = format("[color=#0f0]$1[/color]", locale::V_VANGUARD_TITLE);
+						else victory = format("[color=#0f0]$1[/color]", locale::V_WON_TITLE);
+					}
 				}
 				else
 					victory = format("[color=#f00]$1[/color]", locale::V_LOST_TITLE);
