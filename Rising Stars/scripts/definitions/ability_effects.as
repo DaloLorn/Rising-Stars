@@ -997,8 +997,9 @@ class TractorObject : AbilityHook {
 					cast<Orbital>(abl.obj).modMass(-td.mass);
 			}
 		}
-		td.mass = getMassFor(next);
+		td.mass = 0;
 		if(next !is null) {
+			td.mass = getMassFor(next);
 			if(abl.obj !is null) {
 				if(abl.obj.isShip)
 					cast<Ship>(abl.obj).modMass(td.mass);

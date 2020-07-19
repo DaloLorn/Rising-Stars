@@ -95,7 +95,7 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 		uint i = 0;
 		double amount = arguments[0].decimal * time;
 		double excess = 0, lastExcess;
-		double hexExcess = 0;
+		double hexExcess = 0, lastHexExcess;
 		if(spread.boolean) {
 			amount = amount / Hexes;
 		}
@@ -104,6 +104,7 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 			// If spread is true, this is used to check if we're trying to repair 
 			// a collection of hexes whose members are *all* at full health.
 			// (i.e. `excess` has stopped changing.)
+			print("Making another subsystem healing pass: " + excess + " and " + lastExcess);
 			lastExcess = excess;
 
 			for(uint i = 0; i < Hexes; i++) {
@@ -133,11 +134,13 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 					hexHeal = hexHeal / adjacencies.length;
 				}
 
-				while(hexHeal > 0) {
+				do {
 					// Either we're remembering regeneration overflows from a previous hex,
 					// or we've started a second regeneration pass on this one.
 					// Either way, the data has been stored elsewhere and we need to
 					// clear this space for fresh data.
+					print("Making another hex healing pass: " + hexHeal + " and " + hexExcess);
+					lastHexExcess = hexExcess;
 					hexExcess = 0;
 
 					for(int j = adjacencies.length-1; j >= 0; --j) {
@@ -151,7 +154,7 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 					if(adjacencies.length > 0)
 						hexHeal = hexExcess / adjacencies.length;
 					else break;
-				}
+				} while(hexHeal > 0 && hexExcess != lastHexExcess);
 				if(spread.boolean) {
 					excess += hexExcess;
 				}
