@@ -7,7 +7,7 @@ Subsystem: ProgenitorShrine
 	DamageOrder: -100
 	EvaluationOrder: -20
 
-	Tags: BaseCost, Prayer, RaceSpecial, Important
+	Tags: Prayer, RaceSpecial, Important
 	Tags: IsShield, Defense, Category:Control, HasInternals
 	Hull: Flagship, Station
 

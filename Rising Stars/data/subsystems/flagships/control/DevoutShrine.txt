@@ -7,7 +7,7 @@ Subsystem: DevoutShrine
 	DamageOrder: -100
 	EvaluationOrder: -20
 
-	Tags: BaseCost, Prayer, RaceSpecial, Important
+	Tags: Prayer, RaceSpecial, Important
 	Tags: IsShield, Defense, Category:Control, HasInternals
 	Hull: Flagship, Station
 
@@ -33,6 +33,10 @@ Subsystem: DevoutShrine
 	Hex.Resistance := 0.5
 	BaseHP := 12 * HexSize
 	Hex.Mass := 2.5 * HexSize
+	
+	Hex.LaborCost := 1 * HexSize
+	Hex.BuildCost := 0.5 * HexSize
+	Hex.MaintainCost := 1 * HexSize
 
 	State: boolean = 0
 

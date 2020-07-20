@@ -6,7 +6,7 @@ Subsystem: GrandShrine
 
 	EvaluationOrder: -20
 
-	Tags: BaseCost, Prayer, RaceSpecial, Important
+	Tags: Prayer, RaceSpecial, Important
 	Tags: Category:Control, HasInternals
 	Hull: Flagship, Station
 
@@ -18,6 +18,10 @@ Subsystem: GrandShrine
 	Hex.Resistance := 0.4
 	BaseHP := 8 * HexSize
 	Hex.Mass := 3 * HexSize
+	
+	Hex.LaborCost := 1 * HexSize
+	Hex.BuildCost := 0.5 * HexSize
+	Hex.MaintainCost := 1 * HexSize
 
 	Assert: Sum.Prayer >= Sum.Command
 		Unique: True
