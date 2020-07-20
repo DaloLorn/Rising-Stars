@@ -57,6 +57,7 @@ Subsystem: Forcefield
 		Sprite: SupportShield*#50ffff
 		Hex.Mass := 3 * HexSize
 		Hex.Resistance := 0.1
+		Hex.HP := CoreHP * CoreHPMod
 
 		Hex.BuildCost := 3 * HexSize
 		Hex.LaborCost := 2 * HexSize

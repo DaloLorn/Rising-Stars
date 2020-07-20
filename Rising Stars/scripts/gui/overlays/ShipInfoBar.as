@@ -337,8 +337,9 @@ class ShipInfoBar : InfoBar {
 			const HexStatus@ status = bp.getHexStatus(hex.x, hex.y);
 			auto@ sys = design.subsystem(hex);
 			auto@ mod = design.module(hex);
+			auto@ emitter = sys.type.module("Emitter");
 			if(status !is null) {
-				if(sys !is null && mod !is sys.type.coreModule && sys.type.hasTag(ST_Forcefield)) {
+				if(sys !is null && mod !is sys.type.coreModule && mod !is emitter && sys.type.hasTag(ST_Forcefield)) {
 					maxHP = sys.variable(SV_ForcefieldCapacity) * bp.hpFactor;
 				}
 				else {
