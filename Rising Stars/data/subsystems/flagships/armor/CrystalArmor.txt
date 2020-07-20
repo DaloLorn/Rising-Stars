@@ -32,6 +32,4 @@ Subsystem: CrystalArmor
 	Effect: SingleUseHexes
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 8
-		Hex.LaborCost := Hex.LaborCost * 3
 		Sprite: CrystalArmor

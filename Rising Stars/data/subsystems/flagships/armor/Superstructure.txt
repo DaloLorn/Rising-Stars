@@ -22,6 +22,4 @@ Subsystem: Superstructure
 	Hex.MaintainCost := 0
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 2
-		Hex.LaborCost := Hex.LaborCost * 4
 		Sprite: Superstructure

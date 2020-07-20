@@ -34,6 +34,4 @@ Subsystem: NilingArmor
 		Radius = Radius
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost * 2
-		Hex.LaborCost := Hex.LaborCost * 8
 		Sprite: NilingArmor
