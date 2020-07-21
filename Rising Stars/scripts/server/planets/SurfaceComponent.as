@@ -1519,7 +1519,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		if(obj.owner !is null && obj.owner.valid) {
-			obj.owner.points += (newLevel.points - prevLevel.points);
+			obj.owner.points += (newLevel.points - prevLevel.points) * obj.owner.PlanetScoreMult;
 
 			if(region !is null)
 				region.modNeighbourLoyalty(obj.owner, NeighbourLoyalty);
@@ -1591,7 +1591,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 				prevOwner.modLocalDefense(-prevDefense);
 			if(Level >= 3)
 				prevOwner.modAttribute(EA_Level3Planets, AC_Add, -1);
-			prevOwner.points -= lvl.points;
+			prevOwner.points -= lvl.points * prevOwner.PlanetScoreMult;
 		}
 		
 		//Move stuff to new empire
@@ -1620,7 +1620,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 				obj.owner.modLocalDefense(prevDefense);
 			if(Level >= 3)
 				obj.owner.modAttribute(EA_Level3Planets, AC_Add, +1);
-			obj.owner.points += lvl.points;
+			obj.owner.points += lvl.points * obj.owner.PlanetScoreMult;
 		}
 
 		//Remove colonization orders

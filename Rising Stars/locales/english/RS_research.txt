@@ -57,6 +57,13 @@ R_FLARE_BOMB_DESC: <<
 	The flare bomb ship is destroyed in the process.
 >>
 
+
+R_FTL_JAMMER_COMBAT: FTL Suppressor Shorter
+R_FTL_JAMMER_COMBAT_DESC: <<
+	Equip your FTL suppressors with a system that can overload and short out electrical circuits on enemy vessels.
+
+	Enemy flagships in systems containing one of your FTL Suppressors or FTL Jammers will fight at 30% reduced combat effectiveness.
+>>
 R_CAT_MILITARY: Military Research
 R_CAT_ENERGY: Energy Science
 R_CAT_PLANET: Planetary Development

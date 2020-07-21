@@ -116,6 +116,7 @@ int flingCost(Object& obj, vec3d position) {
 		auto@ dsg = ship.blueprint.design;
 		int scale = dsg.size;
 		double massFactor = ship.getMass() * 0.3/dsg.size;
+		double flingCostFactor = dsg.total(SV_FlingCostMult);
 
 		double scaleFactor;
 		if(dsg.hasTag(ST_Station))
@@ -123,7 +124,7 @@ int flingCost(Object& obj, vec3d position) {
 		else
 			scaleFactor = sqrt(double(scale));
 
-		return ceil(FLING_COST * scaleFactor * massFactor * owner.FTLCostFactor);
+		return ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor);
 	}
 	else {
 		if(obj.isOrbital)

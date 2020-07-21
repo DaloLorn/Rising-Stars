@@ -15,6 +15,7 @@ Subsystem: WarHarvester
 	AddShipModifier: DamageResistMult(2)
 	AddShipModifier: ShieldCapacityMult(3)
 	AddShipModifier: MassMult(6 + TerraformMassMod)
+	AddShipModifier: FlingCostMultFactor(1/6)
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)

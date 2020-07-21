@@ -10,6 +10,7 @@ Subsystem: SupportHull
 
 	GridWidth := 19
 	GridHeight := 16
+	FlingCostMult := 1
 
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)

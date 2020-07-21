@@ -13,6 +13,7 @@ Subsystem: SatelliteHull
 
 	GridWidth := 21
 	GridHeight := 17
+	FlingCostMult := 1
 
 	BaseTurnThrust = 0.5 * Size
 	DummyForStR:=1000

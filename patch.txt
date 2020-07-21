@@ -1,0 +1,205 @@
+﻿[h1]Rising Stars v1.3.0 - July 26, 2020[/h1]
+
+[h1]IMPORTANT:[/h1][list]
+[*]Rising Stars now requires the SR2 Community Patch to be installed. See the mod description for instructions on how to install the CP.
+[/list]
+
+[b]Abilities[/b][list]
+[*]Ability ranges now include the radii of the origin and target objects. One notable effect is that tractor beams should now be usable between objects of any two sizes. 
+[*]Added the FTL Jammer Overcharge ability for use on FTL Jammers.[list]
+[*]Costs 200 FTL. Has a cooldown of 6 minutes.
+[*]Blocks enemy FTL (as per the vanilla FTL Jammer) for 3 minutes.
+[/list]
+[/list]
+
+[b]Anomalies[/b][list]
+
+[/list]
+
+[b]Artifacts[/b][list]
+[*]Stellar Generators will no longer generate protoplanets [i]inside[/i] a star. They're no good to us that way.
+[/list]
+
+[b]Attitudes[/b][list]
+[*]Should have fixed a long-standing issue that was causing dummy attitudes to incorrectly appear in the attitude UI.
+[/list]
+
+[b]Buildings[/b][list]
+[*]Should have resolved an issue that was allowing Compressors to compress ships all the way down into exotic matter. They can no longer have negative mass.
+[*]Planetary Engines have received a new thruster design, and now add 2 u/s^2 of acceleration, up from 0.5.
+[*]FTL Breeders can now be constructed by any race which has unlocked Gate technology.
+[*]Reduced the base/tile maintenance costs of Strip Transmuters to 20/0. (Down from 20/2. Ancients don't actually develop planets, so they'd have been dependent on finding large chunks of mountainside to build on.)
+[*]Ancient ruins can now be vandalized (erm, 'destroyed'), but they now add three random points of pressure to their planet's native resource. These may or may not be of the same pressure type, and will change every 3 minutes.
+[/list]
+
+[b]Cargo/Materials[/b][list]
+
+[/list]
+
+[b]Constructions[/b][list]
+[*]Core Programming now correctly disappears if the planet's Core is demolished.
+[/list]
+
+[b]Creeps[/b][list]
+[*]Remnant Guardians will no longer sit idly by while random Mystics blast them from another star system. (That sort of behavior is more appropriate for random Skeksis.)
+[/list]
+
+[b]Design Stats[/b][list]
+[*]Added new design stats for nanomesh health sharing.
+[/list]
+
+[b]Gameplay[/b][list]
+[*]The Revenant now provides all the buffs given by its constituent components.
+[*]Added the "Enable Vanguard Victory" config option, which can be used to prevent Vanguard races from building Portal Stabilizers.
+[*]Tractored objects are now correctly accounted for in FTL cost calculations.
+[*]Hyperdrive and Fling Beacon FTLs can now be used in conjunction with a tractor beam. (However, tractoring a fling beacon into FTL will still cause the beam to break.)
+[*]Fling beacons can no longer be tractored through [i]any[/i] form of FTL whatsoever.
+[*]Fixed an issue that was preventing Flux ships from being affected by FTL cost reductions.
+[*]Flux jumps now require the jumping object to have at least 2 u/s^2 of acceleration. This prevents ships from escaping after sustaining critical engine damage, and prevents comically undersized tugs from dragging large objects into their empire's flux network.
+[*]Added the "Unrestricted Vanguard Victory" config option, which can be used to allow non-Vanguard races to build Portal Stabilizers. (If Vanguard Victory is enabled, of course.)
+[*]Added the "Unrestricted Progenitor Discovery" config option, which can be used to allow non-Progenitor races to unlock the Progenitor subtree via research. (They will still be able to unlock it by leveling an Ancient Hubworld to level 6.)
+[*]Revamped Flux cooldown mechanics.[list]
+[*]The Flux cooldown status has been removed from the game. (An alternative method of viewing Flux cooldowns at a glance will become available in a later patch.)
+[*]Flux cooldowns are now visible when targeting another star system with Flux objects selected.
+[*]The same UI is also used to notify the player of the average cooldown of the selected fleets after jumping to any given destination, or explain why a jump is impossible.
+[/list]
+[*]Revamped FTL jamming.[list]
+[*]The FTL Jammer is a standalone, upgradeable orbital again. Military Starbases now build the FTL Suppressor instead. (See Orbitals for details.)
+[*]Virtually all forms of FTL jamming previously in the game have been replaced with FTL suppression.
+[*]Suppressed empires will face the following penalties:[list]
+	[*]Flux drives will recharge 400% slower while suppressed. (They will not recharge at all while jammed.)
+	[*]Slipstream tears owned by a suppressed empire will decay 400% faster for each suppressed endpoint. (Up to 800% if their creator is being suppressed at both locations. As before, they will disappear tcompletely if their creator is being jammed a either location.)
+	[*]Fling Beacons and Hyperdrives will charge 200% slower while suppressed. They will also travel 200% slower through suppressed space.
+	[*]Slipstream Generators and Jumpdrives will charge 400% slower for each suppressed endpoint. (This does not account for any form of slipstream/jump inaccuracy.)
+	[*]Gates cannot be unpacked while under suppression. (Gates which have already been unpacked will not be affected.)
+[/list]
+[/list]
+[*]Added Logistics system.[list]
+	[*]Owning multiple ships of a given design reduces its build/Labor/maintenance costs by 4%, capping at 40% for owning 11 ships (10 plus the 'original').
+	[*]Whenever a ship gains XP, all other ships of that design gain 10% of the XP received. (This does not apply to Simulator XP.)
+	[*]Owning a Military Starbase, FTL Jammer, or one of the new Tactical Detection Nodes in a system will alert you when enemy ships are FTLing into or have entered that system.
+[/list]
+[/list]
+
+[b]Orbitals[/b][list]
+[*]Added Labor costs to various orbital modules, because instant construction doesn't mean nobody had to work to build them! (Also, because Berserker research/Glory gains weren't being affected by said modules.)
+[*]The buffs provided by active Revenant parts now correctly stack multiplicatively with other effects of the same type.
+[*]The Cannon of the Revenant no longer provides a direct boost to weapon projectile speed, since such a boost is implied by its range buff.
+[*]Increased the movement speeds of mobile orbitals to account for New Movement Physics.
+[*]It is no longer possible to erroneously export resources to orbitals that don't use them (such as Economic Starbases).
+[*]Changed orbital masses to be a tad more sensible.
+[*]Intergalactic Beacons have finally been split into fully-independent entities, with each Beacon receiving approximately two thirds of the Labor they used to.
+[*]Replaced the floodlights on Orbital Tractor Beams and Mining Complexes with actual tractor beams.
+[*]Added the Torpedo Bays and Particle Lance weapon modules for use on Military Starbases.
+[*]Added the Drone Bays weapon module for use on most starbases.
+[*]Experimental Gates can no longer be towed.
+[*]Orbital modules can no longer be installed (or replaced by various effects) when the orbital is in combat.
+[*]Removed several obsolete uses of the VolkurGenericPBR material.
+[*]The FTL Jammer is a standalone, upgradeable orbital again.[list]
+[*]Now provides constant FTL suppression. (See Gameplay for details.)
+[*]Only one jammer per system is allowed. (Only one empire can have a jammer in the system at any given time.)
+[*]Maintenance cost has been increased to §50k, up from §30k. (Now that they no longer require a Military Starbase...)
+[*]Has the FTL Jammer Overcharge ability.
+[/list]
+[*]Added the FTL Suppressor module for use on Military Starbases.[list]
+[*]A more expensive version of the FTL Jammer, without the overcharge ability.
+[*]Costs 0.25 FTL/s to operate, with a maintenance cost of §70k.
+[/list]
+
+[b]Races[/b][list]
+[*]Added the Vanguard Swarmer lifestyle, exemplified by the Khalerii:[list]
+[*]All orbitals and ship subsystems (except Support Command) cost 50% less money and Labor. All FTL costs are also halved.
+[*]Tile development and civilian construction rates are twice as fast. Population growth is 50% faster. Imperial buildings cost 50% less to build, and 20% less to maintain.
+[*]Research costs are increased by 50%.
+[*]Repair rates, shield capacity and regeneration, health, armor effectiveness, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 50%.
+[*]All mining rates and cargo storage are increased by 50%. Also starts with the Miner Hull unlocked at the beginning of the game.
+[/list]
+[*]The research granted to Berserkers when destroying things is now modified by the ratio of the lifetime research points accumulated by the Berserker and their victim. (For instance, if the Berserker player has accumulated twice as many research points as the victim, he only gets half as much research as he normally would. Conversely, if the victim had twice as much research, the Berserker gets doubled research.)[list]
+	[*]If either empire has accumulated less than 2000 RP throughout the game, they are treated as having had 2000 RP.
+[/list]
+[*]Gate races now start with three free gates.
+[*]Pentupled the civilian construction rate of Ringworlder races.
+[*]There is no longer a point penalty for playing Ancient races. Accordingly, Atroans have become an Innovative, Prideful people with a Space Program.
+[*]The Lavish trait is no longer erroneously conflicting with the Ancient lifestyle. (My bad. Honestly thought it didn't have any effect.)
+[*]Updated the default designs used by Researcher races.
+[*]Fixed an issue where Ancient races could learn how to create money during orbital construction. Instead, they can now learn how to build Orbital Replicators for a reduced Ore cost.
+[*]Ancient races now have their own version of the Centralized Coordination Complex, FTL Breeders, and FTL Storage.
+[*]Ringworlder races can no longer erroneously have the Industrious trait.
+[*]Researcher races no longer incorrectly have full regeneration on Progenitor Armor.
+[*]Ringworlder planets now count twice towards their score. (This is because they have far fewer planets to go around. Now they might stand a chance at winning a score victory.)
+[/list]
+
+[b]Research[/b][list]
+[*]Fixed an oversight that was causing civilian construction techs to stack multiplicatively instead of additively.
+[*]Trimmed down the Forcefield research description. Sorry, unknown scientist, but you'll have to find funding some other way.
+[*]Various racial tech unlocks now provide progress towards Progenitor Discovery.
+[*]Increased the magnitudes of the Star Children's Habitat upgrades to +100% health and +50% weapons, up from +50% and +30%, respectively.
+[*]Reduced the magnitude of Infinite, Small, and Medium shield upgrades to +5%, +10%, and +20%, respectively, down from +15%, +25%, and +50%. (Their effects on orbital shielding have been reduced to +5%, +5%, and +10%, down from +15%, +12.5%, and +25%, respectively.)
+[/list]
+
+[b]Resources[/b][list]
+[*]Ancient Cities are now considered an artificial resource, and will not be destroyed by terraforming.
+[*]Intelligence Hubs, Technofarms, Research Centers and Ancient Shipyards will now spawn again.
+[*]All naturally occurring unexportable resources (except Unobtanium) can now benefit from being leveled past their minimum requirements. (Local Asteroid Field, Technofarm, etc.) This means they will gain full income and pressure capacity at any level, as if they were a scalable resource or a homeworld.
+[*]Added 2 Research, Money and Influence pressure to Intelligence Hubs, to bring them more in line with other Tier 2 resources.
+[*]Added 2 Influence pressure to Technofarms, to bring them more in line with other Tier 2 resources.
+[*]Increased the total pressures of Research Centers, Tropical Paradises and Ancient Shipyards to 16, to be more in line with other Tier 3 resources.
+[/list]
+
+[b]Subsystems[/b][list]
+[*]Plasma throwers now correctly benefit from various projectile-related improvements.
+[*]Fixed a vanilla issue that was causing disruptor damage to decrease as the target's shields approached 0%, instead of increasing. (Firing at a ship with 100% shield HP still dealt 0 damage, but the scaling had otherwise been inverted.)
+[*]Packed gates now have an acceleration of 18 u/s^2, up from 1.5.
+[*]Gates now only consume 0.05 FTL/s (down from 0.15), and only when unpacked.
+[*]Revamped forcefields.[list]
+[*]Added the Forcefield Emitter module (identical in every way to an extra Forcefield core). It counts towards the ship's hex limit, and increases the strength and maximum hex count of the forcefield. Each forcefield emitter supports up to 5 forcefield hexes.
+[*]Forcefield emitters can no longer be completely enclosed within their own forcefield. There must be at least one direction from which the emitter is not covered by its forcefield (but may be covered by any other hex, including other forcefields).[list]
+	[*]For the purposes of occlusion, other forcefield emitters are not considered to be a part of the forcefield.
+[/list]
+[*]Forcefield emitters may not be adjacent to more than two hexes of their own forcefield (including emitters).
+[*]Power costs no longer have an exponential element.
+[*]Regeneration and capacity no longer grow with the forcefield's hex count. Instead, only the amount of emitters matters. (This means that a forcefield does not need to take advantage of the full hex count supported by its emitters.)
+[*]Forcefield hexes no longer have any cost whatsoever.
+[/list]
+[*]Fixed an issue where Shield Harmonizers, Shock Missiles and Warheads incorrectly interacted with shield mitigation.
+[*]Unpacked gates can no longer be towed.
+[*]Ramjets are now a lot slower (and provide much smaller maintenance reductions), but also generate more supply at any given speed. This makes them less viable as a primary engine, but still lets them serve as a useful source of supplies and discounts.
+[*]Boarding Parties now only cost 100% of their boarding strength in money and 5% in Labor (down from 400% and 10%, respectively).
+[*]Nanomesh no longer erroneously has health of its own.
+[*]Support Nanomesh no longer has a maintenance cost, but has had its health buff halved.
+[*]Sinew no longer needs to be adjacent to all forcefield/nanomesh hexes on a design.
+[*]Nanomesh now regenerates the health of adjacent hexes, similarly to the self-healing behavior of Progenitor Armor.
+[*]Increased the costs of Shrines to be more in line with regular shield systems. (However, they still require no Power.)
+[*]Fixed an error that was causing Crystalline Armor to cost 800% more money and 300% more Labor than intended.
+[*]Fixed an error that was causing Niling Fiber Armor to cost 200% more money and 800% more Labor than intended.
+[*]Fixed an error that was causing Superstructure to cost 200% more money and 400% more Labor than intended.
+[*]Fixed an error that was causing Covariant Shield Generator cores to cost 50% less money than intended. (Non-core hexes are not affected.)
+[*]Reduced the mass and build costs of support Shield Generators. However, they now have a Labor cost.
+[*]Harvester and Devourer hulls have had their Fling FTL costs significantly reduced.
+[/list]
+
+[b]Systems[/b][list]
+[*]Orathi has Guardians again. ... Again.
+[*]Rebuilt the macronebula system. Nebulae should no longer mysteriously start rapidly cycling between claimed and unclaimed, and will correctly update their claimed status based on whether they are adjacent to an owned system or not.
+[*]Fixed an issue that was causing planet surface sizes to heavily lean towards the minimum allowed size.
+[*]Sicutmarian Nebulae now only suppress FTL instead of blocking it.
+[/list]
+
+[b]Miscellaneous[/b][list]
+[*]Debris fields and other anomalies will no longer be devoured by their stars, and will instead be properly scattered across a system.
+[*]Similarly, the GPS (Galactic Positioning System) receivers embedded in most anomalies have received a software update, and will no longer forget which system they're in. (This should also make them easier to spot at a distance - comm noise and all that.)
+[*]Adding a new planet to a star system will no longer cause the system to break down during multi-session games. (I mean, it absolutely should - gravity and all. But it won't.)
+[*]Freighters spawned by various hooks (such as those used by the Embassy, Star Temple, and Mining Complex) have been upgraded with a proper sublight drive, and will no longer move at a snail's pace.
+[*]The AI can now [i]sort of[/i] build Commerce Hubs. (Sadly, the AI cheats a little, and doesn't need any Ore to do so.)
+[*]The design editor now accounts for orbital construction discounts on station designs.
+[*]Fixed a few instances where the UI grossly misused shield mitigation stats.
+[*]The mod's integrated Fleet Calc instance now pays closer attention to shield absorption rates.
+[*]All FTL types now show how long it should take (averaged across all selected fleets) to charge up FTL drives towards a destination.
+[*]Hyperdrive and fling FTLs are now allowed to jump towards a jammed system, with the caveat that they will still drop out of FTL if the jamming effect does not end before they reach the edge of the system.
+[*]Added new info texts for FTL targeting, providing additional data on the requested FTL jump(s).
+[*]The descriptions of planetary resources and conditions are now scrollable. Also increased the width of the panels containing those descriptions a little.
+[*]Vanguard races achieving a conventional victory will no longer be incorrectly indicated as having won a Vanguard Victory.
+[/list]
+
+[b]Known Issues[/b][list]
+[/list]

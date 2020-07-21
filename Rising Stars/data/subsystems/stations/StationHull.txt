@@ -18,6 +18,7 @@ Subsystem: StationHull
 
 	Repair := (ShipSize / HexLimit) * 8
 	TechMult := 2
+	FlingCostMult := 1
 
 	HullStrengthMult := 1
 

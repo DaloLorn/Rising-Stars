@@ -43,6 +43,7 @@ Trait: VanguardRingworlders
 	ModEmpireAttribute(VictoryType, Add, 1)
 	ModAttribute(ForbidColonization, Add, 1)
 	ModAttribute(CivBldConstructionRate, Multiply, 5)
+	ModAttribute(PlanetScoreMult, AddBase, 1)
 
 	ReplaceTechnologyNodes(Terraforming, BluuhbiTerraforming)
 

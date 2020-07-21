@@ -33,8 +33,9 @@ Subsystem: SupShieldGen
 
 	Hex.Resistance := 0.5
 	BaseHP := 8 * HexSize
-	Hex.Mass := 4 * HexSize
-	Hex.BuildCost := 2*HexSize
+	Hex.Mass := 1 * HexSize
+	Hex.BuildCost := 0.4*HexSize
+	Hex.LaborCost := 0.8*HexSize
 
 	State: boolean = 0
 
@@ -45,9 +46,6 @@ Subsystem: SupShieldGen
 
 	Assert: Size>=5
 		Message: Support Shield Generator must be at least size 5. Add more hexes to the generator or increase the ship's size.
-
-	Modifier: LaborCostFactor(factor)
-		Hex.LaborCost := 0
 
 	Module: Core
 		Sprite: SupportShield

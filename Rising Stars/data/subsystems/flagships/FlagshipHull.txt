@@ -10,6 +10,7 @@ Subsystem: FlagshipHull
 	GridWidth := 28
 	GridHeight := 23
 	TechMult := 1
+	FlingCostMult := 1
 
 	DummyForStR:=1000
 	DummyForRepair:=4

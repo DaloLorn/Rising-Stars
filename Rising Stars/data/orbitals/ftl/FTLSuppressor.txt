@@ -4,8 +4,6 @@ Module: FTLSuppressor
 	Description: #ORB_FTL_SUPPESSOR_DESC
 	Icon: OrbitalIcons::9
 
-	Core: True
-
 	Build Cost: 500
 	Maintenance: 70
 	Labor Cost: 30
