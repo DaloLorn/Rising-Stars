@@ -14,7 +14,7 @@ Subsystem: ShieldGen
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 70
 	BaseShieldRegen := Size * 1
-	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
+	ShieldHexes := max(Hexes*Sum.BaseHexLimit/(ShipSize/HexSize), 1.0)
 	PowerUse := 15 * Size
 
 	// Apparently default variables don't fully work in templates.
@@ -40,7 +40,7 @@ Subsystem: ShieldGen
 	State: boolean = 0
 
 	Effect: ABEMShieldDamage
-	
+
 	Hex.LaborCost := 1 * HexSize
 	Hex.BuildCost := 0.5 * HexSize
 	Hex.MaintainCost := 1 * HexSize
@@ -48,11 +48,11 @@ Subsystem: ShieldGen
 	//Assert: Sum.ShieldCores <= 1
 	//	Unique: True
 	//	Message: #ERROR_ONLY_ONE
-	
+
 	Requires:
 		Command = 1
 		Power = PowerUse
-	
+
 	Module: Core
 		Sprite: ShieldGen
 		Hex.BuildCost := 2 * Hex.BuildCost

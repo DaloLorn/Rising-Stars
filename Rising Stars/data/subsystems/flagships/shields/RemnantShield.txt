@@ -12,7 +12,7 @@ Subsystem: RemnantShield
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 220
 	BaseShieldRegen := Size * 1.25
-	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
+	ShieldHexes := max(Hexes*Sum.BaseHexLimit/(ShipSize/HexSize), 1.0)
 	PowerUse := 40 * Size
 
 	// Apparently default variables don't fully work in templates.

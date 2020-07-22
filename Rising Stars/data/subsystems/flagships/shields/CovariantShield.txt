@@ -15,7 +15,7 @@ Subsystem: CovariantShield
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 140
 	BaseShieldRegen := Size * 0.58
-	ShieldHexes := max(Hexes*128/(ShipSize/HexSize), 1.0)
+	ShieldHexes := max(Hexes*Sum.BaseHexLimit/(ShipSize/HexSize), 1.0)
 	PowerUse := 20 * Size
 
 	// Apparently default variables don't fully work in templates.

@@ -176,6 +176,7 @@
 [*]Fixed an error that was causing Covariant Shield Generator cores to cost 50% less money than intended. (Non-core hexes are not affected.)
 [*]Reduced the mass and build costs of support Shield Generators. However, they now have a Labor cost.
 [*]Harvester and Devourer hulls have had their Fling FTL costs significantly reduced.
+[*]Added a version of the Shrine of Protection for Devout support ships.
 [/list]
 
 [b]Systems[/b][list]

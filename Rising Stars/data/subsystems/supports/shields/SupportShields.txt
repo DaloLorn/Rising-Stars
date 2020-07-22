@@ -13,7 +13,7 @@ Subsystem: SupShieldGen
 	Size := HexSize * Hexes
 	BaseShieldCapacity := Size * 55
 	BaseShieldRegen := Size * 0.5
-	ShieldHexes := Hexes
+	ShieldHexes := max(Hexes*Sum.BaseHexLimit/(ShipSize/HexSize), 1.0)
 
 	// Apparently default variables don't fully work in templates.
 	ShieldCapacityMod := 1

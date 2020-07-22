@@ -707,3 +707,9 @@ S_WAR_HARVESTER_DESC: <<
 	[img=Minus]Build costs are tripled.[/img]
 	[img=MenuIcons::3;20]Cannot be used on ships under size 500.[/img]
 >>
+S_SUPPORT_SHRINE_DESC: <<
+	A shrine to honor the Goddess of Wisdom, Alephatra, and built under her guiding hand. Praying to this shrine protects the ship from harm.
+
+	[img=Plus]Adds a Shield to the ship. Shrine-based shielding has significantly higher capacity, but has a limited absorption rate.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
