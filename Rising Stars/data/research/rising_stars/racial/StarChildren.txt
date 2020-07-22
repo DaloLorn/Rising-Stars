@@ -1,6 +1,6 @@
 Technology: HabitatUpgrade
 	Name: #R_IMP_HABITAT
-	Blurb: #R_IMP_HABITAT_BLURB:100%:+50%
+	Blurb: #R_IMP_HABITAT_BLURB:100%:50%
 	Description: #R_IMP_HABITAT_DESC:+100%:+50%
 
 	Icon: ResourceIcon::8
@@ -16,7 +16,7 @@ Technology: HabitatUpgrade
 Technology: MothershipLabor
 	Name: #R_IMP_MOTHERSHIP_LABOR
 	Blurb: #R_IMP_MOTHERSHIP_LABOR_BLURB:4
-	Description: #R_IMP_MOTHERSHIP_LABOR_DESC:4:12
+	Description: #R_IMP_MOTHERSHIP_LABOR_DESC:4
 
 	Icon: ResourceIcon::6
 	Color: #b1b4b6
@@ -33,7 +33,7 @@ Technology: MothershipLabor
 Technology: MothershipLabor2
 	Name: #R_IMP_MOTHERSHIP_LABOR2
 	Blurb: #R_IMP_MOTHERSHIP_LABOR_BLURB:8
-	Description: #R_IMP_MOTHERSHIP_LABOR_DESC:8:24
+	Description: #R_IMP_MOTHERSHIP_LABOR_DESC:8
 
 	Icon: ResourceIcon::6
 	Color: #b1b4b6

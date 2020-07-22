@@ -16,7 +16,7 @@ Technology: Range
 
 Technology: Range2
 	Name: #R_IMP_ALL_RANGE2
-	Blurb: #R_IMP_ALL_RANGE_BLURB:+20%
+	Blurb: #R_IMP_ALL_RANGE_BLURB:20%
 	Description: #R_IMP_ALL_RANGE_DESC:+20%
 
 	Icon: techTargeting*#80ffea
