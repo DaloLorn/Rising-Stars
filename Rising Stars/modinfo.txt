@@ -1,6 +1,10 @@
 	Name: Rising Stars
 	Description: <<
-		[i][/i]
+		[i]The year is 723 AP. Desperation has torn the galaxy apart. The C'k'tnilit continue to clash with the other races, demanding their assistance with - if not their participation in - their grand exodus. Just as implacable, the Atroans seek to shield themselves against the Heralds' ancestral foe on the edges of the galaxy. A vast coalition of races struggles to prevent the Bluuhbi from summoning their great masters to conquer the galaxy, all the while dreading the possible resurgence of the same warmongers they had defeated but a few short years ago.
+		
+		Only a handful of races continue undisturbed. Some out of ignorance. Some out of confidence. And some... Some races are simply overlooked. Such is the case of the Khalerii - small, industrious, [b]hateful[/b] creatures toiling away beyond the outskirts of civilized space. Preparing, stockpiling troops and weapons for their ultimate endeavour.
+		
+		An endeavour which may very well change the fate of this war-torn galaxy...[/i]
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function normally, some content may be missing.[/b]
 
