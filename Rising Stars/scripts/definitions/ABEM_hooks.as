@@ -94,8 +94,8 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 		uint Hexes = event.subsystem.hexCount;
 		uint i = 0;
 		double amount = arguments[0].decimal * time;
-		double excess = 0, lastExcess;
-		double hexExcess = 0, lastHexExcess;
+		double excess = 0, lastExcess = 0;
+		double hexExcess = 0, lastHexExcess = 0;
 		if(spread.boolean) {
 			amount = amount / Hexes;
 		}

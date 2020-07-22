@@ -165,4 +165,5 @@ visible:
 	attribute double BuildingMaintFactor = 1
 	attribute double SystemRepairMod = 1
 	attribute double ScoreMult = 1
+	attribute double PlanetScoreMult = 1
 }
