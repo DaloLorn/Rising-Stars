@@ -117,6 +117,8 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 						if(otherSys !is null) {
 							if(otherSys is event.subsystem && !can_heal_self.boolean)
 								continue;
+							if(event.blueprint.getHexStatus(other.x, other.y).flags & HF_NoRepair != 0)
+								continue;
 							if(otherSys.type.hasTag(ST_Forcefield))
 								continue; // Forcefields do not obey normal repair rules. TODO: Allow forcefield emitters to be repaired anyways!
 							adjacencies.insertLast(other);
