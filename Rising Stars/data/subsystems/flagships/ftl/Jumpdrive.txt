@@ -15,7 +15,14 @@ Subsystem: Jumpdrive
 	Hex.Resistance := 0.2
 	BaseHP := 18 * HexSize
 
-	JumpRange := 3400000 * Size / ShipSize
+	BaseJumpRange := 3400000 * Size / ShipSize
+	JumpMod := 1
+	JumpRange := BaseJumpRange * JumpMod
+
+	Modifier: HyperSpeedFactor(factor)
+		BaseJumpRange := BaseJumpRange + Base::BaseJumpRange * (factor - 1)
+	Modifier: HyperSpeedMult(factor)
+		JumpMod := JumpMod * factor
 	
 	Requires:
 		Command = max(floor(Hexes / 3), 1)

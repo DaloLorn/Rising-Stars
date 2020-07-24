@@ -1,6 +1,6 @@
 Trait: Clumsy
-	Name: Clumsy
-	Description: Engine thrust and hyperdrive speed (when applicable) are decreased by 30%.
+	Name: #TRAIT_CLUMSY
+	Description: #TRAIT_CLUMSY_DESC
 	Category: Personality
 	Order: 9
 
@@ -13,3 +13,5 @@ Trait: Clumsy
 	AddModifier( ThrustMult(0.7) )
 	AddModifier( TurnThrustMult(0.7) )
 	AddModifier( HyperSpeedMult(0.7) )
+	AddModifier( SlipstreamMult(0.85) )
+	ModEmpireAttribute( FTLThrustFactor, Multiply, 1.3 )

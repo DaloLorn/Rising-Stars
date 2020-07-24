@@ -16,3 +16,5 @@ Subsystem: RevenantHull
 	Hook: EnableModifier( SupportCapacityMult(1.25) )
 	Hook: EnableModifier( ThrustMult(2.0) )
 	Hook: EnableModifier( HyperSpeedMult(1.5) )
+	Hook: EnableModifier( SlipstreamMult(1.25) )
+	Hook: ModEmpireAttribute( FTLThrustFactor, Multiply, 0.66 ) 

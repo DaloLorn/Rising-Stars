@@ -16,8 +16,6 @@ Subsystem: MothershipHull
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)
-	AddShipModifier: SlipstreamDistCostFactor(0.5)
-	AddShipModifier: SlipstreamOverheadFactor(0.16)
 	AddShipModifier: ThrustMult(2.0)
 	AddShipModifier: TurnThrustMult(2.0)
 	AddShipModifier: DamageMult(0.5)

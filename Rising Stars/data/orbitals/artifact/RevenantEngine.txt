@@ -19,6 +19,8 @@ Module: RevenantEngine
 	CannotBuildManually()
 	EnableModifier( ThrustMult(2.0) )
 	EnableModifier( HyperSpeedMult(1.5) )
+	EnableModifier( SlipstreamMult(1.25) )
+	ModEmpireAttribute( FTLThrustFactor, Multiply, 0.66 )
 
 	OnDisable( SpawnArtifact(RevenantEngine) )
 	OnDisable( Destroy() )

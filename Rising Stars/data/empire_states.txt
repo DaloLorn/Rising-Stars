@@ -166,4 +166,5 @@ visible:
 	attribute double SystemRepairMod = 1
 	attribute double ScoreMult = 1
 	attribute double PlanetScoreMult = 1
+	attribute double FTLThrustFactor = 100
 }

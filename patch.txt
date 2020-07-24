@@ -79,6 +79,7 @@
 	[*]Whenever a ship gains XP, all other ships of that design gain 10% of the XP received. (This does not apply to Simulator XP.)
 	[*]Owning a Military Starbase, FTL Jammer, or one of the new Tactical Detection Nodes in a system will alert you when enemy ships are FTLing into or have entered that system.
 [/list]
+[*]Flux jumps now obey the origin point's free FTL buffs when calculating cooldowns. Jumping from a free FTL system will not longer incur a cooldown.
 [/list]
 
 [b]Orbitals[/b][list]
@@ -104,6 +105,7 @@
 [*]Added the FTL Suppressor module for use on Military Starbases.[list]
 [*]A more expensive version of the FTL Jammer, without the overcharge ability.
 [*]Costs 0.25 FTL/s to operate, with a maintenance cost of §70k.
+[*]The Engine of the Revenant now affects non-Hyperdrive FTL types, just like the Thrust tech family.
 [/list]
 
 [b]Races[/b][list]
@@ -127,6 +129,7 @@
 [*]Ringworlder races can no longer erroneously have the Industrious trait.
 [*]Researcher races no longer incorrectly have full regeneration on Progenitor Armor.
 [*]Ringworlder planets now count twice towards their score. (This is because they have far fewer planets to go around. Now they might stand a chance at winning a score victory.)
+[*]The Clumsy and Nimble traits now also affect non-Hyperdrive FTL types, just like the Thrust tech family. (See Research for details.)
 [/list]
 
 [b]Research[/b][list]
@@ -135,6 +138,13 @@
 [*]Various racial tech unlocks now provide progress towards Progenitor Discovery.
 [*]Increased the magnitudes of the Star Children's Habitat upgrades to +100% health and +50% weapons, up from +50% and +30%, respectively.
 [*]Reduced the magnitude of Infinite, Small, and Medium shield upgrades to +5%, +10%, and +20%, respectively, down from +15%, +25%, and +50%. (Their effects on orbital shielding have been reduced to +5%, +5%, and +10%, down from +15%, +12.5%, and +25%, respectively.)
+[*]Attached additional FTL buffs to the Thrust tech family:[list]
+[*]Slipstream range and lifetime improvements. (+10% and +20% to each, +10% from infinite progression)
+[*]Fling cost reduction. (+5% and +10%, no infinite boosts)
+[*]Flux cooldown reduction. (+5% and +10%, no infinite boosts)
+[*]Gate FTL discount. (+5% and +10%, no infinite boosts)
+[*]Jumpdrive range improvement. (+20% and +40%, +20% from infinite progression)
+[/list]
 [/list]
 
 [b]Resources[/b][list]

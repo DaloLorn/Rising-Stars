@@ -5,7 +5,7 @@ Status: GateUnpacked
 
 	PersistentParticles(GateWormhole, Scale = 0.6)
 
-	FTLMaintenance(0.05)
+	RepeatEmpireAttribute(FTLThrustFactor, FTLMaintenance(0.0005))
 
 	IfNotFTLShortage(IfNotFTLBlocked(IsGate()))
 	IfNotFTLShortage(IfNotFTLBlocked(GlobalTradeNode()))

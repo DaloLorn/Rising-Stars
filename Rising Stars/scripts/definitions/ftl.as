@@ -124,13 +124,13 @@ int flingCost(Object& obj, vec3d position) {
 		else
 			scaleFactor = sqrt(double(scale));
 
-		return ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor);
+		return ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
 	}
 	else {
 		if(obj.isOrbital)
-			return ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor);
+			return ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
 		else if(obj.isPlanet)
-			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor);
+			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
 		return INFINITY;
 	}
 }
@@ -402,8 +402,12 @@ vec3d getFluxDest(Object& obj, const vec3d& pos) {
 
 double calculateFluxCooldown(Object& obj, const vec3d& fluxPos) {
 	if(obj.hasLeaderAI && obj.hasMover) {
+		Region@ reg = obj.region;
+		Empire@ owner = obj.owner;
+		if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
+			return 0;
 		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE;
+		double cd = dist / FLUX_CD_RANGE * owner.FTLThrustFactor / 100;
 		return cd;
 	}
 	return INFINITY;

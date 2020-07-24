@@ -18,14 +18,24 @@ Subsystem: ExperimentalSlipstream
 
 	Hex.BuildCost := 2.0 * HexSize
 
+	SlipstreamMod := 1
+	BaseSlipstreamOptimalDistance := 300000 * sqrt(pow(Sum.BaseSlipstreamOptimalDistance / 300000, 8) + Size / 128) - Sum.BaseSlipstreamOptimalDistance
+	BaseSlipstreamDuration := if(Sum.BaseSlipstreamDuration <= 0.01, 50, 0) + 300 * (Size/ShipSize)
+	
 	SlipstreamCost := if(Sum.SlipstreamCost <= 0.01, 600, 0) - 150 * (Size/ShipSize)
-	SlipstreamOptimalDistance := 300000 * sqrt(pow(Sum.SlipstreamOptimalDistance / 300000, 8) + Size / 128) - Sum.SlipstreamOptimalDistance
-	SlipstreamDuration := if(Sum.SlipstreamDuration <= 0.01, 50, 0) + 300 * (Size/ShipSize)
+	SlipstreamOptimalDistance := BaseSlipstreamOptimalDistance * SlipstreamMod
+	SlipstreamDuration := BaseSlipstreamDuration * SlipstreamMod
 	Assert: Size >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 	Assert: TagCount.Slipstream == 1
 		Unique: True
 		Message: #ERROR_PROTOTYPE_SLIPSTREAM
+
+	Modifier: SlipstreamFactor(factor)
+		BaseSlipstreamDuration := BaseSlipstreamDuration + Base::BaseSlipstreamDuration * (factor - 1)
+		BaseSlipstreamOptimalDistance := BaseSlipstreamOptimalDistance + Base::BaseSlipstreamOptimalDistance * (factor - 1)
+	Modifier: SlipstreamMult(factor)
+		SlipstreamMod := SlipstreamMod * factor
 
 	Hook: AddStatus(HasPrototypeSlipstream)
 	Requires:

@@ -42,6 +42,20 @@ R_IMP_PLANET_SUPPORT_DESC: <<
 
 	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
 >>
+R_IMP_THRUST_DESC: <<
+	[i][color=#aaa]Studies and experiments on improving the thrust output of starship engines, conventional and otherwise.[/color][/i]
+
+	Increases all ship engine thrust, hyperdrive speed, and jumpdrive range by $1. 
+	
+	Increases all slipstream range and duration by $2.
+
+	Decreases all gate FTL costs, flux cooldowns, and fling FTL costs by $3.
+>>
+R_INFINITE_THRUST_DESC: <<
+	Increases the thrust output of all your engines (including hyperdrives and jumpdrives) by $1. Also increases all slipstream range and duration by $2.
+
+	Can be researched multiple times. Each subsequent time it is researched, the cost and time taken are increased.
+>>
 R_IMP_DECAY_DESC: <<
 	[i][color=#aaa]Improved storage capacities and methods allow planets to go longer without supplies of vital resources.[/color][/i]
 

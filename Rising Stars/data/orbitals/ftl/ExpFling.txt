@@ -33,5 +33,5 @@ Module: EXP_FlingCore
 
 	AllowConstruction()
 	ConsumeCargo(Ore, 5000)
-	FTLMaintenance(0.15)
+	RepeatEmpireAttribute(FTLThrustFactor, FTLMaintenance(0.0015))
 	ConsumeFTL(500)

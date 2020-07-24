@@ -15,12 +15,19 @@ Subsystem: ExperimentalJumpdrive
 	Hex.Resistance := 0.2
 	BaseHP := 12 * HexSize
 
-	JumpRange := 1700000 * Size / ShipSize
+	BaseJumpRange := 1700000 * Size / ShipSize
+	JumpMod := 1
+	JumpRange := BaseJumpRange * JumpMod
 	Assert: Size >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 	Assert: TagCount.Jumpdrive == 1
 		Unique: True
 		Message: #ERROR_PROTOTYPE_JUMPDRIVE
+
+	Modifier: HyperSpeedFactor(factor)
+		BaseJumpRange := BaseJumpRange + Base::BaseJumpRange * (factor - 1)
+	Modifier: HyperSpeedMult(factor)
+		JumpMod := JumpMod * factor
 
 	Hook: AddStatus(HasPrototypeJumpdrive)
 	Requires:

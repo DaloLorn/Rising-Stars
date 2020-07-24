@@ -29,6 +29,6 @@ Module: EXP_GateCore
 	RequireUnlockTag(HasTECH_Gate)
 	AllowConstruction()
 	ConsumeCargo(Ore, 5000)
-	FTLMaintenance(0.15)
+	RepeatEmpireAttribute(FTLThrustFactor, FTLMaintenance(0.0015))
 	DisableOnFTLBlock()
 	AddStatus(Untractorable)

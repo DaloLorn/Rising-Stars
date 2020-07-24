@@ -1,7 +1,7 @@
 Technology: Thrust
 	Name: #R_IMP_THRUST
 	Blurb: #R_IMP_THRUST_BLURB:20%
-	Description: #R_IMP_THRUST_DESC:+20%
+	Description: #R_IMP_THRUST_DESC:+20%:+10%:-5%
 
 	Icon: techPropulsion*#ffeba5
 	Color: #a77751
@@ -14,11 +14,13 @@ Technology: Thrust
 	AddModifier( ThrustFactor(1.2) )
 	AddModifier( TurnThrustFactor(1.2) )
 	AddModifier( HyperSpeedFactor(1.2) )
+	AddModifier( SlipstreamFactor(1.1) )
+	ModAttribute(FTLThrustFactor, AddFactor, -0.05)
 
 Technology: Thrust2
 	Name: #R_IMP_THRUST2
 	Blurb: #R_IMP_THRUST_BLURB:40%
-	Description: #R_IMP_THRUST_DESC:+40%
+	Description: #R_IMP_THRUST_DESC:+40%:+20%:-10%
 
 	Icon: techPropulsion2*#ffeba5
 	Color: #a77751
@@ -32,3 +34,4 @@ Technology: Thrust2
 	AddModifier( ThrustFactor(1.4) )
 	AddModifier( TurnThrustFactor(1.4) )
 	AddModifier( HyperSpeedFactor(1.4) )
+	ModAttribute(FTLThrustFactor, AddFactor, -0.1)

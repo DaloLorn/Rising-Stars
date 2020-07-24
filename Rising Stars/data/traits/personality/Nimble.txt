@@ -13,3 +13,5 @@ Trait: Nimble
 	AddModifier( ThrustMult(1.3) )
 	AddModifier( TurnThrustMult(1.3) )
 	AddModifier( HyperSpeedMult(1.3) )
+	AddModifier( SlipstreamMult(1.15) )
+	ModEmpireAttribute( FTLThrustFactor, Multiply, 0.7 )

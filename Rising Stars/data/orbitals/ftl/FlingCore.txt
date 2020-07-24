@@ -32,5 +32,5 @@ Module: FlingCore
 	DisableOnFTLBlock()
 	BreakOrbitOnFTL()
 
-	FTLMaintenance(0.15) #version>=147
+	RepeatEmpireAttribute(FTLThrustFactor, FTLMaintenance(0.0015)) #version>=147
 	ConsumeFTL(250) #version>=147

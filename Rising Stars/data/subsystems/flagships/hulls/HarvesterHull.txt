@@ -19,8 +19,6 @@ Subsystem: HarvesterHull
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)
-	AddShipModifier: SlipstreamDistCostFactor(0.5)
-	AddShipModifier: SlipstreamOverheadFactor(0.16)
 	AddShipModifier: DamageMult(0.25)
 	AddShipModifier: SupportCapacityMult(0)
 	AddShipModifier: CargoStorageMult(10)

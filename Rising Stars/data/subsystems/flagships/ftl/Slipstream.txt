@@ -18,10 +18,20 @@ Subsystem: Slipstream
 
 	Hex.BuildCost := 2.0 * HexSize
 
+	SlipstreamMod := 1
+	BaseSlipstreamOptimalDistance := 600000 * sqrt(pow(Sum.BaseSlipstreamOptimalDistance / 600000, 8) + Size / 128) - Sum.BaseSlipstreamOptimalDistance
+	BaseSlipstreamDuration := if(Sum.BaseSlipstreamDuration <= 0.01, 100, 0) + 600 * (Size/ShipSize)
+
 	SlipstreamCost := if(Sum.SlipstreamCost <= 0.01, 300, 0) - 150 * (Size/ShipSize)
-	SlipstreamOptimalDistance := 600000 * sqrt(pow(Sum.SlipstreamOptimalDistance / 600000, 8) + Size / 128) - Sum.SlipstreamOptimalDistance
-	SlipstreamDuration := if(Sum.SlipstreamDuration <= 0.01, 100, 0) + 600 * (Size/ShipSize)
-	
+	SlipstreamOptimalDistance := BaseSlipstreamOptimalDistance * SlipstreamMod
+	SlipstreamDuration := BaseSlipstreamDuration * SlipstreamMod
+
+	Modifier: SlipstreamFactor(factor)
+		BaseSlipstreamDuration := BaseSlipstreamDuration + Base::BaseSlipstreamDuration * (factor - 1)
+		BaseSlipstreamOptimalDistance := BaseSlipstreamOptimalDistance + Base::BaseSlipstreamOptimalDistance * (factor - 1)
+	Modifier: SlipstreamMult(factor)
+		SlipstreamMod := SlipstreamMod * factor
+
 	Requires:
 		Command = 1
 	
