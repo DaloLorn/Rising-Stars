@@ -212,6 +212,7 @@
 [*]Added new info texts for FTL targeting, providing additional data on the requested FTL jump(s).
 [*]The descriptions of planetary resources and conditions are now scrollable. Also increased the width of the panels containing those descriptions a little.
 [*]Vanguard races achieving a conventional victory will no longer be incorrectly indicated as having won a Vanguard Victory.
+[*]Failing to create a drydock will no longer erroneously consume Energy, Influence, FTL Energy, or Materials. (How one could have caused this to happen in the first place is another question entirely, and one that I cannot answer.)
 [/list]
 
 [b]Known Issues[/b][list]

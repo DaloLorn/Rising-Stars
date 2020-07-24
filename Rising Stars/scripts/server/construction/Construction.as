@@ -922,8 +922,10 @@ tidy class Construction : Component_Construction, Savable {
 		cost = 100 + ceil(float(cost) * pct);
 		cost *= constructionCost;
 		cost = double(cost) * config::DRYDOCK_BUILDCOST_FACTOR * obj.owner.DrydockCostFactor;
-		if(obj.owner.consumeBudget(cost) == -1)
+		if(obj.owner.consumeBudget(cost) == -1) {
+			reverseDesignCosts(obj, design);
 			return;
+		}
 
 		ObjectDesc oDesc;
 		oDesc.type = OT_Orbital;

@@ -296,8 +296,10 @@ void reverseDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0, b
 		if(influenceCost > 0)
 			obj.owner.addInfluence(+influenceCost);
 		double ftlCost = dsg.total(SV_FTLBuildCost);
-		if(ftlCost > 0)
+		if(ftlCost > 0) {
 			obj.owner.modFTLStored(+ftlCost, obeyMaximum=true);
+			obj.owner.modAttribute(EA_FTLEnergySpent, AC_Add, -ftlCost);
+		}
 	}
 	if(obj.hasCargo) {
 		for(uint i = 0, cnt = getCargoTypeCount(); i < cnt; ++i) {
