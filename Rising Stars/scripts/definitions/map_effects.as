@@ -568,7 +568,7 @@ class ExpandSystem : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		system.radius += arguments[0].fromRange();;
+		system.radius += arguments[0].fromRange();
 	}
 #section all
 };

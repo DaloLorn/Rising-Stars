@@ -194,6 +194,8 @@
 [*]Rebuilt the macronebula system. Nebulae should no longer mysteriously start rapidly cycling between claimed and unclaimed, and will correctly update their claimed status based on whether they are adjacent to an owned system or not.
 [*]Fixed an issue that was causing planet surface sizes to heavily lean towards the minimum allowed size.
 [*]Sicutmarian Nebulae now only suppress FTL instead of blocking it.
+[*]Fixed an issue where an extra Guardian would spawn in one of the systems surrounding Orathi.
+[*]The incredible planets of the Orathi system have deflated from rivaling modestly-proportioned red giants to merely having fairly respectable sizes by planetary standards.
 [/list]
 
 [b]Miscellaneous[/b][list]
