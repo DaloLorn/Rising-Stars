@@ -104,7 +104,6 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 			// If spread is true, this is used to check if we're trying to repair 
 			// a collection of hexes whose members are *all* at full health.
 			// (i.e. `excess` has stopped changing.)
-			print("Making another subsystem healing pass: " + excess + " and " + lastExcess);
 			lastExcess = excess;
 
 			for(uint i = 0; i < Hexes; i++) {
@@ -141,7 +140,6 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 					// or we've started a second regeneration pass on this one.
 					// Either way, the data has been stored elsewhere and we need to
 					// clear this space for fresh data.
-					print("Making another hex healing pass: " + hexHeal + " and " + hexExcess);
 					lastHexExcess = hexExcess;
 					hexExcess = 0;
 
