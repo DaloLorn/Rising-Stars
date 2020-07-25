@@ -923,7 +923,7 @@ tidy class Construction : Component_Construction, Savable {
 		cost *= constructionCost;
 		cost = double(cost) * config::DRYDOCK_BUILDCOST_FACTOR * obj.owner.DrydockCostFactor;
 		if(obj.owner.consumeBudget(cost) == -1) {
-			reverseDesignCosts(obj, design);
+			reverseDesignCosts(obj, forDesign);
 			return;
 		}
 
