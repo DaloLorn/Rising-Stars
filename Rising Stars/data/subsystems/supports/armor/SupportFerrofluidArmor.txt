@@ -18,6 +18,9 @@ Subsystem: SupportFerrofluidArmor
 	BaseHP := 60 * HexSize
 	Hex.Mass := 1.5 * HexSize
 
+	Modifier: AddHP(amount)
+		Hex.HP := Hex.HP
+
 	Hex.BuildCost := 4.5 * HexSize
 	Hex.LaborCost := 0.525 * HexSize
 	
@@ -27,7 +30,6 @@ Subsystem: SupportFerrofluidArmor
 	Effect: DistributeHealth
 	
 	Effect: ReduceDamage
-
 		ProjResist = ProjResist
 		ExplResist = 0
 		EnergyResist = 0

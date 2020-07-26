@@ -22,6 +22,9 @@ Subsystem: LiquidArmor
 	Hex.LaborCost := 0.5 * HexSize
 	Hex.BuildCost := 3 * HexSize
 
+	Modifier: AddHP(amount)
+		Hex.HP := Hex.HP
+
 	Hex.MaintainCost := 2 * HexSize / ShipSize^0.5
 	Hook: ABEM_hooks::SubsystemModAttributeOnEnable(EmpireLiquidArmorSize, Add, Size)
 	Module: Default
