@@ -15,6 +15,9 @@ Subsystem: SupportLiquidArmor
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
 
+	Modifier: AddHP(amount)
+		Hex.HP := Hex.HP
+
 	Hex.Resistance := 0.1
 	BaseHP := 55 * HexSize
 	Hex.Mass := 1.4 * HexSize

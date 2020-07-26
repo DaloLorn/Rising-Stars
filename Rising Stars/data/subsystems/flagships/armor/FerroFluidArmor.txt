@@ -28,11 +28,13 @@ Subsystem: FerroFluidArmor
 	Requires:
 		Power = PowerUse
 	Effect: ReduceDamage
-
 		ProjResist = ProjResist
 		ExplResist = 0
 		EnergyResist = 0
 		MinimumPercent = 1/6
+		
+	Modifier: AddHP(amount)
+		Hex.HP := Hex.HP
 	Module: Default
 
 		Sprite: PlateArmor * #3b3d40

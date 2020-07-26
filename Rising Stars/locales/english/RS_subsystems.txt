@@ -660,7 +660,17 @@ S_FERROFLUIDARMOR_DESC: <<
 	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
 	[img=Plus]Does not block weapon arcs or engine exhausts.[/img]
 	[img=MenuIcons::3;20]Does not provide any damage resistance against Energy or Explosive damage.[/img]
+	[img=Minus]Does not receive extra health from being adjacent to Progenitor Armor or Nanomesh. (It does, however, still receive regeneration from Nanomesh.)[/img]
 	[img=Minus]Heavier, more expensive and more labor-intensive than standard Liquid Armor, and cannot interact with it.[/img]
+>>
+S_LIQUIDARMOR_DESC: <<
+	A basin of liquid hydro-metal suspended on the hull of the ship absorbs impacts and spreads them evenly, filling any gaps that are created.
+
+	[img=Plus]High [b][color=#80ff80]health[/color][/b].[/img]
+	[img=Plus]Health flows from high health hexes to connected low health hexes to equalize density.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Minus]Does not receive extra health from being adjacent to Progenitor Armor or Nanomesh. (It does, however, still receive regeneration from Nanomesh.)[/img]
+	[img=Minus]Does not provide any Damage Resistance.[/img]
 >>
 NANOMESH_NAME: Nanomesh
 NANOMESH_DESC: <<

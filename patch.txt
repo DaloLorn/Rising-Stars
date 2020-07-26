@@ -105,6 +105,7 @@
 [*]Added the FTL Suppressor module for use on Military Starbases.[list]
 [*]A more expensive version of the FTL Jammer, without the overcharge ability.
 [*]Costs 0.25 FTL/s to operate, with a maintenance cost of §70k.
+[/list]
 [*]The Engine of the Revenant now affects non-Hyperdrive FTL types, just like the Thrust tech family.
 [/list]
 
@@ -187,6 +188,7 @@
 [*]Reduced the mass and build costs of support Shield Generators. However, they now have a Labor cost.
 [*]Harvester and Devourer hulls have had their Fling FTL costs significantly reduced.
 [*]Added a version of the Shrine of Protection for Devout support ships.
+[*]Worked around an issue that was causing Liquid/Ferrofluid armor to misbehave when interacting with Nanomesh or Progenitor armor.
 [/list]
 
 [b]Systems[/b][list]
