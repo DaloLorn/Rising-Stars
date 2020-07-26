@@ -1,3 +1,3 @@
-This branch is for the 1.3.0 beta. Unlike previous versions of Rising Stars, 1.3.0 requires the SR2 Community Patch to be installed, from the branch "master".
+This branch is used for minor development not related to a specific version of Rising Stars, such as hotfixes.
 
-SR2MM versions 1.1.0 and above will automatically install the Community Patch when you try to install Rising Stars from this branch.
+Since 1.3.0, Rising Stars requires the SR2 Community Patch to be installed, from the branch "master". SR2MM versions 1.1.0 and above will automatically install the Community Patch when you try to install Rising Stars from this branch.
