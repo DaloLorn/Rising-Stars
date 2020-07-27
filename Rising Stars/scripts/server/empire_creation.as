@@ -113,8 +113,8 @@ void init() {
 				double factor = 1.0 + double(settings.cheatStrength) * 0.1;
 				factor = sqrt(factor);
 
-				addModifierToEmpire(emp, "HpFactor("+factor+")");
-				addModifierToEmpire(emp, "tag/Weapon::DamageFactor("+factor+")");
+				addModifierToEmpire(emp, "HpMult("+factor+")");
+				addModifierToEmpire(emp, "tag/Weapon::DamageMult("+factor+")");
 
 				emp.cheatLevel += settings.cheatStrength;
 			}
