@@ -717,7 +717,7 @@ class ProtectSystem : GenericEffect {
 class FTLEffectData {
 	bool enabled = false;
 	uint prevHostileMask = 0;
-	any@ data;
+	any data;
 }
 
 //BlockSystemFTL(<Block Owner> = False, <Block Friendly> = False, <Timer> = 0)
