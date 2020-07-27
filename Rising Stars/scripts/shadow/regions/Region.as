@@ -44,6 +44,7 @@ tidy class RegionScript {
 		region.SiegingMask.value = readTypicalMask(msg);
 		region.GateMask.value = readTypicalMask(msg);
 		region.BlockFTLMask.value = readTypicalMask(msg);
+		region.SuppressFTLMask.value = readTypicalMask(msg);
 		region.CombatMask = readTypicalMask(msg);
 		region.TradeMask = readTypicalMask(msg);
 		region.MemoryMask = readTypicalMask(msg);

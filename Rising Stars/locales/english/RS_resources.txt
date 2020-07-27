@@ -70,6 +70,9 @@ RAHTA_SULPHATE_DESC: <<
 
 	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
 >>
+ANTIMATTER_DESC: <<|
+	Adds 2048 support capacity. Support ships in orbit operate with +300% effectiveness.
+>>
 FTL_CRYSTALS_BLURB: <<
 	Produces [levels=$1;#00c0ff]0.1/0.5/1/2/3/8/20[/levels] [img=ResourceIcons::22;20/] FTL/s.
 	Gives special effects at [b]levels 4 and 5[/b].
