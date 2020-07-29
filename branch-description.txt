@@ -1,3 +1,9 @@
-This branch is used for minor development not related to a specific version of Rising Stars, such as hotfixes.
+**********************************************
+WARNING: This description format can only be read by an outdated version of SR2MM. It has been deprecated in v1.1.1, and is no longer guaranteed to provide accurate information about the selected branch.
+
+It is recommended that you update to the latest SR2MM build at your earliest convenience.
+**********************************************
+
+The purpose of this branch is unclear due to an issue that was fixed by the new branch description format.
 
 Since 1.3.0, Rising Stars requires the SR2 Community Patch to be installed, from the branch "master". SR2MM versions 1.1.0 and above will automatically install the Community Patch when you try to install Rising Stars from this branch.
