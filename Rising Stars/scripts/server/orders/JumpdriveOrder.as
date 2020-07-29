@@ -125,7 +125,7 @@ tidy class JumpdriveOrder : Order {
 				ship.isFTLing = true;
 
 			auto@ region = getRegion(destination);
-			if(region !is obj.region && region !is null && obj.owner !is null && obj.owner.valid) {
+			if(region !is obj.region && region !is null && obj.owner !is null && obj.owner.valid && obj.owner.major) {
 				for(uint i = 0; i < getEmpireCount(); i++) {
 					Empire@ other = getEmpire(i);
 					if(other !is obj.owner && other.major && other.valid && region.getSystemFlag(other, EARLY_WARNING_FLAG) && other.isHostile(obj.owner))
