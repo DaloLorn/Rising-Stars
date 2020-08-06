@@ -11,7 +11,7 @@ Subsystem: MothershipHull
 	AddShipModifier: FlagshipHull::HexLimitFactor(1.76)
 	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(1.5))
 	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(1.5))
-	AddShipModifier: HPMult(3.0)
+	AddShipModifier: HpMult(3.0)
 	AddShipModifier: DamageResistMult(2.0)
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)

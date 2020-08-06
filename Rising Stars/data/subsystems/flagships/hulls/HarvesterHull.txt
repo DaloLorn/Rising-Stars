@@ -11,7 +11,7 @@ Subsystem: HarvesterHull
 	AddShipModifier: FlagshipHull::HexLimitFactor(2)
 	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(1.5))
 	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(1.5))
-	AddShipModifier: HPMult(2.0)
+	AddShipModifier: HpMult(2.0)
 	AddShipModifier: DamageResistMult(1.5)
 	AddShipModifier: ShieldCapacityMult(2)
 	AddShipModifier: MassMult(3 + TerraformMassMod)
