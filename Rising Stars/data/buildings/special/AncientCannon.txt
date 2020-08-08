@@ -7,4 +7,4 @@ Building: AncientCannon
 
 	CannotBuildManually()
 
-	IfNotSiege( AddTurret(QuantumArtillery, BaselineDamage = 2500, Range=3000, Radius=50, Reload=10.0, Speed=300, Spread=0.0, FireArc=3.14, Tracking=0.2, FireTolerance=0,  BaselineSize = 100, MinRatio = 0.2, MaxRatio = 15, DamageType = 2) )
+	IfNotSiege( AddTurret(QuantumArtillery, BaselineDamage = 2500, Range=3000, Radius=150, Reload=10.0, Speed=300, Spread=0.0, FireArc=3.14, Tracking=0.2, FireTolerance=0,  BaselineSize = 100, MinRatio = 0.2, MaxRatio = 15, DamageType = 2) )

@@ -1,6 +1,6 @@
 Building: LargeDefenseGrid
 	Name: #BLD_DEFENSE_GRID
-	Description: #BLD_DEFENSE_GRID_DESC:20:5000:2000
+	Description: #BLD_DEFENSE_GRID_DESC:20:2500:7000
 	Sprite: DefenseGrid
 
 	Category: Military
@@ -13,10 +13,10 @@ Building: LargeDefenseGrid
 	Build Time: 60
 
 	AddStatus(HasDefenses)
-	RequireEither(RequireStatus(Ringworld), RequireStatus(ArtificialPlanetoid))
+	RequireStatus(Ringworld)
 	RequireNotTrait(Ancient)
 
 	IfAttributeGTE(Adaptation4, 1, AddLocalDefense(2, Build Satellites = True))
 	ShowAttributeValue(Satellite Defense Generation, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::5, Suffix = #PER_MINUTE, Hide Zero = True)
-	IfHaveStatus(WeaponControl, RepeatExtended(AddTurret(Missile, Range=3000, Damage=125, Reload=1, Speed=225, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
-	IfHaveStatus(WeaponControl, RecordBonusDPS(2500))
+	IfHaveStatus(WeaponControl, RepeatExtended(AddTurret(Missile, Range=7000, Damage=125, Reload=1, Speed=225, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	IfHaveStatus(WeaponControl, RepeatExtended(RecordBonusDPS(2500), Base = 1, Multiply Attribute = StaticDamageFactor))
