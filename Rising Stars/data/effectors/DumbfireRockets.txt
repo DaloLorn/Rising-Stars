@@ -9,11 +9,15 @@ Effector: DumbfireRockets
 	Value: SupplyCost = 0
 	Value: Spread = 0.5
 	Value: FireArc = 0.5
+	Value: TargetTolerance = 0
+	Value: FireTolerance = 0
 
 	Range: Range
 	Speed: Speed
 	Tracking: Tracking
 	Lifetime: Range / Speed
+	FireTolerance: FireTolerance
+	TargetTolerance: TargetTolerance
 
 	TargetAlgorithm: SingleTarget
 	CanTarget: isEnemy && isDamageable
