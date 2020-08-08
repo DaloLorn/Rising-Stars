@@ -374,7 +374,7 @@ class MakePlanet : MapHook {
 
 		if(!physics.boolean) {
 			print("Ringworld radius is " + radius);
-			print("Expected orbit size is " + (500 + radius));
+			print("Expected orbit size is " + (3000 + radius));
 			planetDesc.flags |= objNoPhysics;
 			planetDesc.flags |= objNoCollide;
 		}
@@ -422,6 +422,8 @@ class MakePlanet : MapHook {
 		planet.PlanetType = planetType.id;
 		// DOF - Scaling: Give a slightly larger OrbitSize
 		planet.OrbitSize = 500 + radius;
+		if(!physics.boolean) // Ringworlds need a huge orbital radius.
+			planet.OrbitSize += 2500;
 		
 		//Setup orbit
 		planet.orbitAround(system.position, offset.length);

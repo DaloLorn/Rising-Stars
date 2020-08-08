@@ -13,6 +13,7 @@ Building: PlanetaryCannon
 	Labor Cost: 50
 
 	RequireNotTrait(Ancient)
+	RequireNotStatus(Ringworld)
 
 	AddStatus(HasDefenses)
 
