@@ -306,7 +306,7 @@ class AttitudesTab : Tab {
 		uint prevCnt = boxes.length;
 		uint newCnt = attitudes.length;
 		for(uint i = 0; i < newCnt; ++i) {
-			if(attitudes[i].type.hidden || (hasGlory && attitudes[i].type.id != gloryID))
+			if(attitudes[i].type.hidden || (hasGlory && attitudes[i].type.id == gloryID))
 				newCnt -= 1;
 		}
 		for(uint i = newCnt; i < prevCnt; ++i)
