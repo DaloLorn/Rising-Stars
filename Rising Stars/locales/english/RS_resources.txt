@@ -141,7 +141,7 @@ MARENIUM_DESC: <<|
 
 	Ships using marenium reactors gain [levels=$1;#ff8000]5%/10%/15%/20%/25%/30%/40%[/levels] extra combat strength.
 
-	Ships using marenium reactors gain [levels=$1;#ff8000]0.1/0.2/0.4/0.7/1.5/4.0/7.0[/levels] extra acceleration.
+	Ships using marenium reactors gain [levels=$1;#ff8000]0.6/1.2/2.4/4.2/9.0/24/42[/levels] u/s^2 of extra acceleration.
 
 	If this planet is lost, any ships using marenium reactors you have will instead have their combat strength significantly reduced.
 >>
