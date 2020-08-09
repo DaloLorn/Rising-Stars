@@ -26,9 +26,9 @@ STATUS_BOARDED_DESC: <<
 >>
 STATUS_ENVOY: Diplomatic Expedition
 STATUS_ENVOY_DESC: <<
-	This planet has been visited by an Envoy. The Envoy and his entourage reassure allied populations of their security, preventing loyalty loss for 180 seconds.
+	This planet has been visited by an Envoy. The Envoy and their entourage help settle labor disputes and reassure allied populations of their security, adding 5% to all civilian resource generation (except Labor and Defense) and preventing loyalty loss for 360 seconds.
 
-	Loyalty protection only takes effect if the planet's owner and the Envoy's owner are in an Alliance.
+	Loyalty protection only takes effect if the planet's owner and the Envoy's owner are in an Alliance. Alliances also double the resource generation provided by the Envoy.
 >>
 STATUS_POWER_CELL_DESC: <<
 	Upgraded in an ancient shipyard.
