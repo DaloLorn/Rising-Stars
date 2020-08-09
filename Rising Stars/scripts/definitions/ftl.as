@@ -109,7 +109,8 @@ double flingSpeed(Object& obj, const vec3d& pos) {
 int flingCost(Object& obj, vec3d position) {
 	Region@ reg = obj.region;
 	Empire@ owner = obj.owner;
-	if(!obj.isPlanet && reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
+	bool freeFTL = reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0;
+	if(freeFTL && !obj.isPlanet)
 		return 0;
 	if(obj.isShip) {
 		Ship@ ship = cast<Ship>(obj);
@@ -129,8 +130,11 @@ int flingCost(Object& obj, vec3d position) {
 	else {
 		if(obj.isOrbital)
 			return ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
-		else if(obj.isPlanet)
-			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
+		else if(obj.isPlanet) {
+			double modifier = 1;
+			if(freeFTL) modifier = 0.25; // Planets only receive a serious discount from free FTL effects.
+			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier);
+		}
 		return INFINITY;
 	}
 }

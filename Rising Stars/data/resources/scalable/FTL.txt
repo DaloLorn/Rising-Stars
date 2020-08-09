@@ -25,7 +25,8 @@ Resource: FTL
 	IfLevel(4, AddFTLIncome(+2.0)) #version>=105
 	IfLevel(5, AddFTLIncome(+5.0)) #version>=105
 
-	IfLevel(6, AddFTLIncome(+12.0))
+	IfLevel(6, AddFTLIncome(+11.0))
+	IfLevel(6, AddFTLStorage(+10000))
 	IfLevel(5, FreeFTLSystem()) #version>=105
 	IfLevel(4, GrantAllFleetVision(System Space = False, Deep Space = False, In FTL = True)) #version>=107
 	IfLevel(4, GrantAllFleetVision(Flagships = False, Stations = True, Require Status = GateUnpacked)) #version>=125

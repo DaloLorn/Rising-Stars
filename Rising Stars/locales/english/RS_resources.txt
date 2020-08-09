@@ -1,4 +1,4 @@
-﻿PARADISE_NAME: Tropical Paradise
+PARADISE_NAME: Tropical Paradise
 RESOURCE_INTEL: Intelligence Hub
 TECHNOFARM_NAME: Technofarm
 RESOURCE_SHIPYARD: Ancient Shipyard
@@ -84,7 +84,10 @@ FTL_CRYSTALS_DESC: <<
 	[offset=30]Grants vision over all fleets currently in FTL anywhere.[/offset]
 
 	[b]If this planet is Level 5 or higher:[/b]
-	[offset=30]All FTL jumps leaving from this system are free.[/offset]
+	[offset=30]All FTL jumps leaving from this system are free. Planetary FTL only receives a 75% discount.[/offset]
+
+	[b]If this planet is Level 6 or higher:[/b]
+	[offset=30]Adds 10,000 FTL storage.[/offset]
 
 	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
 >>

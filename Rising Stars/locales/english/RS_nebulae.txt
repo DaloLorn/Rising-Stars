@@ -33,7 +33,7 @@ NEBULA_RADIOACTIVE_DESC: <<
 NEBULA_TACHYON_DESC: <<
 	This nebula contains an unusual amount of tachyons which can be harnessed as a substitute for FTL crystals. Sensors are somewhat impaired, though.
 	
-	FTL jumps out of the nebula are free.
+	FTL jumps out of the nebula are free. Planetary FTL only receives a 75% discount.
 >>
 NEBULA_ECONOMIC_DESC: <<
 	The exceptional amount of [img=ResourceIconsSmall::30][/img]gold, as well as other [img=ResourceIconsSmall::11][/img]rare metals and moderate concentrations of [img=ResourceIconsSmall::11 * #91692c][/img]Ore in this nebula give it its mild color. Mining these resources from the asteroids within could provide a massive economic bonus to the owner.
