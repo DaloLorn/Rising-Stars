@@ -74,9 +74,9 @@ ORB_STELLAR_SHIELD_DESC: <<
 ORB_EMBASSY: Embassy
 ORB_EMBASSY_BLURB: Sends envoys to other planets to achieve diplomatic goals.
 ORB_EMBASSY_DESC: <<
-	A center of diplomatic activity, this station periodically sends out Envoys to other planets. Envoys persuade the governments of enemy planets that they would be better off under their empire's rule, and inspire the populations of allied planets into persisting long after they would normally be beaten.
+	A center of diplomatic activity, this station periodically sends out Envoys to other planets. Envoys persuade the governments of enemy planets that they would be better off under their empire's rule, help negotiate labor disputes, and inspire the populations of allied planets into persisting long after they would normally be beaten.
 
-	Enemy planets visited by an Envoy have a 10% chance of defecting to your empire. Planets belonging to your empire, your vassals or an empire you have an Alliance with will be immune to loyalty loss for 180 seconds.
+	Enemy planets visited by an Envoy have a 25% chance of defecting to your empire. Planets belonging to your empire, your vassals or an empire you have an Alliance with will be immune to loyalty loss for 360 seconds. Additionally, all civilian resource production (except Labor and Defense) is increased by 5% on neutral planets, or 10% for you and your allies.
 
 	Diplomatic backlash gives you and your allies Leverage against anyone who would destroy the Embassy.
 

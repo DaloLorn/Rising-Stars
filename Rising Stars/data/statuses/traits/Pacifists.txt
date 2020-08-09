@@ -37,5 +37,14 @@ Status: Envoy
 	Icon: PoliticalStrengthIcon * #00ff00
 	Collapses: True
 
-	RemoveOnWarWithOriginEmpire(Trigger Origin = RandomTrigger(0.1, TakeControl()))
+	RemoveOnWarWithOriginEmpire(Trigger Origin = RandomTrigger(0.25, TakeControl()))
+	ModCivResourceMult(Influence, +0.05)
+	ModCivResourceMult(Money, +0.05)
+	ModCivResourceMult(Research, +0.05)
+	ModCivResourceMult(Energy, +0.05)
+
+	ABEM_races::IfAlliedWithOriginEmpire(ModCivResourceMult(Influence, +0.05))
+	ABEM_races::IfAlliedWithOriginEmpire(ModCivResourceMult(Money, +0.05))
+	ABEM_races::IfAlliedWithOriginEmpire(ModCivResourceMult(Research, +0.05))
+	ABEM_races::IfAlliedWithOriginEmpire(ModCivResourceMult(Energy, +0.05))
 	ABEM_races::IfAlliedWithOriginEmpire(ABEM_races::ProtectPlanet())

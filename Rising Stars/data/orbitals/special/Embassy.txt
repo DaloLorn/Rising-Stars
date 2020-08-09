@@ -6,7 +6,7 @@ Module: Embassy
 	Distant Icon: OrbitalIcons::15
 
 	Build Cost: 500
-	Maintenance: 200
+	Maintenance: 100
 	Labor Cost: 15
 	Size: 7
 
@@ -27,4 +27,4 @@ Module: Embassy
 	AddInfluenceStake(2)
 	GlobalTradeNode()
 	OnKillSpreadLeverageToFriendlies(Quality Factor = 5.0)
-	SpawnFreighters(Rate = 2, Status = Envoy, Name = Envoy, Set Origin Empire = True, Visit Hostile = True)
+	SpawnFreighters(Rate = 2, Duration = 360, Status = Envoy, Name = Envoy, Set Origin Empire = True, Visit Hostile = True)

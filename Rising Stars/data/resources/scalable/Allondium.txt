@@ -31,5 +31,5 @@ Resource: Allondium
 	IfLevel(4, GrantAbility(BuyNameFlagship)) #version>=116
 	IfLevel(4, GrantAbility(BuyAnnexPlanet)) #version>=116
 
-	IfLevel(6, ModEmpireAttribute(VoteCardCostMod, Add, -1000))
+	IfLevel(6, ModEmpireAttribute(VoteCardCostMod, Add, -100))
 	IfLevel(5, ModEmpireAttribute(SupportCardCostMod, Add, -3)) #version>=116
