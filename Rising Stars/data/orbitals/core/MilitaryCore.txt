@@ -23,3 +23,12 @@ Module: MilitaryCore
 	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
 	AddFleetCommand(128)
 	SetSystemFlag(EarlyWarningSystem)
+
+Module: CommandPostCore
+	Inherit: MilitaryCore
+	Build Cost: 600
+
+	RequireNotManual()
+	ABEM_orbitals::AddModule(TradeOutpost)
+
+	AI: RegisterForUse(CommandPost)

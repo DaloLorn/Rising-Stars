@@ -341,6 +341,7 @@ final class AIDefs {
 	const OrbitalModule@ Shipyard;
 	const OrbitalModule@ EconomyCore;
 	const OrbitalModule@ TradeStation;
+	const OrbitalModule@ CommandPost;
 	const ConstructionType@ MoonBase;
 };
 

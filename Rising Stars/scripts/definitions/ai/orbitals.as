@@ -17,13 +17,15 @@ interface AIOrbitals : ConsiderComponent {
 enum OrbitalUse {
 	OU_Shipyard,
 	OU_EconomyCore,
-	OU_TradeStation
+	OU_TradeStation,
+	OU_CommandPost
 };
 
 const array<string> OrbitalUseName = {
 	"Shipyard",
 	"EconomyCore",
-	"TradeStation"
+	"TradeStation",
+	"CommandPost"
 };
 
 class OrbitalAIHook : Hook, ConsiderHook {
@@ -53,9 +55,9 @@ class RegisterForUse : OrbitalAIHook {
 
 		for(uint i = 0, cnt = OrbitalUseName.length; i < cnt; ++i) {
 			if(OrbitalUseName[i] == use.str) {
-				if(use.str == "TradeOutpost") {
-					//Evangelical lifestyle doesn't use outposts
-					if (type.ident == "TradeOutpost" && emp.hasTrait(getTraitID("Evangelical")))
+				if(use.str == "CommandPost") {
+					//Evangelical lifestyle doesn't use command posts
+					if (type.ident == "CommandPost" && emp.hasTrait(getTraitID("Evangelical")))
 						continue;
 					//Non Evangelical lifestyles don't use temples
 					if (type.ident == "Temple" && !emp.hasTrait(getTraitID("Evangelical")))

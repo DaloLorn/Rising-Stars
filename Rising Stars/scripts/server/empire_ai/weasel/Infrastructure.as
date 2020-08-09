@@ -969,15 +969,15 @@ final class Infrastructure : AIComponent {
 					case BA_BuildOutpost:
 						switch (next.loc) {
 							case BL_InSystem:
-								sys.buildInSystem(this, ai.defs.EconomyCore, next.priority, next.force);
+								sys.buildInSystem(this, ai.defs.CommandPost, next.priority, next.force);
 								break;
 							case BL_AtSystemEdge:
-								sys.buildAtSystemEdge(this, ai.defs.EconomyCore, next.priority, next.force);
+								sys.buildAtSystemEdge(this, ai.defs.CommandPost, next.priority, next.force);
 								break;
 							case BL_AtBestPlanet:
 									@obj = getBestPlanet(sys);
 									if (obj !is null) {
-										sys.buildAtPlanet(this, cast<Planet>(obj), ai.defs.EconomyCore, next.priority, next.force);
+										sys.buildAtPlanet(this, cast<Planet>(obj), ai.defs.CommandPost, next.priority, next.force);
 									}
 								break;
 							default:
@@ -1165,10 +1165,10 @@ final class Infrastructure : AIComponent {
 
 		uint presentMask = sys.ai.seenPresent;
 		//Make sure we did not previously built an outpost here
-		if (orbitals.haveInSystem(ai.defs.EconomyCore, sys.ai.obj))
+		if (orbitals.haveInSystem(ai.defs.CommandPost, sys.ai.obj))
 			return false;
 		//Make sure we are not already building an outpost here
-		if (isBuilding(sys, ai.defs.EconomyCore))
+		if (isBuilding(sys, ai.defs.CommandPost))
 			return false;
 		//Hostile systems should be ignored until cleared
 		if (presentMask & ai.enemyMask != 0)

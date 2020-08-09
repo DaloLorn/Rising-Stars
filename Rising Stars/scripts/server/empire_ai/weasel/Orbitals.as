@@ -131,6 +131,9 @@ class Orbitals : AIComponent, AIOrbitals {
 			case OU_TradeStation:
 				@ai.defs.TradeStation = type;
 				break;
+			case OU_CommandPost:
+				@ai.defs.CommandPost = type;
+				break;
 		}
 	}
 

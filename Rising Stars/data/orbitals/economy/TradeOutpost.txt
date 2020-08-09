@@ -6,7 +6,7 @@ Module: TradeOutpost
 	Distant Icon: OrbitalIcons::14
 
 	Build Cost: 300
-	Maintenance: 30
+	Maintenance: 10
 	Labor Cost: 15
 	Size: 7
 
