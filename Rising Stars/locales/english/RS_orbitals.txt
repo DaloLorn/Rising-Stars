@@ -390,7 +390,7 @@ ORB_TARGETING_SATELLITE_DESC: <<
 	Only one Targeting Control Satellite can be orbiting a given planet. If it is destroyed, a new one will be built for free after a 3-minute period.
 >>
 ORB_THRUSTERS: Maneuvering Thrusters
-ORB_THRUSTERS_BLURB: Adds 2.5 u/s^2 to the orbital's acceleration.
+ORB_THRUSTERS_BLURB: Adds 5 u/s^2 to the orbital's acceleration.
 ORB_THRUSTERS_DESC: <<
 	An array of thrusters is installed across the station's exterior, allowing it to move faster.
 
