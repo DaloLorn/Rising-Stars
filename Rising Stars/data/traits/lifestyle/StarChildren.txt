@@ -46,6 +46,8 @@ Trait: StarChildren
 	ReplaceTechnologyNodes(MetropolisUpg, HabitatUpgrade)
 	ReplaceTechnologyNodes(PlanetaryEngine, HabitatUpgrade)
 	ReplaceTechnologyNodes(Population, HabitatUpgrade)
+	ReplaceTechnologyNodes(TileDevelopment, MothershipLabor)
+	ReplaceTechnologyNodes(TileDevelopment2, MothershipLabor2)
 
 	ReplaceTechnologyNodes(Senate, NylliSenate)
 	RemoveTechnologyNodes(Laboratories)
