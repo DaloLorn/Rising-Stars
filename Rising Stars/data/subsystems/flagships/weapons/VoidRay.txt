@@ -12,6 +12,7 @@ Subsystem: VoidRay
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	BeamDPS := 1.8 * Size
 	Duration := 7
 	Cooldown := 0.01
@@ -39,6 +40,16 @@ Subsystem: VoidRay
 		Power = PowerUse
 
 	Module: Default
+	
+	Modifier: DurationFactor(factor)
+		BeamDPS := BeamDPS + Base::BeamDPS * (factor - 1)
+	Modifier: DurationMult(factor)
+		BeamDPS := BeamDPS * factor
+	
+	Modifier: CooldownFactor(factor)
+		BeamDPS := BeamDPS + Base::BeamDPS * (factor - 1)
+	Modifier: CooldownMult(factor)
+		BeamDPS := BeamDPS * factor
 
 	Module: Core
 		Hex.BuildCost := 5.0 * Hex.BuildCost
