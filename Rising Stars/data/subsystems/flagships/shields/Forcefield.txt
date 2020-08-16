@@ -38,6 +38,9 @@ Subsystem: Forcefield
 
 	OnCheckErrors: designs::checkForcefield
 
+	Modifier: SetBreakThreshold(factor)
+		Hex.BreakThreshold := if(Hex.IsEmitter == 0 && Hex.BreakThreshold < factor, factor, Hex.BreakThreshold)
+
 	Requires:
 		Command = 1
 		Power = PowerUse

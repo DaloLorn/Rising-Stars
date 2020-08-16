@@ -4,7 +4,7 @@ Subsystem: CeramicArmor
 	BaseColor: #d2b894
 	Elevation: 2
 
-	Tags: Category:Armor, FauxExterior
+	Tags: Category:Armor, FauxExterior, Destructible
 	Tags: NoCore, NonContiguous, Defense, IsArmor, ResistArmor, ExternalSpace, DefaultUnlock
 	Tags: PrimaryArmor
 	Hull: Flagship, Station
@@ -19,6 +19,7 @@ Subsystem: CeramicArmor
 	Hex.MaintainCost := 0
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+	Hex.BreakThreshold := 1
 
 	BaseDamageResist := ShipSize / 12.0
 	ProjResist := BaseDamageResist * 0.8
@@ -30,8 +31,6 @@ Subsystem: CeramicArmor
 		EnergyResist = EnergyResist
 		ExplResist = ExplResist
 		MinimumPercent = 1/6
-
-	Effect: SingleUseHexes
 
 	Module: Default
 		Sprite: SolarPanel * #f9ac69

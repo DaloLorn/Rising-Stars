@@ -4,7 +4,7 @@ Subsystem: SupportCrystalArmor
 	BaseColor: #ef45ff
 	Elevation: 2
 
-	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor
+	Tags: NoCore, NonContiguous, Defense, IsArmor, TankArmor, Destructible
 	Tags: NoWall, Category:Armor, FauxExterior, ExternalSpace
 	Tags: PrimaryArmor, HeraldsDLC
 	Hull: Support, Satellite
@@ -16,6 +16,7 @@ Subsystem: SupportCrystalArmor
 	Hex.Resistance := 0.6
 	BaseHP := 200 * HexSize
 	Hex.Mass := 2.4 * HexSize
+	Hex.BreakThreshold := 1
 
 	Hex.BuildCost := 6.0 * HexSize
 	Hex.LaborCost := 0.4 * HexSize
@@ -26,8 +27,6 @@ Subsystem: SupportCrystalArmor
 		ProjResist = DamageResist
 		EnergyResist = EnergyResist
 		ExplResist = DamageResist
-
-	Effect: SingleUseHexes
 
 	Module: Default
 		Sprite: CrystalArmor

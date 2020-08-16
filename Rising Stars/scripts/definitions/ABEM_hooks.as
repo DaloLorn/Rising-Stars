@@ -51,6 +51,29 @@ import ftl;
 import empire;
 #section all
 
+class BreakableHexes : SubsystemEffect {
+	Document doc("The subsystem's hexes will no longer be repairable after they reach a certain threshold. NOTE: This hook is automatically applied to all subsystems already, and should not be used directly!");
+
+#section server
+	DamageEventStatus damage(SubsystemEvent& sysEvent, DamageEvent& evt, const vec2u& position) const override {
+		auto@ sys = evt.source;
+		auto@ bp = evt.blueprint;
+
+		bp.damage(evt.target, evt, position);
+
+		HexStatus@ stat = bp.getHexStatus(position.x, position.y);
+		if(stat.hp < uint(bp.design.variable(position, HV_BreakThreshold) * 255)) {
+			stat.flags |= HF_NoRepair;
+			if(stat.hp == 0) {
+				stat.flags |= HF_Gone;
+				bp.removedHP += bp.design.variable(position, HV_HP);
+			}
+		}
+		return DE_SkipHex;
+	}
+#section all
+}
+
 class Regeneration : SubsystemEffect {
 	Document doc("Regenerates itself over time.");
 	Argument amount(AT_Decimal, doc="Amount of health to heal per second.");

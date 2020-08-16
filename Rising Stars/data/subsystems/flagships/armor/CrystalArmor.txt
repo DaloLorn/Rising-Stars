@@ -4,7 +4,7 @@ Subsystem: CrystalArmor
 	BaseColor: #db8fff
 	Elevation: 2
 
-	Tags: Category:Armor, FauxExterior
+	Tags: Category:Armor, FauxExterior, Destructible
 	Tags: NoCore, NonContiguous, Defense, IsArmor, ResistArmor, ExternalSpace
 	Tags: PrimaryArmor
 	Tags: HeraldsDLC
@@ -16,6 +16,7 @@ Subsystem: CrystalArmor
 	Hex.Mass := 3.0 * HexSize
 
 	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+	Hex.BreakThreshold := 1
 
 	DamageResist := ShipSize / 12.0
 	EnergyResist := DamageResist * 4.0
@@ -28,8 +29,6 @@ Subsystem: CrystalArmor
 		EnergyResist = EnergyResist
 		ExplResist = DamageResist
 		MinimumPercent = 1/6
-
-	Effect: SingleUseHexes
 
 	Module: Default
 		Sprite: CrystalArmor

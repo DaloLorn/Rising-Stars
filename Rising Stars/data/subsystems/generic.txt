@@ -16,6 +16,7 @@ Template: var/BaseHP
 		CoreHPMod := 1
 		Hex.HP := if(IsCore, CoreHP * CoreHPMod, BaseHP * HPMod)
 		CoreHP := BaseHP * HPMod
+		Hex.BreakThreshold = -1
 	Modifier: HpFactor(factor)
 		BaseHP := BaseHP + Base::BaseHP * (factor - 1)
 	Modifier: HpMult(factor)
@@ -28,6 +29,9 @@ Template: var/BaseHP
 		CoreHP := CoreHP + Base::CoreHP * (factor - 1)
 	Modifier: CoreHealthMult(factor)
 		CoreHPMod := CoreHPMod * factor
+	Modifier: SetBreakThreshold(factor)
+		Hex.BreakThreshold := if(Hex.BreakThreshold < factor, factor, Hex.BreakThreshold)
+	Hook: ABEM_hooks::BreakableHexes()
 
 Template: hexVar/Mass
 	Modifier: MassFactor(factor)
