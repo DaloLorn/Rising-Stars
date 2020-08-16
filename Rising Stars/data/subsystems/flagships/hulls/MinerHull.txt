@@ -2,28 +2,27 @@ Subsystem: MinerHull
 	Name: #S_MINER_HULL
 	Description: #S_MINER_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: Applied, Category:Hulls, NoCore, Hull
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #7000cc
 
 
-	AddShipModifier: MassMult(1)
-	AddShipModifier: ShieldCapacityMult(1.5)
-	AddShipModifier: ArmorHpMult(1)
+	AddShipModifier: HpMult(0.75)
+	AddShipModifier: ShieldCapacityMult(0.75)
 	AddShipModifier: MaintCostFactor(0.1)
-	AddShipModifier: SupplyCapacityMult(0.1)
-	AddShipModifier: MiningRateFactor(1.25)
-	AddShipModifier: CargoStorageMult(1.25)
-	Assert: TagCount.Boarders == 0
-		Message: #ERROR_CANNOT_BOARD
+	AddShipModifier: RepairMult(0.5)
+	AddShipModifier: ShieldRegenMult(0.5)
+	AddShipModifier: MiningRateFactor(3.0)
+	AddShipModifier: CargoStorageMult(3.0)
+	AddShipModifier: OreProcessFactor(1.2)
+	AddShipModifier: LaborIncomeFactor(1.2)
+	AddShipModifier: DamageMult(0.2)
+	AddShipModifier: SupplyCapacityMult(1.5)
+	AddShipModifier: SupportCapacityMult(0.2)
+	AddShipModifier: BuildCostFactor(0.75)
+	AddShipModifier: LaborCostFactor(0.75)
 
 	Module: Default
 		Sprite: HullSubsystems::6
 		DrawMode: 3
-
-	Assert: TagCount.Weapon == 0
-		Message: #ERROR_CANNOT_HAVE_WEAPONS
-
-	Assert: Sum.SupportCapacity==0
-		Message: #ERROR_CANNOT_HAVE_SUPPORT

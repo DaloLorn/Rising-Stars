@@ -1,0 +1,34 @@
+Subsystem: ColossusHull
+	Name: #S_COLOSSUS_HULL
+	Description: #S_COLOSSUS_HULL_DESC
+
+	Tags: Applied:Architecture, Category:Hulls, NoCore, HeraldsDLC, Hull
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #cc3a7d
+
+	AddShipModifier: FlagshipHull::HexLimitFactor(10.0)
+	AddShipModifier: FlagshipHull::GridWidthFactor(4.0)
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+
+	AddShipModifier: BuildCostFactor(1.5)
+	AddShipModifier: LaborCostFactor(1.5)
+	AddShipModifier: MaintCostFactor(0.75)
+	AddShipModifier: HpMult(2.0)
+	AddShipModifier: DamageResistMult(2.0)
+	AddShipModifier: ShieldCapacityMult(3.0)
+	AddShipModifier: MassMult(2.0)
+	AddShipModifier: HyperSpeedMult(0.5)
+	AddShipModifier: DamageMult(3.0)
+	AddShipModifier: ReloadMult(3.0)
+	AddShipModifier: SupplyCostMult(3.0)
+	AddShipModifier: CooldownMult(3.0)
+	AddShipModifier: RangeMult(1.5)
+	AddShipModifier: SpreadMult(0.5)
+
+	Assert: ShipSize >= 3000
+		Message: #ERROR_MIN_SIZE:$1:3000
+
+	Module: Default
+		Sprite: DesignationIcons::16
+		DrawMode: 3

@@ -374,7 +374,7 @@ Grid: RisingStars
 	DroneCount: 15,-5
 	FlagHealth2: 15,-6
 	Flagship4: 15,-7
-	SpinalMountHull: 15,0
+	SpinalMount: 15,0
 	Warhead: 16,2
 	HyperLaser: 16,0
 	MuonCannon: 12,-2

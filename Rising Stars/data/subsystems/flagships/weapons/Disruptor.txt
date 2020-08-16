@@ -12,6 +12,7 @@ Subsystem: Disruptor
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	BeamDPS := 1.5 * Size
 	Duration := 10
 	Cooldown := 6 * min(1.0 + Size/512, 2.0)

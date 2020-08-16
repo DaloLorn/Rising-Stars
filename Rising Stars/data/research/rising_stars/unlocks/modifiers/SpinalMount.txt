@@ -1,0 +1,18 @@
+Technology: SpinalMount
+	Name: #R_SYS_SPINAL_MOUNT
+	Description: #R_SYS_SPINAL_MOUNT_DESC
+	Class: Unlock
+	Category: Modifiers
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Icon: SpinalMount
+	Color: #8edcef
+
+	UnlockModule(SpinalMount)
+	SkipOnUnlockedModule(SpinalMount)
+
+	SecondaryMoneyCost(1000)
+
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

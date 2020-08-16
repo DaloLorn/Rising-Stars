@@ -13,6 +13,7 @@ Subsystem: PiercingDrones
 	Lifetime := 15
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	Range := (Size + 700) * 2
 	Damage := 75
 	PodSize := floor(Size)

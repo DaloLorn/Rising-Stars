@@ -12,6 +12,7 @@ Subsystem: PlasmaThrower
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	Range := (Size + 500) * 2
 
 	Duration := 10 * (1.0 + Size/128)

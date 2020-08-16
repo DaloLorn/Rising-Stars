@@ -11,6 +11,10 @@ Subsystem: BusterBeam
 	
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
+
+	// Allows the Buster Beam to count as a weapon for the requirements of Destroyer Architecture.
+	// TODO: Overhaul the Buster Machine to meet the requirements without this.
+	WeaponSize := Size
 	
 	Hex.Resistance := 0.2
 	BaseHP := 18 * HexSize

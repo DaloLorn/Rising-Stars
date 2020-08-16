@@ -1,25 +1,26 @@
-Subsystem: SpinalMountHull
-	Name: #S_SPINAL_MOUNT_HULL
-	Description: #S_SPINAL_MOUNT_HULL_DESC
+Template: var/BaseHP, tag/Weapon, var/FireArc, !tag/SupportHull
+	Module: SpinalMount
+		Name: #S_SPINAL_MOUNT
+		Description: #S_SPINAL_MOUNT_DESC
+		Unique: True
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
-	Tags: HeraldsDLC
-	Tags: OverrideHexArcLimit
-	Hull: Flagship
-	EvaluationOrder: -200
-	BaseColor: #8edcef
+		Color: #ffff00
+		Sprite: SpinalMount
 
-	AddShipModifier: tag/Weapon::FireArcFactor(100.0)
-	AddShipModifier: tag/Weapon::HpMult(1.5)
-	AddShipModifier: tag/Weapon::CoreHealthMult(5.0)
-	AddShipModifier: TechMultFactor(1.5)
+		Hex.HP := 3.0 * Hex.HP
+		Hex.BuildCost := Size
 
-	Assert: ShipSize >= 300
-		Message: #ERROR_MIN_SIZE:$1:300
+		AddModifier: optional RangeMult(1.2)
+		AddModifier: optional ReloadMult(2)
+		AddModifier: optional CooldownMult(2)
+		AddModifier: optional DamageMult(3)
+		AddModifier: optional SupplyCostMult(3)
+		AddModifier: FireArcFactor(0.4)
+		AddModifier: optional SpreadMult(0.5)
+		AddModifier: MassMult(1.5)
 
-	Assert: TagCount.Weapon <= 1
-		Message: #ERROR_WEAPON_LIMIT
-
-	Module: Default
-		Sprite: HullSubsystems::2
-		DrawMode: 3
+		AddModifier: MaintCostFactor(1.2)
+		AddModifier: LaborCostFactor(1.2)
+		AddModifier: BuildCostFactor(1.2)
+		Assert: Size >= 150 && (Size / ShipSize) > 0.2
+			Message: #ERROR_SPINAL_MOUNT_SIZE:$1:150:20%

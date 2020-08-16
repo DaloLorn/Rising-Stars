@@ -11,6 +11,7 @@ Subsystem: ParticleLance
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	Range := (Size + 500) * 2
 	Damage := Size * 1.25
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)

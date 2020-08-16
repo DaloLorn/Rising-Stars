@@ -383,13 +383,55 @@ R_ORB_SENATE_DESC: <<
 
 	Unlocks the Centralized Coordination Complex orbital.
 >>
-R_MINER_HULL: Dedicated Mining Architecture
+R_MINER_HULL: Specialized Hull Design
 R_MINER_HULL_DESC: <<
-	[color=#aaa][i]Streamlining various support craft, such as miners, allows them to be more effective at a reduced cost.[/i][/color]
+	[color=#aaa][i]Streamlining various support craft, such as miners and scouts, allows them to be more effective at the cost of making them more vulnerable to attack.[/i][/color]
 
-	Unlocks the Miner Hull subsystem for use on flagships.
+	Unlocks the Specialist Architecture subsystem for use on flagships.
 
 	[i][bbloc=#S_MINER_HULL_DESC/][/i]
+>>
+
+R_SYS_CARRIER_HULL: Carrier Architecture
+R_SYS_CARRIER_HULL_DESC: <<
+	[color=#aaa][i]Unlocks the Carrier Architecture for flagships.[/i][/color]
+
+	[bbloc=#S_CARRIER_HULL_DESC/]
+>>
+
+R_SYS_DESTROYER_HULL: Destroyer Architecture
+R_SYS_DESTROYER_HULL_DESC: <<
+	[color=#aaa][i]Unlocks the Destroyer Architecture for flagships.[/i][/color]
+
+	[bbloc=#S_DESTROYER_HULL_DESC/]
+>>
+
+R_SYS_SUPERSTRUCTURE_HULL: Exotic Superstructure
+R_SYS_SUPERSTRUCTURE_HULL_DESC: <<
+	[color=#aaa][i]Unlocks the Exotic Superstructure for flagships.[/i][/color]
+
+	[bbloc=#S_SUPERSTRUCTURE_HULL_DESC/]
+>>
+
+R_SYS_TITAN_HULL: Titan Architecture
+R_SYS_TITAN_HULL_DESC: <<
+	[color=#aaa][i]Unlocks the Titan Architecture subsystem.[/i][/color]
+
+	[bbloc=#S_TITAN_HULL_DESC/]
+>>
+
+R_SYS_COLOSSUS_HULL: Colossus Architecture
+R_SYS_COLOSSUS_HULL_DESC: <<
+	[color=#aaa][i]Unlocks the Colossus Architecture subsystem.[/i][/color]
+
+	[bbloc=#S_COLOSSUS_HULL_DESC/]
+>>
+
+R_SYS_SPINAL_MOUNT: Spinal Weapon Mount
+R_SYS_SPINAL_MOUNT_DESC: <<
+	[color=#aaa][i]Unlocks the Spinal Weapon Mount for flagships.[/i][/color]
+
+	[bbloc=#S_SPINAL_MOUNT_HULL_DESC/]
 >>
 R_SYS_JUGGERNAUT_HULL: Volatile Payload Delivery
 R_SYS_JUGGERNAUT_HULL_DESC: <<

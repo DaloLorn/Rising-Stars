@@ -12,6 +12,7 @@ Subsystem: MissileLauncher
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	Range := (Size * 2.75 + 950) * 2
 	Damage := Size * 13.5
 	PodSize := 1

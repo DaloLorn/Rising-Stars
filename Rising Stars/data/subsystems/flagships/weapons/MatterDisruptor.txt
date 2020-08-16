@@ -12,6 +12,7 @@ Subsystem: MatterDisruptor
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 
 	Range := ((Size * 2) + 600) * 2
 	Damage := Size * 16.25
@@ -22,12 +23,18 @@ Subsystem: MatterDisruptor
 	FireArc := 1.5
 	BaseSupplyCost := Size * 1.5
 	PowerUse := 2.5 * Size
-	SizeMultiplier := 1 // Basically, the difference in scale multiplies the damage. No extra factors.
-	AmountPerSize := 0 // This is a tricky one. If the enemy is double size, you deal this amount multiplied by 2. Really not sure what I was thinking.
-	MinRatio := 0.5 // Basically, the scaling cuts off at 50% of our ship's size. Could have set it to 1, which meant that damage only GREW with relative size, but couldn't be decreased.
-	MaxRatio := 4 // Again, cuts off at 400% of our size.
+	 
+	// Basically, the difference in scale multiplies the damage. No extra factors.
+	SizeMultiplier := 1
+	// This is a tricky one. If the enemy is double size, you deal this amount multiplied by 2. Really not sure what I was thinking.
+	AmountPerSize := 0
+	// Basically, the scaling cuts off at 50% of our ship's size. Could have set it to 1, which meant that damage only GREW with relative size, but couldn't be decreased.
+	MinRatio := 0.5
+	// Again, cuts off at 400% of our size.
+	MaxRatio := 4
 
-	DamageType := 2 // Read scripts/server/ABEMCombat.as before changing this.
+	// Read scripts/server/ABEMCombat.as before changing this.
+	DamageType := 2 
 
 	BaseHP := 27 * HexSize
 	CoreHPMod := 3

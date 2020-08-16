@@ -11,6 +11,7 @@ Subsystem: Warhead
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	Range := (Size + 1200) * 2
 	Damage := Size * 128
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)

@@ -2,27 +2,32 @@ Subsystem: DestroyerHull
 	Name: #S_DESTROYER_HULL
 	Description: #S_DESTROYER_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: Applied, Category:Hulls, NoCore, Hull
 	Tags: HeraldsDLC
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #ff8080
 
-	HexLimit := 30
+	AddShipModifier: IncreaseHexLimit(30)
 
-	AddShipModifier: HpMult(6.0)
+	AddShipModifier: HpMult(3.0)
 	AddShipModifier: ArmorResistMult(1.5)
-	AddShipModifier: MassMult(0.5)
+	AddShipModifier: MassMult(0.7)
+	AddShipModifier: HyperSpeedMult(1.3)
 	AddShipModifier: tag/Weapon::RangeMult(0.7)
-	AddShipModifier: TechMultFactor(3)
+	AddShipModifier: TechMultFactor(1.5)
 	AddShipModifier: HullStrengthMultFactor(1.5)
-	AddShipModifier: ShieldCapacityMult(6.0)
+	AddShipModifier: ShieldCapacityMult(4.5)
+	AddShipModifier: SupportCapacityMult(0.6)
+	AddShipModifier: BuildCostFactor(1.3)
+	AddShipModifier: LaborCostFactor(1.3)
+	AddShipModifier: MaintCostFactor(1.3)
 
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300
 
-	Assert: Sum.SupportCapacity == 0
-		Message: #ERROR_CANNOT_HAVE_SUPPORT
+	Assert: Sum.WeaponSize / ShipSize >= 0.25
+		Message: #ERROR_DESTROYER_WEAPONS:25
 
 	Module: Default
 		Sprite: HullSubsystems::1

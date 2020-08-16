@@ -10,6 +10,7 @@ Subsystem: SupportCapModule
 	Hull: Flagship, Station
 	
 	Size := HexSize * Hexes
+	SupportCapSize := Size
 	BaseSupportCapacity := Size * 28
 	
 	Hex.Resistance := 0.2

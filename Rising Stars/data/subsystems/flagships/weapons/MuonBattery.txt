@@ -11,6 +11,7 @@ Subsystem: MuonBattery
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	
 	Range := (Size + 480) * 2
 	Damage := Size * 1

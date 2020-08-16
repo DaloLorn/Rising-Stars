@@ -32,6 +32,10 @@ ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
 ERROR_FORCEFIELD_NO_BATTERY: Forcefields may not have any Quantum Batteries.
 ERROR_FORCEFIELD_SHAPE: Forcefield emitters may not be completely surrounded by their own forcefield, nor may they touch more than two forcefield hexes!
 ERROR_FORCEFIELD_EMITTERCOUNT: Forcefields may not have more than 5 hexes per emitter!
+ERROR_CARRIER_SUPPORT: Carrier Architecture requires that at least $1% of the ship's interior is dedicated to Support Command.
+ERROR_DESTROYER_WEAPONS: Destroyer Architecture requires that at least $1% of the ship's interior is dedicated to weapons.
+ERROR_CANNOT_HAVE_ARCHITECTURE: Bombship Hull cannot have any other Hulls or Architectures applied.
+ERROR_SPINAL_MOUNT: $1 has a minimum size of $2, and must comprise at least $3 of the ship's internal space.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -385,26 +389,30 @@ S_BOARDING_PARTY: Boarding Parties
 S_GUARDIANHULL: Guardian Hull
 S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
 S_HAULER_HULL: Hauler Hull
-S_MINER_HULL: Miner Hull
+S_MINER_HULL: Specialist Architecture
 S_PROGENITOR_ARMOR: Progenitor Armor
 
 S_MINER_HULL_DESC: <<
-	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
+	A fragile hull architecture designed to perform various support functions.
 
-	[img=Plus]Increases shield capacity by 50%.[/img]
-	[img=Plus]Reduces maintenance costs and supply capacity by 90%.[/img]
-	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
-	[img=Minus]Cannot have weapons or support command.[/img]
+	[img=Plus]Increases Construction Yard and Ore Processor output by 20%.[/img]
+	[img=Plus]Reduces maintenance costs by 90%.[/img]
+	[img=Plus]Increases supply capacity by 50%.[/img]
+	[img=Plus]Reduces build and Labor costs by 25%.[/img]
+	[img=Plus]Mining rate and cargo storage are increased by 200%.[/img]
+	[img=Minus]Weapon damage and support capacity are reduced by 80%.[/img]
+	[img=Minus]Health and shield capacity are reduced by 25%.[/img]
+	[img=Minus]Repair and shield regeneration rates are reduced by 50%.[/img]
 >>
 S_JUGGERNAUT_HULL: Bombship Hull
 S_JUGGERNAUT_HULL_DESC: <<
 	A specialized hull designed for containing and stabilizing a large payload of extremely volatile explosives.
 
-	[img=Plus]Increases health by 1200%, and boosts armor damage resistance by 50%.[/img]
+	[img=Plus]Increases health by 1100%, and boosts armor damage resistance by 50%.[/img]
 	[img=AntimatterReactor;20;#ff0000]Significantly increases the potency of, and requires a Self-Destruct Device. Also allows manual detonation of Self-Destruct Devices.[/img]
 	[img=Plus]Halved maintenance cost.[/img]
-	[img=Minus]Increases mass by 500%, but increases turn thrust by only 300%.[/img]
-	[img=Minus]Increases Labor cost by 400%.[/img]
+	[img=Minus]Increases mass by 400%, but increases turn thrust by only 200%.[/img]
+	[img=Minus]Increases Labor cost by 300%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 	[img=Minus]Significantly reduced hex count.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Bombship Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
@@ -415,8 +423,8 @@ S_FORCEFIELD_DESC: <<
 
 	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier. Additionally, each hex will halve the bleedthrough from shield-penetrating weapons such as Boring Drones.[/img]
 	[img=Plus]Only emitters count towards the ship's hex limit, power consumption, and costs. Additional emitters increase the amount of damage a forcefield can absorb before failing.[/img]
-	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
-	[img=MenuIcons::3;22]Each forcefield emitter may support 5 forcefield hexes. No emitter may be completely surrounded by its own forcefield or touch more than two hexes of that forcefield.[/img]
+	[img=MenuIcons::3;20]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
+	[img=MenuIcons::3;20]Each forcefield emitter may support 5 forcefield hexes. No emitter may be completely surrounded by its own forcefield or touch more than two hexes of that forcefield.[/img]
 	[img=Minus]Extremely inefficient compared to standard shield systems, with high build costs and power consumption.[/img]
 	[img=Minus]Destroying any forcefield emitter will deactivate the forcefield immediately.[/img]
 	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
@@ -427,8 +435,8 @@ FORCEFIELD_EMITTER_DESC: <<
 
 	[img=Plus]Allows another 5 hexes to be added to the forcefield.[/img]
 	[img=Plus]Significantly increases the effectiveness of the forcefield.[/img]
-	[img=MenuIcons::3;22]No emitter may be completely surrounded by its own forcefield.[/img]
-	[img=MenuIcons::3;22]No emitter may touch more than two hexes - including other emitters - of its own forcefield.[/img]
+	[img=MenuIcons::3;20]No emitter may be completely surrounded by its own forcefield.[/img]
+	[img=MenuIcons::3;20]No emitter may touch more than two hexes - including other emitters - of its own forcefield.[/img]
 	[img=Minus]Significantly increases the cost and power consumption of the forcefield.[/img]
 >>
 
@@ -442,24 +450,75 @@ TARGETINGSENSOR_DESC: <<
 	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
 >>
 
+S_TITAN_HULL: Titan Architecture
 S_TITAN_HULL_DESC: <<
-	An extremely heavy hull frame that allows larger ships to be constructed more efficiently.
+	A bulky, finicky hull architecture which significantly increases the efficiency of large ships across the board.
 
-	[img=Plus]Much more internal space available.[/img]
-	[img=Plus]Reduces build costs by up to 50% as the ship size gets bigger.[/img]
-	[img=Plus]Rigorous construction increases turret potential firing arcs.[/img]
-	[img=Minus]Can only be used for ships of size 500 or greater.[/img]
+	[img=Plus]Increases hex limit by 300%, but only decreases hex size by around 66%.[/img]
+	[img=MenuIcons::3;20]Quadrupling the hex count of a Titan's subsystem will increase its size by approximately 33% compared to a non-Titan.[/img]
+	[img=MenuIcons::3;20]High hex limit allows more intricate ship designs, particularly useful when combining different armor types.[/img]
+	[img=Plus]Build, labor and maintenance costs are reduced by 5%.[/img]
+	[img=Minus]Increases mass, and reduces hyperdrive speed and jumpdrive safe range, by 25%.[/img]
+	[img=Minus]Repair and shield regeneration rates are reduced by 25%.[/img]
+	[img=MenuIcons::3;20][color=#aaa][i]Can only be used for ships of size 1000 or greater.[/i][/color][/img]
+	[img=MenuIcons::3;20][color=#aaa][i]Cannot be used on a ship with Exotic Superstructure.[/i][/color][/img]
 >>
 
+S_COLOSSUS_HULL: Colossus Architecture
+S_COLOSSUS_HULL_DESC: <<
+	An exceptionally large and resilient hull architecture capable of going toe to toe with even the largest of foes.
+
+	[img=MenuIcons::3;20]Increases hex limit by 900%.[/img]
+	[img=Plus]Doubles all health and damage resistance.[/img]
+	[img=Plus]Triples shield capacity.[/img]
+	[img=Plus]Reduces maintenance cost by 25%.[/img]
+	[img=Plus]Triples weapon damage, halves projectile spread, and increases range by 50%.[/img]
+	[img=Minus]Increases build and labor costs by 50%.[/img]
+	[img=Minus]Mass is doubled, and hyperdrive speed and jumpdrive safe range are halved.[/img]
+	[img=Minus]Weapon supply consumption and reload time are tripled.[/img]
+	[img=MenuIcons::3;20][color=#aaa][i]Can only be used for ships of size 3000 or greater.[/i][/color][/img]
+	[img=MenuIcons::3;20][color=#aaa][i]Cannot be used on a ship with Titan Architecture or Exotic Superstructure.[/i][/color][/img]
+>>
+
+S_SUPERSTRUCTURE_HULL: Exotic Superstructure
+S_SUPERSTRUCTURE_HULL_DESC: <<
+	Construct the ship's superstructure out of exotic ores mined primarily from asteroids, making them incredibly easy to construct at the cost of complicating reconstruction and decreasing structural stability.
+
+	[img=Plus]Build and labor costs are decreased by 66%.[/img]
+	[img=Plus]Maintenance costs are decreased by 50%.[/img]
+	[img=Minus]All health and damage resistance is reduced by 25%.[/img]
+	[img=Minus]Hexes reduced to 25% health or less cannot be repaired without refitting at an object with Labor.[/img]
+	[img=Minus]Building the ship requires Ore equivalent to 75% of its build and labor costs, and 37.5% of its maintenance cost.[/img]
+	[img=MenuIcons::3;20][color=#aaa][i]Cannot be used on a ship with Titan Architecture.[/i][/color][/img]
+>>
+
+S_CARRIER_HULL: Carrier Architecture
 S_CARRIER_HULL_DESC: <<
-	A hull specifically designed to control and maintain a large fleet of support ships.
+	A hull architecture specifically designed to control and maintain a large fleet of support ships.
 
 	[img=Plus]Doubles any support capacity.[/img]
-	[img=Plus]Doubles all health and shield capacity.[/img]
-	[img=Plus]Increases supply capacity by 50%.[/img]
-	[img=Minus]Cannot have any weapons on the flagship.[/img]
-	[img=Minus]Less internal space available.[/img]
-	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+	[img=Plus]Increases all health and shield capacity by 50%.[/img]
+	[img=Plus]Increases supply capacity by 400%.[/img]
+	[img=Minus]Weapon damage is reduced by 40%.[/img]
+	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
+	[img=Minus]Reduces the hex limit by 26 hexes, without a corresponding increase in hex size.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Carrier Architecture requires that 20% of the ship's interior is dedicated to Support Command, before accounting for the reduced hex limit.[/color][/i][/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Carrier Architecture can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_DESTROYER_HULL: Destroyer Architecture
+S_DESTROYER_HULL_DESC: <<
+	A hull architecture optimized to fit many different weapon turrets at the cost of limiting its support contingent.
+
+	[img=Plus]Increases health by 200%.[/img]
+	[img=Plus]Increases armor resistance by 50%.[/img]
+	[img=Plus]Increases shield capacity by 350%.[/img]
+	[img=Plus]Decreases mass by 30%. Also increases hyperdrive speed and jump drive safe range by the same percentage.[/img]
+	[img=Plus]Increases the hex limit by 30 hexes, without a corresponding decrease in hex size..[/img]
+	[img=Minus]Support capacity is decreased by 40%.[/img]
+	[img=Minus]Weapon range reduced by 30%.[/img]
+	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Destroyer Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
 
 S_SHIELDED_AMGEN_DESC: <<
@@ -687,7 +746,7 @@ S_SELF_DESTRUCT_DESC: <<
 	A massive warhead designed to detonate when the host vessel is critically damaged or captured.
 
 	[img=Plus]Deals extreme damage in a large area when the ship is destroyed.[/img]
-	[img=MenuIcons::3;22]If this subsystem is active when the ship is captured or disabled, the ship will explode.[/img]
+	[img=MenuIcons::3;20]If this subsystem is active when the ship is captured or disabled, the ship will explode.[/img]
 	[img=Minus]You die.[/img]
 >>
 S_SELF_DESTRUCT: Self-Destruct Device
@@ -722,4 +781,17 @@ S_SUPPORT_SHRINE_DESC: <<
 
 	[img=Plus]Adds a Shield to the ship. Shrine-based shielding has significantly higher capacity, but has a limited absorption rate.[/img]
 	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_SPINAL_MOUNT: Spinal Weapon Mount
+S_SPINAL_MOUNT_DESC: <<
+	Mounts this weapon as a massive, mostly stationary weapon emplacement on the ship's hull, increasing its firepower at the cost of more complicated construction and reduced firing rates.
+
+	[img=Plus]Triples weapon damage.[/img]
+	[img=Plus]Increases weapon range by 20%, and halves projectile spread.[/img]
+	[img=Minus]Doubles weapon reload times.[/img]
+	[img=Minus]Triples weapon supply cost.[/img]
+	[img=Minus]Increases build, labor and maintenance costs by 20%.[/img]
+	[img=Minus]Increases weapon mass by 50%.[/img]
+	[img=Minus]Reduces weapon firing arc by 60%.[/img]
+	[img=MenuIcons::3;20]Can only be mounted on weapons with a firing arc.[/img]
 >>

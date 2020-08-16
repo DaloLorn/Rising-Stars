@@ -111,6 +111,10 @@ SpriteSheet: MatterDisruptor
 	Size: 234,180
 	Spacing: 2
 
+Material: SpinalMount
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/massivemount.png
+
 // *********************************************************
 // **********************MODIFIERS**************************
 // *********************************************************
