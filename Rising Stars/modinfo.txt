@@ -10,7 +10,7 @@
 
 		[b]NOTE: This mod now depends on the SR2 Community Patch to function. Workshop users can subscribe to it from the Required Items section to the right. Users of SR2MM 1.1.0 should have it automatically installed as a dependency. Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Community Patch GitHub repository, listed at the bottom of this modinfo.[/b]
 
-		[b][h1]Current version: 1.3.0 (The Khalerii Endeavour)[/h1][/b]
+		[b][h1]Current version: 1.3.1 (The Khalerii Endeavour)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
 		[*]Six new lifestyles with various pros and cons[list]
 		[*]Berserkers, exemplified by the warlike Rahta race[list]
