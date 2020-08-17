@@ -1943,7 +1943,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 						int value = round(dsg.size);
 						strengths[obj.owner.index] += value;
 					}
-					if(obj.owner.major) {
+					if(obj.owner.major && !ship.getDisableRegionVision() && system.donateVision) {
 						for(uint i = 0; i < getEmpireCount(); i++) {
 							Empire@ other = getEmpire(i);
 							if(other !is obj.owner && other.major && other.valid && region.getSystemFlag(other, EARLY_WARNING_FLAG) && other.isHostile(obj.owner))
