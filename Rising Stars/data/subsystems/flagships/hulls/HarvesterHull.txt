@@ -2,7 +2,7 @@ Subsystem: HarvesterHull
 	Name: #S_HARVESTER
 	Description: #S_HARVESTER_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore
+	Tags: Applied:Hull, Applied:Carriers, Category:Hulls, NoCore
 	Tags: CannotDonate
 	Hull: Flagship
 	EvaluationOrder: -200
@@ -20,7 +20,6 @@ Subsystem: HarvesterHull
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)
 	AddShipModifier: DamageMult(0.25)
-	AddShipModifier: SupportCapacityMult(0)
 	AddShipModifier: CargoStorageMult(10)
 	AddShipModifier: BuildCostFactor(1.5 + TerraformCostMod)
 
@@ -35,6 +34,9 @@ Subsystem: HarvesterHull
 
 	Assert: ShipTotalHexes - Ship.ExternalHexes == floor(Sum.HexLimit)
 		Message: #ERROR_MUST_BE_FILLED
+
+	Assert: Sum.SupportCapacity == 0
+		Message: #ERROR_CANNOT_HAVE_SUPPORT
 
 	Module: Default
 		Sprite: QuickbarIcons::2

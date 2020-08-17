@@ -2,7 +2,7 @@ Subsystem: CarrierHull
 	Name: #S_CARRIER_HULL
 	Description: #S_CARRIER_HULL_DESC
 
-	Tags: Applied, Category:Hulls, NoCore, Hull
+	Tags: Applied:Carriers, Category:Hulls, NoCore, Hull
 	Tags: HeraldsDLC
 	Hull: Flagship
 	EvaluationOrder: -200
