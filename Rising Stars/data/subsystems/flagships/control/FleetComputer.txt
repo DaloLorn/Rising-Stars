@@ -10,6 +10,7 @@ Subsystem: FleetComputer
 	Hull: Flagship, Station
 	
 	Size := HexSize * Hexes
+	SupportCapSize := Size
 
 	Repair := 5 * Size
 	RepairSupplyCost := 1.0 * Repair
