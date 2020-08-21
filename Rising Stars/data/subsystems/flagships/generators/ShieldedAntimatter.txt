@@ -10,8 +10,8 @@ Subsystem: ShieldedAntimatter
 	Size := HexSize * Hexes
 	BasePower := 75 * Size
 	BaseSupplyCapacity := Size * 300
-	SupplyRate := Size * 75
-	CombatSupplyRate := SupplyRate / 10
+	SupplyRate := Size * 7.5
+	CombatSupplyRate := SupplyRate
 
 	Hex.Resistance := 0.5
 	BaseHP := 25 * HexSize
