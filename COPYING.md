@@ -62,11 +62,13 @@ These assets are edited art from the videogame Space Empires 5 by Malfador Machi
 `data/images/subsystems/boardingparty.png`
 `data/images/subsystems/buster.png`
 `data/images/subsystems/cargostorage.png`
+`data/images/subsystems/cloak.png`
 `data/images/subsystems/computer.png`
 `data/images/subsystems/controlchair.png`
 `data/images/subsystems/covariantshield.png`
 `data/images/subsystems/fusiongen.png`
 `data/images/subsystems/greatshrine.png`
+`data/images/subsystems/massivemount.png`
 `data/images/subsystems/newsensors.png`
 `data/images/subsystems/planetgenerator.png`
 `data/images/subsystems/progenitorcomputer.png`
