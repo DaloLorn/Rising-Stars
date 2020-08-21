@@ -51,27 +51,54 @@ import ftl;
 import empire;
 #section all
 
+#section server
+void breakableHexesImpl(DamageEvent& evt, const vec2u& position) {
+	auto@ bp = evt.blueprint;
+
+	// Manually damage the hex, since the caller will undoubtedly
+	// return DE_SkipHex, preventing the damage event from damaging this hex.
+	bp.damage(evt.target, evt, position);
+
+	HexStatus@ stat = bp.getHexStatus(position.x, position.y);
+	if(int(stat.hp) < int(bp.design.variable(position, HV_BreakThreshold) * 255)) {
+		stat.flags |= HF_NoRepair;
+		if(stat.hp == 0) {
+			stat.flags |= HF_Gone;
+			bp.removedHP += bp.design.variable(position, HV_HP);
+		}
+	}
+}
+#section all
+
 class BreakableHexes : SubsystemEffect {
 	Document doc("The subsystem's hexes will no longer be repairable after they reach a certain threshold. NOTE: This hook is automatically applied to all subsystems already, and should not be used directly!");
 
 #section server
 	DamageEventStatus damage(SubsystemEvent& sysEvent, DamageEvent& evt, const vec2u& position) const override {
-		auto@ sys = evt.source;
-		auto@ bp = evt.blueprint;
-
-		bp.damage(evt.target, evt, position);
-
-		HexStatus@ stat = bp.getHexStatus(position.x, position.y);
-		if(stat.hp < uint(bp.design.variable(position, HV_BreakThreshold) * 255)) {
-			stat.flags |= HF_NoRepair;
-			if(stat.hp == 0) {
-				stat.flags |= HF_Gone;
-				bp.removedHP += bp.design.variable(position, HV_HP);
-			}
-		}
+		breakableHexesImpl(evt, position);
 		return DE_SkipHex;
 	}
 #section all
+}
+
+class DamagePassthrough : SubsystemEffect {
+	Document doc("The subsystem will take full weapon damage, but will not reduce the damage passing through to other hexes, and will instead let it through as if it had not been damaged at all.");
+
+#section server
+	DamageEventStatus damage(SubsystemEvent& sysEvent, DamageEvent& evt, const vec2u& position) const override {
+		// Remember the damage that came in.
+		double dmg = evt.damage;
+
+		// We need to return DE_SkipHex in order to send the damage event on its way.
+		// However, doing so will prevent BreakableHexes from being called, so we need 
+		// to emulate its behavior ourselves.
+		breakableHexesImpl(evt, position);
+
+		// Restore any damage that was spent on hurting us.
+		evt.damage = dmg;
+
+		return DE_SkipHex;
+	}
 }
 
 class Regeneration : SubsystemEffect {
