@@ -4,18 +4,22 @@ Subsystem: SupportCapModule
 	BaseColor: #d6d300
 	Picture: SubsystemButtonArt::8 * #fdffa8
 	Elevation: 3
-	
+
 	Tags: ScaledCost, Category:Control, SupportCap
 	Tags: DefaultUnlock, NonContiguous, NoCore, HasInternals
 	Hull: Flagship, Station
-	
+
 	Size := HexSize * Hexes
 	SupportCapSize := Size
 	BaseSupportCapacity := Size * 28
-	
+
 	Hex.Resistance := 0.2
 	BaseHP := 18 * HexSize
 	Hex.Mass := HexSize
-	
+
+	Defense := SupportCapacity / 2 / 600
+	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
+	SupportCapacityMod := 1
+	Hook: IfInOwnedSpace(AddLocalDefense(Defense, Global Factor = 0), Allow Allies = True)
 	Module: Default
 		Sprite: SupportCommand

@@ -815,3 +815,11 @@ S_CLOAKPLATING_DESC: <<
 	[img=Minus]Losing even a single hex breaks the stealth effect.[/img]
 	[img=MenuIcons::3;20][color=#aaa]The ship's exterior must be fully covered with stealth coating in order to successfully maintain stealth.[/color][/img]
 >>
+SUPPORTCAPMODULE_DESC: <<
+	Technical infrastructure for commanding a fleet of support ships.
+
+	[img=ActionBarIcons::2;22]Provides [b][color=#00cffe]Support Command[/color][/b].[/img]
+	[img=Plus]Slowly builds new support ships while out of combat in friendly space, as if it were generating Defense.[/img]
+	[img=MenuIcons::3;22]Support ships will not be built if the fleet is full.[/img]
+	[img=Minus]May lose control over support ships when destroyed.[/img]
+>>
