@@ -17,9 +17,9 @@ Subsystem: MinerHull
 	AddShipModifier: CargoStorageMult(3.0)
 	AddShipModifier: OreProcessFactor(1.2)
 	AddShipModifier: LaborIncomeFactor(1.2)
-	AddShipModifier: DamageMult(0.2)
+	AddShipModifier: DamageMult(0.1)
 	AddShipModifier: SupplyCapacityMult(1.5)
-	AddShipModifier: SupportCapacityMult(0.2)
+	AddShipModifier: SupportCapacityMult(0.1)
 	AddShipModifier: BuildCostFactor(0.75)
 	AddShipModifier: LaborCostFactor(0.75)
 
