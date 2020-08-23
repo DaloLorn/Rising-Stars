@@ -18,8 +18,8 @@ Subsystem: SupportCapModule
 	Hex.Mass := HexSize
 
 	Defense := SupportCapacity / 2 / 600
-	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
 	SupportCapacityMod := 1
+	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
 	Hook: IfInOwnedSpace(AddLocalDefense(Defense, Global Factor = 0), Allow Allies = True)
 	Module: Default
 		Sprite: SupportCommand
