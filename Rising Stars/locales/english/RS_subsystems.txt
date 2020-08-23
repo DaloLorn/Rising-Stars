@@ -795,3 +795,12 @@ S_SPINAL_MOUNT_DESC: <<
 	[img=Minus]Reduces weapon firing arc by 60%.[/img]
 	[img=MenuIcons::3;20]Can only be mounted on weapons with a firing arc.[/img]
 >>
+S_CLOAKING_DEVICE: Cloaking Device
+S_CLOAKING_DEVICE_DESC: <<
+	This sophisticated device generates an energy field that makes the fleet transparent to most sensor equipment.
+
+	[img=Plus]When activated, fleet cannot be seen from a distance.[/img]
+	[img=ResourceIcon::2;22]Cloak slowly drains [b][color=#42b4bd]Energy[/color][/b] when active.[/img]
+	[img=Minus]Cloak is broken when the fleet enters combat.[/img]
+	[img=MenuIcons::3;20][color=#aaa]Larger cloaking devices drain less Energy, but are more expensive to maintain.[/color][/img]
+>>
