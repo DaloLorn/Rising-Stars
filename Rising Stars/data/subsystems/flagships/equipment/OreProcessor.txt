@@ -9,6 +9,7 @@ Subsystem: OreProcessor
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	Hex.Mass := HexSize
 
 	OreProcessRate := Size / 5
 	LaborProcessRate := OreProcessRate / 25 * 60

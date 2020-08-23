@@ -9,6 +9,7 @@ Subsystem: ConstructionBay
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	Hex.Mass := HexSize
 
 	LaborIncome := Size / 4
 
