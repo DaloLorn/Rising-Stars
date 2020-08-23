@@ -15,4 +15,4 @@ Technology: CloakPlating
 
 	SecondaryEnergyCost(750)
 
-	ModAttribute(ProgenitorTechProgress, Add, 2.5)
+	ModAttribute(ProgenitorTechProgress, Add, 1.0)

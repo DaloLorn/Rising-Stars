@@ -2,24 +2,24 @@ Subsystem: CloakingDevice
 	Name: #S_CLOAKING_DEVICE
 	Description: #S_CLOAKING_DEVICE_DESC
 	BaseColor: #5188e6
-	Elevation: -3
+	Elevation: 2
 
-	Tags: Category:Equipment, NoWall, NoFloor, PassExterior
-	Tags: NoCore, NonContiguous, Ephemeral
+	Tags: Category:Equipment, BaseCost, HasInternals, NonContiguous
 	Tags: Ability:Cloak
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
 
-	Ship.ExternalHexes := Ship.ExternalHexes + Hexes
 
-	Hex.BuildCost := 0.5 * ShipSize / Hexes
-	Hex.LaborCost := 0.05 * ShipSize / Hexes
+	BaseHP := 18 * HexSize
+	Hex.Mass := HexSize
+	Hex.MaintainCost := Hex.MaintainCost * (1 - Size / ShipSize)
+	Module: Core
+		Sprite: CloakingDevice
 
-	Assert: Hexes == ExteriorHexes
-		Message: #ERROR_MUST_BE_EXTERIOR
-
-	OnCheckErrors: designs::checkCoversAllDirections
+		Hex.BuildCost := 2 * Hex.BuildCost
+		Hex.LaborCost := 2 * Hex.LaborCost
+	Requires:
+		Command = 1
 
 	Module: Default
-		Sprite: PlateArmor * #5188e6a0

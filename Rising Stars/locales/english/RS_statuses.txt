@@ -97,3 +97,9 @@ STATUS_FTL_JAMMER_COMBAT: FTL Suppressor Shorter
 STATUS_FTL_JAMMER_COMBAT_DESC: <<
 	An enemy FTL suppressor is shorting out the electrical circuits on this vessel, reducing its combat strength by 30%.
 >>
+STATUS_STEALTHED_DESC: <<
+	This fleet is currently stealthed.
+
+	Stealthed fleets cannot be seen through region vision, but the stealth effect breaks when the stealth coating is damaged.
+>>
+STATUS_STEALTHED: Stealthed

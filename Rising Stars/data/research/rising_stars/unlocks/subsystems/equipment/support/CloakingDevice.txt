@@ -1,0 +1,18 @@
+Technology: CloakingDevice
+	Name: #R_SYS_CLOAKING_DEVICE
+	Description: #R_SYS_CLOAKING_DEVICE_DESC
+	Class: Unlock
+	Category: Equipment - Support
+
+	Point Cost: 500
+	Time Cost: 90
+
+	Icon: CloakingDevice
+	Color: #5188e6
+
+	UnlockSubsystem(CloakingDevice)
+	SkipOnUnlockedSubsystem(CloakingDevice)
+
+	SecondaryEnergyCost(750)
+
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

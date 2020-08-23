@@ -528,6 +528,19 @@ R_IMP_REPLICATOR_CONSTRUCTION_DESC: <<
 
 	Reduces the Ore cost of Orbital Replicators by $1.
 >>
+R_SYS_CLOAKING_DEVICE: Cloaking Device
+R_SYS_CLOAKING_DEVICE_DESC: <<
+	[color=#aaa][i]Unlocks the Cloaking Device subsystem.[/i][/color]
+
+	[bbloc=#S_CLOAKING_DEVICE_DESC/]
+>>
+R_SYS_CLOAKPLATING_DESC: <<
+	[color=#aaa][i]Unlocks the Stealth Coating subsystem.[/i][/color]
+
+	[bbloc=#S_CLOAKPLATING_DESC/]
+>>
+R_SYS_CLOAKPLATING: Stealth Coating
+
 
 ************************************
 *** SPECIALIZATION TECHS GO HERE ***

@@ -802,5 +802,16 @@ S_CLOAKING_DEVICE_DESC: <<
 	[img=Plus]When activated, fleet cannot be seen from a distance.[/img]
 	[img=ResourceIcon::2;22]Cloak slowly drains [b][color=#42b4bd]Energy[/color][/b] when active.[/img]
 	[img=Minus]Cloak is broken when the fleet enters combat.[/img]
-	[img=MenuIcons::3;20][color=#aaa]Larger cloaking devices drain less Energy, but are more expensive to maintain.[/color][/img]
+	[img=MenuIcons::3;22][color=#aaa]Larger ships cost more Energy to cloak.[/color][/img]
+	[img=MenuIcons::3;22][color=#aaa]Larger cloaking devices are cheaper to maintain.[/color][/img]
+>>
+S_CLOAKPLATING: Stealth Coating
+S_CLOAKPLATING_DESC: <<
+	Fully covering a ship with a hyperabsorbent material significantly reduces its visibility to most sensors, but does not contribute much to its endurance.
+
+	[img=Plus]Reduces the distance at which the fleet can be seen.[/img]
+	[img=Minus]Expensive to build and maintain.[/img]
+	[img=Minus]Extremely fragile, and offers no protection of any kind whatsoever to the rest of the ship.[/img]
+	[img=Minus]Losing even a single hex breaks the stealth effect.[/img]
+	[img=MenuIcons::3;20][color=#aaa]The ship's exterior must be fully covered with stealth coating in order to successfully maintain stealth.[/color][/img]
 >>

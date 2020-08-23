@@ -1,0 +1,7 @@
+Status: Stealthed
+	Name: #STATUS_STEALTHED
+	Description: #STATUS_STEALTHED_DESC
+	Icon: PlateArmor * #5188e6a0
+	Color: #5188e6
+
+	NoRegionVision()

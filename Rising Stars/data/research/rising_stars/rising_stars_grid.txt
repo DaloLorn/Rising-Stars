@@ -380,7 +380,7 @@ Grid: RisingStars
 	MuonCannon: 12,-2
 	VoidRay: 10,-2
 	MatterDisruptor: 12,2
-	CloakPlating: 5,12
+	CloakingDevice: 5,12
 	Connector: -2,18
 	GravitonCondenser: -3,17
 	FlareBomb: -3,18
@@ -424,3 +424,4 @@ Grid: RisingStars
 	Connector: -9,-8
 	Connector: -10,-9
 	Connector: 2,-12
+	CloakPlating: 5,-11
