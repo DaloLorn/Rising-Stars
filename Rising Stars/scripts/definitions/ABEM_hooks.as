@@ -75,6 +75,11 @@ class BreakableHexes : SubsystemEffect {
 
 #section server
 	DamageEventStatus damage(SubsystemEvent& sysEvent, DamageEvent& evt, const vec2u& position) const override {
+		// TODO for next save-breaking patch: Replace this hacky workaround with a special tag on Liquid and Ferrofluid armors.
+		string ident = sysEvent.subsystem.type.id;
+		if(ident.contains_nocase("LiquidArmor") || ident.contains_nocase("FerrofluidArmor"))
+			return DE_Continue;
+
 		breakableHexesImpl(evt, position);
 		return DE_SkipHex;
 	}
