@@ -1006,8 +1006,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 					if(reg.ContestedMask & other.mask == 0) {
 						other.ContestedSystems += 1;
 					}
-					if(isServer && reg.ContestedMask & other.mask == 0 && planetCounts[i] > 0)
+#section server
+					if(reg.ContestedMask & other.mask == 0 && planetCounts[i] > 0)
 						other.notifyWarEvent(region, WET_ContestedSystem);
+#section all
 				}
 			}
 			
@@ -1943,6 +1945,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 						int value = round(dsg.size);
 						strengths[obj.owner.index] += value;
 					}
+#section server
 					if(obj.owner.major && !ship.getDisableRegionVision() && system.donateVision) {
 						for(uint i = 0; i < getEmpireCount(); i++) {
 							Empire@ other = getEmpire(i);
@@ -1950,6 +1953,7 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 								other.notifyWarEvent(region, WET_HostilesInSystem);
 						}
 					}
+#section all
 				}
 				calculateShips(region);
 			}
