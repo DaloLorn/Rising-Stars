@@ -35,7 +35,7 @@ ERROR_FORCEFIELD_EMITTERCOUNT: Forcefields may not have more than 5 hexes per em
 ERROR_CARRIER_SUPPORT: Carrier Architecture requires that at least $1% of the ship's interior is dedicated to Support Command and Fleet Computers.
 ERROR_DESTROYER_WEAPONS: Destroyer Architecture requires that at least $1% of the ship's interior is dedicated to weapons.
 ERROR_CANNOT_HAVE_ARCHITECTURE: Bombship Hull cannot have any other Hulls or Architectures applied.
-ERROR_SPINAL_MOUNT: $1 has a minimum size of $2, and must comprise at least $3 of the ship's internal space.
+ERROR_SPINAL_MOUNT_SIZE: $1 has a minimum size of $2, and must comprise at least $3 of the ship's internal space.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -514,7 +514,7 @@ S_DESTROYER_HULL_DESC: <<
 	[img=Plus]Increases armor resistance by 50%.[/img]
 	[img=Plus]Increases shield capacity by 350%.[/img]
 	[img=Plus]Decreases mass by 30%. Also increases hyperdrive speed and jump drive safe range by the same percentage.[/img]
-	[img=Plus]Increases the hex limit by 30 hexes, without a corresponding decrease in hex size..[/img]
+	[img=Plus]Increases the hex limit by 30 hexes, without a corresponding decrease in hex size.[/img]
 	[img=Minus]Support capacity is decreased by 40%.[/img]
 	[img=Minus]Weapon range reduced by 30%.[/img]
 	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
