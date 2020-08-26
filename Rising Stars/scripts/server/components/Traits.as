@@ -134,7 +134,7 @@ tidy class Traits : Component_Traits, Savable {
 		if(emp.FreeAttitudes > 0)
 			return 0;
 		int count = max(int(attitudes.length)-1, 0);
-		for(uint i = 0; i < count; ++i) {
+		for(int i = 0; i < count; ++i) {
 			if(attitudes[i].type.hidden || (attitudes[i].type.id == localGloryID))
 				count -= 1;
 		}

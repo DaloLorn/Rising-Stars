@@ -88,11 +88,12 @@ tidy class Traits : Component_Traits {
 	int getNextAttitudeCost(Empire& emp) {
 		if(emp.FreeAttitudes > 0)
 			return 0;
-		for(uint i = 0; i < count; ++i) {
+		int count = max(int(attitudes.length)-1, 0);
+		for(int i = 0; i < count; ++i) {
 			if(attitudes[i].type.hidden || (attitudes[i].type.id == localGloryID))
 				count -= 1;
 		}
-		return config::ATTITUDE_BASE_COST + config::ATTITUDE_INC_COST * max(int(attitudes.length)-1, 0);
+		return config::ATTITUDE_BASE_COST + config::ATTITUDE_INC_COST * count;
 	}
 
 	void readAttitudes(Message& msg, bool initial) {
