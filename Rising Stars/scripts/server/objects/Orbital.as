@@ -913,7 +913,7 @@ tidy class OrbitalScript {
 	}
 
 	void scuttle(Orbital& obj) {
-		if(contestion != 0)
+		if(obj.inCombat || contestion != 0)
 			return;
 		obj.destroy();
 	}

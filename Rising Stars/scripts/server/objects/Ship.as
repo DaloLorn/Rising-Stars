@@ -674,7 +674,8 @@ tidy class ShipScript {
 	}
 	
 	void scuttle(Ship& ship) {
-		ship.destroy();
+		if(!ship.inCombat)
+			ship.destroy();
 	}
 
 	Object@ getLastHitBy() {

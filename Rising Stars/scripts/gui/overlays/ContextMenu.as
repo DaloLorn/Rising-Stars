@@ -1135,7 +1135,8 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 			}
 		}
 
-		//Asteroid base construction
+		//Asteroid base construction
+
 		if(clicked !is null && constructObj !is null && constructObj.hasConstruction
 			&& constructObj.canBuildAsteroids && clicked.isAsteroid &&
 			cast<Asteroid>(clicked).canDevelop(playerEmpire)
@@ -1301,7 +1302,7 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 			addOption(menu, selected, clicked, format(locale::RALLY_TO, clicked.name), Rally(), COLONIZE_ICON);
 
 	//Scuttle options
-	if(clicked is selected && clicked.owner.controlled) {
+	if(clicked is selected && clicked.owner.controlled && !clicked.inCombat) {
 		if(clicked.isOrbital && !cast<Orbital>(clicked).isContested)
 			addOption(menu, selected, clicked, locale::SCUTTLE, ScuttleOrbital());
 		else if(clicked.isShip && clicked.hasLeaderAI)
