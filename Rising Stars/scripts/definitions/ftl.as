@@ -3,8 +3,10 @@ from regions.regions import getRegion;
 #section all
 import orbitals;
 
-//DOF - Scaling: Adjusting for increased scaling
+// BEGIN NON-MIT CODE - DOF (Scaling)
+// Adjusting for increased scaling
 const double HYPERDRIVE_COST = 0.02;
+// END NON-MIT CODE 
 const double HYPERDRIVE_START_COST = 25.0;
 const double HYPERDRIVE_CHARGE_TIME = 15.0;
 
@@ -69,8 +71,10 @@ bool canHyperdriveTo(Object& obj, const vec3d& pos) {
 	return !isFTLBlocked(obj, pos);
 }
 
-// DOF - Scaling: Adjusting for increased scaling
+// BEGIN NON-MIT CODE - DOF (Scaling)
+// Adjusting for increased scaling
 const double FLING_BEACON_RANGE = 250000.0;
+// END NON-MIT CODE 
 const double FLING_BEACON_RANGE_SQ = sqr(FLING_BEACON_RANGE);
 const double FLING_COST = 8.0;
 const double FLING_CHARGE_TIME = 15.0;
@@ -268,8 +272,10 @@ bool isFTLSuppressed(Object& obj) {
 	return false;
 }
 
-// DOF - Scaling: Adjusting for increased scaling
+// BEGIN NON-MIT CODE - DOF (Scaling)
+// Adjusting for increased scaling
 const double JUMPDRIVE_COST = 0.0015;
+// END NON-MIT CODE 
 const double JUMPDRIVE_START_COST = 50.0;
 const double JUMPDRIVE_CHARGE_TIME = 25.0;
 

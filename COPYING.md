@@ -6,6 +6,40 @@ All particle systems (`.ps`) are *also* licensed under the MIT license, though t
 
 All other file types (`.ogg`, `.png`, `.obj`, etc.) are considered to be the property of their respective creators and/or copyright holders, and may be removed from the repository at their request. It is not recommended to use these without prior consultation with the relevant authorities (or, at minimum, a copyright lawyer).
 
+## Non-MIT Code
+
+Any code blocks encapsulated in comments of the format `// BEGIN/END NON-MIT CODE - $SOURCE` are not covered by the MIT license, and instead follow the rules specified below for their respective values of `$SOURCE`. For instance:
+
+```
+// BEGIN NON-MIT CODE - DOF (Scaling)
+// something something DOF code here
+// END NON-MIT CODE
+```
+
+In the above example, `// something something DOF code here` would obey the rules specified for DOF.
+
+One-liners annotated with `// NON-MIT CODE - $SOURCE` may also occur at some places in the mod. The rules are the same - for instance, `add(CardMode(this)); // NON-MIT CODE - DOF (Enabling Influence Peddling)` still counts as DOF code.
+
+### `DOF`
+
+Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. All rights reserved; contact him for any permissions you may require.
+
+### `SOI`
+
+Code originated in Shores of Infinity. Licensing TBA.
+
+### `CP:$SUBSOURCE`
+
+Content from the SR2 Community Patch. See the rules for the specified value of `$SUBSOURCE` in the Community Patch repository. For example:
+
+```
+// BEGIN NON-MIT CODE - CP:DOF
+// something something DOF contributions to the CP here
+// END NON-MIT CODE
+```
+
+In the above example, `// something something DOF contributions to the CP here` would obey the rules specified by the CP for DOF contributions. (These may or may not be the same as the rules specified in this list, so make sure to review the CP files!)
+
 ## Art sources
 
 ### Original assets - trivial

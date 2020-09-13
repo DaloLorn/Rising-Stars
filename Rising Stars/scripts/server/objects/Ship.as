@@ -1402,8 +1402,11 @@ tidy class ShipScript {
 		double adjustedCores = ship.blueprint.getEfficiencySum(SV_ShieldCores);
 		if(shieldHexes <= 0)
 			return 0;
+		// BEGIN NON-MIT CODE - DOF (Mitigation)
 		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - adjustedCores) - 1, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
+		// END NON-MIT CODE
 		if(mitigation < 0) {
+			print(ship.name);
 			print("Shield Hexes = " + shieldHexes);
 			print("Shield Exponent = " + shieldMitExponent);
 			print("Shield Cores = " + adjustedCores);

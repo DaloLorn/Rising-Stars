@@ -87,8 +87,10 @@ class Mechanoid : Race, RaceResources, RaceColonization {
 	}
 
 	double transferCost(double dist) {
-		// DOF - Adjusting for increased galaxy size
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Adjusting for increased galaxy size
 		return 20 + dist * 0.0001;
+		// END NON-MIT CODE
 	}
 
 	bool orderColonization(ColonizeData& data, Planet@ sourcePlanet) {

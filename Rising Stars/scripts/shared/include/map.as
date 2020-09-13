@@ -2,9 +2,10 @@
 import maps;
 
 const int DEFAULT_SYSTEM_COUNT = 60;
-// DOF - Scaling
+// BEGIN NON-MIT CODE - DOF (Scaling)
 const double DEFAULT_SPACING = 130000.0;
 const double MIN_SPACING = 130000.0;
+// END NON-MIT CODE
 
 void init() {
 	auto@ mapClass = getClass("Map");

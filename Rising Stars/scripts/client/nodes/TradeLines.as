@@ -70,9 +70,11 @@ class TradeLinesNodeScript {
 			line.path.start += off * system.radius;
 			line.path.end -= off * line.to.radius;
 
+			// BEGIN NON-MIT CODE - DOF (Scaling)
 			line.side = (quaterniond_fromAxisAngle(vec3d_up(), pi * 0.5) * off) * 64.0;
 			line.path.start -= line.side;
 			line.path.end -= line.side;
+			// END NON-MIT CODE 
 
 			//Discover maximum distance
 			double dist = line.path.length + system.radius + line.to.radius;

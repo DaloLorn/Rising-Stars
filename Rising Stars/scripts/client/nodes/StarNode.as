@@ -9,8 +9,9 @@ final class StarNodeScript {
 	}
 
 	void render(Node& node) {
-		// DOF - Scaling
+		// BEGIN NON-MIT CODE - DOF (Scaling)
 		double dist = node.sortDistance / (1000.0 * node.abs_scale * pixelSizeRatio);
+		// END NON-MIT CODE 
 		
 		if(dist < 1.0) {
 			drawBuffers();
@@ -53,8 +54,9 @@ final class StarNodeScript {
 		if(dist > 0.5) {
 			Color col(node.color);
 			col.a = dist > 1.0 ? 255 : int((dist - 0.5)*255.0/0.5);
-			// DOF - Scaling
+			// BEGIN NON-MIT CODE - DOF (Scaling)
 			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 128.0, 0.0, col);
+			// END NON-MIT CODE 
 		}
 	}
 };

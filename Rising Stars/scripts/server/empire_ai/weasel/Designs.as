@@ -186,9 +186,10 @@ tidy final class DesignTarget {
 		if(purpose != DP_Scout && purpose != DP_Slipstream && purpose != DP_Mothership) {
 			predictDPS += dsg.total(SV_DPS);
 
-			// DOF - new strength calculations
+			// BEGIN NON-MIT CODE - DOF (Fleet Calc)
 			double DestroyerMod = dsg.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
 			predictHP += (dsg.totalHP + dsg.total(SV_Repair)/3.0*pow(max(log10(dsg.total(SV_Repair)/3.0),0.0),2.0)) * (1.0+log10(dsg.size)*0.1) * DestroyerMod + ((1.0 + max(log10(dsg.total(SV_ShieldRegen) / (1.0 - dsg.total(SV_DummyMitigation)/100))*1.5,1.0)) * (dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_DummyMitigation)/100)) / (1.0 - dsg.total(SV_Chance))) + (dsg.size/20 * dsg.total(SV_Instances) * (dsg.total(SV_Repair)/3 + dsg.total(SV_ShieldRegen)*(1 - dsg.total(SV_DummyMitigation)/100)/(1 - dsg.total(SV_Chance))));
+			// END NON-MIT CODE 
 
 			predictDrain += dsg.total(SV_SupplyDrain);
 
@@ -593,8 +594,10 @@ final class Designs : AIComponent {
 		double dps = dsg.total(SV_DPS);
 		if(dsg.total(SV_MiningRate) > 0)
 			return DP_Miner;
-		//DOF - Changing this to be more lenient to scout classification
+		// BEGIN NON-MIT CODE - DOF
+		// Changing this to be more lenient to scout classification
 		if(dsg.size <= 16.0 && dsg.total(SV_DPS) < 10.0)
+		// END NON-MIT CODE
 			return DP_Scout;
 		if(dps > 0.1 * dsg.size || dsg.total(SV_SupportCapacity) > 0)
 			return DP_Combat;

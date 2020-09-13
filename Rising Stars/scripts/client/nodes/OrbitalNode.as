@@ -1,8 +1,10 @@
 import orbitals;
 from nodes.FleetPlane import SHOW_FLEET_PLANES;
 
-// DOF - Scaling: Make the viewable icon larger
+// BEGIN NON-MIT CODE - DOF (Scaling)
+// Make the viewable icon larger
 const double MAX_SIZE = 10000.0;
+// END NON-MIT CODE
 
 final class OrbitalNodeScript {
 	const Orbital@ obj;
@@ -12,7 +14,8 @@ final class OrbitalNodeScript {
 	OrbitalNodeScript(Node& node) {
 		node.transparent = true;
 		node.memorable = true;
-		//DOF - Disable AutoCulling
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Disable AutoCulling
 		//node.autoCull = false;
 	}
 	
@@ -29,14 +32,17 @@ final class OrbitalNodeScript {
 		if(def is null)
 			return;
 
+		// BEGIN NON-MIT CODE - DOF
 		// Dolynick: Distance at which the icon is displaced and how it scales?
+		// END NON-MIT CODE
 
 		// Dalo: My best guess is that this actually governs the 'fleet plane',
 		// the circle that displays the area across which support ships will spread out.
 		if(fleetPlane != 0 && node.sortDistance < 2000.0 && node.sortDistance >= 150.0 && SHOW_FLEET_PLANES) {
 			Color color(0xffffff14);
-			// DOF - Scaling
+			// BEGIN NON-MIT CODE - DOF (Scaling)
 			if(node.sortDistance < 500.0)
+			// END NON-MIT CODE
 				color.a = double(color.a) * (node.sortDistance - 150.0) / 100.0;
 			renderPlane(material::FleetCircle, node.abs_position, fleetPlane, color);
 		}
@@ -54,8 +60,10 @@ final class OrbitalNodeScript {
 		
 		undoTransform();
 
-		// DOF - Scaling: Range at which icon disappears for model view
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Range at which icon disappears for model view
 		if(node.sortDistance > 1000.0 && def.distantIcon.valid) {
+		// END NON-MIT CODE
 			double size = obj.radius * def.iconSize;
 			size *= node.sortDistance * 0.09;
 			size = min(size, MAX_SIZE);

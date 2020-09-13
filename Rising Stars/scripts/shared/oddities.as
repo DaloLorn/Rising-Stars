@@ -64,7 +64,7 @@ StrategicIconNode@ makeOddityVisuals(Oddity& obj, uint type, bool fromCreation =
 			pos.x += off.x;
 			pos.z += off.y;
 
-			double rad = obj.radius * 0.65 / 10.0; // DOF - Scaling
+			double rad = obj.radius * 0.65 / 10.0; // NON-MIT CODE - DOF (Scaling)
 			Colorf hsv;
 			hsv.fromHSV(h + normald(-70.0,70.0), clamp(s * normald(0.6,1.4), 0.0, 1.0), v);
 			Color col(hsv);

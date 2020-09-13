@@ -32,8 +32,10 @@ final class StarScript {
 		if(star.owner is null)
 			@star.owner = defaultEmpire;
 
-		// DOF - Scaling: Light increase for galaxy scaling
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Light increase for galaxy scaling
 		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
+		// END NON-MIT CODE
 		
 		double temp = star.temperature;
 		Node@ node;
@@ -178,16 +180,20 @@ final class StarScript {
 		if(!game_ending) {
 			double explRad = star.radius;
 			if(star.temperature == 0.0) {
+				// BEGIN NON-MIT CODE - DOF (Scaling)
+				// Bigger bang
 				explRad *= 1000.0;
 
 				for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 					auto@ sys = getSystem(i);
 					double dist = star.position.distanceTo(sys.position);
+					// Increased range
 					if(dist < 5000000.0) {
 						double factor = sqr(1.0 - (dist / 5000000));
 						sys.object.addStarDPS(factor * star.MaxHealth * 0.08);
 					}
 				}
+				// END NON-MIT CODE
 			}
 			playParticleSystem("StarExplosion", star.position, star.rotation, explRad);
 			

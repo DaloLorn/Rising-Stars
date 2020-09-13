@@ -119,7 +119,7 @@ class MapGeneration {
 	void prepareSystem(SystemData@ data, SystemDesc@ desc) {
 		if(data.homeworlds !is null && data.mirrorSystem !is null)
 			data.ignoreAdjacencies = true;
-		desc.radius = 5250.0;
+		desc.radius = 5250.0; // NON-MIT CODE - DOF (Scaling)
 		if(data.homeworlds !is null) {
 			const SystemType@ hwType = getSystemType("HomeSystem");
 			if(hwType !is null)
@@ -423,8 +423,10 @@ class MapGeneration {
 	void generateAutomatedLinks(uint targLinks = 3) {
 		AngularItem[] items(16);
 		uint cnt = systemData.length;
-		// DOF - Scaling: Adjusting for increased galaxy sizing
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Adjusting for increased galaxy sizing
 		double DOFDistMult = 20;
+		// END NON-MIT CODE
 		for(uint i = 0; i < cnt; ++i) {
 			SystemData@ desc = systemData[i];
 			if(!desc.autoGenerateLinks)
@@ -444,11 +446,13 @@ class MapGeneration {
 
 				double angle = offset.radians() + twopi;
 				double dist = offset.length;
+				// BEGIN NON-MIT CODE - DOF (Scaling)
 				if(dist > 31000.0 * DOFDistMult)
 					continue;
 
 				//double sz = atan(other.radius / dist);
 				double sz = atan(1200.0 * DOFDistMult / dist); //TODO: Base this on something?
+				// END NON-MIT CODE
 				
 				int closest = int(angle / twopi * 16.0);
 				int firstBox = int((angle - sz) / twopi * 16.0);
@@ -466,7 +470,9 @@ class MapGeneration {
 
 			//Turn items into links
 			uint linksMade = desc.adjacent.length;
+			// BEGIN NON-MIT CODE - DOF (Scaling)
 			double distReq = 13000.0 * DOFDistMult;
+			// END NON-MIT CODE
 			do {
 				for(uint p = 0, n = randomi(0,15); p < 16; ++p) {
 					AngularItem@ item = items[n];
@@ -482,7 +488,9 @@ class MapGeneration {
 						}
 
 						++linksMade;
+						// BEGIN NON-MIT CODE - DOF (Scaling)
 						if(distReq > 13000.0 * DOFDistMult && linksMade >= targLinks)
+						// END NON-MIT CODE
 							break;
 						@item.desc = null;
 					}
@@ -492,8 +500,10 @@ class MapGeneration {
 
 				//Slowly relax distance requirement until we have at least
 				//the target amount of links to work with.
+				// BEGIN NON-MIT CODE - DOF (Scaling)
 				distReq += 3000.0 * DOFDistMult;
 			} while(linksMade < targLinks && distReq <= 31000.0 * DOFDistMult);
+				// END NON-MIT CODE
 		}
 	}
 

@@ -196,6 +196,7 @@ void DamageShields(Event& evt, double Damage) {
 
 	Ship@ ship = cast<Ship>(evt.target);
 
+	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	// Shield Mitigation
 	double Mitigation = ship.mitigation;
 
@@ -213,6 +214,7 @@ void DamageShields(Event& evt, double Damage) {
 			leader.shieldDamage(Damage*(1-Mitigation));
 		}
 	}
+	// END NON-MIT CODE
 };
 
 DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direction, double Percentage) {
@@ -226,6 +228,7 @@ DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direc
 	if(shield < 0)
 		return DE_Continue;
 
+	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	//Shield Mitigation
 	double FlagshipMitigation = flagship.mitigation;
 
@@ -236,6 +239,7 @@ DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direc
 		evt.damage -= absorb;
 		flagship.shieldDamage(absorb*(1-FlagshipMitigation));
 	}
+	// END NON-MIT CODE
 	return DE_Continue;
 }
 
@@ -309,6 +313,7 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 
 		if(target.isShip) {
 			Ship@ ship = cast<Ship>(target);
+			// BEGIN NON-MIT CODE - DOF (Mitigation)
 			// Shield mitigation
 			if(ship.Shield > 0) {
 				//print(deal);
@@ -321,6 +326,7 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 				//print(deal);
 				ship.shieldDamage(ShieldDmg);
 			}
+			// END NON-MIT CODE
 			// Divide damage by hex count.
 			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes;
 			ship.damageAllHexes(deal, source=source);
