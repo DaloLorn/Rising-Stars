@@ -178,15 +178,13 @@ final class StarScript {
 		if(!game_ending) {
 			double explRad = star.radius;
 			if(star.temperature == 0.0) {
-				// DOF - Scaling: Bigger bang
-				explRad *= 200.0;
+				explRad *= 1000.0;
 
 				for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 					auto@ sys = getSystem(i);
 					double dist = star.position.distanceTo(sys.position);
-					//DOF - Scaling: Increased range
-					if(dist < 1000000.0) {
-						double factor = sqr(1.0 - (dist / 1000000));
+					if(dist < 5000000.0) {
+						double factor = sqr(1.0 - (dist / 5000000));
 						sys.object.addStarDPS(factor * star.MaxHealth * 0.08);
 					}
 				}
