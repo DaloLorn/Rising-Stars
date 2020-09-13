@@ -23,7 +23,7 @@ import AIComponent@ createEnergy() from "empire_ai.weasel.Energy";
 import IAIComponent@ createDiplomacy() from "empire_ai.weasel.Diplomacy";
 import AIComponent@ createConsider() from "empire_ai.weasel.Consider";
 import AIComponent@ createOrbitals() from "empire_ai.weasel.Orbitals";
-import AIComponent@ createInfrastructure() from "empire_ai.weasel.Infrastructure";
+import AIComponent@ createInfrastructure() from "empire_ai.weasel.Infrastructure"; // NON-MIT CODE - SoI (AI)
 
 import AIComponent@ createHyperdrive() from "empire_ai.weasel.ftl.Hyperdrive";
 import AIComponent@ createGate() from "empire_ai.weasel.ftl.Gate";
@@ -44,7 +44,7 @@ import bool hasInvasionMap() from "Invasion.InvasionMap";
 
 from buildings import BuildingType;
 from orbitals import OrbitalModule;
-from constructions import ConstructionType;
+from constructions import ConstructionType; // NON-MIT CODE - SoI (AI)
 import util.formatting;
 
 from empire import ai_full_speed;
@@ -383,7 +383,7 @@ final class AI : AIController, Savable {
 	IAIComponent@ diplomacy;
 	IAIComponent@ consider;
 	IAIComponent@ orbitals;
-	IAIComponent@ infrastructure;
+	IAIComponent@ infrastructure; // NON-MIT CODE - SoI (AI)
 
 	IAIComponent@ ftl;
 	IAIComponent@ race;
@@ -415,7 +415,7 @@ final class AI : AIController, Savable {
 		@diplomacy = add(createDiplomacy());
 		@consider = add(createConsider());
 		@orbitals = add(createOrbitals());
-		@infrastructure = add(createInfrastructure());
+		@infrastructure = add(createInfrastructure()); // NON-MIT CODE - SoI (AI)
 
 		//Make FTL component
 		if(empire.hasTrait(getTraitID("Hyperdrive")))

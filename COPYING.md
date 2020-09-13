@@ -24,7 +24,7 @@ One-liners annotated with `// NON-MIT CODE - $SOURCE` may also occur at some pla
 
 Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. All rights reserved; contact him for any permissions you may require.
 
-### `SOI`
+### `SOI` (or `SoI`)
 
 Code originated in Shores of Infinity. Licensing TBA.
 

@@ -14,19 +14,19 @@ const double REJUMP_MIN_DIST = 8000.0;
 
 class Jumpdrive : FTL {
 	Development@ development;
-	Budget@ budget;
+	Budget@ budget; // NON-MIT CODE - SoI (AI)
 	Fleets@ fleets;
 
 	int safetyFlag = -1;
 	array<Region@> safeRegions;
 
-	private double _maxSublightEta = 900;
+	private double _maxSublightEta = 900; // NON-MIT CODE - SoI (AI)
 
-	double get_maxSublightEta() const override { return _maxSublightEta; }
+	double get_maxSublightEta() const override { return _maxSublightEta; } // NON-MIT CODE - SoI (AI)
 
 	void create() override {
 		@development = cast<Development>(ai.development);
-		@budget = cast<Budget>(ai.budget);
+		@budget = cast<Budget>(ai.budget); // NON-MIT CODE - SoI (AI)
 		@fleets = cast<Fleets>(ai.fleets);
 
 		safetyFlag = getSystemFlag("JumpdriveSafety");
@@ -188,9 +188,11 @@ class Jumpdrive : FTL {
 			highestCost = max(highestCost, double(jumpdriveCost(flAI.obj, toPosition)));
 		}
 
+		// BEGIN NON-MIT CODE - SoI (AI)
 		//If we have a comfortable budget, double our requirements
 		if (ai.empire.EstNextBudget > budget.highThreshold)
 			highestCost *= 2;
+		// END NON-MIT CODE
 
 		development.aimFTLStorage = highestCost / (1.0 - ai.behavior.ftlReservePctCritical - ai.behavior.ftlReservePctNormal);
 

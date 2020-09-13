@@ -8,21 +8,22 @@ import ftl;
 from orders import OrderType;
 
 const double REJUMP_MIN_DIST = 8000.0;
-//SoI - Scaling
+// BEGIN NON-MIT CODE - SoI (Scaling)
 const double STORAGE_AIM_DISTANCE = 800000;
+// END NON-MIT CODE)
 
 class Hyperdrive : FTL {
 	Development@ development;
-	Budget@ budget;
+	Budget@ budget; // NON-MIT CODE - SoI (AI)
 	Fleets@ fleets;
 
-	private double _maxSublightEta = 900;
+	private double _maxSublightEta = 900; // NON-MIT CODE - SoI (AI)
 
-	double get_maxSublightEta() const override { return _maxSublightEta; }
+	double get_maxSublightEta() const override { return _maxSublightEta; } // NON-MIT CODE - SoI (AI)
 
 	void create() override {
 		@development = cast<Development>(ai.development);
-		@budget = cast<Budget>(ai.budget);
+		@budget = cast<Budget>(ai.budget); // NON-MIT CODE - SoI (AI)
 		@fleets = cast<Fleets>(ai.fleets);
 	}
 
@@ -43,8 +44,10 @@ class Hyperdrive : FTL {
 		//This makes me sad
 		if(position.distanceTo(obj.position) < 3000)
 			return false;
+		// BEGIN NON-MIT CODE - SoI (AI)
 		if (subETA(obj, position) > 120)
 			return true;
+		// END NON-MIT CODE
 		double pathDist = cast<Movement>(ai.movement).getPathDistance(obj.position, position, obj.maxAcceleration);
 		double straightDist = position.distanceTo(obj.position);
 		return pathDist >= straightDist * 0.6;
@@ -100,9 +103,11 @@ class Hyperdrive : FTL {
 			highestCost = max(highestCost, double(hyperdriveCost(flAI.obj, toPosition)));
 		}
 
+		// BEGIN NON-MIT CODE - SoI (AI)
 		//If we have a comfortable budget, double our requirements
 		if (ai.empire.EstNextBudget > budget.highThreshold)
 			highestCost *= 2;
+		// END NON-MIT CODE
 
 		development.aimFTLStorage = highestCost / (1.0 - ai.behavior.ftlReservePctCritical - ai.behavior.ftlReservePctNormal);
 	}

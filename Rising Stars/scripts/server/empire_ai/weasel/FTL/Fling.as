@@ -392,9 +392,11 @@ class Fling : FTL {
 			highestCost = max(highestCost, double(flingCost(flAI.obj, vec3d())));
 		}
 
+		// BEGIN NON-MIT CODE - SOI (AI)
 		//If we have a comfortable budget, double our requirements
 		if (ai.empire.EstNextBudget > budget.highThreshold)
 			highestCost *= 2;
+		// END NON-MIT CODE
 
 		development.aimFTLStorage = highestCost / (1.0 - ai.behavior.ftlReservePctCritical - ai.behavior.ftlReservePctNormal);
 	}
