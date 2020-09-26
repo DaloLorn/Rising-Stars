@@ -26,7 +26,7 @@ Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. A
 
 ### `SOI` (or `SoI`)
 
-Code originated in Shores of Infinity. Licensing TBA.
+Code originated in Shores of Infinity. All rights reserved; contact soloriens for any permissions you may require.
 
 ### `CP:$SUBSOURCE`
 

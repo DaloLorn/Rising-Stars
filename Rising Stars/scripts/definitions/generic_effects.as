@@ -4534,7 +4534,7 @@ class MatchOrbitingOwner : GenericEffect {
 			return;
 		}
 
-		if(orbit !is null && orbit.owner !is obj.owner) // NON-MIT CODE - SOI
+		if(orbit !is null && orbit.owner !is obj.owner)
 			@obj.owner = orbit.owner;
 	}
 #section all

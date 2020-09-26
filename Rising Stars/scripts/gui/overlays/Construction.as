@@ -983,7 +983,6 @@ class ConstructionDisplay : DisplayBox {
 		menu.flexWidth = false;
 		menu.width = 400;
 
-		// BEGIN NON-MIT CODE - SOI
 		ReadLock lock(playerEmpire.designMutex);
 		uint clsCount = playerEmpire.designClassCount;
 		for(uint i = 0; i < clsCount; ++i) {
@@ -1005,7 +1004,6 @@ class ConstructionDisplay : DisplayBox {
 				menu.updateAbsolutePosition();
 			}
 		}
-		// END NON-MIT CODE
 
 		menu.list.sortDesc();
 		menu.updateAbsolutePosition();
