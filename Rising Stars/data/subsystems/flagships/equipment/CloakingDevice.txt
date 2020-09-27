@@ -10,10 +10,11 @@ Subsystem: CloakingDevice
 
 	Size := HexSize * Hexes
 
-
 	BaseHP := 18 * HexSize
+	MaintCost := 8 * HexSize / ShipSize^0.5 * (1 - Size / ShipSize)
 	Hex.Mass := HexSize
-	Hex.MaintainCost := Hex.MaintainCost * (1 - Size / ShipSize)
+	Hex.MaintainCost := MaintCost
+
 	Module: Core
 		Sprite: CloakingDevice
 
