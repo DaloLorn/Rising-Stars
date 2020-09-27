@@ -2093,7 +2093,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		obj.takeoverPlanet(forEmpire);
 		forEmpire.modAttribute(EA_PlanetsConquered, AC_Add, 1.0);
 		if(forEmpire.GloryMode == 1) {
-			obj.owner.Glory += 100 * planet.Population;
+			obj.owner.Glory += 100 * prevPopulation;
 		}
 	}
 
