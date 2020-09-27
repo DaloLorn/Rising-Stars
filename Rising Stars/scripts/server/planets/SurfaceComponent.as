@@ -2085,10 +2085,16 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		//Notify previous owner
 		obj.owner.notifyWarEvent(obj, WET_LostPlanet);
+		if(obj.owner.GloryMode == 2) {
+			obj.owner.Glory -= 100 * prevPopulation;
+		}
 
 		//Annex the planet
 		obj.takeoverPlanet(forEmpire);
 		forEmpire.modAttribute(EA_PlanetsConquered, AC_Add, 1.0);
+		if(forEmpire.GloryMode == 1) {
+			obj.owner.Glory += 100 * planet.Population;
+		}
 	}
 
 	void abandon(Object& obj) {
