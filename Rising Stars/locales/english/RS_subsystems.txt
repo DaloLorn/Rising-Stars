@@ -499,6 +499,7 @@ S_CARRIER_HULL_DESC: <<
 	[img=Plus]Doubles any support capacity.[/img]
 	[img=Plus]Increases all health and shield capacity by 50%.[/img]
 	[img=Plus]Increases supply capacity by 400%.[/img]
+	[img=Plus]Doubles repair and shield regeneration rates.[/img]
 	[img=Minus]Weapon damage is reduced by 40%.[/img]
 	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
 	[img=Minus]Reduces the hex limit by 26 hexes, without a corresponding increase in hex size.[/img]
