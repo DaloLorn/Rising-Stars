@@ -226,7 +226,7 @@ tidy class CivilianScript {
 				obj.owner.CivilianTradeShips -= 1;
 			}
 			if((obj.inCombat || obj.engaged) && obj.owner.GloryMode == 2) {
-				obj.owner.Glory -= obj.radius;
+				obj.owner.Glory -= obj.radius * 2;
 			}
 			if(income != 0)
 				obj.owner.modTotalBudget(-income, MoT_Trade);

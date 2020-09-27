@@ -131,7 +131,7 @@ tidy class ColonyShipScript {
 		ship.Health -= evt.damage;
 		if(ship.Health <= 0) {
 			if(ship.owner !is null && ship.owner.valid && ship.owner.GloryMode == 2) {
-				ship.owner.Glory -= 5 * ship.CarriedPopulation;
+				ship.owner.Glory -= 10 * ship.CarriedPopulation;
 			}
 			ship.destroy();
 		}

@@ -987,10 +987,10 @@ tidy class OrbitalScript {
 			if(killCredit.ResearchFromKill != 0 && laborCost != 0)
 				killCredit.generatePoints(laborCost * killCredit.ResearchFromKill * 4 * max(obj.owner.TotalResearch, 2000.0) / max(killCredit.TotalResearch, 2000.0), false);
 			if(killCredit.GloryMode == 1) {
-				killCredit.Glory += laborCost * 4;
+				killCredit.Glory += laborCost * 8;
 			}
 			if(obj.owner.GloryMode == 2) {
-				obj.owner.Glory -= laborCost * 4;
+				obj.owner.Glory -= laborCost * 8;
 			}
 		}
 

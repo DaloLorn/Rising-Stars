@@ -148,7 +148,7 @@ tidy class FreighterScript {
 		ship.Health -= evt.damage;
 		if(ship.Health <= 0) {
 			if(ship.owner !is null && ship.owner.valid && ship.owner.GloryMode == 2) {
-				ship.owner.Glory -= 1;
+				ship.owner.Glory -= 2;
 			}
 			ship.destroy();
 		}

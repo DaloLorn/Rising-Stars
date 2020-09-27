@@ -141,7 +141,7 @@ tidy class CargoShipScript {
 		ship.Health -= evt.damage;
 		if(ship.Health <= 0) {
 			if(ship.owner !is null && ship.owner.valid && ship.owner.GloryMode == 2) {
-				ship.owner.Glory -= 1;
+				ship.owner.Glory -= 2;
 			}
 			if(evt.obj !is null) {
 				if(evt.obj.owner !is null && evt.obj.owner.valid) {
