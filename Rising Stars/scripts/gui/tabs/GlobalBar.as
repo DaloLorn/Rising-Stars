@@ -343,12 +343,11 @@ class BudgetResource : ResourceDisplay {
 				formatMoneyChange(playerEmpire.EstNextBudget, colored=true),
 				formatTime(playerEmpire.BudgetCycle - playerEmpire.BudgetTimer),
 				getSpriteDesc(welfareIcon.desc));
-		tt += format("\n[font=Medium]$1[/font]\n", locale::RESOURCE_BUDGET);
+		tt += format("\n\n[font=Medium]$1[/font]\n\n", locale::RESOURCE_BUDGET);
 		for(int i = MoT_COUNT - 1; i >= 0; --i) {
 			int money = playerEmpire.getMoneyFromType(i);
 			if(money != 0) {
-				tt += format("$1: [right]$2[/right]",
-					localize("MONEY_TYPE_"+i), formatMoneyChange(money, true));
+				tt += format(locale::GTT_ALIGNED_STAT, localize("MONEY_TYPE_"+i), formatMoneyChange(money, true)) + "[nl/]\n";
 			}
 		}
 

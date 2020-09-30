@@ -56,22 +56,6 @@ class GamePage : GameSettingsPage {
 };
 
 class AdvancedGamePage : GameSettingsPage {
-	// Need GuiGameFrequency's functionality with a tooltip, so I'm improvising from util.settings_page::SettingsPage and hoping it'll work.
-	// ... I have no idea what I'm doing, but it should work...
-	GuiGameFrequency@ Frequency(const string& text, const string& configName, double min = 0.0, double max = 2.0, Alignment@ align = null, const string& tooltip = "") {
-		if(align is null)
-			@align = nextAlignment();
-		GuiGameFrequency ele(cur, align, text, config(configName));
-		ele.defaultValue = config::get(configName);
-		ele.set(config::get(configName));
-		ele.setMin(min);
-		ele.setMax(max);
-		if(tooltip.length != 0)
-			setMarkupTooltip(ele, tooltip, width=300);
-		options.insertLast(ele);
-		return ele;
-	}	
-
 	void makeSettings() {
 		color = colors::Orange;
 		header = locale::NG_ADVANCED_OPTIONS;

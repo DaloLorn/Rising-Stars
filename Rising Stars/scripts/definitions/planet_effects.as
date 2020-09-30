@@ -1351,7 +1351,15 @@ class ConvertResource : GenericEffect {
 		double curProd = obj.getResourceProduction(resource.integer);
 		double total = info.taken + curProd;
 
-		double target = total - (total * (1.0 - convert_percent.decimal));
+		// CE
+		// if convert percent is 1, then the target should be 0
+		// if convert percent is 0, then the target should be total
+		// Vanilla has
+		// double target = total - (total * (1.0 - convert_percent.decimal));
+		// which works correctly for a convert percent of 0.5, but for
+		// a convert percent of 1, computes a target of total - 0
+		// which is wrong.
+		double target = total - (total * (convert_percent.decimal));
 		target = clamp(target, 0.0, total);
 
 		double newTaken = total - target;

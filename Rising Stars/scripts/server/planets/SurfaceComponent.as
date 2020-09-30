@@ -2418,7 +2418,14 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			calculatePopVars(obj);
 			deltaPop = true;
 		}
-		else if(bombardDecay > 0 && Population > 1.0) {
+		// CE: bombard effects should not be ignored just because a planet has
+		// more pop than it's max, some empires don't have pop decay anyway,
+		// and even if they do it doesn't make any sense that the decays
+		// wouldn't stack. This fixes a very easy exploit the Mono could do
+		// by transfering pop around to have 1 more pop than the max on
+		// each planet being bombarded which would make them completely immune
+		// to the carpet bombs!
+		if(bombardDecay > 0 && Population > 1.0) {
 			double decay = (Population * 0.25 * double(bombardDecay) / 60.0) * time;
 			Population = max(1.0, Population - decay);
 			calculatePopVars(obj);
