@@ -6,6 +6,11 @@ Status: BoardingParty
 	Icon: BoardingParty
 	Color: #ff1010
 
+	VisibleToOriginEmpire()
+	GivesVisionToOriginEmpire()
+
+	OnEnable(RemoveStatus(Infiltrated))
+
 	ABEM_boarding::BoardShip(BoardingStrength, BoardingStrength, 400, 100)
 
 Status: BoardingPartyTroops

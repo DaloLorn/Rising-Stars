@@ -11,3 +11,6 @@ Status: Infiltrated
 
 	TriggerPeriodic(AddPermanentEffectiveness(-0.035), Interval = 20, Max Triggers = 3)
 	OnDisable(AddPermanentEffectiveness(+0.105))
+
+	// This subsystem variable doesn't actually exist, so it'll just deal 1 DPS for the next 30 minutes.
+	ABEM_boarding::BoardShip(InfiltrationDummy, InfiltrationDummy, 1, 0)

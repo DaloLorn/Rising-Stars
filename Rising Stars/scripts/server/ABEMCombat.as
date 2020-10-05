@@ -70,12 +70,13 @@ void ABEMControlDestroyed(Event& evt) {
 	Ship@ ship = cast<Ship>(evt.obj);
 	int invaderID = getStatusID("IsInvader");
 	int boardingParty = getStatusID("BoardingParty");
+	int infiltrated = getStatusID("Infiltrated");
 
 	//Make sure we still have a bridge or something with control up
 	if(!ship.blueprint.hasTagActive(ST_ControlCore)) {
 		if(!ship.hasLeaderAI || ship.owner is Creeps || ship.owner is Pirates || (invaderID != -1 && ship.hasStatusEffect(invaderID)) || ship.blueprint.hasTagActive(ST_SelfDestruct))
 			ship.destroy();
-		else if (ship.hasStatusEffect(boardingParty)) {
+		else if (ship.hasStatusEffect(boardingParty) || ship.hasStatusEffect(infiltrated)) {
 			ship.grantDestructionRewards();
 			@ship.owner = defaultEmpire;
 		}

@@ -16,6 +16,7 @@ Card: Infiltrate
 	Target: ship = Object
 	TargetFilterFlagship(ship)
 	TargetFilterNotAllied(ship)
+	TargetFilterNotStatus(BoardingParty)
 
 	Trigger(ship, AddStatus(Infiltrated, Set Origin Empire = True, Duration = 1800))
 

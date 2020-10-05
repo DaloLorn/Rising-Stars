@@ -4,3 +4,14 @@ CLAUSE_GATESHARE_DESC: <<
 
 	While part of this treaty, your ships can pass through other signatories' stargates as if they were your own.
 >>
+CARD_INFILTRATE_DESC: <<|
+	Send a highly trained operative to infiltrate the command structure of an enemy fleet, getting ready to subtly sabotage it in combat, and spreading dissent amongst key officers in the fleet.
+
+	[i]The targeted enemy fleet grants you vision in the system it is in, and its flagship takes 1 damage per second to random internal hexes (not including Antimatter Generators). Over the next 60 seconds, the enemy fleet's efficiency and strength is slowly reduced by 10%. Effect lasts for 30 minutes.
+	
+	If the flagship reaches critical condition before the effect expires, it will become neutral for 60 seconds before transferring control to you.[/i]
+>>
+
+STATUS_INFILTRATED_DESC: <<
+	You have an operative infiltrated in this enemy fleet. It grants you vision, deals 1 damage per second to the flagship, and causes the fleet to have slightly reduced combat effectiveness. If critically damaged, the flagship will be transferred to your empire.
+>>
