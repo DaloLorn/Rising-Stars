@@ -76,7 +76,8 @@ class SightModifier : Savable {
 //Factor of new design cost as minimum for retrofit
 const double RETROFIT_MIN_PCT = 0.3;
 
-const double SHARED_XP_PCT = 0.1;
+const double SHARED_XP_PCT = 0.2;
+const double CLASS_XP_PCT = SHARED_XP_PCT;
 
 tidy class LeaderAI : Component_LeaderAI, Savable {
 	Order@ order;
@@ -412,6 +413,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 					if(other is ship)
 						continue;
 					other.addExperience(amount * SHARED_XP_PCT);
+					obj.owner.addClassExperience(ship, amount * CLASS_XP_PCT);
 				}
 			}
 		}

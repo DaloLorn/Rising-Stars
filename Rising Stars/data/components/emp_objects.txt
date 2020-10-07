@@ -78,6 +78,10 @@ server:
 	async void registerArtifact(Artifact@ obj);
 	async void unregisterArtifact(Artifact@ obj);
 
+	async void addClassExperience(Ship@ ship, double amount);
+	double getClassExperience(Ship@ ship);
+	double getClassExperience(string name, int revision, Empire@ emp);
+	
 	async void registerShip(Ship@ ship);
 	async void queueShip(string name, int revision, Empire@ emp);
 	async void unregisterShip(Ship@ ship);
