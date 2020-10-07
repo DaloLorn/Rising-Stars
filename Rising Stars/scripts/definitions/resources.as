@@ -573,6 +573,9 @@ int getMaintenanceCost(const Design@ dsg, int count = 1) {
 		for(uint j = 0, hexCnt = sys.hexCount; j < hexCnt; ++j)
 			maintain += sys.hexVariable(HV_MaintainCost, j);
 	}
+	if(dsg.owner.valid) {
+		maintain -= maintain * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+	}
 
 	if(count >= 0)
 		maintain *= count;
@@ -591,6 +594,9 @@ double getLaborCost(const Design@ dsg, int count = 1) {
 			continue;
 		for(uint j = 0, hexCnt = sys.hexCount; j < hexCnt; ++j)
 			time += sys.hexVariable(HV_LaborCost, j);
+	}
+	if(dsg.owner.valid) {
+		time -= time * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
 	}
 
 	if(count >= 0)
