@@ -10,7 +10,7 @@ void drawConstructible(Constructible@ cons, const recti& pos, bool isBox = false
 		else
 			shipPos = pos;
 
-		shader::CUTOFF_PCT = cons.progress;
+		shader::CUTOFF_PCT = min(cons.progress, 1.f);
 		const Model@ baseModel = cons.dsg.hull.model;
 		const Material@ baseMaterial = cons.dsg.hull.material;
 		quaterniond rot = quaterniond_fromAxisAngle(vec3d_front(), -0.8 * pi);
@@ -33,14 +33,14 @@ void drawConstructible(Constructible@ cons, const recti& pos, bool isBox = false
 			dCol.a = 0x05;
 
 			drawRectangle(pos, mCol, lCol, mCol, dCol);
-			drawRectangle(pos.padded(0, 0, (1.f - cons.progress) * pos.width, 0), Color(0xffffff14));
+			drawRectangle(pos.padded(0, 0, (1.f - min(cons.progress, 1.f)) * pos.width, 0), Color(0xffffff14));
 		}
 
 		baseModel.draw(backMat, shipPos.padded(2), rot);
 		baseModel.draw(frontMat, shipPos.padded(2), rot);
 	}
 	else if(cons.orbital !is null) {
-		shader::CUTOFF_PCT = cons.progress;
+		shader::CUTOFF_PCT = min(cons.progress, 1.f);
 		const Model@ baseModel = cons.orbital.model;
 		const Material@ baseMaterial = cons.orbital.material;
 		quaterniond rot = quaterniond();
@@ -55,14 +55,14 @@ void drawConstructible(Constructible@ cons, const recti& pos, bool isBox = false
 		backMat.depthTest = DT_Always;
 
 		if(isBox)
-			drawRectangle(pos.padded(0, 0, (1.f - cons.progress) * pos.width, 0), Color(0xffffff14));
+			drawRectangle(pos.padded(0, 0, (1.f - min(cons.progress, 1.f)) * pos.width, 0), Color(0xffffff14));
 
 		baseModel.draw(backMat, pos.padded(2), rot);
 		baseModel.draw(frontMat, pos.padded(2), rot);
 	}
 	else {
 		if(isBox)
-			drawRectangle(pos.padded(0, 0, (1.f - cons.progress) * pos.width, 0), Color(0xffffff14));
+			drawRectangle(pos.padded(0, 0, (1.f - min(cons.progress, 1.f)) * pos.width, 0), Color(0xffffff14));
 	}
 }
 
@@ -79,6 +79,8 @@ void drawConstructible(Constructible@ cons, const recti& pos, const Font@ ft) {
 	string prog = toString(cons.progress * 100.f, 0)+"%";
 	if(cons.type == CT_DryDock)
 		prog += " / "+toString(cons.pct * 100.f, 0)+"%";
+	if(cons.finalizing)
+		prog = format(locale::CONSTRUCTION_FINALIZING, formatTime(cons.finalizingTimer));
 	ft.draw(pos=pos.resized(0, sz - ft.getLineHeight(), 0.0, 1.0),
 			text=prog, color=Color(0xffffffff), horizAlign=0.5, vertAlign=0.0,
 			stroke=colors::Black);

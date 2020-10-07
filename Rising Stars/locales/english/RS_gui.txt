@@ -58,3 +58,5 @@ ESTIMATED_SLIPSTREAM_LIFETIME_SUPPRESSED: Projected Slipstream Duration: $1 (Sup
 ESTIMATED_SLIPSTREAM_LIFETIME_DOUBLE_SUPPRESSED: Projected Slipstream Duration: $1 (Bilateral Suppression Detected)
 WAR_EVT_HOSTILES_INCOMING: Enemy forces are jumping towards $1!
 WAR_EVT_HOSTILES_ARRIVED: Enemy forces detected in $1!
+CONSTRUCTION_FINALIZING: Finalizing... (ETA $1)
+CONSTRUCTION_FINALIZING_LONG:  - Labor Complete, Finalizing...

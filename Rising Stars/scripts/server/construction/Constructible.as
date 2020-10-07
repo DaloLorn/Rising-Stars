@@ -7,6 +7,10 @@ enum TickResult {
 	TR_UsedLabor,   //Mark as using labor, use it
 	TR_VanishLabor, //Don't mark as using labor, but use it
 	TR_UnusedLabor, //Don't mark as using labor, pass labor through
+	// Finished spending labor, but still busy building;
+	// mark as using labor as per TR_UsedLabor, then pass surplus labor through
+	// as per TR_UnusedLabor (should then return TR_UnusedLabor on later ticks!)
+	TR_PartialLabor, 
 };
 
 tidy class Constructible : Serializable {
@@ -19,6 +23,8 @@ tidy class Constructible : Serializable {
 	bool started = false;
 	bool paid = false;
 	bool repeated = false;
+	double finalizingTimer = 0;
+	bool finalizing = false;
 
 	string get_name() {
 		return "(null)";
@@ -96,6 +102,8 @@ tidy class Constructible : Serializable {
 		msg << totalLabor;
 		msg << maintainCost;
 		msg << buildCost;
+		msg << finalizing;
+		msg << finalizingTimer;
 	}
 
 	void save(SaveFile& msg) {
@@ -109,6 +117,8 @@ tidy class Constructible : Serializable {
 		msg << buildCost;
 		msg << paid;
 		msg << repeated;
+		msg << finalizing;
+		msg << finalizingTimer;
 	}
 	
 	void load(SaveFile& msg) {
@@ -126,5 +136,7 @@ tidy class Constructible : Serializable {
 			msg >> repeated;
 		else
 			repeated = false;
+		msg >> finalizing;
+		msg >> finalizingTimer;
 	}
 };

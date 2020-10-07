@@ -695,6 +695,10 @@ tidy class Construction : Component_Construction, Savable {
 					case TR_UnusedLabor:
 						//Fall through the tick labor
 					break;
+					case TR_PartialLabor: // See documentation for new TR case
+						usingLabor = true;
+						tick -= remain;
+					break;
 				}
 				if(tick <= 0)
 					break;

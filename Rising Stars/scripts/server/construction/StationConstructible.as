@@ -1,5 +1,6 @@
 import construction.Constructible;
 import construction.ShipConstructible;
+from constructible import STATION_FINALIZE_TIME;
 import resources;
 import object_creation;
 import ship_groups;
@@ -15,6 +16,8 @@ tidy class StationConstructible : ShipConstructible {
 		laborPenalty = penalty;
 		position = pos;
 		totalLabor *= penalty;
+		finalizing = false;
+		finalizingTimer = STATION_FINALIZE_TIME;
 	}
 
 	StationConstructible(SaveFile& msg) {
@@ -70,7 +73,7 @@ tidy class StationConstructible : ShipConstructible {
 				double maxHealth = target.maxHealth + target.maxArmor;
 				double pct = 0.0;
 				if(totalLabor > 0)
-					maxHealth *= curLabor / totalLabor;
+					maxHealth *= min(curLabor / totalLabor, 1.0);
 				if(maxHealth != 0)
 					pct = clamp((target.health + target.armor) / maxHealth, 0.0, 1.0);
 				pct = clamp((pct-0.01) / 0.99, 0.0, 1.0);
@@ -87,8 +90,20 @@ tidy class StationConstructible : ShipConstructible {
 			cancel(obj);
 			return TR_Remove;
 		}
-		target.setBuildPct(curLabor / totalLabor);
+		target.setBuildPct(min(curLabor / totalLabor, 1.0));
+		if(curLabor >= totalLabor) {
+			finalizingTimer -= time; // May not be technically accurate on the first finalizing tick, but should be close enough!
+			if(!finalizing) {
+				finalizing = true; // Flag us as no longer spending labor.
+				return TR_PartialLabor;
+			}
+			else return TR_UnusedLabor;
+		}
 		return TR_UsedLabor;
+	}
+
+	bool get_canComplete() {
+		return finalizingTimer <= 0.0; // Have we finished finalizing construction?
 	}
 
 	void complete(Object& obj) {
