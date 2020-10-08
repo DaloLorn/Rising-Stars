@@ -1274,6 +1274,13 @@ tidy class Construction : Component_Construction, Savable {
 		queue.length = 0;
 	}
 
+	void constructionChangeOwner(Object& obj, Empire@ prevOwner, Empire@ newOwner) {
+		for(uint i = 0, cnt = queue.length; i < cnt; ++i) {
+			queue[i].changeOwner(prevOwner, newOwner);
+		}
+		deltaConstruction = true;
+	}
+
 	void writeConstruction(Message& msg) {
 		uint cnt = queue.length;
 		msg.writeSmall(cnt);

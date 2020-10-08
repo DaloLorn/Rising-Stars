@@ -15,6 +15,7 @@ tidy class ShipConstructible : Constructible {
 			@Design = Design.owner.updateDesign(Design, true);
 		@design = Design;
 		getBuildCost(design, buildCost, maintainCost, totalLabor, 1);
+		design.owner.queueShip(design.name, design.revision, design.owner);
 	}
 
 	ShipConstructible(SaveFile& msg) {
@@ -54,15 +55,23 @@ tidy class ShipConstructible : Constructible {
 	}
 
 	bool pay(Object& obj) {
-		if(!payDesignCosts(obj, design))
+		if(!payDesignCosts(obj, design)) {
+			obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 			return false;
+		}
 		if(!Constructible::pay(obj)) {
+			obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 			reverseDesignCosts(obj, design);
 			return false;
 		}
 		for(uint i = 0, cnt = supports.length; i < cnt; ++i)
 			supports[i].orderCycle = obj.owner.BudgetCycleId;
 		return true;
+	}
+
+	void remove(Object& obj) {
+		obj.owner.dequeueShip(design.name, design.revision, obj.owner);
+		Constructible::remove(obj);
 	}
 
 	bool repeat(Object& obj) {
@@ -77,8 +86,15 @@ tidy class ShipConstructible : Constructible {
 	}
 
 	void cancel(Object& obj) {
+		obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 		reverseDesignCosts(obj, design, cancel=true);
 		Constructible::cancel(obj);
+	}
+
+	void changeOwner(Empire@ prevOwner, Empire@ newOwner) {
+		prevOwner.dequeueShip(design.name, design.revision, prevOwner);
+		newOwner.queueShip(design.name, design.revision, newOwner);
+		Constructible::changeOwner(prevOwner, newOwner);
 	}
 
 	string get_name() {
@@ -115,6 +131,7 @@ tidy class ShipConstructible : Constructible {
 		
 		spawnFrom.doRally(ship);
 
+		obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 		obj.owner.recordStatDelta(stat::ShipsBuilt, 1);
 		obj.owner.notifyFlagship(ship);
 	}

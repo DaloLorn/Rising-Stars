@@ -123,6 +123,7 @@ tidy class StationConstructible : ShipConstructible {
 			target.destroy();
 		}
 
+		obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 		obj.owner.recordStatDelta(stat::ShipsBuilt, 1);
 		obj.owner.notifyFlagship(ship);
 	}
