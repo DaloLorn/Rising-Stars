@@ -12,8 +12,8 @@ Building: AncientFoundry
 
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	IfNotHaveStatus(DisableOre, building_effects::ActiveWhenCargoConsumed(Ore, 2, 1.0, AddStatus(AncientFoundry), Labor Use Linked = True))
 

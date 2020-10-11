@@ -99,3 +99,9 @@ TRAIT_CLUMSY_DESC: <<
 TRAIT_NIMBLE_DESC: <<
 	Engine thrust, hyperdrive speed, and jumpdrive range are increased by 30%. Slipstream range and duration are increased by 15%. Fling costs, gate costs, and flux cooldowns are reduced by 30%.
 >>
+
+TRAIT_ANCIENT_DESC: <<
+	[vspace=3/][img=ActionBarIcons::1;22]Has no regular civilian economy, buildings must be constructed to gain resources.[/img]
+	[vspace=6/][img=PlanetType::3;22]Planets are claimed by moving Orbital Replicators to them and constructing Control Cores. Other buildings can then be constructed by the Replicator or a smaller, cheaper Orbital Fabricator.[/img]
+	[vspace=6/][img=TraitIcons::0;22]Ships are powered by a single Core that provides both Control and Power.[/img]
+>>

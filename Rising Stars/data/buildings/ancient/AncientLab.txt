@@ -13,8 +13,8 @@ Building: AncientLab
 
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	ShowAttributeValue(Base Material Generation, Adaptation4, Multiplier = 5.0, Icon = ResourceIconsSmall::81, Suffix = #PER_MINUTE, Hide Zero = True)
 	IfNotHaveStatus(DisableOre, building_effects::ActiveWhenCargoConsumed(Ore, 1, 2.0, AddStatus(AncientLab)))

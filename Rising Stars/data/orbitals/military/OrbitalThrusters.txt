@@ -13,7 +13,7 @@ Module: OrbitalThrusters
 	Build Cost: 200
 	Labor Cost: 10
 
-	RequireEither(RequireEither(RequireOnOrbital(AncientReplicator), RequireOnOrbital(Telescope)), RequireOnOrbital(Mainframe))
+	RequireEither(RequireEither(RequireEither(RequireOnOrbital(AncientFabricator), RequireOnOrbital(AncientReplicator)), RequireOnOrbital(Telescope)), RequireOnOrbital(Mainframe))
 
 	AddAccelerationBonus(5)
 

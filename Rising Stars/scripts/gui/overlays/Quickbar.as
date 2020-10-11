@@ -776,16 +776,18 @@ class OverPressurePlanets : ObjectMode {
 
 class Replicators : ObjectMode {
 	uint statusId = uint(-1);
-	uint orbId = uint(-1);
+	uint replicatorId = uint(-1);
+	uint fabricatorId = uint(-1);
 
 	Replicators(IGuiElement@ parent) {
 		super(parent);
 
-		auto@ status = getStatusType("AncientReplicator");
+		auto@ status = getStatusType("AncientFabricator");
 		if(status !is null)
 			statusId = status.id;
 
-		orbId = getOrbitalModuleID("AncientReplicator");
+		replicatorId = getOrbitalModuleID("AncientReplicator");
+		fabricatorId = getOrbitalModuleID("AncientFabricator");
 	}
 
 	Sprite get_icon() override {
@@ -815,7 +817,7 @@ class Replicators : ObjectMode {
 		Object@ obj;
 		while(receive(objs, obj)) {
 			Orbital@ orb = cast<Orbital>(obj);
-			if(orb !is null && uint(orb.coreModule) == orbId) {
+			if(orb !is null && (uint(orb.coreModule) == replicatorId || uint(orb.coreModule) == fabricatorId)) {
 				if(!orb.inOrbit && !orb.hasLockedOrbit()) {
 					auto@ dat = cache(orb);
 					grid.set(index, dat);

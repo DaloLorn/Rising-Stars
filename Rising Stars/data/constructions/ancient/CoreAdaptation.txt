@@ -5,8 +5,8 @@ Construction: CoreAdaptation
 
 	Category: Programming Upgrades
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireStatus(CoreProgrammed)
 	RequireNotStatus(CoreMoney)
@@ -29,8 +29,8 @@ Construction: CoreAdaptationMoney
 
 	Category: Programming Upgrades
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireStatus(CoreMoney)
 	RequireUnlockTag(AtroanTerraform2)

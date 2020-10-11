@@ -478,7 +478,7 @@ R_TERRAFORMING_DESC: <<
 >>
 R_CORE_PROGRAMMING: Optimized Core Programming
 R_CORE_PROGRAMMING_DESC: <<
-	[color=#aaa][i]We have discovered a number of inefficiencies in our basic Core design. The deficiency can be corrected using a variety of methods - all of them will require additional replicator time and support from a Foundry, but once they are completed, they should improve our resource generation.[/i][/color]
+	[color=#aaa][i]We have discovered a number of inefficiencies in our basic Core design. The deficiency can be corrected using a variety of methods - all of them will require additional fabricator time and support from a Foundry, but once they are completed, they should improve our resource generation.[/i][/color]
 
 	Allows Cores to be programmed to generate resources equivalent to 50% of a basic Tier 1 resource. This requires the planet containing the Core to have a Labor source.
 >>
@@ -526,7 +526,7 @@ R_IMP_REPLICATOR_CONSTRUCTION_2: Replicator Manufacturing 2
 R_IMP_REPLICATOR_CONSTRUCTION_DESC: <<
 	[color=#aaa][i]New replicator designs allow us to construct a viable orbital replicator with smaller stockpiles of rare ores.[/i][/color]
 
-	Reduces the Ore cost of Orbital Replicators by $1.
+	Reduces the Ore cost of Orbital Replicators and Fabricators by $1.
 >>
 R_SYS_CLOAKING_DEVICE: Cloaking Device
 R_SYS_CLOAKING_DEVICE_DESC: <<

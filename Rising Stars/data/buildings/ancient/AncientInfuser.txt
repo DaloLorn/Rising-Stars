@@ -13,8 +13,8 @@ Building: AncientInfuser
 
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 	RequireNativeClass(Scalable)
 
 	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 3, 6, AddStatus(AncientScalable), Inactive Status = AncientRequireBaseMat, Inactive Status Count = 3, Allow Global = False))

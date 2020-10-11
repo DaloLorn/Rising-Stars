@@ -27,6 +27,10 @@ Trait: Ancient
 	TriggerHomeworld(SpawnOrbital(AncientReplicator, In Orbit = True))
 	TriggerHomeworld(SpawnOrbital(AncientReplicator, In Orbit = True))
 
+	TriggerHomeworld(SpawnOrbital(AncientFabricator, In Orbit = True))
+	TriggerHomeworld(SpawnOrbital(AncientFabricator, In Orbit = True))
+	TriggerHomeworld(SpawnOrbital(AncientFabricator, In Orbit = True))
+
 	TriggerHomeworld(SpawnBuilding(AncientCore, (9, 5)))
 
 	TriggerHomeworld(SpawnBuilding(AncientDock, (13, 5)))

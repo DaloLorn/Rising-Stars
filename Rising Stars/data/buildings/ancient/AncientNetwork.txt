@@ -15,8 +15,8 @@ Building: AncientNetwork
 	Build Time: 10
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	IfAttributeGTE(Adaptation4, 1, AddResource(Influence, 1))
 	ShowAttributeValue(Influence Stake, Adaptation4, Icon = ResourceIcon::1, Hide Zero = True)

@@ -1,0 +1,28 @@
+Module: AncientFabricator
+	Name: #ORB_ANCIENT_FABRICATOR
+	Blurb: #ORB_ANCIENT_FABRICATOR_BLURB
+	Description: #ORB_ANCIENT_FABRICATOR_DESC
+	Icon: GuiOrbitalIcons::20
+	Distant Icon: OrbitalIcons::20
+
+	Core: True
+
+	Size: 4
+
+	Build Cost: 600
+	Labor Cost: 50
+	ConsumeCargoAttribute(Ore, ReplicatorCostReduction, 2000, -1)
+
+	Health: 20000
+	Armor: 20000
+
+	AddResistance(20.0)
+
+	Model: Mainframe
+	Material: GenericPBR_Mainframe
+
+	RequireTrait(Ancient)
+
+	AddAccelerationBonus(24.0)
+
+	AddStatusToOrbitingPlanet(AncientFabricator, Only Owned = True, Allow Space = True, Set Origin Empire = True)
