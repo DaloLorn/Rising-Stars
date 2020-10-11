@@ -1,27 +1,5 @@
 Building: AncientFTLBreeder
 	Name: #BLD_FTLBREEDER
-	Description: #BLD_ANCIENT_FTLBREEDER_DESC
-	Sprite: AncientRefinery*fad
-
-	Category: Infrastructure
-
-	Size: 2x3
-	Base Cost: 300
-	In Queue: True
-	Build Time: 60
-
-	ConsumeCargo(Ore, 500)
-
-	RequireTrait(Ancient)
-	RequireNotTrait(Flux)
-	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 0.5, 6, AddFTLIncome(0.5), Inactive Status = AncientRequireBaseMat, Allow Global = False))
-	IfNotHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 0.5, 6, AddFTLIncome(0.5), Inactive Status = AncientRequireBaseMat))
-
-	ShowFTLValue(0.5, Suffix = #PER_SECOND)
-
-
-Building: AncientFTLBreederFLUX
-	Name: #BLD_FTLBREEDER
 	Description: #BLD_FTLBREEDER_DESC
 	Sprite: AncientRefinery*fad
 
