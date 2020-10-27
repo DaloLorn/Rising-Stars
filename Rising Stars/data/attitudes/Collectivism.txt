@@ -4,7 +4,7 @@ Attitude: Collectivism
 	Color: #ac332d
 	Sort: 25
 
-	ProgressFromAttribute(MiningBasesBuilt, Monotonic = False)
+	ProgressFromAttribute(MiningBasesBuilt, Retroactive = True, Monotonic = False)
 	Conflict(Individualism)
 
 	Level:
