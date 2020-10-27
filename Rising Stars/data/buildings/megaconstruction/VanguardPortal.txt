@@ -10,10 +10,10 @@ Building: VanguardPortal
 	Tile Maintenance: 10
 	Labor Cost: 500
 
-	ShowAttributeValue(Stabilizers Constructed, VanguardVictoryRequirement, Base Amount = 3, Multiplier = -1.0, Icon = ShieldImpactLarge*#de12de, Suffix = / 3)
+	ShowAttributeValue(Active Stabilizers, VanguardVictoryRequirement, Base Amount = 3, Multiplier = -1.0, Icon = ShieldImpactLarge*#de12de, Suffix = / 3)
 	TriggerConstructed(NotifyAll(#EVT_VANGUARD_PORTAL, Description = #EVT_VANGUARD_PORTAL_DESC, Icon = SpaceProgram))
 	ABEM_races::SelfDestructOnOwnerChange(Undevelop = True)
-	ModEmpireAttribute(VanguardVictoryRequirement, Add, -1)
+	IfInOwnedSpace(ModEmpireAttribute(VanguardVictoryRequirement, Add, -1))
 	AddRegionStatus(AllyBuff40)
 	ConsumeEnergy(2000)
 	ConsumeFTL(1000)

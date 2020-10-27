@@ -19,7 +19,7 @@ Card: GalacticSuperpower
 	StartVote(GalacticSuperpower)
 
 	RequireAttributeLT(IsGalacticSuperpower, 1)
-	RequireAttributeGTE(SenatorialPalaceConstructed, 1)
+	RequireAttributeGTE(SenatorialPalaceActive, 1)
 
 	AI: PlayWhenInfluenceStronk()
 
@@ -36,7 +36,7 @@ Vote: GalacticSuperpower
 	AddPositiveCostPenalty(1)
 
 	CancelIfNotLeader()
-	CancelIfAttributeLT(SenatorialPalaceConstructed, 1)
+	CancelIfAttributeLT(SenatorialPalaceActive, 1)
 
 	AI: Important(10)
 
@@ -53,7 +53,7 @@ Effect: GalacticSuperpower
 	ModEmpireAttribute(IsGalacticSuperpower, Add, 1)
 
 	CancelIfNotLeader()
-	CancelIfAttributeLT(SenatorialPalaceConstructed, 1)
+	CancelIfAttributeLT(SenatorialPalaceActive, 1)
 
 	OnFriendlyEmpires(EnableModifier( BuildCostFactor(0.75) ))
 	OnFriendlyEmpires(EnableModifier( LaborCostFactor(0.75) ))
