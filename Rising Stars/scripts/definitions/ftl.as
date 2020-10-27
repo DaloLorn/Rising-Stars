@@ -269,7 +269,7 @@ bool isFTLSuppressed(Object& obj) {
 }
 
 // DOF - Scaling: Adjusting for increased scaling
-const double JUMPDRIVE_COST = 0.0015;
+const double JUMPDRIVE_COST = 0.015;
 const double JUMPDRIVE_START_COST = 50.0;
 const double JUMPDRIVE_CHARGE_TIME = 25.0;
 
