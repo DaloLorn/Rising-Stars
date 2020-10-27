@@ -15,8 +15,10 @@ Subsystem: BoardingParty
 	Size := HexSize * Hexes
 	BoardingStrength := floor(10 * Size)
 
-	BoardingPartyCost := BoardingStrength
-	BoardingPartyLabor := BoardingStrength / 20
+	BoardingPartyBaseCost := BoardingStrength
+	BoardingPartyBaseLabor := BoardingStrength / 20
+	BoardingPartyCost := BoardingPartyBaseCost
+	BoardingPartyLabor := BoardingPartyBaseLabor
 	BoardingPartyStorage := 1
 
 	Hook: OnEnable(AddStatus(BoardingPartyTroops))
@@ -26,13 +28,21 @@ Subsystem: BoardingParty
 	BaseHP := 36 * HexSize
 	Hex.Mass := HexSize
 
+	Modifier: BuildCostFactor(factor)
+		Hex.BuildCost := Hex.BuildCost * factor
+		BoardingPartyCost := BoardingPartyCost * factor
+
+	Modifier: LaborCostFactor(factor)
+		Hex.LaborCost := Hex.LaborCost * factor
+		BoardingPartyLabor := BoardingPartyLabor * factor
+
 	Requires:
 		Command = ceil(Hexes * 0.4)
 
 	Module: Core
 		Sprite: ABEMShuttle
-		Hex.BuildCost := Hex.BuildCost + BoardingPartyCost
-		Hex.LaborCost := Hex.LaborCost + BoardingPartyLabor
+		Hex.BuildCost := Hex.BuildCost + BoardingPartyBaseCost
+		Hex.LaborCost := Hex.LaborCost + BoardingPartyBaseLabor
 
 	Module: Default
 		Sprite: BoardingParty

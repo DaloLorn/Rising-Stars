@@ -21,9 +21,19 @@ Subsystem: TroopPods
 	MaxLoyalty := floor(Size / 8.5)
 	Duration := 2 * ceil(MaxLoyalty / 10) * 60
 
-	TroopCost := 50.0 * MaxLoyalty
-	TroopLabor := 2.0 * MaxLoyalty
+	TroopBaseCost := 50.0 * MaxLoyalty
+	TroopBaseLabor := 2.0 * MaxLoyalty
+	TroopCost := TroopBaseCost
+	TroopLabor := TroopBaseLabor
 	TroopStorage := 1
+
+	Modifier: BuildCostFactor(factor)
+		Hex.BuildCost := Hex.BuildCost * factor
+		TroopCost := TroopCost * factor
+
+	Modifier: LaborCostFactor(factor)
+		Hex.LaborCost := Hex.LaborCost * factor
+		TroopLabor := TroopLabor * factor
 
 	BaseHP := 18 * HexSize
 	Hex.Resistance := 0.2
@@ -39,7 +49,7 @@ Subsystem: TroopPods
 		Message: #ERROR_TOO_SMALL
 
 	Module: Default
-		Hex.BuildCost := Hex.BuildCost + (TroopCost / Hexes)
-		Hex.LaborCost := Hex.LaborCost + (TroopLabor / Hexes)
+		Hex.BuildCost := Hex.BuildCost + (TroopBaseCost / Hexes)
+		Hex.LaborCost := Hex.LaborCost + (TroopBaseLabor / Hexes)
 
 		Sprite: TroopPods
