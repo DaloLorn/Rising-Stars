@@ -21,6 +21,9 @@ Subsystem: BoardingParty
 	BoardingPartyLabor := BoardingPartyBaseLabor
 	BoardingPartyStorage := 1
 
+	RetrofitCost := BoardingPartyCost
+	RetrofitLabor := BoardingPartyLabor
+
 	Hook: OnEnable(AddStatus(BoardingPartyTroops))
 	Hook: LimitStatusStacks(BoardingPartyTroops, BoardingPartyStorage)
 

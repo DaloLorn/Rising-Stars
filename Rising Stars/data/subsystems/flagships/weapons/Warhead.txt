@@ -28,6 +28,9 @@ Subsystem: Warhead
 	WarheadLabor := WarheadBaseLabor
 	WarheadStorage := 1
 
+	RetrofitCost := WarheadCost
+	RetrofitLabor := WarheadLabor
+
 	BaseHP := 18 * HexSize
 	CoreHPMod := 3
 	Hex.Resistance := 0.2
