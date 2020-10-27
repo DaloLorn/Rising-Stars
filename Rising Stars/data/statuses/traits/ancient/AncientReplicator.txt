@@ -4,5 +4,5 @@ Status: AncientReplicator
 	TriggerWithOriginEmpire(TakeControl())
 	AddStatus(AncientClaim)
 
-	AddLocalDefense(6, Build Satellites = True)
-	AddFleetEffectiveness(+1.0)
+	AddLocalDefense(3, Build Satellites = True)
+	AddFleetEffectiveness(+0.5)
