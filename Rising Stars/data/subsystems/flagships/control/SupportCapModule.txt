@@ -19,7 +19,7 @@ Subsystem: SupportCapModule
 
 	SupportCapacityMod := 1
 	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
-	Defense := SupportCapacity / 2.9 / 10
+	Defense := SupportCapacity / 2.9 / 10 / 3
 	Hook: AddLocalDefense(Defense, Global Factor = 0),
 	Module: Default
 		Sprite: SupportCommand
