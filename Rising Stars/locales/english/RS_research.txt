@@ -547,7 +547,9 @@ R_SYS_CLOAKPLATING: Stealth Coating
 ************************************
 
 R_SPEC_DISCLAIMER: <<
-	[b]This is a specialization tech. Researching this will convert any research nodes containing the [color=#f00]$1[/color] tech into link nodes, locking away their benefits for the rest of the game. Choose wisely.[/b]
+	[b]This is a specialization tech. Researching this will convert any research nodes containing the [color=#f00]$1[/color] tech into link nodes, locking away their benefits for the rest of the game. Choose wisely.
+	
+	(Note that any techs behind the converted nodes will still be accessible, though!)[/b]
 >>
 R_CONNECTOR_SPECIALIZATION: <<
 	This node once contained a specialization item, but was deactivated when a different specialization node was researched.

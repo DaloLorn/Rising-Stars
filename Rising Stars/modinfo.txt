@@ -8,7 +8,13 @@
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function normally, some content may be missing.[/b]
 
-		[b]NOTE: This mod now depends on the SR2 Community Patch to function. Workshop users can subscribe to it from the Required Items section to the right. Users of SR2MM 1.1.0 should have it automatically installed as a dependency. Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Community Patch GitHub repository, listed at the bottom of this modinfo.[/b]
+		[b]NOTE: This mod now requires the SR2 Community Patch to be installed in your game's mod folders in order to function.[list]
+		[*]Workshop users can subscribe to the CP from the Required Items section to the right.
+		[*]Users of SR2MM 1.1.0 should have it automatically installed as a dependency, and may safely ignore this note.
+		[*]Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Community Patch GitHub repository, listed at the bottom of this modinfo.
+		[/list]
+		
+		Once the CP has been installed, you do not need to enable it in order to play Rising Stars.[/b]
 
 		[b][h1]Current version: 1.3.1 (The Khalerii Endeavour)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
