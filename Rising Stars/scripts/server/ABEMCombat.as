@@ -551,6 +551,7 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 			playParticleSystem("ShieldImpactHeavy", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
 		}
 
+		// BEGIN NON-MIT CODE - DOF (Mitigation)
 		double Mitigation = ship.mitigation;
 		double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
 		double BlockFactor = 1;
@@ -579,7 +580,8 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 		evt.damage -= block / BlockFactor; // Increase damage reduction proportionately.
 		// Bleedthrough damage isn't affected by mitigation
 		evt.damage /= 1 - Mitigation;
-
+		// END NON-MIT CODE
+		
 		if(evt.damage <= 0.0)
 			return DE_EndDamage;
 	}

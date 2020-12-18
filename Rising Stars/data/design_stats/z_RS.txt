@@ -51,6 +51,7 @@ GlobalStat: PlanetMiningRate
 
 	Variable: PlanetMiningRate
 
+// BEGIN NON-MIT CODE - DOF (Mitigation)
 GlobalStat: Mitigation
 	Name: #S_MITIGATION
 	Description: #STT_MITIGATION
@@ -75,6 +76,7 @@ GlobalStat: MitigationOvercap
 
 	Secondary: Mitigation
 	Variable: MitigationOvercap
+// END NON-MIT CODE
 	
 // *************************************
 // ******SUBSYSTEM-SPECIFIC STATS*******

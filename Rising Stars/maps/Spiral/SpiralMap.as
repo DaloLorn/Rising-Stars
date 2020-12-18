@@ -59,9 +59,10 @@ class SpiralMap : Map {
 		coreSystems = systemCount - (perArm * armCount);
 		
 		double systemSpacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
-		//DOF
+		// BEGIN NON-MIT CODE - DOF (Scaling)
 		const double coreHeightVariation = flatten ? 0.0 : 20000.0;
 		const double heightVariation = flatten ? 0.0 : 12000.0;
+		// END NON-MIT CODE
 		const double spiralBase = systemSpacing * double(systemCount) / 75.0;
 		const double spiralCurve = 0.5;
 		
@@ -181,8 +182,9 @@ class SpiralMap : Map {
 					double rad = radius + randomd(-0.1,0.1) * systemSpacing;
 					
 					pos = vec3d(cos(angle) * rad, 0.0, sin(angle) * rad);
-					//DOF
+					// BEGIN NON-MIT CODE - DOF (Scaling)
 					rSq += systemSpacing * 8000.0 * 20;
+					// END NON-MIT CODE
 					
 					bool validPos = true;
 					for(uint r = 0, rcnt = recent.length; r < rcnt; ++r) {
@@ -196,11 +198,11 @@ class SpiralMap : Map {
 						break;
 				}
 				
-				//DOF
+				// BEGIN NON-MIT CODE - DOF (Scaling)
 				rSq += systemSpacing * 10000.0 * 20;
 				if((j+1)%10 == 0) //Disrupt periodic structure that tends to form
-					//DOF
 					rSq += systemSpacing * 10000.0 * 10;
+				// END NON-MIT CODE
 				
 				if(recent.length < maxRing)
 					recent.insertLast(pos);

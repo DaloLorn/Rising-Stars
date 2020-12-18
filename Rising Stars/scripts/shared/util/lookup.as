@@ -1,3 +1,4 @@
+// BEGIN NON-MIT CODE - SoI
 //Search for a match in multiple values without a ugly
 //if (foo == bar) || (foo == baz) || ..." list
 //Allow a syntax close to a switch / case structure with variables
@@ -16,3 +17,4 @@ class Lookup {
 			return false;
 	}
 };
+// END NON-MIT CODE

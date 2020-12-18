@@ -1,3 +1,4 @@
+// BEGIN NON-MIT CODE - SOI (AI)
 import hooks;
 import orbitals;
 
@@ -101,3 +102,4 @@ class RegisterForTradeUse : OrbitalAIHook {
 		}
 	#section all
 };
+// END NON-MIT CODE

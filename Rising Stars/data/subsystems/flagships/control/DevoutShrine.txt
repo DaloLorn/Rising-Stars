@@ -25,10 +25,12 @@ Subsystem: DevoutShrine
 	ShieldRegenMod := 1
 	ShieldRegen := BaseShieldRegen * ShieldRegenMod
 
+	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	// Shield mitigation
 	ShieldCores := 1
 	ShieldMitCap := 0.4
 	ShieldMitExponent := 1.01
+	// END NON-MIT CODE
 
 	Hex.Resistance := 0.5
 	BaseHP := 12 * HexSize

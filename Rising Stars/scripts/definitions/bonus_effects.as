@@ -2886,8 +2886,9 @@ class GenerateSystem : EmpireTrigger {
 			bool overlaps = false;
 			for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 				auto@ sys = getSystem(i);
-				// DOF - Scaling
+				// BEGIN NON-MIT CODE - DOF (Scaling)
 				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 60000.0)) {
+				// END NON-MIT CODE
 					overlaps = true;
 					break;
 				}
@@ -2911,8 +2912,9 @@ class GenerateSystem : EmpireTrigger {
 		if(vision_to_empire.boolean && emp !is null && emp.valid)
 			@hook = GiveVision(emp);
 
-		// DOF - Scaling
+		// BEGIN NON-MIT CODE - DOF (Scaling)
 		generateNewSystem(position, hook=hook, radius=5000.0, type=system_type.str, name=name);
+		// END NON-MIT CODE
 	}
 #section all
 };

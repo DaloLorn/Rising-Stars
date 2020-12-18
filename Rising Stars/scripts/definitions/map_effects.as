@@ -47,7 +47,7 @@ class MakeStar : MapHook {
 			temp = normald(arguments[0].decimal,arguments[1].decimal2);
 		else
 			temp = arguments[0].fromRange();
-		double radius = arguments[1].fromRange() * 10;
+		double radius = arguments[1].fromRange() * 10; // NON-MIT CODE - DOF (Scaling)
 		vec3d pos = arguments[2].fromPosition();
 
 		//Create star
@@ -81,13 +81,13 @@ class MakeStar : MapHook {
 		if(system !is null)
 			node.hintParentObject(system.object, false);
 
-		double hp = AVG_STAR_HEALTH * (radius / 750.0);
+		double hp = AVG_STAR_HEALTH * (radius / 750.0);	// NON-MIT CODE - DOF (Scaling)
 		star.Health = hp;
 		star.MaxHealth = hp;
 
 		//Create light
 		LightDesc lightDesc;
-		lightDesc.att_quadratic = 1.f/(48000.f*48000.f);
+		lightDesc.att_quadratic = 1.f/(48000.f*48000.f); // NON-MIT CODE - DOF (Scaling)
 		lightDesc.position = vec3f(star.position);
 		lightDesc.diffuse = node.color * 1.0f;
 		lightDesc.specular = lightDesc.diffuse;
@@ -116,7 +116,7 @@ class MakeBlackhole : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange() * 10;
+		double radius = arguments[0].fromRange() * 10; // NON-MIT CODE - DOF (Scaling)
 		vec3d pos = arguments[1].fromPosition();
 
 		//Create star
@@ -303,8 +303,10 @@ class MakePlanet : MapHook {
 
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
+	// BEGIN NON-MIT CODE - DOF (Scaling)
 	Argument radius(AT_Range, "6:30", doc="Size of the planet, can be a random range.");
 	Argument orbit_spacing(AT_Range, "180:300", doc="Distance from the previous planet.");
+	// END NON-MIT CODE 
 	Argument grid_size(AT_Position2D, "(-1, -1)", doc="Size of the planet's surface grid. (-1,-1) to randomize based on radius.");
 	Argument conditions(AT_Boolean, "True", doc="Whether to let the planet randomly generate a condition.");
 	Argument distribute_resource(AT_Boolean, "False", doc="Whether or not the selected resources should be frequency distributed.");
@@ -349,10 +351,12 @@ class MakePlanet : MapHook {
 		if(resource !is null)
 			markResourceUsed(resource);
 
+		// BEGIN NON-MIT CODE - DOF (Scaling)
 		double radius = arguments[1].decimal * 10;
 		if(arguments[1].isRange)
 			radius = normald(arguments[1].decimal, arguments[1].decimal2) * 10;
 		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE * 10;
+		// END NON-MIT CODE
 
 		system.radius += spacing;
 
@@ -405,9 +409,11 @@ class MakePlanet : MapHook {
 		const Biome@ biome3 = getDistributedBiome();
 		
 		//Figure out planet size
-		// DOF - Scaling: Adding this to constrain the range and average more to the standard range and average
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Adding this to constrain the range and average more to the standard range and average
 		double scaledradius = 60 + 100 * (radius - 60) / 240;
 		double sizeFact = clamp(scaledradius / 100.0, 0.1, 5.0);
+		// END NON-MIT CODE 
 		int gridW = round(AVG_PLANET_GRID_WIDTH * sizeFact);
 		int gridH = round(AVG_PLANET_GRID_HEIGHT * sizeFact);
 
@@ -420,8 +426,10 @@ class MakePlanet : MapHook {
 		//Figure out planet type
 		const PlanetType@ planetType = getBestPlanetType(biome1, biome2, biome3);
 		planet.PlanetType = planetType.id;
-		// DOF - Scaling: Give a slightly larger OrbitSize
+		// BEGIN NON-MIT CODE - DOF (Scaling)
+		// Give a slightly larger OrbitSize
 		planet.OrbitSize = 500 + radius;
+		// END NON-MIT CODE 
 		if(!physics.boolean) // Ringworlds need a huge orbital radius.
 			planet.OrbitSize += 2500;
 		
@@ -589,7 +597,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange() * 25;
+		double radius = arguments[0].fromRange() * 25; // NON-MIT CODE - DOF (Scaling)
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();
@@ -1033,7 +1041,7 @@ class MakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95); // NON-MIT CODE - DOF (Scaling)
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, forceAggression.boolean, system.object);
@@ -1662,7 +1670,7 @@ class ForceMakeCreepCamp : MapHook {
 		if(type is null)
 			@type = getDistributedCreepCamp();
 
-		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95);
+		vec2d campPos = random2d(200.0, (system.radius - offset.decimal * 10) * 0.95); // NON-MIT CODE - DOF (Scaling)
 		vec3d pos = system.position + vec3d(campPos.x, 0, campPos.y);
 
 		makeCreepCamp(pos, type, forceAggression.boolean, system.object);

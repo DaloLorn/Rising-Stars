@@ -24,8 +24,9 @@ final class NovaNodeScript {
 			
 			alpha = 1.0 - (life / duration);
 
-			// DOF - Scaling
+			// BEGIN NON-MIT CODE - DOF (Scaling)
 			node.scale = 10000.0 + 10000.0 * life / duration;
+			// END NON-MIT CODE
 			node.rebuildTransform();
 		}
 		

@@ -16,7 +16,7 @@ enum FTLReturn {
 };
 
 class FTL : AIComponent {
-	double get_maxSublightEta() const { return INFINITY; }
+	double get_maxSublightEta() const { return INFINITY; } // NON-MIT CODE - SoI (AI)
 	uint order(MoveOrder& order) { return F_Pass; }
 	uint tick(MoveOrder& order, double time) { return F_Pass; }
 };
@@ -169,7 +169,7 @@ class MoveOrder {
 
 class Movement : AIComponent {
 	int nextMoveOrderId = 0;
-	double maxSubLightEta = INFINITY;
+	double maxSubLightEta = INFINITY; // NON-MIT CODE - SoI (AI)
 	array<MoveOrder@> moveOrders;
 
 	array<Oddity@> oddities;
@@ -178,11 +178,13 @@ class Movement : AIComponent {
 
 	void create() {
 		@ftl = cast<FTL>(ai.ftl);
-
+		
+		// BEGIN NON-MIT CODE - SoI (AI)
 		//Set our max sublight acceptable ETA depending on our FTL method
 		if (ftl !is null) {
 			maxSubLightEta = ftl.maxSublightEta;
 		}
+		// END NON-MIT CODE
 	}
 
 	void save(SaveFile& file) {
@@ -266,6 +268,7 @@ class Movement : AIComponent {
 		return eta(obj, toObject.position, priority);
 	}
 
+	// BEGIN NON-MIT CODE - SoI (AI)
 	double eta(Object& obj, const vec3d& position, uint priority = MP_Normal) {
 		//Path through gates/wormholes
 		double eta1 = pathOddityGates(oddities, ai.empire, path, obj.position, position, obj.maxAcceleration);
@@ -273,6 +276,7 @@ class Movement : AIComponent {
 
 		return eta1 != 0 && eta1 <= eta2 ? eta1 : eta2;
 	}
+	// END NON-MIT CODE
 
 	void order(MoveOrder& ord) {
 		if(ord.target !is null && ord.target is ord.obj.region)
@@ -284,6 +288,7 @@ class Movement : AIComponent {
 			uint mode = ftl.order(ord);
 			if (mode == F_Kill || mode == F_Done)
 				return;
+			// BEGIN NON-MIT CODE - SoI (AI)
 			if (ord.priority != MP_Critical && mode == F_Pass) {
 				//If not using FTL and the ETA is above our limit, cancel movement
 				if ((ord.target !is null && eta(ord.obj, ord.target) > maxSubLightEta) || eta(ord.obj, ord.position) > maxSubLightEta) {
@@ -291,6 +296,7 @@ class Movement : AIComponent {
 					return;
 				}
 			}
+			// END NON-MIT CODE
 			madeOrder = (mode == F_Continue);
 		}
 

@@ -397,7 +397,7 @@ class ShipInfoBar : InfoBar {
 
 			shield.progress = min(curShield / max(maxShield, 0.01), 1.0);
 			shield.text = standardize(curShield, true);
-			// DOF - Shielding
+			// BEGIN NON-MIT CODE - DOF (Mitigation)
 			double shieldRegen = ship.blueprint.getEfficiencySum(SV_ShieldRegen);
 			double shieldMit = ship.mitigation;
 			double shieldBlock = ship.blueprint.getEfficiencySum(SV_Chance)*100.0;
@@ -409,6 +409,7 @@ class ShipInfoBar : InfoBar {
 				standardize(shieldBlock));
 			tt += "\n\n";
 			tt += format(locale::TT_SHIP_SHIELD_ABSORB, standardize(shieldAbsorb));
+			// END NON-MIT CODE
 		}
 		else {
 			shield.visible = false;

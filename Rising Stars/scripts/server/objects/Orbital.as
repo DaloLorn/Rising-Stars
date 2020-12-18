@@ -1207,6 +1207,7 @@ tidy class OrbitalScript {
 			else {
 				playParticleSystem("ShieldImpactHeavy", obj.position + evt.impact.normalized(obj.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), obj.radius, obj.visibleMask, networked=false);
 			}
+			// BEGIN NON-MIT CODE - DOF (Mitigation)
 			double Mitigation = 0.5;
 			double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
 			double BlockFactor = 1;
@@ -1237,6 +1238,7 @@ tidy class OrbitalScript {
 			evt.damage -= block / BlockFactor; // Increase damage reduction proportionately.
 			// Bleedthrough damage isn't affected by mitigation
 			evt.damage /= 1 - Mitigation;
+			// END NON-MIT CODE
 				
 			Shield = shield / shieldMod;
 				
