@@ -8,8 +8,8 @@ Construction: CoreResearch
 	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 22.5)
 	AddBuildCostAttribute(TerraformCostFactor, Multiply = 375)
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreResearch)
 	RequireUnlockTag(CoreProgramming)

@@ -249,6 +249,7 @@ tidy class PlanetScript {
 		planet.clearRally();
 		if(planet.hasAbilities)
 			planet.abilityOwnerChange(prevOwner, planet.owner);
+		planet.constructionChangeOwner(prevOwner, planet.owner);
 		planet.changeSurfaceOwner(prevOwner);
 		planet.changeResourceOwner(prevOwner);
 		planet.changeStatusOwner(prevOwner, planet.owner);

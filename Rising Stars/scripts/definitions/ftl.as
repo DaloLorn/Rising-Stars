@@ -137,7 +137,7 @@ int flingCost(Object& obj, vec3d position) {
 		else if(obj.isPlanet) {
 			double modifier = 1;
 			if(freeFTL) modifier = 0.25; // Planets only receive a serious discount from free FTL effects.
-			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier);
+			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier / 4);
 		}
 		return INFINITY;
 	}
@@ -274,7 +274,7 @@ bool isFTLSuppressed(Object& obj) {
 
 // BEGIN NON-MIT CODE - DOF (Scaling)
 // Adjusting for increased scaling
-const double JUMPDRIVE_COST = 0.0015;
+const double JUMPDRIVE_COST = 0.015;
 // END NON-MIT CODE 
 const double JUMPDRIVE_START_COST = 50.0;
 const double JUMPDRIVE_CHARGE_TIME = 25.0;

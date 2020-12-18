@@ -4,7 +4,7 @@ Attitude: Stable
 	Color: #50c53a
 	Sort: 50
 
-	ProgressFromAttribute(Level3Planets, Monotonic = False)
+	ProgressFromAttribute(Level3Planets, Retroactive = True, Monotonic = False)
 	Conflict(Progressive)
 
 	Level:

@@ -24,6 +24,7 @@ Module: SenatorialPalace
 	OnEnable(NotifyAll(#NOTIFY_SENATORIAL_PALACE, LeaderIcon))
 
 	ModEmpireAttribute(SenatorialPalaceConstructed, Add, 1)
+	IfInOwnedSpace(ModEmpireAttribute(SenatorialPalaceActive, Add, 1))
 	RequireAttributeLT(SenatorialPalaceConstructed, 1)
 
 	GloballyVisible()

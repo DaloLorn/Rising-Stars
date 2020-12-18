@@ -1,0 +1,5 @@
+Status: AncientFabricator
+	Visible To: Nobody
+
+	AddLocalDefense(3, Build Satellites = True)
+	AddFleetEffectiveness(+0.5)

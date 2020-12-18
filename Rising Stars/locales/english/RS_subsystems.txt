@@ -400,7 +400,7 @@ S_MINER_HULL_DESC: <<
 	[img=Plus]Increases supply capacity by 50%.[/img]
 	[img=Plus]Reduces build and Labor costs by 25%.[/img]
 	[img=Plus]Mining rate and cargo storage are increased by 200%.[/img]
-	[img=Minus]Weapon damage and support capacity are reduced by 90%.[/img]
+	[img=Minus]Support capacity and the effective size of weapons are reduced by 90%.[/img]
 	[img=Minus]Health and shield capacity are reduced by 25%.[/img]
 	[img=Minus]Repair and shield regeneration rates are reduced by 50%.[/img]
 >>
@@ -499,6 +499,7 @@ S_CARRIER_HULL_DESC: <<
 	[img=Plus]Doubles any support capacity.[/img]
 	[img=Plus]Increases all health and shield capacity by 50%.[/img]
 	[img=Plus]Increases supply capacity by 400%.[/img]
+	[img=Plus]Doubles repair and shield regeneration rates.[/img]
 	[img=Minus]Weapon damage is reduced by 40%.[/img]
 	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
 	[img=Minus]Reduces the hex limit by 26 hexes, without a corresponding increase in hex size.[/img]

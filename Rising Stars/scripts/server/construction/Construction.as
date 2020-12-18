@@ -695,6 +695,10 @@ tidy class Construction : Component_Construction, Savable {
 					case TR_UnusedLabor:
 						//Fall through the tick labor
 					break;
+					case TR_PartialLabor: // See documentation for new TR case
+						usingLabor = true;
+						tick -= remain;
+					break;
 				}
 				if(tick <= 0)
 					break;
@@ -1268,6 +1272,13 @@ tidy class Construction : Component_Construction, Savable {
 		for(uint i = 0, cnt = queue.length; i < cnt; ++i)
 			queue[i].remove(obj);
 		queue.length = 0;
+	}
+
+	void constructionChangeOwner(Object& obj, Empire@ prevOwner, Empire@ newOwner) {
+		for(uint i = 0, cnt = queue.length; i < cnt; ++i) {
+			queue[i].changeOwner(prevOwner, newOwner);
+		}
+		deltaConstruction = true;
 	}
 
 	void writeConstruction(Message& msg) {

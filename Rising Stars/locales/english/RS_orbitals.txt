@@ -459,3 +459,22 @@ ORB_WARNING_BEACON_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:Tactical Detection Node:Boasts improved armor, a shield generator, and a sentry gun for defense against enemy raiders/]
 >>
+
+ORB_ANCIENT_FABRICATOR: Orbital Fabricator
+ORB_ANCIENT_FABRICATOR_BLURB: Constructs buildings on the surface of the planet it orbits. Slowly spawns defense satellites and boosts defense fleet effectiveness.
+ORB_ANCIENT_FABRICATOR_DESC: <<
+	A large low-orbit station that can fabricate construction materials and transfer them to the surface. Buildings can only be constructed on planets with a Replicator or Fabricator in orbit. Control Hubs can only be constructed by a Replicator.
+
+	Fabricator stations can be moved between planets in order to construct facilities on other planets.
+
+	If the planet the fabricator is in orbit of has free support capacity, it will automatically construct defense satellites for it over time, albeit slower than a replicator. Additionally, the planet receives a +50% boost to fleet effectiveness while the fabricator is in orbit.
+>>
+
+ORB_ANCIENT_REPLICATOR_BLURB: Constructs control hubs and other buildings on the surface of the planet it orbits. Spawns defense satellites and greatly boosts defense fleet effectiveness.
+ORB_ANCIENT_REPLICATOR_DESC: <<
+	A vast low-orbit station that can replicate materials and transfer them to the surface. Control Hubs can only be constructed on planets with a Replicator in orbit. Other buildings may also be constructed by a Fabricator.
+
+	Replicator stations can be moved between planets in order to construct facilities on other planets.
+
+	If the planet the replicator is in orbit of has free support capacity, it will automatically construct defense satellites for it over time. Additionally, the planet receives a +100% boost to fleet effectiveness while the replicator is in orbit.
+>>

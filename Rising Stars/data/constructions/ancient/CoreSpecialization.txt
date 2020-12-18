@@ -8,8 +8,8 @@ Construction: CoreSpecialization
 	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 30)
 	AddBuildCostAttribute(TerraformCostFactor, Multiply = 500)
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireStatus(CoreProgrammed)
 	RequireNotStatus(CoreMoney)
@@ -33,8 +33,8 @@ Construction: CoreSpecializationMoney
 	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 60)
 	AddBuildCostAttribute(TerraformCostFactor, Multiply = 1000)
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireStatus(CoreMoney)
 	RequireUnlockTag(AtroanTerraform4)

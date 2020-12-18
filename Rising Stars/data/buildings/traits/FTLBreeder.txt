@@ -42,4 +42,5 @@ Building: FTLBreederFLUX
 	//TriggerConstructed(LosePopulation(1))
 
 	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
 	ShowFTLValue(0.5), Suffix = #PER_SECOND)

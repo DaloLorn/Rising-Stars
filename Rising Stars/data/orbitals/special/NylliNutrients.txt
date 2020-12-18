@@ -34,8 +34,8 @@ Module: NylliWater
 	Material: GenericPBR_Depot
 	Size: 5
 	Unique: False
-	IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliWater, AdaptedNylliWater))
-	RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
+	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(NylliWater, AdaptedNylliWater))
+	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
 	RequireUnlockTag(NylliNutrients)
 	AddStatusToOrbitingPlanet(NylliWater, Set Origin Empire = True)
 	RequireOnOrbital(EconomyCore)

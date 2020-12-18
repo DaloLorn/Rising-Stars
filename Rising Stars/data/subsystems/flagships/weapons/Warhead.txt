@@ -22,9 +22,14 @@ Subsystem: Warhead
 	Hex.Mass := HexSize
 
 	HasWarhead := 1
-	WarheadCost := 2.0 * ShipSize
-	WarheadLabor := 0.1 * ShipSize
+	WarheadBaseCost := 2.0 * ShipSize
+	WarheadBaseLabor := 0.1 * ShipSize
+	WarheadCost := WarheadBaseCost
+	WarheadLabor := WarheadBaseLabor
 	WarheadStorage := 1
+
+	RetrofitCost := WarheadCost
+	RetrofitLabor := WarheadLabor
 
 	BaseHP := 18 * HexSize
 	CoreHPMod := 3
@@ -37,6 +42,14 @@ Subsystem: Warhead
 	Modifier: AoERadiusFactor(Factor)
 		Radius := Radius * Factor
 
+	Modifier: BuildCostFactor(factor)
+		Hex.BuildCost := Hex.BuildCost * factor
+		WarheadCost := WarheadCost * factor
+
+	Modifier: LaborCostFactor(factor)
+		Hex.LaborCost := Hex.LaborCost * factor
+		WarheadLabor := WarheadLabor * factor
+
 	Requires:
 		Command = 1
 
@@ -47,8 +60,8 @@ Subsystem: Warhead
 		Message: #ERROR_ONLY_ONE
 
 	Module: Core
-		Hex.BuildCost := 5.0 * Hex.BuildCost + WarheadCost
-		Hex.LaborCost := Hex.LaborCost + WarheadLabor
+		Hex.BuildCost := 5.0 * Hex.BuildCost + WarheadBaseCost
+		Hex.LaborCost := Hex.LaborCost + WarheadBaseLabor
 		Hex.Mass := 5.0 * Hex.Mass
 
 		Sprite: Warhead::0
@@ -68,8 +81,8 @@ Subsystem: Warhead
 		Hook: OnEnable(AddStatus(Warhead))
 
 		WarheadStorage := WarheadStorage + 1
-		Hex.BuildCost := Hex.BuildCost + WarheadCost
-		Hex.LaborCost := Hex.LaborCost + WarheadLabor
+		Hex.BuildCost := Hex.BuildCost + WarheadBaseCost
+		Hex.LaborCost := Hex.LaborCost + WarheadBaseLabor
 
 	Effector: Warhead
 		Range = Range

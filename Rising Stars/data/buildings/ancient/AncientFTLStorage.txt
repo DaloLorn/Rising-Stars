@@ -13,6 +13,8 @@ Building: AncientFTLStorage
 	In Queue: True
 	Build Time: 60
 
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 	AddFTLStorage(400)
 	IfNative(FTL, AddFTLStorage(400))
 

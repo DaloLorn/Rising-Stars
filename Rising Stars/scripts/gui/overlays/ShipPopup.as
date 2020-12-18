@@ -286,6 +286,8 @@ class ShipPopup : Popup {
 			string prog = toString(cons.progress * 100.f, 0)+"%";
 			if(cons.type == CT_DryDock)
 				prog += " / "+toString(cons.pct * 100.f, 0)+"%";
+			if(cons.finalizing)
+				prog = format(locale::CONSTRUCTION_FINALIZING, formatTime(cons.finalizingTimer));
 			ft.draw(plPos.resized(0, sz - ft.getLineHeight(), 0.0, 1.0),
 				prog, locale::ELLIPSIS, Color(0xffffffff), 0.5, 0.0);
 

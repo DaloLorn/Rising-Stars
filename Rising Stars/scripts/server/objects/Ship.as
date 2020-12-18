@@ -714,7 +714,7 @@ tidy class ShipScript {
 			if(killCredit.ResearchFromKill != 0 && ship.blueprint.design.total(HV_LaborCost) != 0)
 				killCredit.generatePoints(max(ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * killCredit.ResearchFromKill * max(ship.owner.TotalResearch, 2000.0) / max(killCredit.TotalResearch, 2000.0), 1.0), false);
 			if(killCredit.GloryMode == 1) {
-				killCredit.Glory += ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult);
+				killCredit.Glory += ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * 2;
 			}
 		}
 	
@@ -726,7 +726,7 @@ tidy class ShipScript {
 			if(killCredit !is ship.owner) {
 				ship.owner.recordStatDelta(stat::ShipsLost, 1);
 				if(ship.owner.GloryMode == 2) {
-					ship.owner.Glory -= ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult);
+					ship.owner.Glory -= ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * 2;
 				}
 			}
 		}
@@ -830,6 +830,8 @@ tidy class ShipScript {
 		}
 		if(ship.hasAbilities)
 			ship.abilityOwnerChange(prevOwner, ship.owner);
+		if(ship.hasConstruction)
+			ship.constructionChangeOwner(prevOwner, ship.owner);
 		if(ship.hasStatuses)
 			ship.changeStatusOwner(prevOwner, ship.owner);
 		regionOwnerChange(ship, prevOwner);

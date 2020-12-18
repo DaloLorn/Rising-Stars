@@ -12,6 +12,7 @@ Subsystem: HyperLaser
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
+	WeaponSize := Size
 	BeamDPS := 10 * Size
 	Duration := 0.75
 	Cooldown := 5 * min(1.0 + Size/1024, 1.5)

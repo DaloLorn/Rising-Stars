@@ -39,9 +39,9 @@ Subsystem: Laser
 		BeamDPS := BeamDPS * factor
 	
 	Modifier: CooldownFactor(factor)
-		BeamDPS := BeamDPS + Base::BeamDPS * (factor - 1)
+		BeamDPS := BeamDPS - Base::BeamDPS * (factor - 1)
 	Modifier: CooldownMult(factor)
-		BeamDPS := BeamDPS * factor
+		BeamDPS := BeamDPS / factor
 
 	Module: Core
 		Hex.BuildCost := 5.0 * Hex.BuildCost

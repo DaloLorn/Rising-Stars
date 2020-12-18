@@ -5,8 +5,8 @@ Construction: CoreDefense
 
 	Category: Core Programming
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreDefense)
 	RequireUnlockTag(CoreProgramming)

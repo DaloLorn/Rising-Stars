@@ -15,8 +15,8 @@ Building: AncientDock
 	Build Time: 10
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	IfAttributeGTE(Adaptation4, 1, ModSupportBuildSpeed(0.1))
 	ShowAttributeValue(Support Construction Boost, Adaptation4, Multiplier = 10.0, Icon = ResourceIcon::6, Suffix = %, Hide Zero = True)

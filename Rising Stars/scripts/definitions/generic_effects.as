@@ -3590,8 +3590,11 @@ tidy final class IfInOwnedSpace : IfHook {
 		Region@ region = obj.region;
 		if(region is null)
 			return false;
-		if(allow_allies.boolean)
-			return region.PlanetsMask & obj.owner.ForcedPeaceMask.value != 0;
+		// Also consider the player's owned space if allow_allies is true
+		// but not in allied space, fixes vanilla bug where owned space
+		// that wasn't allied space was failing this condition.
+		if(allow_allies.boolean && (region.PlanetsMask & obj.owner.ForcedPeaceMask.value != 0))
+			return true;
 		else
 			return region.PlanetsMask & obj.owner.mask != 0;
 	}
@@ -3918,32 +3921,40 @@ class AddLocalDefense : GenericEffect {
 		if(disable_in_combat.boolean && obj.inCombat)
 			tickDefense = 0;
 
-		if(dat.design is null) {
-			int maxSize = -1;
-			if(stop_filled.boolean && obj.hasLeaderAI) {
-				maxSize = obj.SupplyCapacity - obj.SupplyUsed;
-				if(maxSize <= 0)
+		// Loop while have defense for this tick to build with
+		// Fixes vanilla issue blowing all labor on the first support
+		// even when labor would be leftover
+		while (tickDefense > 0) {
+			if(dat.design is null) {
+				int maxSize = -1;
+				if(stop_filled.boolean && obj.hasLeaderAI) {
+					maxSize = obj.SupplyCapacity - obj.SupplyUsed;
+					if(maxSize <= 0)
+						return;
+				}
+				if (obj.hasLeaderAI && !obj.canGainSupports)
 					return;
+				if(dat.timeout > 0) {
+					dat.timeout -= time;
+					return;
+				}
+				
+				@dat.design = getDefenseDesign(obj.owner, secondDefense, satellite=build_satellites.boolean, maxSize=maxSize);
+				if (dat.design !is null) {
+					dat.labor = getLaborCost(dat.design, 1);
+				}
+				else {
+					dat.timeout = 30.0;
+					return;
+				}
 			}
-			if(obj.hasLeaderAI && !obj.canGainSupports)
-				return;
-			if(dat.timeout > 0) {
-				dat.timeout -= time;
-				return;
-			}
-
-			@dat.design = getDefenseDesign(obj.owner, secondDefense, satellite=build_satellites.boolean, maxSize=maxSize);
-			if(dat.design !is null)
-				dat.labor = getLaborCost(dat.design, 1);
-			else
-				dat.timeout = 30.0;
-		}
-		else {
-			if(overflow_global.boolean) {
-				if(!obj.hasLeaderAI || obj.SupplyUsed + uint(dat.design.size) > obj.SupplyCapacity) {
-					if(dat.global != secondDefense) {
-						obj.owner.modDefenseRate((secondDefense-dat.global) * global_factor.decimal);
-						dat.global = secondDefense;
+			if(dat.design !is null)  {
+				if(overflow_global.boolean) {
+					if(!obj.hasLeaderAI || obj.SupplyUsed + uint(dat.design.size) > obj.SupplyCapacity) {
+						if(dat.global != secondDefense) {
+							obj.owner.modDefenseRate((secondDefense-dat.global) * global_factor.decimal);
+							dat.global = secondDefense;
+						}
 					}
 					return;
 				}
@@ -3951,15 +3962,18 @@ class AddLocalDefense : GenericEffect {
 					obj.owner.modDefenseRate(-dat.global * global_factor.decimal);
 					dat.global = 0;
 				}
-			}
+				// Only use labor equal to what we needed for the ship
+				double take = min(tickDefense, dat.labor);
+				dat.labor -= take;
+				tickDefense -= take;
 
-			dat.labor -= tickDefense;
-			if(dat.labor <= 0) {
-				Object@ leader;
-				if(obj.hasLeaderAI && obj.canGainSupports)
-					@leader = obj;
-				createShip(obj, dat.design, obj.owner, leader, false, true);
-				@dat.design = null;
+				if(dat.labor <= 0) {
+					Object@ leader;
+					if(obj.hasLeaderAI && obj.canGainSupports)
+						@leader = obj;
+					createShip(obj, dat.design, obj.owner, leader, false, true);
+					@dat.design = null;
+				}
 			}
 		}
 	}

@@ -28,6 +28,7 @@ Module: AncientReplicator
 	AddAccelerationBonus(16.0)
 
 	AddStatusToOrbitingPlanet(AncientReplicator, Only Owned = True, Allow Space = True, Set Origin Empire = True)
+	AddStatusToOrbitingPlanet(AncientFabricator, Only Owned = True, Allow Space = True, Set Origin Empire = True)
 
 	IfTagUnlocked(AdvancedCores, GrantAbility(AncientBuildOreTransmuter))
 	GrantAbility(AncientBuildCore) #version>=160

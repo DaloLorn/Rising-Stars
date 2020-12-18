@@ -1,0 +1,43 @@
+HELP_ANCIENT: <<
+	[font=Big]Ancient[/font][vspace=4/]
+	You've chosen to play as a race with the [color=#aaffaa]Ancient[/color] trait. Here's a few quick tips to get you started!
+	[color=#aaa][i]Access this window at any time by pressing the [img=MenuIcons::3;22/] button on the right side of the screen.[/i][/color]
+
+	[font=Medium]Resources[/font][vspace=4/]
+	[color=#ccc]You do not use any resources to level up planets. All planets are immediately at the level their resource requires.[/color]
+
+	[font=Medium]Population[/font][vspace=4/]
+	[color=#ccc]You do not have any physical population. Your planets do not have any civilian infrastructure. You will need to construct Buildings on planets to gain production.[/color]
+
+	[font=Medium]Replicators and Fabricators[/font][vspace=4/]
+	[color=#ccc]Take control of uncolonized planets by moving one of your [b]Orbital Replicators[/b] into orbit. Only planets that have a Replicator or Fabricator in their orbit can construct buildings![/color]
+
+	[font=Medium]Control Hubs[/font][vspace=4/]
+	[color=#ccc]You must build one of the control hub buildings on a planet in order to maintain control of it after moving your Orbital Replicator away. Control Hubs have different effects on how you use the planet.[/color]
+
+	[font=Medium]Base Material[/font][vspace=4/]
+	[color=#ccc]By building the [b]Transmuter[/b] control hub on a planet, you convert its resource into [b]Base Material[/b]. Base Materials are required to operate various buildings, and can either be exported to a specific planet, or distributed automatically via the Materials pool.[/color]
+>>
+
+HELP_EXTRAGALACTIC: <<
+	[font=Big]Extragalactic[/font][vspace=4/]
+	You've chosen to play as a race with the [color=#aaffaa]Extragalactic[/color] trait. Here's a few quick tips to get you started!
+	[color=#aaa][i]Access this window at any time by pressing the [img=MenuIcons::3;22/] button on the right side of the screen.[/i][/color]
+
+	[font=Medium]Beacons[/font][vspace=4/]
+	[color=#ccc]Rather than a homeworld, you start with 3 Beacon orbitals in random systems throughout the galaxy.[/color]
+	[b]Your beacons allow resource trade between your separate territories.[/b]
+
+	[font=Medium]Refugees[/font][vspace=4/]
+	[color=#ccc]You cannot control your own colonization or population growth, instead Refugee Ships will jump in at your beacons and settle on nearby planets.[/color]
+
+	[font=Medium]Beacon Projects[/font][vspace=4/]
+	[color=#ccc]You can build things at each of your beacons! Double-click one to check it out.[/color]
+
+	[font=Medium]Beacon Support[/font][vspace=4/]
+	[color=#ccc]Certain projects at your beacon require you to collect [b]Support[/b] to build them. Export resources with the appropriate pressures to your beacons in order to gain it.[/color]
+
+	[font=Medium]Beacon Secondary Functions[/font][vspace=4/]
+	[color=#ccc]If you're using Jumpdrives, jumping to a system with a beacon is always safe![/color]
+	[color=#ccc]You can import resources with Labor Pressure to any of your beacons to increase their labor generation.[/color]
+>>

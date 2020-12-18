@@ -15,8 +15,8 @@ Building: Compressor
 
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientCompressor), Inactive Status = AncientRequireBaseMat, Allow Global = False))
 	ShowAttributeValue(Research Generation, Adaptation4, Icon = ResourceIcon::4, Suffix = #PER_SECOND, Hide Zero = True)

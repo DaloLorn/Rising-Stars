@@ -1,0 +1,8 @@
+Status: AncientReplicator
+	Visible To: Nobody
+
+	TriggerWithOriginEmpire(TakeControl())
+	AddStatus(AncientClaim)
+
+	AddLocalDefense(3, Build Satellites = True)
+	AddFleetEffectiveness(+0.5)

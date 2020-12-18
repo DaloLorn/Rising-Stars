@@ -25,7 +25,7 @@ Subsystem: CarrierHull
 	Assert: ShipSize >= 300
 		Message: #ERROR_MIN_SIZE:$1:300
 
-	Assert: Sum.SupportCapSize >= 0.2
+	Assert: Sum.SupportCapSize / ShipSize >= 0.2
 		Message: #ERROR_CARRIER_SUPPORT:20
 
 		

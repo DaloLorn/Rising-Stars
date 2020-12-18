@@ -12,8 +12,8 @@ Building: AncientRefinery
 
 	In Queue: True
 
-	RequireStatus(AncientReplicator)
-	RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	RequireStatusToProgress(AncientFabricator)
 
 	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, Repeat(3, AddStatus(AncientProduce)), Inactive Status = AncientRequireBaseMat, Allow Global = False))
 	IfAttributeGTE(Adaptation4, 1, AddLaborFactor(0.1))

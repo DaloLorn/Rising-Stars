@@ -8,8 +8,8 @@ Construction: CoreMoney
 	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 45)
 	AddBuildCostAttribute(TerraformCostFactor, Multiply = 750)
 
-	RequireStatus(AncientReplicator)
-	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientFabricator)
+	building_effects::RequireStatusToProgress(AncientFabricator)
 	RequireStatus(AncientCore)
 	RequireNotStatus(CoreMoney)
 	RequireUnlockTag(CoreProgramming)

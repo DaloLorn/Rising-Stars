@@ -76,7 +76,8 @@ class SightModifier : Savable {
 //Factor of new design cost as minimum for retrofit
 const double RETROFIT_MIN_PCT = 0.3;
 
-const double SHARED_XP_PCT = 0.1;
+const double SHARED_XP_PCT = 0.2;
+const double CLASS_XP_PCT = SHARED_XP_PCT;
 
 tidy class LeaderAI : Component_LeaderAI, Savable {
 	Order@ order;
@@ -414,6 +415,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 					if(other is ship)
 						continue;
 					other.addExperience(amount * SHARED_XP_PCT);
+					obj.owner.addClassExperience(ship, amount * CLASS_XP_PCT);
 				}
 			}
 		}
@@ -597,6 +599,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 					int fromCost = getBuildCost(from);
 					int toCost = getBuildCost(to);
 					cost += max(toCost - fromCost, int(ceil(toCost * RETROFIT_MIN_PCT)));
+					cost += max(from.total(SV_RetrofitCost) - to.total(SV_RetrofitCost), 0.0) * (1 - RETROFIT_MIN_PCT);
 					have = true;
 				}
 			}
@@ -613,6 +616,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 				int fromCost = getBuildCost(from);
 				int toCost = getBuildCost(to);
 				cost += max(toCost - fromCost, int(ceil(toCost * RETROFIT_MIN_PCT))) * dat.amount;
+				cost += max(from.total(SV_RetrofitCost) - to.total(SV_RetrofitCost), 0.0) * (1 - RETROFIT_MIN_PCT);
 				have = true;
 			}
 		}
@@ -636,6 +640,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 					double fromCost = getLaborCost(from);
 					double toCost = getLaborCost(to);
 					cost += max(toCost - fromCost, toCost * RETROFIT_MIN_PCT);
+					cost += max(from.total(SV_RetrofitLabor) - to.total(SV_RetrofitLabor), 0.0) * (1 - RETROFIT_MIN_PCT);
 					have = true;
 				}
 			}
@@ -652,6 +657,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 				double fromCost = getLaborCost(from);
 				double toCost = getLaborCost(to);
 				cost += max(toCost - fromCost, toCost * RETROFIT_MIN_PCT) * dat.amount;
+				cost += max(from.total(SV_RetrofitLabor) - to.total(SV_RetrofitLabor), 0.0) * (1 - RETROFIT_MIN_PCT);
 				have = true;
 			}
 		}
@@ -691,7 +697,9 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 					getBuildCost(to, toCost, toMaint, toLabor);
 
 					cost += max(toCost - fromCost, int(ceil(toCost * RETROFIT_MIN_PCT)));
+					cost += max(from.total(SV_RetrofitCost) - to.total(SV_RetrofitCost), 0.0) * (1 - RETROFIT_MIN_PCT);
 					labor += max(toLabor - fromLabor, toLabor * RETROFIT_MIN_PCT);
+					labor += max(from.total(SV_RetrofitLabor) - to.total(SV_RetrofitLabor), 0.0) * (1 - RETROFIT_MIN_PCT);
 					maint += max(toMaint - fromMaint, 0);
 
 					ship.startRetrofit(at, to);

@@ -133,7 +133,11 @@ Ship@ createShip(vec3d position, const Design@ design, Empire@ owner, Object@ gr
 			ship.remakeStandardOrbit();
 			ship.orbitSpin(60.0);
 		}
+	
+		if(owner !is null)
+			ship.addExperience(owner.getClassExperience(ship), false);
 	}
+	
 
 	return ship;
 }
@@ -217,6 +221,9 @@ Ship@ createShip(Object& at, const Design@ design, Empire@ owner = null, Object@
 				ship.addMoveOrder(at.position + vec3d(pos.x, 0, pos.y), false);
 			}
 		}
+		
+		if(owner !is null)
+			ship.addExperience(owner.getClassExperience(ship), false);
 	}
 
 	ship.finalizeCreation();

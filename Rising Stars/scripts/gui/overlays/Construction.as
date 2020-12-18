@@ -479,6 +479,8 @@ class ConstructionDisplay : DisplayBox {
 					auto@ def = getOrbitalModule(i);
 					if(def is drydock)
 						continue;
+					if(!def.isCore)
+						continue;
 					if(def.canBuildBy(obj))
 						list.addItem(BuildElement(this, def, obj));
 				}
@@ -1275,7 +1277,9 @@ class OrbitalTarget : PointTargeting {
 			path.generate(getSystem(obj.region), getSystem(target));
 			laborCost *= 1.0 + config::ORBITAL_LABOR_COST_STEP * penFact * double(path.pathSize - 1);
 
-			return toString(laborCost,0)+" "+locale::RESOURCE_LABOR+", "+formatTime(laborCost / laborIncome);
+			double extraTime = 0;
+			if(dsg !is null && dsg.hasTag(ST_Station)) extraTime = STATION_FINALIZE_TIME;
+			return toString(laborCost,0)+" "+locale::RESOURCE_LABOR+", "+formatTime(laborCost / laborIncome + extraTime);
 		}
 		Region@ reg = getRegion(pos);
 		if(reg is null)
@@ -1391,6 +1395,7 @@ class BuildElement : GuiListElement {
 	Color nameColor;
 	Color iconColor = colors::White;
 	bool isSupport = false;
+	bool isStation = false;
 	bool incomplete = false;
 	bool hasError = false;
 	array<Sprite> extraIcons;
@@ -1489,8 +1494,10 @@ class BuildElement : GuiListElement {
 			else if(dsg.hasTag(ST_Station)) {
 				labor *= buildAt.owner.OrbitalLaborCostFactor;
 				build *= buildAt.owner.OrbitalBuildCostFactor;
+				isStation = true;
 			}
 			else {
+				isStation = false;
 				isSupport = false;
 				iconColor = dsg.dullColor;
 			}
@@ -1558,6 +1565,7 @@ class BuildElement : GuiListElement {
 			energy = 0;
 			icon = orb.icon;
 			isSupport = false;
+			isStation = false;
 
 			if(!orb.canBuildBy(buildAt, ignoreCost=false))
 				hasError = true;
@@ -1582,6 +1590,7 @@ class BuildElement : GuiListElement {
 			icon = building.sprite;
 			iconColor = colors::White;
 			isSupport = false;
+			isStation = false;
 
 			ttText = building.getTooltip(valueObject=buildAt, isOption=true);
 
@@ -1605,6 +1614,7 @@ class BuildElement : GuiListElement {
 			icon = construction.icon;
 			iconColor = colors::White;
 			isSupport = false;
+			isStation = false;
 			ttText = construction.formatTooltip(buildAt);
 
 			if(!construction.canBuild(buildAt, null))
@@ -1663,6 +1673,8 @@ class BuildElement : GuiListElement {
 			laborText = standardize(labor, true);
 			if(isSupport)
 				timeText = formatTimeRate(labor, buildAt.laborIncome*(float(buildAt.supportBuildSpeed)/100.f));
+			else if(isStation)
+				timeText = formatTimeRate(labor + (buildAt.laborIncome * STATION_FINALIZE_TIME), buildAt.laborIncome);
 			else
 				timeText = formatTimeRate(labor, buildAt.laborIncome);
 		}
@@ -1841,6 +1853,9 @@ class QueueItem : BaseGuiElement {
 		else
 			timeText = formatTime(eta);
 		pct = cons.progress;
+		if(cons.finalizing) {
+			name += locale::CONSTRUCTION_FINALIZING_LONG;
+		}
 
 		//Update support groups
 		uint oldCnt = supportItems.length;
@@ -1959,7 +1974,7 @@ class QueueItem : BaseGuiElement {
 		recti midBar = recti_area(absPos.topLeft + vec2i(40, 0), vec2i(absPos.width - 142, 29));
 		skin.draw(SS_Field, SF_Normal, midBar);
 
-		int w = (1.f - pct) * float(midBar.width - 4);
+		int w = (1.f - min(pct, 1.f)) * float(midBar.width - 4);
 		drawRectangle(midBar.padded(2, 2, 2+w, 2), Color(0x474545aa));
 
 		Color textColor(0xffffffff);

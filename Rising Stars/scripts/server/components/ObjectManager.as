@@ -180,6 +180,28 @@ tidy class DesignManager : Savable, Serializable {
 		designClasses.length = getEmpireCount();
 	}
 
+	double getClassExperience(const Design@ dsg) {
+		return getClassExperience(dsg.name, dsg.revision, dsg.owner.index);
+	}
+
+	double getClassExperience(string& name, int& revision, int& empireId) {
+		DesignRevision@[] cls;
+		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
+		if(designClasses[empireId] is null) {
+			designClasses[empireId] = dictionary();
+			return 0;
+		}
+		if(!designClasses[empireId].exists(name))
+			return 0;
+		else designClasses[empireId].get(name, cls);
+		if(int(cls.length) <= revision-1)
+			return 0;
+		if(cls[revision-1] is null)
+			return 0;
+		
+		return cls[revision-1].classExperience;
+	}
+
 	uint getQueuedShips(string& name, int& revision, int& empireId) {
 		DesignRevision@[] cls;
 		if(designClasses.length <= uint(empireId)) designClasses.length = uint(empireId)+1;
@@ -261,6 +283,24 @@ tidy class DesignManager : Savable, Serializable {
 			return null;
 
 		return cls[dsg.revision-1].ships[i];
+	}
+
+	void addClassExperience(const Design@ dsg, double& amount) {
+		DesignRevision@[] cls;
+		DesignRevision@ revision;
+		// None of these checks should be necessary, since we probably registered the class first...
+		if(designClasses.length <= uint(dsg.owner.index)) designClasses.length = uint(dsg.owner.index)+1;
+		if(designClasses[dsg.owner.index] is null)
+			designClasses[dsg.owner.index] = dictionary();
+		if(designClasses[dsg.owner.index].exists(dsg.name))
+			designClasses[dsg.owner.index].get(dsg.name, cls);
+		if(int(cls.length) <= dsg.revision-1)
+			cls.length = dsg.revision;
+		if(cls[dsg.revision-1] is null)
+			@cls[dsg.revision-1] = DesignRevision();
+
+			@revision = cls[dsg.revision-1];
+			revision.classExperience += amount;
 	}
 
 	void registerShip(const Design@ dsg, Ship@ ship) {
@@ -426,6 +466,7 @@ tidy class DesignManager : Savable, Serializable {
 tidy class DesignRevision : Savable, Serializable {
 	uint built;
 	uint queued;
+	double classExperience;
 	Ship@[] ships;
 
 	Ship@ get_ships(uint index) {
@@ -459,6 +500,7 @@ tidy class DesignRevision : Savable, Serializable {
 		file << built;
 		file << queued;
 		file << active;
+		file << classExperience;
 		for(uint i = 0; i < active; ++i)
 			file << ships[i];
 	}
@@ -469,6 +511,7 @@ tidy class DesignRevision : Savable, Serializable {
 		uint cnt = 0;
 		file >> cnt;
 		ships.length = cnt;
+		file >> classExperience;
 		for(uint i = 0; i < cnt; ++i)
 			file >> ships[i];
 	}
@@ -647,6 +690,19 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		return null;
 	}
 
+	double getClassExperience(Empire& emp, Ship@ ship) {
+		if(!ship.valid || ship.owner !is emp)
+			return 0;
+
+		ReadLock lock(designMutex);
+		return designs.getClassExperience(ship.blueprint.design);
+	}
+
+	double getClassExperience(string name, int revision, Empire@ emp) {
+		ReadLock lock(designMutex);
+		return designs.getClassExperience(name, revision, emp.index);
+	}
+
 	uint getQueuedShips(string name, int revision, Empire@ emp) {
 		ReadLock lock(designMutex);
 		return designs.getQueuedShips(name, revision, emp.index);
@@ -684,6 +740,14 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 
 		ReadLock(designMutex);
 		return designs.getShipOfType(ship.blueprint.design, i);
+	}
+
+	void addClassExperience(Empire& emp, Ship@ ship, double amount) {
+		if(!ship.valid || ship.owner !is emp)
+			return;
+
+		WriteLock lock(designMutex);
+		designs.addClassExperience(ship.blueprint.design, amount);
 	}
 
 	void registerShip(Empire& emp, Ship@ ship) {

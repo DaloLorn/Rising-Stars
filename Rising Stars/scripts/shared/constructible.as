@@ -19,6 +19,8 @@ enum ConstructibleType {
 	CT_Construction
 };
 
+const double STATION_FINALIZE_TIME = 30.0;
+
 tidy class Constructible : Serializable {
 	ConstructibleType type;
 	double curLabor = 0;
@@ -30,6 +32,8 @@ tidy class Constructible : Serializable {
 	float pct = 0.f;
 	float prog = 0.f;
 	bool isTimed = false;
+	double finalizingTimer = 0;
+	bool finalizing = false;
 
 	Object@ obj;
 	const OrbitalModule@ orbital;
@@ -125,10 +129,12 @@ tidy class Constructible : Serializable {
 		if(type == CT_DryDock)
 			return cast<Orbital>(this.obj).getValue(OV_DRY_ETA);
 #section all
+		if(finalizing)
+			return finalizingTimer;
 		double income = obj.laborIncome;
 		if(income == 0)
 			return INFINITY;
-		return (totalLabor - curLabor) / income;
+		return (totalLabor - curLabor) / income + finalizingTimer;
 	}
 
 	void read(Message& msg) {
@@ -141,6 +147,8 @@ tidy class Constructible : Serializable {
 		msg >> totalLabor;
 		msg >> maintainCost;
 		msg >> buildCost;
+		msg >> finalizing;
+		msg >> finalizingTimer;
 
 		@dsg = null;
 		@orbital = null;
@@ -222,6 +230,8 @@ tidy class Constructible : Serializable {
 		msg << totalLabor;
 		msg << maintainCost;
 		msg << buildCost;
+		msg << finalizing;
+		msg << finalizingTimer;
 
 		switch(type) {
 			case CT_Station:

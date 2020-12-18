@@ -13,3 +13,4 @@ Module: IonCannon
 	GrantAbility(IonCannon)
 	ConsumeCargo(Ore, 500)
 	RequireOnOrbital(MilitaryCore)
+	RequireSubsystemUnlocked(IonCannon)
