@@ -26,7 +26,7 @@ RESOURCE_HUBWORLD_DESC: <<
 
 	At level 4, the planet's shield projectors are restored to full capacity, allowing it to protect all other planets in the system from loyalty loss.
 
-	The wormhole generator is brought to full capacity at level 5, allowing any of the empire's fleets in the galaxy to be instantly transported to the Hubworld.
+	The wormhole generator is brought to full capacity at level 5, allowing any of the empire's fleets in the galaxy to be instantly transported to the Hubworld, and allowing trade between any two locations in the empire.
 
 	At level 6, the ancient archives on the planet are brought back online, unlocking access to the Progenitor tech tree for as long as the archives are active.
 >>
