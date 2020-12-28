@@ -8,10 +8,10 @@
 
 		A large-scale mod that seeks to expand and improve various aspects of SR2's gameplay. [b]Designed primarily for use with the Wake of the Heralds expansion. While the mod should still function normally, some content may be missing.[/b]
 
-		[b]NOTE: This mod now requires the SR2 Community Patch to be installed in your game's mod folders in order to function.[list]
-		[*]Workshop users can subscribe to the CP from the Required Items section to the right.
+		[b]NOTE: This mod now requires the OpenSR Modpack to be installed in your game's mod folders in order to function.[list]
+		[*]Workshop users can subscribe to the MP from the Required Items section to the right.
 		[*]Users of SR2MM 1.1.0 should have it automatically installed as a dependency, and may safely ignore this note.
-		[*]Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Community Patch GitHub repository, listed at the bottom of this modinfo.
+		[*]Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Modpack's GitHub repository, listed at the bottom of this modinfo.
 		[/list]
 		
 		Once the CP has been installed, you do not need to enable it in order to play Rising Stars.[/b]
@@ -62,14 +62,15 @@
 		Full patch notes can be found in the forums.
 		[h1][b]Links[/b][/h1]
 		[b]SR2 Mod Manager:[/b] https://github.com/DaloLorn/SR2ModManager
-		[b]Community Patch on GitHub:[/b] https://github.com/sol-oriens/SR2-Community-Patch
+		[b]OpenSR Modpack on GitHub:[/b] https://github.com/OpenSRProject/OpenStarRuler-Modpack
+		[b]OpenSR on GitHub:[/b] https://github.com/OpenSRProject
 		[b]Rising Stars on GitHub:[/b] https://github.com/DaloLorn/Rising-Stars		
 		[b]Rising Stars wiki:[/b] https://github.com/DaloLorn/Rising-Stars/wiki
 		[b]Rising Stars forums:[/b] http://steamcommunity.com/sharedfiles/filedetails/discussions/812827373
-		[b]Rising Stars Discord chat:[/b] https://discord.gg/sUJKJDc
+		[b]OpenSR Discord chat:[/b] https://discord.gg/sUJKJDc
 		[b]Support Rising Stars on Patreon:[/b] https://patreon.com/rising_stars_sr2
 		[b]Patch notes:[/b] http://steamcommunity.com/workshop/filedetails/discussion/812827373/133256959375172954/
 		[b]Credits:[/b] http://steamcommunity.com/workshop/filedetails/discussion/812827373/133256959375200731/
 	>>
 	Compatibility: 200
-	Derives From: SR2 Community Patch
+	Derives From: OpenSR Modpack
