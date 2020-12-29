@@ -11,7 +11,7 @@ Technology: ShipComputer
 	Color: #ffa4a0
 
 	UnlockSubsystem(ShipComputer)
-	UnlockSubsystem(AICore)
+	OnDLC(Heralds, UnlockSubsystem(AICore))
 	SkipOnUnlockedSubsystem(ShipComputer)
 
 	SecondaryEnergyCost(1000)

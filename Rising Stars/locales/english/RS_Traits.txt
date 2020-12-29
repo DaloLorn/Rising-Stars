@@ -105,3 +105,10 @@ TRAIT_ANCIENT_DESC: <<
 	[vspace=6/][img=PlanetType::3;22]Planets are claimed by moving Orbital Replicators to them and constructing Control Cores. Other buildings can then be constructed by the Replicator or a smaller, cheaper Orbital Fabricator.[/img]
 	[vspace=6/][img=TraitIcons::0;22]Ships are powered by a single Core that provides both Control and Power.[/img]
 >>
+
+TRAIT_LINKED_DESC: <<|
+	[vspace=3/] [img=AttributeIcons::3;22][b]Mainframe[/b] orbitals must be constructed in order to maintain fleet effectiveness. Fleets near mainframes are stronger, fleets far away from mainframes are weaker.[/img]
+	[vspace=6/][img=AnomalyIcons::0;22]Mainframes can remotely scan anomalies within trade range.[/img]
+	[vspace=6/][img=RSComputer;22][b]Control Computer[/b] subsystem is available from the start.[dlc=Heralds] Also starts with the [b]AI Core[/b] subsystem.[/img]
+	[vspace=6/][img=AntimatterReactor;22;#b8b800][b]Emergency Supplies[/b] subsystem is available from the start.[/img]
+>>
