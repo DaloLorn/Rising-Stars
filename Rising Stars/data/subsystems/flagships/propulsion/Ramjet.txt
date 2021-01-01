@@ -26,18 +26,6 @@ Subsystem: Ramjet
 
 	OnCheckErrors: heralds_designs::checkRamjet
 
-	// Controls the maintenance formula.
-	BussardMaintMult := -1.2
-	// The ship size at which the formula maxes out.
-	BussardPeakSize := 86
-
-	Modifier: IncreaseBussardEfficiency(factor)
-		BussardMaintMult := BussardMaintMult + factor
-		BussardPeakSize := BussardPeakSize + (factor * 10)
-
-	Modifier: MaintCostFactor(factor)
-		Hex.MaintainCost := Hex.MaintainCost //No change, since this is negative
-
 	Requires:
 		Command = 1
 
@@ -46,16 +34,16 @@ Subsystem: Ramjet
 		Message: #ERROR_NOT_ALLOWED_ON_MOTHERSHIP
 
 	Module: Default
-		Hex.MaintainCost := Hex.MaintainCost * BussardMaintMult * min(ShipSize/BussardPeakSize, 1)
-		Hex.BuildCost := 1.0 * Hex.BuildCost
-		Hex.LaborCost := 0.5 * Hex.LaborCost
+		Hex.MaintainCost := 0
+		Hex.BuildCost := 0.8 * Hex.BuildCost
+		Hex.LaborCost := 0.4 * Hex.LaborCost
 
 	Module: Core
 		Sprite: Ramjet
 
-		Hex.MaintainCost := Hex.MaintainCost * 5 * BussardMaintMult * min(ShipSize/BussardPeakSize, 1)
-		Hex.BuildCost := 2.0 * Hex.BuildCost
-		Hex.LaborCost := 2.0 * Hex.LaborCost
+		Hex.MaintainCost := 0
+		Hex.BuildCost := 1.6 * Hex.BuildCost
+		Hex.LaborCost := 1.6 * Hex.LaborCost
 
 	Module: Scoop
 		Name: #S_RAMJET_SCOOP
@@ -66,8 +54,8 @@ Subsystem: Ramjet
 		Sprite: Ramscoop
 
 		Hex.MaintainCost := 0
-		Hex.BuildCost := 25 * Hex.BuildCost
-		Hex.LaborCost := 25 * Hex.LaborCost
+		Hex.BuildCost := 20 * Hex.BuildCost
+		Hex.LaborCost := 20 * Hex.LaborCost
 		Hex.HP := CoreHP * CoreHPMod
 
 		SupplyGain := SupplyGain + HexSize * 400
