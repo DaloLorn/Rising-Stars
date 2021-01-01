@@ -26,3 +26,6 @@ Resource: Cyllium
 
 	IfLevel(6, TriggerPeriodic(SpawnArtifact(In System = True, Owned = True, Expire = 1800), Interval = 60), Exact = True)
 	IfLevel(4, SetSystemFlag(CheapArtifacts))
+	IfLevel(4, ModEmpireAttribute(FreeEnergyStorage, Add, 25))
+	IfLevel(5, ModEmpireAttribute(FreeEnergyStorage, Add, 25))
+	IfLevel(6, ModEmpireAttribute(FreeEnergyStorage, Add, 100))

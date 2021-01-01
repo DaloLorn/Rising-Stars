@@ -94,6 +94,8 @@ FTL_CRYSTALS_DESC: <<
 CYLLIUM_DESC: <<
 	Energy generation on this planet is increased by [levels=$1;#ffb4b6]10%/20%/30%/40%/50%/60%/70%[/levels].
 
+	Increases the empire's free energy storage by [levels=$1;#ffb4b6]0/0/0/0/0/25/50/150[/levels].
+
 	Generates a new random artifact in the system every 2 minutes. Up to [levels=$1;#ffb4b6]1/2/3/5/8/15/30[/levels] artifacts will remain in the system, older artifacts will expire.
 
 	[b]If this planet is Level 4 or higher:[/b]
