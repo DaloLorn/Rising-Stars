@@ -70,8 +70,8 @@ void ReactorOverload(Event& evt, double Damage) {
 
 DamageEventStatus NilingAbsorb(DamageEvent& evt, const vec2u& position, double Damage, double Radius)
 {
-	if((evt.flags & typeMask) != DT_Energy)
-		return DE_SkipHex;
+	//if((evt.flags & typeMask) != DT_Energy)
+	//	return DE_SkipHex;
 
 	auto@ sys = evt.destination;
 	auto@ bp = evt.blueprint;
@@ -79,7 +79,7 @@ DamageEventStatus NilingAbsorb(DamageEvent& evt, const vec2u& position, double D
 	double value = bp.decimal(sys, 0);
 	value += evt.damage;
 
-	if(value >= Damage) {
+	while(value >= Damage) {
 		playParticleSystem("NilingExplosion", evt.target.position, quaterniond(), Radius / 15.0, evt.target.visibleMask);
 		AoEDamage(evt.target, evt.target, vec3d(), Damage * 0.9, Radius, 10.0);
 
@@ -87,8 +87,7 @@ DamageEventStatus NilingAbsorb(DamageEvent& evt, const vec2u& position, double D
 	}
 
 	bp.decimal(sys, 0) = value;
-	evt.damage = 0;
-	return DE_EndDamage;
+	return DE_Continue;
 }
 
 void AoEDamage(Object& source, Object@ targ, const vec3d& impact, double Damage, double Radius, double Hits = 1.0, double partiality = 1.0, double pushback = 0.0, bool spillable = true) {
