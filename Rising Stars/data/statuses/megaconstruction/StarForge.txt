@@ -6,6 +6,7 @@ Status: StarForge
 	Collapses: True
 
 	RepeatStacks(IfSystemHasStar(AddLaborIncome(25)))
+	RepeatStacks(IfSystemHasStar(AddLaborEmpireAttribute(FactoryLaborMod)))
 	RepeatStacks(IfSystemHasStar(IfUsingLabor(TriggerPeriodic(DealDamageToStar(5000000), Interval = 1.0))))
 	OnEnable(AddStatus(StarForgeUpgrade))
 

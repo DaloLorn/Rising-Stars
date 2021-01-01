@@ -2,7 +2,7 @@ import version;
 import CP_version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "1174";
+const string MOD_REVISION = "1175";
 const array<string> VERSIONS = {
 	"v2.0.3",
 };
@@ -74,7 +74,7 @@ bool checkCPSupported() {
 	if(resultA && resultB)
 		return true;
 	else {
-		error("Mod " + MOD_NAME + " does not support current Community Patch version \"" + CommunityPatch::MOD_NAME + "\"(r" + CommunityPatch::MOD_REVISION + "), use with caution!");
+		error("Mod " + MOD_NAME + " does not support current OSR Modpack version \"" + CommunityPatch::MOD_NAME + "\"(r" + CommunityPatch::MOD_REVISION + "), use with caution!");
 		return false;
 	}
 }
