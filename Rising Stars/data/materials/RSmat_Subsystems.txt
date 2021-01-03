@@ -43,6 +43,9 @@ Material: ControlChair
 Material: FusionGen
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/fusiongen.png
+Material: MareniumCore
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/marenium_core.png
 Material: CloakingDevice
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/cloak.png
@@ -125,6 +128,9 @@ Material: SpinalMount
 Material: CoolantModifier
 	Inherit: RSSubsystem
 	Texture: data/images/subsystems/Coolant.png
+Material: HyperlinkedSinew
+	Inherit: RSSubsystem
+	Texture: data/images/subsystems/hyperlinked_sinew.png
 
 // *********************************************************
 // ******************ABILITY SUBSYSTEMS*********************

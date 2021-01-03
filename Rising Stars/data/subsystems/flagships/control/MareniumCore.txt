@@ -1,0 +1,62 @@
+Subsystem: MareniumCore
+	Name: #S_MARENIUM_CORE
+	Description: #S_MARENIUM_CORE_DESC
+	BaseColor: #704e78
+
+	Tags: BaseCost, Category:Control, HeraldsDLC, BadFiller, RaceSpecial, DontList
+	Tags: Crewed, Control, ControlCore, HasInternals, Important
+	Tags: NoBulkhead, BoardingDefense
+	Hull: Flagship, Station
+
+	EvaluationOrder: -10
+
+	Size := HexSize * Hexes
+	Command := Hexes * 2
+
+	BoardingStrength := 15 * Size
+	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
+
+	BasePower := 15 * Size
+	PowerMod := 1
+	Power := BasePower * PowerMod
+	MareniumPower := Power
+	BaseSupplyCapacity := Size * 200
+	SupplyRate := Size * 50
+
+	Repair := 2 * HexSize * (Hexes-1)
+	RepairSupplyCost := 3.0 * Repair
+	out SupplyDrain := RepairSupplyCost
+
+	Hex.Resistance := 0.2
+	BaseHP := 18 * HexSize
+	CoreHPMod := 2
+	Hex.Mass := HexSize
+
+	Hex.LaborCost := 0.15 * HexSize + 0.18
+	Hex.BuildCost := 1.5 * HexSize + 0.8
+	Hex.MaintainCost := 2 * HexSize + 2
+
+	Ship.ExternalHexes := Ship.ExternalHexes + Hexes
+
+	Hook: AddStatus(Marenium)
+
+	Effect: ABEMControlCore
+
+	Provides:
+		Command = Command
+		Power = Power
+
+	Module: Default
+		Hex.BuildCost := 0.9 * Hex.BuildCost
+		Hex.Mass := 0.9 * Hex.Mass
+
+	Module: Core
+		Sprite: MareniumCore
+		Hex.Resistance := 0.35
+
+		Hex.BuildCost := 5 * Hex.BuildCost
+		Hex.Mass := 5 * Hex.Mass
+
+	Assert: Sum.Power == Sum.MareniumPower
+		Unique: True
+		Message: #ERROR_ALL_POWER

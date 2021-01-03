@@ -139,7 +139,7 @@ RINGWORLD_DESC: <<
 	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires extremely large amounts of Ore mined from asteroids.[/color][/b][/img]
 >>
 MARENIUM_DESC: <<|
-	[b]Unique[/b]. Unlocks the [b]Marenium Reactor[/b] to provide power on ships.
+	[b]Unique[/b]. Unlocks the [b]Marenium Reactor[/b] to provide power on ships. (Ancient races get the Marenium Core, instead.)
 
 	Ships using marenium reactors gain [levels=$1;#ff8000]5%/10%/15%/20%/25%/30%/40%[/levels] extra combat strength.
 

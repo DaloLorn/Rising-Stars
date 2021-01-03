@@ -15,7 +15,8 @@ Resource: Marenium
 	Limitless Level: True
 	Exportable: False
 	
-	TiedSubsystemUnlock(MareniumGen, UnlockMareniumGen)
+	IfNotHaveTrait(Ancient, TiedSubsystemUnlock(MareniumGen, UnlockMareniumGen))
+	IfHaveTrait(Ancient, TiedSubsystemUnlock(MareniumCore, UnlockMareniumGen))
 
 	IfLevel(0, ModEmpireAttribute(MareniumEfficiency, Add, +0.05), Exact = True)
 	IfLevel(1, ModEmpireAttribute(MareniumEfficiency, Add, +0.10), Exact = True)
