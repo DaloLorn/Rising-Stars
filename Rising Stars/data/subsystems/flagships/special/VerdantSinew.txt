@@ -12,6 +12,7 @@ Subsystem: VerdantSinew
 	HexLimit := Sum.HexLimit * -0.2
 	Ship.ExternalHexes := Hexes
 
+	Control := floor(Sum.HexLimit / 10)
 	Repair := 32 * HexSize
 
 	Hex.Resistance := 0.2
@@ -24,7 +25,26 @@ Subsystem: VerdantSinew
 	OnCheckErrors: designs::checkSinew
 
 	Provides:
-		Command = floor(Sum.HexLimit / 10)
+		Command = Control
 
 	Module: Default
 		Sprite: Sinew
+
+	Module: HyperlinkedSinew
+		Sprite: HyperlinkedSinew
+		Name: #S_HYPERLINKED_SINEW
+		Description: #S_HYPERLINKED_SINEW_DESC
+		Vital: True
+		Unique: True
+
+		Color: #c5f946
+		
+		PowerUse := 10 * HexSize
+		Control := 1000
+		
+		Requires:
+			Power = PowerUse
+		Hex.Resistance := 0.35
+		Hex.BuildCost := 10 * Hex.BuildCost
+		Hex.Mass := 2.5 * Hex.Mass
+		Hex.MaintainCost := 0.5 * Hex.MaintainCost

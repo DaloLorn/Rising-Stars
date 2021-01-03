@@ -18,6 +18,7 @@ Trait: Verdant
 
 	ReplaceTechnologyNodes(Megacity, DecaySpeed2)
 	ReplaceTechnologyNodes(MetropolisUpg, Construction2)
+	ReplaceTechnologyNodes(ControlChair, VerdantControlChair)
 
 	ForbidSubsystem(CrewControl)
 	ForbidSubsystem(CrewDeck)

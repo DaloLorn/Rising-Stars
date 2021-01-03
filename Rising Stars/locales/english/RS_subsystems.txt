@@ -211,6 +211,14 @@ S_CONTROLCHAIR_DESC: <<
 	[img=Minus]Does not repair the ship at all.[/img]
 	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
 >>
+S_HYPERLINKED_SINEW: Hyperlinked Neural Cluster
+S_HYPERLINKED_SINEW_DESC: <<
+	Concentrating the bulk of the ship's higher neural functions into a central location massively improves its ability to micromanage a diverse amount of functions, at the cost of introducing a central point of failure.
+
+	[img=ActionBarIcons::0;22;#00ff80][img=Plus]Provides a ludicrous amount of [b][color=#00ff80]Control[/color][/b] to operate other subsystems, enough for even the most insane of ship designs.[/img][/img]
+	[img=MenuIcons::3;22]Only one Hyperlinked Neural Cluster per ship.[/img]
+	[img=Minus]Ship is destroyed if the Hyperlinked Neural Cluster is destroyed.[/img]
+>>
 S_EMERGENCY_SUPPLIES_DESC: <<
 	An output node for the Empire's energy. Allows supplies to be produced instantly anywhere in the galaxy, at great cost.
 

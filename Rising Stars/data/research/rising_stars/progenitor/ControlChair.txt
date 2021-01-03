@@ -12,3 +12,18 @@ Technology: ControlChair
 	RequireUnlockTag(ProgenitorTech)
 	AutoUnlockOnUnlockedTag(ControlChair)
 	UnlockSubsystem(ControlChair)
+
+Technology: VerdantControlChair
+	Icon: HyperlinkedSinew
+	Description: #R_SYS_HYPERLINKEDSINEW_DESC
+	Name: #R_SYS_HYPERLINKEDSINEW
+	Point Cost: 1500
+	Time Cost: 180
+	Class: Unlock
+	Blurb: 
+	Color: #28de0d
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	ModAttribute(ProgenitorTechProgress, Add, 15)
+	RequireUnlockTag(ProgenitorTech)
+	AutoUnlockOnUnlockedTag(ControlChair)
+	UnlockModule(HyperlinkedSinew)

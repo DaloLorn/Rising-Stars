@@ -205,6 +205,14 @@ R_SYS_CONTROLCHAIR_DESC: <<
 
 	[i][bbloc=#S_CONTROLCHAIR_DESC/][/i] 
 >>
+R_SYS_HYPERLINKED_SINEW: Neural Hyperlinking
+R_SYS_HYPERLINKED_SINEW_DESC: <<
+	[color=#aaa][i]Detailed understanding of Progenitor neural interfaces allows entire starships to be controlled by a central neural cluster.[/i][/color]
+
+	Unlocks the Hyperlinked Neural Cluster modifier for use on flagship Sinew.
+
+	[i][bbloc=#S_HYPERLINKED_SINEW/][/i]
+>>
 R_SYS_PROGENITORCOMPUTER: Progenitor Computing
 R_SYS_PROGENITORCOMPUTER_DESC: <<
 	[color=#aaa][i]Investigation of Progenitor computer systems yields massive improvements to our ships' control computers.[/i][/color]
