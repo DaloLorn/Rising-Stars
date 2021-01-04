@@ -10,6 +10,7 @@ Subsystem: VerdantSinew
 	Hull: Flagship, Station
 
 	HexLimit := Sum.HexLimit * -0.2
+	Size := HexSize * Hexes
 	Ship.ExternalHexes := Hexes
 
 	Control := floor(Sum.HexLimit / 10)
