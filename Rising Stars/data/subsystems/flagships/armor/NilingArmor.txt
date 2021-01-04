@@ -24,8 +24,6 @@ Subsystem: NilingArmor
 
 	State: double = 0
 
-	DummyEnergyResist := 100
-
 	Hex.LaborCost := 0.8 * HexSize
 	Hex.BuildCost := 4.5 * HexSize
 	Hex.MaintainCost := 4 * HexSize / ShipSize^0.5
