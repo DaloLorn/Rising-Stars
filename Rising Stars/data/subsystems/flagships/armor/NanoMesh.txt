@@ -24,7 +24,8 @@ Subsystem: NanoMesh
 
 	Hex.LaborCost := 0.6 * HexSize * 2
 	Hex.BuildCost := 4.0  * HexSize * 3
-	Hex.MaintainCost := 4.0 * HexSize / ShipSize^0.5
+	// TODO: Look at this again after the Power revamp.
+	Hex.MaintainCost := 8.0 * HexSize / ShipSize^0.5
 	PowerUse := 8 * Size
 	Requires:
 		Power = PowerUse

@@ -13,10 +13,10 @@ Subsystem: SupportNanoMesh
 
 	BaseHP := 100 * HexSize
 	Hex.Mass := 1.0 * HexSize
-	RegenPerSecond := 1 * HexSize
+	RegenPerSecond := 0.75 * HexSize
 
 	Hex.BuildCost := 4.00 * HexSize
-	Hex.LaborCost := 0.60 * HexSize
+	Hex.LaborCost := 1.0 * HexSize
 
 	Hook: ABEM_hooks::RegenerateAdjacentHexes(RegenPerSecond, false, false, true);
 
