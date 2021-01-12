@@ -445,7 +445,7 @@ double jumpdriveRange(Object& obj, int scale, int stored) {
 double jumpdriveInstantRange(Object& obj) {
 	if(obj.owner is null)
 		return 0;
-	return jumpdriveRange(obj) * obj.owner.InstantFTLFactor;
+	return jumpdriveRange(obj) / (obj.owner.InstantFTLFactor/2);
 }
 
 bool canJumpdriveTo(Object& obj, const vec3d& pos) {

@@ -637,7 +637,7 @@ class ActionBar : BaseGuiElement {
 		if(canSlipstream(obj)) {
 			add(TrivialAction(targetSlipstream, locale::TT_SLIPSTREAM, icons::Slipstream));			
 			if(hasInstantFTL)
-				add(TrivialAction(targetInstantHyperdrive, locale::TT_INSTANTHYPERDRIVE, icons::Hyperdrive*colors::FTL));
+				add(TrivialAction(targetInstantSlipstream, locale::TT_INSTANTSLIPSTREAM, icons::Slipstream*colors::FTL));
 		}
 
 		if(hasInstantFTL && obj.owner.HasFlux != 0 && !obj.hasSupportAI) {
