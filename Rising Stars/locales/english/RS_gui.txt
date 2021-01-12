@@ -60,3 +60,35 @@ WAR_EVT_HOSTILES_INCOMING: Enemy forces are jumping towards $1!
 WAR_EVT_HOSTILES_ARRIVED: Enemy forces detected in $1!
 CONSTRUCTION_FINALIZING: Finalizing... (ETA $1)
 CONSTRUCTION_FINALIZING_LONG:  - Labor Complete, Finalizing...
+
+TT_INSTANTHYPERDRIVE: <<|
+	[b]Sequenced Hyperdrive[/b]
+
+	Use the equipped hyperdrive to immediately engage FTL movement. Costs a lot more FTL energy than a regular jump.
+>>
+
+TT_INSTANTFLING: <<|
+	[b]Sequenced Fling[/b]
+
+	Use the nearby fling beacon to immediately engage FTL movement. Costs a lot more FTL energy than a regular jump.
+>>
+
+TT_INSTANTSLIPSTREAM: <<|
+	[b]Generate Sequenced Slipstream Tear[/b]
+
+	Use the ship's slipstream generator to immediately create a new tear to the target destination. Costs a lot more FTL energy than a regular slipstream tear, and suffers significant penalties to tear lifetime and accuracy.
+>>
+
+TT_INSTANTJUMPDRIVE: <<|
+	[b]Sequenced Jumpdrive[/b]
+
+	Use the equipped jumpdrive to immediately engage FTL movement. Costs a lot more FTL energy than a regular jump, and suffers significant penalties to safe jump range.
+>>
+
+TT_INSTANTFLUX: <<|
+	[b]Flux Sequencing[/b]
+
+	Spend a substantial amount of FTL energy to instantly recharge the flux drive. Longer reflux periods cost more FTL to complete.
+
+	[img=ResourceIcon::3;22][color=#00c0ff]Average Flux Cooldown: $1 ($2 FTL to skip)[/color][/img]
+>>

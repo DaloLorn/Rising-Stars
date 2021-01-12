@@ -12,10 +12,10 @@ import icons;
 import systems;
 import ship_groups;
 from obj_selection import selectObject, selectedObjects;
-from targeting.Hyperdrive import targetHyperdrive;
-from targeting.Jumpdrive import targetJumpdrive;
-from targeting.Fling import targetFling;
-from targeting.Slipstream import targetSlipstream;
+from targeting.Hyperdrive import targetHyperdrive, targetInstantHyperdrive;
+from targeting.Jumpdrive import targetJumpdrive, targetInstantJumpdrive;
+from targeting.Fling import targetFling, targetInstantFling;
+from targeting.Slipstream import targetSlipstream, targetInstantSlipstream;
 
 import InfoBar@ makeOrbitalInfoBar(IGuiElement@ parent, Object@ obj) from "overlays.OrbitalInfoBar";
 import InfoBar@ makePlanetInfoBar(IGuiElement@ parent, Object@ obj) from "overlays.PlanetInfoBar";
@@ -617,14 +617,41 @@ class ActionBar : BaseGuiElement {
 	}
 
 	void addFTL(Object@ obj) {
-		if(canHyperdrive(obj))
+		bool hasInstantFTL = obj.owner !is null && obj.owner.InstantFTLFactor > 0;
+
+		if(canHyperdrive(obj)) {
 			add(TrivialAction(targetHyperdrive, locale::TT_HYPERDRIVE, icons::Hyperdrive));
-		if(canJumpdrive(obj))
+			if(hasInstantFTL)
+				add(TrivialAction(targetInstantHyperdrive, locale::TT_INSTANTHYPERDRIVE, icons::Hyperdrive*colors::FTL));
+		}
+		if(canJumpdrive(obj)) {
 			add(TrivialAction(targetJumpdrive, locale::TT_JUMPDRIVE, icons::Hyperdrive));
-		if(canFling(obj) && obj.owner.getFlingBeacon(obj.position) !is null)
+			if(hasInstantFTL)
+				add(TrivialAction(targetInstantJumpdrive, locale::TT_INSTANTJUMPDRIVE, icons::Hyperdrive*colors::FTL));
+		}
+		if(canFling(obj) && obj.owner.getFlingBeacon(obj.position) !is null) {
 			add(TrivialAction(targetFling, locale::TT_FLING, icons::Fling));
-		if(canSlipstream(obj))
-			add(TrivialAction(targetSlipstream, locale::TT_SLIPSTREAM, icons::Slipstream));
+			if(hasInstantFTL)
+				add(TrivialAction(targetInstantFling, locale::TT_INSTANTFLING, icons::Fling*colors::FTL));
+		}
+		if(canSlipstream(obj)) {
+			add(TrivialAction(targetSlipstream, locale::TT_SLIPSTREAM, icons::Slipstream));			
+			if(hasInstantFTL)
+				add(TrivialAction(targetInstantHyperdrive, locale::TT_INSTANTHYPERDRIVE, icons::Hyperdrive*colors::FTL));
+		}
+
+		if(hasInstantFTL && obj.owner.HasFlux != 0 && !obj.hasSupportAI) {
+			double cooldown = 0;
+			double cost = 0;
+			for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
+				Object@ obj = selectedObjects[i];
+				if(isFluxableObject(obj) && isFluxCharging(obj))
+					cooldown += obj.fluxCooldown;
+				cost += instantRefluxCost(obj);
+			}
+			cooldown /= selectedObjects.length;
+			add(TrivialAction(performInstantReflux, format(locale::TT_INSTANTFLUX, cooldown, cost), icons::FTL*colors::FTL));
+		}
 	}
 
 	void updateAbsolutePosition() override {
@@ -656,4 +683,13 @@ InfoBar@ createInfoBar(IGuiElement@ parent, Object& obj) {
 	if(obj.isArtifact)
 		return makeArtifactInfoBar(parent, obj);
 	return null;
+}
+
+
+void performInstantReflux() {
+	for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
+		Object@ obj = selectedObjects[i];
+		if(isFluxableObject(obj) && isFluxCharging(obj))
+			obj.performInstantReflux();
+	}
 }

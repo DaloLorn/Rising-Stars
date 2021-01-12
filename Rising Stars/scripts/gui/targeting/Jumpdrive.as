@@ -12,11 +12,13 @@ class JumpdriveTarget : PointTarget {
 	array<uint> invalidObjs;
 	array<uint> validObjs;
 	array<Object@> objs;
+	bool isInstant;
 
-	JumpdriveTarget(Object@ obj) {
+	JumpdriveTarget(Object@ obj, bool IsInstant) {
 		@this.obj = obj;
 		objs = selectedObjects;
 		range = INFINITY;
+		isInstant = IsInstant;
 	}
 
 	vec3d get_origin() override {
@@ -38,7 +40,10 @@ class JumpdriveTarget : PointTarget {
 				Object@ obj = objs[i];
 				if(canJumpdrive(obj)) {
 					validObjs.insertLast(i);
-					cost += jumpdriveCost(obj, positions[i]);
+					if(isInstant)
+						cost += jumpdriveInstantCost(obj, positions[i]);
+					else
+						cost += jumpdriveCost(obj, positions[i]);
 				}
 				else if(obj.hasLeaderAI) {
 					invalidObjs.insertLast(i);
@@ -81,7 +86,10 @@ class JumpdriveDisplay : PointDisplay {
 			return;
 
 		if(range is null) {
-			jumpRange = cast<Ship>(ht.obj).blueprint.getEfficiencySum(SV_JumpRange);
+			if(ht.isInstant)
+				jumpRange = jumpdriveInstantRange(ht.obj);
+			else
+				jumpRange = jumpdriveRange(ht.obj);
 			@range = PlaneNode(material::RangeCircle, jumpRange);
 			range.visible = false;
 			range.position = ht.obj.node_position;
@@ -139,45 +147,52 @@ class JumpdriveDisplay : PointDisplay {
 			}
 		}
 
-		double avgChargeTime = 0;
-		double chargeTime = 0;
-		bool suppressed = false;
-		bool doubleSuppressed = false;
-		bool combat = true;
-		for(uint i = 0, cnt = ht.validObjs.length; i < cnt; ++i) {
-			Object@ obj = ht.objs[ht.validObjs[i]];
-			chargeTime = jumpdriveChargeTime(obj, ht.hovered);
-			if(!obj.inCombat) {
-				chargeTime *= 0.5;
-				combat = false;
-			}
-			if(isFTLSuppressed(obj)) {
-				suppressed = true;
-			}
-			if(isFTLSuppressed(obj, ht.hovered)) {
-				doubleSuppressed = suppressed;
-				suppressed = true;
-			}
-			if(doubleSuppressed)
-				chargeTime *= 8;
-			else if(suppressed)
-				chargeTime *= 4;
-			avgChargeTime += chargeTime;
+		if(ht.isInstant) {
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, y),
+				locale::INSTANT_HYPERJUMP,
+				FTL_BEAM_COLOR);
 		}
-		avgChargeTime /= ht.validObjs.length;
-		text = locale::AVG_HYPERJUMP_TIME;
-		if(doubleSuppressed) {
-			if(combat) text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED_COMBAT;
-			else text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED;
+		else {
+			double avgChargeTime = 0;
+			double chargeTime = 0;
+			bool suppressed = false;
+			bool doubleSuppressed = false;
+			bool combat = true;
+			for(uint i = 0, cnt = ht.validObjs.length; i < cnt; ++i) {
+				Object@ obj = ht.objs[ht.validObjs[i]];
+				chargeTime = jumpdriveChargeTime(obj, ht.hovered);
+				if(!obj.inCombat) {
+					chargeTime *= 0.5;
+					combat = false;
+				}
+				if(isFTLSuppressed(obj)) {
+					suppressed = true;
+				}
+				if(isFTLSuppressed(obj, ht.hovered)) {
+					doubleSuppressed = suppressed;
+					suppressed = true;
+				}
+				if(doubleSuppressed)
+					chargeTime *= 8;
+				else if(suppressed)
+					chargeTime *= 4;
+				avgChargeTime += chargeTime;
+			}
+			avgChargeTime /= ht.validObjs.length;
+			text = locale::AVG_HYPERJUMP_TIME;
+			if(doubleSuppressed) {
+				if(combat) text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED_COMBAT;
+				else text = locale::AVG_HYPERJUMP_TIME_DOUBLE_SUPPRESSED;
+			}
+			else if(suppressed) {
+				if(combat) text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT;
+				else text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
+			}
+			else if(combat) text = locale::AVG_HYPERJUMP_TIME_COMBAT;
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, y),
+				format(text, formatTime(avgChargeTime)),
+				FTL_BEAM_COLOR);
 		}
-		else if(suppressed) {
-			if(combat) text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED_COMBAT;
-			else text = locale::AVG_HYPERJUMP_TIME_SUPPRESSED;
-		}
-		else if(combat) text = locale::AVG_HYPERJUMP_TIME_COMBAT;
-		font::OpenSans_11_Italic.draw(mousePos + vec2i(16, y),
-			format(text, formatTime(avgChargeTime)),
-			FTL_BEAM_COLOR);
 
 		for(uint i = 0, cnt = ht.invalidObjs.length; i < cnt; ++i) {
 			Object@ obj = ht.objs[ht.invalidObjs[i]];
@@ -200,6 +215,12 @@ class JumpdriveDisplay : PointDisplay {
 };
 
 class JumpdriveCB : TargetCallback {
+	bool isInstant;
+
+	JumpdriveCB(bool IsInstant) {
+		isInstant = IsInstant;
+	}
+
 	void call(TargetMode@ mode) override {
 		bool anyFTL = false;
 		Object@[] selection = selectedObjects;
@@ -208,7 +229,7 @@ class JumpdriveCB : TargetCallback {
 			Object@ obj = selection[i];
 			if(!obj.hasMover || !obj.hasLeaderAI || !canJumpdrive(obj))
 				continue;
-			obj.addJumpdriveOrder(positions[i], shiftKey || obj.inFTL);
+			obj.addJumpdriveOrder(positions[i], shiftKey || obj.inFTL, isInstant);
 			anyFTL = true;
 		}
 		
@@ -218,15 +239,23 @@ class JumpdriveCB : TargetCallback {
 };
 
 void targetJumpdrive() {
+	targetJumpdriveImpl(false);
+}
+
+void targetInstantJumpdrive() {
+	targetJumpdriveImpl(true);
+}
+
+void targetJumpdriveImpl(bool isInstant) {
 	Object@ sel = selectedObject;
 	if(sel.owner is null || !sel.owner.valid)
 		return;
 	if(!selectedObject.isShip)
 		return;
 
-	JumpdriveTarget targ(selectedObject);
+	JumpdriveTarget targ(selectedObject, isInstant);
 	JumpdriveDisplay disp;
-	JumpdriveCB cb;
+	JumpdriveCB cb(isInstant);
 
 	startTargeting(targ, disp, cb);
 }

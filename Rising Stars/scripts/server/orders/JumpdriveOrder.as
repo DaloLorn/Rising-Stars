@@ -15,9 +15,11 @@ tidy class JumpdriveOrder : Order {
 	int cost = 0;
 	int moveId = -1;
 	int64 chargeParticlesId = 0;
+	bool isInstant;
 
-	JumpdriveOrder(vec3d pos) {
+	JumpdriveOrder(vec3d pos, bool IsInstant = false) {
 		destination = pos;
+		isInstant = IsInstant;
 	}
 
 	JumpdriveOrder(SaveFile& msg) {
@@ -29,6 +31,7 @@ tidy class JumpdriveOrder : Order {
 		msg >> cost;
 		msg >> chargeTime;
 		msg >> chargeParticlesId;
+		msg >> isInstant;
 	}
 
 	void save(SaveFile& msg) override {
@@ -40,6 +43,7 @@ tidy class JumpdriveOrder : Order {
 		msg << cost;
 		msg << chargeTime;
 		msg << chargeParticlesId;
+		msg << isInstant;
 	}
 
 	OrderType get_type() override {
@@ -111,7 +115,10 @@ tidy class JumpdriveOrder : Order {
 			}
 
 			double dist = obj.position.distanceTo(destination);
-			cost = jumpdriveCost(ship, destination);
+			if(isInstant)
+				cost = jumpdriveInstantCost(ship, destination);
+			else
+				cost = jumpdriveCost(ship, destination);
 
 			if(cost > 0) {
 				double consumed = obj.owner.consumeFTL(cost, false, record=false);
@@ -147,8 +154,14 @@ tidy class JumpdriveOrder : Order {
 		double distance = destination.distanceTo(obj.position);
 		
 		double range = 10000;
-		if(ship !is null)
-			range = ship.blueprint.design.total(SV_JumpRange);
+		if(isInstant) {
+			range = 5000;
+			if(ship !is null)
+				range = jumpdriveInstantRange(obj);
+		}
+		else if(ship !is null) {
+			range = jumpdriveRange(obj);
+		}
 		
 		//Wait for the facing to complete
 		if(charge > 0.0) {
@@ -156,6 +169,8 @@ tidy class JumpdriveOrder : Order {
 
 			// Minimum of 4.0 seconds, maximum of JUMPDRIVE_CHARGE_TIME, otherwise scaled by ratio of distance to range.  Halved when not in combat, including minimum.
 			chargeTime = jumpdriveChargeTime(obj, destination);
+			if(isInstant)
+				chargeTime = 0;
 			
 			//Charge up the jumpdrive for a while first
 			if(charge < chargeTime)

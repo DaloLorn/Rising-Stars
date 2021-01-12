@@ -11,9 +11,11 @@ tidy class HyperdriveOrder : Order {
 	double charge = 0.0;
 	int cost = 0;
 	int moveId = -1;
+	bool isInstant;
 
-	HyperdriveOrder(vec3d pos) {
+	HyperdriveOrder(vec3d pos, bool IsInstant = false) {
 		destination = pos;
+		isInstant = IsInstant;
 	}
 
 	HyperdriveOrder(SaveFile& msg) {
@@ -23,6 +25,7 @@ tidy class HyperdriveOrder : Order {
 		msg >> moveId;
 		msg >> charge;
 		msg >> cost;
+		msg >> isInstant;
 	}
 
 	void save(SaveFile& msg) override {
@@ -32,6 +35,7 @@ tidy class HyperdriveOrder : Order {
 		msg << moveId;
 		msg << charge;
 		msg << cost;
+		msg << isInstant;
 	}
 
 	OrderType get_type() override {
@@ -43,13 +47,17 @@ tidy class HyperdriveOrder : Order {
 	}
 
 	bool cancel(Object& obj) override {
+		double chargeTime = HYPERDRIVE_CHARGE_TIME;
+		if(obj.owner.HyperdriveNeedCharge == 0 || isInstant)
+			chargeTime = 0.0;
+
 		//Cannot cancel while already ftling
-		if(charge >= HYPERDRIVE_CHARGE_TIME || charge < 0.0)
+		if(charge >= chargeTime || charge < 0.0)
 			return false;
 
 		//Refund a part of the ftl cost
 		if(cost > 0) {
-			double pct = 1.0 - min(charge / HYPERDRIVE_CHARGE_TIME, 1.0);
+			double pct = 1.0 - min(charge / chargeTime, 1.0);
 			double refund = cost * pct;
 			obj.owner.modFTLStored(refund);
 			cost = 0;
@@ -94,7 +102,10 @@ tidy class HyperdriveOrder : Order {
 			}
 
 			double dist = obj.position.distanceTo(destination);
-			cost = hyperdriveCost(ship, destination);
+			if(isInstant)
+				cost = hyperdriveInstantCost(ship, destination);
+			else
+				cost = hyperdriveCost(ship, destination);
 
 			if(cost > 0) {
 				double consumed = obj.owner.consumeFTL(cost, false, record=false);
@@ -129,7 +140,7 @@ tidy class HyperdriveOrder : Order {
 			bool isFacing = obj.rotateTo(facing, moveId);
 
 			double chargeTime = HYPERDRIVE_CHARGE_TIME;
-			if(obj.owner.HyperdriveNeedCharge == 0)
+			if(obj.owner.HyperdriveNeedCharge == 0 || isInstant)
 				chargeTime = 0.0;
 
 			//Charge up the hyperdrive for a while first

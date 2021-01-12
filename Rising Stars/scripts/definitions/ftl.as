@@ -59,7 +59,7 @@ int hyperdriveInstantCost(Object& obj, const vec3d& position) {
 
 int hyperdriveInstantCost(array<Object@>& objects, const vec3d& destination) {
 	int cost = 0;
-	for(uint i = o, cnt = objects.length; i < cnt; ++i) {
+	for(uint i = 0, cnt = objects.length; i < cnt; ++i) {
 		if(!canHyperdrive(objects[i]))
 			continue;
 		cost += hyperdriveInstantCost(objects[i], destination);
@@ -96,7 +96,7 @@ double hyperdriveInstantRange(Object& obj, int scale, int stored) {
 	Empire@ owner = obj.owner;
 	if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 		return INFINITY;
-	if(owner == null)
+	if(owner is null)
 		return 0.0;
 	return sqr(max(double(stored) - (HYPERDRIVE_START_COST - owner.HyperdriveStartCostMod) * owner.FTLCostFactor * owner.InstantFTLFactor, 0.0) / (log(double(scale)) * HYPERDRIVE_COST * owner.FTLCostFactor * owner.InstantFTLFactor));
 }
@@ -445,7 +445,7 @@ double jumpdriveRange(Object& obj, int scale, int stored) {
 double jumpdriveInstantRange(Object& obj) {
 	if(obj.owner is null)
 		return 0;
-	return jumpdriveRange(ship) * obj.owner.InstantFTLFactor;
+	return jumpdriveRange(obj) * obj.owner.InstantFTLFactor;
 }
 
 bool canJumpdriveTo(Object& obj, const vec3d& pos) {
@@ -544,6 +544,17 @@ double instantRefluxCost(Object& obj) {
 }
 
 #section server-side
+void performInstantReflux(Object& obj) {
+	Empire@ owner = obj.owner;
+	if(owner is null || !isFluxableObject(obj) || !isFluxCharging(obj))
+		return;
+	double cost = instantRefluxCost(obj);
+	if(cost > owner.FTLStored)
+		return;
+	owner.consumeFTL(cost, false, record=false);
+	obj.modFluxCooldown(-obj.fluxCooldown);
+}
+
 void commitFlux(Object& obj, const vec3d& pos) {
 	vec3d fluxPos = getFluxDest(obj, pos);
 

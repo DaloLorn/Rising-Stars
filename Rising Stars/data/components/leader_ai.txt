@@ -56,13 +56,13 @@ restricted remote:
 	void addPickupOrder(Pickup& target, bool append = false);
 	void addMoveOrder(vec3d target, bool append = false);
 	void addMoveOrder(vec3d target, quaterniond facing, bool append = false);
-	void addHyperdriveOrder(vec3d target, bool append = false);
-	void addJumpdriveOrder(vec3d target, bool append = false);
-	void addFlingOrder(Object& beacon, vec3d target, bool append = false);
+	void addHyperdriveOrder(vec3d target, bool append = false, bool isInstant = false);
+	void addJumpdriveOrder(vec3d target, bool append = false, bool isInstant = false);
+	void addFlingOrder(Object& beacon, vec3d target, bool append = false, bool isInstant = false);
 	void addScanOrder(Anomaly& target, bool append = false);
 	void addRefreshOrder(Object& target, bool append = false);
 	void addOddityGateOrder(Oddity& target, bool append = false);
-	void addSlipstreamOrder(vec3d target, bool append = false);
+	void addSlipstreamOrder(vec3d target, bool append = false, bool isInstant = false);
 	void addAutoExploreOrder(bool useFTL, bool append = false);
 
 	void addSecondaryToSlipstream(Object& other);
@@ -76,6 +76,7 @@ restricted remote:
 	void insertHyperdriveOrder(vec3d target, uint index);
 	void insertJumpdriveOrder(vec3d target, uint index);
 	void insertFlingOrder(Object& beacon, vec3d target, uint index);
+	void performInstantReflux();
 
 	void transferSupports(const Design@ ofDesign, uint amount, Object@ transferTo);
 	void orderSupports(const Design@ ofDesign, uint amount);

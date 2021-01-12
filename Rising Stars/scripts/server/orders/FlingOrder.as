@@ -14,10 +14,12 @@ tidy class FlingOrder : Order {
 	double speed = 0.0;
 	int moveId = -1;
 	bool wasSuppressed = false;
+	bool isInstant;
 
-	FlingOrder(Object& beacon, vec3d pos) {
+	FlingOrder(Object& beacon, vec3d pos, bool IsInstant = false) {
 		@this.beacon = beacon;
 		destination = pos;
+		isInstant = IsInstant;
 	}
 
 	FlingOrder(SaveFile& msg) {
@@ -30,6 +32,7 @@ tidy class FlingOrder : Order {
 		msg >> beacon;
 		msg >> speed;
 		msg >> wasSuppressed;
+		msg >> isInstant;
 	}
 
 	void save(SaveFile& msg) override {
@@ -42,6 +45,7 @@ tidy class FlingOrder : Order {
 		msg << beacon;
 		msg << speed;
 		msg << wasSuppressed;
+		msg << isInstant;
 	}
 
 	OrderType get_type() override {
@@ -96,7 +100,10 @@ tidy class FlingOrder : Order {
 			return OS_BLOCKING;
 		}
 		if(charge == 0) {
-			cost = flingCost(obj, destination);
+			if(isInstant)
+				cost = flingInstantCost(obj, destination);
+			else
+				cost = flingCost(obj, destination);
 			speed = flingSpeed(obj, destination);
 
 			//Make sure we have a beacon in range
@@ -137,6 +144,9 @@ tidy class FlingOrder : Order {
 		//Wait for the facing to complete
 		if(charge > 0.0) {
 			bool isFacing = obj.rotateTo(facing, moveId);
+
+			if(isInstant)
+				charge = FLING_CHARGE_TIME;
 
 			//Charge up the ftl drive for a while first
 			if(charge < FLING_CHARGE_TIME)

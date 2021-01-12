@@ -8,10 +8,12 @@ class SlipstreamTarget : PointTarget {
 	double cost = 0.0;
 	int scale = 1;
 	Object@ obj;
+	bool isInstant;
 
-	SlipstreamTarget(Object@ obj, int totalScale) {
+	SlipstreamTarget(Object@ obj, int totalScale, bool IsInstant) {
 		@this.obj = obj;
 		scale = totalScale;
+		isInstant = IsInstant;
 	}
 
 	vec3d get_origin() override {
@@ -23,13 +25,22 @@ class SlipstreamTarget : PointTarget {
 
 	bool hover(const vec2i& mpos) override {
 		PointTarget::hover(mpos);
-		cost = slipstreamCost(obj, scale, distance);
-		range = slipstreamRange(obj, scale, playerEmpire.FTLStored);
+		if(isInstant) {
+			cost = slipstreamInstantCost(obj, scale, distance);
+			range = slipstreamInstantRange(obj, scale, playerEmpire.FTLStored);
+		}
+		else {
+			cost = slipstreamCost(obj, scale, distance);
+			range = slipstreamRange(obj, scale, playerEmpire.FTLStored);
+		}
 		return canSlipstreamTo(obj, hovered) && (distance <= range || shiftKey);
 	}
 
 	double get_radius() override {
-		return slipstreamInaccuracy(obj, hovered);
+		if(isInstant)
+			return slipstreamInstantInaccuracy(obj, hovered);
+		else
+			return slipstreamInaccuracy(obj, hovered);
 	}
 
 	bool click() override {
@@ -79,6 +90,10 @@ class SlipstreamDisplay : PointDisplay {
 			double lifetime = slipstreamLifetime(obj);
 			string chargeText = locale::AVG_HYPERJUMP_TIME;
 			string lifeText = locale::ESTIMATED_SLIPSTREAM_LIFETIME;
+			if(ht.isInstant) {
+				lifetime = slipstreamInstantLifetime(obj);
+				chargeText = locale::INSTANT_HYPERJUMP;
+			}
 			bool suppressed = false, doubleSuppressed = false;
 			if(isFTLSuppressed(obj)) {
 				suppressed = true;
@@ -119,6 +134,12 @@ class SlipstreamDisplay : PointDisplay {
 };
 
 class SlipstreamCB : TargetCallback {
+	bool isInstant;
+
+	SlipstreamCB(bool IsInstant) {
+		isInstant = IsInstant;
+	}
+
 	void call(TargetMode@ mode) override {
 		bool anyOpenedTear = false;
 		Object@[]@ selection = selectedObjects;
@@ -128,7 +149,7 @@ class SlipstreamCB : TargetCallback {
 				continue;
 			if(!canSlipstream(obj))
 				continue;
-			obj.addSlipstreamOrder(mode.position, shiftKey || obj.inFTL);
+			obj.addSlipstreamOrder(mode.position, shiftKey || obj.inFTL, isInstant);
 			anyOpenedTear = true;
 			for(uint j = 0; j < cnt; ++j) {
 				if(i == j)
@@ -148,6 +169,14 @@ class SlipstreamCB : TargetCallback {
 };
 
 void targetSlipstream() {
+	targetSlipstreamImpl(false);
+}
+
+void targetInstantSlipstream() {
+	targetSlipstreamImpl(true);
+}
+
+void targetSlipstreamImpl(bool isInstant) {
 	Object@ sel = selectedObject;
 	for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
 		if(canSlipstream(selectedObjects[i])) {
@@ -160,9 +189,9 @@ void targetSlipstream() {
 	if(!canSlipstream(sel))
 		return;
 
-	SlipstreamTarget targ(sel, max(getSelectionScale(), 1));
+	SlipstreamTarget targ(sel, max(getSelectionScale(), 1), isInstant);
 	SlipstreamDisplay disp;
-	SlipstreamCB cb;
+	SlipstreamCB cb(isInstant);
 
 	startTargeting(targ, disp, cb);
 }

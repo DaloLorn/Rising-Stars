@@ -14,12 +14,14 @@ class FlingTarget : PointTarget {
 	array<uint> validObjs;
 	array<Object@> objs;
 	bool inRange = false;
+	bool isInstant = false;
 
-	FlingTarget(Object@ beacon, Object@ obj, int totalScale, bool InRange) {
+	FlingTarget(Object@ beacon, Object@ obj, int totalScale, bool InRange, bool IsInstant = false) {
 		@this.obj = obj;
 		@this.beacon = beacon;
 		scale = totalScale;
 		inRange = InRange;
+		isInstant = IsInstant;
 		objs = selectedObjects;
 	}
 
@@ -43,7 +45,10 @@ class FlingTarget : PointTarget {
 			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
 				Object@ obj = objs[i];
 				if(canFling(obj)) {
-					cost += flingCost(obj, positions[i]);
+					if(isInstant)
+						cost += flingInstantCost(obj, positions[i]);
+					else
+						cost += flingCost(obj, positions[i]);
 					validObjs.insertLast(i);
 				}
 				else if(obj.hasLeaderAI) {
@@ -129,6 +134,11 @@ class FlingDisplay : PointDisplay {
 				locale::INSUFFICIENT_FTL,
 				color);
 		}
+		else if(ht.isInstant) {
+			font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
+				locale::INSTANT_HYPERJUMP,
+				FTL_BEAM_COLOR);
+		}
 		else {
 			double avgChargeTime = 0;
 			double chargeTime = 0;
@@ -177,9 +187,11 @@ class FlingDisplay : PointDisplay {
 
 class FlingCB : TargetCallback {
 	Object@ beacon;
+	bool isInstant;
 
-	FlingCB(Object@ beacon) {
+	FlingCB(Object@ beacon, bool IsInstant) {
 		@this.beacon = beacon;
+		isInstant = IsInstant;
 	}
 
 	void call(TargetMode@ mode) override {
@@ -193,7 +205,7 @@ class FlingCB : TargetCallback {
 			Object@ obj = selection[i];
 			if(!obj.hasMover || !obj.hasLeaderAI || !canFling(obj))
 				continue;
-			obj.addFlingOrder(beacon, positions[i], shiftKey || obj.inFTL);
+			obj.addFlingOrder(beacon, positions[i], shiftKey || obj.inFTL, isInstant);
 			anyFlung = true;
 		}
 		
@@ -203,6 +215,10 @@ class FlingCB : TargetCallback {
 };
 
 void targetFling() {
+	targetFlingImpl(false);
+}
+
+void targetFlingImpl(bool isInstant) {
 	Object@ sel = selectedObject;
 	if(sel.owner is null || !sel.owner.valid)
 		return;
@@ -210,9 +226,13 @@ void targetFling() {
 	Object@ beacon = sel.owner.getClosestFlingBeacon(sel);
 
 	FlingTarget targ(beacon, selectedObject, max(getSelectionScale(), 1),
-					beacon !is null && beacon.position.distanceToSQ(sel.position) <= FLING_BEACON_RANGE_SQ);
+					beacon !is null && beacon.position.distanceToSQ(sel.position) <= FLING_BEACON_RANGE_SQ, isInstant);
 	FlingDisplay disp;
-	FlingCB cb(beacon);
+	FlingCB cb(beacon, isInstant);
 
 	startTargeting(targ, disp, cb);
+}
+
+void targetInstantFling() {
+	targetFlingImpl(true);
 }

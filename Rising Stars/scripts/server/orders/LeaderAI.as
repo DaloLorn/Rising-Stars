@@ -1295,8 +1295,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
-	void addSlipstreamOrder(Object& obj, vec3d pos, bool append) {
-		addOrder(obj, SlipstreamOrder(pos), append);
+	void addSlipstreamOrder(Object& obj, vec3d pos, bool append, bool isInstant = false) {
+		addOrder(obj, SlipstreamOrder(pos, isInstant), append);
 		obj.wake();
 	}
 
@@ -1353,6 +1353,11 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
+	void performInstantReflux(Object& obj) {
+		performInstantReflux(obj);
+		obj.wake();
+	}
+
 	void insertHyperdriveOrder(Object& obj, vec3d pos, uint index) {
 		if(!canHyperdrive(obj))
 			return;
@@ -1360,10 +1365,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
-	void addHyperdriveOrder(Object& obj, vec3d pos, bool append) {
+	void addHyperdriveOrder(Object& obj, vec3d pos, bool append, bool isInstant = false) {
 		if(!canHyperdrive(obj))
 			return;
-		addOrder(obj, HyperdriveOrder(pos), append);
+		addOrder(obj, HyperdriveOrder(pos, isInstant), append);
 		obj.wake();
 	}
 
@@ -1374,10 +1379,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
-	void addJumpdriveOrder(Object& obj, vec3d pos, bool append) {
+	void addJumpdriveOrder(Object& obj, vec3d pos, bool append, bool isInstant = false) {
 		if(!canJumpdrive(obj))
 			return;
-		addOrder(obj, JumpdriveOrder(pos), append);
+		addOrder(obj, JumpdriveOrder(pos, isInstant), append);
 		obj.wake();
 	}
 
@@ -1388,10 +1393,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
-	void addFlingOrder(Object& obj, Object& beacon, vec3d pos, bool append) {
+	void addFlingOrder(Object& obj, Object& beacon, vec3d pos, bool append, bool isInstant = false) {
 		if(obj.owner is null || !obj.owner.isFlingBeacon(beacon) || beacon is obj)
 			return;
-		addOrder(obj, FlingOrder(beacon, pos), append);
+		addOrder(obj, FlingOrder(beacon, pos, isInstant), append);
 		obj.wake();
 	}
 

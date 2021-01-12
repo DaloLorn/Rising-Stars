@@ -12,10 +12,12 @@ class HyperdriveTarget : PointTarget {
 	array<uint> invalidObjs;
 	array<uint> validObjs;
 	array<Object@> objs;
+	bool isInstant;
 
-	HyperdriveTarget(Object@ Obj) {
+	HyperdriveTarget(Object@ Obj, bool IsInstant) {
 		@obj = Obj;
 		objs = selectedObjects;
+		isInstant = IsInstant;
 	}
 
 	vec3d get_origin() override {
@@ -42,7 +44,10 @@ class HyperdriveTarget : PointTarget {
 				Object@ obj = objs[i];
 				if(canHyperdrive(obj)) {
 					validObjs.insertLast(i);
-					cost += hyperdriveCost(obj, positions[i]);
+					if(isInstant) 
+						cost += hyperdriveInstantCost(obj, positions[i]);
+					else
+						cost += hyperdriveCost(obj, positions[i]);
 				}
 				else if(obj.hasLeaderAI) {
 					invalidObjs.insertLast(i);
@@ -95,7 +100,9 @@ class HyperdriveDisplay : PointDisplay {
 				color);
 		}
 		else {
-			if(playerEmpire.HyperdriveNeedCharge == 0) {
+			// Keeping the old Hyperfield Sequencing implementation
+			// intact, just in case.
+			if(playerEmpire.HyperdriveNeedCharge == 0 || ht.isInstant) {
 				font::OpenSans_11_Italic.draw(mousePos + vec2i(16, 16),
 					locale::INSTANT_HYPERJUMP,
 					color);
@@ -151,6 +158,12 @@ class HyperdriveDisplay : PointDisplay {
 };
 
 class HyperdriveCB : TargetCallback {
+	bool isInstant;
+
+	HyperdriveCB(bool IsInstant) {
+		isInstant = IsInstant;
+	}
+
 	void call(TargetMode@ mode) override {
 		bool anyDidFTL = false;
 		Object@[] selection = selectedObjects;
@@ -160,26 +173,34 @@ class HyperdriveCB : TargetCallback {
 			if(!obj.hasMover || !obj.hasLeaderAI || !canHyperdrive(obj))
 				continue;
 			anyDidFTL = true;
-			obj.addHyperdriveOrder(positions[i], shiftKey || obj.inFTL);
+			obj.addHyperdriveOrder(positions[i], shiftKey || obj.inFTL, isInstant);
 		}
 		
 		if(anyDidFTL)
 			sound::order_hyperdrive.play(priority=true);
 		
 		if(shiftKey) {
-			HyperdriveTarget targ(selectedObject);
+			HyperdriveTarget targ(selectedObject, isInstant);
 			targ.isShifted = true;
 			HyperdriveDisplay disp;
-			HyperdriveCB cb;
+			HyperdriveCB cb(isInstant);
 			startTargeting(targ, disp, cb);
 		}
 	}
 };
 
 void targetHyperdrive() {
-	HyperdriveTarget targ(selectedObject);
+	targetHyperdriveImpl(false);
+}
+
+void targetInstantHyperdrive() {
+	targetHyperdriveImpl(true);
+}
+
+void targetHyperdriveImpl(bool isInstant) {
+	HyperdriveTarget targ(selectedObject, isInstant);
 	HyperdriveDisplay disp;
-	HyperdriveCB cb;
+	HyperdriveCB cb(isInstant);
 
 	startTargeting(targ, disp, cb);
 }

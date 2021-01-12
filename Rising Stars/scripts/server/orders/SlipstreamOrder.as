@@ -14,9 +14,11 @@ tidy class SlipstreamOrder : Order {
 	int cost = 0;
 	int moveId = -1;
 	array<Object@> secondary;
+	bool isInstant;
 
-	SlipstreamOrder(vec3d pos) {
+	SlipstreamOrder(vec3d pos, bool IsInstant = false) {
 		destination = pos;
+		isInstant = IsInstant;
 	}
 
 	SlipstreamOrder(SaveFile& msg) {
@@ -34,6 +36,7 @@ tidy class SlipstreamOrder : Order {
 			for(uint i = 0; i < cnt; ++i)
 				msg >> secondary[i];
 		}
+		msg >> isInstant;
 	}
 
 	void save(SaveFile& msg) override {
@@ -49,6 +52,7 @@ tidy class SlipstreamOrder : Order {
 		for(uint i = 0; i < cnt; ++i) {
 			msg << secondary[i];
 		}
+		msg << isInstant;
 	}
 
 	OrderType get_type() override {
@@ -124,7 +128,10 @@ tidy class SlipstreamOrder : Order {
 			}
 
 			double dist = obj.position.distanceTo(destination);
-			cost = slipstreamCost(obj, scale, dist);
+			if(isInstant)
+				cost = slipstreamInstantCost(obj, scale, dist);
+			else
+				cost = slipstreamCost(obj, scale, dist);
 
 			if(cost > 0) {
 				double consumed = obj.owner.consumeFTL(cost, false, record=false);
@@ -150,12 +157,21 @@ tidy class SlipstreamOrder : Order {
 			facing = quaterniond_fromVecToVec(vec3d_front(), destination - obj.position);
 			obj.stopMoving();
 
+			double inaccuracy;
+			if(isInstant) 
+				inaccuracy = slipstreamInstantInaccuracy(obj, destination);
+			else
+				inaccuracy = slipstreamInaccuracy(obj, destination);
+
 			playParticleSystem("FTLCharge", vec3d(), quaterniond(), obj.radius * 4.0, obj);
-			playParticleSystem("FTLCharge", destination, quaterniond(), slipstreamInaccuracy(obj, destination) * 0.25);
+			playParticleSystem("FTLCharge", destination, quaterniond(), inaccuracy * 0.25);
 		}
 
 		if(charge > 0.0) {
 			bool isFacing = obj.rotateTo(facing, moveId);
+
+			if(isInstant)
+				charge = SLIPSTREAM_CHARGE_TIME;
 
 			//Charge up the slipstream drive for a while first
 			if(charge < SLIPSTREAM_CHARGE_TIME)
@@ -181,8 +197,16 @@ tidy class SlipstreamOrder : Order {
 		startPos += (obj.rotation * vec3d_front()).normalized(obj.radius * 2.5 + 15.0);
 
 		vec3d endPos = destination;
-		slipstreamModifyPosition(obj, endPos);
-		createSlipstream(startPos, endPos, slipstreamLifetime(obj), obj.owner);
+		double lifetime;
+		if(isInstant) {
+			slipstreamInstantModifyPosition(obj, endPos);
+			lifetime = slipstreamInstantLifetime(obj);
+		}
+		else {
+			slipstreamModifyPosition(obj, endPos);
+			lifetime = slipstreamLifetime(obj);
+		}
+		createSlipstream(startPos, endPos, lifetime, obj.owner);
 
 		//Flag ship as no longer in ftl
 		if(ship !is null) {
