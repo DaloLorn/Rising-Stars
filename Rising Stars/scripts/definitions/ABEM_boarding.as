@@ -70,6 +70,8 @@ class BoardShip : StatusHook {
 	void pickSubsystem(BoardingData& info) {
 		if(info.targetShip is null) // Can't pick subsystems on an orbital. Orbitals take direct health damage instead, and are captured when health reaches 25%.
 			return;
+
+		if(info.targetShip.owner is defaultEmpire) // Derelict ships may not have an acceptable target subsystem. That's okay, we never hurt it anyway.
 		
 		Blueprint@ blueprint = info.targetShip.blueprint;
 		uint cnt = blueprint.design.subsystemCount;
