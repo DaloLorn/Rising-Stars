@@ -72,6 +72,7 @@ class BoardShip : StatusHook {
 			return;
 
 		if(info.targetShip.owner is defaultEmpire) // Derelict ships may not have an acceptable target subsystem. That's okay, we never hurt it anyway.
+			return;
 		
 		Blueprint@ blueprint = info.targetShip.blueprint;
 		uint cnt = blueprint.design.subsystemCount;

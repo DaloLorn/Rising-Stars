@@ -3,7 +3,7 @@
         {
             "name":"OpenSR Modpack",
             "repository":"github.com/OpenSRProject/OpenStarRuler-Modpack",
-            "branch":"master"
+            "branch":"WorkshopBuild"
         }
     ]
 }
