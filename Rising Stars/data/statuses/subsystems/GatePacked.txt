@@ -8,5 +8,6 @@ Status: GatePacked
 	AddBonusHP(-0.5)
 
 	IfNotFTLSuppressed(GrantAbility(GateUnpack))
+	IfAttributeGTE(InstantFTLFactor, 1, GrantAbility(GateSequence))
 
 	ForceHoldFire()

@@ -1,0 +1,15 @@
+Ability: GateSequence
+	Name: #ABL_GATE_SEQUENCE
+	Description: #ABL_GATE_SEQUENCE_DESC
+	Icon: AbilityIcons::1*#00c0ff
+
+	Target: dest = Point
+	Range: 10
+
+	RemoveStatus(GatePacked)
+	AddStatus(GateSequenced)
+
+	ConsumeFTL(400)
+	ShowFTLValue(400, #COST)
+
+	TeleportTo(dest)

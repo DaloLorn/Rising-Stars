@@ -5,4 +5,5 @@ Ability: GatePack
 	Hotkey: G
 
 	RemoveStatus(GateUnpacked)
+	RemoveStatus(GateSequenced)
 	AddStatus(GatePacked)
