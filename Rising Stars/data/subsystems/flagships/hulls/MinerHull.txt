@@ -18,6 +18,7 @@ Subsystem: MinerHull
 	AddShipModifier: OreProcessFactor(1.2)
 	AddShipModifier: LaborIncomeFactor(1.2)
 	AddShipModifier: tag/Weapon::SizeFactor(0.1)
+	AddShipModifier: tag/Weapon::WeaponSizeFactor(10.0)
 	AddShipModifier: SupplyCapacityMult(1.5)
 	AddShipModifier: SupportCapacityMult(0.1)
 	AddShipModifier: BuildCostFactor(0.75)
