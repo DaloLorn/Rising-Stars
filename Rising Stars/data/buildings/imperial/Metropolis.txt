@@ -25,6 +25,10 @@ Building: Metropolis
 
 	AI:BuildForPressureCap(5)
 
-	ShowAttributeValue(Building Maintenance Reduction, Adaptation4, Multiplier = 50.0, Icon = ResourceIcon::0, Suffix = k, Hide Zero = True)
-	IfAttributeGTE(Adaptation4, 1, AddBuildingMaintenanceRefund(50))
+	ShowAttributeValue(Extra Civilian Production (except Money), Adaptation4, Multiplier = 5.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
+	IfAttributeGTE(Adaptation4, 1, ModCivResourceMult(Influence, 0.05))
+	IfAttributeGTE(Adaptation4, 1, ModCivResourceMult(Labor, 0.05))
+	IfAttributeGTE(Adaptation4, 1, ModCivResourceMult(Defense, 0.05))
+	IfAttributeGTE(Adaptation4, 1, ModCivResourceMult(Energy, 0.05))
+	IfAttributeGTE(Adaptation4, 1, ModCivResourceMult(Research, 0.05))
 	RepeatEmpireAttribute(MetropolisExtraPressureCap, AddPressureCap(2))

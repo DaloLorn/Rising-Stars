@@ -27,7 +27,6 @@ Building: Megacity
 	AddPressureCap(9)
 	ReplacesCities(16)
 
-	IfAttributeGTE(Adaptation4, 1, ReplacesCities(2))
-	IfAttributeGTE(Adaptation4, 1, AddMaxPopulation(2))
-	ShowAttributeValue(Added Population, Adaptation4, Multiplier = 2.0, Icon = ResourceIcon::8, Hide Zero = True)
+	IfAttributeGTE(Adaptation4, 1, AddPlanetResource(Soylent1))
+	ShowAttributeValue(Extra Food Production, Adaptation4, Icon = ResourceIcons::3, Hide Zero = True)
 	ModBuildSpeedAttribute(CityConstructRate)
