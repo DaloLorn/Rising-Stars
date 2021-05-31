@@ -2604,6 +2604,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			msg.write0();
 		}
 		msg.writeBit(needsPopulationForLevel);
+		msg.writeLimited(LevelChainId,getLevelChainCount());
 		msg.writeLimited(ResourceLevel,maxLevel);
 		msg.writeBit(isSendingColonizers);
 	}
