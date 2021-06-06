@@ -1064,7 +1064,7 @@ class PricedAsteroid : BonusEffect {
 
 #section server
 	void activate(Object@ obj, Empire@ emp) const override {
-		Asteroid@ roid = createAsteroid(obj.position);
+		Asteroid@ roid = createAsteroid(obj.position, delay=true);
 		Region@ reg = obj.region;
 		if(reg !is null) {
 			roid.orbitAround(reg.position);
@@ -1072,6 +1072,7 @@ class PricedAsteroid : BonusEffect {
 		}
 		for(uint i = 1, cnt = arguments.length; i < cnt; ++i)
 			roid.addAvailable(arguments[i].integer, arguments[0].decimal);
+		roid.initMesh();
 	}
 #section all
 };
@@ -1088,7 +1089,7 @@ class OwnedAsteroid : BonusEffect {
 		pos.x += off.x;
 		pos.z += off.y;
 
-		Asteroid@ roid = createAsteroid(pos);
+		Asteroid@ roid = createAsteroid(pos, delay=true);
 		Region@ reg = obj.region;
 		if(reg !is null) {
 			roid.orbitAround(reg.position);
@@ -1098,6 +1099,7 @@ class OwnedAsteroid : BonusEffect {
 		roid.setup(null, emp, arguments[0].integer);
 		for(uint i = 1, cnt = arguments.length; i < cnt; ++i)
 			roid.createResource(arguments[i].integer);
+		roid.initMesh();
 	}
 #section all
 };

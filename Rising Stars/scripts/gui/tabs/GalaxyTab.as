@@ -356,6 +356,7 @@ class GalaxyTab : Tab {
 			file << pos;
 			bool isFloating = popups[i].objLinked;
 			file << isFloating;
+			file << obj.valid;
 		}
 
 		file << quickbar;
@@ -375,8 +376,13 @@ class GalaxyTab : Tab {
 
 			bool isFloating = false;
 			file >> isFloating;
+			bool valid = true;
+			file >> valid;
 
-			if(obj !is null) {
+			// objects that are invalid can be deserialised as valid, so check
+			// if the object was valid before saving AND is still considered valid
+			// now to cover all possible problems that would lead to a crash
+			if(obj !is null && obj.valid && valid) {
 				Popup@ pop = pinObject(obj, isFloating);
 				pop.position = pos;
 			}

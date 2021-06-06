@@ -211,6 +211,7 @@ tidy class PlanetScript {
 						}
 						while(randomd() < 0.4);
 					}
+					roid.initMesh();
 				}
 			}
 		}

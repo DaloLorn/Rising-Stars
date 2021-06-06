@@ -42,12 +42,21 @@ tidy class RetrofitConstructible : Constructible {
 		Constructible::cancel(obj);
 	}
 
+	// Cancel on destroy
+	// This is needed to avoid things being retrofitted getting stuck thinking
+	// they are still being retrofitted by something after that something no
+	// longer exists.
+	void remove(Object& obj) {
+		cancel(obj);
+		Constructible::remove(obj);
+	}
+
 	void complete(Object& obj) {
 		fleet.finishFleetRetrofit(obj);
 	}
 
 	TickResult tick(Object& obj, double time) override {
-		if(obj.owner !is fleet.owner || obj.region is null) {
+		if(obj.owner !is fleet.owner || obj.region is null || !obj.valid) {
 			cancel(obj);
 			return TR_Remove;
 		}
