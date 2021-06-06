@@ -1135,6 +1135,7 @@ class TractorObject : AbilityHook {
 		file << td.hasPath;
 		file << td.pathDest;
 		file << td.prevPosition;
+		file << td.mass;
 	}
 
 	void load(Ability@ abl, any@ data, SaveFile& file) const override {
@@ -1150,6 +1151,7 @@ class TractorObject : AbilityHook {
 				file >> td.prevPosition;
 			else
 				td.prevPosition = vec3d(INFINITY, INFINITY, INFINITY);
+			file >> td.mass;
 		}
 	}
 #section all
