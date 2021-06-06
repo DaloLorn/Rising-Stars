@@ -168,4 +168,9 @@ visible:
 	attribute double PlanetScoreMult = 1
 	attribute double FTLThrustFactor = 100
 	attribute double InstantFTLFactor = 0
+	attribute double EmpireMassFactor = 1
+	attribute double EmpireSupportCapacityFactor = 1
+	attribute double EmpireSupportCapacityMassFactor = 1
+	attribute double EmpireRepairFactor = 1
+	attribute double EmpireRepairMassFactor = 1
 }

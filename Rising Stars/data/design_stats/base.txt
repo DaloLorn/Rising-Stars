@@ -12,7 +12,7 @@
 		Color: #aaa
 		Secondary: HP
 
-		Variable: Repair
+		CustomFormula: Repair
 		
 	GlobalStat: RepairCombat
 		Name: #S_REPAIR_COMBAT
@@ -61,22 +61,22 @@ GlobalStat: SupplyCap
 	Variable: SupplyCapacity
 
 	GlobalStat: SupplyRegen
-		 Name: #S_SUPPLYREGEN
-		 Description: #STT_SUPPLYREGEN
-		 Color: #aaa
-		 Secondary: SupplyCap
-		 Suffix: /s
+		Name: #S_SUPPLYREGEN
+		Description: #STT_SUPPLYREGEN
+		Color: #aaa
+		Secondary: SupplyCap
+		Suffix: /s
 
-		 Variable: SupplyRate
+		Variable: SupplyRate
 
-	 GlobalStat: SupplyUse
-		  Name: #S_SUPPLYUSE
-		  Description: #STT_SUPPLYUSE
-		  Color: #aaa
-		  Secondary: SupplyCap
-		  Suffix: /s
+	GlobalStat: SupplyUse
+		Name: #S_SUPPLYUSE
+		Description: #STT_SUPPLYUSE
+		Color: #aaa
+		Secondary: SupplyCap
+		Suffix: /s
 
-		  Variable: SupplyDrain
+		CustomFormula: SupplyDrain
 
 GlobalStat: SupportSupplyCapacity
 	Name: #S_SUPPLYCAP_SUPPORT
@@ -87,15 +87,15 @@ GlobalStat: SupportSupplyCapacity
 	Variable: SupportSupplyCapacity
 
 GlobalStat: SupportSupplyUse
-	 Name: #S_SUPPLYUSE
-	 Description: #STT_SUPPLYUSE
-	 Icon: AttributeIcons::4
-	 Color: #fefc61
-	 Suffix: /s
+	Name: #S_SUPPLYUSE
+	Description: #STT_SUPPLYUSE
+	Icon: AttributeIcons::4
+	Color: #fefc61
+	Suffix: /s
 
-	 RequireTag: SupportHull
+	RequireTag: SupportHull
 
-	 Variable: SupplyDrain
+	CustomFormula: SupplyDrain
 
 GlobalStat: SupportCap
 	Name: #S_SUPPORTCAP
@@ -103,25 +103,25 @@ GlobalStat: SupportCap
 	Icon: ActionBarIcons::2
 	Color: #00cffe
 
-	Variable: SupportCapacity
+	CustomFormula: SupportCap
 
 GlobalStat: Acceleration
-	 Name: #S_ACCEL
-	 Description: #STT_ACCEL
-	 Icon: AttributeIcons::0
-	 Color: #a77751
-	 Suffix: u/s²
+	Name: #S_ACCEL
+	Description: #STT_ACCEL
+	Icon: AttributeIcons::0
+	Color: #a77751
+	Suffix: u/s²
 
-	 Variable: Thrust
-	 DivBy: Hex.Mass
+	Variable: Thrust
+	CustomFormula: Acceleration
 
-	 GlobalStat: Thrust
-		  Name: #S_THRUST
-		  Description: #STT_THRUST
-		  Color: #aaa
-		  Secondary: Acceleration
+	GlobalStat: Thrust
+		Name: #S_THRUST
+		Description: #STT_THRUST
+		Color: #aaa
+		Secondary: Acceleration
 
-		  Variable: Thrust
+		Variable: Thrust
 
 	GlobalStat: Mass
 		Name: #S_MASS
@@ -129,17 +129,17 @@ GlobalStat: Acceleration
 		Color: #aaa
 		Secondary: Acceleration
 
-		Variable: Hex.Mass
+		CustomFormula: Mass
 
 	GlobalStat: TurnRate
-		 Name: #S_TURN_THRUST
-		 Description: #STT_TURN_THRUST
-		 Color: #aaa
-		 Secondary: Acceleration
-		 Suffix: rad/s
+		Name: #S_TURN_THRUST
+		Description: #STT_TURN_THRUST
+		Color: #aaa
+		Secondary: Acceleration
+		Suffix: rad/s
 
-		 Variable: TurnThrust
-		 DivBy: Hex.Mass
+		Variable: TurnThrust
+		CustomFormula: Acceleration
 
 GlobalStat: Power
 	Name: #S_POWER

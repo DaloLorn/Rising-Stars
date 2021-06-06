@@ -2,6 +2,7 @@ import empire_ai.weasel.WeaselAI;
 
 import util.design_export;
 import util.random_designs;
+import ancient_buffs;
 
 interface RaceDesigns {
 	bool preCompose(DesignTarget@ target);
@@ -173,7 +174,7 @@ tidy final class DesignTarget {
 
 		//Value support capacity where appropriate
 		if(purpose == DP_Combat) {
-			double supCap = dsg.total(SV_SupportCapacity);
+			double supCap = getSupportCommandFor(dsg, ai.empire);
 			double avgHP = 0, avgDPS = 0, avgDrain = 0.0;
 			cast<Designs>(ai.designs).getSupportAverages(avgHP, avgDPS, avgDrain);
 
@@ -188,7 +189,7 @@ tidy final class DesignTarget {
 
 			// BEGIN NON-MIT CODE - DOF (Fleet Calc)
 			double DestroyerMod = dsg.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
-			predictHP += (dsg.totalHP + dsg.total(SV_Repair)/3.0*pow(max(log10(dsg.total(SV_Repair)/3.0),0.0),2.0)) * (1.0+log10(dsg.size)*0.1) * DestroyerMod + ((1.0 + max(log10(dsg.total(SV_ShieldRegen) / (1.0 - dsg.total(SV_DummyMitigation)/100))*1.5,1.0)) * (dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_DummyMitigation)/100)) / (1.0 - dsg.total(SV_Chance))) + (dsg.size/20 * dsg.total(SV_Instances) * (dsg.total(SV_Repair)/3 + dsg.total(SV_ShieldRegen)*(1 - dsg.total(SV_DummyMitigation)/100)/(1 - dsg.total(SV_Chance))));
+			predictHP += (dsg.totalHP + getRepairFor(dsg, ai.empire)/3.0*pow(max(log10(getRepairFor(dsg, ai.empire)/3.0),0.0),2.0)) * (1.0+log10(dsg.size)*0.1) * DestroyerMod + ((1.0 + max(log10(dsg.total(SV_ShieldRegen) / (1.0 - dsg.total(SV_DummyMitigation)/100))*1.5,1.0)) * (dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_DummyMitigation)/100)) / (1.0 - dsg.total(SV_Chance))) + (dsg.size/20 * dsg.total(SV_Instances) * (getRepairFor(dsg, ai.empire)/3 + dsg.total(SV_ShieldRegen)*(1 - dsg.total(SV_DummyMitigation)/100)/(1 - dsg.total(SV_Chance))));
 			// END NON-MIT CODE 
 
 			predictDrain += dsg.total(SV_SupplyDrain);
@@ -306,7 +307,7 @@ tidy final class DesignTarget {
 
 		//Set design settings/support behavior
 		if(purpose == DP_Support) {
-			if(dsg.total(SV_SupportSupplyCapacity) > 0.01) {
+			if(getSupportCommandFor(dsg, ai.empire) > 0.01) {
 				DesignSettings settings;
 				settings.behavior = SG_Brawler;
 				dsg.setSettings(settings);
@@ -599,7 +600,7 @@ final class Designs : AIComponent {
 		if(dsg.size <= 16.0 && dsg.total(SV_DPS) < 10.0)
 		// END NON-MIT CODE
 			return DP_Scout;
-		if(dps > 0.1 * dsg.size || dsg.total(SV_SupportCapacity) > 0)
+		if(dps > 0.1 * dsg.size || getSupportCommandFor(dsg, ai.empire) > 0)
 			return DP_Combat;
 		return defaultPurpose;
 	}

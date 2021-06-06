@@ -1,11 +1,9 @@
 Status: AncientReinforcer
 	Visible To: Nobody
+	
+	IfAttributeGTE(Adaptation4, 1, ModEmpireAttribute(FleetEfficiencyFactor, AddFactor, 1.01))
 
-	EnableModifier(CoreHealthFactor(1.25))
-	EnableModifier(CoreMassFactor(1.25))
+	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 1.084))
+	IfAttributeLT(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 1.07))
 
-	IfAttributeGTE(Adaptation4, 1, EnableModifier(HpFactor(1.05)))
-	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(AncientCore::HpFactor(1.05)))
-	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(CoreHealthFactor(1.05)))
-	EnableModifier(AncientCore::HpFactor(1.25))
-	EnableModifier(AncientCore::MassFactor(1.25))
+	ModEmpireAttribute(EmpireRepairMassFactor, AddFactor, 1.25)

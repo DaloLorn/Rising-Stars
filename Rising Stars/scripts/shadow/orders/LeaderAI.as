@@ -1,6 +1,7 @@
 import ship_groups;
 import orders;
 import resources;
+import ancient_buffs;
 
 // BEGIN NON-MIT CODE - DOF (Fleet Calc)
 import design_settings;
@@ -290,11 +291,11 @@ tidy class LeaderAI : Component_LeaderAI {
 
 			// BEGIN NON-MIT CODE - DOF (Fleet Calc)
 			double DestroyerMod = bp.design.total(SV_HullStrengthMult); // Genericized this part of dolynick's code.
-			hp = (bp.currentHP * bp.hpFactor + (bp.getEfficiencySum(SV_Repair)/3.0*pow(max(log10(bp.getEfficiencySum(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance))) + (bp.design.size/20 * bp.getEfficiencySum(SV_Instances) * (bp.getEfficiencySum(SV_Repair)/3.0 + bp.getEfficiencySum(SV_ShieldRegen)*(1 - ship.mitigation)/(1 - bp.getEfficiencySum(SV_Chance))));
+			hp = (bp.currentHP * bp.hpFactor + (getRepairFor(ship)/3.0*pow(max(log10(getRepairFor(ship)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance))) + (bp.design.size/20 * bp.getEfficiencySum(SV_Instances) * (getRepairFor(ship)/3.0 + bp.getEfficiencySum(SV_ShieldRegen)*(1 - ship.mitigation)/(1 - bp.getEfficiencySum(SV_Chance))));
 			dps = ship.DPS * bp.shipEffectiveness;
 			
 			// Fleet Calc
-			maxHP = (bp.design.totalHP - bp.removedHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5,1.0)) * (ship.MaxShield / (1.0 - bp.design.total(SV_DummyMitigation)/100)) / (1.0 - bp.design.total(SV_Chance))) + (bp.design.size/20 * bp.design.total(SV_Instances) * (bp.design.total(SV_Repair)/3.0 + bp.design.total(SV_ShieldRegen)*(1.0 - bp.design.total(SV_DummyMitigation)/100.0))/(1.0 - bp.design.total(SV_Chance)));
+			maxHP = (bp.design.totalHP - bp.removedHP + (getRepairFor(bp.design, obj.owner)/3.0*pow(max(log10(getRepairFor(bp.design, obj.owner)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) * DestroyerMod + ((1.0+max(log10(bp.design.total(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5,1.0)) * (ship.MaxShield / (1.0 - bp.design.total(SV_DummyMitigation)/100)) / (1.0 - bp.design.total(SV_Chance))) + (bp.design.size/20 * bp.design.total(SV_Instances) * (getRepairFor(bp.design, obj.owner)/3.0 + bp.design.total(SV_ShieldRegen)*(1.0 - bp.design.total(SV_DummyMitigation)/100.0))/(1.0 - bp.design.total(SV_Chance)));
 			maxDPS = ship.MaxDPS;
 			// END NON-MIT CODE
 		}
@@ -317,11 +318,11 @@ tidy class LeaderAI : Component_LeaderAI {
 				ShieldBehaviorMod = 1.0;
 				auto@ settings = cast<const DesignSettings>(bp.design.settings);
 				if (settings !is null && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-				hp += ((bp.currentHP * bp.hpFactor + (bp.getEfficiencySum(SV_Repair)/3.0*pow(max(log10(bp.getEfficiencySum(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance)))) * ShieldBehaviorMod;
+				hp += ((bp.currentHP * bp.hpFactor + (getRepairFor(ship)/3.0*pow(max(log10(getRepairFor(ship)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.getEfficiencySum(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * (ship.Shield / (1.0 - ship.mitigation)) / (1.0 - bp.getEfficiencySum(SV_Chance)))) * ShieldBehaviorMod;
 
 				dps += ship.DPS * bp.shipEffectiveness;
 				// Fleet Calc
-				maxHP += ((bp.design.totalHP + (bp.design.total(SV_Repair)/3.0*pow(max(log10(bp.design.total(SV_Repair)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
+				maxHP += ((bp.design.totalHP + (getRepairFor(bp.design, obj.owner)/3.0*pow(max(log10(getRepairFor(bp.design, obj.owner)/3.0),0.0),2))) * (1.0+log10(bp.design.size)*0.1) + ((1.0+max(log10(bp.design.total(SV_ShieldRegen) / (1.0 - ship.mitigation))*1.5, 1.0)) * ship.MaxShield / (1.0 - bp.design.total(SV_Chance)))) * ShieldBehaviorMod;
 				maxDPS += ship.MaxDPS;
 				// END NON-MIT CODE
 			}

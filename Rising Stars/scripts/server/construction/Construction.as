@@ -14,6 +14,7 @@ import object_creation;
 import resources;
 import systems;
 import buildings;
+import ancient_buffs;
 import bool getCheatsEverOn() from "cheats";
 from regions.regions import getRegion;
 #include "include/resource_constants.as"
@@ -988,7 +989,7 @@ tidy class Construction : Component_Construction, Savable {
 		if(cons is null)
 			return;
 
-		uint maxAmount = floor(cons.getSupportSupplyFree() / dsg.size);
+		uint maxAmount = floor(cons.getSupportSupplyFree(obj) / dsg.size);
 		amount = min(amount, maxAmount);
 		if(amount == 0)
 			return;

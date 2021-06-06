@@ -3,6 +3,7 @@ import resources;
 import object_creation;
 import ship_groups;
 import cargo;
+import ancient_buffs;
 
 tidy class ShipConstructible : Constructible {
 	const Design@ design;
@@ -231,8 +232,8 @@ tidy class ShipConstructible : Constructible {
 		return false;
 	}
 
-	double getSupportSupplyFree() {
-		double supply = design.total(SV_SupportCapacity);
+	double getSupportSupplyFree(Object& obj) {
+		double supply = getSupportCommandFor(design, obj.owner);
 		for(uint i = 0, cnt = supports.length; i < cnt; ++i) {
 			GroupData@ d = supports[i];
 			supply -= double(d.totalSize) * d.dsg.size;

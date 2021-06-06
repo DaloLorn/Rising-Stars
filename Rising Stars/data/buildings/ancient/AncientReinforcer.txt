@@ -19,5 +19,5 @@ Building: AncientReinforcer
 	RequireStatusToProgress(AncientFabricator)
 
 	IfHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientReinforcer), Inactive Status = AncientRequireBaseMat, Allow Global = False))
-	ShowAttributeValue(All Subsystem Health, Adaptation4, Multiplier = 5.0, Icon = AttributeIcons::6, Suffix = %, Hide Zero = True)
+	ShowAttributeValue(All Fleet Effectiveness, Adaptation4, Multiplier = 1.0, Icon = AttributeIcons::6, Suffix = %, Hide Zero = True)
 	IfNotHaveStatus(DisableBaseMaterials, building_effects::ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientReinforcer), Inactive Status = AncientRequireBaseMat))

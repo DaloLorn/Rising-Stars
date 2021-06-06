@@ -3,6 +3,7 @@ import util.target_search;
 import regions.regions;
 import saving;
 import attributes;
+import ancient_buffs;
 from generic_effects import RegionChangeable, LeaderChangeable;
 from influence_global import giveRandomReward, DiplomacyEdictType;
 from designs import getDesignMesh;
@@ -498,7 +499,7 @@ tidy class ShipScript {
 			ship.MaxSupply = ship.blueprint.design.total(SV_SupplyCapacity) + supplyBonus;
 		else
 			ship.MaxSupply = ship.blueprint.design.total(SV_SupportSupplyCapacity) + supplyBonus;
-		mass = ship.blueprint.design.total(HV_Mass);
+		mass = getMassFor(ship);
 		/*ship.MaxEnergy = ship.blueprint.design.total(SV_EnergyCapacity);*/
 		ship.MaxEnergy = 0;
 
@@ -539,6 +540,24 @@ tidy class ShipScript {
 			float accel = thrust / getMass();
 			ship.maxAcceleration = accel;
 		}
+	}
+
+	void minorStatUpdate(Ship& ship) {
+		// Update mass to account for Atroan Compressors and similar effects.
+		mass = getMassFor(ship);
+
+		if(ship.hasLeaderAI) {
+			//Set the supply capacity of the ship
+			int supply = getSupportCommandFor(ship);
+			if(supply != prevSupply) {
+				ship.modSupplyCapacity(supply - prevSupply);
+				prevSupply = supply;
+			}
+		}
+
+		//Store the amount of repair we have available
+		currentRepair = getRepairFor(ship);
+		currentRepairCost = getRepairCostFor(ship);
 	}
 
 	void updateStats(Ship& ship, bool init = false) {
@@ -585,12 +604,8 @@ tidy class ShipScript {
 			shieldDelta = true;
 		}
 
-		//Set the supply capacity of the ship
-		int supply = ship.blueprint.getEfficiencySum(SV_SupportCapacity);
-		if(supply != prevSupply) {
-			ship.modSupplyCapacity(supply - prevSupply);
-			prevSupply = supply;
-		}
+		// Refresh Atroan enhancer effects and such.
+		minorStatUpdate(ship);
 
 		//Modify ship efficiency based on available command
 		float commandAvail = ship.blueprint.getEfficiencySum(SV_Command);
@@ -655,10 +670,6 @@ tidy class ShipScript {
 		else {
 			ship.blueprint.shipEffectiveness = double(effectiveness) * double(ship.getFleetEffectiveness());
 		}
-
-		//Store the amount of repair we have available
-		currentRepair = ship.blueprint.getEfficiencySum(SV_Repair);
-		currentRepairCost = ship.blueprint.getEfficiencySum(SV_RepairSupplyCost);
 
 		//Check if we should update our maintenance
 		if(!ship.isFree && ship.owner !is null && ship.owner.valid) {
@@ -1082,6 +1093,9 @@ tidy class ShipScript {
 				}
 			}
 		}
+
+		// Refresh Atroan enhancer effects and such.
+		minorStatUpdate(ship);
 
 		if(ship.hasSupportAI) {
 			ship.supportTick(time);

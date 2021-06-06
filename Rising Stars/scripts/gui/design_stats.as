@@ -1,5 +1,6 @@
 #priority init 10
 import design_settings;
+import ancient_buffs;
 
 enum StatType {
 	ST_Hex,
@@ -26,6 +27,11 @@ enum CustomStatFormula {
 	CSF_None,
 	CSF_HPStrength,
 	CSF_Strength,
+	CSF_Mass,
+	CSF_Acceleration,
+	CSF_SupportCap,
+	CSF_Repair,
+	CSF_SupplyUse,
 };
 
 class DesignStat {
@@ -150,6 +156,65 @@ namespace design_stats {
 		return 0.0;
 	}
 
+	double getMass(const Design@ dsg, const Subsystem@ sys, vec2u hex, SysVariableType type, int aggregate = 0) {
+		double baseMass = 0;
+		double supportMass = 0;
+		double repairMass = 0;
+		if(type == SVT_HexVariable) {
+			if(hex != vec2u(uint(-1))) {
+				baseMass = dsg.variable(hex, HV_Mass);
+				supportMass = dsg.variable(hex, HV_SupportCapacityMass);
+				repairMass = dsg.variable(hex, HV_RepairMass);
+			}
+			else if(sys !is null) {
+				switch(aggregate) {
+					case ::SA_Sum:
+						baseMass = sys.total(HV_Mass);
+						supportMass = sys.total(HV_SupportCapacityMass);
+						repairMass = sys.total(HV_RepairMass);
+					break;
+				}
+			}
+			else {
+				switch(aggregate) {
+					case ::SA_Sum:
+						baseMass = dsg.total(HV_Mass);
+						supportMass = dsg.total(HV_SupportCapacityMass);
+						repairMass = dsg.total(HV_RepairMass);
+					break;
+				}
+			}
+		}
+		else if(type == SVT_SubsystemVariable) {
+			if(sys !is null) {
+				baseMass = sys.total(HV_Mass);
+				supportMass = sys.total(HV_SupportCapacityMass);
+				repairMass = sys.total(HV_RepairMass);
+			}
+			else {
+				switch(aggregate) {
+					case ::SA_Sum:
+						baseMass = dsg.total(HV_Mass);
+						supportMass = dsg.total(HV_SupportCapacityMass);
+						repairMass = dsg.total(HV_RepairMass);
+					break;
+				}
+			}
+		}
+		else if(type == SVT_ShipVariable) {
+			baseMass = dsg.total(HV_Mass);
+			supportMass = dsg.total(HV_SupportCapacityMass);
+			repairMass = dsg.total(HV_RepairMass);
+		}
+
+		if(playerEmpire !is null) {
+			baseMass += supportMass * max(playerEmpire.EmpireSupportCapacityMassFactor - 1.0, 0.0);
+        	baseMass += repairMass * max(playerEmpire.EmpireRepairMassFactor - 1.0, 0.0);
+			baseMass *= playerEmpire.EmpireMassFactor;
+		}
+		return baseMass;
+	}
+
 	::DesignStat@[] hexStats;
 	::DesignStat@[] sysStats;
 	::DesignStat@[] globalStats;
@@ -159,7 +224,7 @@ double calculateHPStrength(const Design@ dsg) {
 	double ShieldBehaviorMod = 1.0;
 	auto@ settings = cast<const DesignSettings>(dsg.settings);
 	if (settings !is null && dsg.hasTag(ST_Support) && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-	return ((dsg.totalHP + (dsg.total(SV_Repair) / 3.0 * pow(max(log10(dsg.total(SV_Repair)/3.0), 0.0), 2))) * (1.0 + log10(dsg.size) * 0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen))*2.0, 1.0)) * dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_Chance)))) * ShieldBehaviorMod;
+	return ((dsg.totalHP + (getRepairFor(dsg, playerEmpire) / 3.0 * pow(max(log10(getRepairFor(dsg, playerEmpire)/3.0), 0.0), 2))) * (1.0 + log10(dsg.size) * 0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen))*2.0, 1.0)) * dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_Chance)))) * ShieldBehaviorMod;
 }
 
 DesignStats@ getDesignStats(const Design@ dsg) {
@@ -170,10 +235,32 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 		DesignStat@ stat = design_stats::globalStats[i];
 		if(stat.reqTag != -1 && !dsg.hasTag(SubsystemTag(stat.reqTag)))
 			continue;
+
 		bool has = false;
 		double val = 0;
 		double used = -1.0;
 		switch(stat.customFormula) {
+			case CSF_Mass:
+				val = getMassFor(dsg, playerEmpire);
+				break;
+			case CSF_Acceleration:
+				val = design_stats::getValue(dsg, null, vec2u(uint(-1)),
+							stat.varType, stat.variable, stat.aggregate);
+				if(playerEmpire !is null) {
+					double mass = getMassFor(dsg, playerEmpire);
+					if(mass != 0.0)
+						val /= mass;
+				}
+				break;
+			case CSF_SupportCap:
+				val = getSupportCommandFor(dsg, playerEmpire);
+				break;
+			case CSF_Repair:
+				val = getRepairFor(dsg, playerEmpire);
+				break;
+			case CSF_SupplyUse:
+				val = getSupplyDrainFor(dsg, playerEmpire);
+				break;
 			case CSF_Strength:
 				val = calculateHPStrength(dsg) * dsg.total(SV_DPS) * 0.001;
 				break;
@@ -182,16 +269,23 @@ DesignStats@ getDesignStats(const Design@ dsg) {
 				break;
 			case CSF_None:
 			default:
-				val = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.variable, stat.aggregate);
+				val = design_stats::getValue(dsg, null, vec2u(uint(-1)),
+						stat.varType, stat.variable, stat.aggregate);
+
 				if(stat.usedVariable != -1)
-					used = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.varType, stat.usedVariable, stat.aggregate);
+					used = design_stats::getValue(dsg, null, vec2u(uint(-1)),
+						stat.varType, stat.usedVariable, stat.aggregate);
+
 				if(stat.divVar != -1) {
-					double div = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.divType, stat.divVar, stat.aggregate);
+					double div = design_stats::getValue(dsg, null, vec2u(uint(-1)),
+							stat.divType, stat.divVar, stat.aggregate);
 					if(div != 0.0)
 						val /= div;
 				}
+
 				if(stat.multVar != -1) {
-					double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)), stat.multType, stat.multVar, stat.aggregate);
+					double mult = design_stats::getValue(dsg, null, vec2u(uint(-1)),
+							stat.multType, stat.multVar, stat.aggregate);
 					val *= mult;
 				}
 				break;
@@ -215,9 +309,21 @@ DesignStats@ getHexStats(const Design@ dsg, vec2u hex) {
 		DesignStat@ stat = design_stats::hexStats[i];
 		if(stat.reqTag != -1 && !dsg.hasTag(stat.reqTag))
 			continue;
+
 		if(design_stats::hasValue(dsg, sys, stat)) {
-			float val = design_stats::getValue(dsg, sys, hex, stat.varType, stat.variable, stat.aggregate);
-			if(val != 0.f) {
+			float val = 0.f;
+			switch(stat.customFormula) {
+				case CSF_Mass: 
+					val = design_stats::getMass(dsg, sys, hex,
+							stat.varType, stat.aggregate);
+					break;
+				case CSF_None:
+				default:
+					val = design_stats::getValue(dsg, sys, hex,
+							stat.varType, stat.variable, stat.aggregate);
+					break;
+			}
+			if(val != 0.f || stat.outputZero) {
 				stats.stats.insertLast(stat);
 				stats.values.insertLast(val);
 			}
@@ -235,10 +341,21 @@ DesignStats@ getSubsystemStats(const Design@ dsg, const Subsystem@ sys) {
 		DesignStat@ stat = design_stats::sysStats[i];
 		if(stat.reqTag != -1 && !sys.type.hasTag(stat.reqTag))
 			continue;
+
 		if(design_stats::hasValue(dsg, sys, stat)) {
-			float val = design_stats::getValue(dsg, sys, vec2u(uint(-1)),
+			float val = 0.f;
+			switch(stat.customFormula) {
+				case CSF_Mass: 
+					val = design_stats::getMass(dsg, sys, vec2u(uint(-1)),
+							stat.varType, stat.aggregate);
+					break;
+				case CSF_None:
+				default:
+					val = design_stats::getValue(dsg, sys, vec2u(uint(-1)),
 							stat.varType, stat.variable, stat.aggregate);
-			if(val != 0.f) {
+					break;
+			}
+			if(val != 0.f || stat.outputZero) {
 				stats.stats.insertLast(stat);
 				stats.values.insertLast(val);
 			}
@@ -353,6 +470,22 @@ void loadStats(const string& filename) {
 			else if(value.equals_nocase("HPStrength")) {
 				stat.customFormula = CSF_HPStrength;
 			}
+			else if(value.equals_nocase("Mass")) {
+				stat.variable = HV_Mass; // This is needed for HexStats and VariableStats, and harmless for GlobalStats.
+				stat.customFormula = CSF_Mass;
+			}
+			else if(value.equals_nocase("Acceleration")) {
+				stat.customFormula = CSF_Acceleration;
+			}
+			else if(value.equals_nocase("SupportCap")) {
+				stat.customFormula = CSF_SupportCap;
+			}
+			else if(value.equals_nocase("Repair")) {
+				stat.customFormula = CSF_Repair;
+			}
+			else if(value.equals_nocase("SupplyDrain")) {
+				stat.customFormula = CSF_SupplyUse;
+			}
 		}
 		else if(key == "Secondary") {
 			int sec = -1;
@@ -384,21 +517,21 @@ void loadStats(const string& filename) {
 			}
 		}
 		else if(key == "MultBy") {
-            		if(value.startswith("Hex.")) {
-		                value = value.substr(4);
-		                stat.multType = SVT_HexVariable;
-		                stat.multVar = getHexVariable(value);
-            		}
-                        else if(value.startswith("Ship.")) {
-		                value = value.substr(5);
-		                stat.multType = SVT_ShipVariable;
-		                stat.multVar = getShipVariable(value);
-            		}
-            		else {
-		                stat.multType = SVT_SubsystemVariable;
-		                stat.multVar = getSubsystemVariable(value);
-            		}
-        	}
+			if(value.startswith("Hex.")) {
+				value = value.substr(4);
+				stat.multType = SVT_HexVariable;
+				stat.multVar = getHexVariable(value);
+			}
+				else if(value.startswith("Ship.")) {
+				value = value.substr(5);
+				stat.multType = SVT_ShipVariable;
+				stat.multVar = getShipVariable(value);
+			}
+			else {
+				stat.multType = SVT_SubsystemVariable;
+				stat.multVar = getSubsystemVariable(value);
+			}
+		}
 	}
 }
 
