@@ -11,5 +11,6 @@ Ability: SwarmerBindAsteroid
 	IsToggleTarget(targ, Check Range = False, Channels = False)
 	TractorObject(targ, Max Distance = 600)
 	PersistentBeamEffect(targ, #b8b8d8, Tractor, 0.5)
+	AutoCastNearby(targ)
 
 	ABEM_cargo::MaintainMiningBase(targ, Package Size = 325.0, Mining Rate = 2.5, Minimum Mining Rate = 0.75)
