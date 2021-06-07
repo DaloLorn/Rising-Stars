@@ -38,7 +38,10 @@ int hyperdriveCost(Object& obj, const vec3d& position) {
 	Empire@ owner = obj.owner;
 	if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 		return 0;
-	return ceil((log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(position.distanceTo(obj.position)) * HYPERDRIVE_COST + HYPERDRIVE_START_COST + owner.HyperdriveStartCostMod)* owner.FTLCostFactor);
+	int result = ceil((log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(position.distanceTo(obj.position)) * HYPERDRIVE_COST + HYPERDRIVE_START_COST + owner.HyperdriveStartCostMod)* owner.FTLCostFactor);
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int hyperdriveCost(array<Object@>& objects, const vec3d& destination) {
@@ -48,13 +51,18 @@ int hyperdriveCost(array<Object@>& objects, const vec3d& destination) {
 			continue;
 		cost += hyperdriveCost(objects[i], destination);
 	}
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
 int hyperdriveInstantCost(Object& obj, const vec3d& position) {
 	if(obj.owner is null)
 		return 0;
-	return hyperdriveCost(obj, position) * obj.owner.InstantFTLFactor;
+	int result = hyperdriveCost(obj, position) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int hyperdriveInstantCost(array<Object@>& objects, const vec3d& destination) {
@@ -64,6 +72,8 @@ int hyperdriveInstantCost(array<Object@>& objects, const vec3d& destination) {
 			continue;
 		cost += hyperdriveInstantCost(objects[i], destination);
 	}
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
@@ -80,7 +90,10 @@ double hyperdriveRange(Object& obj, int scale, int stored) {
 	Empire@ owner = obj.owner;
 	if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 		return INFINITY;
-	return sqr(max(double(stored) - (HYPERDRIVE_START_COST - owner.HyperdriveStartCostMod) * owner.FTLCostFactor, 0.0) / (log(double(scale)) * HYPERDRIVE_COST * owner.FTLCostFactor));
+	double result = sqr(max(double(stored) - (HYPERDRIVE_START_COST - owner.HyperdriveStartCostMod) * owner.FTLCostFactor, 0.0) / (log(double(scale)) * HYPERDRIVE_COST * owner.FTLCostFactor));
+	if(result < 0)
+		result = 0.0;
+	return result;
 }
 
 double hyperdriveInstantRange(Object& obj) {
@@ -98,7 +111,10 @@ double hyperdriveInstantRange(Object& obj, int scale, int stored) {
 		return INFINITY;
 	if(owner is null)
 		return 0.0;
-	return sqr(max(double(stored) - (HYPERDRIVE_START_COST - owner.HyperdriveStartCostMod) * owner.FTLCostFactor * owner.InstantFTLFactor, 0.0) / (log(double(scale)) * HYPERDRIVE_COST * owner.FTLCostFactor * owner.InstantFTLFactor));
+	double result = sqr(max(double(stored) - (HYPERDRIVE_START_COST - owner.HyperdriveStartCostMod) * owner.FTLCostFactor * owner.InstantFTLFactor, 0.0) / (log(double(scale)) * HYPERDRIVE_COST * owner.FTLCostFactor * owner.InstantFTLFactor));
+	if(result < 0)
+		result = 0.0;
+	return result;
 }
 
 bool canHyperdriveTo(Object& obj, const vec3d& pos) {
@@ -150,6 +166,7 @@ int flingCost(Object& obj, vec3d position) {
 	bool freeFTL = reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0;
 	if(freeFTL && !obj.isPlanet)
 		return 0;
+	int result = INFINITY;
 	if(obj.isShip) {
 		Ship@ ship = cast<Ship>(obj);
 		auto@ dsg = ship.blueprint.design;
@@ -163,30 +180,37 @@ int flingCost(Object& obj, vec3d position) {
 		else
 			scaleFactor = sqrt(double(scale));
 
-		return ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
+		result = ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
 	}
 	else {
 		if(obj.isOrbital)
-			return ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
+			result = ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
 		else if(obj.isPlanet) {
 			double modifier = 1;
 			if(freeFTL) modifier = 0.25; // Planets only receive a serious discount from free FTL effects.
-			return ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier / 4);
+			result = ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier / 4);
 		}
-		return INFINITY;
 	}
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int flingInstantCost(Object& obj, vec3d position) {
 	if(obj.owner is null)
 		return 0;
-	return flingCost(obj, position) * obj.owner.InstantFTLFactor;
+	int result = flingCost(obj, position) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int flingCost(array<Object@>& objects, const vec3d& destination) {
 	int cost = 0;
 	for(uint i = 0, cnt = objects.length; i < cnt; ++i)
 		cost += flingCost(objects[i], destination);
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
@@ -194,6 +218,8 @@ int flingInstantCost(array<Object@>& objects, const vec3d& destination) {
 	int cost = 0;
 	for(uint i = 0, cnt = objects.length; i < cnt; ++i)
 		cost += flingInstantCost(objects[i], destination);
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
@@ -229,15 +255,22 @@ int slipstreamCost(Object& obj, int scale, double distance) {
 	Ship@ ship = cast<Ship>(obj);
 	double baseCost = ship.blueprint.design.total(SV_SlipstreamCost);
 	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
+	int result;
 	if(distance < optDist)
-		return baseCost * obj.owner.FTLCostFactor;
-	return baseCost * ceil(distance / optDist) * obj.owner.FTLCostFactor;
+		result = baseCost * obj.owner.FTLCostFactor;
+	else result = baseCost * ceil(distance / optDist) * obj.owner.FTLCostFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int slipstreamInstantCost(Object& obj, int scale, double distance) {
 	if(obj.owner is null)
 		return 0;
-	return slipstreamCost(obj, scale, distance) * obj.owner.InstantFTLFactor;
+	int result = slipstreamCost(obj, scale, distance) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 double slipstreamRange(Object& obj, int scale, int stored) {
@@ -253,13 +286,19 @@ double slipstreamRange(Object& obj, int scale, int stored) {
 
 	if(stored < baseCost)
 		return 0.0;
-	return floor(double(stored) / baseCost / obj.owner.FTLCostFactor) * optDist;
+	double result = floor(double(stored) / baseCost / obj.owner.FTLCostFactor) * optDist;
+	if(result < 0)
+		result = 0.0;
+	return result;
 }
 
 double slipstreamInstantRange(Object& obj, int scale, int stored) {
 	if(obj.owner is null)
 		return 0;
-	return slipstreamRange(obj, scale, stored) * obj.owner.InstantFTLFactor;
+	double result = slipstreamRange(obj, scale, stored) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = 0.0;
+	return result;
 }
 
 double slipstreamLifetime(Object& obj) {
@@ -382,13 +421,19 @@ int jumpdriveCost(Object& obj, const vec3d& fromPos, const vec3d& position) {
 	double dist = position.distanceTo(fromPos);
 	dist = min(dist, jumpdriveRange(obj));
 
-	return ceil(log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	int result = ceil(log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int jumpdriveInstantCost(Object& obj, const vec3d& fromPos, const vec3d& position) {
 	if(obj.owner is null)
 		return 0;
-	return jumpdriveCost(obj, fromPos, position) * obj.owner.InstantFTLFactor;
+	int result = jumpdriveCost(obj, fromPos, position) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int jumpdriveCost(Object& obj, const vec3d& position) {
@@ -403,13 +448,19 @@ int jumpdriveCost(Object& obj, const vec3d& position) {
 	double dist = position.distanceTo(obj.position);
 	dist = min(dist, jumpdriveRange(obj));
 
-	return ceil(log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	int result = ceil(log(dsg.size) * (ship.getMass()*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int jumpdriveInstantCost(Object& obj, const vec3d& position) {
 	if(obj.owner is null)
 		return 0;
-	return jumpdriveCost(obj, position) * obj.owner.InstantFTLFactor;
+	int result = jumpdriveCost(obj, position) * obj.owner.InstantFTLFactor;
+	if(result < 0)
+		result = INT_MAX;
+	return result;
 }
 
 int jumpdriveCost(array<Object@>& objects, const vec3d& destination) {
@@ -419,6 +470,8 @@ int jumpdriveCost(array<Object@>& objects, const vec3d& destination) {
 			continue;
 		cost += jumpdriveCost(objects[i], destination);
 	}
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
@@ -429,6 +482,8 @@ int jumpdriveInstantCost(array<Object@>& objects, const vec3d& destination) {
 			continue;
 		cost += jumpdriveInstantCost(objects[i], destination);
 	}
+	if(cost < 0)
+		cost = INT_MAX;
 	return cost;
 }
 
