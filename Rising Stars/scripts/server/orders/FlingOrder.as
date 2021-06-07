@@ -15,6 +15,7 @@ tidy class FlingOrder : Order {
 	int moveId = -1;
 	bool wasSuppressed = false;
 	bool isInstant;
+	Region@ origin;
 
 	FlingOrder(Object& beacon, vec3d pos, bool IsInstant = false) {
 		@this.beacon = beacon;
@@ -33,6 +34,7 @@ tidy class FlingOrder : Order {
 		msg >> speed;
 		msg >> wasSuppressed;
 		msg >> isInstant;
+		msg >> origin;
 	}
 
 	void save(SaveFile& msg) override {
@@ -46,6 +48,7 @@ tidy class FlingOrder : Order {
 		msg << speed;
 		msg << wasSuppressed;
 		msg << isInstant;
+		msg << origin;
 	}
 
 	OrderType get_type() override {
@@ -100,6 +103,7 @@ tidy class FlingOrder : Order {
 			return OS_BLOCKING;
 		}
 		if(charge == 0) {
+			@origin = getRegion(obj.position);
 			if(isInstant)
 				cost = flingInstantCost(obj, destination);
 			else
@@ -220,7 +224,10 @@ tidy class FlingOrder : Order {
 			//Check for dropping out of ftl
 			Region@ reg = getRegion(obj.position);
 			if(reg !is null && obj.owner !is null) {
-				if(reg.BlockFTLMask & obj.owner.mask != 0) {
+				bool shouldDrop = reg.BlockFTLMask & obj.owner.mask != 0 ||
+					(reg !is origin && reg.SuppressFTLMask & obj.owner.mask != 0);
+				
+				if(shouldDrop) {
 					obj.FTLDrop();
 					uint cnt = obj.supportCount;
 					for(uint i = 0; i < cnt; ++i) {

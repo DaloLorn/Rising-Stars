@@ -557,6 +557,13 @@ void performInstantReflux(Object& obj) {
 
 void commitFlux(Object& obj, const vec3d& pos) {
 	vec3d fluxPos = getFluxDest(obj, pos);
+	Region@ destRegion = getRegion(pos);
+
+	if(isFTLSuppressed(obj, pos)) {
+		vec3d offsetFromCenter = destRegion.position - fluxPos;
+		double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
+		fluxPos += offsetFromCenter * multiplier;
+	}
 
 #section server
 	playParticleSystem("FluxJump", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);

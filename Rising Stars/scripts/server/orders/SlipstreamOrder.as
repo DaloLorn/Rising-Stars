@@ -206,6 +206,14 @@ tidy class SlipstreamOrder : Order {
 			slipstreamModifyPosition(obj, endPos);
 			lifetime = slipstreamLifetime(obj);
 		}
+
+		Region@ origin = getRegion(obj.position)
+		Region@ destRegion = getRegion(destination)
+		if(origin !is destRegion && isFTLSuppressed(obj, destination) && getRegion(endPos) is destRegion) {
+			vec3d offsetFromCenter = destRegion.position - endPos;
+			double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
+			endPos += offsetFromCenter * multiplier;
+		}
 		createSlipstream(startPos, endPos, lifetime, obj.owner);
 
 		//Flag ship as no longer in ftl

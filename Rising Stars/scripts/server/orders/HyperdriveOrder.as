@@ -12,6 +12,7 @@ tidy class HyperdriveOrder : Order {
 	int cost = 0;
 	int moveId = -1;
 	bool isInstant;
+	Region@ origin;
 
 	HyperdriveOrder(vec3d pos, bool IsInstant = false) {
 		destination = pos;
@@ -26,6 +27,7 @@ tidy class HyperdriveOrder : Order {
 		msg >> charge;
 		msg >> cost;
 		msg >> isInstant;
+		msg >> origin;
 	}
 
 	void save(SaveFile& msg) override {
@@ -36,6 +38,7 @@ tidy class HyperdriveOrder : Order {
 		msg << charge;
 		msg << cost;
 		msg << isInstant;
+		msg << origin;
 	}
 
 	OrderType get_type() override {
@@ -94,6 +97,7 @@ tidy class HyperdriveOrder : Order {
 			return OS_BLOCKING;
 		}
 		if(charge == 0) {
+			@origin = getRegion(obj.position);
 			int scale = 1;
 			if(ship !is null) {
 				scale = ship.blueprint.design.size;
@@ -221,7 +225,10 @@ tidy class HyperdriveOrder : Order {
 			//Check for dropping out of hyperdrive
 			Region@ reg = getRegion(obj.position);
 			if(reg !is null && obj.owner !is null) {
-				if(reg.BlockFTLMask & obj.owner.mask != 0) {
+				bool shouldDrop = reg.BlockFTLMask & obj.owner.mask != 0 ||
+					(reg !is origin && reg.SuppressFTLMask & obj.owner.mask != 0);
+				
+				if(shouldDrop) {
 					obj.FTLDrop();
 					uint cnt = obj.supportCount;
 					for(uint i = 0; i < cnt; ++i) {

@@ -201,6 +201,7 @@ tidy class JumpdriveOrder : Order {
 
 		//Teleport to destination
 		auto@ destRegion = getRegion(destination);
+		Region@ origin = getRegion(obj.position);
 
 		if(distance > range && (destRegion is null || !destRegion.getSystemFlag(obj.owner, safetyFlag))) {
 			//Random offset based on over-distance
@@ -221,6 +222,12 @@ tidy class JumpdriveOrder : Order {
 					obj.damage(dmg, -1.0, random2d(1.0));
 				}
 			}
+		}
+
+		if(origin !is destRegion && isFTLSuppressed(obj, destination) && getRegion(exitPos) is destRegion) {
+			vec3d offsetFromCenter = destRegion.position - exitPos;
+			double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
+			exitPos += offsetFromCenter * multiplier;
 		}
 
 		playParticleSystem("FTLEnter", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);
