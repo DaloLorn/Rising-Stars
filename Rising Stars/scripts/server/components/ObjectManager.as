@@ -285,7 +285,7 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[dsg.owner.index].exists(dsg.name))
 			return null;
 		else designClasses[dsg.owner.index].get(dsg.name, cls);
-		if(revision == 0)
+		if(dsg.revision == 0)
 			return null; // This should never happen here, I think, but better safe than sorry.
 		if(int(cls.length) <= dsg.revision-1)
 			return null;
