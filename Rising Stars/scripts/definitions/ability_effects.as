@@ -1558,7 +1558,7 @@ class DealStellarDamageOverTime : AbilityHook {
 	}
 
 	void load(Ability@ abl, any@ data, SaveFile& file) const override {
-		double timer;
+		double timer = 0;
 		file >> timer;
 		data.store(timer);
 	}

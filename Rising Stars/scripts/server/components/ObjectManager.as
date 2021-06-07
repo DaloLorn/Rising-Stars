@@ -196,6 +196,8 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This can happen in the design editor and such, when the design is still technically on revision 0 (non-existent).
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -214,6 +216,8 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This can happen in the design editor and such, when the design is still technically on revision 0 (non-existent).
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -236,6 +240,8 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This can happen in the design editor and such, when the design is still technically on revision 0 (non-existent).
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -258,6 +264,8 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This should never happen here, I think, but better safe than sorry.
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -277,6 +285,8 @@ tidy class DesignManager : Savable, Serializable {
 		if(!designClasses[dsg.owner.index].exists(dsg.name))
 			return null;
 		else designClasses[dsg.owner.index].get(dsg.name, cls);
+		if(revision == 0)
+			return null; // This should never happen here, I think, but better safe than sorry.
 		if(int(cls.length) <= dsg.revision-1)
 			return null;
 		if(cls[dsg.revision-1] is null)

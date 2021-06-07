@@ -1309,7 +1309,7 @@ class ABEMDealStellarDamageOverTime : AbilityHook {
 	}
 
 	void load(Ability@ abl, any@ data, SaveFile& file) const override {
-		double timer;
+		double timer = 0;
 		file >> timer;
 		data.store(timer);
 	}
@@ -1698,9 +1698,9 @@ tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
 	Argument attribute(AT_EmpAttribute, doc="Attribute to check.");
 	Argument hookID("Hook", AT_Hook, "bonus_effects::BonusEffect");
 	Argument threshold(AT_Decimal, "1.0", doc="Trigger the effect every time the empire attribute has increased by this amount.");
-		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
 
 	bool instantiate() override {
+		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
 		if(hook is null) {
 			error("PreciseTriggerOnAttributeIncrease(): could not find inner hook: "+escape(hookID.str));
 			return false;

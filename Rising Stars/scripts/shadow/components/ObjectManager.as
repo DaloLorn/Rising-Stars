@@ -33,6 +33,8 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This can happen in the design editor and such, when the design is still technically on revision 0 (non-existent).
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -55,6 +57,8 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This can happen in the design editor and such, when the design is still technically on revision 0 (non-existent).
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
@@ -77,6 +81,8 @@ dictionary[] designClasses;
 		if(!designClasses[empireId].exists(name))
 			return 0;
 		else designClasses[empireId].get(name, cls);
+		if(revision == 0)
+			return 0; // This should never happen here, I think, but better safe than sorry.
 		if(int(cls.length) <= revision-1)
 			return 0;
 		if(cls[revision-1] is null)
