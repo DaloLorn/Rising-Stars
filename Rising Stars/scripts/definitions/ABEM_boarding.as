@@ -145,9 +145,8 @@ class BoardShip : StatusHook {
 			vec2u hex = location.hexagon(randomi(0, cnt-1));
 			HexGridAdjacency dir = HexGridAdjacency(randomi(0, 5));
 			
-			
 			@dmg.target = info.targetShip;
-			double maxDamage = info.targetShip.blueprint.design.size * 0.5 * BOARDING_TICKRATE; // We won't deal more than 0.5*ShipSize damage per second, no matter how many troops we have onboard. We're trying to sabotage or capture the ship, not destroy it outright - this should still be enough to destroy a hex or two each second.
+			double maxDamage = info.targetShip.blueprint.design.size * 2 * BOARDING_TICKRATE; // We won't deal more than 2*ShipSize damage per second, no matter how many troops we have onboard. We're trying to sabotage or capture the ship, not destroy it outright - this should still be enough to destroy a hex or two each second.
 			if(dmg.damage > maxDamage)
 				dmg.damage = maxDamage;
 				
@@ -192,6 +191,7 @@ class BoardShip : StatusHook {
 			obj.engaged = false;
 			obj.clearOrders();
 			info.reactivationTimer += time;
+			obj.repair(info.boarders * 60.0 / min(60.0 / (info.boarders / info.originalBoarders), 1800.0) * time);
 			// Reactivation takes a minute if all the boarders survived the battle... but more likely it'll be a while longer. Limiting reactivation time to 30 minutes for a cripplingly close fight.
 			if(info.reactivationTimer > min(60.0 / (info.boarders / info.originalBoarders), 1800.0)) {
 				@obj.owner = status.originEmpire;
