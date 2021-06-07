@@ -1515,17 +1515,33 @@ class DealStellarDamageOverTime : AbilityHook {
 	Document doc("Deal damage to the stored target stellar object over time. Damages things like stars and planets.");
 	Argument objTarg(TT_Object);
 	Argument dmg_per_second(AT_SysVar, doc="Damage to deal per second.");
+	Argument delay(AT_Decimal, "0.0", doc="How long to wait before starting to deal damage.");
 
 #section server
+	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
+		data.store(0.0);
+	}
+
+	
+	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const override {
+		data.store(0.0);
+	}
+
 	void tick(Ability@ abl, any@ data, double time) const {
 		if(abl.obj is null)
 			return;
 		Target@ storeTarg = objTarg.fromTarget(abl.targets);
 		if(storeTarg is null)
 			return;
+		double timer;
+		data.retrieve(timer);
+		timer += time;
+		data.store(timer);
 
 		Object@ obj = storeTarg.obj;
 		if(obj is null)
+			return;
+		if(timer < delay.decimal)
 			return;
 
 		double amt = dmg_per_second.fromSys(abl.subsystem, efficiencyObj=abl.obj) * time;
@@ -1533,6 +1549,18 @@ class DealStellarDamageOverTime : AbilityHook {
 			cast<Planet>(obj).dealPlanetDamage(amt);
 		else if(obj.isStar)
 			cast<Star>(obj).dealStarDamage(amt);
+	}
+
+	void save(Ability@ abl, any@ data, SaveFile& file) const override {
+		double timer;
+		data.retrieve(timer);
+		file << timer;
+	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const override {
+		double timer;
+		file >> timer;
+		data.store(timer);
 	}
 #section all
 };

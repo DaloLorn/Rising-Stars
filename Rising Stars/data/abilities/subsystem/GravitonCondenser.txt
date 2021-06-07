@@ -13,6 +13,6 @@ Ability: GravitonCondenser
 	CooldownOnDeactivate(targ, 30)
 	PersistentBeamEffect(targ, #e45500, Tractor, Width = 8.0)
 
-	ABEM_hooks::ABEMDealStellarDamageOverTime(targ, Sys.StellarDamage:7000000)
+	ABEM_hooks::ABEMDealStellarDamageOverTime(targ, Sys.StellarDamage:7000000, 30)
 
 	OffensiveToTarget(targ)

@@ -17,6 +17,6 @@ Ability: FlareBomb
 
 	PersistentBeamEffect(targ, #e45500, Tractor, Width = 7.0)
 
-	ABEM_hooks::ABEMDealStellarDamageOverTime(targ, 20000000)
+	ABEM_hooks::ABEMDealStellarDamageOverTime(targ, 40000000, 30)
 
 	OffensiveToTarget(targ)

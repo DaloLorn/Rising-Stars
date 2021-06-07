@@ -1264,17 +1264,33 @@ class ABEMDealStellarDamageOverTime : AbilityHook {
 	Document doc("Deal damage to the stored target stellar object over time. Damages things like stars and planets. This one correctly displays shield visuals if applicable.");
 	Argument objTarg(TT_Object);
 	Argument dmg_per_second(AT_SysVar, doc="Damage to deal per second.");
+	Argument delay(AT_Decimal, "0.0", doc="How long to wait before starting to deal damage.");
 
 #section server
+	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
+		data.store(0.0);
+	}
+
+	
+	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const override {
+		data.store(0.0);
+	}
+
 	void tick(Ability@ abl, any@ data, double time) const override {
 		if(abl.obj is null)
 			return;
 		Target@ storeTarg = objTarg.fromTarget(abl.targets);
 		if(storeTarg is null)
 			return;
+		double timer;
+		data.retrieve(timer);
+		timer += time;
+		data.store(timer);
 
 		Object@ obj = storeTarg.obj;
 		if(obj is null)
+			return;
+		if(timer < delay.decimal)
 			return;
 
 		const vec3d position = abl.obj.position;
@@ -1284,6 +1300,18 @@ class ABEMDealStellarDamageOverTime : AbilityHook {
 			cast<Planet>(obj).dealPlanetDamage(amt);
 		else if(obj.isStar)
 			cast<Star>(obj).dealStarDamage(amt, position);
+	}
+
+	void save(Ability@ abl, any@ data, SaveFile& file) const override {
+		double timer;
+		data.retrieve(timer);
+		file << timer;
+	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const override {
+		double timer;
+		file >> timer;
+		data.store(timer);
 	}
 #section all
 };
@@ -1670,9 +1698,9 @@ tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
 	Argument attribute(AT_EmpAttribute, doc="Attribute to check.");
 	Argument hookID("Hook", AT_Hook, "bonus_effects::BonusEffect");
 	Argument threshold(AT_Decimal, "1.0", doc="Trigger the effect every time the empire attribute has increased by this amount.");
+		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
 
 	bool instantiate() override {
-		@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::", required=false));
 		if(hook is null) {
 			error("PreciseTriggerOnAttributeIncrease(): could not find inner hook: "+escape(hookID.str));
 			return false;
