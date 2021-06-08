@@ -172,7 +172,7 @@ tidy class Designer {
 			composition.insertLast(Internal(tag("Prayer"), 0.05, 0.10));
 
 		//Secondary modules
-		composition.insertLast(Chance(0.5, Internal(tag("SecondaryDefense"), 0.075, 0.15)));
+		composition.insertLast(Internal(tag("SecondaryDefense"), 0.075, 0.15));
 
 		if(tryFTL)
 			composition.insertLast(Internal(tag("Hyperengine"), 0.10, 0.18));
@@ -215,7 +215,7 @@ tidy class Designer {
 		//Shrine if needed
 		composition.insertLast(Internal(tag("Prayer"), 0.15, 0.20));
 
-		composition.insertLast(Chance(0.5, Internal(tag("SecondaryDefense"), 0.075, 0.15)));
+		composition.insertLast(Internal(tag("SecondaryDefense"), 0.075, 0.15));
 		composition.insertLast(Filler(subsystem("SupplyModule"), 0.09, 0.13));
 
 		composition.insertLast(ArmorLayer(tag("PrimaryArmor"), HM_ALL, 1, 1));
@@ -264,8 +264,6 @@ tidy class Designer {
 		//Shrine if needed
 		if(owner.hasTrait(getTraitID("Devout")))
 			composition.insertLast(Internal(tag("Prayer"), 0.15, 0.20));
-
-		composition.insertLast(ArmorLayer(tag("PrimaryArmor"), HM_DownLeft | HM_UpLeft | HM_Down | HM_Up, 1, 1));
 	}
 
 	Tag@ tag(const string& value) {
