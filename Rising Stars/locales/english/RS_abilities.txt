@@ -15,7 +15,7 @@ ABL_BOARDING_PARTY: Send Boarding Party
 ABL_BOARDING_PARTY_DESC: <<
 	Transports a boarding party to the target object, initiating a boarding action.
 
-	Boarding parties periodically damage the target, gradually losing troops depending on the target's boarding defense. If the target sustains critical damage and does not have a functioning Self-Destruct Device, it will become neutral for a period dependent on how many troops survived the boarding action, then transfer control to your empire.
+	Boarding parties periodically damage the target, gradually losing troops depending on the target's boarding defense. If the target sustains critical damage and does not have a functioning Self-Destruct Device, it will become neutral for a period dependent on how many troops survived the boarding action, then transfer control to your empire. While it is neutral, the surviving troops will repair the ship for a total of 60 HP per soldier.
 
 	Only one boarding action can be running on an object at any given time, and Verdant-owned objects cannot be boarded. Boarding actions cannot be initiated by ships which are already being boarded. Orbitals always have a boarding defense of 100.
 >>
@@ -148,3 +148,13 @@ ABL_GATE_UNPACK_DESC: <<
 >>
 ABL_FTL_JAMMER: FTL Jammer Overcharge
 ABL_FTL_JAMMER_DESC: Prevents all hostile FTL in this system for 3 minutes. Costs 200 FTL.
+ABL_GRAVITON_CONDENSER_DESC: <<
+	Fire a beam that collapses a celestial object's own gravity into itself, leading it to compress and eventually detonate.
+
+	The beam must be channelled for 30 seconds before it starts dealing damage.
+>>
+ABL_FLARE_BOMB_DESC: <<
+	After a 60 second channel period, trigger the star to emit a critical flare, wiping out all population in the solar system but leaving everything else intact. The planets in the system are irradiated for the next 5 minutes and cannot be colonized.
+
+	The star takes considerable damage during the last 30 seconds of channelling. The flare bomb ship is destroyed in the process.
+>>

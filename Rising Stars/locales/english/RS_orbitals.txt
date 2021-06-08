@@ -221,6 +221,22 @@ ORB_FTL_JAMMER_ADAPTED_DESC: <<
 
 	[bbloc=#ORB_ADAPTED:FTL Jammer:Generates 1 Energy per second/]
 >>
+STARFORGE_DESC: <<
+	A highly advanced construction yard that rips power and material straight from the outer layers of the star.
+
+	Generates 25 labor per minute at the cost of slowly damaging the star in the system it is in. Upgrades can be constructed on the star forge to increase its labor generation as well as the rate at which it damages the star.
+
+	All construction on a Star Forge has a 50% reduction in build cost compared to normal. Additionally, the Star Forge receives the full effects of Metallurgy research.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Building a star forge or any of its upgrades requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+CONS_STARFORGE_UPGRADE_DESC: <<
+	Increase the rate at which the Star Forge generates labor by 25 per minute. This also increases the damage dealt to the system's star while using that labor.
+
+	Additionally, the effects of Metallurgy research on the Star Forge are increased by +100%.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
 STARFORGE_ADAPTED: Restorative Star Forge
 STARFORGE_ADAPTED_DESC: <<
 	[bbloc=#STARFORGE_DESC/]

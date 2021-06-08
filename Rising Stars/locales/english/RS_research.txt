@@ -287,6 +287,15 @@ R_SYS_SLIPSTREAM_DESC: <<
 
 	[i][bbloc=#S_EXPERIMENTAL_SLIPSTREAM_DESC/][/i]
 >>
+R_FLARE_BOMB_DESC: <<
+	Study the remains of collected remnant artifacts to recover plans for a remnant superweapons project.
+
+	Unlocks construction of Flare Bombs, costing large amounts of Ore and Energy to construct.
+
+	Flare bombs can be used on stars. After a 60 second channel period, the star is triggered to emit a critical flare, wiping out all population in the solar system but leaving everything else intact. The planets in the system are irradiated for the next 5 minutes and cannot be colonized.
+
+	The star takes considerable damage during the last 30 seconds of channelling. The flare bomb ship is destroyed in the process.
+>>
 R_BOARDING_PARTY_DESC: <<
 	[color=#aaa][i]Recent studies of old science fiction have taught us the value of capturing enemy ships intact. To that end, we have started designing boarding pods for our flagships to launch.[/i][/color]
 	

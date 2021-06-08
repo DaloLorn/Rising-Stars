@@ -368,6 +368,17 @@ S_VOIDRAY_DESC: <<
 	[img=MenuIcons::3;22]Takes around 10 seconds of activity to reach maximum damage output.[/img]
 	[img=MenuIcons::3;22]Behaves like a Laser in every other way.[/img]
 >>
+S_GRAVITON_CONDENSER_DESC: <<
+	An immense beam generator that collapses a celestial object's own gravity into itself, leading it to compress and eventually detonate.
+
+	[img=Plus]Beam can be activated to deal damage over time to stars and planets.[/img]
+	[img=Minus]Beam must be channelled for 30 seconds before it starts dealing damage.[/img]
+>>
+S_FLARE_BOMB_DESC: <<
+	Trigger a star to emit a critical flare, wiping out all population in the solar system but leaving everything else intact.
+
+	The star takes considerable damage during the last 30 seconds of channelling. The flare bomb is destroyed in the process.
+>>
 MISSILELAUNCHER_DESC: <<
 	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
 
@@ -515,6 +526,23 @@ S_CARRIER_HULL_DESC: <<
 	[img=MenuIcons::3;22][i][color=#aaa]Carrier Architecture requires that 20% of the ship's interior is dedicated to Support Command and Fleet Computers, before accounting for the reduced hex limit.[/color][/i][/img]
 	[img=MenuIcons::3;22][i][color=#aaa]Carrier Architecture can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
+S_RAMJET_DESC: <<
+	Collects stray particles from the vacuum while moving by means of an enormous magnetic field leading into a scoop at the front of the ship, then uses those particles to generate thrust.
+
+	[img=Plus]Extremely cheap to build, and has no maintenance cost.[/img]
+	[img=Plus]Restores the ship's [b]Supply[/b] when at high velocity. The full indicated Supply Gain rate is reached at speeds of 100 u/s or more.[/img]
+	[img=Minus]Provides significantly lower Thrust than conventional engines.[/img]
+
+	The Ramjet must contain at least one [color=#da8a9f][b]Ramscoop[/b][/color], pointing outwards at the front of the ship. You can find the Ramjet under the [color=#eda1ff][b]Modifiers[/b][/color] category.
+>>
+S_SOLARPANEL_DESC: <<
+	Solar Panels are a cheap and efficient way to provide power for subsystems, but rely on being near a star to operate.
+
+	[img=ResourceIcon::2;22]Provides [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=Plus]Extremely cheap to build, and has no maintenance cost.[/img]
+	[img=Minus]Significantly decreases combat strength when fighting in deep space.[/img]
+	[img=Minus]Solar Panels must be placed on the exterior of the ship.[/img]
+>>
 
 S_DESTROYER_HULL: Destroyer Architecture
 S_DESTROYER_HULL_DESC: <<
@@ -659,7 +687,7 @@ S_BOARDING_PARTY_DESC: <<
 	Contains all the equipment required to send boarding parties onto an object in space, and attempt to capture it.
 
 	[img=Plus]Allows a ship to send boarding parties to capture enemy flagships and orbitals, or to take control of derelicts.[/img]
-	[img=Plus]Boarding party deals damage to random subsystems throughout the target ship until all troops are lost or the ship has been critically damaged.[/img]
+	[img=Plus]Boarding party deals damage to random subsystems throughout the target ship until all troops are lost or the ship has been critically damaged. If the ship is captured, every surviving boarder will repair 60 HP before it becomes operational.[/img]
 	[img=Minus]Boarding parties must be trained manually from a planet with labor, and only one batch of troops can be taken at a time. Only one boarding party may attempt to capture a ship at any given time.[/img]
 	[img=Minus]Large quantities of [b][color=#00ff80]Control[/color][/b] are required to coordinate the boarding party.[/img]
 	[img=Minus]Depending on how many boarders survive the battle, captured ships may take up to 30 minutes to become operational.[/img]
