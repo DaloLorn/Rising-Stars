@@ -3,16 +3,16 @@ System: Type1Nebula
 
 	ExpandSystem(5000)
 
-	Repeat(1:7)
+	RepeatModified(1:7, $ANOMALY_OCCURANCE)
 		MakeAnomaly()
-	Repeat(0:4)
+	RepeatModified(0:4, $ARTIFACT_FREQUENCY)
 		MakeArtifact()
-	Repeat(0:4)
+	RepeatModified(0:4, $ASTEROID_OCCURANCE)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
 
 	MakeNebula(#f0c870)
 
-	Repeat(0:2)
+	RepeatModified(0:2, $REMNANT_OCCURANCE)
 		MakeCreepCamp(Offset = 1200)
 
 	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.

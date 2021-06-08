@@ -3,13 +3,13 @@ System: MetaphasicNebula
 	
 	ExpandSystem(5000)
 	
-	Repeat(1:6)
+	RepeatModified(1:6, $ANOMALY_OCCURANCE)
 		MakeAnomaly()
-	Repeat(1:4)
+	RepeatModified(1:4, $ARTIFACT_FREQUENCY)
 		MakeArtifact()
-	Repeat(0:7)
+	RepeatModified(0:7, $ASTEROID_OCCURANCE)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
-	Repeat(0:3)
+	RepeatModified(0:3, $REMNANT_OCCURANCE)
 		MakeCreepCamp(Offset = 700)
 		
 	MakeNebula(#80ff80)

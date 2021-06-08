@@ -3,11 +3,11 @@ System: MetreonNebula
 	
 	ExpandSystem(5000)
 	
-	Repeat(2:5)
+	RepeatModified(2:5, $ANOMALY_OCCURANCE)
 		MakeAnomaly()
-	Repeat(0:3)
+	RepeatModified(0:3, $ARTIFACT_FREQUENCY)
 		MakeArtifact()
-	Repeat(0:1)
+	RepeatModified(0:1, $ASTEROID_OCCURANCE)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
 	
 	MakeNebula(#800000)

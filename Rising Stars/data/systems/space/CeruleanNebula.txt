@@ -3,11 +3,11 @@ System: CeruleanNebula
 	
 	ExpandSystem(5000)
 	
-	Repeat(2:5)
+	RepeatModified(2:5, $ANOMALY_OCCURANCE)
 		MakeAnomaly()
-	Repeat(3:7)
+	RepeatModified(3:7, $ARTIFACT_FREQUENCY)
 		MakeArtifact()
-	Repeat(0:4)
+	RepeatModified(0:4, $ASTEROID_OCCURANCE)
 		MakeAsteroid(Cargo = Ore, Resource = Distributed)
 		
 	MakeNebula(#80ffff)
