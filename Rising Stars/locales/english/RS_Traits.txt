@@ -85,7 +85,7 @@ TRAIT_DEVOUT_DESC: <<|
 >>
 TRAIT_VANGUARD_SWARMER: Vanguard (Swarmers)
 TRAIT_VANGUARD_SWARMER_DESC: <<
-	[vspace=3/][img=Industrious;22]All orbitals cost 50% less money and Labor. FTL costs are similarly reduced. Additionally, logistical efficiency ramps up 400% faster, and can reach a maximum discount of 80%.[/img]
+	[vspace=3/][img=Industrious;22]All orbitals cost 50% less money and Labor, and FTL costs are reduced to 20%. Additionally, logistical efficiency ramps up 400% faster, and can reach a maximum discount of 80%.[/img]
 	[vspace=6/][img=SequesteredSociety;22]Tile development and civilian construction are twice as fast. Population growth is 50% faster. Imperial buildings cost 50% less to build, and 20% less to maintain.[/img]
 	[vspace=6/][img=ResourceIcon::4*#f88;22]Research costs are increased by 50%.[/img]
 	[vspace=6/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, armor effectiveness, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 50%.[/img]
