@@ -4,3 +4,14 @@ CARD_PIRATERAIDERS_DESC: <<
 
 	[i]Spawns a pirate ship targetting the civilian traders of the planet's current owner. Cannot be used on allied empires.[/i]
 >>
+
+ZEITGEIST_ART_DESC: <<
+	[b]Zeitgeist Effect[/b]
+	If this vote passes, it becomes the current Zeitgeist effect. While active:
+
+	[b]*[/b] [offset=20]All empires will be able to construct Museums on their planets. Museums cost labor to construct, but generate influence, research and money.[/offset]
+
+	[img=QuickbarIcons::6;32]If the vote passes, the most supportive empire will receive [b]+20% influence generation[/b] while this zeitgeist is active.[/img]
+	[img=QuickbarIcons::3;32]If the vote fails, the most opposing empire will receive an instant bonus of [b]800 research[/b].[/img]
+	[i]Only one zeitgeist effect can be active at the same time. Passing a new zeitgeist will remove any previously active ones.[/i]
+>>

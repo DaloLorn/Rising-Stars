@@ -30,6 +30,11 @@ F_SENATE_DESC: <<
 
 	Generates 1 Influence Stake for every 20 billion inhabitants in your empire.
 >>
+BLD_MUSEUM_DESC: <<
+	Generates 1.5 Influence Stake, 0.5 Research income, and increases the planet's income by §40k.
+
+	Can only be built once per planet, except on Ringworlds.
+>>
 
 B_SLAVE: Slave Barracks
 B_SLAVE_DESC: <<
