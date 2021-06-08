@@ -5,10 +5,6 @@ import hooks;
 from saving import SaveIdentifier, SaveVersion;
 import bool readLevelChain(ReadFile& file) from "planet_levels";
 
-// Discounts from owning multiples of a ship.
-const double MAX_DISCOUNT = 0.4;
-const uint MAX_DISCOUNT_SHIPS = 10;
-
 const double[] LEVEL_DISTRIBUTION = {0.76, 0.15, 0.06, 0.03};
 const double[] RARITY_DISTRIBUTION = {
 	0.88, 0.09, 0.02, 0.01, 0.05, 0.00002, //Level 0
@@ -514,9 +510,9 @@ void getBuildCost(const Design@ dsg, int&out buildCost, int&out maintainCost, do
 		@builder = obj.owner;
 	}
 	if(dsg.owner.valid && builder.valid) {
-		build -= build * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
-		labor -= labor * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
-		maintain -= maintain * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		build -= build * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
+		labor -= labor * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
+		maintain -= maintain * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
 	}
 
 	buildCost = max(ceil(build), 0.0);
@@ -552,7 +548,7 @@ int getBuildCost(const Design@ dsg, int count = 1, Object@ buildAt = null) {
 		@builder = buildAt.owner;
 	}
 	if(dsg.owner.valid && builder.valid) {
-		build -= build * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		build -= build * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, builder) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
 	}
 
 	int v = ceil(build);
@@ -574,7 +570,7 @@ int getMaintenanceCost(const Design@ dsg, int count = 1) {
 			maintain += sys.hexVariable(HV_MaintainCost, j);
 	}
 	if(dsg.owner.valid) {
-		maintain -= maintain * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		maintain -= maintain * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
 	}
 
 	if(count >= 0)
@@ -596,7 +592,7 @@ double getLaborCost(const Design@ dsg, int count = 1) {
 			time += sys.hexVariable(HV_LaborCost, j);
 	}
 	if(dsg.owner.valid) {
-		time -= time * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, MAX_DISCOUNT_SHIPS)) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS));
+		time -= time * double(clamp(dsg.owner.getQueuedShips(dsg.name, dsg.revision, dsg.owner) - 1, 0, dsg.owner.LogisticsThreshold)) * (dsg.owner.MaxLogistics / double(dsg.owner.LogisticsThreshold));
 	}
 
 	if(count >= 0)

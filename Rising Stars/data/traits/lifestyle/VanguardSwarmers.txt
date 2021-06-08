@@ -31,6 +31,7 @@ Trait: VanguardSwarmers
 	ModAttribute(BuildingCostFactor, AddBase, -0.5)
 	ModAttribute(BuildingMaintFactor, AddBase, -0.2)
 	ModAttribute(ScoreMult, AddBase, -0.5)
+	ModAttribute(MaxLogistics, Multiply, 2)
 
 	AddModifier(BoardingStrengthFactor(0.5))
 	AddModifier(DamageMult(0.5))
@@ -40,21 +41,12 @@ Trait: VanguardSwarmers
 	AddModifier(RepairMult(0.5))
 	AddModifier(MiningRateFactor(1.5))
 	AddModifier(CargoStorageMult(1.5))
-	AddModifier(BuildCostFactor(0.5))
-	AddModifier(MaintCostFactor(0.5))
-	AddModifier(LaborCostFactor(0.5))
 	AddModifier(FTLCostFactor(0.5))
 	AddModifier(TroopPods::MaxLoyaltyFactor(0.5))
 	AddModifier(ImpactFactor(0.5))
 	AddModifier(DamageResistMult(0.5))
-	AddModifier(ArmorRegenFactor(0.5))
-
-	// These modifiers negate the cost reductions for Support Command.
-	AddModifier(SupportCapModule::BuildCostFactor(2.0))
-	AddModifier(SupportCapModule::MaintCostFactor(2.0))
-	AddModifier(SupportCapModule::LaborCostFactor(2.0))
 
 	// These modifiers prevent Khalerii stations from double-dipping on various discounts.
 	// Maintenance costs are immune to this sort of issue, so no correction is needed.
-	AddModifier(StationHull::OrbitalBuildCostMultFactor(2.5))
-	AddModifier(StationHull::OrbitalLaborCostMultFactor(2.5))
+	AddModifier(StationHull::OrbitalBuildCostMultFactor(2.0))
+	AddModifier(StationHull::OrbitalLaborCostMultFactor(2.0))

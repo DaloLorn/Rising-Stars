@@ -332,7 +332,7 @@ tidy class DesignManager : Savable, Serializable {
 		revision.built++;
 		revision.ships.insertLast(ship);
 		designClasses[dsg.owner.index].set(dsg.name, cls);
-		if(revision.built <= MAX_DISCOUNT_SHIPS)
+		if(revision.built <= dsg.owner.LogisticsThreshold)
 			revision.updateMaintenance();
 	}
 
@@ -373,7 +373,7 @@ tidy class DesignManager : Savable, Serializable {
 			return;
 		revision.ships.removeAt(index);
 		designClasses[dsg.owner.index].set(dsg.name, cls);
-		if(revision.built < MAX_DISCOUNT_SHIPS)
+		if(revision.built < dsg.owner.LogisticsThreshold)
 			revision.updateMaintenance();
 		ship.blueprint.statusID++;
 	}

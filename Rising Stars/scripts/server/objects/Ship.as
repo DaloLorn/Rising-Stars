@@ -460,7 +460,7 @@ tidy class ShipScript {
 		if(ship.isFree) {
 			if(ship.owner !is null && ship.owner.valid) {
 				currentMaintenance = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
-				currentMaintenance -= double(currentMaintenance) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS)) * double(clamp(ship.owner.getBuiltShips(ship) - 1, 0, MAX_DISCOUNT_SHIPS));
+				currentMaintenance -= double(currentMaintenance) * (ship.owner.MaxLogistics / double(ship.owner.LogisticsThreshold)) * double(clamp(ship.owner.getBuiltShips(ship) - 1, 0, ship.owner.LogisticsThreshold));
 				ship.owner.modMaintenance(currentMaintenance, moneyType(ship));
 			}
 			else {
@@ -674,7 +674,7 @@ tidy class ShipScript {
 		//Check if we should update our maintenance
 		if(!ship.isFree && ship.owner !is null && ship.owner.valid) {
 			int maint = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
-			maint -= double(maint) * (MAX_DISCOUNT / double(MAX_DISCOUNT_SHIPS)) * double(clamp(ship.owner.getBuiltShips(ship) - 1, 0, MAX_DISCOUNT_SHIPS));
+			maint -= double(maint) * (ship.owner.MaxLogistics / double(ship.owner.LogisticsThreshold)) * double(clamp(ship.owner.getBuiltShips(ship) - 1, 0, ship.owner.LogisticsThreshold));
 			if(maint != currentMaintenance) {
 				ship.owner.modMaintenance(maint - currentMaintenance, moneyType(ship));
 				currentMaintenance = maint;
