@@ -835,3 +835,10 @@ SUPPORTCAPMODULE_DESC: <<
 	[img=MenuIcons::3;22]Support ships will not be built if the fleet is full.[/img]
 	[img=Minus]May lose control over support ships when destroyed.[/img]
 >>
+
+S_NILINGARMOR_DESC: <<
+	Strands of quantum-reactive fibre connect the outer plating to a zero-sized sink hole in spacetime, allowing incoming energy flows to be safely redirected and stored. When enough energy has been stored, it is channeled back into normal spacetime, creating a strong EM pulse to damage surrounding enemies.
+
+	[img=Plus]Whenever the amount of damage passing through the armor reaches the damage threshold, an area-of-effect burst is released, damaging all nearby enemies. Both the damage and the area of effect scale with the amount of damage absorbed.[/img]
+	[img=Minus]Does not actually prevent damage, and has no intrinsic Health.[/img]
+>>

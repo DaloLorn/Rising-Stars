@@ -80,7 +80,9 @@ DamageEventStatus NilingAbsorb(DamageEvent& evt, const vec2u& position, double D
 	value += evt.damage;
 
 	if(value >= Damage) {
-		double radius = Radius * (value / Damage);
+		if(value >= bp.currentHP)
+			value = max(bp.currentHP, Damage);
+		double radius = Radius * sqrt(value / Damage);
 		playParticleSystem("NilingExplosion", evt.target.position, quaterniond(), radius / 15.0, evt.target.visibleMask);
 		AoEDamage(evt.target, evt.target, vec3d(), value * 0.9, radius, 10.0);
 
