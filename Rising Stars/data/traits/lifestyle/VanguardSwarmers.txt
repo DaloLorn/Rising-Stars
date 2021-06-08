@@ -32,6 +32,7 @@ Trait: VanguardSwarmers
 	ModAttribute(BuildingMaintFactor, AddBase, -0.2)
 	ModAttribute(ScoreMult, AddBase, -0.5)
 	ModAttribute(MaxLogistics, Multiply, 2)
+	ModAttribute(LogisticsThreshold, AddBase, -5)
 
 	AddModifier(BoardingStrengthFactor(0.5))
 	AddModifier(DamageMult(0.5))
