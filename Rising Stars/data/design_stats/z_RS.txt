@@ -252,6 +252,13 @@ SubsystemStat: RepairFactor
 
 	Variable: RepairFactor
 
+SubsystemStat: ArmorPierce
+	Name: #S_ARMOR_PIERCE_STAT
+	Color: #c5f946
+	Icon: HexagonSubsystems::0 * #20ff20
+
+	Variable: Pierce
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************
@@ -262,3 +269,10 @@ HexStat: SharedHP
 	Color: #80ff80
 
 	Variable: Hex.SharedHP
+
+HexStat: PierceResistance
+	Name: #S_PIERCE_RESISTANCE_STAT
+	Color: #c5f946
+	Icon: HexagonSubsystems::0 * #20ff20
+
+	Variable: Hex.Resistance

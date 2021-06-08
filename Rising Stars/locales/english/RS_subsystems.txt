@@ -123,7 +123,8 @@ S_CHANNELPERCENTAGE: Channel Rate
 STT_CHANNELPERCENTAGE: <<
 	The rate at which resisted damage is channelled into the ship's shields.
 >>
-
+S_ARMOR_PIERCE_STAT: Armor Penetration
+S_PIERCE_RESISTANCE_STAT: Penetration Resistance
 
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
