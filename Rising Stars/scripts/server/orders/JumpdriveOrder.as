@@ -225,9 +225,9 @@ tidy class JumpdriveOrder : Order {
 		}
 
 		if(origin !is destRegion && isFTLSuppressed(obj, destination) && getRegion(exitPos) is destRegion) {
-			vec3d offsetFromCenter = destRegion.position - exitPos;
-			double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
-			exitPos += offsetFromCenter * multiplier;
+			vec3d offsetFromCenter = exitPos - destRegion.position;
+			double multiplier = offsetFromCenter.length / destRegion.radius;
+			exitPos = destRegion.position + offsetFromCenter / multiplier;
 		}
 
 		playParticleSystem("FTLEnter", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);

@@ -210,9 +210,9 @@ tidy class SlipstreamOrder : Order {
 		Region@ origin = getRegion(obj.position);
 		Region@ destRegion = getRegion(destination);
 		if(origin !is destRegion && isFTLSuppressed(obj, destination) && getRegion(endPos) is destRegion) {
-			vec3d offsetFromCenter = destRegion.position - endPos;
-			double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
-			endPos += offsetFromCenter * multiplier;
+			vec3d offsetFromCenter = endPos - destRegion.position;
+			double multiplier = offsetFromCenter.lengthSQ / destRegion.radius;
+			endPos = destRegion.position + offsetFromCenter / multiplier;
 		}
 		createSlipstream(startPos, endPos, lifetime, obj.owner);
 

@@ -615,9 +615,9 @@ void commitFlux(Object& obj, const vec3d& pos) {
 	Region@ destRegion = getRegion(pos);
 
 	if(isFTLSuppressed(obj, pos)) {
-		vec3d offsetFromCenter = destRegion.position - fluxPos;
-		double multiplier = offsetFromCenter.lengthSQ / (destRegion.radius * destRegion.radius);
-		fluxPos += offsetFromCenter * multiplier;
+		vec3d offsetFromCenter = fluxPos - destRegion.position;
+		double multiplier = offsetFromCenter.length / destRegion.radius;
+		fluxPos = destRegion.position + offsetFromCenter / multiplier;
 	}
 
 #section server
