@@ -54,6 +54,8 @@ Subsystem: FlagshipHull
 		HexLimit := HexLimit + Hexes
 		FreeHexLimit := FreeHexLimit + Hexes
 
+	BaseRaidRange := 5000 + pow(ShipSize, 3/5)/2
+
 	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	BonusMitigation := 0
 	DummyMitigation := 0

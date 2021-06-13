@@ -116,7 +116,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	bool FreeRaiding = false;
 	// BEGIN NON-MIT CODE - DOF (Scaling)
 	// Adjusting for increased galaxy sizing
-	double RaidRange = 3000.0;
+	double RaidRange = 5000.0;
 	// END NON-MIT CODE
 
 	//Whether to automaticall pluck supports of planets
@@ -1574,8 +1574,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		Region@ reg = obj.region;
 		if((FreeRaiding || RaidRange < 0) && reg !is null)
 			findRegionTargets(reg, targs, obj, obj.owner);
-		else if(RaidRange > 0)
-			findTargets(obj, targs, obj, obj.owner, maxDistSQ=RaidRange*RaidRange);
+		else if(RaidRange > 0) {
+			double adjustedRaidRange = RaidRange + obj.radius;
+			findTargets(obj, targs, obj, obj.owner, maxDistSQ=adjustedRaidRange*adjustedRaidRange);
+		}
 
 		bool engage = obj.inCombat || targs.length > 0;
 		/*if(engage && !inFleetFight) {*/
@@ -2353,8 +2355,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		return FreeRaiding;
 	}
 
-	double get_raidRange() {
-		return RaidRange;
+	double get_raidRange(Object& obj) {
+		return RaidRange+obj.radius;
 	}
 
 	void setFreeRaiding(bool value) {
@@ -2639,16 +2641,16 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			return;
 		}
 
-		double sightRange = 0;
+		double sightRange = obj.radius;
 		if(obj.isShip) {
-			sightRange = SHIP_BASESIGHTRANGE;
+			sightRange += SHIP_BASESIGHTRANGE;
 			if(cast<Ship>(obj).isStation)
 				sightRange *= STATION_SIGHTMULTIPLIER;
 		}
 		else if(obj.isOrbital)
-			sightRange = ORBITAL_BASESIGHTRANGE;
+			sightRange += ORBITAL_BASESIGHTRANGE;
 		else if(obj.isPlanet)
-			sightRange = PLANET_BASESIGHTRANGE;
+			sightRange += PLANET_BASESIGHTRANGE;
 
 //		print("Calculating sight range... base range is " + sightRange);
 		uint prevPriority = 0;

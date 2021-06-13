@@ -67,6 +67,8 @@ Subsystem: StationHull
 	OrbitalLaborCostMult := 1
 	OrbitalMaintMult := 1
 
+	BaseRaidRange := 5000 + 1.3 * pow(ShipSize, 3/5)/2
+
 	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	BonusMitigation := 0
 	DummyMitigation := 0

@@ -21,8 +21,8 @@ Subsystem: FleetComputer
 	CoreHPMod := 2
 	Hex.Mass := 0.5 * HexSize
 
-	RaidRange := 3000 + (Size / (ShipSize * 0.3)) * 5000
-	AddedRaidRange := RaidRange - 3000
+	AddedRaidRange := (Size / (ShipSize * 0.3)) * 15000
+	RaidRange := Sum.BaseRaidRange + AddedRaidRange
 
 	Hook: AddRaidRange(AddedRaidRange)
 
