@@ -18,4 +18,5 @@ Ability: MothershipColonize
 
 	AutoOrderOnAutoColonizeTarget()
 
+	RequireNotInCombat()
 	SpendStatusForTrigger(MothershipPopulation, targ, SpawnOrbital(Habitat, In Orbit = True), Interval = 2)

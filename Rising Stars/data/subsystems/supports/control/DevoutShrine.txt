@@ -27,7 +27,7 @@ Subsystem: SupportShrine
 	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	// Shield mitigation
 	ShieldCores := 1
-	ShieldMitCap := 0.4
+	ShieldMitCap := 0.5
 	ShieldMitExponent := 1.01
 	// END NON-MIT CODE
 

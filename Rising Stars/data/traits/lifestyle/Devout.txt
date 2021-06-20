@@ -14,6 +14,7 @@ Trait: Devout
 	AddStatusOwnedPlanets(Devout)
 
 	UnlockSubsystem(DevoutShrine)
+	UnlockSubsystem(SupportShrine)
 	AddModifier(AddRequirePrayer(1))
 
 	OnHomeworld(AddDummyResource(Water)) #version<150
