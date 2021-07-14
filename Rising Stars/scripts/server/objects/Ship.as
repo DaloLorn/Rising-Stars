@@ -874,6 +874,10 @@ tidy class ShipScript {
 		supplyConsumeFactor += mod;
 	}
 
+	float getSupplyConsumeFactor() {
+		return supplyConsumeFactor;
+	}
+
 	void consumeSupply(Ship& ship, double amount) {
 		if(ship.hasLeaderAI) {
 			ship.Supply = max(0.0, ship.Supply - amount * max(supplyConsumeFactor, 0.f));

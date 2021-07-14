@@ -189,7 +189,7 @@ tidy class SupportAI : Component_SupportAI, Savable {
 			if(leaderShip is null)
 				return;
 			double require = ship.MaxSupply - ship.Supply;
-			if(leaderShip.Supply < require)
+			if(leaderShip.Supply < (require * leaderShip.getSupplyConsumeFactor()))
 				return;
 			leaderShip.consumeSupply(require);
 			ship.Supply = min(ship.MaxSupply, ship.Supply + require);
