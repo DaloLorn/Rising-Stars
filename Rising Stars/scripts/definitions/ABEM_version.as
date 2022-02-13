@@ -2,14 +2,16 @@ import version;
 import CP_version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "1236";
+const string MOD_REVISION = "1237";
 const array<string> VERSIONS = {
 	"v2.0.3",
+	"OpenSR v1.0.0",
 };
 
 const array<string> REVISIONS = {
-	"5101",
-	"5095",
+	"r5101",
+	"r5095",
+	"OSR r70"
 };
 
 const array<string> CP_VERSIONS = {
@@ -40,7 +42,7 @@ bool checkSupported() {
 	}
 	if(resultA) {
 		for(uint i = 0; i < REVISIONS.length; ++i) {
-			if(("r" + REVISIONS[i]).equals_nocase(SCRIPT_VERSION)) {
+			if((REVISIONS[i]).equals_nocase(SCRIPT_VERSION)) {
 				resultB = true;
 				break;
 			}
