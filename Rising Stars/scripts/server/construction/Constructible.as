@@ -58,9 +58,11 @@ tidy class Constructible : Serializable {
 	}
 
 	void changeOwner(Empire@ prevOwner, Empire@ newOwner) {
-		if(started) {
-			if(maintainCost != 0) { // Transfer maintenance costs!
+		if (started && maintainCost != 0) { // Transfer maintenance costs!
+			if (prevOwner !is null && prevOwner.valid) {
 				prevOwner.modMaintenance(-maintainCost, MoT_Construction);
+			}
+			if (newOwner !is null && newOwner.valid) {
 				newOwner.modMaintenance(maintainCost, MoT_Construction);
 			}
 		}
