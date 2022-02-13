@@ -1,9 +1,14 @@
 {
-    "dependencies":[
-        {
-            "name":"OpenSR Modpack",
-            "repository":"github.com/OpenSRProject/OpenStarRuler-Modpack",
-            "branch":"master"
-        }
-    ]
+	"mods": {
+		"Rising Stars": {
+			"rootFolder": "Rising Stars",
+			"dependencies": [
+				{
+					"name":"OpenSR Modpack",
+					"repository":"github.com/OpenSRProject/OpenStarRuler-Modpack",
+					"branch":"master"
+				}
+			]
+		}
+	}
 }
