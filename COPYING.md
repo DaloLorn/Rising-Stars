@@ -1,14 +1,26 @@
-All files containing human-readable text (`.txt`, `.as`, `.md`, `.design`, etc.) are licensed under the MIT open source license, unless specified otherwise. (Giving due credit would be nice, though... as would open-sourcing your derivative works!)
+All files containing human-readable text (`.txt`, `.as`, `.md`, `.design`, etc.) are 
+licensed under the MIT open-source license, unless specified otherwise. (Giving due 
+credit would be nice, though... as would open-sourcing your derivative works!)
 
-All particle systems (`.ps`) are *also* licensed under the MIT license, though their reuse may be complicated.
+All particle systems (`.ps`) are *also* licensed under the MIT license, though their 
+reuse may be complicated.
 
-`.obj` files, should any ever be added to the repository, are an exception to the above clauses, and will *not* be covered under the MIT license. Instead, they are covered under "all other file types".
+`.obj` files, should any ever be added to the repository, are an exception to the 
+above clauses, and will *not* be covered under the MIT license. Instead, they are 
+covered under "all other file types".
 
-All other file types (`.ogg`, `.png`, `.obj`, etc.) are considered to be the property of their respective creators and/or copyright holders, and may be removed from the repository at their request. It is not recommended to use these without prior consultation with the relevant authorities (or, at minimum, a copyright lawyer).
+All other file types (`.ogg`, `.png`, `.obj`, etc.) are considered to be the property 
+of their respective creators and/or copyright holders, and may be removed from the 
+repository at their request. It is not recommended to use these without prior 
+consultation with the relevant authorities (or, at minimum, a copyright lawyer). They 
+will be enumerated in the 'Art sources' section of this file, along with any relevant 
+licensing information.
 
 ## Non-MIT Code
 
-Any code blocks encapsulated in comments of the format `// BEGIN/END NON-MIT CODE - $SOURCE` are not covered by the MIT license, and instead follow the rules specified below for their respective values of `$SOURCE`. For instance:
+Any code blocks encapsulated in comments of the format `// BEGIN/END NON-MIT CODE - 
+$SOURCE` are not covered by the MIT license, and instead follow the rules specified 
+below for their respective values of `$SOURCE`. For instance:
 
 ```
 // BEGIN NON-MIT CODE - DOF (Scaling)
@@ -16,21 +28,27 @@ Any code blocks encapsulated in comments of the format `// BEGIN/END NON-MIT COD
 // END NON-MIT CODE
 ```
 
-In the above example, `// something something DOF code here` would obey the rules specified for DOF.
+In the above example, `// something something DOF code here` would obey the rules 
+specified for DOF.
 
-One-liners annotated with `// NON-MIT CODE - $SOURCE` may also occur at some places in the mod. The rules are the same - for instance, `add(CardMode(this)); // NON-MIT CODE - DOF (Enabling Influence Peddling)` still counts as DOF code.
+One-liners annotated with `// NON-MIT CODE - $SOURCE` may also occur at some places in 
+the mod. The rules are the same - for instance, `add(CardMode(this)); // NON-MIT CODE 
+- DOF (Enabling Influence Peddling)` still counts as DOF code.
 
 ### `DOF`
 
-Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. All rights reserved; contact him for any permissions you may require.
+Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. All 
+rights reserved; contact him for any permissions you may require.
 
 ### `SOI` (or `SoI`)
 
-Code originated in Shores of Infinity. All rights reserved; contact soloriens for any permissions you may require.
+Code originated in Shores of Infinity. All rights reserved; contact soloriens for any 
+permissions you may require.
 
 ### `CP:$SUBSOURCE`
 
-Content from the SR2 Community Patch. See the rules for the specified value of `$SUBSOURCE` in the Community Patch repository. For example:
+Content from the SR2 Community Patch. See the rules for the specified value of 
+`$SUBSOURCE` in the Community Patch repository. For example:
 
 ```
 // BEGIN NON-MIT CODE - CP:DOF
@@ -38,19 +56,25 @@ Content from the SR2 Community Patch. See the rules for the specified value of `
 // END NON-MIT CODE
 ```
 
-In the above example, `// something something DOF contributions to the CP here` would obey the rules specified by the CP for DOF contributions. (These may or may not be the same as the rules specified in this list, so make sure to review the CP files!)
+In the above example, `// something something DOF contributions to the CP here` would 
+obey the rules specified by the CP for DOF contributions. (These may or may not be the 
+same as the rules specified in this list, so make sure to review the CP files!)
 
 ## Art sources
 
 ### Original assets - trivial
 
-These assets were technically created from scratch for this mod, but cannot be reasonably considered intellectual property:
+These assets were technically created from scratch for this mod, but cannot be 
+reasonably considered intellectual property:
 
 `data/images/greenscreen.png`
 
 ### Modified SR2 assets
 
-The authors of this file do not know if the below assets, being derived either directly or indirectly from Star Ruler 2 assets, are covered under the same CC-BY-NC 2.0 license as the original files. If they are not, however, they are to be treated as such regardless:
+The authors of this file do not know if the below assets, being derived either 
+directly or indirectly from Star Ruler 2 assets, are covered under the same CC-BY-NC 2.
+0 license as the original files. If they are not, however, they are to be treated as 
+such regardless:
 
 `data/images/artifacts/RemnantCannon.png`
 `data/images/artifacts/RemnantChassis.png`
@@ -73,11 +97,14 @@ The authors of this file do not know if the below assets, being derived either d
 `data/images/sprites/railgunV.png`
 `data/images/techIcons.png`
 
-`data/images/empires/portraits/berserker.png` is a renamed version of `BlindMindStudios/StarRuler2-Source::data/images/empires/portraits/harrian.png` with no other modifications.
+`data/images/empires/portraits/berserker.png` is a renamed version of 
+`BlindMindStudios/StarRuler2-Source::data/images/empires/portraits/harrian.png` with 
+no other modifications.
 
 ### SR1 assets
 
-These assets were taken from the videogame Star Ruler 1 by Blind Mind Studios, sourced via https://steamcommunity.com/sharedfiles/filedetails/?id=362535984 :
+These assets were taken from the videogame Star Ruler 1 by Blind Mind Studios, sourced 
+via https://steamcommunity.com/sharedfiles/filedetails/?id=362535984 :
 
 `data/images/empires/portraits/blobman.png`
 `data/images/empires/portraits/bug.png`
@@ -88,7 +115,8 @@ These assets were taken from the videogame Star Ruler 1 by Blind Mind Studios, s
 
 ### SE5 assets
 
-These assets are edited art from the videogame Space Empires 5 by Malfador Machinations:
+These assets are edited art from the videogame Space Empires 5 by Malfador 
+Machinations:
 
 `data/images/subsystems/amgen.png`
 `data/images/subsystems/amgen2.png`
@@ -123,7 +151,8 @@ These assets are edited art from the videogame Space Empires 5 by Malfador Machi
 
 ### Star Trek Online
 
-This image was created using the Foundry mission editor for Star Trek Online by Cryptic Studios:
+This image was created using the Foundry mission editor for Star Trek Online by 
+Cryptic Studios:
 
 `data/images/empires/portraits/khalerii.png`
 
@@ -140,7 +169,8 @@ These assets are edited art from the videogame StarCraft 2 by Blizzard Entertain
 
 ### Improved WotH Weapon Effects
 
-These assets are taken from the "Improved WotH Weapon Effects" mod by Xangi, at https://steamcommunity.com/sharedfiles/filedetails/?id=766790245 :
+These assets are taken from the "Improved WotH Weapon Effects" mod by Xangi, at https:/
+/steamcommunity.com/sharedfiles/filedetails/?id=766790245 :
 
 `data/images/sprites/drone_trail.png`
 `data/images/sprites/drone.png`
@@ -152,7 +182,8 @@ Further history is not available.
 
 ### Dolynick's Faction Addon
 
-These assets are taken from the "Dolynick's Faction Addon" mod by dolynick, at https://steamcommunity.com/sharedfiles/filedetails/?id=485910456 :
+These assets are taken from the "Dolynick's Faction Addon" mod by dolynick, at https://
+steamcommunity.com/sharedfiles/filedetails/?id=485910456 :
 
 `data/images/sprites/ancient_drone.png`
 `data/sounds/weapons/missile_fire_drone_1.ogg`
@@ -162,18 +193,23 @@ Further history is not available.
 
 ### Provenance unknown - DaloLorn
 
-These files were sourced by contributor DaloLorn from unknown or partially unknown sources, or created *from* such files:
+These files were sourced by contributor DaloLorn from unknown or partially unknown 
+sources, or created *from* such files:
 
 #### Drone firing sounds
 
-These sound files were probably converted from either the Carter's Addon Pack mod for Garry's Mod, or the Stargate: Empire at War mod for Star Wars: Empire at War (and/or the Forces of Corruption expansion)... or they might have been from the Stargate: Rebellion mod for Sins of a Solar Empire: Rebellion?
+These sound files were probably converted from either the Carter's Addon Pack mod for 
+Garry's Mod, or the Stargate: Empire at War mod for Star Wars: Empire at War (and/or 
+the Forces of Corruption expansion)... or they might have been from the Stargate: 
+Rebellion mod for Sins of a Solar Empire: Rebellion?
 
 `data/sounds/weapons/Drone.ogg`
 `data/sounds/weapons/Drone2.ogg`
 
 ### Provenance unknown - Alarcarr
 
-These files were sourced by contributor Alarcarr from unknown or partially unknown sources, or created *from* such files:
+These files were sourced by contributor Alarcarr from unknown or partially unknown 
+sources, or created *from* such files:
 
 `data/images/buildings/Dish.png`
 `data/images/buildings/Factory.png`
