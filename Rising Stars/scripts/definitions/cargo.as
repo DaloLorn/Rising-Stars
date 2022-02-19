@@ -292,7 +292,7 @@ void reverseDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0, b
 		double energyCost = dsg.total(SV_EnergyBuildCost);
 		if(energyCost > 0)
 			obj.owner.modEnergyStored(+energyCost);
-		int influenceCost = dsg.total(SV_EnergyBuildCost);
+		int influenceCost = dsg.total(SV_InfluenceBuildCost);
 		if(influenceCost > 0)
 			obj.owner.addInfluence(+influenceCost);
 		double ftlCost = dsg.total(SV_FTLBuildCost);
