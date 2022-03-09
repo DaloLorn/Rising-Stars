@@ -66,6 +66,13 @@ bool FireIfNotStatus(const Effector& efftr, Object& obj, Object& target, float& 
 	return WeaponFire(efftr, obj, target, efficiency, supply);
 }
 
+bool FireIfRaiding(const Effector& efftr, Object& obj, Object& target, float& efficiency, double supply) {
+	if(obj.hasSupportAI && !obj.isRaiding)
+		return false;
+
+	return WeaponFire(efftr, obj, target, efficiency, supply);
+}
+
 void ABEMControlDestroyed(Event& evt) {
 	Ship@ ship = cast<Ship>(evt.obj);
 	int invaderID = getStatusID("IsInvader");

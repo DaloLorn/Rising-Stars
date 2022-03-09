@@ -1,0 +1,40 @@
+Effector: RSPulseBolt
+	Value: Range
+	Value: DPS
+	Value: Duration
+	Value: Cooldown
+	Value: Tracking
+	Value: SupplyCost = 0
+	Value: FireArc = pi
+
+	Range: Range
+	Lifetime: Duration
+	Tracking: Tracking
+	FireArc: FireArc
+
+	TargetAlgorithm: SingleTarget
+	CanTarget: isEnemy && isDamageable
+	AutoTarget: isEnemy && (isShip || (isOrbital || isColonyShip || isCivilian || isFreighter) * 0.5)
+
+	EfficiencyMode: Duration Partial
+	Activation: Timed(Cooldown+Duration)
+	OnTrigger: ABEMCombat::FireIfRaiding(SupplyCost)
+	CapTarget: 0
+
+	Effect: GenericDamage
+		Amount = DPS
+        Pierce = 0
+        DRResponse = 6
+        DamageType = 2
+        Spillable = 1
+
+	PhysicalType: Beam
+		GfxSize: 0.6
+		FirePitchVariance: 0.06
+		FireSfx: laser_fire
+		FireSfx: laser_fire_2
+		FireSfx: laser_fire_3
+		FireSfx: laser_fire_4
+		Material: Laser
+		ImpactGfx: ImpactFlareLaserBlue
+		TrailCol: 7390dbaa, 7390dbaa

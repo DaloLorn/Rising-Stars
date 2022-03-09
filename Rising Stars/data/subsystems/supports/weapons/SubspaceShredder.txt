@@ -15,10 +15,10 @@ Subsystem: SubspaceShredder
 	Tracking := 0.2
 	BaseSupplyCost := Size * 2.0
 
-	Range := (5 + Size) * 2
+	Range := (30 + Size) * 2
 	TravelRange := (Range * 30) - (28 * Size)
 
-	out DPS := 0.25 * (Damage / Reload)
+	out DPS := 0.4 * (Damage / Reload)
 	
 	BaseHP := 18 * HexSize
 	CoreHPMod := 3

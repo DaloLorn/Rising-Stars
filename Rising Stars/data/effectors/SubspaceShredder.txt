@@ -21,7 +21,7 @@ Effector: SubspaceShredder
 
 	EfficiencyMode: Reload Only
 	Activation: Timed(Reload)
-	OnTrigger: combat::WeaponFire(SupplyCost)
+	OnTrigger: ABEMCombat::FireIfRaiding(SupplyCost)
 
 	Effect: ExplDamage
 		Amount = Damage
