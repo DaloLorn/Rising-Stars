@@ -397,10 +397,21 @@ tidy class SupportAI : Component_SupportAI, Savable {
 
 		double abandonDist = MAX_SUPPORT_ABANDON_DIST_SQ;
 		double raidDist = 0;
+		double fleetRad = 0;
 		if(leader !is null) {
+			fleetRad = leader.getFormationRadius();
+			// Ringworlds or impossibly large flagships can have formation radii
+			// in excess of 7500 units. We need some padding there. --Dalo
+			if(fleetRad > MAX_SUPPORT_ABANDON_DIST)
+				abandonDist = sqr(fleetRad + 1000);
 			raidDist = leader.raidRange;
 			if(raidDist < 0) {
-				Region@ reg = obj.region;
+				// Prefer leader region for system-wide raid range, because
+				// the leader is less likely to accidentally leave...
+				// but in the unlikely case that it does, take the support's region.
+				Region@ reg = leader.region;
+				if(reg is null)
+					@reg = obj.region;
 				if(reg !is null) {
 					abandonDist = max(abandonDist, sqr(reg.radius));
 					raidDist = reg.radius;
@@ -446,7 +457,6 @@ tidy class SupportAI : Component_SupportAI, Savable {
 				ship.triggerLeaderChange(prevLeader, null);
 			}
 			else {
-				double fleetRad = leader.getFormationRadius();
 				double engageDist = engageRange + fleetRad;
 				{
 					//If the target is out of range, return to the fleet
