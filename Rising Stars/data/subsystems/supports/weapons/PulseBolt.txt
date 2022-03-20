@@ -54,6 +54,5 @@ Subsystem: PulseBolt
 		Duration = Duration
 		Cooldown = Cooldown
 		Tracking = Tracking
-		PodSize = 3
 		SupplyCost = SupplyCost * Duration
 		FireArc = FireArc
