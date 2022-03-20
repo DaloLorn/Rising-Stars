@@ -899,3 +899,103 @@ class NotifyOwner : EmpireTrigger {
 	}
 #section all
 };
+
+class ConsumeDistanceFTLWithOverride : AbilityHook {
+	Document doc("Ability consumes FTL based on the distance to the target, or a flat sum if a system flag is present.");
+	Argument targ(TT_Object);
+	Argument base_cost(AT_Decimal, "0", doc="Base FTL Cost.");
+	Argument distance_cost(AT_Decimal, "0", doc="FTL Cost per unit of distance.");
+	Argument sqrt_cost(AT_Decimal, "0", doc="FTL Cost per square root unit of distance.");
+	Argument obey_free_ftl(AT_Boolean, "True", doc="Whether to reduce the cost to 0 if departing from a free-FTL system.");
+	Argument obey_block_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in an FTL-blocked system.");
+	Argument path_distance(AT_Boolean, "False", doc="If set, use total path distance taking into account gates, slipstreams and wormholes.");
+	Argument obey_suppress_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in an FTL-suppressed system.");
+	Argument flat_cost(AT_Decimal, "0", doc="FTL Cost if the system flag is present.");
+	Argument flag(AT_SystemFlag, doc="System flag to check for.");
+	Argument check_origin(AT_Boolean, "True", doc="Whether to check for the system flag in the origin system. If both this and Check Destination are disabled, the hook will act as ConsumeDistanceFTL.");
+	Argument check_destination(AT_Boolean, "True", doc="Whether to check for the system flag in the origin system.");
+	Argument allow_space(AT_Boolean, "False", doc="Whether to treat deep space as having the system flag.");
+
+	double getCost(const Ability@ abl, const Targets@ targs) const{
+		double cost = base_cost.decimal;
+		auto@ t = targ.fromConstTarget(targs);
+		if(t !is null && t.obj !is null && abl.obj !is null) {
+			bool hasFlagOrigin = !check_origin.boolean;
+			bool hasFlagDest = !check_destination.boolean;
+			if(!hasFlagOrigin)
+				hasFlagOrigin = (allow_space.boolean && abl.obj.region is null) || (abl.obj.region !is null && abl.obj.region.getSystemFlag(abl.obj.owner, flag.integer));
+			if(!hasFlagDest)
+				hasFlagDest = (allow_space.boolean && t.obj.region is null) || (t.obj.region !is null && t.obj.region.getSystemFlag(abl.obj.owner, flag.integer));
+
+			if(hasFlagOrigin && hasFlagDest && (check_origin.boolean || check_destination.boolean)) 
+				cost = flat_cost.decimal;
+			else {
+				double dist = t.obj.position.distanceTo(abl.obj.position);
+				if(path_distance.boolean) {
+#section server
+					dist = getPathDistance(abl.emp, t.obj.position, abl.obj.position);
+#section client
+					dist = getPathDistance(t.obj.position, abl.obj.position);
+#section all
+				}
+				cost += distance_cost.decimal * dist;
+				cost += sqrt_cost.decimal * sqrt(dist);
+			}
+		}
+		if(obey_free_ftl.boolean && abl.emp !is null && abl.obj !is null) {
+			Region@ myReg = abl.obj.region;
+			if(myReg !is null && myReg.FreeFTLMask & abl.emp.mask != 0)
+				return 0.0;
+		}
+		return cost;
+	}
+
+	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
+		if(ignoreCost || targs is null)
+			return true;
+		if((obey_block_ftl.boolean || obey_suppress_ftl.boolean) && abl.emp !is null) {
+			int mask = 0;
+			auto@ t = targ.fromConstTarget(targs);
+			if(t !is null && t.obj !is null && abl.obj !is null) {
+				Region@ myReg = abl.obj.region;
+				if(obey_block_ftl.boolean)
+					mask |= myReg.BlockFTLMask.value;
+				if(obey_suppress_ftl.boolean)
+					mask |= myReg.SuppressFTLMask.value;
+				if(myReg !is null && mask & abl.emp.mask != 0)
+					return false;
+				mask = 0;
+				Region@ targReg = t.obj.region;
+				if(obey_block_ftl.boolean)
+					mask |= targReg.BlockFTLMask.value;
+				if(obey_suppress_ftl.boolean)
+					mask |= targReg.SuppressFTLMask.value;
+				if(targReg !is null && mask & abl.emp.mask != 0)
+					return false;
+			}
+		}
+		return abl.emp.FTLStored >= getCost(abl, targs);
+	}
+
+	bool formatCost(const Ability@ abl, const Targets@ targs, string& value) const override {
+		if(targs is null)
+			return false;
+		value = format(locale::FTL_COST, toString(getCost(abl, targs), 0));
+		return true;
+	}
+
+#section server
+	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {
+		double cost = getCost(abl, targs);
+		if(cost == 0)
+			return true;
+		if(abl.emp.consumeFTL(cost, partial=false) == 0.0)
+			return false;
+		return true;
+	}
+
+	void reverse(Ability@ abl, any@ data, const Targets@ targs) const override {
+		abl.emp.modFTLStored(getCost(abl, targs));
+	}
+#section all
+}

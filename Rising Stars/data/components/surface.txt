@@ -71,7 +71,7 @@ remote:
 	void annex(Empire@ forEmpire = null);
 
 restricted remote:
-	async void colonize(Object& other, double toPopulation = 1.0);
+	async void colonize(Object& other, double toPopulation = 1.0, int type = 0);
 	async void stopColonizing(Object& other);
 	void abandon();
 	void buildBuilding(uint tid, vec2i pos);

@@ -6,19 +6,23 @@ import object_creation;
 import cargo;
 import systems;
 import system_pathing;
+import biomes;
 
 tidy class ColonizationEvent : Savable, Serializable {
 	Object@ from;
 	Object@ to;
+	int type;
 
 	void save(SaveFile& file) {
 		file << from;
 		file << to;
+		file << type;
 	}
 
 	void load(SaveFile& file) {
 		file >> from;
 		file >> to;
+		file >> type;
 	}
 
 	void write(Message& msg) {
@@ -1846,7 +1850,13 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 						if(!cur.canSafelyColonize)
 							continue;
 
-						double w = cur.position.distanceTo(evt.to.position);
+						double w; // Some FTLs don't care about distance when colonizing!
+						if((evt.type == CType_Fling && evt.to.region !is cur.region && emp.getFlingBeacon(cur.position) !is null) || evt.type == CType_Jumpdrive || evt.type == CType_Flux)
+							w = 1.0;
+						else if(evt.type == CType_Hyperdrive)
+							w = cur.position.distanceTo(evt.to.position);
+						else // Account for gates and wormholes!
+							w = getPathDistance(emp, cur.position, evt.to.position);
 						w /= sqr(cur.population / double(cur.maxPopulation));
 
 						if(w < bestWeight) {
@@ -1859,7 +1869,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 					if(best !is null) {
 						@evt.from = best;
 						best.flagColonizing();
-						best.colonize(evt.to);
+						best.colonize(evt.to, evt.type);
 					}
 				}
 				else {
@@ -1934,8 +1944,9 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		}
 	}
 
-	void autoColonize(Empire& emp, Object@ other) {
+	void autoColonize(Empire& emp, Object@ other, int type = CType_Sublight) {
 		ColonizationEvent evt;
+		evt.type = type;
 		@evt.to = other;
 		colonizeDelta = true;
 
@@ -1970,6 +1981,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	void pushAutoColonizeTarget(Object& obj) {
 		WriteLock lock(plMutex);
 		ColonizationEvent evt;
+		evt.type = CType_Sublight;
 		@evt.to = obj;
 		queuedAutoColonizations.insertAt(0, evt);
 		queuedSet.insert(obj.id);

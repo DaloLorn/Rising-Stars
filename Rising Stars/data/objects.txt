@@ -140,6 +140,7 @@ invisible:
 	Object$ Origin
 	Object$ Target
 	Mover mover
+	int ColonyType
 visible:
 	synced double CarriedPopulation = 0
 	synced double Health = 50

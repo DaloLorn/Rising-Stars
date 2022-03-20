@@ -1,4 +1,4 @@
-Building: PlanetaryEngine
+Building: FluxPlanetaryEngine
 	Name: #BLD_PLANET_ENGINE
 	Description: #BLD_PLANET_ENGINE_DESC
 	Sprite: PlanetThruster
@@ -22,5 +22,6 @@ Building: PlanetaryEngine
 	ShowAttributeValue(FTL Generation, Adaptation4, Multiplier = 0.5, Icon = ResourceIcon::3, Suffix = #PER_SECOND, Hide Zero = True)
 	RequireUnlockTag(PlanetaryEngineUnlock)
 	RequireNotStatus(Ringworld)
-	RequireNotTrait(Flux)
+	RequireTrait(Flux)
+	ConsumeFTL(500)
 	AddAccelerationBonus(2)

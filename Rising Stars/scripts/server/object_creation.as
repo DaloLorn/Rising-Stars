@@ -1,6 +1,7 @@
 import orbitals;
 import resources;
 import regions.regions;
+import biomes;
 from designs import getDesignMesh;
 from civilians import getCivilianName;
 
@@ -13,7 +14,7 @@ const double shipVolumePower = 1.666667;
 // END NON-MIT CODE
 const double stationRadiusFactor = 1.3;
 
-ColonyShip@ createColonizer(Object& from, Object& to, double population, double accMod) {
+ColonyShip@ createColonizer(Object& from, Object& to, double population, double accMod, int type = CType_Sublight) {
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
@@ -36,11 +37,12 @@ ColonyShip@ createColonizer(Object& from, Object& to, double population, double 
 	colShip.maxAcceleration = COLONYSHIP_BASE_ACCEL * accMod * from.owner.ModSpeed.value * from.owner.ColonizerSpeed;
 	colShip.Health *= from.owner.ModHP.value;
 	colShip.finalizeCreation();
+	colShip.ColonyType = type;
 
 	return colShip;
 }
 
-ColonyShip@ createColonizer(Empire@ owner, vec3d from, Object& to, double population, double accMod) {
+ColonyShip@ createColonizer(Empire@ owner, vec3d from, Object& to, double population, double accMod, int type = CType_Sublight) {
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
@@ -60,6 +62,7 @@ ColonyShip@ createColonizer(Empire@ owner, vec3d from, Object& to, double popula
 	colShip.maxAcceleration = COLONYSHIP_BASE_ACCEL * accMod * owner.ModSpeed.value * owner.ColonizerSpeed;
 	colShip.Health *= owner.ModHP.value;
 	colShip.finalizeCreation();
+	colShip.ColonyType = type;
 
 	return colShip;
 }

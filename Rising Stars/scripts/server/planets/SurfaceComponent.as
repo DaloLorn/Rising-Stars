@@ -1713,7 +1713,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	//Colonize different planets
-	void colonize(Object& obj, Object& other, double toPopulation) {
+	void colonize(Object& obj, Object& other, double toPopulation, int type) {
 		if(toPopulation < 1.0)
 			return;
 		if(!other.isPlanet || other.quarantined)
@@ -1728,6 +1728,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		ColonizationOrder order;
 		@order.target = other;
+		order.type = type;
 		order.targetPopulation = toPopulation;
 		colonization.insertLast(order);
 		obj.owner.registerColonization(obj, other);
@@ -1806,6 +1807,10 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 					auto@ lv = getPlanetLevel(LevelChainId, ResourceLevel);
 					canSend = Population - popPerShip >= lv.requiredPop;
 				}
+				if(order.type == CType_Flux && obj.region !is order.target.region) {
+					// Takes 25 FTL to send 1B population
+					canSend = canSend && owner.consumeFTL(25.0 / (1.0 / popPerShip), partial=false) != 0.0;
+				}
 				if(canSend) {
 					//Takes one minute to send 1B population
 					colonyShipTimer += float(60.0 / (1.0 / popPerShip));
@@ -1813,7 +1818,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 					order.inTransit += popPerShip;
 					order.totalSent += popPerShip;
 
-					createColonizer(obj, order.target, popPerShip, colonyshipAccel);
+					createColonizer(obj, order.target, popPerShip, colonyshipAccel, order.type);
 
 					deltaPop = true;
 					isSending = true;

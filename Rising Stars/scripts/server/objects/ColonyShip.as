@@ -1,6 +1,10 @@
 from resources import MoneyType;
 import regions.regions;
 import saving;
+import biomes;
+import ftl;
+
+const double COLONY_HYPERSPEED = 7500.0;
 
 tidy class ColonyShipScript {
 	int moveId;
@@ -20,7 +24,7 @@ tidy class ColonyShipScript {
 			obj.Target.modIncomingPop(obj.CarriedPopulation);
 
 		msg >> moveId;
-
+		msg >> obj.ColonyType;
 	}
 
 	void makeMesh(ColonyShip& obj) {
@@ -62,6 +66,7 @@ tidy class ColonyShipScript {
 		msg << obj.CarriedPopulation;
 
 		msg << moveId;
+		msg << obj.ColonyType;
 	}
 
 	void init(ColonyShip& ship) {
@@ -96,6 +101,77 @@ tidy class ColonyShipScript {
 		}
 		leaveRegion(ship);
 	}
+
+	bool shouldFTL(ColonyShip& ship, int type) {
+		if(ship.owner is null || !ship.owner.valid)
+			return false;
+		if(ship.region !is null && ship.region is ship.Target.region)
+			return false; // Don't use FTL for in-system colonization!
+		if(ship.region is null && ship.position.distanceTo(ship.Target.position) <= 1000)
+			return false; // Too close, not worth FTLing!
+
+		switch(type) {
+			case CType_Hyperdrive:
+				return !isFTLBlocked(ship) && ship.owner.consumeFTL(5.0 / (1.0 / ship.CarriedPopulation), partial=false) != 0.0;
+			case CType_Fling:
+				return !isFTLBlocked(ship) && ship.owner.getFlingBeacon(ship.position) !is null && ship.owner.consumeFTL(10.0 / (1.0 / ship.CarriedPopulation), partial=false) != 0.0;
+			case CType_Jumpdrive:
+				return !isFTLBlocked(ship) && !isFTLBlocked(ship, ship.Target.position) && ship.owner.consumeFTL(10.0 / (1.0 / ship.CarriedPopulation), partial=false) != 0.0;
+			case CType_Flux:
+				return false; // Handled by mover component
+			case CType_Sublight:
+				return false; // Non-FTL colonization
+			case CType_BestFTL: // Pick fastest FTL available. Not currently used.
+				if(shouldFTL(ship, CType_Fling)) {
+					ship.ColonyType = CType_Fling;
+					return true;
+				} else if (ship.owner.JumpdriveConst > 0) {
+					ship.ColonyType = CType_Jumpdrive;
+					return shouldFTL(ship, CType_Jumpdrive);
+				} else if (ship.owner.HyperdriveConst > 0) {
+					ship.ColonyType = CType_Hyperdrive;
+					return shouldFTL(ship, CType_Hyperdrive);
+				}
+		}
+		return false;
+	}
+
+	void commitFTL(ColonyShip& ship, int type) {
+		vec3d entryPoint = ship.Target.position;
+		switch(type) {
+			case CType_Hyperdrive:
+				if(!ship.inFTL) {
+					playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
+				}
+				if(
+					ship.Target.position.distanceTo(ship.position) <= (ship.radius + ship.Target.radius + 0.1)
+					|| ship.FTLTo(ship.Target.position, COLONY_HYPERSPEED, moveId)
+				) {
+					ship.FTLDrop();
+					playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
+				}
+				break;
+			case CType_Fling:
+				if(!ship.inFTL) {
+					playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
+				}
+				if(
+					ship.Target.position.distanceTo(ship.position) <= (ship.radius + ship.Target.radius + 0.1)
+					|| ship.FTLTo(ship.Target.position, ship.Origin.position.distanceTo(ship.position) / 15.0, moveId)
+				) {
+					ship.FTLDrop();
+					playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
+				}
+				break;
+			case CType_Jumpdrive:
+				playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
+				entryPoint += random3d(randomd(500 + ship.Target.radius, 500 + ship.Target.radius * 2));
+				ship.position = entryPoint;
+				ship.clearMovement();
+				playParticleSystem("GateFlash", entryPoint, ship.rotation, ship.radius, ship.visibleMask);
+				break;
+		}
+	}
 	
 	double tick(ColonyShip& ship, double time) {
 		Object@ target = ship.Target;
@@ -108,6 +184,9 @@ tidy class ColonyShipScript {
 
 		if(target is null) {
 			ship.destroy();
+		}
+		else if(ship.inFTL || shouldFTL(ship, ship.ColonyType)) {
+			commitFTL(ship, ship.ColonyType);
 		}
 		else if(ship.position.distanceTo(target.position) <= (ship.radius + target.radius + 0.1) || ship.moveTo(target, moveId, enterOrbit=false)) {
 			ship.destroy();

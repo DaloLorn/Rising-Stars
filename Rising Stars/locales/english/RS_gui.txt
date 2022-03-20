@@ -92,3 +92,41 @@ TT_INSTANTFLUX: <<|
 
 	[img=ResourceIcon::3;22][color=#00c0ff]Average Flux Cooldown: $1 ($2 FTL to skip)[/color][/img]
 >>
+COLONIZE_WITH_FLUX: Colonize with $1 via Flux (25 FTL)
+COLONIZE_WITH_FTL: Colonize with $1 via $2 ($3 FTL)
+AUTO_COLONIZE_FLUX: Colonize this via Flux (25 FTL)
+AUTO_COLONIZE_FTL: Colonize this via $1 ($2 FTL)
+AUTO_COLONIZE_LEVEL_FLUX: Colonize this via Flux (25 FTL) and Auto-Import to Level $1
+AUTO_COLONIZE_LEVEL_FTL: Colonize this via $2 ($3 FTL) and Auto-Import to Level $1
+AUTO_COLONIZE_SYSTEM_FLUX: Colonize planets in $1 via Flux (25 FTL each)
+AUTO_COLONIZE_SYSTEM_FTL: Colonize planets in $1 via $2 ($3 FTL each)
+AUTO_COLONIZE_SYSTEM_LEVEL_FLUX: Colonize planets in $1 via Flux (25 FTL each) and Auto-Import
+AUTO_COLONIZE_SYSTEM_LEVEL_FTL: Colonize planets in $1 via $2 ($3 FTL each) and Auto-Import
+TT_COLONIZE_FLUX: <<|
+	[b]Colonize via Flux[/b]
+
+	Send 1B population from the planet to another unoccupied planet to colonize it.
+
+	If the target planet is not in the same system, flux jumps made during colonization will incur a total cost of 25 FTL.
+>>
+TT_COLONIZE_THIS_FLUX: <<|
+	[b]Colonize This via Flux[/b]
+
+	Send 1B population from one of your planets to this planet to colonize it.
+
+	If the origin planet is not in the same system, flux jumps made during colonization will incur a total cost of 25 FTL.
+>>
+TT_COLONIZE_FTL: <<|
+	[b]Colonize via $1[/b]
+
+	Send 1B population from the planet to another unoccupied planet to colonize it, allowing them to use $1 FTL systems for interstellar travel.
+
+	If the target planet is not in the same system, FTL use during colonization will incur a total cost of $2 FTL.
+>>
+TT_COLONIZE_THIS_FTL: <<|
+	[b]Colonize This via $1[/b]
+
+	Send 1B population from one of your planets to this planet to colonize it, allowing them to use $1 FTL systems for interstellar travel.
+
+	If the origin planet is not in the same system, flux jumps made during colonization will incur a total cost of 25 FTL.
+>>

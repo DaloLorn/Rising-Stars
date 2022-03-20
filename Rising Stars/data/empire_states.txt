@@ -175,4 +175,7 @@ visible:
 	attribute double EmpireRepairMassFactor = 1
 	attribute double MaxLogistics = 0.4
 	attribute double LogisticsThreshold = 10 
+	attribute double HyperdriveConst = 0
+	attribute double FlingConst = 0
+	attribute double JumpdriveConst = 0
 }

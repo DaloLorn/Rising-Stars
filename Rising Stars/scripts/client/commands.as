@@ -1,4 +1,5 @@
 import targeting.ObjectTarget;
+import biomes;
 import resources;
 from obj_selection import selectedObject, selectedObjects, hoveredObject;
 import targeting.ObjectTarget;
@@ -315,8 +316,9 @@ void doTransfer(Object@ source, bool isTemporary) {
 
 class ColonizePlanets : ObjectTargeting {
 	array<Object@> objs;
+	ColonizationTypes type = CType_Sublight; 
 
-	ColonizePlanets(array<Object@>& sources) {
+	ColonizePlanets(array<Object@>& sources, ColonizationTypes _type = CType_Sublight) {
 		allowMultiple = true;
 		objs.reserve(sources.length);
 		for(uint i = 0, cnt = sources.length; i < cnt; ++i) {
@@ -324,6 +326,7 @@ class ColonizePlanets : ObjectTargeting {
 			if(obj.isPlanet)
 				objs.insertLast(obj);
 		}
+		type = _type;
 	}
 
 	bool valid(Object@ target) {
@@ -342,7 +345,7 @@ class ColonizePlanets : ObjectTargeting {
 			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
 				auto@ obj = objs[i];
 				if(obj.isPlanet && obj.owner is playerEmpire && obj.canSafelyColonize && obj !is target) {
-					obj.colonize(target);
+					obj.colonize(target, type);
 					anyColonized = true;
 				}
 			}
@@ -366,7 +369,7 @@ void doColonize(bool pressed) {
 	if(pressed) {
 		auto@ objs = immediateSelection;
 		if(anySelected(ofType=OT_Planet, owned=true, list=objs)) {
-			targetObject(ColonizePlanets(objs));
+			targetObject(ColonizePlanets(objs, playerEmpire.HasFlux != 0 ? CType_Flux : CType_Sublight));
 		}
 		else if(anySelected(ofType=OT_Planet, list=objs)) {
 			bool anyColonized = false;
@@ -374,7 +377,7 @@ void doColonize(bool pressed) {
 			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
 				auto@ obj = objs[i];
 				if(obj.isPlanet && cast<Planet>(obj).Population < 1.0) {
-					playerEmpire.autoColonize(obj);
+					playerEmpire.autoColonize(obj, playerEmpire.HasFlux != 0 ? CType_Flux : CType_Sublight);
 					anyColonized = true;
 				}
 			}

@@ -10,6 +10,7 @@ import abilities;
 import util.icon_view;
 import systems;
 import constructions;
+import biomes;
 
 import dialogs.MessageDialog;
 import dialogs.QuestionDialog;
@@ -45,11 +46,17 @@ bool hasWeapons(Object@ obj) {
 }
 
 class AutoColonize : MultiOption {
+	ColonizationTypes type = CType_Sublight;
+
+	AutoColonize(ColonizationTypes _type = CType_Sublight) {
+		type = _type;
+	}
+
 	void call(Object@ selected) {
 		if(selected.isPlanet) {
 			Empire@ owner = selected.visibleOwner;
 			if(owner is null || !owner.valid) {
-				playerEmpire.autoColonize(selected);
+				playerEmpire.autoColonize(selected, type);
 				playOptionSound(sound::generic_click);
 			}
 		}
@@ -57,9 +64,15 @@ class AutoColonize : MultiOption {
 };
 
 class AutoColonizeLevel : MultiOption {
+	ColonizationTypes type = CType_Sublight;
+
+	AutoColonizeLevel(ColonizationTypes _type = CType_Sublight) {
+		type = _type;
+	}
+
 	void call(Object@ selected) {
 		if(selected.isPlanet && !selected.owner.valid) {
-			playerEmpire.autoColonize(selected);
+			playerEmpire.autoColonize(selected, type);
 			auto@ resType = getResource(selected.primaryResourceType);
 			if(resType !is null && resType.level > 0)
 				playerEmpire.autoImportToLevel(selected, resType.level);
@@ -70,8 +83,10 @@ class AutoColonizeLevel : MultiOption {
 
 class AutoColonizeSystem : MultiOption {
 	bool level = false;
-	AutoColonizeSystem(bool importLevel = false) {
+	ColonizationTypes type = CType_Sublight;
+	AutoColonizeSystem(bool importLevel = false, ColonizationTypes _type = CType_Sublight) {
 		level = importLevel;
+		type = _type;
 	}
 
 	void call(Object@ selected) {
@@ -88,7 +103,7 @@ class AutoColonizeSystem : MultiOption {
 					continue;
 				if(!pl.known)
 					continue;
-				playerEmpire.autoColonize(pl);
+				playerEmpire.autoColonize(pl, type);
 				if(level) {
 					auto@ resType = getResource(pl.primaryResourceType);
 					if(resType.level != 0)
@@ -138,6 +153,12 @@ class CancelAutoColonize : MultiOption {
 }
 
 class Colonize : MultiOption, QuestionDialogCallback {
+	ColonizationTypes type = CType_Sublight;
+
+	Colonize(ColonizationTypes _type = CType_Sublight) {
+		type = _type;
+	}
+
 	void call(GuiContextMenu@ menu) {
 		if(selected.canSafelyColonize)
 			MultiOption::call(menu);
@@ -157,7 +178,7 @@ class Colonize : MultiOption, QuestionDialogCallback {
 		if(selected is obj)
 			return;
 		if(selected !is null && selected.isPlanet && selected.owner.controlled) {
-			selected.colonize(obj, 1.0);
+			selected.colonize(obj, 1.0, type);
 			playOptionSound(sound::order_goto);
 		}
 	}
@@ -989,14 +1010,21 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 						eta += newtonArrivalTime(selected.colonyShipAccel, clicked.position - selected.position, vec3d()) / 60.0;
 						if(selected.isColonizing)
 							eta += double(selected.colonyOrderCount);
-						if(selected.owner.HasFlux != 0)
+						if(selected.owner.HasFlux != 0 && selected.region !is clicked.region)
 							eta = 0;
 						
 						if(playerEmpire.ForbidColonization == 0) {
 							if(eta <= 0)
-								addOption(menu, selected, clicked, format(locale::COLONIZE_WITH_BASIC, selected.name), Colonize(), COLONIZE_ICON);
-							else
+								addOption(menu, selected, clicked, format(locale::COLONIZE_WITH_FLUX, selected.name), Colonize(CType_Flux), COLONIZE_ICON);
+							else {
 								addOption(menu, selected, clicked, format(locale::COLONIZE_WITH, selected.name, toString(eta, 1)), Colonize(), COLONIZE_ICON);
+								if(playerEmpire.HyperdriveConst > 0)
+									addOption(menu, selected, clicked, format(locale::COLONIZE_WITH_FTL, selected.name, locale::TRAIT_HYPERDRIVE, toString(10)), Colonize(CType_Hyperdrive), icons::Hyperdrive);
+								if(playerEmpire.getFlingBeacon(selected.position) !is null)
+									addOption(menu, selected, clicked, format(locale::COLONIZE_WITH_FTL, selected.name, locale::TRAIT_FLING, toString(20)), Colonize(CType_Fling), icons::Fling);
+								if(playerEmpire.JumpdriveConst > 0)
+									addOption(menu, selected, clicked, format(locale::COLONIZE_WITH_FTL, selected.name, locale::TRAIT_JUMPDRIVE, toString(25)), Colonize(CType_Jumpdrive), icons::FTL);
+							}
 						}
 						
 						if(clicked.isBeingColonized)
@@ -1023,14 +1051,35 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 			}
 			else {
 				if(clickedOwner is null || !clickedOwner.valid) {
-					addOption(menu, selected, clicked, quarantined ? locale::AUTO_COLONIZE_BLOCKED : locale::AUTO_COLONIZE, AutoColonize(), COLONIZE_ICON);
+					if(playerEmpire.HasFlux > 0)
+						addOption(menu, selected, clicked, quarantined ? locale::AUTO_COLONIZE_BLOCKED : locale::AUTO_COLONIZE_FLUX, AutoColonize(CType_Flux), COLONIZE_ICON);
+					else
+						addOption(menu, selected, clicked, quarantined ? locale::AUTO_COLONIZE_BLOCKED : locale::AUTO_COLONIZE, AutoColonize(CType_Sublight), COLONIZE_ICON);
+					if(playerEmpire.HyperdriveConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_FTL, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonize(CType_Hyperdrive), icons::Hyperdrive);
+					if(playerEmpire.FlingConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_FTL, locale::TRAIT_FLING, toString(20)), AutoColonize(CType_Fling), icons::Fling);
+					if(playerEmpire.JumpdriveConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_FTL, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonize(CType_Jumpdrive), icons::FTL);
 
 					auto@ resType = getResource(clicked.primaryResourceType);
 					if(resType !is null && resType.level > 0) {
-						addOption(menu, selected, clicked,
-								format(locale::AUTO_COLONIZE_LEVEL, resType.level),
-								AutoColonizeLevel(),
+						if(playerEmpire.HasFlux > 0)
+							addOption(menu, selected, clicked,
+								format(locale::AUTO_COLONIZE_LEVEL_FLUX, resType.level),
+								AutoColonizeLevel(CType_Flux),
 								Sprite(spritesheet::ResourceClassIcons, clamp(resType.level-1, 0, 2)));
+						else
+							addOption(menu, selected, clicked,
+								format(locale::AUTO_COLONIZE_LEVEL, resType.level),
+								AutoColonizeLevel(CType_Sublight),
+								Sprite(spritesheet::ResourceClassIcons, clamp(resType.level-1, 0, 2)));
+						if(playerEmpire.HyperdriveConst > 0)
+							addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_LEVEL_FTL, resType.level, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonizeLevel(CType_Hyperdrive), icons::Hyperdrive);
+						if(playerEmpire.FlingConst > 0)
+							addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_LEVEL_FTL, resType.level, locale::TRAIT_FLING, toString(20)), AutoColonizeLevel(CType_Fling), icons::Fling);
+						if(playerEmpire.JumpdriveConst > 0)
+							addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_LEVEL_FTL, resType.level, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonizeLevel(CType_Jumpdrive), icons::FTL);
 					}
 				}
 			}
@@ -1247,9 +1296,29 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 			}
 
 			if(hasUncolonized) {
-				addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM, region.name), AutoColonizeSystem(), COLONIZE_ICON);
-				if(hasUnderleveled)
-					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL, region.name), AutoColonizeSystem(true), Sprite(spritesheet::ResourceClassIcons, 7));
+				if(playerEmpire.HasFlux > 0)
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FLUX, region.name), AutoColonizeSystem(false, CType_Flux), COLONIZE_ICON);
+				else
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM, region.name), AutoColonizeSystem(), COLONIZE_ICON);
+				if(playerEmpire.HyperdriveConst > 0)
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonizeSystem(false, CType_Hyperdrive), icons::Hyperdrive);
+				if(playerEmpire.FlingConst > 0)
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_FLING, toString(20)), AutoColonizeSystem(false, CType_Fling), icons::Fling);
+				if(playerEmpire.JumpdriveConst > 0)
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonizeSystem(false, CType_Jumpdrive), icons::FTL);
+
+				if(hasUnderleveled) {
+					if(playerEmpire.HasFlux > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL_FLUX, region.name), AutoColonizeSystem(true, CType_Flux), Sprite(spritesheet::ResourceClassIcons, 7));
+					else
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL, region.name), AutoColonizeSystem(true), Sprite(spritesheet::ResourceClassIcons, 7));
+					if(playerEmpire.HyperdriveConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL_FTL, region.name, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonizeSystem(true, CType_Hyperdrive), icons::Hyperdrive);
+					if(playerEmpire.FlingConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL_FTL, region.name, locale::TRAIT_FLING, toString(20)), AutoColonizeSystem(true, CType_Fling), icons::Fling);
+					if(playerEmpire.JumpdriveConst > 0)
+						addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_LEVEL_FTL, region.name, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonizeSystem(true, CType_Jumpdrive), icons::FTL);
+				}
 			}
 			if(hasColonizing)
 				addOption(menu, selected, clicked, format(locale::STOP_COLONIZE_SYSTEM, region.name), CancelColonizeSystem());

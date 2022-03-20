@@ -18,6 +18,7 @@ import util.formatting;
 import icons;
 import targeting.ObjectTarget;
 import statuses;
+import biomes;
 from elements.GuiResources import LEVEL_REQ;
 from overlays.ContextMenu import openContextMenu;
 from overlays.PlanetOverlay import PlanetOverlay;
@@ -179,15 +180,35 @@ class PlanetInfoBar : InfoBar {
 			actions.addBasic(pl);
 			actions.addFTL(pl);
 
-			if(pl.population > 1.0 && playerEmpire.ForbidColonization == 0)
-				actions.add(ColonizeAction());
+			if(pl.population > 1.0 && playerEmpire.ForbidColonization == 0) {
+				if(playerEmpire.HasFlux == 0)
+					actions.add(ColonizeAction());
+				else actions.add(ColonizeAction(CType_Flux, icons::Colonize, locale::TT_COLONIZE_FLUX));
+
+				if(playerEmpire.HyperdriveConst > 0)
+					actions.add(ColonizeAction(CType_Hyperdrive, icons::Hyperdrive, format(locale::TT_COLONIZE_FTL, locale::TRAIT_HYPERDRIVE, toString(10))));
+				if(playerEmpire.getFlingBeacon(pl.position) !is null)
+					actions.add(ColonizeAction(CType_Fling, icons::Fling, format(locale::TT_COLONIZE_FTL, locale::TRAIT_FLING, toString(20))));
+				if(playerEmpire.JumpdriveConst > 0) 
+					actions.add(ColonizeAction(CType_Jumpdrive, icons::FTL, format(locale::TT_COLONIZE_FTL, locale::TRAIT_JUMPDRIVE, toString(25))));
+			}
 
 			actions.addAbilities(pl);
 			actions.addEmpireAbilities(playerEmpire, pl);
 		}
 		else {
-			if((pl.owner is null || !pl.owner.valid) && !pl.quarantined && playerEmpire.ForbidColonization == 0)
-				actions.add(ColonizeThisAction());
+			if((pl.owner is null || !pl.owner.valid) && !pl.quarantined && playerEmpire.ForbidColonization == 0) {				
+				if(playerEmpire.HasFlux == 0)
+					actions.add(ColonizeThisAction());
+				else actions.add(ColonizeThisAction(CType_Flux, icons::ColonizeThis, locale::TT_COLONIZE_THIS_FLUX));
+
+				if(playerEmpire.HyperdriveConst > 0)
+					actions.add(ColonizeThisAction(CType_Hyperdrive, icons::Hyperdrive, format(locale::TT_COLONIZE_THIS_FTL, locale::TRAIT_HYPERDRIVE, toString(10))));
+				if(playerEmpire.hasFlingBeacons)
+					actions.add(ColonizeThisAction(CType_Fling, icons::Fling, format(locale::TT_COLONIZE_THIS_FTL, locale::TRAIT_FLING, toString(20))));
+				if(playerEmpire.JumpdriveConst > 0) 
+					actions.add(ColonizeThisAction(CType_Jumpdrive, icons::FTL, format(locale::TT_COLONIZE_THIS_FTL, locale::TRAIT_JUMPDRIVE, toString(25))));
+			}
 		}
 
 		actions.init(pl);
@@ -519,25 +540,30 @@ class ManageAction : BarAction {
 };
 
 class ColonizeAction : BarAction {
-	void init() override {
-		icon = icons::Colonize;
-		tooltip = locale::TT_COLONIZE;
+	ColonizationTypes type;
+
+	ColonizeAction(const ColonizationTypes& _type = CType_Sublight, const Sprite& _icon = icons::Colonize, const string& _tooltip = locale::TT_COLONIZE) {
+		super();
+		type = _type;
+		icon = _icon;
+		tooltip = _tooltip;
 	}
 
 	void call() override {
-		targetObject(ColonizeTarget(obj));
+		targetObject(ColonizeTarget(obj, type));
 	}
 };
 
 class ColonizeTarget : ObjectTargeting {
 	Object@ obj;
+	ColonizationTypes type;
 
-	ColonizeTarget(Object@ obj) {
+	ColonizeTarget(Object@ obj, const ColonizationTypes& _type = CType_Sublight) {
 		@this.obj = obj;
 	}
 
 	void call(Object@ target) {
-		obj.colonize(target);
+		obj.colonize(target, type);
 	}
 
 	string message(Object@ obj, bool valid) {
@@ -554,13 +580,17 @@ class ColonizeTarget : ObjectTargeting {
 };
 
 class ColonizeThisAction : BarAction {
-	void init() override {
-		icon = icons::ColonizeThis;
-		tooltip = locale::TT_COLONIZE_THIS;
+	ColonizationTypes type;
+
+	ColonizeThisAction(const ColonizationTypes& _type = CType_Sublight, const Sprite& _icon = icons::ColonizeThis, const string& _tooltip = locale::TT_COLONIZE_THIS) {
+		super();
+		type = _type;
+		icon = _icon;
+		tooltip = _tooltip;
 	}
 
 	void call() override {
-		playerEmpire.autoColonize(obj);
+		playerEmpire.autoColonize(obj, type);
 	}
 };
 

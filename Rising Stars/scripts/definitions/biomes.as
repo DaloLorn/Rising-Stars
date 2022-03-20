@@ -2,6 +2,15 @@
 import resources;
 from saving import SaveIdentifier;
 
+enum ColonizationTypes {
+	CType_Sublight,
+	CType_Hyperdrive,
+	CType_Jumpdrive,
+	CType_Fling,
+	CType_Flux,
+	CType_BestFTL,
+}
+
 final class Biome {
 	uint8 id = 0;
 	string ident;
@@ -31,11 +40,13 @@ final class ColonizationOrder : Serializable, Savable {
 	double targetPopulation;
 	double inTransit;
 	double totalSent;
+	int type;
 
 	ColonizationOrder() {
 		targetPopulation = 1.0;
 		inTransit = 0.0;
 		totalSent = 0.0;
+		type = CType_Sublight;
 	}
 
 	void save(SaveFile& msg) {
@@ -43,6 +54,7 @@ final class ColonizationOrder : Serializable, Savable {
 		msg << targetPopulation;
 		msg << inTransit;
 		msg << totalSent;
+		msg << type;
 	}
 
 	void load(SaveFile& msg) {
@@ -51,6 +63,7 @@ final class ColonizationOrder : Serializable, Savable {
 		msg >> inTransit;
 		if(msg >= SV_0148)
 			msg >> totalSent;
+		msg >> type;
 	}
 
 	void write(Message& msg) {

@@ -50,7 +50,7 @@ restricted remote:
 	async void cancelAutoImportTo(Object& into, uint resId);
 	async void cancelAutoImportClassTo(Object& into, uint clsId);
 	async void cancelAutoImportLevelTo(Object& into, uint level);
-	async void autoColonize(Object@ pl);
+	async void autoColonize(Object@ pl, int type = 0);
 	async void cancelColonization(Object@ pl);
 	async void setDefending(Object@ obj, bool value);
 	async void deployDefense(Object& at);

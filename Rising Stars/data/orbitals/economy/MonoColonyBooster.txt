@@ -1,0 +1,17 @@
+Module: MonoColonyBooster
+	Name: #ORB_MONO_COLONY
+	Description: #ORB_MONO_COLONY_DESC
+	Blurb: #ORB_MONO_COLONY_BLURB
+	Icon: GuiOrbitalIcons::4
+	Distant Icon: OrbitalIcons::4
+	Health: 5000
+	Armor: 3000
+	Build Cost: 100
+	Labor Cost: 10
+	Maintenance: 10
+	Size: 5
+	RequireTrait(Mechanoid)
+	RequireOnOrbital(EconomyCore)
+	FTLMaintenance(0.05)
+	GlobalTradeNode()
+	SetSystemFlag(MonoColonyDiscount)

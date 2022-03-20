@@ -494,3 +494,14 @@ ORB_ANCIENT_REPLICATOR_DESC: <<
 
 	If the planet the replicator is in orbit of has free support capacity, it will automatically construct defense satellites for it over time. Additionally, the planet receives a +100% boost to fleet effectiveness while the replicator is in orbit.
 >>
+ORB_MONO_COLONY: Transit Hub
+ORB_MONO_COLONY_BLURB: Reduces population transfer costs to 25 FTL between systems containing Transit Hubs. Global trade node.
+ORB_MONO_COLONY_DESC: <<
+	A suite of sensors and hyperfield manipulators used to streamline the transfer of goods and personnel between star systems. Organic life cannot survive unprotected hyperspace transit, though, so it can only be fully utilized by synthetic beings.
+
+	Sets Mechanoid population transfer costs to 25 FTL/unit between any two systems containing Transit Hubs.
+
+	Also allows unrestricted trade between any two systems containing Transit Hubs, Commerce Hubs, Gates, or other global trade nodes.
+
+	Costs 0.05 FTL to maintain.
+>>
