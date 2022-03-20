@@ -560,12 +560,12 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 
 		// BEGIN NON-MIT CODE - DOF (Mitigation)
 		double Mitigation = ship.mitigation;
-		double ShieldPenetration = evt.pierce / 4; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
+		double ShieldPenetration = evt.pierce / 4.0; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
 		double BlockFactor = 1;
 
 		// Process shield bleedthrough damage flags.
 		if(evt.flags & DF_QuadShieldPenetration != 0)
-			ShieldPenetration *= 4;
+			ShieldPenetration *= 4.0;
 		if(evt.flags & DF_HalfShieldDamage != 0)
 			BlockFactor = 0.5;
 
