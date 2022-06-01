@@ -27,8 +27,8 @@ Subsystem: TroopPods
 	TroopLabor := TroopBaseLabor
 	TroopStorage := 1
 
-	RetrofitCost := TroopCost
-	RetrofitLabor := TroopLabor
+	RetrofitCost := TroopCost * TroopStorage
+	RetrofitLabor := TroopLabor * TroopStorage
 
 	Modifier: BuildCostFactor(factor)
 		Hex.BuildCost := Hex.BuildCost * factor
