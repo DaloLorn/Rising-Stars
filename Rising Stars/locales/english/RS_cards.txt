@@ -15,3 +15,8 @@ ZEITGEIST_ART_DESC: <<
 	[img=QuickbarIcons::3;32]If the vote fails, the most opposing empire will receive an instant bonus of [b]800 research[/b].[/img]
 	[i]Only one zeitgeist effect can be active at the same time. Passing a new zeitgeist will remove any previously active ones.[/i]
 >>
+CARD_INNOVATION_DESC: <<
+	Create a big push for developing new ideas by heavily encouraging and subsidizing otherwise economically unviable research prospects.
+
+	[i]When purchased, immediately gain a random unlock on the research grid. This can enable you to bypass hurdles and start researching in a new region of the grid that would otherwise cost a lot of research to reach.[/i]
+>>

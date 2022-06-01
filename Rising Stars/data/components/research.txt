@@ -35,6 +35,7 @@ server:
 
 	void writeResearch(Message& msg, bool initial = false);
 	async void revealSecretProject(bool pickedOnly = false);
+	async void grantRandomUnlock();
 
 shadow:
 	void readResearch(Message& msg);

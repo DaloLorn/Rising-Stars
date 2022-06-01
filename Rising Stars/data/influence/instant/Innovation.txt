@@ -12,6 +12,9 @@ Card: Innovation
 	Base Purchase Cost: 8
 	Placement Purchase Cost: 2
 
-	OnOwner(RevealSecretProject())
+	OnOwner(CE_biome_hooks::GiveRandomUnlock())
 
-	AI: BuyWeight(1.0)
+	AI: BuyWeight(2.0)
+	AI: PlayWeightUnconditionally(20.0)
+	Max Uses: 2
+	Can Overquality: False

@@ -112,3 +112,6 @@ TRAIT_LINKED_DESC: <<|
 	[vspace=6/][img=RSComputer;22][b]Control Computer[/b] subsystem is available from the start.[dlc=Heralds] Also starts with the [b]AI Core[/b] subsystem.[/img]
 	[vspace=6/][img=AntimatterReactor;22;#b8b800][b]Emergency Supplies[/b] subsystem is available from the start.[/img]
 >>
+
+TRAIT_TECHNOCRACY: Technocracy
+TRAIT_TECHNOCRACY_DESC: [vspace=6/][b][color=#0087c7]Extra Starting Cards:[/color][/b] [offset=140]2x Innovation.[/offset]

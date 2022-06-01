@@ -35,7 +35,8 @@ Trait: StarChildren
 	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
 
 	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
-	
+	ReplaceTechnologyNodes(ArtificialMoon, Thrust2)
+	ReplaceTechnologyNodes(BldSpire, Thrust2)
 	ReplaceTechnologyNodes(FactoryLabor, MothershipLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, MothershipLabor2)
 	ReplaceTechnologyNodes(Construction, HabitatUpgrade)

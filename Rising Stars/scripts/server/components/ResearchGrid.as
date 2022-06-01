@@ -411,6 +411,46 @@ class ResearchGrid : Component_ResearchGrid, Savable {
 		}
 	}
 
+	void grantRandomUnlock(Empire& emp) {
+		WriteLock lock(mtx);
+
+		TechnologyNode@ pick;
+		double count = 0;
+
+		for(uint i = 0, cnt = grid.nodes.length; i < cnt; ++i) {
+			auto@ node = grid.nodes[i];
+			// ignore nodes next to unlocked ones
+			if(node.available)
+				continue;
+			if(node.unlockable)
+				continue;
+			// also ignore anything being unlocked
+			if(node.unlocked)
+				continue;
+			if(node.bought)
+				continue;
+			if(node.queued)
+				continue;
+			// filter out non tech unlock nodes
+			if(node.type is null)
+				continue;
+			if(node.type.cls != Tech_Unlock)
+				continue;
+
+			count += 1.0;
+			if(randomd() < 1.0 / count)
+				@pick = node;
+		}
+
+		if(pick !is null) {
+			pick.unlock(emp);
+			grid.markUnlocked(pick.position);
+			delta = true;
+			unlockDelta = true;
+			gridDelta = true;
+		}
+	}
+
 	//Networking
 	void writeResearch(Message& msg, bool initial) {
 		ReadLock lock(mtx);
