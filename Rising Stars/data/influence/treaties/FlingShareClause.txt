@@ -1,0 +1,11 @@
+Clause: FlingShareClause
+	Name: #CLAUSE_FLINGSHARE
+	Description: #CLAUSE_FLINGSHARE_DESC
+
+	Icon: OrbitalIcons::2
+
+	Free Clause: True
+	Default Clause: True
+	Team Clause: True
+
+	ABEM_diplomacy::ShareFlingBeacons()

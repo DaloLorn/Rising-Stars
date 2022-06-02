@@ -10,10 +10,8 @@ restricted local:
 	Object@ getClosestFlingBeacon(Object& obj);
 	Object@[] getStargates();
 	Object@ getStargate(vec3d position);
-	Object@ getStargate(vec3d position, bool recursive);
 	Orbital@[] getOrbitals();
 	bool hasStargates();
-	bool hasStargates(bool recursive);
 	Artifact@[] getArtifacts();
 
 	bool isDefending(Object@ obj);
@@ -64,9 +62,13 @@ server:
 	
 	async void registerFlingBeacon(Object@ obj);
 	async void unregisterFlingBeacon(Object@ obj);
+	async void registerFriendlyFlingBeacon(Object@ obj);
+	async void unregisterFriendlyFlingBeacon(Object@ obj);
 	
 	async void registerStargate(Object@ obj);
 	async void unregisterStargate(Object@ obj);
+	async void registerFriendlyStargate(Object@ obj);
+	async void unregisterFriendlyStargate(Object@ obj);
 	bool isStargate(Object@ obj);
 
 	void registerOrbital(Orbital@ obj);

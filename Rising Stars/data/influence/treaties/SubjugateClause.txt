@@ -12,6 +12,7 @@ Clause: SubjugateClause
 	FreeTrade()
 	ForcePeace()
 	ABEM_diplomacy::ShareGates()
+	ABEM_diplomacy::ShareFlingBeacons()
 
 	NotNormallyVisible()
 

@@ -4,6 +4,12 @@ CLAUSE_GATESHARE_DESC: <<
 
 	While part of this treaty, your ships can pass through other signatories' stargates as if they were your own.
 >>
+CLAUSE_FLINGSHARE: Fling Beacon Access
+CLAUSE_FLINGSHARE_DESC: <<
+	Empires that have signed this treaty allow mutual access to their fling beacons and synchronize their fling jump protocols, essentially forming a larger fling array.
+
+	While part of this treaty, your ships can use other signatories' fling beacons as if they were your own.
+>>
 CARD_INFILTRATE_DESC: <<|
 	Send a highly trained operative to infiltrate the command structure of an enemy fleet, getting ready to subtly sabotage it in combat, and spreading dissent amongst key officers in the fleet.
 

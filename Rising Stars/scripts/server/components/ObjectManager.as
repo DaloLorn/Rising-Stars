@@ -7,6 +7,7 @@ import cargo;
 import systems;
 import system_pathing;
 import biomes;
+import oddity_navigation;
 
 tidy class ColonizationEvent : Savable, Serializable {
 	Object@ from;
@@ -547,6 +548,12 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	Mutex gateMutex;
 	Object@[] gates;
 
+	Mutex friendlyFlingMutex;
+	Object@[] friendlyFlingBeacons;
+
+	Mutex friendlyGateMutex;
+	Object@[] friendlyGates;
+
 	Mutex artifMutex;
 	Artifact@[] artifacts;
 
@@ -795,17 +802,17 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	}
 
 	bool isFlingBeacon(Object@ obj) {
-		Lock lock(flingMutex);
-		for(uint i = 0, cnt = flingBeacons.length; i < cnt; ++i)
-			if(flingBeacons[i] is obj)
+		Lock lock(friendlyFlingMutex);
+		for(uint i = 0, cnt = friendlyFlingBeacons.length; i < cnt; ++i)
+			if(friendlyFlingBeacons[i] is obj)
 				return true;
 		return false;
 	}
 
 	bool isStargate(Object@ obj) {
-		Lock lock(gateMutex);
-		for(uint i = 0, cnt = gates.length; i < cnt; ++i)
-			if(gates[i] is obj)
+		Lock lock(friendlyGateMutex);
+		for(uint i = 0, cnt = friendlyGates.length; i < cnt; ++i)
+			if(friendlyGates[i] is obj)
 				return true;
 		return false;
 	}
@@ -824,13 +831,13 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	}
 	
 	bool get_hasFlingBeacons() {
-		return flingBeacons.length != 0;
+		return friendlyFlingBeacons.length != 0;
 	}
 
 	Object@ getFlingBeacon(vec3d position) {
-		Lock lock(flingMutex);
-		for(uint i = 0, cnt = flingBeacons.length; i < cnt; ++i) {
-			Object@ beacon = flingBeacons[i];
+		Lock lock(friendlyFlingMutex);
+		for(uint i = 0, cnt = friendlyFlingBeacons.length; i < cnt; ++i) {
+			Object@ beacon = friendlyFlingBeacons[i];
 			if(beacon.position.distanceToSQ(position) < FLING_BEACON_RANGE_SQ)
 				return beacon;
 		}
@@ -838,11 +845,11 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	}
 
 	Object@ getClosestFlingBeacon(vec3d position) {
-		Lock lock(flingMutex);
+		Lock lock(friendlyFlingMutex);
 		Object@ nearest;
 		double dist = 0;
-		for(uint i = 0, cnt = flingBeacons.length; i < cnt; ++i) {
-			Object@ beacon = flingBeacons[i];
+		for(uint i = 0, cnt = friendlyFlingBeacons.length; i < cnt; ++i) {
+			Object@ beacon = friendlyFlingBeacons[i];
 			double d = beacon.position.distanceToSQ(position);
 			if(nearest is null || d < dist) {
 				@nearest = beacon;
@@ -853,11 +860,11 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	}
 
 	Object@ getClosestFlingBeacon(Object& obj) {
-		Lock lock(flingMutex);
+		Lock lock(friendlyFlingMutex);
 		Object@ nearest;
 		double dist = 0;
-		for(uint i = 0, cnt = flingBeacons.length; i < cnt; ++i) {
-			Object@ beacon = flingBeacons[i];
+		for(uint i = 0, cnt = friendlyFlingBeacons.length; i < cnt; ++i) {
+			Object@ beacon = friendlyFlingBeacons[i];
 			if(beacon is obj)
 				continue;
 			double d = beacon.position.distanceToSQ(obj.position);
@@ -870,39 +877,17 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 	}
 
 	Object@ getStargate(Empire& emp, vec3d position) {
-		return getStargate(emp, position, true);
-	}
-
-	Object@ getStargate(Empire& emp, vec3d position, bool recursive) {
+		Lock lock(friendlyGateMutex);
 		Object@ best;
 		double bestDist = INFINITY;
-		{
-			Lock lock(gateMutex);
-			for(uint i = 0, cnt = gates.length; i < cnt; ++i) {
-				Object@ gate = gates[i];
-				double d = gate.position.distanceToSQ(position);
-				if(d < bestDist) {
-					bestDist = d;
-					@best = gate;
-				}
+		for(uint i = 0, cnt = friendlyGates.length; i < cnt; ++i) {
+			Object@ gate = friendlyGates[i];
+			double d = gate.position.distanceToSQ(position);
+			if(d < bestDist) {
+				bestDist = d;
+				@best = gate;
 			}
 		}
-		if(recursive) {
-			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
-				Empire@ other = getEmpire(i);
-				if(other is emp || !other.major)
-					continue;
-				if((other.GateShareMask & emp.mask == 0) || (emp.GateShareMask & other.mask == 0) || !other.hasStargates(false))
-					continue;
-				// This is a terribly, TERRIBLY dangerous idea. Kids, do not try this at home. Or anywhere.
-				Object@ allyGate = other.getStargate(position, false);
-				double d = allyGate.position.distanceToSQ(position);
-				if(d < bestDist) {
-					bestDist = d;
-					@best = allyGate;
-				}
-			}
-		}		
 		return best;
 	}
 
@@ -929,9 +914,19 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			@flingBeacons[i] = file.readObject();
 
 		file >> cnt;
+		friendlyFlingBeacons.length = cnt;
+		for(uint i = 0; i < cnt; ++i)
+			@friendlyFlingBeacons[i] = file.readObject();
+
+		file >> cnt;
 		gates.length = cnt;
 		for(uint i = 0; i < cnt; ++i)
 			@gates[i] = file.readObject();
+			
+		file >> cnt;
+		friendlyGates.length = cnt;
+		for(uint i = 0; i < cnt; ++i)
+			@friendlyGates[i] = file.readObject();
 
 		if(file >= SV_0029) {
 			file >> cnt;
@@ -1021,10 +1016,20 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		for(uint i = 0; i < cnt; ++i)
 			file << flingBeacons[i];
 
+		cnt = friendlyFlingBeacons.length;
+		file << cnt;
+		for(uint i = 0; i < cnt; ++i)
+			file << friendlyFlingBeacons[i];
+
 		cnt = gates.length;
 		file << cnt;
 		for(uint i = 0; i < cnt; ++i)
 			file << gates[i];
+
+		cnt = friendlyGates.length;
+		file << cnt;
+		for(uint i = 0; i < cnt; ++i)
+			file << friendlyGates[i];
 
 		cnt = artifacts.length;
 		file << cnt;
@@ -1110,15 +1115,41 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		objDelta = true;
 	}
 
-	void registerFlingBeacon(Object@ obj) {
+	void registerFlingBeacon(Empire& emp, Object@ obj) {
 		Lock lock(flingMutex);
 		flingBeacons.insertLast(obj);
 		objDelta = true;
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			Empire@ empire = getEmpire(i);
+			if (empire.valid && empire.major) {
+				if (emp.FlingShareMask & empire.mask != 0) {
+					empire.registerFriendlyFlingBeacon(obj);
+				}
+			}
+		}
 	}
 
 	void unregisterFlingBeacon(Object@ obj) {
 		Lock lock(flingMutex);
 		flingBeacons.remove(obj);
+		objDelta = true;
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			Empire@ empire = getEmpire(i);
+			if (empire.valid && empire.major) {
+				empire.unregisterFriendlyFlingBeacon(obj);
+			}
+		}
+	}
+
+	void registerFriendlyFlingBeacon(Object@ obj) {
+		Lock lock(friendlyFlingMutex);
+		friendlyFlingBeacons.insertLast(obj);
+		objDelta = true;
+	}
+
+	void unregisterFriendlyFlingBeacon(Object@ obj) {
+		Lock lock(friendlyFlingMutex);
+		friendlyFlingBeacons.remove(obj);
 		objDelta = true;
 	}
 
@@ -1126,13 +1157,27 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		emp.PathId += 1;
 		Lock lock(gateMutex);
 		gates.insertLast(obj);
-		objDelta = true;
+		objDelta = true;		
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			Empire@ empire = getEmpire(i);
+			if (empire.valid && empire.major) {
+				if (emp.GateShareMask & empire.mask != 0) {
+					empire.registerFriendlyStargate(obj);
+				}
+			}
+		}
 	}
 
 	void unregisterStargate(Object@ obj) {
 		Lock lock(gateMutex);
 		gates.remove(obj);
 		objDelta = true;
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			Empire@ empire = getEmpire(i);
+			if (empire.valid && empire.major) {
+				empire.unregisterFriendlyStargate(obj);
+			}
+		}
 	}
 
 	void registerArtifact(Artifact@ obj) {
@@ -1147,24 +1192,8 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		objDelta = true;
 	}
 
-	bool hasStargates(Empire& emp) {
-		return hasStargates(emp, true);
-	}
-
-	bool hasStargates(Empire& emp, bool recursive) {
-		bool result = gates.length != 0;
-		if(result)
-			return true;
-		if(recursive) {
-			for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
-				Empire@ other = getEmpire(i);
-				if(other is emp)
-					continue;
-				if((other.GateShareMask & emp.mask != 0) && (emp.GateShareMask & other.mask != 0) && other.hasStargates(false))
-					return true;
-			}
-		}
-		return result;
+	bool hasStargates() {
+		return friendlyGates.length != 0;
 	}
 
 	double get_globalDefenseRate() {
@@ -2044,19 +2073,19 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			}
 
 			{
-				Lock lock(flingMutex);
-				cnt = flingBeacons.length;
+				Lock lock(friendlyFlingMutex);
+				cnt = friendlyFlingBeacons.length;
 				msg << cnt;
 				for(uint i = 0; i < cnt; ++i)
-					msg << flingBeacons[i];
+					msg << friendlyFlingBeacons[i];
 			}
 
 			{
-				Lock lock(gateMutex);
-				cnt = gates.length;
+				Lock lock(friendlyGateMutex);
+				cnt = friendlyGates.length;
 				msg << cnt;
 				for(uint i = 0; i < cnt; ++i)
-					msg << gates[i];
+					msg << friendlyGates[i];
 			}
 
 			{
