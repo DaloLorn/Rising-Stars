@@ -15,6 +15,7 @@ Module: MilitaryCore
 	Distant Icon: OrbitalIcons::14
 	RecordBonusDPS(92)
 	IfBorderSystem(ModEmpireAttribute(BorderOutposts, Add, 1))
+	ModEmpireAttribute(ActiveOutposts, Add, 1)
 	IfAttributeGTE(OutpostFreeRaid, 1, AllowFreeRaiding())
 	Repeat(2, AddTurret(Missile, Range=1800, Damage=30, Reload=2, Speed=240, Tracking=3))
 	Repeat(3, AddTurret(Laser, Range=900, DPS=10, Duration=2, Cooldown=0, Tracking=0.4))

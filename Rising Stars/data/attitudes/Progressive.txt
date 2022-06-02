@@ -40,4 +40,4 @@ Attitude: Progressive
 		Icon: ActionBarIcons::2
 		Threshold: 18
 
-		EnableModifier(FlagshipHull::IncreaseHexLimit(14))
+		ModEmpireAttribute(EmpireMassFactor, Multiply, 0.85)

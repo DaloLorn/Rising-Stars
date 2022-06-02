@@ -4,7 +4,7 @@ Attitude: Xenophobic
 	Color: #5145ed
 	Sort: 65
 
-	ProgressFromAttribute(BorderOutposts, Retroactive = True, Monotonic = False)
+	ProgressFromAttribute(ActiveOutposts, Retroactive = True, Monotonic = False)
 	Conflict(Tolerant)
 
 	Level:

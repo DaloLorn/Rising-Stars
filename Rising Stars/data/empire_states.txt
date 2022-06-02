@@ -178,4 +178,5 @@ visible:
 	attribute double HyperdriveConst = 0
 	attribute double FlingConst = 0
 	attribute double JumpdriveConst = 0
+	attribute double ActiveOutposts = 0;
 }
