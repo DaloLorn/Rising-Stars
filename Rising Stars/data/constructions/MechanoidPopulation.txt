@@ -4,7 +4,7 @@ Construction: MechanoidPopulation
 
 	Category: Infrastructure
 
-	Labor Cost: 5
+	Labor Cost: 7
 	Build Cost: 150
 	Always Borrowable: True
 
@@ -18,11 +18,11 @@ Construction: MechanoidPopulation
 	OnCancel(ModAttribute(MechPopulationQueued, Add, -1))
 	ModAttribute(MechPopulationQueued, Add, -1)
 
-	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 10)
-	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 2)
-	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 2.5)
+	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.25, Multiply = 10)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.25, Multiply = 2)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.1, Multiply = 2.5)
 	AddBuildCostStatusCount(ZeroGAssembly, -150)
-	AddLaborCostStatusCount(ZeroGAssembly, -5)
+	AddLaborCostStatusCount(ZeroGAssembly, -7)
 
 Construction: MechanoidPopulation10
 	Name: #MECH_BUILD_POPULATION:10
@@ -30,7 +30,7 @@ Construction: MechanoidPopulation10
 
 	Category: Infrastructure
 
-	Labor Cost: 50
+	Labor Cost: 70
 	Build Cost: 1500
 	Always Borrowable: True
 
@@ -44,8 +44,8 @@ Construction: MechanoidPopulation10
 	OnCancel(ModAttribute(MechPopulationQueued, Add, -10))
 	ModAttribute(MechPopulationQueued, Add, -10)
 
-	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 100)
-	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 20)
-	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 25)
+	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.25, Multiply = 100)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.25, Multiply = 20)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.1, Multiply = 25)
 	AddBuildCostStatusCount(ZeroGAssembly, -1500)
-	AddLaborCostStatusCount(ZeroGAssembly, -50)
+	AddLaborCostStatusCount(ZeroGAssembly, -70)
