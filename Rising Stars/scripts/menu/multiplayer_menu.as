@@ -111,6 +111,9 @@ class Multiplayer : BaseGuiElement {
 	bool hide = false;
 	bool connecting = false;
 	double nextRefresh = 0.0;
+	
+	double nextConnectingAnimation = 0.0;
+	int connectingAnimation = 0;
 
 	Multiplayer() {
 		super(null, recti());
@@ -327,6 +330,15 @@ class Multiplayer : BaseGuiElement {
 			if(awaitingGalaxy)
 				showConnecting();
 		}
+
+		nextConnectingAnimation -= time;
+		if (nextConnectingAnimation <= 0.0) {
+			nextConnectingAnimation = 0.2;
+			connectingAnimation += 1;
+			if (connectingAnimation > 3) {
+				connectingAnimation = 0;
+			}
+		}
 		
 		if(connectingText.visible) {
 			if(awaitingGalaxy) {
@@ -350,6 +362,14 @@ class Multiplayer : BaseGuiElement {
 			showConnecting();
 			updateAbsolutePosition();
 		}
+		if (connectingAnimation == 0)
+			connectingText.text += " |";
+		if (connectingAnimation == 1)
+			connectingText.text += " /";
+		if (connectingAnimation == 2)
+			connectingText.text += " -";
+		if (connectingAnimation == 3)
+			connectingText.text += " \\";
 		if(awaitingGalaxy) {
 			float pct = galaxySendProgress;
 			transferProgress.visible = true;
