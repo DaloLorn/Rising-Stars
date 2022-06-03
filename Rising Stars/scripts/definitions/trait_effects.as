@@ -587,7 +587,7 @@ tidy final class RepeatLargestFlagshipBuiltSize : TraitEffect {
 
 		uint ind = randomi(0, emp.fleetCount-1);
 		Ship@ fleet = cast<Ship>(emp.fleets[ind]);
-		if(fleet !is null && !fleet.isStation) {
+		if(fleet !is null && !fleet.isStation && !fleet.isFree) {
 			const Design@ dsg = fleet.blueprint.design;
 			if(dsg !is null && dsg.owner is emp) {
 				double flSize = floor(dsg.size / repeat_per.decimal) * repeat_per.decimal;
