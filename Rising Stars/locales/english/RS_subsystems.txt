@@ -36,6 +36,7 @@ ERROR_CARRIER_SUPPORT: Carrier Architecture requires that at least $1% of the sh
 ERROR_DESTROYER_WEAPONS: Destroyer Architecture requires that at least $1% of the ship's interior is dedicated to weapons.
 ERROR_CANNOT_HAVE_ARCHITECTURE: Bombship Hull cannot have any other Hulls or Architectures applied.
 ERROR_SPINAL_MOUNT_SIZE: $1 has a minimum size of $2, and must comprise at least $3 of the ship's internal space.
+ERROR_BLUEPRINT: Ships designed using $1 are theoretical; your empire cannot build them.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -550,6 +551,43 @@ S_CARRIER_HULL_DESC: <<
 	[img=MenuIcons::3;22][i][color=#aaa]Carrier Architecture requires that 20% of the ship's interior is dedicated to Support Command and Fleet Computers, before accounting for the reduced hex limit.[/color][/i][/img]
 	[img=MenuIcons::3;22][i][color=#aaa]Carrier Architecture can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
+
+S_BLUEPRINT_DESC: <<
+	[i]This subsystem is strictly theoretical. Designs containing theoretical subsystems can be saved/loaded, but are beyond the empire's ability to construct at this time. You will need to unlock their real counterparts and replace the blueprints with the real subsystem later on.[/i]
+>>
+S_CARRIER_BLUEPRINT: Carrier Blueprints
+S_CARRIER_BLUEPRINT_DESC: <<
+	[bbloc=#S_BLUEPRINT_DESC/]
+
+	[i]This is a blueprint for [c=#f00][bbloc=#S_CARRIER_HULL].[/c][/i]
+
+	[bbloc=#S_CARRIER_HULL_DESC/]
+>>
+S_DESTROYER_BLUEPRINT: Destroyer Blueprints
+S_DESTROYER_BLUEPRINT_DESC: <<
+	[bbloc=#S_BLUEPRINT_DESC/]
+
+	[i]This is a blueprint for [c=#f00][bbloc=#S_DESTROYER_HULL].[/c][/i]
+
+	[bbloc=#S_DESTROYER_HULL_DESC/]
+>>
+S_COLOSSUS_BLUEPRINT: Colossus Blueprints
+S_COLOSSUS_BLUEPRINT_DESC: <<
+	[bbloc=#S_BLUEPRINT_DESC/]
+
+	[i]This is a blueprint for [c=#f00][bbloc=#S_COLOSSUS_HULL].[/c][/i]
+
+	[bbloc=#S_COLOSSUS_HULL_DESC/]
+>>
+S_TITAN_BLUEPRINT: Titan Blueprints
+S_TITAN_BLUEPRINT_DESC: <<
+	[bbloc=#S_BLUEPRINT_DESC/]
+
+	[i]This is a blueprint for [c=#f00][bbloc=#S_TITAN_HULL].[/c][/i]
+
+	[bbloc=#S_TITAN_HULL_DESC/]
+>>
+
 S_RAMJET_DESC: <<
 	Collects stray particles from the vacuum while moving by means of an enormous magnetic field leading into a scoop at the front of the ship, then uses those particles to generate thrust.
 

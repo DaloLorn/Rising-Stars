@@ -26,3 +26,39 @@ Subsystem: TitanHull
 	Module: Default
 		Sprite: DesignationIcons::16
 		DrawMode: 3
+
+Subsystem: TitanBlueprint
+	Name: #S_TITAN_BLUEPRINT
+	Description: #S_TITAN_BLUEPRINT_DESC
+
+	Tags: Applied:Architecture, Category:Hulls, NoCore, Hull
+	Tags: Blueprint, DefaultUnlock
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #cc6a3a
+
+	AddShipModifier: FlagshipHull::HexLimitFactor(4.0)
+	AddShipModifier: FlagshipHull::HexSizeFactor(4/3)
+	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(2.2))
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+
+	AddShipModifier: MassMult(1.25)
+	AddShipModifier: HyperSpeedMult(0.75)
+	AddShipModifier: RepairMult(0.75)
+	AddShipModifier: ShieldRegenMult(0.75)
+	AddShipModifier: BuildCostFactor(0.95)
+	AddShipModifier: LaborCostFactor(0.95)
+	AddShipModifier: MaintCostFactor(0.95)
+
+	Assert: ShipSize >= 1000
+		Message: #ERROR_MIN_SIZE:$1:1000
+	
+	EnergyBuildCost := 5000000
+
+	Assert: Sum.Control <= 0
+		Message: #ERROR_BLUEPRINT:$1
+		Fatal: False
+
+	Module: Default
+		Sprite: DesignationIcons::16
+		DrawMode: 3

@@ -32,3 +32,44 @@ Subsystem: CarrierHull
 	Module: Default
 		Sprite: HullSubsystems::0
 		DrawMode: 3
+
+Subsystem: CarrierBlueprint
+	Name: #S_CARRIER_BLUEPRINT
+	Description: #S_CARRIER_BLUEPRINT_DESC
+
+	Tags: Applied:Carriers, Category:Hulls, NoCore, Hull
+	Tags: Blueprint, DefaultUnlock
+	Tags: HeraldsDLC
+	Hull: Flagship
+	EvaluationOrder: -200
+	BaseColor: #d6d300
+
+	AddShipModifier: IncreaseHexLimit(-26)
+
+	AddShipModifier: SupplyCapacityMult(5.0)
+	AddShipModifier: SupportCapacityMult(2.0)
+	AddShipModifier: HpMult(1.5)
+	AddShipModifier: ShieldCapacityMult(1.5)
+	AddShipModifier: RepairMult(2.0)
+	AddShipModifier: ShieldRegenMult(2.0)
+	AddShipModifier: TechMultFactor(1.25)
+	AddShipModifier: DamageMult(0.6)
+	AddShipModifier: BuildCostFactor(1.3)
+	AddShipModifier: LaborCostFactor(1.3)
+	AddShipModifier: MaintCostFactor(1.3)
+
+	Assert: ShipSize >= 300
+		Message: #ERROR_MIN_SIZE:$1:300
+
+	Assert: Sum.SupportCapSize / ShipSize >= 0.2
+		Message: #ERROR_CARRIER_SUPPORT:20
+	
+	EnergyBuildCost := 5000000
+
+	Assert: Sum.Control <= 0
+		Message: #ERROR_BLUEPRINT:$1
+		Fatal: False
+
+	Module: Default
+		Sprite: HullSubsystems::0
+		DrawMode: 3
