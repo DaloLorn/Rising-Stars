@@ -559,7 +559,7 @@ S_CARRIER_BLUEPRINT: Carrier Blueprints
 S_CARRIER_BLUEPRINT_DESC: <<
 	[bbloc=#S_BLUEPRINT_DESC/]
 
-	[i]This is a blueprint for [c=#f00][bbloc=#S_CARRIER_HULL/].[/c][/i]
+	[i]This is a blueprint for [color=#f00][bbloc=#S_CARRIER_HULL/].[/color][/i]
 
 	[bbloc=#S_CARRIER_HULL_DESC/]
 >>
@@ -567,7 +567,7 @@ S_DESTROYER_BLUEPRINT: Destroyer Blueprints
 S_DESTROYER_BLUEPRINT_DESC: <<
 	[bbloc=#S_BLUEPRINT_DESC/]
 
-	[i]This is a blueprint for [c=#f00][bbloc=#S_DESTROYER_HULL/].[/c][/i]
+	[i]This is a blueprint for [color=#f00][bbloc=#S_DESTROYER_HULL/].[/color][/i]
 
 	[bbloc=#S_DESTROYER_HULL_DESC/]
 >>
@@ -575,7 +575,7 @@ S_COLOSSUS_BLUEPRINT: Colossus Blueprints
 S_COLOSSUS_BLUEPRINT_DESC: <<
 	[bbloc=#S_BLUEPRINT_DESC/]
 
-	[i]This is a blueprint for [c=#f00][bbloc=#S_COLOSSUS_HULL/].[/c][/i]
+	[i]This is a blueprint for [color=#f00][bbloc=#S_COLOSSUS_HULL/].[/color][/i]
 
 	[bbloc=#S_COLOSSUS_HULL_DESC/]
 >>
@@ -583,7 +583,7 @@ S_TITAN_BLUEPRINT: Titan Blueprints
 S_TITAN_BLUEPRINT_DESC: <<
 	[bbloc=#S_BLUEPRINT_DESC/]
 
-	[i]This is a blueprint for [c=#f00][bbloc=#S_TITAN_HULL/].[/c][/i]
+	[i]This is a blueprint for [color=#f00][bbloc=#S_TITAN_HULL/].[/color][/i]
 
 	[bbloc=#S_TITAN_HULL_DESC/]
 >>
