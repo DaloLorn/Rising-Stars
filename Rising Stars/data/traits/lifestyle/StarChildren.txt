@@ -36,7 +36,7 @@ Trait: StarChildren
 
 	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
 	ReplaceTechnologyNodes(ArtificialMoon, Thrust2)
-	ReplaceTechnologyNodes(BldSpire, Thrust2)
+	ReplaceTechnologyNodes(Spire, Thrust2)
 	ReplaceTechnologyNodes(FactoryLabor, MothershipLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, MothershipLabor2)
 	ReplaceTechnologyNodes(Construction, HabitatUpgrade)

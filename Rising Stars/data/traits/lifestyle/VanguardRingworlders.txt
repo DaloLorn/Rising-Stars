@@ -25,7 +25,7 @@ Trait: VanguardRingworlders
 	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
 
 	ReplaceTechnologyNodes(ArtificialMoon, Thrust2)
-	ReplaceTechnologyNodes(BldSpire, Thrust2)
+	ReplaceTechnologyNodes(Spire, Thrust2)
 
 	UnlockTag(RingworldUnlock)
 	UnlockSubsystem(HarvesterHull)

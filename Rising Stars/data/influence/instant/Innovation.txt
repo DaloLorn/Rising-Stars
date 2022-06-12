@@ -12,7 +12,7 @@ Card: Innovation
 	Base Purchase Cost: 8
 	Placement Purchase Cost: 2
 
-	OnOwner(CE_biome_hooks::GiveRandomUnlock())
+	OnOwner(ABEM_races::GiveRandomUnlock())
 
 	AI: BuyWeight(2.0)
 	AI: PlayWeightUnconditionally(20.0)

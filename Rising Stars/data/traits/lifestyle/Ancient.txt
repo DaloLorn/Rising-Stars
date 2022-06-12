@@ -49,7 +49,7 @@ Trait: Ancient
 	TriggerHomeworld(ReplaceAllBiomesWith(Desert))
 
 	ReplaceTechnologyNodes(ArtificialMoon, Thrust2)
-	ReplaceTechnologyNodes(BldSpire, Thrust2)
+	ReplaceTechnologyNodes(Spire, Thrust2)
 
 	ModAttribute(PopulationGrowthFactor, Multiply, 0)
 	ModAttribute(PopulationDecayFactor, Multiply, 0)

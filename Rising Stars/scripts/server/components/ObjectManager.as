@@ -1180,6 +1180,19 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		}
 	}
 
+	void registerFriendlyStargate(Empire& emp, Object@ obj) {
+		emp.PathId += 1;
+		Lock lock(friendlyGateMutex);
+		friendlyGates.insertLast(obj);
+		objDelta = true;
+	}
+
+	void unregisterFriendlyStargate(Object@ obj) {
+		Lock lock(friendlyGateMutex);
+		friendlyGates.remove(obj);
+		objDelta = true;
+	}
+
 	void registerArtifact(Artifact@ obj) {
 		Lock lock(artifMutex);
 		artifacts.insertLast(obj);

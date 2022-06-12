@@ -25,7 +25,7 @@ Trait: Verdant
 	UnlockSubsystem(VerdantSinew)
 	UnlockSubsystem(VerdantSupportSinew)
 
-	ReplaceTechnologyNodes(BldSpire, Thrust2)
+	ReplaceTechnologyNodes(Spire, Thrust2)
 	ModAttribute(PopulationPerColonizer, Multiply, 16)
 	ModAttribute(ForbidCityConstruction, Add, 1)
 	SetColonizerInfo(#SPORE_SHIP, SporeShip, SporeShip)
