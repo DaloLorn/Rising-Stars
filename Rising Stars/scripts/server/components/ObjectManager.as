@@ -1122,7 +1122,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 			Empire@ empire = getEmpire(i);
 			if (empire.valid && empire.major) {
-				if (emp.FlingShareMask & empire.mask != 0) {
+				if (emp.FlingShareMask & empire.mask != 0 || empire is emp) {
 					empire.registerFriendlyFlingBeacon(obj);
 				}
 			}
@@ -1161,7 +1161,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 			Empire@ empire = getEmpire(i);
 			if (empire.valid && empire.major) {
-				if (emp.GateShareMask & empire.mask != 0) {
+				if (emp.GateShareMask & empire.mask != 0 || empire is emp) {
 					empire.registerFriendlyStargate(obj);
 				}
 			}
