@@ -66,7 +66,7 @@ Subsystem: CarrierBlueprint
 	
 	EnergyBuildCost := 5000000
 
-	Assert: Sum.Control <= 0
+	Assert: ShipSize <= 0
 		Message: #ERROR_BLUEPRINT:$1
 		Fatal: False
 
