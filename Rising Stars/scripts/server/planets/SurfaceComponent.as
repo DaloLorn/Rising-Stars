@@ -1731,7 +1731,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		order.type = type;
 		order.targetPopulation = toPopulation;
 		colonization.insertLast(order);
-		obj.owner.registerColonization(obj, other);
+		obj.owner.registerColonization(obj, other, type);
 		deltaCol = true;
 		isSendingColonizers = true;
 	}

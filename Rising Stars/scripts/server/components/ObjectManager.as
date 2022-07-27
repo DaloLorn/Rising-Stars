@@ -1756,10 +1756,11 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		}
 	}
 
-	void registerColonization(Empire& emp, Object@ from, Object@ to) {
+	void registerColonization(Empire& emp, Object@ from, Object@ to, int type = CType_Sublight) {
 		ColonizationEvent evt;
 		@evt.to = to;
 		@evt.from = from;
+		@evt.type = type;
 
 		//Inform the planet
 		to.setBeingColonized(emp, true);
@@ -1772,6 +1773,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 
 	void unregisterColonization(Empire& emp, Object@ from, Object@ to, bool cancel) {
 		colonizeDelta = true;
+		ColonizationType type = CType_Sublight;
 		bool remaining = false;
 		{
 			WriteLock lock(plMutex);
@@ -1783,6 +1785,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 					colonizationSet.erase(to.id);
 					colonizations.removeAt(i);
 					--i; --cnt;
+					type = evt.type;
 				}
 				else if(evt.to is to) {
 					remaining = true;
@@ -1811,7 +1814,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			else {
 				if(!cancel) {
 					//Add it back as an auto-colonization
-					autoColonize(emp, to);
+					autoColonize(emp, to, type);
 					remaining = true;
 				}
 			}
@@ -1911,7 +1914,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 					if(best !is null) {
 						@evt.from = best;
 						best.flagColonizing();
-						best.colonize(evt.to, evt.type);
+						best.colonize(evt.to, 1.0, evt.type);
 					}
 				}
 				else {

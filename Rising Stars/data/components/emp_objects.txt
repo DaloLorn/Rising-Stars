@@ -54,7 +54,7 @@ restricted remote:
 	async void deployDefense(Object& at);
 
 server:
-	async void registerColonization(Object@ from, Object@ to);
+	async void registerColonization(Object@ from, Object@ to, int type = 0);
 	async void unregisterColonization(Object@ from, Object@ to, bool cancel = true);
 	
 	async void registerPlanet(Planet@ pl);

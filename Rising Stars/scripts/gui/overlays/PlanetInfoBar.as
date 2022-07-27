@@ -563,7 +563,7 @@ class ColonizeTarget : ObjectTargeting {
 	}
 
 	void call(Object@ target) {
-		obj.colonize(target, type);
+		obj.colonize(target, 1.0, type);
 	}
 
 	string message(Object@ obj, bool valid) {

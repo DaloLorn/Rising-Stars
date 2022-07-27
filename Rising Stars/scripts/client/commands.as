@@ -345,7 +345,7 @@ class ColonizePlanets : ObjectTargeting {
 			for(uint i = 0, cnt = objs.length; i < cnt; ++i) {
 				auto@ obj = objs[i];
 				if(obj.isPlanet && obj.owner is playerEmpire && obj.canSafelyColonize && obj !is target) {
-					obj.colonize(target, type);
+					obj.colonize(target, 1.0, type);
 					anyColonized = true;
 				}
 			}
