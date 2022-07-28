@@ -1760,7 +1760,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 		ColonizationEvent evt;
 		@evt.to = to;
 		@evt.from = from;
-		@evt.type = type;
+		evt.type = type;
 
 		//Inform the planet
 		to.setBeingColonized(emp, true);
@@ -1773,7 +1773,7 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 
 	void unregisterColonization(Empire& emp, Object@ from, Object@ to, bool cancel) {
 		colonizeDelta = true;
-		ColonizationType type = CType_Sublight;
+		int type = CType_Sublight;
 		bool remaining = false;
 		{
 			WriteLock lock(plMutex);
