@@ -4,7 +4,7 @@ Technology: ProgenitorArmor
 	Color: #39b0ff
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Description: #R_SYS_PROGENITOR_ARMOR_DESC
 	Category: Progenitor

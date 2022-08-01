@@ -6,7 +6,7 @@ Technology: Flagship
 	Time Cost: 60
 	Point Cost: 1
 	Symbol: techMilitia*ff0021
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	SecondaryMoneyCost(1)
 	AddModifier(hull/Support::BuildCostFactor(1.05))
@@ -20,7 +20,7 @@ Technology: Flagship2
 	Description: #R_SPEC_FLAGSHIP2_DESC
 	Time Cost: 120
 	Point Cost: 1
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Symbol: techMilitia*#ff0021
 	SecondaryMoneyCost(1)
@@ -35,7 +35,7 @@ Technology: Flagship3
 	Description: #R_SPEC_FLAGSHIP3_DESC
 	Time Cost: 240
 	Point Cost: 1
-	Class: Unlock
+	Class: Secret
 	Symbol: techMilitia*#ff0021
 	Category: Specializations
 	SecondaryMoneyCost(1)
@@ -50,7 +50,7 @@ Technology: Flagship4
 	Description: #R_SPEC_FLAGSHIP4_DESC
 	Time Cost: 300
 	Point Cost: 1
-	Class: Unlock
+	Class: Secret
 	Symbol: techMilitia*#ff0021
 	Category: Specializations
 	SecondaryMoneyCost(1)
@@ -65,7 +65,7 @@ Technology: Support
 	Description: #R_SPEC_SUPPORT1_DESC
 	Point Cost: 1
 	Time Cost: 60
-	Class: Unlock
+	Class: Secret
 	Color: #ff8f0f
 	Symbol: techMilitia*#ff8f0f
 	Category: Specializations
@@ -83,7 +83,7 @@ Technology: Support2
 	Point Cost: 1
 	Time Cost: 180
 	Color: #ff8f0f
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Symbol: techMilitia*#ff8f0f
 	AddModifier( hull/Flagship::DamageMult(0.9) )
@@ -96,7 +96,7 @@ Technology: Support3
 	Icon: techTargeting*#ff8f0f
 	Description: #R_SPEC_SUPPORT3_DESC
 	Point Cost: 1
-	Class: Unlock
+	Class: Secret
 	Time Cost: 240
 	Color: #ff8f0f
 	Category: Specializations
@@ -111,7 +111,7 @@ Technology: Support4
 	Icon: techOrganization*#ff8f0f
 	Description: #R_SPEC_SUPPORT4_DESC
 	Point Cost: 1
-	Class: Unlock
+	Class: Secret
 	Time Cost: 300
 	Color: #ff8f0f
 	Category: Specializations

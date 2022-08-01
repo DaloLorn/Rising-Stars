@@ -3,7 +3,7 @@ Technology: NylliTerraformSpec1
 	Description: #R_SPEC_NYLLI_TERRAFORM1_DESC:20%:10%
 	Time Cost: 60
 	Point Cost: 250
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Icon: SupplyIcon
 	Symbol: EnormousPlanet
@@ -19,7 +19,7 @@ Technology: NylliAdaptationSpec1
 	Time Cost: 60
 	Point Cost: 250
 	Category: Racial/DLC Replacements (DO NOT PLACE)
-	Class: Unlock
+	Class: Secret
 	Icon: TechIcons::2
 	Symbol: SequesteredSociety
 	Color: #6c412f
@@ -39,7 +39,7 @@ Technology: NylliTerraformSpec2
 	Symbol: EnormousPlanet
 	Icon: ResourceIcons::26*#aaaaaa
 	Color: #84ff19
-	Class: Unlock
+	Class: Secret
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(NylliAdaptationSpec2, SpecConnector)
 	UnlockTag(Terraform2)
@@ -49,7 +49,7 @@ Technology: NylliAdaptationSpec2
 	Description: #R_SPEC_NYLLI_ADAPTATION2_DESC:25%
 	Time Cost: 120
 	Point Cost: 500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
@@ -63,7 +63,7 @@ Technology: NylliTerraformSpec3
 	Description: #R_SPEC_NYLLI_TERRAFORM3_DESC:30%:15%
 	Time Cost: 240
 	Point Cost: 1000
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #84ff19
 	Symbol: EnormousPlanet
@@ -78,7 +78,7 @@ Technology: NylliAdaptationSpec3
 	Description: #R_SPEC_NYLLI_ADAPTATION3_DESC:1
 	Time Cost: 240
 	Point Cost: 1000
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
@@ -92,7 +92,7 @@ Technology: NylliTerraformSpec4
 	Description: #R_SPEC_NYLLI_TERRAFORM4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #84ff19
 	Icon: ResourceIcons::29*#66ffff
@@ -106,7 +106,7 @@ Technology: NylliAdaptationSpec4
 	Description: #R_SPEC_NYLLI_ADAPTATION4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety

@@ -4,7 +4,7 @@ Technology: Recall
 	Name: #R_RECALL
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #bc12de
 	Category: Progenitor
@@ -19,7 +19,7 @@ Technology: NylliRecall
 	Name: #R_RECALL
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #bc12de
 	Category: Racial/DLC Replacements (DO NOT PLACE)

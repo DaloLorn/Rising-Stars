@@ -3,7 +3,7 @@ Technology: BluuhbiTerraformSpec1
 	Description: #R_SPEC_BLUUHBI_TERRAFORM1_DESC:33%
 	Time Cost: 60
 	Point Cost: 250
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Icon: techEconomics*#84ff19
 	Symbol: QuickbarIcons::4
@@ -18,7 +18,7 @@ Technology: BluuhbiAdaptationSpec1
 	Time Cost: 60
 	Point Cost: 250
 	Category: Specializations
-	Class: Unlock
+	Class: Secret
 	Icon: Megafarm
 	Symbol: SequesteredSociety
 	Color: #6c412f
@@ -37,7 +37,7 @@ Technology: BluuhbiTerraformSpec2
 	Symbol: QuickbarIcons::4
 	Icon: Superstructure
 	Color: #84ff19
-	Class: Unlock
+	Class: Secret
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(BluuhbiAdaptationSpec2, SpecConnector)
 	AddModifier(TerraformMassMod(1))
@@ -47,7 +47,7 @@ Technology: BluuhbiAdaptationSpec2
 	Description: #R_SPEC_BLUUHBI_ADAPTATION2_DESC:25%
 	Time Cost: 120
 	Point Cost: 500
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Color: #6c412f
 	Symbol: SequesteredSociety
@@ -61,7 +61,7 @@ Technology: BluuhbiTerraformSpec3
 	Description: #R_SPEC_BLUUHBI_TERRAFORM3_DESC:33%:25%
 	Time Cost: 240
 	Point Cost: 1000
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Color: #84ff19
 	Symbol: QuickbarIcons::4
@@ -80,7 +80,7 @@ Technology: BluuhbiAdaptationSpec3
 	Color: #6c412f
 	Symbol: SequesteredSociety
 	Icon: ResourceIcons::38
-	Class: Unlock
+	Class: Secret
 	SecondaryMoneyCost(2000)
 	ReplaceTechnologyNodes(BluuhbiTerraformSpec3, SpecConnector)
 	ModAttribute(BluuhbiAdaptation3, Add, 1)
@@ -90,7 +90,7 @@ Technology: BluuhbiTerraformSpec4
 	Description: #R_SPEC_BLUUHBI_TERRAFORM4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Color: #84ff19
 	Icon: techArmor
@@ -104,7 +104,7 @@ Technology: BluuhbiAdaptationSpec4
 	Description: #R_SPEC_BLUUHBI_ADAPTATION4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Specializations
 	Color: #6c412f
 	Symbol: SequesteredSociety

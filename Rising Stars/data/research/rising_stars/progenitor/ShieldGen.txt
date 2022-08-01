@@ -4,7 +4,7 @@ Technology: ProgenitorShield
 	Name: #R_SYS_REMNANTSHIELD
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #000bde
 	Category: Progenitor
@@ -19,7 +19,7 @@ Technology: FeyhProgenitorShield
 	Name: #R_SYS_PROGENITOR_SHRINE
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Color: #000bde
 	ModAttribute(ProgenitorTechProgress, Add, 15)
 	Category: Racial/DLC Replacements (DO NOT PLACE)

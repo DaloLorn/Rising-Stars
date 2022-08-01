@@ -4,7 +4,7 @@ Technology: PiercingDrones
 	Name: #R_SYS_PIERCING_DRONES
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #d3de07
 	Category: Progenitor

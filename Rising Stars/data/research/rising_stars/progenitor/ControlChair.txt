@@ -4,7 +4,7 @@ Technology: ControlChair
 	Name: #R_SYS_CONTROLCHAIR
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #28de0d
 	Category: Progenitor
@@ -19,7 +19,7 @@ Technology: VerdantControlChair
 	Name: #R_SYS_HYPERLINKEDSINEW
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb: 
 	Color: #28de0d
 	Category: Racial/DLC Replacements (DO NOT PLACE)

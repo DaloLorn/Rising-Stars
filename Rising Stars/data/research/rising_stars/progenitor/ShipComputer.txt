@@ -4,7 +4,7 @@ Technology: ProgenitorComputer
 	Name: #R_SYS_PROGENITORCOMPUTER
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #de8508
 	Category: Progenitor

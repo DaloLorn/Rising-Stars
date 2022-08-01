@@ -4,7 +4,7 @@ Technology: ProgenitorSolarOrbital
 	Name: #R_PROGENITOR_SOLARORBITAL
 	Point Cost: 1500
 	Time Cost: 180
-	Class: Unlock
+	Class: Secret
 	Blurb:
 	Color: #1ddede
 	Category: Progenitor

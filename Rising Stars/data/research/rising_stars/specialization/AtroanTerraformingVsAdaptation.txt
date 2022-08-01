@@ -3,7 +3,7 @@ Technology: AtroanTerraformSpec1
 	Description: #R_SPEC_ATROAN_TERRAFORM1_DESC:40%:20%
 	Time Cost: 60
 	Point Cost: 250
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Icon: SupplyIcon
 	Symbol: EnormousPlanet
@@ -19,7 +19,7 @@ Technology: AtroanAdaptationSpec1
 	Time Cost: 60
 	Point Cost: 250
 	Category: Racial/DLC Replacements (DO NOT PLACE)
-	Class: Unlock
+	Class: Secret
 	Icon: Depot
 	Symbol: SequesteredSociety
 	Color: #6c412f
@@ -38,7 +38,7 @@ Technology: AtroanTerraformSpec2
 	Symbol: EnormousPlanet
 	Icon: ResourceIcons::26*#aaaaaa
 	Color: #84ff19
-	Class: Unlock
+	Class: Secret
 	SecondaryMoneyCost(1000)
 	ReplaceTechnologyNodes(AtroanAdaptationSpec2, SpecConnector)
 	UnlockTag(AtroanTerraform2)
@@ -48,7 +48,7 @@ Technology: AtroanAdaptationSpec2
 	Description: #R_SPEC_ATROAN_ADAPTATION2_DESC:25%:15%
 	Time Cost: 120
 	Point Cost: 500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
@@ -62,7 +62,7 @@ Technology: AtroanTerraformSpec3
 	Description: #R_SPEC_ATROAN_TERRAFORM3_DESC:60%:30%
 	Time Cost: 240
 	Point Cost: 1000
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #84ff19
 	Symbol: EnormousPlanet
@@ -77,7 +77,7 @@ Technology: AtroanAdaptationSpec3
 	Description: #R_SPEC_ATROAN_ADAPTATION3_DESC:20%
 	Time Cost: 240
 	Point Cost: 1000
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
@@ -91,7 +91,7 @@ Technology: AtroanTerraformSpec4
 	Description: #R_SPEC_ATROAN_TERRAFORM4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #84ff19
 	Icon: ResourceIcons::29*#66ffff
@@ -105,7 +105,7 @@ Technology: AtroanAdaptationSpec4
 	Description: #R_SPEC_ATROAN_ADAPTATION4_DESC
 	Time Cost: 300
 	Point Cost: 1500
-	Class: Unlock
+	Class: Secret
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Color: #6c412f
 	Symbol: SequesteredSociety
