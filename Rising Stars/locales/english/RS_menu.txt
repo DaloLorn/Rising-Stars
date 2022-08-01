@@ -14,6 +14,12 @@ OPTTT_DISPLAY_SENSOR_RANGE: <<
 
 	Displaying weapon range always displays the sensor and seeable ranges of objects owned by your empire, regardless of this setting.
 >>
+OPT_DISPLAY_RAID_RANGE: Display Raid Range
+OPTTT_DISPLAY_RAID_RANGE: <<
+	When toggled on, selecting an object owned by your empire will always display its raiding range as a dim orange circle.
+
+	Displaying weapon range always displays the raid range of objects owned by your empire, regardless of this setting.
+>>
 
 ALLOW_WAR: Allow War
 VERY_HARD: Very Hard

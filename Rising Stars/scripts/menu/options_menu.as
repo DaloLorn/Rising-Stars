@@ -226,6 +226,14 @@ class GameOptions : OptionsBox {
 		setMarkupTooltip(sensorToggle, locale::OPTTT_DISPLAY_SENSOR_RANGE);
 		options.insertLast(sensorToggle);
 
+		y += 34;
+		GuiEngineToggle raidToggle(
+			panel, rectiArea(8, y, 278, 28),
+			locale::OPT_DISPLAY_RAID_RANGE, "bDisplayRaidRange"
+		);
+		setMarkupTooltip(raidToggle, locale::OPTTT_DISPLAY_RAID_RANGE);
+		options.insertLast(raidToggle);
+
 		y += 38;
 		options.insertLast(GuiEngineToggle(
 			panel, recti_area(8, y,  550, 28),

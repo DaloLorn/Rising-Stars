@@ -27,6 +27,8 @@ Category: Game
 		Default: False
 	Bool: bDisplaySensorRange
 		Default: True
+	Bool: bDisplayRaidRange
+		Default: True
 Category: Interface
 	String: sSkinName
 		Default: Default
