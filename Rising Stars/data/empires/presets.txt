@@ -3,7 +3,7 @@ Preset: Terrakin
 	Tagline: #RACE_TERRAKIN_TAGLINE
 	Lore: #RACE_TERRAKIN_LORE
 	Portrait: emp_portrait_harrian
-	Shipset: Moirai
+	Shipset: Bromma
 
 	Trait: Empire
 	Trait: Hyperdrive
@@ -15,7 +15,7 @@ Preset: Oko
 	Tagline: #RACE_OKO_TAGLINE
 	Lore: #RACE_OKO_LORE
 	Portrait: emp_portrait_oko
-	Shipset: Volkur
+	Shipset: Farum
 	WeaponSkin: Skin3
 
 	Trait: Communism
@@ -28,7 +28,7 @@ Preset: Hoonan
 	Tagline: #RACE_HOONAN_TAGLINE
 	Lore: #RACE_HOONAN_LORE
 	Portrait: emp_portrait_hoonan
-	Shipset: Mechanica
+	Shipset: Bromma
 
 	Trait: Empire
 	Trait: Hyperdrive
@@ -53,7 +53,7 @@ Preset: Feyh
 	Tagline: #RACE_FEYH_TAGLINE
 	Lore: #RACE_FEYH_LORE
 	Portrait: emp_portrait_feyh
-	Shipset: Moirai
+	Shipset: Gevron
 
 	Trait: Theocracy
 	Trait: Fling
@@ -65,7 +65,7 @@ Preset: Saar
 	Tagline: #RACE_SAAR_TAGLINE
 	Lore: #RACE_SAAR_LORE
 	Portrait: emp_portrait_saar
-	Shipset: Gevron
+	Shipset: Farum
 
 	Trait: Communism
 	Trait: Hyperdrive
