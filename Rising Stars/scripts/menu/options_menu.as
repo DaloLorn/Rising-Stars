@@ -228,7 +228,7 @@ class GameOptions : OptionsBox {
 
 		y += 34;
 		GuiEngineToggle raidToggle(
-			panel, rectiArea(8, y, 278, 28),
+			panel, recti_area(8, y, 278, 28),
 			locale::OPT_DISPLAY_RAID_RANGE, "bDisplayRaidRange"
 		);
 		setMarkupTooltip(raidToggle, locale::OPTTT_DISPLAY_RAID_RANGE);
