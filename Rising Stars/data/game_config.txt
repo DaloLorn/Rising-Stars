@@ -220,3 +220,10 @@ EVERYONE_IS_VANGUARD: 0
 
 //Whether everyone can unlock Progenitor tech by accumulating enough tech unlocks, even if they're not Progenitors.
 PROGENITOR_TECH_UNLOCKABLE: 0
+
+// How much FTL energy all empires start with.
+FTL_START_STORED: 250
+FTL_START_INCOME: 1
+
+// How much money all empires get by default.
+BASE_BUDGET: 550

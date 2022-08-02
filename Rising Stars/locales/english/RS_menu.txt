@@ -212,3 +212,7 @@ NGTT_ENABLE_TERRAFORMING: <<
 
 	To terraform a resource, select a planet with labor and right click another planet to terraform.
 >>
+
+NG_FTL_START_STORED: Base FTL Capacity
+NG_FTL_START_INCOME: Base FTL Income
+NG_BASE_BUDGET: Starting Income

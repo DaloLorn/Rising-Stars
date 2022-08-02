@@ -86,6 +86,9 @@ class AdvancedGamePage : GameSettingsPage {
 		Number(locale::NG_LEVEL_DECAY_TIME, "LEVEL_DECAY_TIMER", step=30, tooltip=locale::NGTT_LEVEL_DECAY_TIME);
 		Occurance(locale::NG_RESEARCH_DECAY_MULT, "RESEARCH_EFFICIENCY_DECAY_MULT", max=10.0, tooltip=locale::NGTT_RESEARCH_DECAY_MULT);
 		Frequency(locale::NG_DRYDOCK_BUILDCOST_FACTOR, "DRYDOCK_BUILDCOST_FACTOR", min=0.5, max=10.0, tooltip=locale::NGTT_DRYDOCK_BUILDCOST_FACTOR);
+		Number(locale::NG_FTL_START_STORED, "FTL_START_STORED", step=5, min=0, max=250000);
+		Number(locale::NG_FTL_START_INCOME, "FTL_START_INCOME", step=0.1, min=0, max=1000);
+		Number(locale::NG_BASE_BUDGET, "BASE_BUDGET", step=50, min=0, max=550000);
 	}
 };
 
