@@ -22,6 +22,9 @@ local:
 	safe uint get_SupplyCapacity() const;
 	safe uint get_SupplyAvailable() const;
 
+	safe bool get_freeRaiding();
+	safe double get_raidRange();
+
 restricted local:
 	safe bool get_hasOrders();
 	bool hasOrder(uint type, bool checkQueued = false);
@@ -156,8 +159,6 @@ server:
 	
 	void set_engageRange(double radius);
 
-	safe bool get_freeRaiding();
-	safe double get_raidRange();
 	void setFreeRaiding(bool value);
 	void modRaidRange(double value);
 	uint addSightModifier(uint priority, double multiplier, double addedRange);

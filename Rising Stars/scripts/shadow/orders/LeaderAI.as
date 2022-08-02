@@ -33,6 +33,8 @@ tidy class LeaderAI : Component_LeaderAI {
 	bool autoBuy = false;
 	bool AllowFillFrom = false;
 	bool allowSatellites = false;
+	bool FreeRaiding = false;
+	double RaidRange = 5000.0;
 
 	AutoMode autoMode = AM_AreaBound;
 	EngagementBehaviour engageBehave = EB_CloseIn;
@@ -477,6 +479,14 @@ tidy class LeaderAI : Component_LeaderAI {
 			return 0;
 		return groupData[ind].ghost;
 	}
+	
+	double get_raidRange() {
+		return RaidRange;
+	}
+
+	bool get_freeRaiding() {
+		return FreeRaiding;
+	}
 
 	void readOrders(Message& msg) {
 		msg.readAlign();
@@ -629,6 +639,8 @@ tidy class LeaderAI : Component_LeaderAI {
 		readGroup(msg);
 		readOrders(msg);
 		msg >> allowSatellites;
+		RaidRange = msg.read_float();
+		msg >> FreeRaiding;
 	}
 
 	void readLeaderAIDelta(Message& msg) {
@@ -636,5 +648,9 @@ tidy class LeaderAI : Component_LeaderAI {
 			readGroupDelta(msg);
 		if(msg.readBit())
 			readOrders(msg);
+		if (msg.readBit()) {
+			RaidRange = msg.read_float();
+			msg >> FreeRaiding;
+		}
 	}
 };

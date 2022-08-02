@@ -118,6 +118,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	// Adjusting for increased galaxy sizing
 	double RaidRange = 5000.0;
 	// END NON-MIT CODE
+	bool raidDelta = false;
 
 	//Whether to automaticall pluck supports of planets
 	bool autoFill = true;
@@ -2361,12 +2362,14 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 	void setFreeRaiding(bool value) {
 		FreeRaiding = value;
+		raidDelta = true;
 	}
 
 	void modRaidRange(double value) {
 		RaidRange += value;
 		if(engageType == ER_RaidingOnly)
 			engagementRange = RaidRange;
+		raidDelta = true;
 	}
 
 	Object@ getAttackTarget() {
@@ -2883,10 +2886,12 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		writeGroup(msg);
 		writeOrders(obj, msg);
 		msg << allowSatellites;
+		msg << float(RaidRange);
+		msg << FreeRaiding;
 	}
 
 	bool writeLeaderAIDelta(const Object& obj, Message& msg) {
-		if(!delta && !orderDelta)
+		if(!delta && !orderDelta && !raidDelta)
 			return false;
 		msg.write1();
 
@@ -2905,6 +2910,15 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			orderDelta = false;
 		}
 		else {
+			msg.write0();
+		}
+
+		if (raidDelta) {
+			msg.write1();
+			msg << float(RaidRange);
+			msg << FreeRaiding;
+			raidDelta = false;
+		} else {
 			msg.write0();
 		}
 

@@ -1025,7 +1025,7 @@ class BEAMS {
 							obj.seeableRange, Color(0xff004488));
 					}
 				}
-				if(settings::bDisplayRaidRange || showWeapons) {
+				if(obj.SupplyCapacity > 0 && !obj.freeRaiding && (settings::bDisplayRaidRange || showWeapons)) {
 					addPlane(ranges, rangeInd, obj.node_position,
 						obj.raidRange, Color(0xff880088));
 				}
