@@ -1069,6 +1069,8 @@ class TractorObject : AbilityHook {
 			abl.changeTarget(objTarg, newTarg);
 			return;
 		}
+		if(abl.obj.inFTL)
+			wasPortal = true;
 
 		if(!td.hasOffset) {
 			td.offset = target.position - abl.obj.position;
