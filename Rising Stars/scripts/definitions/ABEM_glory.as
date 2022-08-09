@@ -101,6 +101,37 @@ class DecayProgressFromContested : AttitudeHook {
 #section all
 }
 
+class ProgressFromSieges : AttitudeHook {
+	Document doc("Progress based on the amount of planets you are besieging.");
+	Argument multiplier(AT_Decimal, "1.0", doc="How much progress to award per ongoing siege.");
+	Argument useProgressFactor(AT_Boolean, "True", doc="If set, the added progress is multiplied by the empire's attitude progression factor.");
+	
+#section server
+	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
+		double amt = emp.SiegingPlanets * multiplier.decimal * time;
+		if(useProgressFactor.boolean) {
+			amt *= emp.AttitudeProgressFactor;
+		}
+		att.progress += amt;
+	}
+#section all
+}
+
+class DecayProgressFromSieges : AttitudeHook {
+	Document doc("Decrease progress based on the amount of besieged planets you have.");
+	Argument multiplier(AT_Decimal, "1.0", doc="How much progress to remove per ongoing siege.");
+	Argument useProgressFactor(AT_Boolean, "True", doc="If set, the removed progress is divided by the empire's attitude progression factor.");
+
+#section server
+	void tick(Attitude& att, Empire& emp, any@ data, double time) const {
+		double amt = emp.SiegedPlanets * multiplier.decimal * time;
+		if(useProgressFactor.boolean)
+			amt /= emp.AttitudeProgressFactor;
+		att.progress = max(att.progress - amt, 0.0);
+	}
+#section all
+}
+
 class ConsumeAttributeToProgress : AttitudeHook {
 	Document doc("Increases progress by decreasing an empire attribute.");
 	Argument attribute(AT_EmpAttribute, doc="Attribute to consume.");

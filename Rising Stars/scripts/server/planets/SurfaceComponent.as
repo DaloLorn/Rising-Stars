@@ -1191,7 +1191,14 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double loyTimer = config::SIEGE_LOYALTY_TIME * ceil(baseLoyalty / 10.0);
 		double loyMod = time * baseLoyalty / loyTimer / obj.owner.CaptureTimeDifficulty;
 		double orbRadiusSQ = sqr(cast<Planet>(obj).OrbitSize);
+		if(siegeMask != 0) // Temporarily decrement sieged planet count while we're recalculating whether we're under siege.
+			owner.SiegedPlanets--;
 		siegeMask = 0;
+		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
+			Empire@ otherOwner = getEmpire(i);
+			if(siegeMask & otherOwner.mask != 0)
+				otherOwner.SiegingPlanets--; // Temporarily decrement sieging planet count while we're recalculating whether we're under siege from them.
+		}
 
 		uint prevOrbits = orbitsMask;
 		uint newOrbits = 0;
@@ -1250,6 +1257,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 					contested = true;
 					if(forceSiegeMask & otherOwner.mask != 0)
 						externalRelief = false;
+					else {
+						otherOwner.SiegingPlanets++;
+					}
 
 					double localMod = loyMod / otherOwner.CaptureTimeFactor;
 					LoyaltyEffect[otherOwner.index] = clamp(LoyaltyEffect[otherOwner.index] - localMod, -baseLoyalty, 0.0);
@@ -1283,6 +1293,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 				isSiege = true;
 				obj.engaged = true;
 				contested = true;
+				otherOwner.SiegingPlanets++;
 
 				double localMod = loyMod / otherOwner.CaptureTimeFactor;
 				if(ship !is null)
@@ -1322,6 +1333,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			float captPct = get_capturePct(obj);
 			icon.setCapture(captEmp, captPct);
 		}
+
+		if(isSiege)
+			owner.SiegedPlanets++;
 
 		//Planets under siege cannot gain supports
 		obj.canGainSupports = !isSiege;

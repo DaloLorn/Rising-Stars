@@ -138,6 +138,7 @@ S_GATE_MODULE_DESC: <<
 	[img=Plus]Can be packed up and moved, then unpacked at a new location.[/img]
 	[img=Minus]Must cover at least a third of the entire station.[/img]
 	[img=MenuIcons::3;22]Active gates cannot be tractored.[/img]
+	[img=MenuIcons::3;22]Packed gates cannot be unpacked while under FTL suppression.[/img]
 	[img=$FTL]Costs 0.05 FTL/s upkeep. Gates get disabled when you run out of FTL.[/img]
 >>
 

@@ -180,4 +180,6 @@ visible:
 	attribute double FlingConst = 0
 	attribute double JumpdriveConst = 0
 	attribute double ActiveOutposts = 0;
+	attribute double SiegedPlanets = 0
+	attribute double SiegingPlanets = 0
 }

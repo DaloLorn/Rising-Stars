@@ -9,7 +9,7 @@ Attitude: BerserkerGlory
 	ABEM_glory::CannotManuallyTake()
 	ABEM_glory::NoProgressPastMaxLevel()
 
-	ABEM_glory::ProgressFromContested(0.5)
+	ABEM_glory::ProgressFromSieges(0.15)
 	ABEM_glory::ConsumeAttributeToProgress(Glory, 1, GloryFactor)
 	ModEmpireAttribute(GloryMode, Add, 1)
 

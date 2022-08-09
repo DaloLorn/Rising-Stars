@@ -1,7 +1,7 @@
 ﻿GLORY_MAXIMUM: $1 is at maximum level.
 
 GLORY_PACIFIST: Comfort
-GLORY_PACIFIST_PROGRESS: Accumulate [b]$1 Comfort[/b] by avoiding combat and casualties.
+GLORY_PACIFIST_PROGRESS: Accumulate [b]$1 Comfort[/b] by avoiding casualties and preventing sieges.
 GLORY_PACIFIST_LVL1: <<
 	[i][color=#aaa]Your people are petrified by the horrors of war.[/color][/i]
 	
@@ -36,7 +36,7 @@ GLORY_PACIFIST_LVL6: <<
 >>
 
 GLORY_BERSERKER: Glory
-GLORY_BERSERKER_PROGRESS: Accumulate [b]$1 Glory[/b] by fighting and killing enemies.
+GLORY_BERSERKER_PROGRESS: Accumulate [b]$1 Glory[/b] by killing enemies and sieging planets.
 GLORY_BERSERKER_LVL1: <<
 	[i][color=#aaa]Infighting amongst the clans reaches a climax, crippling your influence over the empire.[/color][/i]
 

@@ -736,7 +736,7 @@ tidy class ShipScript {
 			}
 			if(killCredit !is ship.owner) {
 				ship.owner.recordStatDelta(stat::ShipsLost, 1);
-				if(ship.owner.GloryMode == 2) {
+				if(ship.owner.GloryMode == 2 && (ship.blueprint.design.owner is ship.owner || ship.hasLeaderAI)) { // Don't deduce Comfort for defecting support ships!
 					ship.owner.Glory -= ship.blueprint.design.total(HV_LaborCost) * ship.blueprint.design.total(SV_TechMult) * 2;
 				}
 			}
