@@ -856,7 +856,7 @@ class TargetFilterAllowTractor : TargetFilter {
 		if(targ.obj.isAsteroid)
 			return true;
 		if(targ.obj.isShip)
-			return targ.obj.owner !is null && targ.obj.owner.major;
+			return targ.obj.owner !is null && (targ.obj.owner.major || targ.obj.owner is defaultEmpire);
 		if(targ.obj.isOrbital)
 			return true;
 		return false;
