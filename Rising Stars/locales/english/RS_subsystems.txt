@@ -763,6 +763,7 @@ S_SECURITY_STATION_DESC: <<
 
 	[img=Plus]Boarding parties will attack this before any other subsystem.[/img]
 	[img=Plus]Increases the speed at which enemy boarding parties are defeated.[/img]
+	[img=Plus]Repairs the ship at half the speed of a crew hex.[/img]
 >>
 
 // *********************************************************

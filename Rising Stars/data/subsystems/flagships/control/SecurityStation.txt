@@ -5,9 +5,9 @@ Subsystem: SecurityStation
 	BaseColor: #9686ff
 	Elevation: 5
 
-	Tags: BaseCost, NonContiguous,Category:Equipment, NoCore, DefaultUnlock
+	Tags: BaseCost, NonContiguous, Category:Equipment, NoCore, DefaultUnlock
 	Tags: ExteriorCore, SecuritySystem, BoardingDefense
-	Tags: HasInternals
+	Tags: HasInternals, NoBulkhead
 	Hull: Flagship, Station
 
 	EvaluationOrder: -10
@@ -15,6 +15,10 @@ Subsystem: SecurityStation
 	Size := HexSize * Hexes
 	BoardingStrength := floor(80 * Size)
 	BoardingDefense := BoardingStrength // This is a dummy variable for the sake of design stats, because I'm lazy.
+
+	Repair := 2 * Size
+	RepairSupplyCost := 2.0 * Repair
+	out SupplyDrain := RepairSupplyCost
 
 	Hex.Resistance := 0.2
 	BaseHP := 72 * HexSize
