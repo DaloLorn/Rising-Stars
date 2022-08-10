@@ -12,6 +12,7 @@ Module: Habitat
 	Health: 500
 	Armor: 0
 	Size: 8
+	Labor Cost: 10
 
 	Model: Outpost
 	Material: GenericPBR_Outpost

@@ -10,6 +10,7 @@ Module: Beacon
 
 	Health: 50000
 	Armor: 10000
+	Labor Cost: 200
 
 	Size: 16
 	Icon Size: 0.04

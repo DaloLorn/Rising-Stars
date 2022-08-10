@@ -9,6 +9,7 @@ Module: RevenantEngine
 
 	Health: 20000
 	Armor: 5000
+	Labor Cost: 300
 
 	Model: RevenantEngine
 	Material: TyrantPBRAdvanced

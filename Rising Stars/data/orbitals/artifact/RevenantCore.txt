@@ -9,6 +9,7 @@ Module: RevenantCore
 
 	Health: 20000
 	Armor: 5000
+	Labor Cost: 300
 
 	Model: RevenantCore
 	Material: TyrantPBRAdvanced

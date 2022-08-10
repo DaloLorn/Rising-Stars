@@ -7,6 +7,7 @@ Module: HeraldDefense
 
 	Health: 10000
 	Armor: 5000
+	Labor Cost: 35
 
 	Model: DefenseStation
 	Material: GenericPBR_Defense_Station

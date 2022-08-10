@@ -9,6 +9,7 @@ Module: RevenantChassis
 
 	Health: 50000
 	Armor: 20000
+	Labor Cost: 500
 
 	Model: RevenantChassis
 	Material: TyrantPBRAdvanced

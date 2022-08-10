@@ -9,6 +9,7 @@ Module: RevenantCannon
 
 	Health: 30000
 	Armor: 10000
+	Labor Cost: 400
 
 	Model: RevenantCannon
 	Material: TyrantPBRAdvanced

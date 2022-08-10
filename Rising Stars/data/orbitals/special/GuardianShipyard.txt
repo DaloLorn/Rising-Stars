@@ -8,6 +8,7 @@ Module: GuardianShipyard
 	Size: 50
 	Health: 50000
 	Armor: 50000
+	Labor Cost: 750
 	Shield Capacity: 50000
 	Shield Regeneration: 50
 	Model: Shipyard

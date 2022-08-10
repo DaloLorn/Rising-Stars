@@ -7,6 +7,7 @@ Module: WeaponControlSatellite
 	Material: GenericPBR_Defense_Station
 	Health: 5000
 	Armor: 5000
+	Labor Cost: 25
 
 	Icon: GuiOrbitalIcons::0
 	Distant Icon: OrbitalIcons::0
