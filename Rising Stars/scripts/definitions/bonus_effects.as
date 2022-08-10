@@ -2531,6 +2531,7 @@ tidy final class TriggerRandomSystem : EmpireTrigger {
 	Argument fully_owned(AT_Boolean, "False", doc="Whether to require the system to only contain planets from the triggering player.");
 	Argument match_homeworld_assign(AT_Boolean, "False", doc="Whether to only ever pick systems in the same map assign group as the triggering empire's homeworld.");
 	Argument reassign(AT_Integer, "-1", doc="If set to not -1, change the map assign group of the system to this.");
+	Argument require_star(AT_Boolean, "False", doc="Whether to require at least one star to be present in the system.");
 
 	BonusEffect@ hook;
 
@@ -2582,6 +2583,8 @@ tidy final class TriggerRandomSystem : EmpireTrigger {
 				if(check.contestation < min_contestation.decimal)
 					continue;
 			}
+			if(require_star.boolean && check.object.starTemperature == 0)
+				continue;
 			total += 1.0;
 			if(randomd() < 1.0 / total)
 				@current = check;

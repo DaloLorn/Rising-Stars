@@ -19,8 +19,8 @@ Trait: Extragalactic //Planetary Planetary
 
 	TriggerHomeworld(SpawnOrbital(Beacon, In Orbit = True, Set Home = True, Add Status = ClearRemnants))
 
-	TriggerRandomSystem(SpawnOrbital(Beacon, In Orbit = True, Add Status = ClearRemnants), Min Contestation = 0, Fallback Random = True, Match Homeworld Assign = True, Reassign = -2)
-	TriggerRandomSystem(SpawnOrbital(Beacon, In Orbit = True, Add Status = ClearRemnants), Min Contestation = 0, Fallback Random = True, Match Homeworld Assign = True, Reassign = -2)
+	TriggerRandomSystem(SpawnOrbital(Beacon, In Orbit = True, Add Status = ClearRemnants), Min Contestation = 0, Fallback Random = True, Match Homeworld Assign = True, Reassign = -2, Require Star = True)
+	TriggerRandomSystem(SpawnOrbital(Beacon, In Orbit = True, Add Status = ClearRemnants), Min Contestation = 0, Fallback Random = True, Match Homeworld Assign = True, Reassign = -2 Require Star = True)
 
 	TriggerHomeworld(SetSystemAssignGroup(-2))
 
