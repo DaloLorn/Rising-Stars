@@ -1588,6 +1588,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	void changeShadowport(Object& obj, Object@ prevShadowport) {
+		Planet@ planet = cast<Planet>(obj);
+		if(planet is null)
+			return;
 		if(prevShadowport !is null && prevShadowport.owner !is null && prevShadowport.owner.major) {
 			Empire@ prevOwner = prevShadowport.owner;
 			if(stolenIncome != 0)
@@ -1604,8 +1607,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 				prevShadowport.modLaborIncome(-stolenLabor);
 		}
 
-		if(obj.shadowport !is null && obj.shadowport.owner !is null && obj.shadowport.owner.major) {
-			Empire@ newOwner = obj.shadowport.owner;
+		if(planet.shadowport !is null && planet.shadowport.owner !is null && planet.shadowport.owner.major) {
+			Empire@ newOwner = planet.shadowport.owner;
 			if(stolenIncome != 0)
 				newOwner.modTotalBudget(stolenIncome, MoT_Planet_Income);
 			if(stolenResearch != 0)
@@ -1617,7 +1620,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(stolenDefense != 0)
 				newOwner.modDefenseRate(stolenDefense);
 			if(stolenLabor != 0)
-				obj.shadowport.modLaborIncome(stolenLabor);
+				planet.shadowport.modLaborIncome(stolenLabor);
 		}
 	}
 
@@ -2561,7 +2564,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(prevBuildings != grid.buildings.length)
 			++SurfaceModId;
 
-		bool shouldSteal = obj.shadowport !is null && obj.shadowport.owner !is null && obj.shadowport.owner.major;
+		Planet@ planet = cast<Planet>(obj);
+		bool shouldSteal = planet !is null && planet.shadowport !is null && planet.shadowport.owner !is null && planet.shadowport.owner.major;
 
 		//Update resources from grid
 		int newIncome = ceil(grid.resources[TR_Money] * TILE_MONEY_RATE * obj.owner.MoneyGenerationFactor) + popIncome + bonusIncome;
@@ -2569,7 +2573,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			newIncome -= newStolenIncome;
 			if(newStolenIncome != stolenIncome)
-				obj.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Planet_Income);
+				planet.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Planet_Income);
 		}
 		stolenIncome = newStolenIncome;
 		if(prevIncome != newIncome) {
@@ -2599,7 +2603,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			newEnergy -= newStolenEnergy;
 			if(newStolenEnergy != stolenEnergy)
-				obj.shadowport.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
+				planet.shadowport.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
 		}
 		stolenEnergy = newStolenEnergy;
 		if(newEnergy != prevEnergy) {
@@ -2612,7 +2616,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			newInfluence -= newStolenInfluence;
 			if(int(newStolenInfluence) != int(stolenInfluence))
-				obj.shadowport.owner.modInfluenceIncome(int(newStolenInfluence) - int(stolenInfluence));
+				planet.shadowport.owner.modInfluenceIncome(int(newStolenInfluence) - int(stolenInfluence));
 		}
 		stolenInfluence = newStolenInfluence;
 		if(int(newInfluence) != int(prevInfluence)) {
@@ -2625,7 +2629,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			newResearch -= newStolenResearch;
 			if(newStolenResearch != stolenResearch)
-				obj.shadowport.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
+				planet.shadowport.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
 		}
 		stolenResearch = newStolenResearch;
 		if(newResearch != prevResearch) {
@@ -2638,7 +2642,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			newDefense -= newStolenDefense;
 			if(newStolenDefense != stolenDefense)
-				obj.owner.modDefenseRate(newStolenDefense - stolenDefense);
+				planet.shadowport.owner.modDefenseRate(newStolenDefense - stolenDefense);
 		}
 		stolenDefense = newStolenDefense;
 		bool pooled = obj.canGainSupports && obj.owner.hasDefending;
@@ -2675,7 +2679,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(shouldSteal) {
 			labor -= newStolenLabor;
 			if(newStolenLabor != stolenLabor)
-				obj.shadowport.modLaborIncome(newStolenLabor - stolenLabor);
+				planet.shadowport.modLaborIncome(newStolenLabor - stolenLabor);
 		}
 		stolenLabor = newStolenLabor;
 

@@ -90,7 +90,7 @@ restricted local:
 		@arg Amount of money that would be spent.
 		@return Whether it's possible to spend that amount of money, including borrowing, without getting a negative next budget.
 
-	float get_DebtFactor() const;
+	float get_DebtFactor();
 		@return The factor of income the empire is currently in debt.
 
 	double getCargoStored(uint type);
