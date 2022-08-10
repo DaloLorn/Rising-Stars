@@ -163,6 +163,14 @@ tidy class PlanetScript {
 		}
 	}
 
+	Object@ get_shadowport() const {
+		return null;
+	}
+
+	void setShadowport(Object@ shadowport) {
+		error("SHADOWPORT SETTER NOT YET IMPLEMENTED");
+	}
+
 	void postLoad(Planet& planet) {
 		planet.resourcesPostLoad();
 		planet.surfacePostLoad();

@@ -421,8 +421,10 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		return Budget_Tick;
 	}
 
-	float get_DebtFactor() {
+	float get_DebtFactor(Empire& emp) {
 		auto remaining = Budget_Remaining - Budget_Bonus;
+		if(emp.MaintainFromSpecialFunds > 0)
+			remaining += Budget_Bonus;
 		if(remaining >= 0)
 			return 0.f;
 		if(Budget_Total < 100)
@@ -649,7 +651,10 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		}
 
 		Budget_CycleBonus = Budget_Bonus;
-		Budget_Remaining = EstNextBudget + Budget_Bonus;
+		int nextBudget = EstNextBudget;
+		if(nextBudget < 0 && emp.MaintainFromSpecialFunds > 0)
+			Budget_Bonus -= nextBudget;
+		Budget_Remaining = nextBudget + Budget_Bonus;
 		PrevBudget = Budget_Total;
 		PrevMaintenance = Maintenance;
 		Budget_Forward = 0;

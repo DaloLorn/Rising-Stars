@@ -108,9 +108,22 @@ TRAIT_ANCIENT_DESC: <<
 TRAIT_LINKED_DESC: <<|
 	[vspace=3/] [img=AttributeIcons::3;22][b]Mainframe[/b] orbitals must be constructed in order to maintain fleet effectiveness. Fleets near mainframes are stronger, fleets far away from mainframes are weaker.[/img]
 	[vspace=6/][img=AnomalyIcons::0;22]Mainframes can remotely scan anomalies within trade range.[/img]
-	[vspace=6/][img=RSComputer;22][b]Control Computer[/b] subsystem is available from the start.[dlc=Heralds] Also starts with the [b]AI Core[/b] subsystem.[/img]
+	[vspace=6/][img=RSComputer;22][b]Control Computer[/b] subsystem is available from the start.[dlc=Heralds] Also starts with the [b]AI Core[/b] subsystem.[/img][/dlc]
 	[vspace=6/][img=AntimatterReactor;22;#b8b800][b]Emergency Supplies[/b] subsystem is available from the start.[/img]
 >>
 
 TRAIT_TECHNOCRACY: Technocracy
 TRAIT_TECHNOCRACY_DESC: [vspace=6/][b][color=#0087c7]Extra Starting Cards:[/color][/b] [offset=140]2x Innovation.[/offset]
+
+TRAIT_CRIME_SYNDICATE: Crime Syndicate
+TRAIT_CRIME_SYNDICATE_DESC: <<|
+	[vspace=3/]Instead of colonizing planets, uses [b]Shadowports[/b] and [b]Defilers[/b] to corrupt other empires' planets, stealing a portion of their gross income and civilian production. Shadowports can be sacrificed to build a fleet of colony ships if necessary.
+	[vspace=6/]The Loyalty and population growth of colonized or captured planets is halved.
+	[vspace=6/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, armor effectiveness, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 20%.[/img]
+	[vspace=6/]Is allied with the Dread Pirate, and can lend him ships in exchange for an 80% maintenance reduction and 40% of the loot he gains from them.
+	[vspace=6/]Receives an extra 50% Special Funds whenever they gain any. Uses Special Funds to pay off debt, reducing or preventing its negative effects.
+	[vspace=6/][img=PlateArmor;22;#5188e6a0][b]Stealth Coating[/b] subsystem is available from the start, much cheaper, harder to destroy, and included in all default designs.[/img]
+	[vspace=6/][img][b]Construction Bay[/b] subsystem is available from the start.[/img]
+	[vspace=6/][img=BoardingParty;22][b]Boarding Party[/b] subsystem is available from the start.[/img]
+	[vspace=6/][img=CloakingDevice;22][b]Cloaking Device[/b] subsystem is available from the start.[/img]
+>>

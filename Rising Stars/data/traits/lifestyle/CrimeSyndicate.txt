@@ -1,0 +1,52 @@
+Trait: CrimeSyndicate
+    Name: #TRAIT_CRIME_SYNDICATE
+    Description: #TRAIT_CRIME_SYNDICATE_DESC
+    Order: 13
+
+	Category: Lifestyle
+	Unique: Lifestyle
+	AI Support: False
+	Available: False
+
+    UnlockSubsystem(BoardingParty)
+    UnlockSubsystem(ConstructionBay)
+    UnlockSubsystem(CloakPlating)
+    UnlockSubsystem(CloakingDevice)
+
+	IfHaveTrait(Slipstream, LoadDesigns(syndicate/slipstream))
+	IfHaveTrait(Hyperdrive, LoadDesigns(syndicate/hyperdrive))
+	IfHaveTrait(Gate, LoadDesigns(syndicate/other))
+	IfHaveTrait(Fling, LoadDesigns(syndicate/other))
+	IfHaveTrait(Sublight, LoadDesigns(syndicate/other))
+	IfHaveTrait(Flux, LoadDesigns(syndicate/other))
+	IfHaveTrait(Jumpdrive, LoadDesigns(syndicate/jumpdrive))
+
+	SpawnShip(Defiler, Override Disable Starting = True)
+	SpawnShip(Defiler, Override Disable Starting = True)
+	SpawnShip(Shadowport, Override Disable Starting = True)
+	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
+	AddStatusOwnedPlanets(CrimeSyndicate)
+
+    ModAttribute(MaintainFromSpecialFunds, Add, 1)
+    ModAttribute(SpecialFundsFactor, AddBase, 0.5)
+	ModAttribute(PopulationGrowthFactor, AddBase, -0.5)
+	ModAttribute(OrbitalHealthMod, AddBase, -0.2)
+	ModAttribute(OrbitalArmorMod, AddBase, -0.2)
+	ModAttribute(OrbitalShieldMod, AddBase, -0.2)
+	ModAttribute(ScoreMult, AddBase, -0.2)
+	ModAttribute(SystemRepairMod, AddBase, -0.2)
+
+	AddModifier(BoardingStrengthFactor(0.8))
+	AddModifier(DamageMult(0.8))
+	AddModifier(HpMult(0.8))
+	AddModifier(ShieldCapacityMult(0.8))
+	AddModifier(ShieldRegenMult(0.8))
+	AddModifier(RepairMult(0.8))
+	AddModifier(TroopPods::MaxLoyaltyFactor(0.8))
+	AddModifier(ImpactFactor(0.8))
+	AddModifier(DamageResistMult(0.8))
+
+    AddModifier(CloakPlating::HpMult(3.0))
+    AddModifier(CloakPlating::BuildCostFactor(0.1))
+    AddModifier(CloakPlating::LaborCostFactor(0.1))
+    AddModifier(CloakPlating::MaintainCostFactor(0.1))

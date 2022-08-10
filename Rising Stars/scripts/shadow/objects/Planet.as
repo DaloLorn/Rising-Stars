@@ -51,6 +51,10 @@ tidy class PlanetScript {
 		return 0.2;
 	}
 
+	Object@ get_shadowport() const {
+		return null;
+	}
+
 	void syncInitial(Planet& planet, Message& msg) {
 		//Read planet data
 		planet.Health = msg.read_float();

@@ -182,4 +182,5 @@ visible:
 	attribute double ActiveOutposts = 0;
 	attribute double SiegedPlanets = 0
 	attribute double SiegingPlanets = 0
+	attribute double MaintainFromSpecialFunds = 0
 }

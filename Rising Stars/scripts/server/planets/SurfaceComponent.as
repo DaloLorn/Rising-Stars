@@ -22,6 +22,8 @@ void setInstantColonize(bool value) {
 	INSTANT_COLONIZE = value;
 }
 
+const double STEAL_FACTOR = 0.2;
+
 tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	array<const Biome@> biomes;
 	uint biome0, biome1, biome2;
@@ -51,6 +53,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	double prevEnergy = 0;
 	double prevResearch = 0;
 	double prevDefense = 0;
+
+	int stolenIncome = 0;
+	double stolenInfluence = 0;
+	double stolenEnergy = 0;
+	double stolenResearch = 0;
+	double stolenDefense = 0;
+	double stolenLabor = 0;
 
 	const Design@ defenseDesign;
 	double defenseLabor = -1;
@@ -125,6 +134,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file << prevDefense;
 		file << popIncome;
 		file << bonusIncome;
+
+		file << stolenIncome;
+		file << stolenInfluence;
+		file << stolenEnergy;
+		file << stolenResearch;
+		file << stolenDefense;
+		file << stolenLabor;
 
 		file << growthRate;
 		file << tileDevelopRate;
@@ -207,6 +223,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file >> popIncome;
 		if(file >= SV_0125)
 			file >> bonusIncome;
+
+		file >> stolenIncome;
+		file >> stolenInfluence;
+		file >> stolenEnergy;
+		file >> stolenResearch;
+		file >> stolenDefense;
+		file >> stolenLabor;
 
 		file >> growthRate;
 		file >> tileDevelopRate;
@@ -1564,6 +1587,40 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		ResourceModID = uint(-1);
 	}
 
+	void changeShadowport(Object& obj, Object@ prevShadowport) {
+		if(prevShadowport !is null && prevShadowport.owner !is null && prevShadowport.owner.major) {
+			Empire@ prevOwner = prevShadowport.owner;
+			if(stolenIncome != 0)
+				prevOwner.modTotalBudget(-stolenIncome, MoT_Planet_Income);
+			if(stolenResearch != 0)
+				prevOwner.modResearchRate(-double(stolenResearch) * TILE_RESEARCH_RATE);
+			if(stolenInfluence != 0)
+				prevOwner.modInfluenceIncome(-stolenInfluence);
+			if(stolenEnergy != 0)
+				prevOwner.modEnergyIncome(-double(stolenEnergy) * TILE_ENERGY_RATE);
+			if(stolenDefense != 0)
+				prevOwner.modDefenseRate(stolenDefense);
+			if(stolenLabor != 0)
+				prevShadowport.modLaborIncome(-stolenLabor);
+		}
+
+		if(obj.shadowport !is null && obj.shadowport.owner !is null && obj.shadowport.owner.major) {
+			Empire@ newOwner = obj.shadowport.owner;
+			if(stolenIncome != 0)
+				newOwner.modTotalBudget(stolenIncome, MoT_Planet_Income);
+			if(stolenResearch != 0)
+				newOwner.modResearchRate(double(stolenResearch) * TILE_RESEARCH_RATE);
+			if(stolenInfluence != 0)
+				newOwner.modInfluenceIncome(stolenInfluence);
+			if(stolenEnergy != 0)
+				newOwner.modEnergyIncome(double(stolenEnergy) * TILE_ENERGY_RATE);
+			if(stolenDefense != 0)
+				newOwner.modDefenseRate(stolenDefense);
+			if(stolenLabor != 0)
+				obj.shadowport.modLaborIncome(stolenLabor);
+		}
+	}
+
 	void changeSurfaceOwner(Object& obj, Empire@ prevOwner) {
 		const PlanetLevel@ lvl = getPlanetLevel(LevelChainId, obj.level);
 		Region@ region = obj.region;
@@ -2504,8 +2561,17 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(prevBuildings != grid.buildings.length)
 			++SurfaceModId;
 
+		bool shouldSteal = obj.shadowport !is null && obj.shadowport.owner !is null && obj.shadowport.owner.major;
+
 		//Update resources from grid
 		int newIncome = ceil(grid.resources[TR_Money] * TILE_MONEY_RATE * obj.owner.MoneyGenerationFactor) + popIncome + bonusIncome;
+		int newStolenIncome = abs(int(double(newIncome * STEAL_FACTOR)));
+		if(shouldSteal) {
+			newIncome -= newStolenIncome;
+			if(newStolenIncome != stolenIncome)
+				obj.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Planet_Income);
+		}
+		stolenIncome = newStolenIncome;
 		if(prevIncome != newIncome) {
 			if(prevIncome < 0) {
 				if(newIncome < 0) {
@@ -2529,24 +2595,52 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		double newEnergy = max(grid.resources[TR_Energy], 0.0);
+		double newStolenEnergy = newEnergy * STEAL_FACTOR;
+		if(shouldSteal) {
+			newEnergy -= newStolenEnergy;
+			if(newStolenEnergy != stolenEnergy)
+				obj.shadowport.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
+		}
+		stolenEnergy = newStolenEnergy;
 		if(newEnergy != prevEnergy) {
 			obj.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
 			prevEnergy = newEnergy;
 		}
 
 		double newInfluence = max(grid.resources[TR_Influence], 0.0);
+		double newStolenInfluence = newInfluence * STEAL_FACTOR;
+		if(shouldSteal) {
+			newInfluence -= newStolenInfluence;
+			if(int(newStolenInfluence) != int(stolenInfluence))
+				obj.shadowport.owner.modInfluenceIncome(int(newStolenInfluence) - int(stolenInfluence));
+		}
+		stolenInfluence = newStolenInfluence;
 		if(int(newInfluence) != int(prevInfluence)) {
 			obj.owner.modInfluenceIncome(int(newInfluence) - int(prevInfluence));
 			prevInfluence = newInfluence;
 		}
 
 		double newResearch = max(grid.resources[TR_Research], 0.0);
+		double newStolenResearch = newResearch * STEAL_FACTOR;
+		if(shouldSteal) {
+			newResearch -= newStolenResearch;
+			if(newStolenResearch != stolenResearch)
+				obj.shadowport.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
+		}
+		stolenResearch = newStolenResearch;
 		if(newResearch != prevResearch) {
 			obj.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
 			prevResearch = newResearch;
 		}
 
 		double newDefense = max(grid.resources[TR_Defense], 0.0) * DEFENSE_LABOR_PM / 60.0 * obj.owner.DefenseGenerationFactor;
+		double newStolenDefense = newDefense * STEAL_FACTOR;
+		if(shouldSteal) {
+			newDefense -= newStolenDefense;
+			if(newStolenDefense != stolenDefense)
+				obj.owner.modDefenseRate(newStolenDefense - stolenDefense);
+		}
+		stolenDefense = newStolenDefense;
 		bool pooled = obj.canGainSupports && obj.owner.hasDefending;
 		if(!pooled) {
 			if(prevDefense < -0.01) {
@@ -2577,6 +2671,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double prevLabor = obj.distributedLabor;
 		double laborRes = max(grid.resources[TR_Labor], 0.0);
 		double labor = laborRes * TILE_LABOR_RATE * obj.owner.LaborGenerationFactor;
+		double newStolenLabor = labor * STEAL_FACTOR;
+		if(shouldSteal) {
+			labor -= newStolenLabor;
+			if(newStolenLabor != stolenLabor)
+				obj.shadowport.modLaborIncome(newStolenLabor - stolenLabor);
+		}
+		stolenLabor = newStolenLabor;
 
 		if(prevLabor != labor) {
 			bool hasLabor = laborRes > 0.0001 || obj.laborIncome > 0.0001 || obj.currentLaborStored > 0.001;

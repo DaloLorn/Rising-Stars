@@ -125,6 +125,7 @@ visible:
 	double Health = 1000000000
 	double MaxHealth = 1000000000
 
+	local Object@ get_shadowport() const;
 	local safe uint get_moonCount() const;
 	
 server:
@@ -133,6 +134,7 @@ server:
 	void setRing(uint ring);
 	void destroyQuiet();
 	void addMoon(float size = 0, uint style = 0);
+	void setShadowport(Object@ shadowport);
 }
 
 ColonyShip : objects.ColonyShip::ColonyShipScript {
