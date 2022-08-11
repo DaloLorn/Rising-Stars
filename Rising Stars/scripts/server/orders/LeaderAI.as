@@ -1449,7 +1449,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		AllowFillFrom = obj.isPlanet;
 		autoFill = !AllowFillFrom && !obj.isOrbital;
 
-		allowSatellites = obj.isPlanet;
+		allowSatellites = obj.isPlanet || obj.isOrbital || (obj.isShip && cast<Ship>(obj).isStation);
 		rememberGhosts = obj.isShip;
 		compEngageRange(obj);
 	}
