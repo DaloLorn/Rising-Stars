@@ -1,0 +1,25 @@
+Subsystem: SatelliteCapModule
+	Name: #SATELLITECAPMODULE_NAME
+	Description: #SATELLITECAPMODULE_DESC
+	BaseColor: #d6d300
+	Picture: SubsystemButtonArt::8 * #fdffa8
+	Elevation: 3
+
+	Tags: ScaledCost, Category:Control, SupportCap
+	Tags: DefaultUnlock, NonContiguous, NoCore, HasInternals
+	Hull: Station
+
+	Size := HexSize * Hexes
+	SupportCapSize := Size
+	BaseSupportCapacity := Size * 28
+
+	Hex.Resistance := 0.2
+	BaseHP := 18 * HexSize
+	Hex.Mass := HexSize
+
+	SupportCapacityMod := 1
+	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
+	Defense := SupportCapacity / 2.9 / 10 / 3
+	Hook: AddLocalDefense(Defense, Global Factor = 0, Build Satellites = True),
+	Module: Default
+		Sprite: SupportCommand*ff8888

@@ -928,6 +928,16 @@ SUPPORTCAPMODULE_DESC: <<
 	[img=MenuIcons::3;22]Support ships will not be built if the fleet is full.[/img]
 	[img=Minus]May lose control over support ships when destroyed.[/img]
 >>
+SATELLITECAPMODULE_NAME: Satellite Maintenance Bay
+SATELLITECAPMODULE_DESC: <<
+	Technical infrastructure for assembling and maintaining an array of defense satellites.
+
+	[img=ActionBarIcons::2;22]Provides [b][color=#00cffe]Support Command[/color][/b].[/img]
+	[img=Plus]Slowly builds new defense satellites while out of combat in friendly space, as if it were generating Defense.[/img]
+	[img=MenuIcons::3;22]Defense satellites will not be built if the station is full.[/img]
+	[img=Minus]Satellites are generated slower than support ships.[/img]
+	[img=Minus]May lose control over support ships when destroyed.[/img]
+>>
 
 S_NILINGARMOR_DESC: <<
 	Strands of quantum-reactive fibre connect the outer plating to a zero-sized sink hole in spacetime, allowing incoming energy flows to be safely redirected and stored. When enough energy has been stored, it is channeled back into normal spacetime, creating a strong EM pulse to damage surrounding enemies.
