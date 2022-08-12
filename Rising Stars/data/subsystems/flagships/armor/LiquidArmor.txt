@@ -30,3 +30,6 @@ Subsystem: LiquidArmor
 	Module: Default
 
 		Sprite: PlateArmor * #91692c
+
+	Modifier: SetBreakThreshold(factor)
+		Hex.BreakThreshold := Hex.BreakThreshold

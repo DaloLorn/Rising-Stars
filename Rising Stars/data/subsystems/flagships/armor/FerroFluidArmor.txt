@@ -38,3 +38,6 @@ Subsystem: FerroFluidArmor
 	Module: Default
 
 		Sprite: PlateArmor * #3b3d40
+
+	Modifier: SetBreakThreshold(factor)
+		Hex.BreakThreshold := Hex.BreakThreshold
