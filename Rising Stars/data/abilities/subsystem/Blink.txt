@@ -15,5 +15,3 @@ Ability: Blink
 	PlayParticles(SkipDriveEvent, Scale = 3.0, Object Tied = False)
 	TeleportTo(dest)
 	PlayParticlesAt(dest, SkipDriveEvent, Scale = 3.0)
-
-	SubsystemOrConsumeStatus(SkipDrive)

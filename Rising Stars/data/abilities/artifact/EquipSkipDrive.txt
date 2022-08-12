@@ -4,7 +4,7 @@ Ability: EquipSkipDrive
 	Icon: GuiOrbitalIcons::2 * #ff0000
 	Activate Sound: generic_activate_1
 
-	Energy Cost: 500
+	Energy Cost: 1000
 	ReduceEnergyCostSystemFlag(0.75, CheapArtifacts)
 
 	Target: targ = Object

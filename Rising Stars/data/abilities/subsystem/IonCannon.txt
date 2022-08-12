@@ -17,5 +17,3 @@ Ability: IonCannon
 	AddStatusTo(targ, Entangled, Sys.Duration:120)
 
 	ShowSubsystemVariable(Sys.Duration:120, Format = #TIME_S, Name = #DURATION, Icon = ContextIcons::1, Color = #80baff)
-
-	SubsystemOrConsumeStatus(IonCannon)
