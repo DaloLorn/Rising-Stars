@@ -8,7 +8,7 @@ Subsystem: BombBay
 
 	Tags: WeaponBase, MissileBase, Category:Weapons, Rotatable, HexLimitArc
 	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
-	Hull: Support, Satellite
+	Hull: Support
 
 	Size := HexSize * Hexes
 	Range := (Size + 100)* 2
