@@ -993,6 +993,8 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 				}
 			}
 		}
+
+		file >> designs;
 	}
 
 	void save(SaveFile& file) {
@@ -1073,6 +1075,8 @@ tidy class ObjectManager : Component_ObjectManager, Savable {
 			file << autoColonizers[i];
 			file << autoColonizeAbls[i];
 		}
+
+		file << designs;
 	}
 
 	void registerPlanet(Empire& emp, Planet@ pl) {

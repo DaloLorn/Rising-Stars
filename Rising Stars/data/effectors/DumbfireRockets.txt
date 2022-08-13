@@ -11,6 +11,10 @@ Effector: DumbfireRockets
 	Value: FireArc = 0.5
 	Value: TargetTolerance = 0
 	Value: FireTolerance = 0
+	Value: Pierce = 1
+	Value: DRResponse = 0
+	Value: Spillable = 1
+	Value: DamageType = 3
 
 	Range: Range
 	Speed: Speed
@@ -41,5 +45,9 @@ Effector: DumbfireRockets
 	FireArc: FireArc
 	Spread: Spread
 
-	Effect: ExplDamage
+	Effect: GenericDamage
 		Amount = Damage
+		Pierce = Pierce
+		DRResponse = DRResponse
+		DamageType = DamageType
+		Spillable = Spillable
