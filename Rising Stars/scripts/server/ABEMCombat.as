@@ -67,7 +67,7 @@ bool FireIfNotStatus(const Effector& efftr, Object& obj, Object& target, float& 
 }
 
 bool FireIfRaiding(const Effector& efftr, Object& obj, Object& target, float& efficiency, double supply) {
-	if(obj.hasSupportAI && !obj.isRaiding)
+	if(obj.hasSupportAI && !obj.isDetached)
 		return false;
 
 	return WeaponFire(efftr, obj, target, efficiency, supply);

@@ -29,7 +29,7 @@ Effector: DumbfireRockets
 
 	EfficiencyMode: Reload Only
 	Activation: Magazine(FireDelay, PodSize, Reload)
-	OnTrigger: combat::WeaponFire(SupplyCost)
+	OnTrigger: ABEMCombat::FireIfRaiding(SupplyCost)
 
 	PhysicalType: Projectile
 	GfxType: Sprite
