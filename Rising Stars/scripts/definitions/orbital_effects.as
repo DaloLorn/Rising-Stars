@@ -501,6 +501,25 @@ class LimitInOrbitStatus : OrbitalEffect {
 			return;
 		}
 	}
+
+	bool shouldDisable(Orbital& obj, any@ data) const override {
+		Region@ target = getRegion(obj.position);
+		if(target is null)
+			return true;
+		Object@ orbit = target.getOrbitObject(obj.position);
+		if(orbit is null)
+			return true;
+	}
+
+	bool shouldEnable(Orbital& obj, any@ data) const override {
+		Region@ target = getRegion(obj.position);
+		if(target is null)
+			return false;
+		Object@ orbit = target.getOrbitObject(obj.position);
+		if(orbit is null)
+			return false;
+		return true;
+	}
 #section all
 };
 
