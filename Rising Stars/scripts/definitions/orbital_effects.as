@@ -509,6 +509,7 @@ class LimitInOrbitStatus : OrbitalEffect {
 		Object@ orbit = target.getOrbitObject(obj.position);
 		if(orbit is null)
 			return true;
+		return false;
 	}
 
 	bool shouldEnable(Orbital& obj, any@ data) const override {

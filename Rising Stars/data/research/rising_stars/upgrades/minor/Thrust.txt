@@ -34,4 +34,5 @@ Technology: Thrust2
 	AddModifier( ThrustFactor(1.4) )
 	AddModifier( TurnThrustFactor(1.4) )
 	AddModifier( HyperSpeedFactor(1.4) )
+	AddModifier( SlipstreamFactor(1.2) )
 	ModAttribute(FTLThrustFactor, AddFactor, -0.1)
