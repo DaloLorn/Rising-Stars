@@ -1216,12 +1216,12 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double orbRadiusSQ = sqr(cast<Planet>(obj).OrbitSize);
 		if(siegeMask != 0) // Temporarily decrement sieged planet count while we're recalculating whether we're under siege.
 			owner.SiegedPlanets--;
-		siegeMask = 0;
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {
 			Empire@ otherOwner = getEmpire(i);
 			if(siegeMask & otherOwner.mask != 0)
 				otherOwner.SiegingPlanets--; // Temporarily decrement sieging planet count while we're recalculating whether we're under siege from them.
 		}
+		siegeMask = 0;
 
 		uint prevOrbits = orbitsMask;
 		uint newOrbits = 0;
