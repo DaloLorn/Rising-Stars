@@ -2,6 +2,6 @@ Status: AncientDeveloper
 	Visible To: Nobody
 
 	IfAttributeGTE(Adaptation4, 1, AddResource(Defense, 1))
-	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireSupportCapacityFactor, AddFactor, 1.06))
-	IfAttributeLT(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireSupportCapacityFactor, AddFactor, 1.05))
-	ModEmpireAttribute(EmpireSupportCapacityMassFactor, AddFactor, 1.25)
+	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireSupportCapacityFactor, AddFactor, 0.06))
+	IfAttributeLT(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireSupportCapacityFactor, AddFactor, 0.05))
+	ModEmpireAttribute(EmpireSupportCapacityMassFactor, AddFactor, 0.25)

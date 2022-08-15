@@ -1,9 +1,9 @@
 Status: AncientReinforcer
 	Visible To: Nobody
 	
-	IfAttributeGTE(Adaptation4, 1, ModEmpireAttribute(FleetEfficiencyFactor, AddFactor, 1.01))
+	IfAttributeGTE(Adaptation4, 1, ModEmpireAttribute(FleetEfficiencyFactor, AddFactor, 0.01))
 
-	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 1.084))
-	IfAttributeLT(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 1.07))
+	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 0.084))
+	IfAttributeLT(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairFactor, AddFactor, 0.07))
 
-	ModEmpireAttribute(EmpireRepairMassFactor, AddFactor, 1.25)
+	ModEmpireAttribute(EmpireRepairMassFactor, AddFactor, 0.25)

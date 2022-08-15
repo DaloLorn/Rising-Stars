@@ -19,7 +19,7 @@ Module: MonoHydroponics
 	Standalone: True
 	Core: True
 
-	LimitInOrbitStatus(ZeroGAssembly, 2)
+	LimitInOrbitStatus(ZeroGAssembly, 1)
 
 	ConsumeEnergy(750)
 	AddStatusToOrbitingPlanet(ZeroGAssembly)

@@ -19,7 +19,7 @@ Module: AtroanHydroponics
 	Core: True
 	Standalone: True
 
-	LimitInOrbitStatus(OrbitalControl, 2)
+	LimitInOrbitStatus(OrbitalControl, 1)
 
 	ConsumeEnergy(750)
 	AddStatusToOrbitingPlanet(OrbitalControl)

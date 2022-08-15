@@ -1,7 +1,7 @@
 Status: AncientCompressor
 	Visible To: Nobody
 
-	EnableModifier(MassFactor(0.92))
+	ModEmpireAttribute(EmpireRepairMassFactor, AddFactor, -0.08)
 
 	IfAttributeGTE(Adaptation4, 1, AddResource(Research, 1))
-	IfAttributeGTE(AtroanAdaptation3, 1, EnableModifier(MassFactor(0.984)))
+	IfAttributeGTE(AtroanAdaptation3, 1, ModEmpireAttribute(EmpireRepairMassFactor, AddFactor, -0.016))
