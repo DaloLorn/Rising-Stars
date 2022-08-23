@@ -7,7 +7,7 @@ Subsystem: FlareBomb
 	Elevation: 2
 
 	Tags: BaseCost, Category:Equipment, HasInternals, ExteriorCore
-	Tags: Disabled, Ability:FlareBomb, HeraldsDLC
+	Tags: Ability:FlareBomb, HeraldsDLC
 	Hull: Flagship
 
 	Size := HexSize * Hexes
@@ -15,6 +15,10 @@ Subsystem: FlareBomb
 
 	Hex.Resistance := 0.2
 	BaseHP := 18 * HexSize
+
+	EnergyBuildCost := EnergyBuildCost + 1500
+	Assert: (Size / ShipSize >= 0.50) && ShipSize >= 256
+		Message: #ERROR_TOO_SMALL
 
 	Requires:
 		Command = 1
@@ -26,5 +30,6 @@ Subsystem: FlareBomb
 	Module: Core
 		Hex.BuildCost := 3.0 * Hex.BuildCost
 		Hex.MaintainCost := 3.0 * Hex.MaintainCost
+		Hex.OreCost := 10000
 		Sprite: MissileLauncher::0 * #e45500
 		DrawMode: 1
