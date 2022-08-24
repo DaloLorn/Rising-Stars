@@ -239,7 +239,14 @@ tidy class Mover : Component_Mover, Savable {
 	bool FTL = false;
 	double FTLSpeed = 1.0;
 	double fluxCD = 0;
-	
+
+	// counter for movement interdiction effects, 0 is no effects, values
+	// greater than one all block self movement, but are counted so they can
+	// gracefully be disabled and only allow movement when they all run out
+	// values less than 0 are an error, but better to have negatives than
+	// underflow
+	int movementInterdicted = 0;
+
 	bool spacetimeDrag = config::NEW_MOVEMENT > 0;
 	double spacetimeDragCoefficient = baseSpacetimeDragCoefficient;
 	double spacetimeDragCoefficientFactor = 0.0;
@@ -297,6 +304,8 @@ tidy class Mover : Component_Mover, Savable {
 
 		if(data >= SV_0067)
 			data >> prevPathId;
+
+		data >> movementInterdicted;
 	}
 	
 	void save(SaveFile& data) {
@@ -330,6 +339,8 @@ tidy class Mover : Component_Mover, Savable {
 		for(uint i = 0; i < cnt; ++i)
 			data << path[i];
 		data << prevPathId;
+
+		data << movementInterdicted;
 	}
 
 	void destroy() {
@@ -590,6 +601,10 @@ tidy class Mover : Component_Mover, Savable {
 		//Reaper for a while after this code gets committed. Maybe go into
 		//hiding a few years.
 
+		if (hasInterdictedMovement()) {
+			return;
+		}
+
 		if(accel == 0)
 			return;
 		vec3d acc = obj.acceleration.normalized();
@@ -714,7 +729,7 @@ tidy class Mover : Component_Mover, Savable {
 		vec3d dest, destVel, destAccel;
 		PathNode@ pathNode;
 		
-		{
+		if (!hasInterdictedMovement()) {
 			double dot = targRot.dot(obj.rotation);
 			if(dot < 0.999) {
 				if(dot < -1.0)
@@ -891,6 +906,15 @@ tidy class Mover : Component_Mover, Savable {
 			a = accel * max(0.01, 1 - (obj.velocity.length / lightspeed)^2);
 		}
 		
+		// Hijack our acceleration, setting it to 0 for actual movement, but letting
+		// it stay non zero for pathing and planning. This way our orders continue even
+		// if movement is interdicted, and acceleration stats gained or lost during interdicted
+		// movement aren't an issue (slight Marenium nerf/fix here, bonus acceleration can no longer
+		// bypass interdicted movement).
+		if (hasInterdictedMovement()) {
+			a = 0;
+		}
+		
 		// This code handles spacetime drag - in short, take a fraction of how fast you're going, and subtract it from how fast you're going.
 		if(spacetimeDrag) {
 			vec3d drag = obj.velocity * spacetimeDragCoefficient * time;
@@ -931,8 +955,19 @@ tidy class Mover : Component_Mover, Savable {
 				}
 			}
 		}
+
+		// Compute this sooner, so we can work out if we are still trying to move to a goal
+		//Check if we can decellerate to our target this tick
+		double tGoal = newtonArrivalTime(a, dest - obj.position, destVel - obj.velocity);
+		if(tGoal > 1.0e4 || tGoal != tGoal) {
+			//We might not be able to reach the target (infinite time), so make sure we're working with a vaguely sensible timeline
+			tGoal = 1.0e4;
+		}
+
+		bool tryingToMove = hasInterdictedMovement() && tGoal > time;
+		// keep trying even if our movement is interdicted, don't give up
 		
-		if(!isLocked && (a <= 0.0000001 || a != a)) {
+		if(!isLocked && (a <= 0.0000001 || a != a) && !tryingToMove) {
 			double speed = obj.velocity.length;
 			double tickAccel = 0.1 * time;
 			if(speed < tickAccel) {
@@ -957,13 +992,6 @@ tidy class Mover : Component_Mover, Savable {
 				obj.velocity *= (speed - tickAccel)/speed;
 				return 0.125;
 			}
-		}
-		
-		//Check if we can decellerate to our target this tick
-		double tGoal = newtonArrivalTime(a, dest - obj.position, destVel - obj.velocity);
-		if(tGoal > 1.0e4 || tGoal != tGoal) {
-			//We might not be able to reach the target (infinite time), so make sure we're working with a vaguely sensible timeline
-			tGoal = 1.0e4;
 		}
 		
 		if(pathNode !is null && (tGoal <= time || tGoal <= 1.0 || (obj.position + obj.velocity).distanceToSQ(dest) < doneRange)) {
@@ -1428,6 +1456,21 @@ tidy class Mover : Component_Mover, Savable {
 		posDelta = true;
 		obj.wake();
 	}
+
+	// CE: Interdict movement overhaul
+	bool hasInterdictedMovement() {
+		return movementInterdicted > 0;
+	}
+
+	void addInterdictMovementEffect() {
+		movementInterdicted += 1;
+		moverDelta = true;
+	}
+
+	void removeInterdictMovementEffect() {
+		movementInterdicted -= 1;
+		moverDelta = true;
+	}
 	
 	bool writeMoverDelta(const Object& obj, Message& msg) {
 		bool used = false;
@@ -1449,6 +1492,11 @@ tidy class Mover : Component_Mover, Savable {
 			syncedID = moveID;
 			moverDelta = false;
 			facingDelta = false;
+			if (hasInterdictedMovement()) {
+				msg.write1();
+			} else {
+				msg.write0();
+			}
 			used = true;
 		}
 		else if(facingDelta) {
@@ -1488,6 +1536,13 @@ tidy class Mover : Component_Mover, Savable {
 				obj.position = msg.readMedVec3();
 				obj.velocity = vec3d();
 				obj.acceleration = vec3d();
+			}
+
+			// shadow doesn't need to care how many interdicts are stacked
+			if (msg.readBit()) {
+				movementInterdicted = 1;
+			} else {
+				movementInterdicted = 0;
 			}
 		}
 		else {
@@ -1588,6 +1643,12 @@ tidy class Mover : Component_Mover, Savable {
 				msg.writeMedVec3(destination);
 			}
 		}
+
+		if (hasInterdictedMovement()) {
+			msg.write1();
+		} else {
+			msg.write0();
+		}
 	}
 
 	void readMover(Object& obj, Message& msg) {
@@ -1673,6 +1734,13 @@ tidy class Mover : Component_Mover, Savable {
 				destination = msg.readMedVec3();
 			}
 			@target = null;
+		}
+
+		// shadow doesn't need to care how many interdicts are stacked
+		if (msg.readBit()) {
+			movementInterdicted = 1;
+		} else {
+			movementInterdicted = 0;
 		}
 	}
 };

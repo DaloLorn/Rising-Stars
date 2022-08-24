@@ -2120,6 +2120,9 @@ class RepairPerSecond : GenericEffect {
 };
 
 //InterdictMovement()
+// CE: now correctly tells Mover component to handle interdiction and so
+// cannot get out of sync with acceleration being added/removed during the
+// effect uptime.
 // Remove all velocity from an object and prevent it from accelerating.
 class InterdictMovement : GenericEffect {
 	Document doc("The object this effect is active on cannot accelerate in any way.");
@@ -2127,27 +2130,19 @@ class InterdictMovement : GenericEffect {
 #section server
 	void enable(Object& obj, any@ data) const override {
 		if(obj.hasMover) {
-			double acc = obj.maxAcceleration;
-			data.store(acc);
-
 			obj.velocity = vec3d();
 			obj.acceleration = vec3d();
-			obj.maxAcceleration = 0.0;
+			obj.addInterdictMovementEffect();
 		}
 	}
 
 	void tick(Object& obj, any@ data, double time) const override {
-		if(obj.hasMover)
-			obj.maxAcceleration = 0.0;
+		// Do nothing, Mover component handles interdiction now
 	}
 
 	void disable(Object& obj, any@ data) const override {
 		if(obj.hasMover) {
-			if(obj.maxAcceleration == 0.0) {
-				double acc = 0.0;
-				data.retrieve(acc);
-				obj.maxAcceleration = acc;
-			}
+			obj.removeInterdictMovementEffect();
 		}
 	}
 #section all

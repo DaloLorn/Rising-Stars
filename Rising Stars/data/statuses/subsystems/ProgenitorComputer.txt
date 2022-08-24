@@ -9,5 +9,6 @@ Status: ProgenitorCompBoost
 	Description: #STATUS_PROGENITOR_COMPUTER_BOOST_DESC
 	Icon: QuickbarIcons::6
 	Unique: True
+	Show Duration: True
 
 	ModFleetEffectivenessSubsystem(Sys.EfficiencyBoost)
