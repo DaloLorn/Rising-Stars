@@ -36,6 +36,7 @@ Status: Envoy
 	Description: #STATUS_ENVOY_DESC
 	Icon: PoliticalStrengthIcon * #00ff00
 	Collapses: True
+	Show Duration: True
 
 	RemoveOnWarWithOriginEmpire(Trigger Origin = RandomTrigger(0.25, TakeControl()))
 	ModCivResourceMult(Influence, +0.05)

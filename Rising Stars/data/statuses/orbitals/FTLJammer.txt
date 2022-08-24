@@ -4,3 +4,4 @@ Status: FTLJammer
 	Color: #f00
 	Icon: FtlIcon
 	BlockSystemFTL()
+	Show Duration: True

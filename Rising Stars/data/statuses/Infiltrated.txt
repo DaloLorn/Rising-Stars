@@ -5,6 +5,7 @@ Status: Infiltrated
 
 	Unique: True
 	Visible To: Origin Empire
+	Show Duration: True
 
 	VisibleToOriginEmpire()
 	GivesVisionToOriginEmpire()
