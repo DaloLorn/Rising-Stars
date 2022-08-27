@@ -14,6 +14,7 @@ from orders.OddityGateOrder import OddityGateOrder;
 from orders.SlipstreamOrder import SlipstreamOrder;
 from orders.AutoExploreOrder import AutoExploreOrder;
 from orders.WaitOrder import WaitOrder;
+from orders.ChaseOrder import ChaseOrder;
 from resources import getBuildCost, getMaintenanceCost, MoneyType, getLaborCost;
 import abilities;
 import orbitals;
@@ -95,7 +96,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	uint[] sightOrder;
 	uint nextInstanceID = 0;
 
-	AutoMode autoMode = AM_AreaBound;
+	// with actual kiting and pursuit I think region bound is a better default
+	AutoMode autoMode = AM_RegionBound;
 	EngagementBehaviour engageBehave = EB_CloseIn;
 	EngagementRange engageType = ER_SupportMin;
 	double autoArea = 1000.0;
@@ -275,6 +277,9 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 				break;
 				case OT_AutoExplore:
 					@ord = AutoExploreOrder(msg);
+				break;
+				case OT_Chase:
+					@ord = ChaseOrder(msg);
 				break;
 				case OT_Wait:
 					@ord = WaitOrder(msg);
@@ -755,7 +760,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 		if(moveToTerritory && obj.hasMover) {
 			auto@ closest = getClosestSystem(obj.position, newOwner);
-			if(closest.object !is obj.region)
+			if(closest !is null && closest.object !is obj.region)
 				obj.addGotoOrder(closest.object);
 		}
 	}
@@ -913,13 +918,15 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 				}
 			}
 			else {
+				// engageBehave == EB_KeepDistance -> engageBehave != EB_KeepDistance
+				// if we're set to keep distance, then we shouldn't be setting closeIn to true
 				//Attack a particular target
-				if(autoMode == AM_AreaBound)
-					addAttackOrder(obj, target, initialPosition, autoArea, engageBehave == EB_KeepDistance, false);
-				else if(autoMode == AM_RegionBound)
-					addAttackOrder(obj, target, false);
+				if(autoMode == AM_AreaBound || obj.region is null && autoMode == AM_RegionBound)
+					addAttackOrder(obj, target, initialPosition, autoArea, engageBehave != EB_KeepDistance, false);
+				else if(autoMode == AM_RegionBound && obj.region !is null)
+					addAttackOrder(obj, target, obj.region.position, obj.region.radius, engageBehave != EB_KeepDistance, false);
 				else
-					addAttackOrder(obj, target, vec3d(), 0, engageBehave == EB_KeepDistance, false);
+					addAttackOrder(obj, target, vec3d(), 0, engageBehave != EB_KeepDistance, false);
 				autoState = AS_Attacking;
 			}
 		}
@@ -1251,7 +1258,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		double range = engagementRange;
 		if(autoMode == AM_HoldFire)
 			setAutoMode(obj, AM_HoldPosition);
-		addOrder(obj, AttackOrder(target, range), append);
+		// Attack orders should always obey the closeIn/keepDistance setting
+		// held in engageBehave (especially as the UI makes it look like this
+		// was vanilla behaviour)
+		addOrder(obj, AttackOrder(target, range, engageBehave != EB_KeepDistance), append);
 		obj.wake();
 	}
 
@@ -1417,6 +1427,15 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
+	void addChaseOrder(Object& obj, Object& targ, bool append) {
+		if (obj is targ) {
+			return;
+		}
+		addOrder(obj, ChaseOrder(targ), append);
+		obj.wake();
+	}
+
+
 	void leaderInit(Object& obj) {
 		if(obj.isShip) {
 			double formationRad = getFormationRadius(obj);
@@ -1433,6 +1452,12 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			const Design@ dsg = ship.blueprint.design;
 			if(dsg !is null && !dsg.hasTag(ST_Weapon) && getSupportCommandFor(dsg, obj.owner) > 0)
 				engageType = ER_RaidingOnly;
+
+			// Apply auto keep distance if set on design
+			if (dsg !is null && dsg.hasTag(ST_KeepDistance)) {
+				engageBehave = EB_KeepDistance;
+				orderDelta = true;
+			}
 		}
 		else {
 			needExperience = INFINITY;
