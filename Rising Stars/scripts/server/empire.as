@@ -29,9 +29,9 @@ uint getMajorEmpireCount() {
 void init(Empire& emp) {
 	emp.initResearch();
 	emp.initAttributes();
-	emp.modFTLCapacity(+250);
-	emp.modFTLIncome(+1);
-	emp.modTotalBudget(+550, MoT_Planet_Income);
+	emp.modFTLCapacity(config::FTL_START_STORED);
+	emp.modFTLIncome(config::FTL_START_INCOME);
+	emp.modTotalBudget(config::BASE_BUDGET, MoT_Planet_Income);
 
 	//Handle handicap
 	if(emp.handicap < 0) {
