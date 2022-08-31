@@ -314,7 +314,7 @@ class TargetFilterStatuses : TargetFilter {
 	Argument objTarg(TT_Object);
 	Argument status("Status", AT_Status, doc="First status to require.");
 	Argument status2("Status 2", AT_Status, doc="Second status to require.");
-	Argument mode("Exclusive", AT_Boolean, "False", doc="What relationship the two statuses must be in for the target to be valid. True - Must be one OR the other, can't be both. False - At least one of the statuses must be present. Defaults to false.");
+	Argument exclusive("Exclusive", AT_Boolean, "False", doc="What relationship the two statuses must be in for the target to be valid. True - Must be one OR the other, can't be both. False - At least one of the statuses must be present. Defaults to false.");
 	string statusName = "DUMMY";
 	string status2Name = "DUMMY";
 
@@ -451,7 +451,7 @@ class DisplayStatus : StatusHook {
 	void onAddStack(Object& obj, Status@ status, StatusInstance@ instance, any@ data) override {
 		if(obj !is status.originObject) {
 			if(status.originObject.hasStatuses) {
-				status.originObject.addStatus(getStatusID(statusType.str));
+				status.originObject.addStatus(getStatusID(statustype.str));
 			}
 		}
 	}
@@ -1137,12 +1137,12 @@ class TargetFilterNotRemnantOrPirate : TargetFilter {
 	}
 	
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(objTarg[0].integer))
+		if(index != uint(objTarg.integer))
 			return true;
 		Object@ obj = targ.obj;
 		if(obj is null)
 			return false;
-		return !(obj.owner is Creeps || obj.owner is Pirates);
+		return !(isCreepEmpire(obj.owner) || isPirateEmpire(obj.owner));
 	}
 }
 

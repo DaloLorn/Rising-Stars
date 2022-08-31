@@ -33,6 +33,22 @@ import research;
 from construction.Constructible import Constructible;
 #section all
 
+bool isPirateEmpire(Empire@ emp) {
+#section server
+	if(isServer) // Trick the compiler into tolerating unreachable code, since there's no "section *not* server" directive.
+		return emp is Pirates;
+#section all
+	return emp !is null && emp.valid && !emp.major && emp.RaceName == "Pirates";
+}
+
+bool isCreepEmpire(Empire& emp) {
+#section server
+	if(isServer)
+		return emp is Creeps;
+#section all
+	return emp !is null && emp.valid && !emp.major && emp.RaceName == "Remnants";
+}
+
 tidy class GenericEffect : Hook, IResourceHook, IBuildingHook, IStatusHook, IOrbitalEffect, SubsystemHook, RegionChangeable, LeaderChangeable {
 	uint hookIndex = 0;
 

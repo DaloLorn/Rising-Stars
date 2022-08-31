@@ -103,7 +103,7 @@ class ConvertRemnants : AbilityHook {
 			return false;
 		if(abl.emp is null)
 			return false;
-		return targ.obj.owner is Creeps;
+		return isCreepEmpire(targ.obj.owner);
 	}
 
 #section server	
@@ -472,7 +472,7 @@ class TargetFilterRemnants : TargetFilter {
 		if(targ.obj.owner is null)
 			return false;
 		else
-			return targ.obj.owner is Creeps;
+			return isCreepEmpire(targ.obj.owner);
 	}
 };
 
@@ -659,7 +659,7 @@ class TriggerOnGenerate : ResourceHook {
 	}
 
 	bool instantiate() override {
-		if(!withHook(hookId.str))
+		if(!withHook(hookID.str))
 			return false;
 		return ResourceHook::instantiate();
 	}

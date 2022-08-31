@@ -155,6 +155,7 @@ void init() {
 	{
 		@Creeps = Empire();
 		Creeps.name = locale::REMNANTS;
+		Creeps.RaceName = "Remnants";
 		Creeps.color = Color(0xaaaaaaff);
 		Creeps.major = false;
 		Creeps.visionMask = ~0;
@@ -167,6 +168,7 @@ void init() {
 
 		@Pirates = Empire();
 		Pirates.name = locale::PIRATES;
+		Pirates.RaceName = "Pirates";
 		Pirates.color = Color(0xff0000ff);
 		Pirates.visionMask = ~0;
 		Pirates.major = false;
