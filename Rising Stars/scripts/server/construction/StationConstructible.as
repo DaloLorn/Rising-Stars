@@ -97,7 +97,10 @@ tidy class StationConstructible : ShipConstructible {
 				finalizing = true; // Flag us as no longer spending labor.
 				return TR_PartialLabor;
 			}
-			else return TR_UnusedLabor;
+			else {
+				curLabor = totalLabor;
+				return TR_UnusedLabor;
+			}
 		}
 		return TR_UsedLabor;
 	}
