@@ -191,3 +191,10 @@ SubsystemStat: Size
 	Color: #e0ff00
 
 	Variable: Size
+
+HexStat: Mass
+	Name: #S_MASS
+	Icon: DesignationIcons::16
+	Color: #aaaaaa
+
+	CustomFormula: Mass
