@@ -17,4 +17,4 @@ HexStat: Mass
 	Icon: DesignationIcons::16
 	Color: #aaaaaa
 
-	Variable: Hex.Mass
+	CustomFormula: Mass

@@ -86,7 +86,7 @@ GlobalStat: BoostAcceleration
 	 Suffix: u/s²
 
 	 Variable: BoostThrust
-	 DivBy: Hex.Mass
+	 CustomFormula: Acceleration
 
 SubsystemStat: Instances
 	Name: #S_Instances
