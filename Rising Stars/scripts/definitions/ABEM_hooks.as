@@ -108,14 +108,14 @@ class DamagePassthrough : SubsystemEffect {
 
 class Regeneration : SubsystemEffect {
 	Document doc("Regenerates itself over time.");
-	Argument amount(AT_Decimal, doc="Amount of health to heal per second.");
+	Argument regen(AT_Decimal, doc="Amount of health to heal per second.");
 	Argument spread(AT_Boolean, "False", doc="If false, regeneration amount is applied to each hex individually. Otherwise, it is spread evenly across all the hexes. (Surplus healing will then be divided equally across remaining damaged hexes until it is depleted or there are no damaged hexes left.)");
 
 #section server
 	void tick(SubsystemEvent& event, double time) const override {
 		uint Hexes = event.subsystem.hexCount;
 		uint i = 0;
-		double amount = arguments[0].decimal * time;
+		double amount = regen.decimal * time;
 		double excess = 0, lastExcess;
 		if(spread.boolean) {
 			amount = amount / Hexes;
@@ -139,7 +139,7 @@ class Regeneration : SubsystemEffect {
 
 class RegenerateAdjacentHexes : SubsystemEffect {
 	Document doc("Hexes of this subsystem regenerate adjacent hexes over time.");
-	Argument amount(AT_Decimal, doc="Amount of health to heal per second.");
+	Argument regen(AT_Decimal, doc="Amount of health to heal per second.");
 	Argument spread(AT_Boolean, "False", doc="If false, regeneration amount is applied to each adjacent hex individually. Otherwise, it is spread evenly across all the hexes. (Surplus healing will then be divided equally across remaining damaged hexes until it is depleted or there are no damaged hexes left.)");
 	Argument can_heal_self(AT_Boolean, "False", doc="If true, hexes of this subsystem that are adjacent to each other will heal each other. If not, they will be treated as empty.");
 	Argument no_overflow(AT_Boolean, "True", doc="If true, any excess healing from a hex's adjacencies will be spread out among other adjacent hexes as necessary.");
@@ -148,7 +148,7 @@ class RegenerateAdjacentHexes : SubsystemEffect {
 	void tick(SubsystemEvent& event, double time) const override {
 		uint Hexes = event.subsystem.hexCount;
 		uint i = 0;
-		double amount = arguments[0].decimal * time;
+		double amount = regen.decimal * time;
 		double excess = 0, lastExcess = 0;
 		double hexExcess = 0, lastHexExcess = 0;
 		if(spread.boolean) {
@@ -252,22 +252,21 @@ class ReactorOverloadHook : StatusHook {
 
 #section server
 	void onDestroy(Object& obj, Status@ status, any@ data) override {
-		ReactorOverload(obj, arguments[0].decimal, arguments[1].decimal, arguments[2].decimal, arguments[3].decimal);
+		ReactorOverload(obj, powerdamage.decimal, powerradius.decimal, basedamage.decimal, baseradius.decimal);
 	}
-
 #section all
 };
 
 class TargetRequireCommand : TargetFilter {
 	Document doc("Restricts target to objects with a leader AI. (Flagships, certain orbitals and planets.)");
-	Argument targ(TT_Object);
+	Argument objTarg(TT_Object);
 
 	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
 		return "Must target flagships, orbitals or planets.";
 	}
 
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(arguments[0].integer))
+		if(index != uint(objTarg.integer))
 			return true;
 		Object@ obj = targ.obj;
 		if(obj is null)
@@ -278,14 +277,14 @@ class TargetRequireCommand : TargetFilter {
 
 class TargetFilterStatus : TargetFilter {
 	Document doc("Restricts target to objects with a particular status.");
-	Argument targ(TT_Object);
+	Argument objTarg(TT_Object);
 	Argument status("Status", AT_Status, doc="Status to require.");
 
 	string statusName = "DUMMY";
 
 	bool instantiate() override {
 		if(status.integer == -1) {
-			error("Invalid argument: "+arguments[1].str);
+			error("Invalid argument: "+status.str);
 			return false;
 		}
 		statusName = getStatusType(status.integer).name;
@@ -298,7 +297,7 @@ class TargetFilterStatus : TargetFilter {
 	}
 
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(arguments[0].integer))
+		if(index != uint(objTarg.integer))
 			return true;
 		if(targ.obj is null)
 			return false;
@@ -312,38 +311,35 @@ class TargetFilterStatus : TargetFilter {
 
 class TargetFilterStatuses : TargetFilter {
 	Document doc("Restricts target to objects with one of two particular statuses.");
-	Argument targ(TT_Object);
+	Argument objTarg(TT_Object);
 	Argument status("Status", AT_Status, doc="First status to require.");
 	Argument status2("Status 2", AT_Status, doc="Second status to require.");
 	Argument mode("Exclusive", AT_Boolean, "False", doc="What relationship the two statuses must be in for the target to be valid. True - Must be one OR the other, can't be both. False - At least one of the statuses must be present. Defaults to false.");
 	string statusName = "DUMMY";
 	string status2Name = "DUMMY";
 
-
 	bool instantiate() override {
-		if(arguments[1].integer == -1) {
-			error("Invalid argument: "+arguments[1].str);
+		if(status.integer == -1) {
+			error("Invalid argument: "+status.str);
 			return false;
 		}
-		else if(arguments[1].str == arguments[2].str) {
-			error("TargetFilterStatuses must have two different statuses: "+arguments[1].str+" "+arguments[2].str);
+		else if(status.str == status2.str) {
+			error("TargetFilterStatuses must have two different statuses: "+status.str+" "+status2.str);
 			return false;
 		}
-		else if(arguments[2].integer == -1) {
-			error("Invalid argument: "+arguments[2].str);
+		else if(status2.integer == -1) {
+			error("Invalid argument: "+status2.str);
 			return false;
 		}
 		else {
-			statusName = getStatusType(arguments[1].integer).name;
-			status2Name = getStatusType(arguments[2].integer).name;
+			statusName = getStatusType(status.integer).name;
+			status2Name = getStatusType(status2.integer).name;
 		}
 		return TargetFilter::instantiate();
 	}
-			
-	
 
 	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
-		if(arguments[3].boolean) {
+		if(exclusive.boolean) {
 			return "Target must have the '" + statusName + "' status or the '" + status2Name + "' status, but it must not have both!";
 		}
 		else {
@@ -352,36 +348,36 @@ class TargetFilterStatuses : TargetFilter {
 	}
 
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(arguments[0].integer))
+		if(index != uint(objTarg.integer))
 			return true;
 		if(targ.obj is null)
 			return false;
 		if(!targ.obj.hasStatuses)
 			return false;
-		if(targ.obj.hasStatusEffect(arguments[1].integer)) {
-			if(arguments[3].boolean) {
-				return !targ.obj.hasStatusEffect(arguments[2].integer);
+		if(targ.obj.hasStatusEffect(status.integer)) {
+			if(exclusive.boolean) {
+				return !targ.obj.hasStatusEffect(status2.integer);
 			}
 			else {
 				return true;
 			}
 		}
 		else {
-			return targ.obj.hasStatusEffect(arguments[2].integer);
+			return targ.obj.hasStatusEffect(status2.integer);
 		}
 	}
 };
 
 class TargetFilterNotType : TargetFilter {
 	Document doc("Target must not be the type defined.");
-	Argument targ(TT_Object);
+	Argument objTarg(TT_Object);
 	Argument type("Type", AT_Custom, "True", doc="Type of object.");
 	int typeId = -1;
 
 	bool instantiate() override {
-		typeId = getObjectTypeId(arguments[1].str);
+		typeId = getObjectTypeId(type.str);
 		if(typeId == -1) {
-			error("Invalid object type: "+arguments[1].str);
+			error("Invalid object type: "+type.str);
 			return false;
 		}
 		return TargetFilter::instantiate();
@@ -392,7 +388,7 @@ class TargetFilterNotType : TargetFilter {
 	}
 
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(arguments[0].integer))
+		if(index != uint(objTarg.integer))
 			return true;
 		Object@ obj = targ.obj;
 		if(obj is null)
@@ -405,20 +401,20 @@ class MaxStacks : StatusHook {
 	Document doc("Cannot have more than # stacks.");
 	Argument count("Maximum", AT_Integer, "10", doc="How many stacks of a status can exist on a given object. Defaults to 10.");
 
-	#section server
+#section server
 	void onAddStack(Object& obj, Status@ status, StatusInstance@ instance, any@ data) override {
-		if(status.stacks > arguments[0].integer) {
+		if(status.stacks > count.integer) {
 			status.remove(obj, instance);
 		}
 	}
-	#section all
+#section all
 };
 
 class CombinedExpiration : StatusHook {
 	Document doc("All stacks of the status expire simultaneously.");
 	Argument duration("Duration", AT_Decimal, "10.0", doc="How long the status persists after its last application before expiring.");
 	
-	#section server
+#section server
 	void onAddStack(Object& obj, Status@ status, StatusInstance@ instance, any@ data) override {
 		double timer = 0;
 		data.store(timer);
@@ -429,7 +425,7 @@ class CombinedExpiration : StatusHook {
 		data.retrieve(timer);
 		timer += time;
 		data.store(timer);
-		return timer < arguments[0].decimal;
+		return timer < duration.decimal;
 	}
 	
 	void save(Status@ status, any@ data, SaveFile& file) override {
@@ -445,21 +441,21 @@ class CombinedExpiration : StatusHook {
 		file >> timer;
 		data.store(timer);
 	}
-	#section all
+#section all
 }
 class DisplayStatus : StatusHook {
 	Document doc("Displays a dummy status on the origin object, IF that object isn't also the object the status is on.");
 	Argument statustype("Status", AT_Status, doc="Status to display.");
 
-	#section server
+#section server
 	void onAddStack(Object& obj, Status@ status, StatusInstance@ instance, any@ data) override {
 		if(obj !is status.originObject) {
-			if(status.originObject.get_hasStatuses()) {
-				status.originObject.addStatus(getStatusID(arguments[1].str));
+			if(status.originObject.hasStatuses) {
+				status.originObject.addStatus(getStatusID(statusType.str));
 			}
 		}
 	}
-	#section all
+#section all
 };
 
 /*class BoardingData {
@@ -995,13 +991,13 @@ class Interdict : StatusHook {
 	// 1 - All, 2 - Non-Owner, 3 - Hostile.
 	Argument friendlytype("Parameters", AT_Integer, "1", doc="What sort of interdiction the object is performing.");
 
+#section server
 	void onCreate(Object& obj, Status@ status, any@ data) {
 		double maintenance = 0.0;
 		bool failed = false;
-	#section server
-		if(arguments[0].integer == 1) {
+		if(type.integer == 1) {
 			Ship@ object = cast<Ship>(obj);
-			if(arguments[1].boolean) {
+			if(hasinitialcost.boolean) {
 			//	double initialCost = object.blueprint.getEfficiencySum(SV_InterdictInitCost);
 				double initialCost = 0.0;
 				if(initialCost > 0) {
@@ -1014,22 +1010,20 @@ class Interdict : StatusHook {
 					}
 				}
 			}
-			if(arguments[2].boolean) {
+			if(hasmaintenance.boolean) {
 			//	maintenance = object.blueprint.design.total(SV_InterdictMaintenance);
 				if(maintenance > 0) {
 					obj.owner.modFTLUse(maintenance);
 				}
 			}
 		}
-	#section all
 	}
-
+	
 	void onDestroy(Object& obj, Status@ status, any@ data) {
-	#section server
 		double maintenance = 0.0;
 		bool failed = false;
 		data.retrieve(failed);
-		if(arguments[0].integer == 1) {
+		if(type.integer == 1) {
 			Ship@ object = cast<Ship>(obj);
 		//	maintenance = object.blueprint.design.total(SV_InterdictMaintenance);
 		}
@@ -1039,15 +1033,13 @@ class Interdict : StatusHook {
 		if(obj.region !is null) {
 			obj.region.BlockFTLMask = 0;
 		}
-	#section all
 	}
-
+	
 	void onObjectDestroy(Object& obj, Status@ status, any@ data) {
-	#section server
 		double maintenance = 0.0;
 		bool failed = false;
 		data.retrieve(failed);
-		if(arguments[0].integer == 1) {
+		if(type.integer == 1) {
 			Ship@ object = cast<Ship>(obj);
 		//	maintenance = object.blueprint.design.total(SV_InterdictMaintenance);
 		}
@@ -1057,11 +1049,9 @@ class Interdict : StatusHook {
 		if(obj.region !is null) {
 			obj.region.BlockFTLMask = 0;
 		}
-	#section all
 	}
-
+	
 	bool onTick(Object& obj, Status@ status, any@ data, double time) {
-	#section server
 		bool failed = false;
 		data.retrieve(failed);
 		if(failed) {
@@ -1074,26 +1064,24 @@ class Interdict : StatusHook {
 
 		if(obj.region !is null) {
 			uint mask = ~0;
-			if(arguments[3].integer == 2 && obj.owner !is null)
+			if(friendlytype.integer == 2 && obj.owner !is null)
 				mask &= ~obj.owner.mask;
-			if(arguments[3].integer == 3 && obj.owner !is null) {
+			if(friendlytype.integer == 3 && obj.owner !is null) {
 				mask &= obj.owner.hostileMask;
 				mask &= ~obj.owner.mask;
 			}
 			obj.region.BlockFTLMask |= mask;
 		}
-	#section all
 		return true;
 	}
 
 	bool onRegionChange(Object& obj, Status@ status, any@ data, Region@ prevRegion, Region@ newRegion) {
-	#section server
 		if(prevRegion !is null) {
 			prevRegion.BlockFTLMask = 0;
 		}
-	#section all
 		return true;
 	}
+#section all
 };
 
 class TeleportTargetToSelf : AbilityHook {
@@ -1142,21 +1130,20 @@ class PlayParticlesAtObject : AbilityHook {
 
 class TargetFilterNotRemnantOrPirate : TargetFilter {
 	Document doc("Target must not be a Remnant or pirate-controlled object.");
-	Argument targ(TT_Object);
+	Argument objTarg(TT_Object);
 	
 	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
 		return "Cannot target Remnants and pirates.";
 	}
-#section server
+	
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
-		if(index != uint(arguments[0].integer))
+		if(index != uint(objTarg[0].integer))
 			return true;
 		Object@ obj = targ.obj;
 		if(obj is null)
 			return false;
 		return !(obj.owner is Creeps || obj.owner is Pirates);
 	}
-#section all
 }
 
 class HealFromSubsystem : AbilityHook {

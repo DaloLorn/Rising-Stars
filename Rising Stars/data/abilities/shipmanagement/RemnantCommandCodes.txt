@@ -12,6 +12,8 @@ Ability: RemnantCommandCodes
 	ABEM_races::TargetFilterRemnants(targ)
 	TargetFilterNotStatus(targ, IsGuardian)
 	TargetFilterNotStatus(targ, SeedShip)
+	TargetFilterNotStatus(targ, GravitarShip)
+	TargetFilterNotStatus(targ, SpyProbe)
 	ABEM_races::CostFromSize(targ, 256)
 
 	ABEM_races::ConvertRemnants(targ)

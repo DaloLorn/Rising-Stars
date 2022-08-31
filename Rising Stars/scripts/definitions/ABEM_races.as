@@ -96,7 +96,6 @@ class ConvertRemnants : AbilityHook {
 		return "Must target Remnants.";
 	}
 
-#section server	
 	bool isValidTarget(const Ability@ abl, uint index, const Target@ targ) const override {
 		if(index != uint(objTarg.integer))
 			return true;
@@ -106,6 +105,8 @@ class ConvertRemnants : AbilityHook {
 			return false;
 		return targ.obj.owner is Creeps;
 	}
+
+#section server	
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
 		Object@ targ = objTarg.fromConstTarget(targs).obj;
 		if(targ is null)
@@ -462,7 +463,7 @@ class TargetFilterRemnants : TargetFilter {
 	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
 		return "Must target Remnants.";
 	}
-#section server
+	
 	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
 		if(index != uint(targID.integer))
 			return true;
@@ -473,7 +474,6 @@ class TargetFilterRemnants : TargetFilter {
 		else
 			return targ.obj.owner is Creeps;
 	}
-#section all
 };
 
 class IfRace : IfHook {
@@ -659,7 +659,7 @@ class TriggerOnGenerate : ResourceHook {
 	}
 
 	bool instantiate() override {
-		if(!withHook(arguments[0].str))
+		if(!withHook(hookId.str))
 			return false;
 		return ResourceHook::instantiate();
 	}
@@ -872,7 +872,7 @@ class NotifyEmpire : EmpireTrigger {
 #section server
 	void activate(Object@ obj, Empire@ emp) const override {
 		if(emp !is null && emp.major) {
-			emp.notifyGeneric(arguments[0].str, arguments[1].str, arguments[2].str, emp, obj);
+			emp.notifyGeneric(title.str, desc.str, icon.str, emp, obj);
 		}
 	}
 #section all
@@ -891,9 +891,9 @@ class NotifyOwner : EmpireTrigger {
 		if(obj !is null) {
 			if(obj.owner !is null && obj.owner.major) {
 				if(!use_owner.boolean)
-					obj.owner.notifyGeneric(arguments[1].str, arguments[2].str, arguments[3].str, emp, obj);
+					obj.owner.notifyGeneric(title.str, desc.str, icon.str, emp, obj);
 				else
-					obj.owner.notifyGeneric(arguments[1].str, arguments[2].str, arguments[3].str, obj.owner, obj);
+					obj.owner.notifyGeneric(title.str, desc.str, icon.str, obj.owner, obj);
 			}
 		}
 	}
