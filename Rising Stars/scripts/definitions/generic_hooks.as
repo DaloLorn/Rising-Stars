@@ -31,6 +31,7 @@ import research;
 
 #section server
 from construction.Constructible import Constructible;
+from empire import Creeps, Pirates;
 #section all
 
 bool isPirateEmpire(Empire@ emp) {
