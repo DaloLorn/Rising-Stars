@@ -27,7 +27,7 @@ tidy class ShipScript {
 			return 0;
 		double shieldMitBase = ship.blueprint.getEfficiencySum(SV_ShieldMitBase) / shieldCores;
 		if(ship.blueprint.hasTagActive(ST_ShieldHardener))
-			shieldMitBase *= 1 + ship.getEfficiencyFactor(SV_HardenerMitigationFactor);
+			shieldMitBase *= 1 + ship.blueprint.getEfficiencyFactor(SV_HardenerMitigationFactor);
 		return shieldMitBase;
 	}
 
@@ -43,19 +43,19 @@ tidy class ShipScript {
 			return 0;
 		double shieldMitRate = ship.blueprint.getEfficiencySum(SV_ShieldMitRate) / shieldCores;
 		if(ship.blueprint.hasTagActive(ST_ShieldHardener))
-			shieldMitRate /= 1 + ship.getEfficiencyFactor(SV_HardenerMitigationFactor) / 5.0;
+			shieldMitRate /= 1 + ship.blueprint.getEfficiencyFactor(SV_HardenerMitigationFactor) / 5.0;
 		return shieldMitRate;
 	}
 
 	double getMitigationDecay(Ship& ship) {
 		if(shieldCores <= 0)
 			return 0;
-		return (ship.blueprint.design.variable(SV_ShieldMitDecay) / ship.blueprint.design.variable(SV_ShieldCores)) / (ship.blueprint.getEfficiencyFactor(SV_ShieldMitDecay) / shieldCores);
+		return (ship.blueprint.design.total(SV_ShieldMitDecay) / ship.blueprint.design.total(SV_ShieldCores)) / (ship.blueprint.getEfficiencyFactor(SV_ShieldMitDecay) / shieldCores);
 	}
 
 	double get_mitigation(Ship& ship) {
 		double shieldMitBase = getBaseMitigation(ship);
-		if(shieldHexes <= 0)
+		if(shieldCores <= 0)
 			return 0;
 		double mitigation = min(shieldMitBase + shieldMitBoost, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
 		return mitigation;

@@ -225,7 +225,7 @@ double calculateHPStrength(const Design@ dsg) {
 	double ShieldBehaviorMod = 1.0;
 	auto@ settings = cast<const DesignSettings>(dsg.settings);
 	if (settings !is null && dsg.hasTag(ST_Support) && settings.behavior == SG_Shield) ShieldBehaviorMod = 1.1;
-	return ((dsg.totalHP + (getRepairFor(dsg, playerEmpire) / 3.0 * pow(max(log10(getRepairFor(dsg, playerEmpire)/3.0), 0.0), 2))) * (1.0+log10(dsg.size)*0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen) / (1.0 - dsg.total(SV_DummyMitigation)/100))*1.5,1.0)) * (dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_DummyMitigation)/100)) / (1.0 - dsg.total(SV_Chance))) + (dsg.size/20 * dsg.total(SV_Instances) * (getRepairFor(dsg, playerEmpire)/3 + dsg.total(SV_ShieldRegen)*(1 - dsg.total(SV_DummyMitigation)/100)/(1 - dsg.total(SV_Chance)))));
+	return ((dsg.totalHP + (getRepairFor(dsg, playerEmpire) / 3.0 * pow(max(log10(getRepairFor(dsg, playerEmpire)/3.0), 0.0), 2))) * (1.0+log10(dsg.size)*0.1) * dsg.total(SV_HullStrengthMult) + ((1.0 + max(log10(dsg.total(SV_ShieldRegen) / (1.0 - dsg.total(SV_MaximumMitigation)/100))*1.5,1.0)) * (dsg.total(SV_ShieldCapacity) / (1.0 - dsg.total(SV_MaximumMitigation)/100))) + (dsg.size/20 * dsg.total(SV_Instances) * (getRepairFor(dsg, playerEmpire)/3 + dsg.total(SV_ShieldRegen)*(1 - dsg.total(SV_MaximumMitigation)/100))));
 }
 // END NON-MIT CODE
 

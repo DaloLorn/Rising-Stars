@@ -612,5 +612,3 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 	}
 	return DE_Continue;
 }
-
-DamageEventStatus 
