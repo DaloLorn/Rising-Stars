@@ -80,7 +80,7 @@ server:
 
 	void modShieldCores(double count);
 	void modShieldMitCap(double amount);
-	void modShieldMitFactor(double amount);
+	void processMitigationIncrease(double damageRatio);
 
 	void startRetrofit(Object@ from, const Design@ to);
 	void stopRetrofit(Object@ from);
