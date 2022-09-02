@@ -1470,7 +1470,7 @@ tidy class ShipScript {
 		if(shieldCores <= 0)
 			return;
 		double shieldMitRate = getMitigationRate(ship);
-		double extraMitigation = shieldMitRate / damageRatio;
+		double extraMitigation = shieldMitRate / (damageRatio * 100.0);
 		double maximumBoost = getMaximumMitigationBoost(ship);
 		if(extraMitigation == 0 || maximumBoost == shieldMitBoost)
 			return;

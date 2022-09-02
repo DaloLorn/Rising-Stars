@@ -65,9 +65,9 @@ Subsystem: SatelliteHull
 	AddPostModifier: CalculateMitigation()
 
 	Modifier: CalculateMitigation()
-		MinimumMitigation := ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation) * 100
-		MaximumMitigation := (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation) * 100
-		MinShieldAbsorbRate := Sum.ShieldRegen / (1 - ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation))
-		MaxShieldAbsorbRate := Sum.ShieldRegen / (1 - (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation))
-		MitigationGrowthRate := (Sum.ShieldMitRate / Sum.ShieldCores) / (1 + Sum.HardenerMitigationFactor / 5) * 100
-		MitigationDecayRate := (Sum.ShieldMitDecay / Sum.ShieldCores) * 100
+		MinimumMitigation := if(Sum.ShieldCores, ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation) * 100, 0)
+		MaximumMitigation := if(Sum.ShieldCores, (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation) * 100, 0)
+		MinShieldAbsorbRate := if(Sum.ShieldCores, Sum.ShieldRegen / (1 - ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation)), 0)
+		MaxShieldAbsorbRate := if(Sum.ShieldCores, Sum.ShieldRegen / (1 - (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation)), 0)
+		MitigationGrowthRate := if(Sum.ShieldCores, (Sum.ShieldMitRate / Sum.ShieldCores) / (1 + Sum.HardenerMitigationFactor / 5) * 100, 0)
+		MitigationDecayRate := if(Sum.ShieldCores, (Sum.ShieldMitDecay / Sum.ShieldCores) * 100, 0)
