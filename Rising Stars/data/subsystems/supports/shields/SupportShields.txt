@@ -21,12 +21,12 @@ Subsystem: SupShieldGen
 	ShieldRegenMod := 1
 	ShieldRegen := BaseShieldRegen * ShieldRegenMod
 
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	// Shield mitigation
 	ShieldCores := 1
 	ShieldMitCap := 0.6
-	ShieldMitExponent := 1.02
-	// END NON-MIT CODE
+	ShieldMitRate := 0.004
+	ShieldMitBase := 0.15
+	ShieldMitDecay := 0.0125
 
 	Hex.Resistance := 0.5
 	BaseHP := 8 * HexSize

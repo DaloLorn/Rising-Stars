@@ -6,7 +6,7 @@ tidy class ShipScript {
 
 	float timer = 1.f;
 	double shieldMitCap = 0;
-	double shieldMitExponent = 0;
+	double shieldMitBoost = 0;
 	double shieldCores = 0;
 	float mass = 0.f;
 	float massBonus = 0.f;
@@ -22,14 +22,42 @@ tidy class ShipScript {
 			ship.updateFleetStrength();
 	}
 
+	double getBaseMitigation(Ship& ship) {
+		if(shieldCores <= 0)
+			return 0;
+		double shieldMitBase = ship.blueprint.getEfficiencySum(SV_ShieldMitBase) / shieldCores;
+		if(ship.blueprint.hasTagActive(ST_ShieldHardener))
+			shieldMitBase *= 1 + ship.getEfficiencyFactor(SV_HardenerMitigationFactor);
+		return shieldMitBase;
+	}
+
+	double getMaximumMitigationBoost(Ship& ship) {
+		if(shieldCores <= 0)
+			return 0;
+		double shieldMitBase = getBaseMitigation(ship);
+		return (shieldMitCap / shieldCores) - shieldMitBase;
+	}
+
+	double getMitigationRate(Ship& ship) {
+		if(shieldCores <= 0)
+			return 0;
+		double shieldMitRate = ship.blueprint.getEfficiencySum(SV_ShieldMitRate) / shieldCores;
+		if(ship.blueprint.hasTagActive(ST_ShieldHardener))
+			shieldMitRate /= 1 + ship.getEfficiencyFactor(SV_HardenerMitigationFactor) / 5.0;
+		return shieldMitRate;
+	}
+
+	double getMitigationDecay(Ship& ship) {
+		if(shieldCores <= 0)
+			return 0;
+		return (ship.blueprint.design.variable(SV_ShieldMitDecay) / ship.blueprint.design.variable(SV_ShieldCores)) / (ship.blueprint.getEfficiencyFactor(SV_ShieldMitDecay) / shieldCores);
+	}
+
 	double get_mitigation(Ship& ship) {
-		double shieldHexes = ship.blueprint.getEfficiencySum(SV_ShieldHexes);
-		double adjustedCores = ship.blueprint.getEfficiencySum(SV_ShieldCores);
+		double shieldMitBase = getBaseMitigation(ship);
 		if(shieldHexes <= 0)
 			return 0;
-		// BEGIN NON-MIT CODE - DOF (Mitigation)
-		double mitigation = min(pow(shieldMitExponent / shieldCores, shieldHexes - adjustedCores) - 1, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
-		// END NON-MIT CODE
+		double mitigation = min(shieldMitBase + shieldMitBoost, shieldMitCap / shieldCores) + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
 		return mitigation;
 	}
 
@@ -201,7 +229,7 @@ tidy class ShipScript {
 		}
 		msg >> shieldCores;
 		msg >> shieldMitCap;
-		msg >> shieldMitExponent;
+		msg >> shieldMitBoost;
 		msg >> mass;
 		msg >> massBonus;
 	}
@@ -280,7 +308,7 @@ tidy class ShipScript {
 		if(msg.readBit()) {
 			msg >> shieldCores;
 			msg >> shieldMitCap;
-			msg >> shieldMitExponent;
+			msg >> shieldMitBoost;
 		}
 		if(msg.readBit()) {
 			msg >> mass;

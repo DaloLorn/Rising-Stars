@@ -43,7 +43,6 @@ void ShieldInitMitigation(Event& evt) {
 		bp.boolean(sys, 0) = true;
 		ship.modShieldCores(sys.variable(SV_ShieldCores));
 		ship.modShieldMitCap(sys.variable(SV_ShieldMitCap));
-		ship.modShieldMitFactor(sys.variable(SV_ShieldMitExponent));
 	}
 }
 
@@ -56,7 +55,6 @@ void ShieldDisableMitigation(Event& evt) {
 		bp.boolean(sys, 0) = false;
 		ship.modShieldCores(-sys.variable(SV_ShieldCores));
 		ship.modShieldMitCap(-sys.variable(SV_ShieldMitCap));
-		ship.modShieldMitFactor(-sys.variable(SV_ShieldMitExponent));
 	}
 }
 

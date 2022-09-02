@@ -28,8 +28,9 @@ Subsystem: SupportShrine
 	// Shield mitigation
 	ShieldCores := 1
 	ShieldMitCap := 0.5
-	ShieldMitExponent := 1.01
-	// END NON-MIT CODE
+	ShieldMitRate := 0.005
+	ShieldMitBase := 0.1
+	ShieldMitDecay := 0.015
 
 	Hex.Resistance := 0.5
 	BaseHP := 8 * HexSize

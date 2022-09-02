@@ -24,19 +24,23 @@ Subsystem: RemnantHull
 	AddShipModifier: SupportCapacityMult(2.0)
 	AddShipModifier: tag/MissileBase::SpeedMult(0.5)
 
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	BonusMitigation := 0
-	DummyMitigation := 0
-	MitigationOvercap := 0
-	ShieldAbsorbRate := 0
+	MinShieldAbsorbRate := 0
+	MaxShieldAbsorbRate := 0
+	MitigationGrowthRate := 0
+	MitigationDecayRate := 0
+	MinimumMitigation := 0
+	MaximumMitigation := 0
 
 	AddPostModifier: CalculateMitigation()
 
 	Modifier: CalculateMitigation()
-		DummyMitigation := (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation) * 100
-		MitigationOvercap := max((pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1 - Sum.ShieldMitCap / Sum.ShieldCores) * 100, 0.0)
-		ShieldAbsorbRate := Sum.ShieldRegen / (1 - (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation))
-	// END NON-MIT CODE
+		MinimumMitigation := ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation) * 100
+		MaximumMitigation := (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation) * 100
+		MinShieldAbsorbRate := Sum.ShieldRegen / (1 - ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation))
+		MaxShieldAbsorbRate := Sum.ShieldRegen / (1 - (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation))
+		MitigationGrowthRate := (Sum.ShieldMitRate / Sum.ShieldCores) / (1 + Sum.HardenerMitigationFactor / 5) * 100
+		MitigationDecayRate := (Sum.ShieldMitDecay / Sum.ShieldCores) * 100
 
 Subsystem: RemnantSupportHull
 	Tags: NoCore, RemnantComputer, HullSystem
@@ -59,19 +63,23 @@ Subsystem: RemnantSupportHull
 	AddShipModifier: SpreadMult(1.5)
 	AddShipModifier: tag/MissileBase::SpeedMult(0.5)
 
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	BonusMitigation := 0
-	DummyMitigation := 0
-	MitigationOvercap := 0
-	ShieldAbsorbRate := 0
+	MinShieldAbsorbRate := 0
+	MaxShieldAbsorbRate := 0
+	MitigationGrowthRate := 0
+	MitigationDecayRate := 0
+	MinimumMitigation := 0
+	MaximumMitigation := 0
 
 	AddPostModifier: CalculateMitigation()
 
 	Modifier: CalculateMitigation()
-		DummyMitigation := (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation) * 100
-		MitigationOvercap := max((pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1 - Sum.ShieldMitCap / Sum.ShieldCores) * 100, 0.0)
-		ShieldAbsorbRate := Sum.ShieldRegen / (1 - (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation))
-	// END NON-MIT CODE
+		MinimumMitigation := ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation) * 100
+		MaximumMitigation := (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation) * 100
+		MinShieldAbsorbRate := Sum.ShieldRegen / (1 - ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation))
+		MaxShieldAbsorbRate := Sum.ShieldRegen / (1 - (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation))
+		MitigationGrowthRate := (Sum.ShieldMitRate / Sum.ShieldCores) / (1 + Sum.HardenerMitigationFactor / 5) * 100
+		MitigationDecayRate := (Sum.ShieldMitDecay / Sum.ShieldCores) * 100
 
 Subsystem: SpecialRemnantHull
 	Tags: NoCore, RemnantComputer, HullSystem, Ability:ScuttleDerelict
@@ -94,16 +102,20 @@ Subsystem: SpecialRemnantHull
 	AddShipModifier: SupportCapacityMult(2.0)
 	AddShipModifier: tag/MissileBase::SpeedMult(0.5)
 
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
 	BonusMitigation := 0
-	DummyMitigation := 0
-	MitigationOvercap := 0
-	ShieldAbsorbRate := 0
+	MinShieldAbsorbRate := 0
+	MaxShieldAbsorbRate := 0
+	MitigationGrowthRate := 0
+	MitigationDecayRate := 0
+	MinimumMitigation := 0
+	MaximumMitigation := 0
 
 	AddPostModifier: CalculateMitigation()
 
 	Modifier: CalculateMitigation()
-		DummyMitigation := (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation) * 100
-		MitigationOvercap := max((pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1 - Sum.ShieldMitCap / Sum.ShieldCores) * 100, 0.0)
-		ShieldAbsorbRate := Sum.ShieldRegen / (1 - (min(pow(Sum.ShieldMitExponent / Sum.ShieldCores, Sum.ShieldHexes - Sum.ShieldCores) - 1, Sum.ShieldMitCap / Sum.ShieldCores) + BonusMitigation))
-	// END NON-MIT CODE
+		MinimumMitigation := ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation) * 100
+		MaximumMitigation := (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation) * 100
+		MinShieldAbsorbRate := Sum.ShieldRegen / (1 - ((Sum.ShieldMitBase / Sum.ShieldCores) * (1 + Sum.HardenerMitigationFactor) + BonusMitigation))
+		MaxShieldAbsorbRate := Sum.ShieldRegen / (1 - (Sum.ShieldMitCap / Sum.ShieldCores + BonusMitigation))
+		MitigationGrowthRate := (Sum.ShieldMitRate / Sum.ShieldCores) / (1 + Sum.HardenerMitigationFactor / 5) * 100
+		MitigationDecayRate := (Sum.ShieldMitDecay / Sum.ShieldCores) * 100

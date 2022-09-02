@@ -398,19 +398,27 @@ class ShipInfoBar : InfoBar {
 
 			shield.progress = min(curShield / max(maxShield, 0.01), 1.0);
 			shield.text = standardize(curShield, true);
-			// BEGIN NON-MIT CODE - DOF (Mitigation)
+			double shieldMitBase = ship.getBaseMitigation() + ship.blueprint.getEfficiencySum(SV_BonusMitigation);
+			double shieldMitCap = ship.getMaximumMitigationBoost() + shieldMitBase;
 			double shieldRegen = ship.blueprint.getEfficiencySum(SV_ShieldRegen);
 			double shieldMit = ship.mitigation;
-			double shieldBlock = ship.blueprint.getEfficiencySum(SV_Chance)*100.0;
+			double shieldMitGrowth = ship.getMitigationRate() * maxShield;
+			double shieldMitDecay = ship.getMitigationDecay();
+			double shieldHardness = ship.blueprint.getEfficiencySum(SV_ShieldHardening);
+			double shieldHardnessLimit = 0.5 * ship.blueprint.getTagEfficiency(ST_ShieldHardener);
 			double shieldAbsorb = shieldRegen / (1.0 - shieldMit);
 			tt += "\n\n";
 			tt += format(locale::TT_SHIP_SHIELD,
 				standardize(curShield), standardize(maxShield),
-				standardize(shieldRegen), standardize(shieldMit*100.0),
-				standardize(shieldBlock));
+				standardize(shieldRegen));
+			tt += "\n";
+			tt += format(locale::TT_SHIP_MITIGATION, 
+				standardize(shieldMit*100.0), standardize(shieldMitCap*100.0),
+				standardize(shieldMitGrowth), standardize(shieldMitDecay*100.0));
 			tt += "\n\n";
-			tt += format(locale::TT_SHIP_SHIELD_ABSORB, standardize(shieldAbsorb));
-			// END NON-MIT CODE
+			tt += format(locale::TT_SHIP_SHIELD_ABSORB,
+				standardize(shieldHardness), standardize(shieldHardnessLimit*100.0), 
+				standardize(shieldAbsorb));
 		}
 		else {
 			shield.visible = false;

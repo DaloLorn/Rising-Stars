@@ -51,32 +51,65 @@ GlobalStat: PlanetMiningRate
 
 	Variable: PlanetMiningRate
 
-// BEGIN NON-MIT CODE - DOF (Mitigation)
-GlobalStat: Mitigation
+GlobalStat: MaximumMitigation
 	Name: #S_MITIGATION
 	Description: #STT_MITIGATION
 	Icon: AttributeIcons::6
 	Color: #8080ff
 	Suffix: %
-	Variable: DummyMitigation
+	Variable: MaximumMitigation
 
-GlobalStat: ShieldAbsorb
+GlobalStat: MinimumMitigation
+	Name: #S_MINIMUMMITIGATION
+	Description: #STT_MINIMUMMITIGATION
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: %
+	Secondary: MaximumMitigation
+	Variable: MinimumMitigation
+
+GlobalStat: MaxShieldAbsorbRate
 	Name: #S_SHIELDABSORB
 	Description: #STT_SHIELDABSORB
 	Icon: AttributeIcons::6
 	Color: #8080ff
 	Suffix: /s
 
-	Variable: ShieldAbsorbRate
+	Variable: MaxShieldAbsorbRate
 
-GlobalStat: MitigationOvercap
-	Name: #S_MITIGATIONOVERCAP
-	Description: #STT_MITIGATIONOVERCAP
+GlobalStat: MinShieldAbsorbRate
+	Name: #S_MINSHIELDABSORB
+	Description: #STT_MINSHIELDABSORB
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: /s
+
+	Secondary: MaxShieldAbsorbRate
+	Variable: MinShieldAbsorbRate
+
+GlobalStat: MitigationGrowthRate
+	Name: #S_MITIGATIONGROWTH
+	Description: #STT_MITIGATIONGROWTH
 	Suffix: %
 
-	Secondary: Mitigation
-	Variable: MitigationOvercap
-// END NON-MIT CODE
+	Secondary: MaximumMitigation
+	Variable: MitigationGrowthRate
+
+GlobalStat: MitigationDecayRate
+	Name: #S_MITIGATIONDECAY
+	Description: #STT_MITIGATIONDECAY
+	Suffix: %
+
+	Secondary: MaximumMitigation
+	Variable: MitigationDecayRate
+
+GlobalStat: ShieldHardening
+	Name: #S_SHIELDHARDENING
+	Description: #STT_SHIElDHARDENING
+	Icon: AttributeIcons::6
+	Color: #8080ff
+
+	Variable: ShieldHardening
 	
 // *************************************
 // ******SUBSYSTEM-SPECIFIC STATS*******
@@ -258,6 +291,14 @@ SubsystemStat: ArmorPierce
 	Icon: HexagonSubsystems::0 * #20ff20
 
 	Variable: Pierce
+
+SubsystemStat: HardenerMitigationFactor
+	Name: #S_HARDENER_FACTOR
+	Icon: AttributeIcons::6
+	Color: #8080ff
+	Suffix: x
+
+	Variable: HardenerMitigationFactor
 
 // *************************************
 // *********HEX-SPECIFIC STATS**********

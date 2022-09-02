@@ -558,9 +558,25 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 			playParticleSystem("ShieldImpactHeavy", ship.position + evt.impact.normalized(ship.radius * 0.9), quaterniond_fromVecToVec(vec3d_front(), evt.impact), ship.radius, ship.visibleMask, networked=false);
 		}
 
+		// Store base damage for mitigation increase.
+		double baseDamage = evt.damage;
+
+		// If a hardener is present, reduce incoming damage.
+		if(ship.blueprint.hasTagActive(ST_ShieldHardener)) {
+			double damageResist = ship.blueprint.getEfficiencySum(SV_ShieldHardening);
+			double hardenerStatus = ship.blueprint.getTagEfficiency(ST_ShieldHardener);
+			double resistLimit = baseDamage * (1.0 - 0.5 * hardenerStatus);
+			if(evt.flags & DF_QuadShieldPenetration != 0)
+				resistLimit *= 0.5;
+			if(evt.flags & DF_HalfShieldDamage != 0)
+				resistLimit *= 1.5;
+
+			evt.damage -= min(damageResist, resistLimit);
+		}
+
 		// BEGIN NON-MIT CODE - DOF (Mitigation)
 		double Mitigation = ship.mitigation;
-		double ShieldPenetration = evt.pierce / 4.0; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation.
+		double ShieldPenetration = evt.pierce / 4.0; // We don't want muons to completely bleed through, nor do we want railguns to ignore mitigation. At least not at maximum mitigation.
 		double BlockFactor = 1;
 
 		// Process shield bleedthrough damage flags.
@@ -588,9 +604,13 @@ DamageEventStatus ABEMShieldDamage(DamageEvent& evt, vec2u& position, vec2d& end
 		// Bleedthrough damage isn't affected by mitigation
 		evt.damage /= 1 - Mitigation;
 		// END NON-MIT CODE
+
+		ship.processMitigationIncrease(baseDamage / maxShield);
 		
 		if(evt.damage <= 0.0)
 			return DE_EndDamage;
 	}
 	return DE_Continue;
 }
+
+DamageEventStatus 

@@ -5,16 +5,15 @@ Subsystem: ShieldHardener
 	Elevation: 1
 
 	EvaluationOrder: 100
-	DamageOrder: -200
 
-	Tags: BaseCost, HighPowerUse
+	Tags: BaseCost, HighPowerUse, ShieldHardener
 	Tags: Defense, Category:Shields, HasInternals
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
 	PowerUse := 15 * Size
-	Chance := pow(0.5, 1.0 / (Hexes / Sum.ShieldHexes))
-	HasShieldHardener := 1
+	ShieldHardening := Size
+	HardenerMitigationFactor := Size / ShipSize
 
 	Hex.Resistance := 0.5
 	BaseHP := 12 * HexSize
@@ -24,14 +23,11 @@ Subsystem: ShieldHardener
 		Command = 1
 		Power = PowerUse
 
-	Effect: ShieldBlock
-		Chance = Chance
-
 	Assert: Sum.ShieldCapacity > 0
 		Unique: True
 		Message: #ERROR_NEED_SHIELD
 
-	Assert: Sum.HasShieldHardener <= 1
+	Assert: TagCount.ShieldHardener <= 1
 		Unique: True
 		Message: #ERROR_ONLY_ONE
 	

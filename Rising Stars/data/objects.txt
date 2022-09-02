@@ -39,6 +39,10 @@ visible:
 	local safe double get_mitigation();
 	local safe float getMass();
 	local safe float getBaseMass();
+	local safe double getBaseMitigation();
+	local safe double getMaximumMitigationBoost();
+	local safe double getMitigationRate();
+	local safe double getMitigationDecay();
 	
 remote restricted:
 	void scuttle();
