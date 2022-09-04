@@ -1447,7 +1447,7 @@ tidy class ShipScript {
 	double getMitigationDecay(Ship& ship) {
 		if(shieldCores <= 0)
 			return 0;
-		return (ship.blueprint.design.total(SV_ShieldMitDecay) / ship.blueprint.design.total(SV_ShieldCores)) / (ship.blueprint.getEfficiencyFactor(SV_ShieldMitDecay) / shieldCores);
+		return (ship.blueprint.design.total(SV_ShieldMitDecay) / ship.blueprint.design.total(SV_ShieldCores)) / (ship.blueprint.getEfficiencyFactor(SV_ShieldMitDecay));
 	}
 
 	double get_mitigation(Ship& ship) {
