@@ -133,5 +133,5 @@ TT_COLONIZE_THIS_FTL: <<|
 
 	Send 1B population from one of your planets to this planet to colonize it, allowing them to use $1 FTL systems for interstellar travel.
 
-	If the origin planet is not in the same system, flux jumps made during colonization will incur a total cost of 25 FTL.
+	If the origin planet is not in the same system, FTL use during colonization will incur a total cost of $2 FTL.
 >>

@@ -595,7 +595,7 @@ double instantRefluxCost(Object& obj) {
 		return 0.0;
 	if(reg !is null && reg.FreeFTLMask & owner.mask != 0)
 		return 0.0;
-	return obj.fluxCooldown * owner.FTLThrustFactor * owner.InstantFTLFactor;
+	return obj.fluxCooldown * (owner.FTLThrustFactor / 100) * owner.InstantFTLFactor;
 }
 
 #section server-side
