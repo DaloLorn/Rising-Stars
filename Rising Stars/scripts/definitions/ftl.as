@@ -180,15 +180,15 @@ int flingCost(Object& obj, vec3d position) {
 		else
 			scaleFactor = sqrt(double(scale));
 
-		result = ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
+		result = ceil(FLING_COST * scaleFactor * massFactor * flingCostFactor * owner.FTLCostFactor * owner.FTLThrustFactor / 100.0);
 	}
 	else {
 		if(obj.isOrbital)
-			result = ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100);
+			result = ceil(FLING_COST * cast<Orbital>(obj).mass * 0.03 * owner.FTLCostFactor * owner.FTLThrustFactor / 100.0);
 		else if(obj.isPlanet) {
 			double modifier = 1;
 			if(freeFTL) modifier = 0.25; // Planets only receive a serious discount from free FTL effects.
-			result = ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100 * modifier / 4);
+			result = ceil(FLING_COST * obj.radius * 30.0 * owner.FTLCostFactor * owner.FTLThrustFactor / 100.0 * modifier / 4.0);
 		}
 	}
 	if(result < 0)
@@ -332,7 +332,7 @@ double slipstreamInaccuracy(Object& obj, const vec3d& position) {
 }
 
 double slipstreamInstantInaccuracy(Object& obj, const vec3d& position) {
-	return slipstreamInaccuracy(obj, position) * obj.owner.InstantFTLFactor / 2;
+	return slipstreamInaccuracy(obj, position) * obj.owner.InstantFTLFactor / 2.0;
 }
 
 bool canSlipstreamTo(Object& obj, const vec3d& point) {
@@ -500,7 +500,7 @@ double jumpdriveRange(Object& obj, int scale, int stored) {
 double jumpdriveInstantRange(Object& obj) {
 	if(obj.owner is null)
 		return 0;
-	return jumpdriveRange(obj) / (obj.owner.InstantFTLFactor/2);
+	return jumpdriveRange(obj) / (obj.owner.InstantFTLFactor/2.0);
 }
 
 bool canJumpdriveTo(Object& obj, const vec3d& pos) {
@@ -582,7 +582,7 @@ double calculateFluxCooldown(Object& obj, const vec3d& fluxPos) {
 		if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 			return 0;
 		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE * owner.FTLThrustFactor / 100;
+		double cd = dist / FLUX_CD_RANGE * owner.FTLThrustFactor / 100.0;
 		return cd;
 	}
 	return INFINITY;
@@ -595,7 +595,7 @@ double instantRefluxCost(Object& obj) {
 		return 0.0;
 	if(reg !is null && reg.FreeFTLMask & owner.mask != 0)
 		return 0.0;
-	return obj.fluxCooldown * (owner.FTLThrustFactor / 100) * owner.InstantFTLFactor;
+	return obj.fluxCooldown * (owner.FTLThrustFactor / 100.0) * owner.InstantFTLFactor;
 }
 
 #section server-side
