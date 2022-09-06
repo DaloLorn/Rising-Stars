@@ -408,6 +408,64 @@ class IfAlliedWithOriginEmpire : IfStatusHook {
 #section all
 }
 
+class GivesTradeToOriginEmpire : StatusHook {
+	Document doc("Objects with this status grant trade to the status' origin empire, as the GiveTrade() hook.");
+
+#section server
+	void onCreate(Object& obj, Status@ status, any@ data) override {
+		Empire@ owner = status.originEmpire;
+		Region@ region = obj.region;
+		if(region !is null && owner !is null && owner.valid)
+			region.grantTrade(owner);
+	}
+
+	void onDestroy(Object& obj, Status@ status, any@ data) override {
+		Empire@ owner = status.originEmpire;
+		Region@ region = obj.region;
+		if(region !is null && owner !is null && owner.valid)
+			region.revokeTrade(owner);
+	}
+
+	// No onOwnerChange is needed, since this keys to the origin instead.
+
+	bool onRegionChange(Object& obj, Status@ status, any@ data, Region@ fromRegion, Region@ toRegion) override {
+		Empire@ owner = status.originEmpire;
+		if(owner !is null && owner.valid) {
+			if(fromRegion !is null)
+				fromRegion.revokeTrade(owner);
+			if(toRegion !is null)
+				toRegion.grantTrade(owner);
+		}
+	}
+#section all
+}
+
+class CorruptPlanet : StatusHook {
+	Document doc("When applied to a planet, this status sets its origin object as the planet's shadowport.");
+
+#section server
+	void onCreate(Object& obj, Status@ status, any@ data) override {
+		Empire@ owner = status.originEmpire;
+		if(obj.isPlanet && owner !is null && owner.valid && status.originObject !is null && status.originObject.valid)
+			obj.setShadowport(status.originObject);
+	}
+
+	void onDestroy(Object& obj, Status@ status, any@ data) override {
+		Empire@ owner = status.originEmpire;
+		if(obj.isPlanet && owner !is null && owner.valid && status.originObject !is null)
+			obj.setShadowport(null);
+	}
+
+	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
+		Empire@ owner = status.originEmpire;
+		Object@ origin = status.originObject;
+		if(owner !is null && origin !is null && (!origin.valid || origin.owner !is owner))
+			return false;
+		return true;
+	}
+#section all
+}
+
 class ProtectPlanet : GenericEffect {
 	Document doc("Planets affected by this status cannot be captured.");
 	

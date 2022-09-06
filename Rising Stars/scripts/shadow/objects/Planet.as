@@ -9,6 +9,7 @@ tidy class MoonData {
 tidy class PlanetScript {
 	double tickTimer = randomd(-0.2,0.2);
 	array<MoonData@>@ moons;
+	Object@ _shadowport;
 	
 	void destroy(Planet& planet) {
 		planet.destroySurface();
@@ -52,7 +53,7 @@ tidy class PlanetScript {
 	}
 
 	Object@ get_shadowport() const {
-		return null;
+		return _shadowport;
 	}
 
 	void syncInitial(Planet& planet, Message& msg) {
@@ -115,6 +116,7 @@ tidy class PlanetScript {
 					plNode.addMoon(dat.size, dat.style);
 			}
 		}
+		msg >> _shadowport;
 	}
 
 	void syncDelta(Planet& planet, Message& msg, double tDiff) {
@@ -148,6 +150,8 @@ tidy class PlanetScript {
 		}
 		if(msg.readBit())
 			planet.readOrbitDelta(msg);
+		if(msg.readBit())
+			msg >> _shadowport;
 	}
 
 	void syncDetailed(Planet& planet, Message& msg, double tDiff) {
@@ -170,6 +174,7 @@ tidy class PlanetScript {
 				planet.activateMover();
 			planet.readMover(msg);
 		}
+		msg >> _shadowport;
 	}
 
 	uint get_moonCount() {

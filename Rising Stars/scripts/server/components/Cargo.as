@@ -1,6 +1,8 @@
 import cargo;
 import saving;
 
+const double STEAL_FACTOR = 0.2;
+
 tidy class Cargo : CargoStorage, Component_Cargo {
 	bool hasGlobalAccess = false;
 
@@ -48,6 +50,12 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 			return;
 		// Short-circuit the cargo addition system if we can store this in the global pool.
 		if(type.isGlobal && type.autostore && (obj.isPlanet || hasGlobalAccess) && obj.owner !is null && obj.owner.valid) {
+			double stolen = 0;
+			if(obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+				stolen = amount * STEAL_FACTOR;
+				obj.shadowport.owner.addCargo(typeId, stolen);
+				amount -= stolen;
+			}
 			obj.owner.addCargo(typeId, amount);
 			return;
 		}
@@ -62,6 +70,12 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 			for(uint i = 0; i < types.length; i++) {
 				auto@ type = types[i];
 				if(type.isGlobal && type.autostore && obj.owner !is null && obj.owner.valid) {
+					double stolen = 0;
+					if(obj.isPlanet && obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+						stolen = amounts[i] * STEAL_FACTOR;
+						obj.shadowport.owner.addCargo(typeId, stolen);
+						amounts[i] -= stolen;
+					}
 					obj.owner.addCargo(type.id, amounts[i]);
 					remove(type);
 					i--; // This type will be removed, altering the length of the array. To compensate, we need to push the loop back.

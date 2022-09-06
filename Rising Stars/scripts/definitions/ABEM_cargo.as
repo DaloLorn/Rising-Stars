@@ -5,6 +5,8 @@ import generic_hooks;
 import abilities;
 import target_filters;
 
+const double STEAL_FACTOR = 0.2;
+
 class MakeResourceVisible : TraitEffect {
     Document doc("Forces a secondary resource to be visible in the resource bar regardless of its default visibility.");
     Argument type(AT_Cargo, "Ore", doc="The resource type to reveal.");
@@ -25,7 +27,14 @@ class AddGlobalCargo : BonusEffect {
     void activate(Object@ obj, Empire@ emp) const override {
 		if(emp is null)
 			return;
-		emp.addCargo(type.integer, amount.decimal);
+        double amt = amount.decimal;
+        double stolen = 0;
+        if(obj.isPlanet && obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+            stolen = amt * STEAL_FACTOR;
+            obj.shadowport.owner.addCargo(type.integer, stolen);
+            amt -= stolen;
+        }
+		emp.addCargo(type.integer, amt);
 	}
 #section all
 }

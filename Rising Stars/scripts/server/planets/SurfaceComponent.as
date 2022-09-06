@@ -2565,12 +2565,21 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			++SurfaceModId;
 
 		Planet@ planet = cast<Planet>(obj);
-		bool shouldSteal = planet !is null && planet.shadowport !is null && planet.shadowport.owner !is null && planet.shadowport.owner.major;
+		bool shouldSteal = planet !is null && planet.shadowport !is null
+			&& planet.shadowport.owner !is null && planet.shadowport.owner.major;
+		bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null;
+		if(canSteal) {
+			TradePath path(planet.shadowport.owner);
+			path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
+			canSteal = path.isUsablePath;
+		}
 
 		//Update resources from grid
 		int newIncome = ceil(grid.resources[TR_Money] * TILE_MONEY_RATE * obj.owner.MoneyGenerationFactor) + popIncome + bonusIncome;
 		int newStolenIncome = abs(int(double(newIncome * STEAL_FACTOR)));
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenIncome = 0;
 			newIncome -= newStolenIncome;
 			if(newStolenIncome != stolenIncome)
 				planet.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Planet_Income);
@@ -2601,6 +2610,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double newEnergy = max(grid.resources[TR_Energy], 0.0);
 		double newStolenEnergy = newEnergy * STEAL_FACTOR;
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenEnergy = 0;
 			newEnergy -= newStolenEnergy;
 			if(newStolenEnergy != stolenEnergy)
 				planet.shadowport.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
@@ -2614,6 +2625,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double newInfluence = max(grid.resources[TR_Influence], 0.0);
 		double newStolenInfluence = newInfluence * STEAL_FACTOR;
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenInfluence = 0;
 			newInfluence -= newStolenInfluence;
 			if(int(newStolenInfluence) != int(stolenInfluence))
 				planet.shadowport.owner.modInfluenceIncome(int(newStolenInfluence) - int(stolenInfluence));
@@ -2627,6 +2640,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double newResearch = max(grid.resources[TR_Research], 0.0);
 		double newStolenResearch = newResearch * STEAL_FACTOR;
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenResearch = 0;
 			newResearch -= newStolenResearch;
 			if(newStolenResearch != stolenResearch)
 				planet.shadowport.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
@@ -2640,6 +2655,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double newDefense = max(grid.resources[TR_Defense], 0.0) * DEFENSE_LABOR_PM / 60.0 * obj.owner.DefenseGenerationFactor;
 		double newStolenDefense = newDefense * STEAL_FACTOR;
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenDefense = 0;
 			newDefense -= newStolenDefense;
 			if(newStolenDefense != stolenDefense)
 				planet.shadowport.owner.modDefenseRate(newStolenDefense - stolenDefense);
@@ -2677,6 +2694,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double labor = laborRes * TILE_LABOR_RATE * obj.owner.LaborGenerationFactor;
 		double newStolenLabor = labor * STEAL_FACTOR;
 		if(shouldSteal) {
+			if(!canSteal)
+				newStolenLabor = 0;
 			labor -= newStolenLabor;
 			if(newStolenLabor != stolenLabor)
 				planet.shadowport.modLaborIncome(newStolenLabor - stolenLabor);

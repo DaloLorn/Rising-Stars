@@ -18,6 +18,8 @@ tidy class PlanetScript {
 	bool hpDelta = false;
 	uint ringStyle = 0;
 	array<MoonData@>@ moons;
+	Object@ _shadowport;
+	bool shadowportDelta = false;
 	
 	void init(Planet& planet) {
 		timer = -float(uint8(planet.id)) / 255.0;
@@ -76,6 +78,7 @@ tidy class PlanetScript {
 		else {
 			file.write0();
 		}
+		file << _shadowport;
 	}
 	
 	void load(Planet& planet, SaveFile& file) {
@@ -161,14 +164,18 @@ tidy class PlanetScript {
 				file >> cast<Savable>(planet.Mover);
 			}
 		}
+		file >> _shadowport;
 	}
 
 	Object@ get_shadowport() const {
-		return null;
+		return _shadowport;
 	}
 
-	void setShadowport(Object@ shadowport) {
-		error("SHADOWPORT SETTER NOT YET IMPLEMENTED");
+	void setShadowport(Planet& obj, Object@ newShadowport) {
+		Object@ prevShadowport = _shadowport;
+		_shadowport = newShadowport;
+		obj.changeShadowport(prevShadowport);
+		shadowportDelta = true;
 	}
 
 	void postLoad(Planet& planet) {
@@ -230,6 +237,7 @@ tidy class PlanetScript {
 		planet.leaderDestroy();
 		planet.destroyStatus();
 		leaveRegion(planet);
+		planet.setShadowport(null);
 
 		if(planet.owner !is null) {
 			planet.owner.recordStatDelta(stat::Planets, -1);
@@ -345,6 +353,9 @@ tidy class PlanetScript {
 		}
 		
 		obj.updateFleetStrength();
+
+		if(obj.shadowport !is null && !obj.shadowport.valid)
+			obj.setShadowport(null);
 	}
 
 	double tick(Planet& planet, double time) {
@@ -447,6 +458,7 @@ tidy class PlanetScript {
 		else {
 			msg.write0();
 		}
+		msg >> _shadowport;
 	}
 
 	bool syncDelta(const Planet& planet, Message& msg) {
@@ -506,6 +518,11 @@ tidy class PlanetScript {
 		else
 			msg.write0();
 
+		if(shadowportDelta) {
+			used = true;
+			msg >> _shadowport;
+		}
+
 		return used;
 	}
 
@@ -529,6 +546,7 @@ tidy class PlanetScript {
 		else {
 			msg.write0();
 		}
+		msg >> _shadowport;
 	}
 
 	void dealPlanetDamage(Planet& planet, double amount) {
