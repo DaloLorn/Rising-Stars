@@ -173,7 +173,7 @@ tidy class PlanetScript {
 
 	void setShadowport(Planet& obj, Object@ newShadowport) {
 		Object@ prevShadowport = _shadowport;
-		_shadowport = newShadowport;
+		@_shadowport = newShadowport;
 		obj.changeShadowport(prevShadowport);
 		shadowportDelta = true;
 	}

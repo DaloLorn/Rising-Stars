@@ -436,6 +436,7 @@ class GivesTradeToOriginEmpire : StatusHook {
 			if(toRegion !is null)
 				toRegion.grantTrade(owner);
 		}
+		return true;
 	}
 #section all
 }
@@ -446,14 +447,16 @@ class CorruptPlanet : StatusHook {
 #section server
 	void onCreate(Object& obj, Status@ status, any@ data) override {
 		Empire@ owner = status.originEmpire;
-		if(obj.isPlanet && owner !is null && owner.valid && status.originObject !is null && status.originObject.valid)
-			obj.setShadowport(status.originObject);
+		Planet@ planet = cast<Planet>(obj);
+		if(planet !is null && owner !is null && owner.valid && status.originObject !is null && status.originObject.valid)
+			planet.setShadowport(status.originObject);
 	}
 
 	void onDestroy(Object& obj, Status@ status, any@ data) override {
 		Empire@ owner = status.originEmpire;
-		if(obj.isPlanet && owner !is null && owner.valid && status.originObject !is null)
-			obj.setShadowport(null);
+		Planet@ planet = cast<Planet>(obj);
+		if(planet !is null && owner !is null && owner.valid && status.originObject !is null)
+			planet.setShadowport(null);
 	}
 
 	bool onTick(Object& obj, Status@ status, any@ data, double time) override {

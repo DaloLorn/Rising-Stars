@@ -29,9 +29,10 @@ class AddGlobalCargo : BonusEffect {
 			return;
         double amt = amount.decimal;
         double stolen = 0;
-        if(obj.isPlanet && obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+        Planet@ planet = cast<Planet>(obj);
+        if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
             stolen = amt * STEAL_FACTOR;
-            obj.shadowport.owner.addCargo(type.integer, stolen);
+            planet.shadowport.owner.addCargo(type.integer, stolen);
             amt -= stolen;
         }
 		emp.addCargo(type.integer, amt);

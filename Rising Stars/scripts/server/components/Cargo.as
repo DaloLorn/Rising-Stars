@@ -51,9 +51,10 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 		// Short-circuit the cargo addition system if we can store this in the global pool.
 		if(type.isGlobal && type.autostore && (obj.isPlanet || hasGlobalAccess) && obj.owner !is null && obj.owner.valid) {
 			double stolen = 0;
-			if(obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+			Planet@ planet = cast<Planet>(obj);
+			if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
 				stolen = amount * STEAL_FACTOR;
-				obj.shadowport.owner.addCargo(typeId, stolen);
+				planet.shadowport.owner.addCargo(typeId, stolen);
 				amount -= stolen;
 			}
 			obj.owner.addCargo(typeId, amount);
@@ -71,9 +72,10 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 				auto@ type = types[i];
 				if(type.isGlobal && type.autostore && obj.owner !is null && obj.owner.valid) {
 					double stolen = 0;
-					if(obj.isPlanet && obj.shadowport !is null && obj.shadowport.valid && obj.shadowport.owner !is null && obj.shadowport.owner.valid) {
+					Planet@ planet = cast<Planet>(obj);
+					if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
 						stolen = amounts[i] * STEAL_FACTOR;
-						obj.shadowport.owner.addCargo(typeId, stolen);
+						planet.shadowport.owner.addCargo(typeId, stolen);
 						amounts[i] -= stolen;
 					}
 					obj.owner.addCargo(type.id, amounts[i]);
