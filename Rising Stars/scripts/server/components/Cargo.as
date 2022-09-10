@@ -75,7 +75,7 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 					Planet@ planet = cast<Planet>(obj);
 					if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
 						stolen = amounts[i] * STEAL_FACTOR;
-						planet.shadowport.owner.addCargo(typeId, stolen);
+						planet.shadowport.owner.addCargo(type.id, stolen);
 						amounts[i] -= stolen;
 					}
 					obj.owner.addCargo(type.id, amounts[i]);
