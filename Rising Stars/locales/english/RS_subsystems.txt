@@ -448,6 +448,17 @@ S_HYPERLASER_DESC: <<
 	[img=Minus]Very limited turret firing arc. Firing arc is larger than that of regular lasers.[/img]
 >>
 
+S_MARENIUM_CORE: Marenium Core
+S_MARENIUM_CORE_DESC: <<
+	A control core modified to derive power from solid-state marenium lattices only found on a specific planet.
+	
+	[img=Plus]Core does not take up any internal space, and is slightly lighter and cheaper per hex.[/img]
+	[img=Plus]Increases the ship's combat strength dependent on the level of the Marenium planet.[/img]
+	[img=Plus]Increases the ship's acceleration dependent on the level of the Marenium planet.[/img]
+	[img=Minus]If the Marenium planet is lost, the ship loses almost all of its effectiveness and combat strength.[/img]
+	[img=Minus]Individual hexes provide less of an effect than Control Core hexes. Supply capacity is particularly diminished.[/img]
+>>
+
 S_ZPG: Singularity Core
 S_SHIELDED_AMGEN: Shielded Antimatter Generator
 S_COVARIANT_SHIELD: Covariant Shield Generator
