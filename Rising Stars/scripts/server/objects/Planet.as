@@ -458,7 +458,7 @@ tidy class PlanetScript {
 		else {
 			msg.write0();
 		}
-		msg >> _shadowport;
+		msg << _shadowport;
 	}
 
 	bool syncDelta(const Planet& planet, Message& msg) {
@@ -520,7 +520,7 @@ tidy class PlanetScript {
 
 		if(shadowportDelta) {
 			used = true;
-			msg >> _shadowport;
+			msg << _shadowport;
 		}
 
 		return used;
@@ -546,7 +546,7 @@ tidy class PlanetScript {
 		else {
 			msg.write0();
 		}
-		msg >> _shadowport;
+		msg << _shadowport;
 	}
 
 	void dealPlanetDamage(Planet& planet, double amount) {
