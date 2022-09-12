@@ -97,7 +97,9 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	uint nextInstanceID = 0;
 
 	// with actual kiting and pursuit I think region bound is a better default
-	AutoMode autoMode = AM_RegionBound;
+	// This proved too annoying in actual gameplay, so I'm reverting it for RS.
+	// I'll leave it to others to decide whether to revert it elsewhere. --Dalo
+	AutoMode autoMode = AM_AreaBound;
 	EngagementBehaviour engageBehave = EB_CloseIn;
 	EngagementRange engageType = ER_SupportMin;
 	double autoArea = 1000.0;
