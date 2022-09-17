@@ -1,7 +1,11 @@
 import cargo;
 import saving;
+import statuses;
+import system_pathing;
+import systems;
 
 const double STEAL_FACTOR = 0.2;
+const uint SHADOWPORT_UNPACKED = getStatusID("ShadowportUnpacked");
 
 tidy class Cargo : CargoStorage, Component_Cargo {
 	bool hasGlobalAccess = false;
@@ -52,7 +56,16 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 		if(type.isGlobal && type.autostore && (obj.isPlanet || hasGlobalAccess) && obj.owner !is null && obj.owner.valid) {
 			double stolen = 0;
 			Planet@ planet = cast<Planet>(obj);
-			if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
+			bool shouldSteal = planet !is null && planet.shadowport !is null
+				&& planet.shadowport.owner !is null && planet.shadowport.owner.major;
+			bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null && planet.shadowport.hasStatusEffect(SHADOWPORT_UNPACKED);
+			if(canSteal) {
+				TradePath path(planet.shadowport.owner);
+				path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
+				canSteal = path.isUsablePath;
+			}
+			
+			if(canSteal) {
 				stolen = amount * STEAL_FACTOR;
 				planet.shadowport.owner.addCargo(typeId, stolen);
 				amount -= stolen;
@@ -73,7 +86,16 @@ tidy class Cargo : CargoStorage, Component_Cargo {
 				if(type.isGlobal && type.autostore && obj.owner !is null && obj.owner.valid) {
 					double stolen = 0;
 					Planet@ planet = cast<Planet>(obj);
-					if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
+					bool shouldSteal = planet !is null && planet.shadowport !is null
+						&& planet.shadowport.owner !is null && planet.shadowport.owner.major;
+					bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null && planet.shadowport.hasStatusEffect(SHADOWPORT_UNPACKED);
+					if(canSteal) {
+						TradePath path(planet.shadowport.owner);
+						path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
+						canSteal = path.isUsablePath;
+					}
+					
+					if(canSteal) {
 						stolen = amounts[i] * STEAL_FACTOR;
 						planet.shadowport.owner.addCargo(type.id, stolen);
 						amounts[i] -= stolen;

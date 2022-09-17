@@ -10,5 +10,6 @@ Status: GateUnpacked
 	IfNotFTLShortage(IfNotFTLBlocked(IsGate()))
 	IfNotFTLShortage(IfNotFTLBlocked(GlobalTradeNode()))
 
+	DelayFTL()
 	GrantAbility(GatePack)
 	AddStatus(Untractorable)

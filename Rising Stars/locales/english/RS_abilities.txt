@@ -158,3 +158,23 @@ ABL_FLARE_BOMB_DESC: <<
 
 	The star takes considerable damage during the last 30 seconds of channelling. The flare bomb ship is destroyed in the process.
 >>
+ABL_GATE_SEQUENCE: Gate Sequencing
+ABL_GATE_SEQUENCE_DESC: <<
+	Use an excessive amount of FTL energy to brute-force through enemy FTL suppression and jamming, keeping the gate operational in any environment.
+
+	Sequenced gates require considerably more FTL energy to operate.
+>>
+ABL_SHADOWPORT_UNPACK: Unpack Shadowport
+ABL_SHADOWPORT_UNPACK_DESC: <<
+	Unpack the shadowport at the designated location. The shadowport will use its sublight drive to travel to the destination before diverting engine power to resource processing facilities.
+
+	Unpacked shadowports cannot move or be tractored, but can receive resources from planets corrupted by their owner, and generate a limited amount of income and Labor.
+
+	NOTE: Shadowports can only receive resources from corrupted planets they can trade to. Shadowports in interstellar space are therefore unable to receive resources from any planets.
+>>
+ABL_SHADOWPORT_PACK: Pack Up Shadowport
+ABL_SHADOWPORT_PACK_DESC: <<
+	Deactivate the shadowport's resource processors and redirect power to its propulsion systems.
+
+	Packed shadowports cannot receive resources from corrupted planets and lose their innate income and Labor (Construction Bays/Ore Processors are not affected), but can use their engines to move around the galaxy.
+>>

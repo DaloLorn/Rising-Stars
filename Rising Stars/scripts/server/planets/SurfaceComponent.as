@@ -16,6 +16,7 @@ from influence_global import giveRandomReward;
 from components.ObjectManager import getDefenseDesign;
 import bool getCheatsEverOn() from "cheats";
 const string TAG_SUPPORT("Support");
+import statuses;
 
 bool INSTANT_COLONIZE = false;
 void setInstantColonize(bool value) {
@@ -23,6 +24,7 @@ void setInstantColonize(bool value) {
 }
 
 const double STEAL_FACTOR = 0.2;
+const uint SHADOWPORT_UNPACKED = getStatusID("ShadowportUnpacked");
 
 tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	array<const Biome@> biomes;
@@ -2567,7 +2569,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		Planet@ planet = cast<Planet>(obj);
 		bool shouldSteal = planet !is null && planet.shadowport !is null
 			&& planet.shadowport.owner !is null && planet.shadowport.owner.major;
-		bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null;
+		bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null && planet.shadowport.hasStatusEffect(SHADOWPORT_UNPACKED);
 		if(canSteal) {
 			TradePath path(planet.shadowport.owner);
 			path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);

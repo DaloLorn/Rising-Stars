@@ -1,0 +1,15 @@
+Status: Shadowport
+	Visible To: Nobody
+
+	OnEnable(AddStatus(ShadowportPacked))
+	OnDisable(RemoveStatus(ShadowportUnpacked))
+	OnDisable(RemoveStatus(ShadowportPacked))
+
+	CountAsPlanet()
+
+	IsHomeObject()
+
+	GrantAbility(ShadowportSteal)
+
+	AddStatus(CanGiveCargo) #version>=132
+	AddStatus(CanTakeCargo) #version>=132

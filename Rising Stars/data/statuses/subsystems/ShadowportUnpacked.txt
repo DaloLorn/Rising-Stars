@@ -1,0 +1,16 @@
+Status: ShadowportUnpacked
+	Name: #STATUS_SHADOWPORT_UNPACKED
+	Description: #STATUS_SHADOWPORT_UNPACKED_DESC
+	Icon: ActionBarIcons::7
+	
+	AddBonusHP(+1.0)
+	AddBonusShield(+1.0)
+
+	AddMoneyIncome(400.0)
+	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Terraforming = True)
+	AddLaborIncome(7)
+	AddLaborEmpireAttribute(FactoryLaborMod)
+
+	DelayFTL()
+	GrantAbility(ShadowportPack)
+	AddStatus(Untractorable)

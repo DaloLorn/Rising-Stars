@@ -6,6 +6,7 @@ import abilities;
 import target_filters;
 
 const double STEAL_FACTOR = 0.2;
+const uint SHADOWPORT_UNPACKED = getStatusID("ShadowportUnpacked");
 
 class MakeResourceVisible : TraitEffect {
     Document doc("Forces a secondary resource to be visible in the resource bar regardless of its default visibility.");
@@ -30,7 +31,16 @@ class AddGlobalCargo : BonusEffect {
         double amt = amount.decimal;
         double stolen = 0;
         Planet@ planet = cast<Planet>(obj);
-        if(planet !is null && planet.shadowport !is null && planet.shadowport.valid && planet.shadowport.owner !is null && planet.shadowport.owner.valid) {
+        bool shouldSteal = planet !is null && planet.shadowport !is null
+            && planet.shadowport.owner !is null && planet.shadowport.owner.major;
+        bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null && planet.shadowport.hasStatusEffect(SHADOWPORT_UNPACKED);
+        if(canSteal) {
+            TradePath path(planet.shadowport.owner);
+            path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
+            canSteal = path.isUsablePath;
+        }
+        
+        if(canSteal) {
             stolen = amt * STEAL_FACTOR;
             planet.shadowport.owner.addCargo(type.integer, stolen);
             amt -= stolen;

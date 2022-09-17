@@ -1,0 +1,14 @@
+Ability: ShadowportUnpack
+	Name: #ABL_SHADOWPORT_UNPACK
+	Description: #ABL_SHADOWPORT_UNPACK_DESC
+	Icon: techOrganization*#8f8
+	Hotkey: G
+
+	Target: dest = Point
+	Range: 10
+
+	RemoveStatus(ShadowportPacked)
+	AddStatus(ShadowportUnpacked)
+
+
+	TeleportTo(dest)

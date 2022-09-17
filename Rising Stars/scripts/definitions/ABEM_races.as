@@ -441,6 +441,39 @@ class GivesTradeToOriginEmpire : StatusHook {
 #section all
 }
 
+class TargetFilterOwnedStatus : TargetFilter {
+	Document doc("Restricts target to objects with a particular status applied by the caster's empire.");
+	Argument objTarg(TT_Object);
+	Argument status("Status", AT_Status, doc="Status to require.");
+
+	string statusName = "DUMMY";
+
+	bool instantiate() override {
+		if(status.integer == -1) {
+			error("Invalid argument: "+status.str);
+			return false;
+		}
+		statusName = getStatusType(status.integer).name;
+		return TargetFilter::instantiate();
+	}
+
+	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
+		return "Target must have had the '" + statusName + "' status applied by your empire.";
+	}
+
+	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
+		if(index != uint(objTarg.integer))
+			return true;
+		if(targ.obj is null)
+			return false;
+		if(!targ.obj.hasStatuses)
+			return false;
+		if(targ.obj.getStatusStackCount(status.integer, null, emp) > 0)
+			return true;
+		return false;
+	}
+};
+
 class CorruptPlanet : StatusHook {
 	Document doc("When applied to a planet, this status sets its origin object as the planet's shadowport.");
 

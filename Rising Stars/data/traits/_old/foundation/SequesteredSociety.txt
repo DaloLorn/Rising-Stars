@@ -9,6 +9,7 @@ Trait: SequesteredSociety
 	Costs Points: 1
 	Conflict: StarChildren
 	Conflict: Ancient
+	Conflict: VanguardRingworlders
 
 	TriggerHomeworld(AddStatus(SequesteredSociety), Run Post = True)
 	TriggerHomeworld(DevelopTiles(25))

@@ -1,0 +1,19 @@
+Status: Corrupted
+    Name: #STATUS_CORRUPTED
+    Description: #STATUS_CORRUPTED_DESC
+    
+    Unique: True
+    Visible To: Origin Empire
+    
+    VisibleToOriginEmpire()
+    GivesVisionToOriginEmpire()
+    ABEM_races::GivesTradeToOriginEmpire()
+
+Status: ShadowportSteal
+    Name: #STATUS_SHADOWPORT_STEALING
+    Description: #STATUS_SHADOWPORT_STEALING_DESC
+
+    Unique: True
+    Visible To: Origin Empire
+
+    ABEM_races::CorruptPlanet()

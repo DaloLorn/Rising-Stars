@@ -103,3 +103,5 @@ STATUS_STEALTHED_DESC: <<
 	Stealthed fleets cannot be seen through region vision, but the stealth effect breaks when the stealth coating is damaged.
 >>
 STATUS_STEALTHED: Stealthed
+STATUS_GATE_SEQUENCED: Sequenced Gate
+STATUS_GATE_SEQUENCED_DESC: This gate is being kept online via hyperfield sequencing. It consumes considerably higher amounts of FTL energy, but cannot be jammed or suppressed in any way.

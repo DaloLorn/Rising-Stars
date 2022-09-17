@@ -1,0 +1,8 @@
+Ability: ShadowportPack
+	Name: #ABL_SHADOWPORT_PACK
+	Description: #ABL_SHADOWPORT_PACK_DESC
+	Icon: techOrganization*#f88
+	Hotkey: G
+
+	RemoveStatus(ShadowportUnpacked)
+	AddStatus(ShadowportPacked)

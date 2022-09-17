@@ -1,0 +1,14 @@
+Ability: ShadowportSteal
+	Name: #ABL_STEAL_RESOURCES
+	Description: #ABL_STEAL_RESOURCES_DESC
+	Icon: QuickbarIcons::2
+	Hotkey: C
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	ABEM_races::TargetFilterOwnedStatus(targ, Corrupted)
+
+	TargetFilterOtherEmpire(targ)
+	AddStatusTo(targ, ShadowportSteal, Set Origin Empire = True, Set Origin Object = True)
+	Trigger(targ, RemoveStatus(ShadowportSteal))

@@ -144,3 +144,35 @@ The Overlord invasion can wait. First, we will spread in all directions and put 
 
 RACE_VANGUARD_SCIENTISTS: Nejjul'har
 RACE_VANGUARD_SCIENTISTS_TAGLINE: All particles serve the Overlords.
+
+RACE_CRIME_SYNDICATE: Anastars
+RACE_CRIME_SYNDICATE_TAGLINE: It's just good business.
+RACE_CRIME_SYNDICATE_LORE: <<
+[font=Medium]Recovered footage, 9 months ago, ALD Corleone[/font]
+[hr/]
+A diverse array of disreputable figures slowly gathers in the ship's lavish conference hall, accompanied by their entourages: the proud Kiyo Tanahashi of the Rising Sun Syndicate, a dominant force in Terran space; Gwylen of the Nylli-centric Qrlaa Cee smugglers, and her anxious majordomo; the deceptively weary visage of Colonel Tanat, commanding officer of the Tanatkha mercenary company off Rata'htat; and many others from across the galaxy.
+
+As they murmur amongst themselves, it quickly becomes clear that they are all here for the same thing. They have all been invited to this remote system by the Corleone's mysterious owner, under the promise of great riches and power to the savviest minds of the galactic underworld.
+
+"Welcome," a voice booms from the speakers lining the room, and the conversations grind to a halt. "I'm sure you're all wondering who I am. [i]What[/i] I am. Why I've brought you here. Perhaps most importantly, what opportunity I intend to offer you.
+
+"Well, didn't I mention it already? Wealth and power. You all have plenty of it already, I'm sure... but why limit yourselves? You each hold a piece of the pie, but you're scattered, disorganized. Madam Gwylen, does Qrlaa Cee have no use for mighty Rahta guards and sentries? Kr'i'kneeet - forgive my feeble vocal cords, my friend - do your people's encounter suits not draw the attention of security forces across the galaxy? And Kiyo-san, does your human pride truly blind you to the capabilities of your fellow businessmen?"
+
+"Make your point and your offer. Do not waste our time."
+
+The armored C'k'tnilit clicks and chatters briefly, before the suit's speakers come to life: "I agree with the Terran. What do you wish?"
+
+"Join forces. There is an old saying that applies nicely to the state of our galaxy: 'War is good for business.' But the truth is, [i]business[/i] is good for business. And you lose so much of it by ignoring each other.
+
+"Work with me, join the Anastar League, and I will make your wildest dreams come true. Under my guidance, we can be [i]unstoppable.[/i] With time and dedication, we will have our fingers on the pulse of every criminal venture in the galaxy, and the profits of our collaboration will be immeasurable.
+
+"Make your choice."
+
+[font=Medium]Several hours later[/font]
+[hr/]
+"I am pleased to see so many of you see things my way. Kr'i'kneeet... oh, you worried me the most." The doors to the conference hall abruptly lock themselves. "Your suit makes you harder to dispose of; I would have had to send guards to deal with you if it had come to that."
+
+The room starts filling with gas, and the crime lords start scrambling for a way out. "Oh, don't worry, my friends. You'll just take a relaxing nap, that's all.
+
+"Of course, those of you who wouldn't stand with us... well, I'm afraid [i]you[/i] won't be waking up..."
+>>

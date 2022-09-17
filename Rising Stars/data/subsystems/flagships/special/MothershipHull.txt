@@ -27,7 +27,9 @@ Subsystem: MothershipHull
 	Hook: AddCargoStorage(100000)
 	Hook: ModSupplyConsumeFactor(-1.0)
 
-	AddPostModifier: AddMaintainCost(max(300-HexSum.MaintainCost, 0))
+	MinimumMaintenance := 300
+
+	AddPostModifier: AddMaintainCost(max(MinimumMaintenance-HexSum.MaintainCost, 0))
 
 	Assert: ShipSize >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
