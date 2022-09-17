@@ -157,7 +157,7 @@ tidy class ColonyShipScript {
 				}
 				if(
 					ship.Target.position.distanceTo(ship.position) <= (ship.radius + ship.Target.radius + 0.1)
-					|| ship.FTLTo(ship.Target.position, ship.Origin.position.distanceTo(ship.position) / 15.0, moveId)
+					|| ship.FTLTo(ship.Target.position, ship.Target.position.distanceTo(ship.position) / 15.0, moveId)
 				) {
 					ship.FTLDrop();
 					playParticleSystem("GateFlash", ship.position, ship.rotation, ship.radius, ship.visibleMask);
