@@ -675,7 +675,7 @@ tidy class ShipScript {
 		if(!ship.isFree && ship.owner !is null && ship.owner.valid) {
 			int maint = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
 			maint -= double(maint) * (ship.owner.MaxLogistics / double(ship.owner.LogisticsThreshold)) * double(clamp(ship.owner.getBuiltShips(ship) - 1, 0, ship.owner.LogisticsThreshold));
-			maint = max(maint, ship.blueprint.getEfficiencySum(SV_MinimumMaintenance));
+			maint = int(max(double(maint), ship.blueprint.getEfficiencySum(SV_MinimumMaintenance)));
 			if(maint != currentMaintenance) {
 				ship.owner.modMaintenance(maint - currentMaintenance, moneyType(ship));
 				currentMaintenance = maint;
