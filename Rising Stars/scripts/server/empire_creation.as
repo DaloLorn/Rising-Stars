@@ -49,7 +49,7 @@ void init() {
 		//Check if we have a player
 		if(settings.playerId != -1) {
 			Player@ pl = getPlayer(settings.playerId);
-			if(pl.emp is null && emp.player is null)
+			if(pl !is null && pl.emp is null && emp.player is null)
 				pl.linkEmpire(emp);
 		}
 

@@ -2589,6 +2589,8 @@ class Construction : BaseGuiElement {
 											grouped = true;
 											editor.data.startGroup();
 											editor.data.act(RemoveAppliedSubsystem(other));
+											i--;
+											cnt--;
 										}
 									}
 								}

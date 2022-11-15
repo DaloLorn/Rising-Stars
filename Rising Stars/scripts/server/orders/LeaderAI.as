@@ -421,7 +421,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			if(forClass) {
 				for(int i = 0, cnt = obj.owner.getActiveShips(ship); i < cnt; i++) {
 					Ship@ other = obj.owner.getShipOfType(ship, i);
-					if(other is ship)
+					if(other is ship || other is null || !other.valid)
 						continue;
 					other.addExperience(amount * SHARED_XP_PCT);
 					obj.owner.addClassExperience(ship, amount * CLASS_XP_PCT);

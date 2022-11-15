@@ -496,7 +496,8 @@ tidy class DesignRevision : Savable, Serializable {
 
 	void updateMaintenance() {
 		for(uint i = 0; i < active; i++) {
-			ships[i].blueprint.statusID++;
+			if(ships[i] !is null && ships[i].valid)
+				ships[i].blueprint.statusID++;
 		}
 	}
 
