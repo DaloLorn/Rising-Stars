@@ -12,6 +12,7 @@ Subsystem: BroadcastAntenna
 	Size := HexSize * Hexes
 
 	InfluenceBuildCost := floor(5 * max(sqrt(ShipSize/128), 1.0))
+	SupportCapSize := Size
 	PowerUse := 3.0 * Size
 	CoreHPMod := 3
 	Hex.Mass := HexSize
