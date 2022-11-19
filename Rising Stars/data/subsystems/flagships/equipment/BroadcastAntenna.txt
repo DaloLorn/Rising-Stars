@@ -11,13 +11,17 @@ Subsystem: BroadcastAntenna
 
 	Size := HexSize * Hexes
 
-	InfluenceBuildCost := floor(5 * max(sqrt(ShipSize/128), 1.0))
+	InfluenceBuildCost := floor(2.5 * max(sqrt(ShipSize/128), 1.0))
 	SupportCapSize := Size
 	PowerUse := 3.0 * Size
 	CoreHPMod := 3
 	Hex.Mass := HexSize
+	
+	BaseSupportCapacity := Size * 28
+	SupportCapacityMod := 1
+	SupportCapacity := BaseSupportCapacity * SupportCapacityMod
 
-	ConvertInterval := 5 / (Size / ShipSize) / if(ShipSize > 128, sqrt(ShipSize/128), ShipSize/128)
+	ConvertInterval := 2.5 / (Size / ShipSize) / if(ShipSize > 128, sqrt(ShipSize/128), ShipSize/128)
 
 	Hook: ApplyStatusRandomPlanets(Propaganda, 30, 300, Allow Self = False, Allow Allied = False)
 	Hook: RandomlyConvertSupports(ConvertInterval, Allow Allied = False, Interval Margin = 0.25)
