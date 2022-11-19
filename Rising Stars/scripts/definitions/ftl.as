@@ -11,6 +11,8 @@ const double HYPERDRIVE_START_COST = 25.0;
 const double HYPERDRIVE_CHARGE_TIME = 15.0;
 
 bool canHyperdrive(Object& obj) {
+	if(!obj.hasMover || obj.maxAcceleration < 2)
+		return false;
 	Ship@ ship = cast<Ship>(obj);
 	if(ship is null || !ship.hasLeaderAI)
 		return false;
@@ -401,6 +403,8 @@ const double JUMPDRIVE_START_COST = 50.0;
 const double JUMPDRIVE_CHARGE_TIME = 25.0;
 
 bool canJumpdrive(Object& obj) {
+	if(!obj.hasMover || obj.maxAcceleration < 2)
+		return false;
 	Ship@ ship = cast<Ship>(obj);
 	if(ship is null || !ship.hasLeaderAI)
 		return false;
