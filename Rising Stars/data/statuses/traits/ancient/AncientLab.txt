@@ -3,3 +3,4 @@ Status: AncientLab
 
 	IfAttributeGTE(Adaptation4, 1, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(BaseMaterial, 0.5), Interval = 6, Trigger Immediate = True))
 	AddResource(Research, 1)
+	RepeatExtended(AddResource(Research, 1), Base Attribute = ResearchComplexExtraPressure)
