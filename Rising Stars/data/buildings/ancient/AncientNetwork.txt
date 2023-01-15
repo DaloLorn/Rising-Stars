@@ -22,3 +22,5 @@ Building: AncientNetwork
 	ShowAttributeValue(Influence Stake, Adaptation4, Icon = ResourceIcon::1, Hide Zero = True)
 	AddLocalDefense(2, Build Satellites = True)
 	ModLoyalty(+3)
+	AddFleetEffectiveness(+0.5)
+	AddSupportBonusHP(+0.25)
