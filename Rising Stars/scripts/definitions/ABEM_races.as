@@ -1104,3 +1104,154 @@ class GiveRandomUnlock : EmpireTrigger {
 	}
 #section all
 };
+
+class TriggerTargetAccumulated : AbilityHook {
+	BonusEffect@ hook;
+
+	Document doc("Trigger a bonus effect on the target after filling a progress counter.");
+	Argument objTarg(TT_Object, doc="Target to trigger the effect on.");
+	Argument function(AT_Hook, "bonus_effects::BonusEffect");
+	Argument threshold(AT_Decimal, "180", doc="The amount of progress required to trigger the effect.");
+	Argument accumulatorStat(AT_SysVar, "1", doc="How quickly the counter accumulates per second of game time.");
+	Argument loyaltyModified(AT_Boolean, "True", doc="If the target is a planet, whether to slow accumulation based on the planet's loyalty.");
+
+	bool instantiate() override {
+		@hook = cast<BonusEffect>(parseHook(function.str, "bonus_effects::", required=false));
+		if(hook is null) {
+			error("TriggerTargetAccumulated(): could not find inner hook: "+escape(function.str));
+			return false;
+		}
+		return AbilityHook::instantiate();
+	}
+
+#section server
+	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const {
+		if(index != uint(objTarg.integer))
+			return;
+		if(oldTarget.obj is newTarget.obj)
+			return;
+
+		data.store(0.0);
+	}
+
+	void create(Ability@ abl, any@ data) const override {
+		data.store(0.0);
+	}
+
+	void tick(Ability@ abl, any@ data, double time) const override {
+		double accumulator;
+		data.retrieve(accumulator);
+
+		Target@ storeTarg = objTarg.fromTarget(abl.targets);
+		if(storeTarg is null || storeTarg.obj is null) {
+			data.store(0.0);
+			return;
+		}
+
+		if(accumulator == INFINITY)
+			return;
+
+		Object@ target = storeTarg.obj;
+		if(accumulator >= threshold.decimal) {
+			if(hook !is null)
+				hook.activate(target, target.owner);
+			accumulator = INFINITY;
+		}
+		else {
+			double accumulated = time * accumulatorStat.fromSys(abl.subsystem, efficiencyObj=abl.obj);
+			if(loyaltyModified.boolean && storeTarg.obj.hasSurfaceComponent) {
+				accumulated /= double(storeTarg.obj.getLoyaltyFacing(abl.emp));
+			}
+			accumulator += accumulated;
+		}
+
+		data.store(accumulator);
+	}
+
+	void save(Ability@ abl, any@ data, SaveFile& file) const override {
+		double accumulator;
+		data.retrieve(accumulator);
+
+		file << accumulator;
+	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const override {
+		double accumulator;
+		file >> accumulator;
+		data.store(accumulator);
+	}
+#section all
+};
+
+class ConsumeInfluencePerPopulation : ConstructionHook {
+	Document doc("Requires a payment of influence to build this construction, dependent on the planet's population.");
+	Argument cost("Amount", AT_Integer, doc="Influence cost per billion inhabitants. (Fractional populations are always rounded up. Non-planets are treated as having 1B population.)");
+
+	bool canBuild(Object& obj, const ConstructionType@ cons, const Targets@ targs, bool ignoreCost) const override {
+		if(ignoreCost)
+			return true;
+		if(!obj.hasSurfaceComponent)
+			return obj.owner.Influence >= cost.integer;
+		return obj.owner.Influence >= ceil(obj.population) * cost.integer;
+	}
+
+	bool formatCost(Object& obj, const ConstructionType@ cons, const Targets@ targs, string& value) const override {
+		int price = cost.integer;
+		if(obj.hasSurfaceComponent)
+			price *= ceil(obj.population);
+		value = format(locale::RESOURCE_INFLUENCE, toString(price, 0));
+		return true;
+	}
+
+	bool getCost(Object& obj, const ConstructionType@ cons, const Targets@ targs, string& value, Sprite& icon) const override {
+		int price = cost.integer;
+		if(obj.hasSurfaceComponent)
+			price *= ceil(obj.population);
+		value = standardize(price, true);
+		icon = icons::Influence;
+		return true;
+	}
+
+	bool getVariable(Object& obj, const ConstructionType@ cons, Sprite& sprt, string& name, string& value, Color& color) const override {
+		int price = cost.integer;
+		if(obj.hasSurfaceComponent)
+			price *= ceil(obj.population);
+		value = standardize(price, true);
+		sprt = icons::Influence;
+		name = locale::RESOURCE_INFLUENCE + " " + locale::COST;
+		color = colors::Influence;
+		return true;
+	}
+
+#section server
+	bool consume(Construction@ cons, any@ data, const Targets@ targs) const override { 
+		int price = cost.integer;
+		if(cons.obj.hasSurfaceComponent)
+			price *= ceil(cons.obj.population);
+		data.store(price);
+		return obj.owner.consumeInfluence(price);
+	}
+
+	void reverse(Construction@ cons, any@ data, const Targets@ targs, bool cancel) const override { 
+		int price;
+		data.retrieve(price);
+		if(!cancel)
+			cons.obj.modInfluence(price);
+	}
+#section all
+};
+
+class AddBuildCostPopulation : ConstructionHook {
+	Document doc("Add build cost based on the planet's population (rounding up fractions).");
+	Argument multiply(AT_Decimal, "1", doc="Multiply population by this much. If not a planet, population is assumed to be 1B.");
+	Argument multiply_sqrt(AT_Decimal, "0", doc="Add cost based on the square root of the population multiplied by this.");
+
+	void getBuildCost(Object& obj, const ConstructionType@ cons, const Targets@ targs, int& cost) const override {
+		int value = 1;
+		if(obj.hasSurfaceComponent)
+			value = ceil(obj.population);
+		cost += value * multiply.decimal;
+		if(multiply_sqrt.decimal != 0)
+			cost += sqrt(value) * multiply_sqrt.decimal;
+	}
+};
