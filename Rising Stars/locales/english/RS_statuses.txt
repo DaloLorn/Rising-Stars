@@ -117,5 +117,5 @@ STATUS_SHADOWPORT_STEALING: Racketeering
 STATUS_SHADOWPORT_STEALING_DESC: <<
 	Using loopholes, bribery, and extortion, our agents on the planet have begun redirecting some of this planet's economic output to a nearby Shadowport.
 
-	20% of all civilian resource production goes to the Shadowport instead of the planet's owner. Resources produced by imperial buildings or miscellaneous effects are not affected.
+	20% of all civilian resource production goes to the Shadowport instead of the planet's owner. Resources produced by imperial buildings or miscellaneous effects are not affected, but Materials produced by or delivered to the planet are transferred to the Shadowport.
 >>

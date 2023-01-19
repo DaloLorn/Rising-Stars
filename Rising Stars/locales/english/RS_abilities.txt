@@ -182,7 +182,9 @@ ABL_RACKETEERING: Begin Racketeering
 ABL_RACKETEERING_DESC: <<
 	Take advantage of our influence over a planet's government and infrastructure to set up a racketeering operation, redirecting part of its industrial output to the Shadowport.
 
-	Steals 20% of the targeted corrupted planet's civilian resource production and grants it to the Shadowport. Resources produced by imperial buildings or miscellaneous effects are not affected. Only one Shadowport may manage a racketeering operation on a given planet; any existing operations on the planet will be transferred to this Shadowport.
+	Steals 20% of the targeted corrupted planet's civilian resource production and grants it to the Shadowport. Resources produced by imperial buildings or miscellaneous effects are not affected, but Materials produced by or delivered to the planet are transferred to the Shadowport.
+	
+	Only one Shadowport may manage a racketeering operation on a given planet; any existing operations on the planet will be transferred to this Shadowport.
 
 	NOTE: Although they can manage racketeering operations on any planet, shadowports can only receive racketeering income from planets they have trade access to.
 >>
