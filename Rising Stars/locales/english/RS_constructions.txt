@@ -158,3 +158,9 @@ CONS_BEACON_LABOR_DESC: <<
 
 	[bbloc=#TIP_RESEARCH_UNITS/]
 >>
+CONS_PURGE_CORRUPTION: Purge Corruption
+CONS_PURGE_CORRUPTION_DESC: <<
+	Conducts a thorough investigation of the planetary government and its infrastructure, identifying areas where they have been subverted by outside agents and removing their influence.
+
+	If the planet has been Corrupted by a Crime Syndicate, this removes the corruption effect. Otherwise, it does nothing.
+>>

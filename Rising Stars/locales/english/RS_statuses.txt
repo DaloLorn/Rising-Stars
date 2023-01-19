@@ -105,3 +105,17 @@ STATUS_STEALTHED_DESC: <<
 STATUS_STEALTHED: Stealthed
 STATUS_GATE_SEQUENCED: Sequenced Gate
 STATUS_GATE_SEQUENCED_DESC: This gate is being kept online via hyperfield sequencing. It consumes considerably higher amounts of FTL energy, but cannot be jammed or suppressed in any way.
+STATUS_CORRUPTED: Corrupted
+STATUS_CORRUPTED_DESC: <<
+	This planet's government and infrastructure have been suborned using the data-gathering and manipulation capabilities of our Hacker Arrays.
+
+	Although the planet remains nominally under the control of its empire, it will now inform us of any movements within the system and act as a safe haven for our smugglers, providing vision and trade access as if it were one of our colonies.
+
+	Additionally, any one of our Shadowports with trade access to this system can now siphon off a portion of the planet's civilian resource production.
+>>
+STATUS_SHADOWPORT_STEALING: Racketeering
+STATUS_SHADOWPORT_STEALING_DESC: <<
+	Using loopholes, bribery, and extortion, our agents on the planet have begun redirecting some of this planet's economic output to a nearby Shadowport.
+
+	20% of all civilian resource production goes to the Shadowport instead of the planet's owner. Resources produced by imperial buildings or miscellaneous effects are not affected.
+>>

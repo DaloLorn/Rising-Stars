@@ -1,0 +1,13 @@
+Construction: PurgeCorruption
+    Name: #CONS_PURGE_CORRUPTION
+    Description: #CONS_PURGE_CORRUPTION_DESC
+
+    Category: Infrastructure
+
+    Time Cost: 60
+
+    RequirePlanet()
+    ABEM_races::ConsumeInfluencePerPopulation(1)
+    ABEM_races::AddBuildCostPopulation(10)
+    TriggerGeneric(RemoveStatus(Corrupted))
+    TriggerGeneric(RemoveStatus(ShadowportSteal))
