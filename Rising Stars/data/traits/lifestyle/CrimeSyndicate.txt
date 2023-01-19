@@ -26,7 +26,6 @@ Trait: CrimeSyndicate
 	SpawnShip(Defiler, Override Disable Starting = True)
 	SpawnShip(Defiler, Override Disable Starting = True)
 	SpawnShip(Shadowport, Override Disable Starting = True)
-	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
 	AddStatusOwnedPlanets(CrimeSyndicate)
 
     ModAttribute(MaintainFromSpecialFunds, Add, 1)

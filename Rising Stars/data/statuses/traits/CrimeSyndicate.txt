@@ -1,2 +1,10 @@
 Status: CrimeSyndicate
     Visible To: Nobody
+
+    IfLevel(0, ModLoyalty(-1))
+    IfLevel(1, ModLoyalty(-1))
+    IfLevel(2, ModLoyalty(-2))
+    IfLevel(3, ModLoyalty(-2))
+    IfLevel(4, ModLoyalty(-2))
+    IfLevel(5, ModLoyalty(-2))
+    IfLevel(6, ModLoyalty(-5))
