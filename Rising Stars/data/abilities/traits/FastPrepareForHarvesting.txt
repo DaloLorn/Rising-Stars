@@ -15,7 +15,7 @@ Ability: FastPrepareForHarvest
 	TargetFilterNotStatus(targ, ArtificialPlanetoid)
 	TargetFilterNotQuarantined(targ)
 
-	Trigger(targ, ABEM_races::NotifyOwner(Title = #ALERT_ENEMY_HARVESTING, Description = #ALERT_EnEMY_HARVESTING_DESC))
+	Trigger(targ, ABEM_races::NotifyOwner(Title = #ALERT_ENEMY_HARVESTING, Description = #ALERT_ENEMY_HARVESTING_DESC))
 	OffensiveToTarget(targ)
 	IsToggleTarget(targ)
 	IsAutoColonize()

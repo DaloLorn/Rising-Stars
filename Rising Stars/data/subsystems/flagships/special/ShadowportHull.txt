@@ -1,34 +1,38 @@
-Subsystem: MothershipHull
-	Name: #S_MOTHERSHIP_HULL
-	Description: #S_MOTHERSHIP_HULL_DESC
+Subsystem: ShadowportHull
+	Name: #S_SHADOWPORT_HULL
+	Description: #S_SHADOWPORT_HULL_DESC
 
-	Tags: Applied:Hull, Category:Hulls, NoCore, Mothership
-	Tags: Ability:MothershipColonize, CannotDonate
+	Tags: Applied:Hull, Category:Hulls, NoCore, Shadowport
+	Tags: CannotDonate
 	Hull: Flagship
 	EvaluationOrder: -200
 	BaseColor: #cc6a3a
 
-	AddShipModifier: FlagshipHull::HexLimitFactor(1.76)
+	AddShipModifier: FlagshipHull::HexLimitFactor(2)
 	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(1.5))
 	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(1.5))
-	AddShipModifier: HpMult(3.0)
-	AddShipModifier: ShieldCapacityMult(3.0)
-	AddShipModifier: DamageResistMult(2.0)
+	AddShipModifier: HpMult(2.0)
+	AddShipModifier: DamageResistMult(1.5)
+	AddShipModifier: ShieldCapacityMult(2)
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)
-	AddShipModifier: ThrustMult(1.5)
-	AddShipModifier: TurnThrustMult(1.5)
-	AddShipModifier: DamageMult(0.5)
-
-	SupportCapacity := 128
+	AddShipModifier: DamageMult(0.75)
+	AddShipModifier: RangeMult(2.0)
+	AddShipModifier: SpreadMult(0.5)
+	AddShipModifier: MassMult(2.0)
+	AddShipModifier: FlingCostMultFactor(1/2)
+	AddShipModifier: FireArcFactor(2.0)
+	AddShipModifier: TrackingMult(2.0)
+	AddShipModifier: SupportCapacityMult(0.5)
+	
 	Hex.MaintainCost := 0
 
-	Hook: AddPermanentStatus(Mothership)
+	Hook: AddPermanentStatus(Shadowport)
 	Hook: AddCargoStorage(100000)
 	Hook: ModSupplyConsumeFactor(-1.0)
 
-	MinimumMaintenance := 300
+	MinimumMaintenance := 500
 
 	AddPostModifier: AddMaintainCost(max(MinimumMaintenance-HexSum.MaintainCost, 0))
 

@@ -11,6 +11,7 @@ Status: ShadowportUnpacked
 	AddLaborIncome(7)
 	AddLaborEmpireAttribute(FactoryLaborMod)
 
+	InterdictMovement()
 	DelayFTL()
 	GrantAbility(ShadowportPack)
 	AddStatus(Untractorable)

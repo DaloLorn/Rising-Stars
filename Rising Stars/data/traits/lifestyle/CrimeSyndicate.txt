@@ -12,6 +12,8 @@ Trait: CrimeSyndicate
     UnlockSubsystem(ConstructionBay)
     UnlockSubsystem(CloakPlating)
     UnlockSubsystem(CloakingDevice)
+	UnlockSubsystem(HackerArray)
+	UnlockSubsystem(ShadowportHull)
 
 	IfHaveTrait(Slipstream, LoadDesigns(syndicate/slipstream))
 	IfHaveTrait(Hyperdrive, LoadDesigns(syndicate/hyperdrive))

@@ -1,0 +1,18 @@
+Ability: CorruptPlanet
+	Name: #ABL_CORRUPT_PLANET
+	Description: #ABL_CORRUPT_PLANET_DESC
+	Icon: QuickbarIcons::7
+
+	Range: 2000
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	TargetFilterNotAllied(targ)
+    TargetFilterOtherEmpire(targ)
+	TargetFilterNotQuarantined(targ)
+
+	IsToggleTarget(targ)
+	IsAutoColonize()
+    ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 180, Sys.CorruptRate:1)
+	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 180, Sys.CorruptRate:1)

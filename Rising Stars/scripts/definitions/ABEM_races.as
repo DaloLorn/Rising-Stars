@@ -1255,3 +1255,23 @@ class AddBuildCostPopulation : ConstructionHook {
 			cost += sqrt(value) * multiply_sqrt.decimal;
 	}
 };
+
+tidy final class TriggerWithOriginEmpireWhenRemoved : StatusHook {
+	Document doc("When this status is removed, trigger the effect with the empire set to its origin empire.");
+	Argument hookID(AT_Hook, "bonus_effects::BonusEffect", doc="Hook to call.");
+
+	BonusEffect@ hook;
+
+	bool instantiate() override {
+		if(hookID.str != "bonus_effects::BonusEffect")
+			@hook = cast<BonusEffect>(parseHook(hookID.str, "bonus_effects::"));
+		return StatusHook::instantiate();
+	}
+
+#section server
+	void onDestroy(Object& obj, Status@ status, any@ data) override {
+		if(hook !is null)
+			hook.activate(obj, status.originEmpire);
+	}
+#section all
+};
