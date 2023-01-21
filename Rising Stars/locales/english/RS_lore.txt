@@ -154,7 +154,7 @@ A diverse array of disreputable figures slowly gathers in the ship's lavish conf
 
 As they murmur amongst themselves, it quickly becomes clear that they are all here for the same thing. They have all been invited to this remote system by the Corleone's mysterious owner, under the promise of great riches and power to the savviest minds of the galactic underworld.
 
-"Welcome," a voice booms from the speakers lining the room, and the conversations grind to a halt. "I'm sure you're all wondering who I am. [i]What[/i] I am. Why I've brought you here. Perhaps most importantly, what opportunity I intend to offer you.
+"Welcome," a voice booms from the speakers lining the room, and the conversations grind to a halt. "I'm sure you're all wondering who I am. [b]What[/b] I am. Why I've brought you here. Perhaps most importantly, what opportunity I intend to offer you.
 
 "Well, didn't I mention it already? Wealth and power. You all have plenty of it already, I'm sure... but why limit yourselves? You each hold a piece of the pie, but you're scattered, disorganized. Madam Gwylen, does Qrlaa Cee have no use for mighty Rahta guards and sentries? Kr'i'kneeet - forgive my feeble vocal cords, my friend - do your people's encounter suits not draw the attention of security forces across the galaxy? And Kiyo-san, does your human pride truly blind you to the capabilities of your fellow businessmen?"
 
@@ -162,9 +162,9 @@ As they murmur amongst themselves, it quickly becomes clear that they are all he
 
 The armored C'k'tnilit clicks and chatters briefly, before the suit's speakers come to life: "I agree with the Terran. What do you wish?"
 
-"Join forces. There is an old saying that applies nicely to the state of our galaxy: 'War is good for business.' But the truth is, [i]business[/i] is good for business. And you lose so much of it by ignoring each other.
+"Join forces. There is an old saying that applies nicely to the state of our galaxy: 'War is good for business.' But the truth is, [b]business[/b] is good for business. And you lose so much of it by ignoring each other.
 
-"Work with me, join the Anastar League, and I will make your wildest dreams come true. Under my guidance, we can be [i]unstoppable.[/i] With time and dedication, we will have our fingers on the pulse of every criminal venture in the galaxy, and the profits of our collaboration will be immeasurable.
+"Work with me, join the Anastar League, and I will make your wildest dreams come true. Under my guidance, we can be [b]unstoppable.[/b] With time and dedication, we will have our fingers on the pulse of every criminal venture in the galaxy, and the profits of our collaboration will be immeasurable.
 
 "Make your choice."
 
@@ -174,5 +174,5 @@ The armored C'k'tnilit clicks and chatters briefly, before the suit's speakers c
 
 The room starts filling with gas, and the crime lords start scrambling for a way out. "Oh, don't worry, my friends. You'll just take a relaxing nap, that's all.
 
-"Of course, those of you who wouldn't stand with us... well, I'm afraid [i]you[/i] won't be waking up..."
+"Of course, those of you who wouldn't stand with us... well, I'm afraid [b]you[/b] won't be waking up..."
 >>

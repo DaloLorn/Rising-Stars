@@ -17,6 +17,8 @@ import building_effects;
 import buildings;
 import generic_hooks;
 import repeat_hooks;
+import constructions;
+from constructions import ConstructionHook;
 #section server
 import empire;
 import influence_global;
@@ -1169,14 +1171,14 @@ class TriggerTargetAccumulated : AbilityHook {
 	}
 
 	void save(Ability@ abl, any@ data, SaveFile& file) const override {
-		double accumulator;
+		double accumulator = 0.0;
 		data.retrieve(accumulator);
 
 		file << accumulator;
 	}
 
 	void load(Ability@ abl, any@ data, SaveFile& file) const override {
-		double accumulator;
+		double accumulator = 0.0;
 		file >> accumulator;
 		data.store(accumulator);
 	}
@@ -1229,14 +1231,14 @@ class ConsumeInfluencePerPopulation : ConstructionHook {
 		if(cons.obj.hasSurfaceComponent)
 			price *= ceil(cons.obj.population);
 		data.store(price);
-		return obj.owner.consumeInfluence(price);
+		return cons.obj.owner.consumeInfluence(price);
 	}
 
 	void reverse(Construction@ cons, any@ data, const Targets@ targs, bool cancel) const override { 
 		int price;
 		data.retrieve(price);
 		if(!cancel)
-			cons.obj.modInfluence(price);
+			cons.obj.owner.modInfluence(price);
 	}
 #section all
 };

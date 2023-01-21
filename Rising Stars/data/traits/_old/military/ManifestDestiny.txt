@@ -1,4 +1,4 @@
-Trait: Manifest Destiny
+Trait: ManifestDestiny
 	Name: #TRAIT_MANIFEST_DESTINY
 	Description: #TRAIT_MANIFEST_DESTINY_DESC
 

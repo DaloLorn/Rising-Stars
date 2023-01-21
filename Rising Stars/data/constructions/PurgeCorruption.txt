@@ -9,5 +9,5 @@ Construction: PurgeCorruption
     RequirePlanet()
     ABEM_races::ConsumeInfluencePerPopulation(1)
     ABEM_races::AddBuildCostPopulation(10)
-    TriggerGeneric(RemoveStatus(Corrupted))
-    TriggerGeneric(RemoveStatus(ShadowportSteal))
+    RemoveStatus(Corrupted)
+    RemoveStatus(ShadowportSteal)
