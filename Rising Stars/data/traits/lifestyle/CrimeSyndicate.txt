@@ -6,7 +6,7 @@ Trait: CrimeSyndicate
 	Category: Lifestyle
 	Unique: Lifestyle
 	AI Support: False
-	Available: False
+	Available: True
 
     UnlockSubsystem(BoardingParty)
     UnlockSubsystem(ConstructionBay)

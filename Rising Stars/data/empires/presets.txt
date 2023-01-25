@@ -201,3 +201,23 @@ Preset: Khalerii
 	Trait: Flux
 	Trait: VanguardSwarmers
 	Trait: Industrious
+
+Preset: Anastar
+	Name: #RACE_CRIME_SYNDICATE
+	Tagline: #RACE_CRIME_SYNDICATE_TAGLINE
+	Lore: #RACE_CRIME_SYNDICATE_LORE
+	Portrait: emp_portrait_pirates
+	Shipset: Bromma
+	Hard: True
+	AI Support: False
+
+	Trait: CrimeSyndicate
+	Trait: Innovative
+	Trait: Capitalism
+	Trait: Lavish
+	Trait: Hyperdrive
+	Trait: Sedentary
+	Trait: Nimble
+	Trait: Animated
+	Trait: Paranoid
+	Trait: ManifestDestiny
