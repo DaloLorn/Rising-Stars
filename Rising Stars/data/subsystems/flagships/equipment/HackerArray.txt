@@ -1,8 +1,8 @@
 Subsystem: HackerArray
 	Name: #S_HACKER_ARRAY
 	Description: #S_HACKER_ARRAY_DESC
-	BaseColor: #f67bed
-	TypeColor: #f67bed
+	BaseColor: #d9a111
+	TypeColor: #d9a111
 	Elevation: 3
 
 	Tags: Category:Equipment, HighMaint, HasInternals, NonContiguous
@@ -32,7 +32,8 @@ Subsystem: HackerArray
 		Hex.BuildCost := Hex.BuildCost * 10
 		Hex.Mass := Hex.Mass * 5
 
-		Sprite: Antenna
+		Sprite: Antenna*d9a111
 
 	Module: Default
 		Hex.BuildCost := Hex.BuildCost * 2
+		Sprite: ComputerCore*d9a111

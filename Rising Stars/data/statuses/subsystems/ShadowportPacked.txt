@@ -1,7 +1,7 @@
 Status: ShadowportPacked
 	Name: #STATUS_SHADOWPORT_PACKED
 	Description: #STATUS_SHADOWPORT_PACKED_DESC
-	Icon: ActionBarIcons::7 * #ff0000
+	Icon: techOrganization*#f88
 
 	AddFleetEffectiveness(-0.5)
 

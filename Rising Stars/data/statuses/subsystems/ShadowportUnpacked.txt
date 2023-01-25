@@ -1,8 +1,8 @@
 Status: ShadowportUnpacked
 	Name: #STATUS_SHADOWPORT_UNPACKED
 	Description: #STATUS_SHADOWPORT_UNPACKED_DESC
-	Icon: ActionBarIcons::7
-	
+	Icon: techOrganization*#8f8
+
 	AddBonusHP(+1.0)
 	AddBonusShield(+1.0)
 

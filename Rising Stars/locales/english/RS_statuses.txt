@@ -119,3 +119,15 @@ STATUS_SHADOWPORT_STEALING_DESC: <<
 
 	20% of all civilian resource production goes to the Shadowport instead of the planet's owner. Resources produced by imperial buildings or miscellaneous effects are not affected, but Materials produced by or delivered to the planet are transferred to the Shadowport.
 >>
+STATUS_SHADOWPORT_PACKED: Packed Shadowport
+STATUS_SHADOWPORT_PACKED_DESC: <<
+	This shadowport has closed down its docks and powered up its engines for transit. The extra power consumption limits weapon effectiveness and necessitates the shutdown of the onboard fabricators, while the loss of the docking bays prevents any commercial traffic.
+
+	Fleet effectiveness is halved. The Shadowport loses its innate income and Labor generation, and cannot receive resources from Racketeering until unpacked.
+>>	
+STATUS_SHADOWPORT_UNPACKED: Unpacked Shadowport
+STATUS_SHADOWPORT_UNPACKED_DESC: <<
+	This shadowport has powered down its engines and opened its docking bays to commercial traffic. No longer subject to the stresses of interplanetary or interstellar travel, it is now more resistant to incoming damage, and can spare additional power for shields and its onboard fabricators.
+
+	All hull/shield health is doubled. The Shadowport innately produces some money and Labor in this state, and can receive resources from Racketeering, but it cannot be moved in any way.
+>>

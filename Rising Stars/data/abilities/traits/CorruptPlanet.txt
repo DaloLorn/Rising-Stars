@@ -1,7 +1,7 @@
 Ability: CorruptPlanet
 	Name: #ABL_CORRUPT_PLANET
 	Description: #ABL_CORRUPT_PLANET_DESC
-	Icon: QuickbarIcons::7
+	Icon: techTargeting*d8a111
 
 	Range: 2000
 
@@ -9,12 +9,12 @@ Ability: CorruptPlanet
 
 	TargetFilterType(targ, Planet)
 	TargetFilterNotAllied(targ)
-    TargetFilterOtherEmpire(targ)
+	TargetFilterOtherEmpire(targ)
 	TargetFilterNotQuarantined(targ)
 
 	IsToggleTarget(targ)
 	IsAutoColonize()
-    ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 59, Sys.CorruptRate:1)
+	ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 59, Sys.CorruptRate:1)
 	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 60, Sys.CorruptRate:1)
 
 	ShowSubsystemVariable(Sys.CorruptRate:1, Format = #TIME_S, Name = #S_CORRUPT_RATE, Icon = ContextIcons::1, Color = #80baff, Efficiency = True)

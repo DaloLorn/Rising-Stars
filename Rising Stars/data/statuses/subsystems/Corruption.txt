@@ -1,22 +1,23 @@
 Status: Corrupted
-    Name: #STATUS_CORRUPTED
-    Description: #STATUS_CORRUPTED_DESC
-    
-    Unique: True
-    Visible To: Origin Empire
-    
-    VisibleToOriginEmpire()
-    GivesVisionToOriginEmpire()
-    ABEM_races::GivesTradeToOriginEmpire()
+	Name: #STATUS_CORRUPTED
+	Description: #STATUS_CORRUPTED_DESC
 
-    TriggerWithOriginEmpire(ABEM_races::NotifyEmpire(#ALERT_PLANET_CORRUPTED, Description = #ALERT_PLANET_CORRUPTED_DESC))
-    ABEM_races::TriggerWithOriginEmpireWhenRemoved(ABEM_races::NotifyEmpire(#ALERT_PLANET_UNCORRUPTED, Description = #ALERT_PLANET_UNCORRUPTED_DESC))
+	Unique: True
+	Visible To: Origin Empire
+	Icon: techOrganization*#d8a111
+
+	VisibleToOriginEmpire()
+	GivesVisionToOriginEmpire()
+	ABEM_races::GivesTradeToOriginEmpire()
+
+	TriggerWithOriginEmpire(ABEM_races::NotifyEmpire(#ALERT_PLANET_CORRUPTED, Description = #ALERT_PLANET_CORRUPTED_DESC))
+	ABEM_races::TriggerWithOriginEmpireWhenRemoved(ABEM_races::NotifyEmpire(#ALERT_PLANET_UNCORRUPTED, Description = #ALERT_PLANET_UNCORRUPTED_DESC))
 
 Status: ShadowportSteal
-    Name: #STATUS_SHADOWPORT_STEALING
-    Description: #STATUS_SHADOWPORT_STEALING_DESC
+	Name: #STATUS_SHADOWPORT_STEALING
+	Description: #STATUS_SHADOWPORT_STEALING_DESC
 
-    Unique: True
-    Visible To: Origin Empire
+	Unique: True
+	Icon: techResupply*#d8a111
 
-    ABEM_races::CorruptPlanet()
+	ABEM_races::CorruptPlanet()

@@ -25,7 +25,7 @@ Subsystem: ShadowportHull
 	AddShipModifier: FireArcFactor(2.0)
 	AddShipModifier: TrackingMult(2.0)
 	AddShipModifier: SupportCapacityMult(0.5)
-	
+
 	Hex.MaintainCost := 0
 
 	Hook: AddPermanentStatus(Shadowport)
@@ -43,5 +43,5 @@ Subsystem: ShadowportHull
 		Message: #ERROR_MUST_BE_FILLED
 
 	Module: Default
-		Sprite: ResourceIcon::8
+		Sprite: OrbitalIcons::3*#d9a111
 		DrawMode: 3

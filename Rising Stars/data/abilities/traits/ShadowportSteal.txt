@@ -1,7 +1,7 @@
 Ability: ShadowportSteal
 	Name: #ABL_RACKETEERING
 	Description: #ABL_RACKETEERING_DESC
-	Icon: QuickbarIcons::2
+	Icon: techResupply*#d8a111
 	Hotkey: C
 
 	Target: targ = Object
