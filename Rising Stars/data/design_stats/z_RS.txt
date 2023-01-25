@@ -300,6 +300,14 @@ SubsystemStat: HardenerMitigationFactor
 
 	Variable: HardenerMitigationFactor
 
+SubsystemStat: CorruptRate
+	Name: #S_CORRUPT_RATE
+	Icon: TechIcons::1
+	Color: #9ed6ff
+	Suffix: /s
+	
+	Variable: CorruptRate
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************

@@ -149,6 +149,8 @@ STT_CHANNELPERCENTAGE: <<
 S_ARMOR_PIERCE_STAT: Armor Penetration
 S_PIERCE_RESISTANCE_STAT: Penetration Resistance
 
+S_CORRUPT_RATE: Corruption Rate
+
 // *********************************************************
 // ******************SUBSYSTEMS HERE!***********************
 // *********************************************************
@@ -921,6 +923,31 @@ S_WAR_HARVESTER_DESC: <<
 	[img=Minus]Cannot hold support ships.[/img]
 	[img=Minus]Build costs are tripled.[/img]
 	[img=MenuIcons::3;22]Cannot be used on ships under size 500.[/img]
+>>
+S_SHADOWPORT_HULL: Shadowport Hull
+S_SHADOWPORT_HULL_DESC: <<
+	Typically haphazardly assembled from purchased/stolen superfreighters or abandoned space stations, shadowports are mobile fortresses and staging areas for all kinds of criminal activity. However, they grow somewhat more vulnerable on the move, as their systems generally weren't intended for the stresses of prolonged travel.
+
+	[img=Plus]Counts as a planet for victory conditions.[/img]
+	[img=Plus]Can unpack into a stationary base for significant economic and defensive bonuses, such as the ability to construct orbitals and asteroid mines, §400k income, and doubled health.[/img]
+	[img=Plus]All hex health and shield capacity is doubled (for a total of quadruple health when stationary).[/img]
+	[img=Plus]All damage resistance is increased by 50%.[/img]
+	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
+	[img=Plus]Weapon range, firing arcs, and accuracy are increased to that of a station.[/img]
+	[img=Minus]Mass is doubled.[/img]
+	[img=Minus]Support capacity is halved. Fleet effectiveness is halved when mobile.[/img]
+	[img=Minus]Weapon damage is reduced by 25%.[/img]
+	[img=Minus]Maintenance cost cannot be reduced below §500k (for a total of §100k when stationary).[/img]
+	[img=MenuIcons::3;22]Cannot be used on ships under size 500.[/img]
+>>
+S_HACKER_ARRAY: Hacker Array
+S_HACKER_ARRAY_DESC: <<
+	A powerful array of computational and communications equipment specialized for the task of tapping and manipulating planetary communications networks as a prelude to corruption.
+
+	[img=Plus]Can be used to corrupt planets, granting vision, trade access, and the ability to order a Shadowport to start a profitable racketeering operation on them.[/img]
+	[img=Plus]Larger hacker arrays corrupt faster. A planet needs to absorb approximately 60 points of Corruption per point of Loyalty from a given hacker array to become corrupted by your empire.[/img]
+	[img=Minus]Costs Influence to build. Larger hacker arrays cost more.[/img]
+	[img=MenuIcons::3;22]Cannot be used on ships under size 64.[/img]
 >>
 S_SUPPORT_SHRINE_DESC: <<
 	A shrine to honor the Goddess of Wisdom, Alephatra, and built under her guiding hand. Praying to this shrine protects the ship from harm.
