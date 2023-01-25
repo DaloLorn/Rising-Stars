@@ -39,7 +39,7 @@ Subsystem: ShadowportHull
 	Assert: ShipSize >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 
-	Assert: ShipTotalHexes - Ship.ExternalHexes >= floor(Sum.HexLimit * 0.9)
+	Assert: ShipTotalHexes - Ship.ExternalHexes == floor(Sum.HexLimit)
 		Message: #ERROR_MUST_BE_FILLED
 
 	Module: Default

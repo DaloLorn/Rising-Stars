@@ -5,7 +5,7 @@ Subsystem: HackerArray
 	TypeColor: #f67bed
 	Elevation: 3
 
-	Tags: Category:Equipment, HighMaint, HasInternals
+	Tags: Category:Equipment, HighMaint, HasInternals, NonContiguous
 	Tags: Ability:CorruptPlanet
 	Hull: Flagship, Station
 
