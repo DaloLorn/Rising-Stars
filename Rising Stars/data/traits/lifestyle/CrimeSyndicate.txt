@@ -15,12 +15,11 @@ Trait: CrimeSyndicate
 	UnlockSubsystem(HackerArray)
 	UnlockSubsystem(ShadowportHull)
 
-	IfHaveTrait(Slipstream, LoadDesigns(syndicate/slipstream))
 	IfHaveTrait(Hyperdrive, LoadDesigns(syndicate/hyperdrive))
-	IfHaveTrait(Gate, LoadDesigns(syndicate/other))
-	IfHaveTrait(Fling, LoadDesigns(syndicate/other))
-	IfHaveTrait(Sublight, LoadDesigns(syndicate/other))
-	IfHaveTrait(Flux, LoadDesigns(syndicate/other))
+	IfHaveTrait(Gate, LoadDesigns(syndicate/not_hyperdrive))
+	IfHaveTrait(Fling, LoadDesigns(syndicate/not_hyperdrive))
+	IfHaveTrait(Sublight, LoadDesigns(syndicate/not_hyperdrive))
+	IfHaveTrait(Flux, LoadDesigns(syndicate/not_hyperdrive))
 	IfHaveTrait(Jumpdrive, LoadDesigns(syndicate/jumpdrive))
 
 	SpawnShip(Defiler, Override Disable Starting = True)

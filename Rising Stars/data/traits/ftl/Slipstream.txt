@@ -27,6 +27,10 @@ Trait: Slipstream
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/slipstream))
 
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/default))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/not_hyperdrive))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/slipstream))
+
 	ModAttribute(SlipstreamConst, Add, 1)
 	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	IfNotHaveTrait(StarChildren, SpawnShip(Slipstream Generator))

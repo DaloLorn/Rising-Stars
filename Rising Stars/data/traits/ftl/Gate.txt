@@ -28,6 +28,10 @@ Trait: Gate
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/gate))
 
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/default))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/not_hyperdrive))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/gate))
+
 	ModAttribute(ProgenitorTechProgress, Add, 3.5)
 	ModAttribute(GateConst, Add, 1)
 	SpawnShip(Gate)

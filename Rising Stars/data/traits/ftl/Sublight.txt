@@ -25,3 +25,6 @@ Trait: Sublight
 
 	IfHaveTrait(Technicists, LoadDesigns(technicist/default))
 	IfHaveTrait(Technicists, LoadDesigns(technicist/not_hyperdrive))
+
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/default))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/not_hyperdrive))

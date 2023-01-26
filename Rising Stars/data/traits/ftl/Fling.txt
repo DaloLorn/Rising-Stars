@@ -20,6 +20,9 @@ Trait: Fling
 
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/not_hyperdrive))
+	
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/default))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/not_hyperdrive))
 
 	UnlockTag(HasFling)
 	ModAttribute(FlingBeaconConst, Add, 1)

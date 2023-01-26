@@ -26,3 +26,6 @@ Trait: Jumpdrive
 	ModAttribute(JumpdriveConst, Add, 1)
 	IfHaveTrait(Ancient, LoadDesigns(ancient/default))
 	IfHaveTrait(Ancient, LoadDesigns(ancient/jumpdrive))
+
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/default))
+	IfHaveTrait(CrimeSyndicate, LoadDesigns(syndicate/jumpdrive))
