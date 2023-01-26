@@ -11,8 +11,9 @@ Ability: CorruptPlanet
 	TargetFilterNotAllied(targ)
 	TargetFilterOtherEmpire(targ)
 	TargetFilterNotQuarantined(targ)
+	ABEM_races::TargetFilterNotOwnedStatus(Corrupted)
 
-	IsToggleTarget(targ, Channels = False)
+	IsToggleTarget(targ)
 	IsAutoColonize()
 	ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 59, Sys.CorruptRate:1)
 	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 60, Sys.CorruptRate:1)

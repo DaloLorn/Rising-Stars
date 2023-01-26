@@ -476,6 +476,39 @@ class TargetFilterOwnedStatus : TargetFilter {
 	}
 };
 
+class TargetFilterNotOwnedStatus : TargetFilter {
+	Document doc("Restricts target to objects without a particular status applied by the caster's empire.");
+	Argument objTarg(TT_Object);
+	Argument status("Status", AT_Status, doc="Status to prohibit.");
+
+	string statusName = "DUMMY";
+
+	bool instantiate() override {
+		if(status.integer == -1) {
+			error("Invalid argument: "+status.str);
+			return false;
+		}
+		statusName = getStatusType(status.integer).name;
+		return TargetFilter::instantiate();
+	}
+
+	string getFailReason(Empire@ emp, uint index, const Target@ targ) const override {
+		return "Target must not have had the '" + statusName + "' status applied by your empire.";
+	}
+
+	bool isValidTarget(Empire@ emp, uint index, const Target@ targ) const override {
+		if(index != uint(objTarg.integer))
+			return true;
+		if(targ.obj is null)
+			return false;
+		if(!targ.obj.hasStatuses)
+			return true;
+		if(targ.obj.getStatusStackCount(status.integer, null, emp) > 0)
+			return false;
+		return true;
+	}
+};
+
 class CorruptPlanet : StatusHook {
 	Document doc("When applied to a planet, this status sets its origin object as the planet's shadowport.");
 
@@ -1127,13 +1160,6 @@ class TriggerTargetAccumulated : AbilityHook {
 	}
 
 #section server
-	bool isChanneling(const Ability@ abl, const any@ data) const override {
-		double@ accumulator;
-		data.retrieve(@accumulator);
-		const Target@ storeTarg = objTarg.fromConstTarget(abl.targets);
-		return accumulator !is INFINITY && storeTarg !is null && storeTarg.obj !is null;
-	}
-
 	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const {
 		if(index != uint(objTarg.integer))
 			return;
