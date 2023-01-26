@@ -194,3 +194,4 @@ ABL_CORRUPT_PLANET_DESC: <<
 
 	A planet needs to absorb approximately 60 points of Corruption per point of Loyalty from this ship to be corrupted by it. Using multiple hacker arrays will not speed up the process.
 >>
+PER_SECOND: /s

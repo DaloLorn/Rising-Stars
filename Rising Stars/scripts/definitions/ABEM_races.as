@@ -1149,6 +1149,7 @@ class TriggerTargetAccumulated : AbilityHook {
 	Argument threshold(AT_Decimal, "180", doc="The amount of progress required to trigger the effect.");
 	Argument accumulatorStat(AT_SysVar, "1", doc="How quickly the counter accumulates per second of game time.");
 	Argument loyaltyModified(AT_Boolean, "True", doc="If the target is a planet, whether to slow accumulation based on the planet's loyalty.");
+	Argument triggerAsCaster(AT_Boolean, "True", doc="Whether to trigger the effect as the caster's empire or the empire owning the target.");
 
 	bool instantiate() override {
 		@hook = cast<BonusEffect>(parseHook(function.str, "bonus_effects::", required=false));
@@ -1186,18 +1187,23 @@ class TriggerTargetAccumulated : AbilityHook {
 		if(accumulator == INFINITY)
 			return;
 
-		double required = threshold.decimal;
-		if(loyaltyModified.boolean && storeTarg.obj.hasSurfaceComponent) {
-			required *= double(storeTarg.obj.getLoyaltyFacing(abl.emp));
-		}
 		Object@ target = storeTarg.obj;
-		if(accumulator >= required) {
+		Empire@ emp;
+		if(triggerAsCaster.boolean)
+			@emp = abl.obj.owner;
+		else
+			@emp = target.owner;
+
+		if(accumulator >= threshold.decimal) {
 			if(hook !is null)
-				hook.activate(target, target.owner);
+				hook.activate(target, emp);
 			accumulator = INFINITY;
 		}
 		else {
 			double accumulated = time * accumulatorStat.fromSys(abl.subsystem, efficiencyObj=abl.obj);
+			if(loyaltyModified.boolean && storeTarg.obj.hasSurfaceComponent) {
+				accumulated /= double(storeTarg.obj.getLoyaltyFacing(abl.emp));
+			}
 			accumulator += accumulated;
 		}
 
