@@ -11,7 +11,7 @@ Ability: CorruptPlanet
 	TargetFilterNotAllied(targ)
 	TargetFilterOtherEmpire(targ)
 	TargetFilterNotQuarantined(targ)
-	ABEM_races::TargetFilterNotOwnedStatus(Corrupted)
+	ABEM_races::TargetFilterNotOwnedStatus(targ, Corrupted)
 
 	IsToggleTarget(targ)
 	IsAutoColonize()

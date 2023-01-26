@@ -1186,17 +1186,18 @@ class TriggerTargetAccumulated : AbilityHook {
 		if(accumulator == INFINITY)
 			return;
 
+		double required = threshold.decimal;
+		if(loyaltyModified.boolean && storeTarg.obj.hasSurfaceComponent) {
+			required *= double(storeTarg.obj.getLoyaltyFacing(abl.emp));
+		}
 		Object@ target = storeTarg.obj;
-		if(accumulator >= threshold.decimal) {
+		if(accumulator >= required) {
 			if(hook !is null)
 				hook.activate(target, target.owner);
 			accumulator = INFINITY;
 		}
 		else {
 			double accumulated = time * accumulatorStat.fromSys(abl.subsystem, efficiencyObj=abl.obj);
-			if(loyaltyModified.boolean && storeTarg.obj.hasSurfaceComponent) {
-				accumulated /= double(storeTarg.obj.getLoyaltyFacing(abl.emp));
-			}
 			accumulator += accumulated;
 		}
 
