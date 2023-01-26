@@ -1128,10 +1128,10 @@ class TriggerTargetAccumulated : AbilityHook {
 
 #section server
 	bool isChanneling(const Ability@ abl, const any@ data) const override {
-		double accumulator;
-		data.retrieve(accumulator);
+		double@ accumulator;
+		data.retrieve(@accumulator);
 		const Target@ storeTarg = objTarg.fromConstTarget(abl.targets);
-		return accumulator != INFINITY && storeTarg !is null && storeTarg.obj !is null;
+		return accumulator !is INFINITY && storeTarg !is null && storeTarg.obj !is null;
 	}
 
 	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const {
