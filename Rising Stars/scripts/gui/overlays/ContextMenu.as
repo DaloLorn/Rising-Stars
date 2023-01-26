@@ -1330,11 +1330,11 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 				else
 					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM, region.name), AutoColonizeSystem(), COLONIZE_ICON);
 				if(playerEmpire.HyperdriveConst > 0)
-					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonizeSystem(false, CType_Hyperdrive), icons::Hyperdrive);
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, region.name, locale::TRAIT_HYPERDRIVE, toString(10)), AutoColonizeSystem(false, CType_Hyperdrive), icons::Hyperdrive);
 				if(playerEmpire.FlingConst > 0)
-					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_FLING, toString(20)), AutoColonizeSystem(false, CType_Fling), icons::Fling);
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, region.name, locale::TRAIT_FLING, toString(20)), AutoColonizeSystem(false, CType_Fling), icons::Fling);
 				if(playerEmpire.JumpdriveConst > 0)
-					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonizeSystem(false, CType_Jumpdrive), icons::FTL);
+					addOption(menu, selected, clicked, format(locale::AUTO_COLONIZE_SYSTEM_FTL, region.name, locale::TRAIT_JUMPDRIVE, toString(25)), AutoColonizeSystem(false, CType_Jumpdrive), icons::FTL);
 
 				if(hasUnderleveled) {
 					if(playerEmpire.HasFlux > 0)
