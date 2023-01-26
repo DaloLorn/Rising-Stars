@@ -4,6 +4,7 @@ import object_creation;
 import statuses;
 import settings.map_lib;
 import civilians;
+import hooks;
 from game_start import getClosestSystem, getRandomSystem, systemCount, getSystem;
 from regions.regions import extentMin, extentMax;
 from statuses import StatusHook;
@@ -71,6 +72,10 @@ class PirateData : Savable {
 };
 
 class PirateStatus : StatusHook {
+	Argument originIsMaster(AT_Boolean, "False", doc="Whether to set the origin empire as being the ship's master, not the sole target.");
+	Argument noRespawn(AT_Boolean, "False", doc="Whether to prevent a new pirate from spawning when this ship is destroyed.");
+	Argument lootShare(AT_Decimal, "0.4", doc="If 'Origin Is Master' is set to true, how much of the loot should be handed out to the origin empire instead of being hoarded.");
+
 	void onCreate(Object& obj, Status@ status, any@ data) override {
 		PirateData dat;
 		data.store(@dat);
@@ -87,7 +92,8 @@ class PirateStatus : StatusHook {
 		if(credit !is null)
 			credit.addBonusBudget(dat.currentStored + dat.totalCollected / 2);
 
-		spawnPirateShip();
+		if(!noRespawn.boolean)
+			spawnPirateShip();
 	}
 
 	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
@@ -108,7 +114,10 @@ class PirateStatus : StatusHook {
 			case RESTING: {
 				if(dat.timer <= 0.0) {
 					//Find a new system to pillage
-					const SystemDesc@ targetSys = findJuicySystem(status.originEmpire);
+					Empire@ victim = null;
+					if(!originIsMaster.boolean)
+						@victim = status.originEmpire;
+					const SystemDesc@ targetSys = findJuicySystem(victim);
 					if(targetSys is null) {
 						dat.timer = HOARD_TIME;
 					}
@@ -148,6 +157,10 @@ class PirateStatus : StatusHook {
 			case PILLAGING: {
 				if(dat.chasing !is null) {
 					if(!dat.chasing.valid) {
+						if(originIsMaster.boolean) {
+							status.originEmpire.modBonusBudget(dat.chasingAmount * lootShare.decimal);
+							dat.chasingAmount -= dat.chasingAmount * lootShare.decimal;
+						}
 						dat.totalCollected += dat.chasingAmount;
 						dat.currentStored += dat.chasingAmount;
 					}
@@ -277,6 +290,8 @@ const SystemDesc@ findJuicySystem(Empire@ limitEmpire = null) {
 			if(limitEmpire !is null && other !is limitEmpire)
 				continue;
 			if(plMask & other.mask == 0)
+				continue;
+			if(other.hostileMask & Pirates.hostileMask == 0)
 				continue;
 			freq *= sqr(double(sys.object.getPlanetCount(other)));
 			freq /= double(sys.object.getStrength(other) + 1);

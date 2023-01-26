@@ -90,6 +90,17 @@ class AllyRemnants : TraitEffect {
 #section all
 }
 
+class AllyPirates : TraitEffect {
+	Document doc("Empires with this trait cannot attack or be attacked by the Dread Pirate.");
+
+#section server
+	void postInit(Empire& emp, any@ data) const override {
+		Pirates.setHostile(emp, false);
+		emp.setHostile(Pirates, false);
+	}
+#section all
+}
+
 class ConvertRemnants : AbilityHook {
 	Document doc("Takes control of the target Remnant object. Also takes control of any support ships in the area.");
 	Argument objTarg(TT_Object);
@@ -1314,6 +1325,107 @@ tidy final class TriggerWithOriginEmpireWhenRemoved : StatusHook {
 	void onDestroy(Object& obj, Status@ status, any@ data) override {
 		if(hook !is null)
 			hook.activate(obj, status.originEmpire);
+	}
+#section all
+};
+
+class MaintainFromOriginEmpire : StatusHook {
+	Document doc("Deducts a maintenance fee from the status' origin empire. Only applies to ships for now.");
+	Argument percentage(AT_Decimal, "0", doc="How much of the object's maintenance cost to remove.");
+
+#section server
+	void onCreate(Object& obj, Status@ status, any@ data) override {
+		if(status.originEmpire is null)
+			return;
+		if(!obj.isShip)
+			return;
+		
+		data.store(0);
+		updateMaintenance(obj, status.originEmpire, data);
+	}
+
+	void onDestroy(Object& obj, Status@ status, any@ data) override {
+		if(status.originEmpire is null)
+			return;
+		if(!obj.isShip)
+			return;
+
+		int currentMaintenance;
+		data.retrieve(currentMaintenance);
+		Ship@ ship = cast<Ship>(obj);
+		uint moneyType = MoT_Ships;
+		if(ship.blueprint.design.hasTag(ST_Station))
+			moneyType = MoT_Orbitals;
+		emp.modMaintenance(-currentMaintenance, moneyType);
+	}
+
+	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
+		if(status.originEmpire is null)
+			return true;
+		if(!obj.isShip)
+			return true;
+
+		updateMaintenance(obj, status.originEmpire, data);
+		return true;
+	}
+
+	void updateMaintenance(Object& obj, Empire@ emp, any@ data) {
+		int currentMaintenance;
+		data.retrieve(currentMaintenance);
+		Ship@ ship = cast<Ship>(obj);
+		uint moneyType = MoT_Ships;
+		if(ship.blueprint.design.hasTag(ST_Station))
+			moneyType = MoT_Orbitals;
+		if(!ship.isFree) {
+			int maint = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
+			maint -= double(maint) * (emp.MaxLogistics / double(emp.LogisticsThreshold)) * double(clamp(emp.getBuiltShips(ship) - 1, 0, emp.LogisticsThreshold));
+			maint = int(max(double(maint), ship.blueprint.getEfficiencySum(SV_MinimumMaintenance)));
+			if(maint != currentMaintenance) {
+				emp.modMaintenance(maint - currentMaintenance, moneyType);
+				data.store(maint);
+			}
+		}
+	}
+	
+	void save(Status@ status, any@ data, SaveFile& file) override {
+		int currentMaintenance;
+		data.retrieve(currentMaintenance);
+		file << currentMaintenance;
+	}
+
+	void load(Status@ status, any@ data, SaveFile& file) override {
+		int currentMaintenance;
+		file >> currentMaintenance;
+		data.store(currentMaintenance);
+	}
+#section all
+
+}
+
+class AddOwnedStatusSelf : AbilityHook {
+	Document doc("Add a status to the target object.");
+	Argument type(AT_Status, doc="Type of status effect to add.");
+	Argument duration(AT_SysVar, "-1", doc="Duration to add the status for, -1 for permanent.");
+	Argument duration_efficiency(AT_Boolean, "False", doc="Whether the duration added should be dependent on subsystem efficiency state. That is, a damaged subsystem will create a shorter duration status.");
+	Argument set_origin_object(AT_Boolean, "False", doc="Whether to record the object triggering this hook into the origin object field of the resulting status. If not set, any hooks that refer to Origin Object cannot not apply. Status effects with different origin objects set do not collapse into stacks.");
+
+#section server
+	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
+		Object@ target = abl.obj;
+		if(target is null)
+			return;
+		if(!target.hasStatuses)
+			return;
+
+		Empire@ origEmp = abl.emp;
+		Object@ origObj = null;
+		if(set_origin_object.boolean)
+			@origObj = abl.obj;
+
+		Object@ effObj = null;
+		if(duration_efficiency.boolean)
+			@effObj = abl.obj;
+		target.addStatus(uint(type.integer), duration.fromSys(abl.subsystem, efficiencyObj=effObj), originEmpire=origEmp, originObject=origObj);
 	}
 #section all
 };

@@ -8,3 +8,17 @@ Status: CrimeSyndicate
     IfLevel(4, ModLoyalty(-2))
     IfLevel(5, ModLoyalty(-2))
     IfLevel(6, ModLoyalty(-5))
+
+Status: CrimeSyndicateFleet
+    Visible To: Nobody
+
+    GrantAbility(LendToPirate)
+
+Status: LoanedPirate
+	Name: #STATUS_PIRATESHIP
+	Description: #STATUS_PIRATESHIP_DESC
+	Icon: StatusWar * #ff0000
+
+    ABEM_races::MaintainFromOriginEmpire(0.2)
+	ABEM_races::TriggerWithOriginEmpireWhenRemoved(TakeControl())
+	piracy::PirateStatus(True, True)

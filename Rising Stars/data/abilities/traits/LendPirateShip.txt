@@ -1,0 +1,7 @@
+Ability: LendToPirate
+	Name: #ABL_LEND_TO_PIRATE
+	Description: #ABL_LEND_TO_PIRATE
+	Icon: SupplyIcon*#f00
+
+	ABEM_hooks::UserMustNotHaveStatus(Shadowport)
+	ABEM_races::AddOwnedStatusSelf(LoanedPirate, 900)

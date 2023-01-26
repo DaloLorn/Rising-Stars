@@ -26,6 +26,8 @@ Trait: CrimeSyndicate
 	SpawnShip(Defiler, Override Disable Starting = True)
 	SpawnShip(Shadowport, Override Disable Starting = True)
 	AddStatusOwnedPlanets(CrimeSyndicate)
+	AddStatusOwnedFleets(CrimeSyndicateFleet)
+	ABEM_races::AllyPirates()
 
     ModAttribute(MaintainFromSpecialFunds, Add, 1)
     ModAttribute(SpecialFundsFactor, AddBase, 0.5)
