@@ -12,9 +12,9 @@ Ability: CorruptPlanet
 	TargetFilterOtherEmpire(targ)
 	TargetFilterNotQuarantined(targ)
 
-	IsToggleTarget(targ)
+	IsToggleTarget(targ, Channels = False)
 	IsAutoColonize()
 	ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 59, Sys.CorruptRate:1)
 	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 60, Sys.CorruptRate:1)
 
-	ShowSubsystemVariable(Sys.CorruptRate:1, Format = #TIME_S, Name = #S_CORRUPT_RATE, Icon = ContextIcons::1, Color = #80baff, Efficiency = True)
+	ShowSubsystemVariable(Sys.CorruptRate:1, Format = #TIME_S, Name = #S_CORRUPT_RATE, Icon = techTargeting*d8a111, Color = #d8a111, Efficiency = True)

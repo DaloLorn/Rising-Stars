@@ -11,6 +11,7 @@ Ability: Blink
 	//DistanceEnergyCost(dest, 0.1, Sqrt Cost = 6.5)
 	DistanceEnergyCost(dest, 0.05, Sqrt Cost = 0.325)
 	MultiplyEnergyCost(Sys.CostFactor:1)
+	ABEM_hooks::UserMustNotHaveStatus(Untractorable)
 
 	PlayParticles(SkipDriveEvent, Scale = 3.0, Object Tied = False)
 	TeleportTo(dest)
