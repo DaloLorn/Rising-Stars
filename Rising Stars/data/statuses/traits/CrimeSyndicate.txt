@@ -19,6 +19,7 @@ Status: LoanedPirate
 	Description: #STATUS_PIRATESHIP_DESC
 	Icon: StatusWar * #ff0000
 
+    OnEnable(ABEM_races::GiveToPirates())
     ABEM_races::MaintainFromOriginEmpire(0.2)
 	ABEM_races::TriggerWithOriginEmpireWhenRemoved(TakeControl())
 	piracy::PirateStatus(True, True)

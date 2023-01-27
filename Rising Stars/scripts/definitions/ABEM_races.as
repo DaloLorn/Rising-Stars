@@ -1329,6 +1329,37 @@ tidy final class TriggerWithOriginEmpireWhenRemoved : StatusHook {
 #section all
 };
 
+class GiveToPirates : BonusEffect {
+	Document doc("Transfers control of the object to the Dread Pirate.");
+
+	void activate(Object@ obj, Empire@ emp) const override {
+		if(obj is null)
+			return;
+		if(obj.isPlanet)
+			obj.takeoverPlanet(Pirates, 0.5);
+		else if(obj.isShip && obj.hasLeaderAI)
+			obj.takeoverFleet(Pirates, 1.0, false);
+		else
+			@obj.owner = emp;
+	}
+}
+
+class RequirePiratesExist : Requirement, AbilityHook {
+	Document doc("Requires that pirates exist in the game (i.e. they haven't been replaced by custom scenarios such as the Invasion map). Checks the Enable Dread Pirate option, and the name of the pirate empire.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+	}
+
+	string getFailError(Object& obj, bool ignoreState = false) const override {
+		return "Cannot be used if there are no pirates in the game.";
+	}
+
+	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
+		return meets(abl.obj);
+	}
+}
+
 class MaintainFromOriginEmpire : StatusHook {
 	Document doc("Deducts a maintenance fee from the status' origin empire. Only applies to ships for now.");
 	Argument percentage(AT_Decimal, "0", doc="How much of the object's maintenance cost to remove.");
