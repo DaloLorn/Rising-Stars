@@ -1344,7 +1344,13 @@ class GiveToPirates : BonusEffect {
 	}
 }
 
-class RequirePiratesExist : Requirement, AbilityHook {
+class OnlyUsableIfPiratesExist : AbilityHook {
+	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
+		return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+	}
+}
+
+class RequirePiratesExist : Requirement {
 	Document doc("Requires that pirates exist in the game (i.e. they haven't been replaced by custom scenarios such as the Invasion map). Checks the Enable Dread Pirate option, and the name of the pirate empire.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
@@ -1353,10 +1359,6 @@ class RequirePiratesExist : Requirement, AbilityHook {
 
 	string getFailError(Object& obj, bool ignoreState = false) const override {
 		return "Cannot be used if there are no pirates in the game.";
-	}
-
-	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
-		return meets(abl.obj);
 	}
 }
 
