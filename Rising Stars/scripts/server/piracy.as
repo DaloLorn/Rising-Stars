@@ -158,7 +158,7 @@ class PirateStatus : StatusHook {
 				if(dat.chasing !is null) {
 					if(!dat.chasing.valid) {
 						if(originIsMaster.boolean) {
-							status.originEmpire.modBonusBudget(dat.chasingAmount * lootShare.decimal);
+							status.originEmpire.addBonusBudget(dat.chasingAmount * lootShare.decimal);
 							dat.chasingAmount -= dat.chasingAmount * lootShare.decimal;
 						}
 						dat.totalCollected += dat.chasingAmount;

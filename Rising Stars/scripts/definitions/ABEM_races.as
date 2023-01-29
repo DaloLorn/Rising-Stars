@@ -1346,7 +1346,11 @@ class GiveToPirates : BonusEffect {
 
 class OnlyUsableIfPiratesExist : AbilityHook {
 	bool canActivate(const Ability@ abl, const Targets@ targs, bool ignoreCost) const override {
-		return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+#section server
+		if(isServer)
+			return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+#section all
+		return config::ENABLE_DREAD_PIRATE != 0;
 	}
 }
 
