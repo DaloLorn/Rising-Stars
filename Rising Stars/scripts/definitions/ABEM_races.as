@@ -1437,7 +1437,7 @@ class MaintainFromOriginEmpire : StatusHook {
 	}
 
 	void load(Status@ status, any@ data, SaveFile& file) override {
-		int currentMaintenance;
+		int currentMaintenance = 0;
 		file >> currentMaintenance;
 		data.store(currentMaintenance);
 	}

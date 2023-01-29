@@ -18,6 +18,7 @@ Status: ShadowportSteal
 	Description: #STATUS_SHADOWPORT_STEALING_DESC
 
 	Unique: True
+	Visible To: Origin Empire
 	Icon: techResupply*#d8a111
 
 	ABEM_races::CorruptPlanet()
