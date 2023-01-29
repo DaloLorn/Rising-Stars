@@ -200,3 +200,9 @@ BLD_ANCIENT_RUINS_DESC: <<
 
 	In addition to its usual effects, this planet's native resource will add 1 pressure of 3 randomly selected types. The selected pressure types are not unique, and will change every 3 minutes.
 >>
+
+BLD_ANCIENT_NETWORK_DESC: <<
+	Automatically produces defense satellites around this planet over time. Each network additionally enhances the computational capacity of the planet's defense planners.
+
+	Increases this planet's loyalty by 3, and provides +50% fleet effectiveness and +25% bonus HP to its support fleet.
+>>
