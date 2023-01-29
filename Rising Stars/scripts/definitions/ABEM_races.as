@@ -1360,7 +1360,11 @@ class RequirePiratesExist : Requirement {
 	Document doc("Requires that pirates exist in the game (i.e. they haven't been replaced by custom scenarios such as the Invasion map). Checks the Enable Dread Pirate option, and the name of the pirate empire.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
-		return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+#section server
+		if(isServer)
+			return config::ENABLE_DREAD_PIRATE != 0 && Pirates.name == locale::PIRATES;
+#section all
+		return config::ENABLE_DREAD_PIRATE != 0;
 	}
 
 	string getFailError(Object& obj, bool ignoreState = false) const override {
