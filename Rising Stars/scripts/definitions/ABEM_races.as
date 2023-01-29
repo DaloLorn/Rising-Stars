@@ -1395,7 +1395,7 @@ class MaintainFromOriginEmpire : StatusHook {
 		uint moneyType = MoT_Ships;
 		if(ship.blueprint.design.hasTag(ST_Station))
 			moneyType = MoT_Orbitals;
-		emp.modMaintenance(-currentMaintenance, moneyType);
+		status.originEmpire.modMaintenance(-currentMaintenance, moneyType);
 	}
 
 	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
