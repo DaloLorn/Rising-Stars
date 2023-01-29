@@ -1332,6 +1332,7 @@ tidy final class TriggerWithOriginEmpireWhenRemoved : StatusHook {
 class GiveToPirates : BonusEffect {
 	Document doc("Transfers control of the object to the Dread Pirate.");
 
+#section server
 	void activate(Object@ obj, Empire@ emp) const override {
 		if(obj is null)
 			return;
@@ -1342,6 +1343,7 @@ class GiveToPirates : BonusEffect {
 		else
 			@obj.owner = emp;
 	}
+#section all
 }
 
 class OnlyUsableIfPiratesExist : AbilityHook {
