@@ -34,8 +34,8 @@ class RequireSystemFlag : OrbitalEffect {
 	
 #section server	
 	void onOwnerChange(Orbital& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
-		Region@region = obj.region;
-		if(newOwner !is null && newOwner.valid && (region is null || !region.getSystemFlag(newOwner, flag.integer))) {
+		Region@ region = obj.region;
+		if(newOwner !is null && newOwner.valid && (region !is null && !region.getSystemFlag(newOwner, flag.integer))) {
 			obj.destroy();
 		}
 	}
@@ -43,10 +43,18 @@ class RequireSystemFlag : OrbitalEffect {
 	void onRegionChange(Orbital& obj, any@ data, Region@ fromRegion, Region@ toRegion) const override {
 		Empire@ owner = obj.owner;
 		if(owner !is null && owner.valid) {
-			if(toRegion is null || !fromRegion.getSystemFlag(obj.owner, flag.integer)) {
+			if(toRegion !is null && !toRegion.getSystemFlag(obj.owner, flag.integer)) {
 				obj.destroy();
 			}
 		}
+	}
+
+	bool shouldDisable(Orbital& obj, any@ data) const override {
+		return obj.inFTL || obj.region is null;
+	}
+
+	bool shouldEnable(Orbital& obj, any@ data) const override {
+		return !obj.inFTL && obj.region !is null;
 	}
 #section all
 }
@@ -74,7 +82,7 @@ class LimitTwicePerSystem : OrbitalEffect {
 
 #section server
 	void onOwnerChange(Orbital& obj, any@ data, Empire@ prevOwner, Empire@ newOwner) const override {
-		Region@region = obj.region;
+		Region@ region = obj.region;
 		if(region !is null) {
 			if(prevOwner !is null && prevOwner.valid) {
 				if(region.getSystemFlag(prevOwner, flag2.integer)) {
@@ -143,6 +151,14 @@ class LimitTwicePerSystem : OrbitalEffect {
 			else
 				region.setSystemFlag(owner, flag.integer, false);
 		}
+	}
+
+	bool shouldDisable(Orbital& obj, any@ data) const override {
+		return obj.inFTL || obj.region is null;
+	}
+
+	bool shouldEnable(Orbital& obj, any@ data) const override {
+		return !obj.inFTL && obj.region !is null;
 	}
 #section all
 }
