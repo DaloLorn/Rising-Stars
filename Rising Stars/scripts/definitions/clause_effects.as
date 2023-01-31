@@ -220,6 +220,8 @@ class DictateWar : InfluenceClauseHook {
 				Empire@ other = getEmpire(j);
 				if(other is member || other is treaty.leader)
 					continue;
+				if(!other.major)
+					continue;
 				bool shouldWar = other.isHostile(treaty.leader);
 				bool hasWar = other.isHostile(member);
 				if(shouldWar != hasWar)
@@ -403,6 +405,8 @@ class ShareWar : InfluenceClauseHook {
 			Empire@ other = getEmpire(n);
 			if(emp is other)
 				continue;
+			if(!other.major)
+				continue;
 
 			if(emp.isHostile(other)) {
 				if(curMask & other.mask == 0) {
@@ -434,6 +438,8 @@ class ShareWar : InfluenceClauseHook {
 
 		for(uint n = 0, ncnt = getEmpireCount(); n < ncnt; ++n) {
 			auto@ check = getEmpire(n);
+			if(!check.major)
+				continue;
 			bool wasWar = prevMask & check.mask != 0;
 
 			if(wasWar) {
