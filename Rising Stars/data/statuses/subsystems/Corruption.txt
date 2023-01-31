@@ -13,6 +13,13 @@ Status: Corrupted
 	TriggerWithOriginEmpire(ABEM_races::NotifyEmpire(#ALERT_PLANET_CORRUPTED, Description = #ALERT_PLANET_CORRUPTED_DESC))
 	ABEM_races::TriggerWithOriginEmpireWhenRemoved(ABEM_races::NotifyEmpire(#ALERT_PLANET_UNCORRUPTED, Description = #ALERT_PLANET_UNCORRUPTED_DESC))
 
+Status: Corrupting
+	Name: #STATUS_CORRUPTING
+	Description: #STATUS_CORRUPTING_DESC
+
+	Unique: True
+	Icon: techOrganization*#d8a111
+
 Status: ShadowportSteal
 	Name: #STATUS_SHADOWPORT_STEALING
 	Description: #STATUS_SHADOWPORT_STEALING_DESC

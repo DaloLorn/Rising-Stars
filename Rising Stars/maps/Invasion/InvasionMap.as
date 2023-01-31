@@ -564,6 +564,7 @@ void tick(double time) {
 						giveAchievement(dat.empire, "ACH_INVASION_40");
 
 					Artifact@ artif = createArtifact(pos, type);
+					artif.sightRange = 0;
 					@artif.owner = dat.empire;
 				}
 			}

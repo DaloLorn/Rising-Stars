@@ -1149,7 +1149,7 @@ class AllFleets : ObjectMode {
 		uint index = 0;
 		while(receive(objs, obj)) {
 			Ship@ ship = cast<Ship>(obj);
-			if(ship !is null && !ship.blueprint.design.hasTag(ST_Mothership)) {
+			if(ship !is null && ship.blueprint !is null && ship.blueprint.design !is null && !ship.blueprint.design.hasTag(ST_Mothership)) {
 				// BEGIN NON-MIT CODE - DOF
 				// Always classify fleets from "Exploration" class as Civilian 
 				if(ship.getFleetMaxStrength() < 1000.0 || ship.blueprint.design.cls.name == "Exploration")

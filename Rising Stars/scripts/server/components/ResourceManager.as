@@ -652,8 +652,8 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 
 		Budget_CycleBonus = Budget_Bonus;
 		int nextBudget = EstNextBudget;
-		if(nextBudget < 0 && emp.MaintainFromSpecialFunds > 0)
-			Budget_Bonus -= nextBudget;
+		if(Budget_Remaining < 0 && emp.MaintainFromSpecialFunds > 0)
+			Budget_Bonus -= Budget_Remaining;
 		Budget_Remaining = nextBudget + Budget_Bonus;
 		PrevBudget = Budget_Total;
 		PrevMaintenance = Maintenance;

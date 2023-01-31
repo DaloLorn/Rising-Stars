@@ -1248,6 +1248,7 @@ class SpawnArtifactAround : AbilityHook {
 		point.z += offset.y;
 
 		Artifact@ obj = createArtifact(point, artifType);
+		obj.sightRange = 0;
 		obj.orbitAround(center);
 	}
 #section all

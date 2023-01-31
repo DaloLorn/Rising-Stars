@@ -15,8 +15,8 @@ const double SYSTEM_MAX_TIME = 80.0;
 const int HOARD_MONEY = 500;
 const int MAX_CARRYING = 2000;
 
-const double NORMAL_ACCEL = 3.0;
-const double CHASE_ACCEL = 10.0;
+const double NORMAL_ACCEL = 18.0 + 3.0 * config::NEW_MOVEMENT;
+const double CHASE_ACCEL = 60.0 + 10.0 * config::NEW_MOVEMENT;
 
 enum PirateState {
 	RESTING,

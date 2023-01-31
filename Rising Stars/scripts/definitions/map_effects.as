@@ -1247,6 +1247,7 @@ Artifact@ makeArtifact(SystemDesc@ system, uint type = uint(-1)) {
 	Artifact@ obj = createArtifact(pos, gen, system.object);
 	obj.orbitAround(system.position);
 	@obj.region = system.object;
+	obj.sightRange = 0;
 	system.object.enterRegion(obj);
 	return obj;
 }

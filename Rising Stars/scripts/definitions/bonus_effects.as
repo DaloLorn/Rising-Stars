@@ -1408,6 +1408,7 @@ class SpawnArtifact : BonusEffect {
 		}
 
 		Artifact@ artif = createArtifact(pos, type);
+		artif.sightRange = 0;
 		Region@ region = obj.region;
 		if(region !is null)
 			artif.orbitAround(region.position);

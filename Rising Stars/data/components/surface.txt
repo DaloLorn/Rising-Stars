@@ -113,7 +113,7 @@ server:
 	safe double get_IncomingPop();
 	safe uint get_emptyDevelopedTiles();
 	
-	void surfaceTick(double time);
+	relocking void surfaceTick(double time);
 	void colonyShipArrival(Empire@ owner, double population);
 	void takeoverPlanet(Empire@ newOwner, double supportRatio = 1.0);
 	void setQuarantined(bool value);

@@ -81,22 +81,40 @@ class IfNotAtWar : IfHook {
 
 class AllyRemnants : TraitEffect {
 	Document doc("Empires with this trait cannot attack or be attacked by the Remnants.");
+	Argument shareGates(AT_Boolean, "False", doc="Whether to also exchange gate access.");
+	Argument shareVision(AT_Boolean, "False", doc="Whether the empire should also see everything the Remnants see.");
 
 #section server
 	void postInit(Empire& emp, any@ data) const override {
 		Creeps.setHostile(emp, false);
 		emp.setHostile(Creeps, false);
+		if(shareGates.boolean) {
+			emp.GateShareMask |= Creeps;
+			Creeps.GateShareMask |= emp;
+		}
+		if(shareVision.boolean) {
+			emp.visionMask |= Creeps;
+		}
 	}
 #section all
 }
 
 class AllyPirates : TraitEffect {
 	Document doc("Empires with this trait cannot attack or be attacked by the Dread Pirate.");
+	Argument shareGates(AT_Boolean, "True", doc="Whether to also exchange gate access.");
+	Argument shareVision(AT_Boolean, "False", doc="Whether the empire should also see everything the Dread Pirate sees.");
 
 #section server
 	void postInit(Empire& emp, any@ data) const override {
 		Pirates.setHostile(emp, false);
 		emp.setHostile(Pirates, false);
+		if(shareGates.boolean) {
+			emp.GateShareMask |= Pirates;
+			Pirates.GateShareMask |= emp;
+		}
+		if(shareVision.boolean) {
+			emp.visionMask |= Pirates;
+		}
 	}
 #section all
 }
@@ -1422,7 +1440,7 @@ class MaintainFromOriginEmpire : StatusHook {
 		if(!ship.isFree) {
 			int maint = max(ship.blueprint.design.total(HV_MaintainCost), 0.0);
 			maint -= double(maint) * (emp.MaxLogistics / double(emp.LogisticsThreshold)) * double(clamp(emp.getBuiltShips(ship) - 1, 0, emp.LogisticsThreshold));
-			maint = int(max(double(maint), ship.blueprint.getEfficiencySum(SV_MinimumMaintenance)));
+			maint = int(max(double(maint), ship.blueprint.getEfficiencySum(SV_MinimumMaintenance)) * percentage.decimal);
 			if(maint != currentMaintenance) {
 				emp.modMaintenance(maint - currentMaintenance, moneyType);
 				data.store(maint);
