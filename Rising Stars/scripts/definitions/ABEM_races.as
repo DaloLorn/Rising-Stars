@@ -89,11 +89,11 @@ class AllyRemnants : TraitEffect {
 		Creeps.setHostile(emp, false);
 		emp.setHostile(Creeps, false);
 		if(shareGates.boolean) {
-			emp.GateShareMask |= Creeps;
-			Creeps.GateShareMask |= emp;
+			emp.GateShareMask |= Creeps.mask;
+			Creeps.GateShareMask |= emp.mask;
 		}
 		if(shareVision.boolean) {
-			emp.visionMask |= Creeps;
+			emp.visionMask |= Creeps.mask;
 		}
 	}
 #section all
@@ -109,11 +109,11 @@ class AllyPirates : TraitEffect {
 		Pirates.setHostile(emp, false);
 		emp.setHostile(Pirates, false);
 		if(shareGates.boolean) {
-			emp.GateShareMask |= Pirates;
-			Pirates.GateShareMask |= emp;
+			emp.GateShareMask |= Pirates.mask;
+			Pirates.GateShareMask |= emp.mask;
 		}
 		if(shareVision.boolean) {
-			emp.visionMask |= Pirates;
+			emp.visionMask |= Pirates.mask;
 		}
 	}
 #section all
