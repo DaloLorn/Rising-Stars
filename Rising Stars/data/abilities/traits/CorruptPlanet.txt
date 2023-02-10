@@ -3,7 +3,7 @@ Ability: CorruptPlanet
 	Description: #ABL_CORRUPT_PLANET_DESC
 	Icon: techTargeting*d8a111
 
-	Range: 5000
+	Range: 6000
 
 	Target: targ = Object
 
