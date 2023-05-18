@@ -1,0 +1,8 @@
+System: ContrailNebula
+	Inherit: Nebula
+	Frequency: 0
+
+	MakeStar(Temperature = 4000:12000, Radius = 5:25)
+
+	Repeat(1:2)
+		MakePlanet()
