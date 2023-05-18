@@ -1,5 +1,5 @@
 System: ContrailNebula
-	Inherit: Nebula
+	Inherit: Type1Nebula
 	Frequency: 0
 
 	MakeStar(Temperature = 4000:12000, Radius = 5:25)
