@@ -13,7 +13,7 @@ Subsystem: Forcefield
 	PowerUse := 30 * Size
 	BaseHP := 20 * HexSize
 
-	BaseForcefieldRegen := 2 * Size
+	BaseForcefieldRegen := 4 * HexSize * sqrt(EmitterCount * Sum.BaseHexLimit/(Sum.HexLimit-Sum.FreeHexLimit))
 	ForcefieldRegenMod := 1
 	ForcefieldRegen := BaseForcefieldRegen * ForcefieldRegenMod
 
