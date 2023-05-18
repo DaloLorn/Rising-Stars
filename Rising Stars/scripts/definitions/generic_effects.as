@@ -4814,7 +4814,7 @@ class ModEfficiencyDistanceToOrbital : GenericEffect {
 		UpdatedValue@ value;
 		data.retrieve(@value);
 
-		if(value.value > 0) {
+		if(value.value != 0) {
 			obj.modFleetEffectiveness(-value.value);
 			value.value = 0;
 		}
