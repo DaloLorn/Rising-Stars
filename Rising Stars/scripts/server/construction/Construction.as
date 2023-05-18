@@ -645,10 +645,11 @@ tidy class Construction : Component_Construction, Savable {
 		//Handle the queue
 		double tick = time * LaborIncome * LaborFactor;
 		double prevMaximumStored = max(storedLabor, laborStorage);
+		double storedLaborToTake = 0.0;
 		if(queue.length != 0 && storedLabor > 0) {
 			double takeLabor = min(storedLabor, max(prevMaximumStored, 1.0) * time / config::LABOR_STORAGE_DUMP_TIME);
 			tick += takeLabor;
-			storedLabor -= takeLabor;
+			storedLaborToTake = takeLabor;
 		}
 
 		uint index = 0;
@@ -691,6 +692,9 @@ tidy class Construction : Component_Construction, Savable {
 						tick = 0;
 					break;
 					case TR_VanishLabor:
+						// Don't consumed stored labor if the tick result indicates a time
+						// based construction (which doesn't use labor properly)
+						storedLaborToTake = 0.0;
 						tick = 0;
 					break;
 					case TR_UnusedLabor:
@@ -707,6 +711,7 @@ tidy class Construction : Component_Construction, Savable {
 					index += 1;
 			}
 		}
+		storedLabor -= storedLaborToTake;
 		if(tick > 0 && storedLabor < prevMaximumStored) {
 			storedLabor = min(prevMaximumStored, storedLabor + tick);
 			deltaStored = true;
