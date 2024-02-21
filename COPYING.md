@@ -38,27 +38,29 @@ the mod. The rules are the same - for instance, `add(CardMode(this)); // NON-MIT
 ### `DOF`
 
 Code originated in mods made by dolynick - primarily Dolynick's Faction Addon. All 
-rights reserved; contact him for any permissions you may require.
+rights reserved; contact him for any permissions you may require. (Known point of contact:
+Discord @dolynick)
 
 ### `SOI` (or `SoI`)
 
 Code originated in Shores of Infinity. All rights reserved; contact soloriens for any 
-permissions you may require.
+permissions you may require. (Known points of contact: Discord @sol_oriens, GitHub @sol-oriens)
 
-### `CP:$SUBSOURCE`
+### `MP:$SUBSOURCE` (or `CP:$SUBSOURCE`)
 
-Content from the SR2 Community Patch. See the rules for the specified value of 
-`$SUBSOURCE` in the Community Patch repository. For example:
+Content from the OpenSR Modpack, or its predecessor, the SR2 Community Patch.
+See the rules for the specified value of `$SUBSOURCE` in the Modpack repository.
+For example:
 
 ```
-// BEGIN NON-MIT CODE - CP:DOF
-// something something DOF contributions to the CP here
+// BEGIN NON-MIT CODE - MP:DOF
+// something something DOF contributions to the MP here
 // END NON-MIT CODE
 ```
 
-In the above example, `// something something DOF contributions to the CP here` would 
-obey the rules specified by the CP for DOF contributions. (These may or may not be the 
-same as the rules specified in this list, so make sure to review the CP files!)
+In the above example, `// something something DOF contributions to the MP here` would 
+obey the rules specified by the MP for DOF contributions. (These may or may not be the 
+same as the rules specified in this list, so make sure to review the MP files!)
 
 ## Art sources
 
