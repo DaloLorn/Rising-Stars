@@ -129,6 +129,10 @@ tidy class StationConstructible : ShipConstructible {
 		obj.owner.dequeueShip(design.name, design.revision, obj.owner);
 		obj.owner.recordStatDelta(stat::ShipsBuilt, 1);
 		obj.owner.notifyFlagship(ship);
+		
+		double ftlCost = design.total(SV_FTLBuildCost);
+		if(ftlCost > 0)
+			obj.owner.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
 	}
 
 	void write(Message& msg) {

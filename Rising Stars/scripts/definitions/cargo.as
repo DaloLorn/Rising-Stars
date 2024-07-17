@@ -281,9 +281,6 @@ bool payDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0) {
 			}
 		}
 	}
-
-	if(ftlCost > 0)
-		obj.owner.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
 	return true;
 }
 
@@ -298,7 +295,6 @@ void reverseDesignCosts(Object& obj, const Design@ dsg, double multiply = 1.0, b
 		double ftlCost = dsg.total(SV_FTLBuildCost);
 		if(ftlCost > 0) {
 			obj.owner.modFTLStored(+ftlCost, obeyMaximum=true);
-			obj.owner.modAttribute(EA_FTLEnergySpent, AC_Add, -ftlCost);
 		}
 	}
 	if(obj.hasCargo) {

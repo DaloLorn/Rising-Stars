@@ -138,6 +138,23 @@ class ConsumeFTL : ConsumeEffect {
 	}
 
 #section server
+	void recordFTLUse(Object& obj) const {
+		if(cost.decimal > 0)
+			obj.owner.modAttribute(EA_FTLEnergySpent, AC_Add, cost.decimal);		
+	}
+
+	void complete(Object& obj, SurfaceBuilding@ bld, any@ data) const override {
+		recordFTLUse(obj);
+	}
+
+	void finish(Construction@ cons, Constructible@ qitem, any@ data, double time) const override {
+		recordFTLUse(cons.obj);
+	}
+
+	void onCreate(Orbital& obj, any@ data) const override {
+		recordFTLUse(obj);
+	}
+
 	bool consume(Object& obj, const Targets@ targs) const override {
 		if(obj.owner.consumeFTL(cost.decimal, partial=false, record=false) == 0.0)
 			return false;
@@ -148,6 +165,7 @@ class ConsumeFTL : ConsumeEffect {
 		if(!cancel)
 			obj.owner.modFTLStored(cost.decimal);
 	}
+
 #section all
 };
 

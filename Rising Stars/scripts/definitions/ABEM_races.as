@@ -1143,11 +1143,17 @@ class ConsumeDistanceFTLWithOverride : AbilityHook {
 	}
 
 #section server
+	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
+		double cost = getCost(abl, targs);
+		if(cost > 0)
+			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
+	}
+	
 	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {
 		double cost = getCost(abl, targs);
 		if(cost == 0)
 			return true;
-		if(abl.emp.consumeFTL(cost, partial=false) == 0.0)
+		if(abl.emp.consumeFTL(cost, partial=false, record=false) == 0.0)
 			return false;
 		return true;
 	}

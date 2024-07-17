@@ -610,7 +610,7 @@ void performInstantReflux(Object& obj) {
 	double cost = instantRefluxCost(obj);
 	if(cost > owner.FTLStored)
 		return;
-	owner.consumeFTL(cost, false, record=false);
+	owner.consumeFTL(cost, false);
 	obj.modFluxCooldown(-obj.fluxCooldown);
 }
 
