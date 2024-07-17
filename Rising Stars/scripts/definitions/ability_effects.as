@@ -107,9 +107,8 @@ class ConsumeFTL : AbilityHook {
 
 #section server
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
-		double cost = getCost(abl, targs);
-		if(cost > 0)
-			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, cost);
+		if(cost.decimal > 0)
+			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, cost.decimal);
 	}
 	
 	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {
@@ -285,7 +284,7 @@ class ConsumeDistanceFTL : AbilityHook {
 	Argument path_distance(AT_Boolean, "False", doc="If set, use total path distance taking into account gates, slipstreams and wormholes.");
 	Argument obey_suppress_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in an FTL-suppressed system.");
 
-	double getCost(const Ability@ abl, const Targets@ targs) const{
+	double getCost(const Ability@ abl, const Targets@ targs) const {
 		double cost = base_cost.decimal;
 		auto@ t = targ.fromConstTarget(targs);
 		if(t !is null && t.obj !is null && abl.obj !is null) {

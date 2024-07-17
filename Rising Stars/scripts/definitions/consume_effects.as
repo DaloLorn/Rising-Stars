@@ -148,7 +148,7 @@ class ConsumeFTL : ConsumeEffect {
 		recordFTLUse(obj);
 	}
 
-	void finish(Construction@ cons, Constructible@ qitem, any@ data, double time) const override {
+	void finish(Construction@ cons, Constructible@ qitem, any@ data) const override {
 		recordFTLUse(cons.obj);
 	}
 
