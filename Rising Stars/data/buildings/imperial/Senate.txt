@@ -20,6 +20,8 @@ Building: Senate
 	ShowAttributeValue(Influence Card Generation, Adaptation4, Multiplier = 1, Icon = TabDiplomacy, Suffix = #PER_MINUTE, Hide Zero = True)
 	ConflictBuilding(SlaveBarracks)
 
+	ConstructibleIfAttribute(SenateCount, 0)
+
 	TriggerStartConstruction( ModAttribute(SenateCount, Add, 1) )
 	TriggerCancelConstruction( ModAttribute(SenateCount, Add, -1) )
 	TriggerConstructed( ModAttribute(SenateCount, Add, -1) )

@@ -1,6 +1,6 @@
 Building: AncientFTLBreeder
 	Name: #BLD_FTLBREEDER
-	Description: #BLD_FTLBREEDER_DESC
+	Description: #BLD_ANCIENT_FTLBREEDER_DESC
 	Sprite: AncientRefinery*fad
 
 	Category: Production

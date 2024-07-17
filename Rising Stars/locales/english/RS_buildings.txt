@@ -206,3 +206,8 @@ BLD_ANCIENT_NETWORK_DESC: <<
 
 	Increases this planet's loyalty by 3, and provides +50% fleet effectiveness and +25% bonus HP to its support fleet.
 >>
+BLD_ANCIENT_FTLBREEDER_DESC: <<
+	[bbloc=#BLD_FTLBREEDER_DESC/]
+
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:5/]
+>>
