@@ -1,5 +1,6 @@
 import construction.Constructible;
 import resources;
+import attributes;
 import object_creation;
 import ship_groups;
 import cargo;

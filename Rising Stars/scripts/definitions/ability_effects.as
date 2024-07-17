@@ -11,6 +11,7 @@ from map_effects import MakePlanet, MakeStar;
 import listed_values;
 import orders;
 import attitudes;
+import attributes;
 #section server
 import util.target_search;
 from objects.Artifact import createArtifact;
@@ -108,7 +109,7 @@ class ConsumeFTL : AbilityHook {
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
 		double cost = getCost(abl, targs);
 		if(cost > 0)
-			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
+			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, cost);
 	}
 	
 	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {
@@ -345,7 +346,7 @@ class ConsumeDistanceFTL : AbilityHook {
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
 		double cost = getCost(abl, targs);
 		if(cost > 0)
-			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
+			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, cost);
 	}
 
 	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {

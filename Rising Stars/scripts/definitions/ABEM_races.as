@@ -18,6 +18,7 @@ import buildings;
 import generic_hooks;
 import repeat_hooks;
 import constructions;
+import attributes;
 from constructions import ConstructionHook;
 #section server
 import empire;
@@ -1146,7 +1147,7 @@ class ConsumeDistanceFTLWithOverride : AbilityHook {
 	void activate(Ability@ abl, any@ data, const Targets@ targs) const override {
 		double cost = getCost(abl, targs);
 		if(cost > 0)
-			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, ftlCost);
+			abl.emp.modAttribute(EA_FTLEnergySpent, AC_Add, cost);
 	}
 	
 	bool consume(Ability@ abl, any@ data, const Targets@ targs) const override {

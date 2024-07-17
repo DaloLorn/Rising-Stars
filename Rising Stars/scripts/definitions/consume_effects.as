@@ -1,6 +1,7 @@
 import hooks;
 import cargo;
 import buildings;
+import attributes;
 from buildings import IBuildingHook;
 import constructions;
 from constructions import IConstructionHook;

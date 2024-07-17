@@ -4,6 +4,7 @@ from constructible import STATION_FINALIZE_TIME;
 import resources;
 import object_creation;
 import ship_groups;
+import attributes;
 import util.formatting;
 
 tidy class StationConstructible : ShipConstructible {
