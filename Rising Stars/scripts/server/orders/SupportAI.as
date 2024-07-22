@@ -185,13 +185,15 @@ tidy class SupportAI : Component_SupportAI, Savable {
 	void resupplyFromFleet(Object& obj) {
 		Ship@ ship = cast<Ship>(obj);
 		Ship@ leaderShip = cast<Ship>(leader);
+		if(leader is null)
+			return;
 		if(ship.Supply < ship.MaxSupply) {
-			if(leaderShip is null)
-				return;
 			double require = ship.MaxSupply - ship.Supply;
-			if(leaderShip.Supply < (require * leaderShip.getSupplyConsumeFactor()))
-				return;
-			leaderShip.consumeSupply(require);
+			if(leaderShip !is null) {
+				if(leaderShip.Supply < (require * leaderShip.getSupplyConsumeFactor()))
+					return;
+				leaderShip.consumeSupply(require);
+			}
 			ship.Supply = min(ship.MaxSupply, ship.Supply + require);
 		}
 	}
@@ -199,10 +201,11 @@ tidy class SupportAI : Component_SupportAI, Savable {
 	void dumpSupplyToFleet(Object& obj) {
 		Ship@ ship = cast<Ship>(obj);
 		Ship@ leaderShip = cast<Ship>(leader);
+		if(leader is null)
+			return;
 		if(ship.Supply >= 0.001) {
-			if(leaderShip is null)
-				return;
-			leaderShip.refundSupply(ship.Supply);
+			if(leaderShip !is null)
+				leaderShip.refundSupply(ship.Supply);
 			ship.Supply = 0;
 		}
 	}
