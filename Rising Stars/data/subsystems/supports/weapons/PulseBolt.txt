@@ -11,7 +11,7 @@ Subsystem: PulseBolt
 	Hull: Support
 	
 	Size := HexSize * Hexes
-	BeamDPS := 30.0 * Size
+	BeamDPS := 20.0 * Size
 	Duration := 1
 	Cooldown := 0
 	Range := (Size + 100) * 2
