@@ -48,7 +48,7 @@ Subsystem: PulseBolt
 		Effect: DamageResist
 			Resist = Hex.DamageResist
 	
-	Effector: PulseBolt
+	Effector: RSPulseBolt
 		Range = Range
 		DPS = BeamDPS
 		Duration = Duration
