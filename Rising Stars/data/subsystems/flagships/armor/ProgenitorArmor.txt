@@ -24,7 +24,7 @@ Subsystem: ProgenitorArmor
 	PowerUse := 8 * Size
 	AddAdjacentModifier: AddHP(BaseHP * HPMod / 6.0)
 	RegenPerSecond := 2 * HexSize
-	ImpactLevel := 80 * HexSize
+	ImpactLevel := 80 * ShipSize/128
 	Effect: CapDamage
 		MaxDamage = ImpactLevel
 		MinimumPercent = 1/6

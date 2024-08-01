@@ -549,6 +549,23 @@ S_COLOSSUS_HULL: Colossus Architecture
 S_COLOSSUS_HULL_DESC: <<
 	An exceptionally large and resilient hull architecture capable of going toe to toe with even the largest of foes.
 
+	[img=MenuIcons::3;22]Increases hex limit by 300%.[/img]
+	[img=Plus]Doubles all health and damage resistance.[/img]
+	[img=Plus]Triples shield capacity.[/img]
+	[img=Plus]Reduces maintenance cost by 25%.[/img]
+	[img=Plus]Triples weapon damage, halves projectile spread, and increases range by 50%.[/img]
+	[img=Minus]Increases build and labor costs by 50%.[/img]
+	[img=Minus]Mass is doubled, and hyperdrive speed and jumpdrive safe range are halved.[/img]
+	[img=Minus]Weapon supply consumption and reload time are tripled.[/img]
+	[img=MenuIcons::3;22][color=#aaa][i]Can only be used for ships of size 3000 or greater.[/i][/color][/img]
+	[img=MenuIcons::3;22][color=#aaa][i]Cannot be used on a ship with Titan Architecture or Exotic Superstructure.[/i][/color][/img]
+>>
+
+S_COLOSSUS_HULL_OLD: Legacy Colossus Architecture
+S_COLOSSUS_BLUEPRINT_OLD: Legacy Colossus Blueprints
+S_COLOSSUS_HULL_DESC_OLD: <<
+	An exceptionally large and resilient hull architecture capable of going toe to toe with even the largest of foes. [b][color=#a00]This is an older variant of the Colossus Architecture that has been removed from the game and can no longer be used; it remains only for the purposes of letting you review your old designs.[/color][/b]
+
 	[img=MenuIcons::3;22]Increases hex limit by 900%.[/img]
 	[img=Plus]Doubles all health and damage resistance.[/img]
 	[img=Plus]Triples shield capacity.[/img]
