@@ -9,8 +9,8 @@ Subsystem: TitanHull
 
 	AddShipModifier: FlagshipHull::HexLimitFactor(4.0)
 	AddShipModifier: FlagshipHull::HexSizeFactor(4/3)
-	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(2.2))
-	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(3.0))
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.5))
 
 	AddShipModifier: MassMult(1.25)
 	AddShipModifier: HyperSpeedMult(0.75)
@@ -39,8 +39,8 @@ Subsystem: TitanBlueprint
 
 	AddShipModifier: FlagshipHull::HexLimitFactor(4.0)
 	AddShipModifier: FlagshipHull::HexSizeFactor(4/3)
-	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(2.2))
-	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(3.0))
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.5))
 
 	AddShipModifier: MassMult(1.25)
 	AddShipModifier: HyperSpeedMult(0.75)

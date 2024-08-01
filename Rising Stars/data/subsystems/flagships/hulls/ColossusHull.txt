@@ -8,8 +8,8 @@ Subsystem: ColossusHullNew
 	BaseColor: #cc3a7d
 
 	AddShipModifier: FlagshipHull::HexLimitFactor(4.0)
-	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(2.2))
-	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(3.0))
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.5))
 
 	AddShipModifier: BuildCostFactor(1.5)
 	AddShipModifier: LaborCostFactor(1.5)
@@ -44,8 +44,8 @@ Subsystem: ColossusBlueprintNew
 	BaseColor: #cc3a7d
 
 	AddShipModifier: FlagshipHull::HexLimitFactor(4.0)
-	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(2.2))
-	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.2))
+	AddShipModifier: FlagshipHull::GridWidthFactor(sqrt(3.0))
+	AddShipModifier: FlagshipHull::GridHeightFactor(sqrt(2.5))
 
 	AddShipModifier: BuildCostFactor(1.5)
 	AddShipModifier: LaborCostFactor(1.5)
