@@ -7,8 +7,8 @@ Subsystem: StationHull
 	BaseHexLimit := 160
 	FreeHexLimit := 0
 
-	GridWidth := 28
-	GridHeight := 23
+	GridWidth := 32
+	GridHeight := 28
 
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
