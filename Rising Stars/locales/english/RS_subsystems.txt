@@ -29,7 +29,6 @@ ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones.
 ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
-ERROR_FORCEFIELD_NO_BATTERY: Forcefields may not have any Quantum Batteries.
 ERROR_FORCEFIELD_SHAPE: Forcefield emitters may not be completely surrounded by their own forcefield, nor may they touch more than two forcefield hexes!
 ERROR_FORCEFIELD_EMITTERCOUNT: Forcefields may not have more than 5 hexes per emitter!
 ERROR_CARRIER_SUPPORT: Carrier Architecture requires that at least $1% of the ship's interior is dedicated to Support Command and Fleet Computers.

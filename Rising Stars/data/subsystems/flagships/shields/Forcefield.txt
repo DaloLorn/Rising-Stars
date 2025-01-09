@@ -5,7 +5,7 @@ Subsystem: Forcefield
 	Elevation: 2
 
 	Tags: Category:Shields, NoWall, PassExterior, BadFiller, Ephemeral
-	Tags: Forcefield, HasInternals, ExternalSpace
+	Tags: Forcefield, HasInternals, ExternalSpace, NoQuantumBattery
 	Hull: Flagship, Station
 
 	EmitterCount := 1
@@ -27,10 +27,6 @@ Subsystem: Forcefield
 	State: double = ForcefieldCapacity
 	State: double = 1
 	State: double = ForcefieldCapacityMult
-
-	Assert: EnergyBuildCost == 0
-		Unique: True
-		Message: #ERROR_FORCEFIELD_NO_BATTERY
 
 	Assert: Hexes <= EmitterCount * 6
 		Unique: True
