@@ -5,6 +5,7 @@ Ability: Telescope
 	Activate Sound: telescope_activate
 
 	Energy Cost: 500
+	Hotkey: T
 	ReduceEnergyCostSystemFlag(0.75, CheapArtifacts)
 
 	Target: targ = Object
