@@ -278,7 +278,7 @@ tidy final class TechnologyNode : Serializable, Savable {
 		if(available && queued && !bought) {
 			double cost = getPointCost(emp);
 			if(cost > 0) {
-				if(emp.ResearchPoints >= type.pointCost && canUnlock(emp))
+				if(emp.ResearchPoints >= cost && canUnlock(emp))
 					emp.research(id);
 			}
 			else {
