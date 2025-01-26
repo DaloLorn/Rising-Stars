@@ -16,3 +16,4 @@ Resource: NativeGold
 	Asteroid Labor: 50
 	Terraform Cost: 2000
 	Terraform Labor: 120
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)

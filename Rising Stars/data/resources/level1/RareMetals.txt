@@ -14,6 +14,7 @@ Resource: RareMetals
 	Asteroid Labor: 50
 
 	Pressure: 3 Research
+	AddIncome(80)
 	Terraform Cost: 1000
 	Terraform Labor: 60
 	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)

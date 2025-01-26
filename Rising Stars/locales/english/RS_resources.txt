@@ -225,3 +225,4 @@ R_BASE_MATERIAL_DESC: <<
 PSIONIC_REAGENTS_DESC: <<
 	Planets in the consuming system receive an additional 10 Loyalty.
 >>
+RARE_METALS_DESC: Adds §80k income.

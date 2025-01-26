@@ -17,8 +17,8 @@ Resource: Silicon
 
 	Asteroid Frequency: 0.02
 	Asteroid Labor: 50
-	Terraform Cost: 1500
-	Terraform Labor: 90
+	Terraform Cost: 1000
+	Terraform Labor: 60
 
 	ModPopulationGrowth(+0.3)
 	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)
