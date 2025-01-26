@@ -61,14 +61,19 @@ tidy class FlingOrder : Order {
 
 	bool cancel(Object& obj) override {
 		//Cannot cancel while already ftling
-		if(charge >= FLING_CHARGE_TIME || charge < 0.0)
+		if(charge < 0.0)
 			return false;
 
 		//Refund a part of the ftl cost
 		if(cost > 0) {
-			double pct = 1.0 - min(charge / FLING_CHARGE_TIME, 1.0);
-			double refund = cost * pct;
-			obj.owner.modFTLStored(refund);
+			if(isInstant)
+				obj.owner.modFTLStored(cost);
+			else {
+				double chargeTime = FLING_CHARGE_TIME;
+				double pct = 1.0 - min(charge / chargeTime, 1.0);
+				double refund = cost * pct;
+				obj.owner.modFTLStored(refund);
+			}
 			cost = 0;
 		}
 
