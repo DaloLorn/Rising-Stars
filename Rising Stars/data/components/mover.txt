@@ -4,6 +4,7 @@ local safe:
 	bool get_isMoving() const;
 	double get_fluxCooldown() const;
 	double get_maxAcceleration() const;
+	bool get_isInstantFluxing() const;
 
 restricted local:
 	vec3d get_moveDestination() const;
@@ -14,6 +15,10 @@ restricted local:
 	Object@ getAroundLockedOrbit();
 	safe bool isLockedOrbit(Object@ at, bool requireLock = true);
 	safe bool hasLockedOrbit(bool requireLock = true);
+
+restricted remote:
+	void enableInstantFluxing();
+	void disableInstantFluxing();
 
 server:
 	safe double get_ftlSpeed() const;

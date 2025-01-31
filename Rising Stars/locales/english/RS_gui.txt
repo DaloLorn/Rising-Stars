@@ -37,6 +37,7 @@ TT_SHIP_SHIELD_ABSORB: <<
 
 AVG_FLUX_COOLDOWN: Average Reflux Time from $2: $1
 AVG_FLUX_COOLDOWN_SUPPRESSED: Average Reflux Time from $2: $1 (Suppression Detected)
+INSTANT_FLUX: Flux Sequencing Cost: $1
 CANNOT_FLUX: Flux Jump Impossible
 UNFLUXABLE_DESTINATION: $1 can't identify target
 FLUX_JAMMED_DESTINATION: Jamming detected at $1
@@ -90,13 +91,17 @@ TT_INSTANTJUMPDRIVE: <<|
 	Use the equipped jumpdrive to immediately engage FTL movement. Costs a lot more FTL energy than a regular jump, and suffers significant penalties to safe jump range.
 >>
 
-TT_INSTANTFLUX: <<|
-	[b]Flux Sequencing[/b]
+TT_INSTANTFLUX_ENABLE: <<|
+	[b]Enable Flux Sequencing[/b]
 
-	Spend a substantial amount of FTL energy to instantly recharge the flux drive. Longer reflux periods cost more FTL to complete.
-
-	[img=ResourceIcon::3;22][color=#00c0ff]Average Flux Cooldown: $1 ($2 FTL to skip)[/color][/img]
+	Spend a substantial amount of FTL energy to make flux jumps without a recharge period. This can be done even while the flux drive is already recharging. The FTL cost of each jump is proportional to the cooldown that would normally be incurred by that jump.
 >>
+TT_INSTANTFLUX_DISABLE: <<|
+	[b]Disable Flux Sequencing[/b]
+
+	Stop spending FTL energy on flux jumps, at the cost of once again incurring a cooldown period after each jump.
+>>
+
 COLONIZE_WITH_FLUX: Colonize with $1 via Flux (25 FTL)
 COLONIZE_WITH_FTL: Colonize with $1 via $2 ($3 FTL)
 AUTO_COLONIZE_FLUX: Colonize this via Flux (25 FTL)

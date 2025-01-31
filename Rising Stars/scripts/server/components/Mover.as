@@ -239,6 +239,7 @@ tidy class Mover : Component_Mover, Savable {
 	bool FTL = false;
 	double FTLSpeed = 1.0;
 	double fluxCD = 0;
+	bool instantFluxing;
 
 	// counter for movement interdiction effects, 0 is no effects, values
 	// greater than one all block self movement, but are counted so they can
@@ -306,6 +307,7 @@ tidy class Mover : Component_Mover, Savable {
 			data >> prevPathId;
 
 		data >> movementInterdicted;
+		data >> instantFluxing;
 	}
 	
 	void save(SaveFile& data) {
@@ -341,6 +343,7 @@ tidy class Mover : Component_Mover, Savable {
 		data << prevPathId;
 
 		data << movementInterdicted;
+		data << instantFluxing;
 	}
 
 	void destroy() {
@@ -427,6 +430,18 @@ tidy class Mover : Component_Mover, Savable {
 
 	void modFluxCooldown(double amount) {
 		fluxCD = max(fluxCD + amount, 0.0);
+	}
+
+	bool get_isInstantFluxing() const {
+		return instantFluxing;
+	}
+
+	void enableInstantFluxing() {
+		instantFluxing = true;
+	}
+
+	void disableInstantFluxing() {
+		instantFluxing = false;
 	}
 	
 	bool get_isColliding() const {
@@ -1592,6 +1607,7 @@ tidy class Mover : Component_Mover, Savable {
 		if(FTL)
 			msg << float(FTLSpeed);
 		msg << float(fluxCD);
+		msg.writeBit(instantFluxing);
 		msg << inCombat;
 		if(inCombat)
 			msg.writeRotation(combatFacing);
@@ -1676,6 +1692,7 @@ tidy class Mover : Component_Mover, Savable {
 		if(FTL)
 			FTLSpeed = msg.read_float();
 		fluxCD = msg.read_float();
+		instantFluxing = msg.readBit();
 		
 		msg >> inCombat;
 		if(inCombat)

@@ -541,13 +541,14 @@ bool isFluxableObject(Object& obj) {
 }
 
 bool isFluxCharging(Object& obj) {
-	if(obj.hasMover && obj.fluxCooldown > 0)
-		return true;
+	if(obj.hasMover)
+		return obj.fluxCooldown > 0 && !obj.isInstantFluxing;
 	return false;
 }
 
 bool canFluxTo(Object& obj, const vec3d& pos) {
-	if(obj.owner.HasFlux == 0)
+	Empire@ owner = obj.owner;
+	if(owner is null || owner.HasFlux == 0)
 		return false;
 
 	auto@ reg = getRegion(pos);
@@ -558,7 +559,11 @@ bool canFluxTo(Object& obj, const vec3d& pos) {
 
 	if(!isFluxableObject(obj))
 		return false;
-	if(isFluxCharging(obj))
+	if(obj.isInstantFluxing) {
+		if(instantRefluxCost(obj, pos) > owner.FTLStored)
+			return false;
+	}
+	else if(isFluxCharging(obj))
 		return false;
 	return true;
 }
@@ -592,28 +597,14 @@ double calculateFluxCooldown(Object& obj, const vec3d& fluxPos) {
 	return INFINITY;
 }
 
-double instantRefluxCost(Object& obj) {
-	Region@ reg = obj.region;
+double instantRefluxCost(Object& obj, const vec3d& fluxPos) {
 	Empire@ owner = obj.owner;
-	if(obj.owner is null || !isFluxableObject(obj) || !isFluxCharging(obj))
-		return 0.0;
-	if(reg !is null && reg.FreeFTLMask & owner.mask != 0)
-		return 0.0;
-	return obj.fluxCooldown * (owner.FTLThrustFactor / 100.0) * owner.InstantFTLFactor;
+	if(owner is null || owner.InstantFTLFactor < 1)
+		return INFINITY;
+	return calculateFluxCooldown(obj, fluxPos) * owner.InstantFTLFactor;
 }
 
 #section server-side
-void performInstantReflux(Object& obj) {
-	Empire@ owner = obj.owner;
-	if(owner is null || !isFluxableObject(obj) || !isFluxCharging(obj))
-		return;
-	double cost = instantRefluxCost(obj);
-	if(cost > owner.FTLStored)
-		return;
-	owner.consumeFTL(cost, false);
-	obj.modFluxCooldown(-obj.fluxCooldown);
-}
-
 void commitFlux(Object& obj, const vec3d& pos) {
 	vec3d fluxPos = getFluxDest(obj, pos);
 	Region@ destRegion = getRegion(pos);
@@ -624,14 +615,23 @@ void commitFlux(Object& obj, const vec3d& pos) {
 		fluxPos = destRegion.position + offsetFromCenter / multiplier;
 	}
 
+	if(obj.hasLeaderAI && obj.hasMover) {
+		if(obj.isInstantFluxing) {
+			double cost = instantRefluxCost(obj, fluxPos);
+			if(obj.owner !is null && cost > obj.owner.FTLStored)
+				return;
+			obj.owner.consumeFTL(cost, false);
+		}
+		else {
+			double fluxCooldown = calculateFluxCooldown(obj, fluxPos);
+			obj.modFluxCooldown(calculateFluxCooldown(obj, fluxPos));
+		}
+	}
+
 #section server
 	playParticleSystem("FluxJump", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);
 	playParticleSystem("FluxJump", fluxPos, obj.rotation, obj.radius * 4.0, obj.visibleMask);
 #section server-side
-
-	if(obj.hasLeaderAI && obj.hasMover) {
-		obj.modFluxCooldown(calculateFluxCooldown(obj, fluxPos));
-	}
 
 	if(obj.hasLeaderAI) {
 		obj.teleportTo(fluxPos, movementPart=true);

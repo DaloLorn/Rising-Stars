@@ -640,22 +640,11 @@ class ActionBar : BaseGuiElement {
 				add(TrivialAction(targetInstantSlipstream, locale::TT_INSTANTSLIPSTREAM, icons::Slipstream*colors::FTL));
 		}
 
-		/*if(hasInstantFTL && obj.owner.HasFlux != 0 && obj.hasLeaderAI) {
-			double cooldown = 0;
-			double cost = 0;
-			double count = 0;
-			for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
-				Object@ obj = selectedObjects[i];
-				if(isFluxableObject(obj) && isFluxCharging(obj) && obj.hasLeaderAI) {
-					cooldown += obj.fluxCooldown;
-					count++;
-					cost += instantRefluxCost(obj);
-				}
-			}
-			if(count > 1)
-				cooldown /= count;
-			add(TrivialAction(performInstantReflux, format(locale::TT_INSTANTFLUX, cooldown, cost), icons::FTL*colors::FTL));
-		}*/
+		if(hasInstantFTL && obj.owner.HasFlux != 0 && obj.hasLeaderAI && obj.hasMover) {
+			if(obj.isInstantFluxing)
+				add(TrivialAction(enableInstantFluxing, locale::TT_INSTANTFLUX_ENABLE, icons::FTL*colors::FTL));
+			else add(TrivialAction(disableInstantFluxing, locale::TT_INSTANTFLUX_DISABLE, icons::FTL*colors::Red));
+		}
 	}
 
 	void updateAbsolutePosition() override {
@@ -690,10 +679,18 @@ InfoBar@ createInfoBar(IGuiElement@ parent, Object& obj) {
 }
 
 
-void performInstantReflux() {
+void enableInstantFluxing() {
 	for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
 		Object@ obj = selectedObjects[i];
-		if(isFluxableObject(obj) && isFluxCharging(obj) && obj.hasLeaderAI)
-			obj.performInstantReflux();
+		if(isFluxableObject(obj) && obj.hasMover && obj.hasLeaderAI)
+			obj.enableInstantFluxing();
+	}
+}
+
+void disableInstantFluxing() {
+	for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
+		Object@ obj = selectedObjects[i];
+		if(isFluxableObject(obj) && obj.hasMover && obj.hasLeaderAI)
+			obj.disableInstantFluxing();
 	}
 }

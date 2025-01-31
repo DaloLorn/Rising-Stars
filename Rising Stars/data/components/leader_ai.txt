@@ -80,7 +80,6 @@ restricted remote:
 	void insertHyperdriveOrder(vec3d target, uint index);
 	void insertJumpdriveOrder(vec3d target, uint index);
 	void insertFlingOrder(Object& beacon, vec3d target, uint index);
-	void performInstantReflux();
 
 	void transferSupports(const Design@ ofDesign, uint amount, Object@ transferTo);
 	void orderSupports(const Design@ ofDesign, uint amount);

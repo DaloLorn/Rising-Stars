@@ -161,6 +161,7 @@ class PopupRoot : BaseGuiElement {
 		array<uint> invalidObjs;
 		bool canFlux = true, showFlux = false, isSuppressed = false;
 		double cooldown, avgCooldown = 0.0;
+		double cost, totalCost = 0.0;
 
 		for(uint i = 0, cnt = selectedObjects.length; i < cnt; ++i) {
 			@obj = selectedObjects[i];
@@ -172,7 +173,7 @@ class PopupRoot : BaseGuiElement {
 						canFlux = false;
 						invalidObjs.insertLast(i);
 					}
-					else {
+					else if(!obj.isInstantFluxing) {
 						cooldown = calculateFluxCooldown(obj, getFluxDest(obj, destination));
 						if(isFTLSuppressed(obj, destination)) {
 							cooldown *= 4;
@@ -181,10 +182,16 @@ class PopupRoot : BaseGuiElement {
 						avgCooldown += cooldown;
 						fluxCount++;
 					}
+					else {
+						cost = instantRefluxCost(obj, getFluxDest(obj, destination));
+						totalCost += cost;
+					}
 				}
 			}
 		}
-		avgCooldown /= fluxCount;
+		if(fluxCount > 0)
+			avgCooldown /= fluxCount;
+		canFlux = canFlux && playerEmpire.FTLStored >= totalCost;
 
 		Color color;
 		if(canFlux)
@@ -193,7 +200,16 @@ class PopupRoot : BaseGuiElement {
 			color = DISABLED_BEAM_COLOR;
 
 		if(showFlux) {
-			if(canFlux) {
+			uint i = 0;
+			if(totalCost != 0) {
+				if(fluxCount != 0)
+					i++;
+				string text = locale::INSTANT_FLUX;
+				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 16*i),
+					format(text, toString(totalCost)),
+					color);
+			}
+			if(canFlux && fluxCount != 0) {
 				string text = locale::AVG_FLUX_COOLDOWN;
 				if(isSuppressed)
 					text = locale::AVG_FLUX_COOLDOWN_SUPPRESSED;
@@ -201,11 +217,11 @@ class PopupRoot : BaseGuiElement {
 					format(text, formatTime(avgCooldown), getRegion(destination).name),
 					color);
 			}
-			else {
+			else if(!canFlux) {
 				font::DroidSans_11_Bold.draw(mousePos + vec2i(16, 0),
 					locale::CANNOT_FLUX,
 					color);
-				for(uint i = 0, cnt = invalidObjs.length; i < cnt; ++i) {
+				for(uint cnt = invalidObjs.length; i < cnt; ++i) {
 					@obj = selectedObjects[invalidObjs[i]];
 					vec2i drawPos = mousePos + vec2i(16, 16 + 16*i);
 					if(!isFluxableDestination(obj, getRegion(destination), getRegion(obj.position))) {

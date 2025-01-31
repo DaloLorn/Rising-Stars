@@ -1367,11 +1367,6 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		obj.wake();
 	}
 
-	void performInstantReflux(Object& obj) {
-		performInstantReflux(obj);
-		obj.wake();
-	}
-
 	void insertHyperdriveOrder(Object& obj, vec3d pos, uint index) {
 		if(!canHyperdrive(obj))
 			return;
