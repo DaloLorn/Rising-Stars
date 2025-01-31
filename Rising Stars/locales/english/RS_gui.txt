@@ -94,7 +94,7 @@ TT_INSTANTJUMPDRIVE: <<|
 TT_INSTANTFLUX_ENABLE: <<|
 	[b]Enable Flux Sequencing[/b]
 
-	Spend a substantial amount of FTL energy to make flux jumps without a recharge period. This can be done even while the flux drive is already recharging. The FTL cost of each jump is proportional to the cooldown that would normally be incurred by that jump.
+	Spend a substantial amount of FTL energy to make flux jumps without a recharge period. This can be done even while the flux drive is already recharging, and will instantly recharge the drive when jumping. The FTL cost of each jump is proportional to the cooldown that would normally be incurred by that jump, as well as any leftover cooldown time from previous jumps.
 >>
 TT_INSTANTFLUX_DISABLE: <<|
 	[b]Disable Flux Sequencing[/b]

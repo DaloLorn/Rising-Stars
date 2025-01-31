@@ -542,11 +542,11 @@ bool isFluxableObject(Object& obj) {
 
 bool isFluxCharging(Object& obj) {
 	if(obj.hasMover)
-		return obj.fluxCooldown > 0 && !obj.isInstantFluxing;
+		return obj.fluxCooldown > 0;
 	return false;
 }
 
-bool canFluxTo(Object& obj, const vec3d& pos) {
+bool canFluxTo(Object& obj, const vec3d& pos, bool ignoreCost = true) {
 	Empire@ owner = obj.owner;
 	if(owner is null || owner.HasFlux == 0)
 		return false;
@@ -559,12 +559,8 @@ bool canFluxTo(Object& obj, const vec3d& pos) {
 
 	if(!isFluxableObject(obj))
 		return false;
-	if(obj.isInstantFluxing) {
-		if(instantRefluxCost(obj, pos) > owner.FTLStored)
-			return false;
-	}
-	else if(isFluxCharging(obj))
-		return false;
+	if(isFluxCharging(obj))
+		return obj.isInstantFluxing && (instantRefluxCost(obj, pos) < owner.FTLStored || ignoreCost);
 	return true;
 }
 
@@ -601,7 +597,7 @@ double instantRefluxCost(Object& obj, const vec3d& fluxPos) {
 	Empire@ owner = obj.owner;
 	if(owner is null || owner.InstantFTLFactor < 1)
 		return INFINITY;
-	return calculateFluxCooldown(obj, fluxPos) * owner.InstantFTLFactor;
+	return (obj.fluxCooldown + calculateFluxCooldown(obj, fluxPos)) * owner.InstantFTLFactor;
 }
 
 #section server-side
@@ -621,6 +617,7 @@ void commitFlux(Object& obj, const vec3d& pos) {
 			if(obj.owner !is null && cost > obj.owner.FTLStored)
 				return;
 			obj.owner.consumeFTL(cost, false);
+			obj.modFluxCooldown(-obj.fluxCooldown);
 		}
 		else {
 			double fluxCooldown = calculateFluxCooldown(obj, fluxPos);

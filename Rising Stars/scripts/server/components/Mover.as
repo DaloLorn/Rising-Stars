@@ -1057,7 +1057,7 @@ tidy class Mover : Component_Mover, Savable {
 				Region@ reg = obj.region;
 				if(reg !is null) {
 					if(dest.distanceToSQ(reg.position) > reg.radius*reg.radius) {
-						if(canFluxTo(obj, dest)) {
+						if(canFluxTo(obj, dest, false)) {
 							commitFlux(obj, dest);
 							return 0.25;
 						}
