@@ -131,3 +131,15 @@ STATUS_SHADOWPORT_UNPACKED_DESC: <<
 
 	All hull/shield health is doubled. The Shadowport innately produces some money and Labor in this state, and can receive resources from Racketeering, but it cannot be moved in any way.
 >>
+STATUS_GUARDIANSHIPYARD_ACTIVE: Standby Mode
+STATUS_GUARDIANSHIPYARD_ACTIVE_DESC: <<
+	This Guardian Facility is being studied and used to perform comparably minor construction projects.
+
+	Generates 15 Research per second and 100 Labor per minute. Can import Labor, has 5000 Labor storage, and can construct anything like a planet would.
+>>
+STATUS_GUARDIANSHIPYARD_BUILDING: Construction Mode
+STATUS_GUARDIANSHIPYARD_BUILDING_DESC: <<
+	This Guardian Facility is fabricating and storing modules for the assembly of a Guardian.
+
+	Consumes 10 Energy and 2.5 FTL per second, and incurs a maintenance cost of §2M. Construction will be canceled without any refund if the facility shuts down or is donated to another empire. Lasts a minimum of 15 minutes before allowing the Guardian's construction to be completed.
+>>
