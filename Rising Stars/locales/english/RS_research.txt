@@ -71,6 +71,9 @@ R_FLARE_BOMB_DESC: <<
 	The flare bomb ship is destroyed in the process.
 >>
 
+R_LABORATORIES_DESC: <<
+	Research Complex buildings give $1 additional Research Pressure. Ancient Labs give $1 additional Research generation, instead.
+>>
 
 R_FTL_JAMMER_COMBAT: FTL Suppressor Shorter
 R_FTL_JAMMER_COMBAT_DESC: <<
