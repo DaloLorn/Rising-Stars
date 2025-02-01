@@ -15,6 +15,7 @@ Camp: BlackHoleCamp
 	Region Status: InterdictFTL
 	Remnant Status: RemnantGuardian
 	Pickup: BlackHole
+		Frequency: 0
 		Physical Size: 1
 		Name: #PICKUP_GUARDIAN
 		Description: #PICKUP_GUARDIAN_DESC
