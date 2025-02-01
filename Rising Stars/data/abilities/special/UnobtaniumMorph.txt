@@ -11,3 +11,4 @@ Ability: UnobtaniumMorph
 	TargetFilterResourceNot(targ, Plains)
 
 	MorphResourceIntoNative(targ)
+	AddStatusSelf(MorphedUnobtanium)

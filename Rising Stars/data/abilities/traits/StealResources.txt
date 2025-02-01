@@ -14,3 +14,4 @@ Ability: StealResources
 
 	ABEM_races::StealResources(targ)
 	Trigger(targ, RemoveStatus(ReadyForHarvest))
+	Trigger(targ, RemoveStatus(MorphedUnobtanium))

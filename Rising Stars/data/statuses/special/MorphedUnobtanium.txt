@@ -1,0 +1,4 @@
+Status: MorphedUnobtanium
+	Visible To: Nobody
+	Unique: True
+	GrantAbility(UnobtaniumMorph)
