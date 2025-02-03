@@ -20,12 +20,7 @@ const array<string> CP_VERSIONS = {
 };
 
 const array<string> CP_REVISIONS = {
-	"282",
-	"286",
-	"287",
-	"288",
-	"289",
-	"291",
+	"292",
 };
 
 const string MOD_NAME = "Rising Stars v1.4.0";
