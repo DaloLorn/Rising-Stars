@@ -11,7 +11,7 @@ Construction: BeaconGuide
 	TargetFilterType(targ, Star)
 	TargetRequireVision(targ, Region Vision = True)
 
-	RequireOnOrbital(Beacon)
+	RequireEither(RequireOnOrbital(Beacon), RequireOnOrbital(MiniBeacon))
 
 	OnStart(ModAttribute(BeaconGuideCost, Add, 1))
 	OnCancel(ModAttribute(BeaconGuideCost, Add, -1))

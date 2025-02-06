@@ -9,6 +9,7 @@ Construction: Troops
 	Icon: TroopPods
 
 	RequireSubsystemUnlocked(TroopPods)
+	RequireNot(RequireOnOrbital(MiniBeacon))
 
 	TargetFilterSameRegion(targ)
 	TargetFilterType(targ, Ship)

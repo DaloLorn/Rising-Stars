@@ -151,10 +151,25 @@ CONS_CORE_MONEY_DESC: <<
 
 	[bbloc=#CONS_CORE_PROGRAM:Money:1.5/]
 >>
-CONS_BEACON_LABOR_DESC: <<
-	Increases the Labor generation of your beacons by 3.
+CONS_BEACON_HEALTH_DESC: <<
+	Increases the health of your Beacons and Signposts by 50,000 and 5,000, respectively.
 
-	Also increases the Labor generation of your beacons by 60% of the total amount granted by [b]Metallurgy[/b] technologies you've researched.
+	[bbloc=#TIP_DEFENSE_UNITS/]
+>>
+CONS_BEACON_ARMOR: <<
+	Increases your Beacons' health by 50,000 and their damage resistance by 50. Signposts receive 5,000 and 5, respectively.
+
+	[bbloc=#TIP_ORE_COST/]
+>>
+CONS_BEACON_WEAPONS_DESC: <<
+	Adds weapons dealing a total of 100 and 25 DPS, respectively, to all your Beacons and Signposts.
+
+	[bbloc=#TIP_DEFENSE_UNITS/]
+>>
+CONS_BEACON_LABOR_DESC: <<
+	Increases the base Labor generation of your Beacons and Signposts by 5, plus the benefits of all [b]Metallurgy[/b] technologies you've researched.
+
+	This upgrade is subject to the normal Labor reductions on Beacons and Signposts.
 
 	[bbloc=#TIP_RESEARCH_UNITS/]
 >>

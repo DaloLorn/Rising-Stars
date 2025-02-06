@@ -505,3 +505,32 @@ ORB_MONO_COLONY_DESC: <<
 
 	Costs 0.05 FTL to maintain.
 >>
+ORB_BEACON_DESC: <<
+	A giant beacon that periodically guides refugee ships to this galaxy to settle on nearby planets.
+
+	Resources can be traded freely between territories with Beacons and Signposts in them.
+
+	If using jumpdrives, fleets can jump to this system from any distance without risk of damage.
+
+	When importing resources with Energy, Defense, or Research pressure, the empire will slowly gain stores of Support which can be spent on various benefits and projects at any Beacon.
+
+	Importing resources with Labor pressure will convert the pressure into Labor generation for all Beacons and Signposts in the empire.
+
+	Beacons receive only 66% Labor generation from any source.
+>>
+ORB_BEACON_MINI: Signpost
+ORB_BEACON_MINI_BLURB: Cheap miniature Beacon mostly useful to build new Beacons.
+ORB_BEACON_MINI_DESC: <<
+	A scaled-down Beacon that can be used to guide other Beacons to this galaxy.
+
+	Resources can be traded freely between territories with Beacons and Signposts in them.
+
+	If using jumpdrives, fleets can jump to this system from any distance without risk of damage.
+
+	When importing resources with Energy, Defense, or Research pressure, the empire will slowly gain stores of Support which can be spent on various benefits and projects at any Beacon.
+
+	Importing resources with Labor pressure will convert the pressure into Labor generation for all Beacons and Signposts in the empire.
+
+	Signposts receive only 33% Labor generation from any source, receive reduced benefits from Beacon upgrades, and can only use Labor to guide new Beacons into the galaxy.
+>>
+

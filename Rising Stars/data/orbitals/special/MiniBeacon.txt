@@ -1,0 +1,58 @@
+Module: MiniBeacon
+	Name: #ORB_BEACON_MINI
+	Blurb: #ORB_BEACON_MINI_BLURB
+	Description: #ORB_BEACON_MINI_DESC
+	Icon: GuiOrbitalIcons::18
+	Strategic Icon: OrbitalIcons::18
+
+	Core: True
+	Standalone: True
+
+	Health: 10000
+	Armor: 10000
+	Build Cost: 2000
+	Maintenance: 500
+	Labor Cost: 50
+
+	Size: 6
+	Icon Size: 0.02
+	Mass: 5000
+
+	Model: Beacon
+	Material: GenericPBR_Beacon
+
+	AddLaborFactor(-0.66)
+
+	AllowResourceImport()
+	AddCargoStorage(1000000)
+	ConsumeCargo(Ore, 2500)
+
+	CountAsPlanet()
+
+	AllowConstruction()
+	AddLaborIncome(5)
+	AddLaborEmpireAttribute(FactoryLaborMod)
+	ForbidLaborExport()
+
+	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborIncome(5))
+	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborEmpireAttribute(FactoryLaborMod))
+
+	SetSystemFlag(JumpdriveSafety)
+
+	GlobalTradeNode()
+	GiveTrade()
+
+	RepeatEmpireAttribute(BeaconLaborPressure, AddLaborIncome(1))
+
+	AddHealthEmpireAttribute(BeaconHealthUpgrades, 5000)
+	AddArmorEmpireAttribute(BeaconArmorUpgrades, 5000)
+	AddResistanceEmpireAttribute(BeaconArmorUpgrades, 5)
+
+	RepeatExtended(AddTurret(Railgun, Range=400, Damage=5, Reload=0.25, Speed=150, Spread=0.03, FireArc=3.14, Tracking=0.4, FireTolerance=0.78), Base Attribute = BeaconWeaponUpgrades, Multiplier = 1)
+	RepeatExtended(AddTurret(Laser, Range=300, DPS=5, Duration=2, Cooldown=0, Tracking=0.4), Base Attribute = BeaconWeaponUpgrades, Multiplier = 1)
+	RepeatEmpireAttribute(BeaconWeaponUpgrades, RecordBonusDPS(25))
+
+	RepeatPressure(Labor, ModEmpireAttribute(BeaconLaborPressure, Add, 1))
+	RepeatPressure(Defense, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(DefenseCargo, 1), Interval = 6))
+	RepeatPressure(Research, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(ResearchCargo, 1), Interval = 6))
+	RepeatPressure(Energy, TriggerPeriodic(ABEM_cargo::AddGlobalCargo(EnergyCargo, 1), Interval = 6))

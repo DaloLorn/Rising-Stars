@@ -9,6 +9,7 @@ Construction: BoardingParty
 	Icon: BoardingParty
 
 	RequireSubsystemUnlocked(BoardingParty)
+	RequireNot(RequireOnOrbital(MiniBeacon))
 
 	TargetFilterSameRegion(targ)
 	TargetFilterType(targ, Ship)
