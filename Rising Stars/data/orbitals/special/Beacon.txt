@@ -19,7 +19,7 @@ Module: Beacon
 	Model: Beacon
 	Material: GenericPBR_Beacon
 
-	AddLaborFactor(0.66)
+	AddLaborFactor(-0.33)
 
 	AddResistance(10)
 	AddFleetCommand(256)
@@ -34,7 +34,6 @@ Module: Beacon
 	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Enable Fill From = True)
 	AddLaborIncome(5)
 	AddLaborEmpireAttribute(FactoryLaborMod)
-	CopyLaborFromMaster()
 	ForbidLaborExport()
 
 	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborIncome(5))
