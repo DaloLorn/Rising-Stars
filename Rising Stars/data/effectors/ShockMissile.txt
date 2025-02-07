@@ -12,8 +12,8 @@ Effector: ShockMissile
 	Lifetime: 1.05 * Range / Speed
 
 	TargetAlgorithm: SingleTarget
-	CanTarget: isEnemy && isShip && tagIsShield
-	AutoTarget: isEnemy && isShip && tagIsShield
+	CanTarget: isEnemy && isShip && ABEMCombat::hasShield
+	AutoTarget: isEnemy && isShip && ABEMCombat::hasShield
 
 	EfficiencyMode: Reload Only
 	Activation: StaggeredTimed(Reload, 1.0)

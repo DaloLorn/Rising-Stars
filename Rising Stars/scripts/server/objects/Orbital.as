@@ -1170,6 +1170,10 @@ tidy class OrbitalScript {
 		deltaHP = true;
 		
 		Shield = shield / shieldMod;
+	}	
+
+	void shieldDamage(Orbital& ship, double amount) {
+		Shield = clamp(Shield - amount, 0.0, max(MaxShield, Shield));
 	}
 
 	void damage(Orbital& obj, DamageEvent& evt, double position, const vec2d& direction) {

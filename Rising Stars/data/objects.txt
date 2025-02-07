@@ -173,7 +173,9 @@ local visible:
 	safe double get_maxHealth();
 	safe double get_armor();
 	safe double get_maxArmor();
-	safe double get_shield();
+	// There's no real reason for the others to be non-const,
+	// but this is all I needed to make the hasShield target weighter work. --Dalo
+	safe double get_shield() const;
 	safe double get_maxShield();
 	safe double get_shieldRegen();
 	safe double get_shieldMod();
@@ -215,6 +217,7 @@ server:
 	void makeFree();
 	void repairOrbital(double amount);
 	void repairOrbitalShield(double amount);
+	void shieldDamage(double amount);
 }
 
 Region : regions.Region::RegionScript {

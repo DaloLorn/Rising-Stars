@@ -13,7 +13,9 @@ Subsystem: ShieldHarmonizer
 
 	Size := HexSize * Hexes
 
-	Percentage := min(2.0 * Size / ShipSize, 1.0)
+	RedirectPercentage := min(2.0 * Size / ShipSize, 1.0)
+	// Display value for design stats!
+	Percentage = RedirectPercentage * 100
 	BaseBonusShield := Size * 3.0
 	BonusShieldMod := 1
 	BonusShield := BaseBonusShield * BonusShieldMod
@@ -34,7 +36,7 @@ Subsystem: ShieldHarmonizer
 		Command = 1
 
 	Effect: ShieldRedirect
-		Percentage = Percentage
+		Percentage = RedirectPercentage
 
 	State: int = 0
 	Effect: AddBonusShields

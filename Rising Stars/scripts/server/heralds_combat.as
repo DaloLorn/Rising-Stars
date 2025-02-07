@@ -192,57 +192,67 @@ void LineDamage(Event& evt, double Damage) {
 	ship.recordDamage(evt.obj);
 }
 
+double handleHarmonizedDamage(double Damage, Ship@ ship, double RedirectFactor) {
+	if(ship is null)
+		return Damage;
+
+	if(RedirectFactor <= 0)
+		return Damage;
+	
+	Ship@ flagship = cast<Ship>(ship.Leader);
+	Orbital@ base = cast<Orbital>(ship.Leader);
+	
+	// Orbitals always have 50% mitigation in current RS. --Dalo
+	double Mitigation = flagship !is null ? flagship.mitigation : 0.5;
+	double shield = flagship !is null ? flagship.Shield : base.shield;
+	double absorb = min(shield / 1 - Mitigation, Damage * RedirectFactor);
+	double remaining = Damage;
+	if(absorb > 0) {
+		remaining -= absorb;
+		double leaderDamage = absorb*(1-Mitigation);
+		flagship !is null ? flagship.shieldDamage(leaderDamage) : base.shieldDamage(leaderDamage);
+	}
+	return remaining;
+}
+
 void DamageShields(Event& evt, double Damage) {
-	if(!evt.target.isShip)
+	if(!evt.target.isShip && !evt.target.isOrbital)
 		return;
 
 	Ship@ ship = cast<Ship>(evt.target);
+	Orbital@ orb = cast<Orbital>(evt.target);
 
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
-	// Shield Mitigation
-	double Mitigation = ship.mitigation;
+	if(ship !is null) {
+		// Shield Mitigation
+		double Mitigation = ship.mitigation;
 
-	if(ship.MaxShield > 0) {
-		ship.shieldDamage(Damage*(1-Mitigation));
-		
-		return;
-	}
+		// Special case for shield harmonizers
+		// We're just going to lump all the harmonizers together for simplicity. --Dalo
+		double harmonizedDamage = handleHarmonizedDamage(Damage, ship, max(ship.blueprint.getEfficiencySum(SV_RedirectPercentage) / ship.blueprint.getEfficiencyFactor(SV_RedirectPercentage), 1.0));
 
-	// Special case for shield harmonizers
-	if(ship.blueprint.design.hasTag(ST_ShieldHarmonizer)) {
-		Ship@ leader = cast<Ship>(ship.Leader);
-		if(leader !is null) {
-			Mitigation = leader.mitigation;
-			leader.shieldDamage(Damage*(1-Mitigation));
+		if(harmonizedDamage > 0 && ship.Shield > 0) {
+			ship.shieldDamage(harmonizedDamage*(1-Mitigation));
 		}
 	}
-	// END NON-MIT CODE
+	if(orb !is null) {
+		// Orbitals always have 50% mitigation.
+		orb.shieldDamage(Damage*0.5);
+	}
 };
 
 DamageEventStatus ShieldRedirect(DamageEvent& evt, vec2u& position, vec2d& direction, double Percentage) {
 	Ship@ ship = cast<Ship>(evt.target);
+	if(ship is null)
+		return DE_Continue;
 	Object@ leader = ship.Leader;
-	if(leader is null || !leader.isShip)
+	if(leader is null || (!leader.isShip && !leader.isOrbital))
 		return DE_Continue;
-
-	Ship@ flagship = cast<Ship>(leader);
-	double shield = flagship.Shield;
-	if(shield < 0)
-		return DE_Continue;
-
-	// BEGIN NON-MIT CODE - DOF (Mitigation)
-	//Shield Mitigation
-	double FlagshipMitigation = flagship.mitigation;
-
+		
 	double workingPct = double(evt.destination_status.workingHexes) / double(evt.destination.hexCount);
-	double absorb = min(shield, Percentage * evt.damage * workingPct);
-
-	if(absorb > 0) {
-		evt.damage -= absorb;
-		flagship.shieldDamage(absorb*(1-FlagshipMitigation));
-	}
-	// END NON-MIT CODE
-	return DE_Continue;
+	evt.damage = handleHarmonizedDamage(evt.damage, ship, workingPct);
+	if(evt.damage > 0)
+		return DE_Continue;
+	return DE_EndDamage;
 }
 
 void BonusShield(Event& evt, double Amount) {
@@ -266,10 +276,14 @@ void BonusShield(Event& evt, double Amount) {
 		if(newLeader != 0)
 			@newObj = getObjectByID(newLeader);
 
-		if(prevObj !is null && prevObj.valid && prevObj.isShip)
-			cast<Ship>(prevObj).modBonusShield(-Amount);
-		if(newObj !is null && newObj.valid && newObj.isShip)
-			cast<Ship>(newObj).modBonusShield(+Amount);
+		if(prevObj !is null && prevObj.valid) {
+			if(prevObj.isShip) cast<Ship>(prevObj).modBonusShield(-Amount);
+			else if(prevObj.isOrbital) cast<Orbital>(prevObj).modMaxShield(-Amount);
+		}
+		if(newObj !is null && newObj.valid) {
+			if(newObj.isShip) cast<Ship>(newObj).modBonusShield(+Amount);
+			else if(newObj.isOrbital) cast<Orbital>(newObj).modMaxShield(+Amount);
+		}
 
 		bp.integer(sys, 0) = newLeader;
 	}
@@ -282,8 +296,10 @@ void RemoveBonusShield(Event& evt, double Amount) {
 	int curLeader = bp.integer(sys, 0);
 	if(curLeader != 0) {
 		Object@ prevObj = getObjectByID(curLeader);
-		if(prevObj !is null && prevObj.valid && prevObj.isShip)
-			cast<Ship>(prevObj).modBonusShield(-Amount);
+		if(prevObj !is null && prevObj.valid) {
+			if(prevObj.isShip) cast<Ship>(prevObj).modBonusShield(-Amount);
+			else if(prevObj.isOrbital) cast<Orbital>(prevObj).modMaxShield(-Amount);
+		}
 		bp.integer(sys, 0) = 0;
 	}
 }
@@ -315,7 +331,6 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 
 		if(target.isShip) {
 			Ship@ ship = cast<Ship>(target);
-			// BEGIN NON-MIT CODE - DOF (Mitigation)
 			// Shield mitigation
 			if(ship.Shield > 0) {
 				//print(deal);
@@ -328,7 +343,6 @@ void WarheadAoE(Object& source, Object@ targ, vec3d& impact, double Damage, doub
 				//print(deal);
 				ship.shieldDamage(ShieldDmg);
 			}
-			// END NON-MIT CODE
 			// Divide damage by hex count.
 			deal /= ship.blueprint.design.interiorHexes + ship.blueprint.design.exteriorHexes;
 			ship.damageAllHexes(deal, source=source);

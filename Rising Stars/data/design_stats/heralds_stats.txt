@@ -17,6 +17,7 @@ SubsystemStat: Percentage
 	Name: #S_Percentage
 	Icon: AttributeIcons::6 * #8080ff
 	Color: #8080ff
+	Suffix: %
 
 	Variable: Percentage
 
