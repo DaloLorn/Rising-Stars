@@ -13,7 +13,7 @@ Effector: Warhead
 	
 	TargetAlgorithm: SingleTarget
 	CanTarget: isEnemy && isDamageable
-	AutoTarget: isEnemy && isShip && tagFlagship
+	AutoTarget: false
 	
 	Activation: VariableTimed(Reload, 0.025)
 	OnTrigger: heralds_combat::ConsumesWarhead()
