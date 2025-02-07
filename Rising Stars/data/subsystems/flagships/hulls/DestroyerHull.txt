@@ -67,7 +67,7 @@ Subsystem: DestroyerBlueprint
 	
 	EnergyBuildCost := 5000000
 
-	Assert: ShipSize <= 0
+	Assert: 0
 		Message: #ERROR_BLUEPRINT:$1
 		Fatal: False
 

@@ -21,7 +21,6 @@ Subsystem: Railgun
 	FireArc := 0.5 * pi
 	Pierce := if(MuonEnhanced > 0, 1.5, 1.0)
 	BaseSupplyCost := Size * 1.5
-	Impulse := 0
 
 	BaseHP := 27 * HexSize
 	CoreHPMod := 3
@@ -33,9 +32,6 @@ Subsystem: Railgun
 
 	Requires:
 		Command = 1
-
-	Modifier: AddRailgunKnockback(Amount)
-		Impulse := Impulse + Amount * Size
 
 	Modifier: SetMuonEnhanced(Factor)
 		MuonEnhanced := Factor
@@ -65,4 +61,3 @@ Subsystem: Railgun
 		TargetTolerance = Spread / 2
 		Pierce = Pierce
 		SupplyCost = SupplyCost * Reload
-		Impulse = Impulse
