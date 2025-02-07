@@ -42,6 +42,14 @@ R_IMP_PLANET_SUPPORT_DESC: <<
 
 	Also increases the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Command Post[/b] modules.
 >>
+R_KEY_RAILGUN_KNOCKBACK: Kinetic Siphoning
+R_KEY_RAILGUN_KNOCKBACK_DESC: <<
+	[i][color=#aaa]Weaponizing the inertial dampening technology we use to keep our crews alive offers some promising tactical options for our railguns.[/color][/i]
+	
+	Unlocks the Kinetic Siphon module for use on railguns.
+
+	[i][bbloc=#S_RAILGUN_KNOCKBACK_DESC/][/i]
+>>
 R_IMP_THRUST_DESC: <<
 	[i][color=#aaa]Studies and experiments on improving the thrust output of starship engines, conventional and otherwise.[/color][/i]
 

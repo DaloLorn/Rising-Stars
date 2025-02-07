@@ -1029,3 +1029,11 @@ S_NILINGARMOR_DESC: <<
 	[img=Plus]Whenever the amount of damage passing through the armor reaches the damage threshold, an area-of-effect burst is released, damaging all nearby enemies. Both the damage and the area of effect scale with the amount of damage absorbed.[/img]
 	[img=Minus]Does not actually prevent damage, and has no intrinsic Health.[/img]
 >>
+S_RAILGUN_KNOCKBACK: Kinetic Siphon
+S_RAILGUN_KNOCKBACK_DESC: <<
+	A dedicated inertial dampener allows railgun slugs to more effectively transfer kinetic energy onto a target, pushing it back with each hit. However, this naturally comes at the cost of reducing armor penetration.
+
+	[img=MenuIcons::3;22]Railguns outfitted with this module will push enemy ships back with each hit. Larger railguns have greater knockback.[/img]
+	[img=Plus]As a side effect, the railgun's maximum range is increased by 50%.[/img]
+	[img=Minus]The railgun loses all armor penetration.[/img]
+>>

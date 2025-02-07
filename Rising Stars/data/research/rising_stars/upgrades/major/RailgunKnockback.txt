@@ -11,6 +11,5 @@ Technology: KeyRailgunKnockback
 	Category: Special Upgrades
 
 	ReduceResearchPenalty(750)
-	AddModifier(tag/IsRailgun::SpreadMult(0.5))
-	AddModifier(tag/IsRailgun::PierceMult(0.0))
-	AddModifier(RailgunBattery::AddRailgunKnockback(30))
+	UnlockModule(RailgunKnockback)
+	SkipOnUnlockedModule(RailgunKnockback)

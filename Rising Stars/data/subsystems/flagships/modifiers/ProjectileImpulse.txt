@@ -1,0 +1,14 @@
+Template: tag/IsRailgun, var/Impulse
+	Module: ProjectileImpulse
+		Name: #S_RAILGUN_KNOCKBACK
+		Description: #S_RAILGUN_KNOCKBACK_DESC
+		Color: #238f59
+		Sprite: TechIcons::57
+		Hex.HP := 3.0 * Hex.HP
+		Hex.BuildCost := 2.0 * Hex.BuildCost
+		Hex.LaborCost := 2.0 * Hex.LaborCost
+		Hex.MaintainCost := 2.0 * Hex.MaintainCost
+		Unique: True
+		AddModifier: optional PierceFactor(0.0)
+		AddModifier: optional RangeMult(1.5)
+		AddModifier: AddRailgunKnockback(30)
