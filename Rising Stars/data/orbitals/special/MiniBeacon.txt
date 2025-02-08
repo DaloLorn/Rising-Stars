@@ -38,6 +38,7 @@ Module: MiniBeacon
 	RepeatEmpireAttribute(BeaconLaborUpgrades, AddLaborEmpireAttribute(FactoryLaborMod))
 
 	SetSystemFlag(JumpdriveSafety)
+	RequireTrait(Extragalactic)
 
 	GlobalTradeNode()
 	GiveTrade()

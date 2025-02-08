@@ -630,7 +630,7 @@ tidy class OrbitalScript {
 		return v;
 	}
 	
-	double get_shield(Orbital& orb) {
+	double get_shield(const Orbital& orb) {
 		double v = Shield;
 		Empire@ owner = orb.owner;
 		if(owner !is null)
