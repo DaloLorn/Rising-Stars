@@ -1681,7 +1681,7 @@ class ResourcelessRegenSurface : GenericEffect, TriggerableGeneric {
 tidy final class PreciseTriggerOnAttributeIncrease : EmpireEffect {
 	BonusEffect@ hook;
 
-	Document doc("Trigger a bonus effect whenever an empire attribute increases by a certain threshold. This variant of the hook will not ignore the first instance when an attribute has been increased, causing issues as reported in http://steamcommunity.com/app/282590/discussions/0/217691032439349400/#c208684375424164302 - however, it is theoretically possible that other bugs may occur. Use with caution.");
+	Document doc("Trigger a bonus effect whenever an empire attribute increases by a certain threshold. This variant of the hook will not ignore the first instance when an attribute has been increased, causing issues as reported in https://steamcommunity.com/app/282590/discussions/0/217691032439349400/#c208684375424164302 - however, it is theoretically possible that other bugs may occur. Use with caution.");
 	Argument attribute(AT_EmpAttribute, doc="Attribute to check.");
 	Argument hookID("Hook", AT_Hook, "bonus_effects::BonusEffect");
 	Argument threshold(AT_Decimal, "1.0", doc="Trigger the effect every time the empire attribute has increased by this amount.");

@@ -8,3 +8,4 @@ Status: Blockaded
 	Collapses: True
 	ReduceProductionPerStack(1)
 	RemoveOnOwnerChange()
+	ABEM_conquest::ModLoyaltyFractional(-0.1)
