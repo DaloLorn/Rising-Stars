@@ -124,7 +124,7 @@ tidy class SurfaceGrid : PlanetSurface {
 			for(uint x = 0; x < bld.type.size.x; ++x) {
 				for(uint y = 0; y < bld.type.size.y; ++y) {
 					vec2u rpos = pos - (center - vec2u(x, y));
-					uint index = rpos.y * size.width + rpos.x;
+					uint index = getTileIndex(rpos);
 					@tileBuildings[index] = bld;
 				}
 			}
@@ -179,7 +179,7 @@ tidy class SurfaceGrid : PlanetSurface {
 		do {
 			x = randomi(0, size.width - 1);
 			y = randomi(0, size.height - 1);
-		} while(biomes[y*size.width+x] != (doOverride ? biome.id : baseBiome.id) && --tries > 0);
+		} while(biomes[getTileIndex(x, y)] != (doOverride ? biome.id : baseBiome.id) && --tries > 0);
 
 		//Plop the first tile
 		plop(biome, depth, x, y, 0, false);
@@ -281,7 +281,7 @@ tidy class SurfaceGrid : PlanetSurface {
 				return;
 		}
 
-		uint index = y*size.width + x;
+		uint index = getTileIndex(x, y);
 		if(depth[index] > dist) {
 			depth[index] = dist;
 			biomes[index] = biome.id;
@@ -1265,10 +1265,10 @@ tidy class SurfaceGrid : PlanetSurface {
 
 			for(uint y = 0; y < size.y; ++y) {
 				for(uint x = 0; x < size.x; ++x) {
-					uint newIndex = y * size.width + x;
+					uint newIndex = getTileIndex(x, y);
 					if(y < oldSize.y) {
 						if(x < oldSize.x) {
-							uint oldIndex = y * oldSize.width + x;
+							uint oldIndex = getTileIndex(x, y, oldSize);
 							biomes[newIndex] = oldBiomes[oldIndex];
 							@tileBuildings[newIndex] = oldBuildings[oldIndex];
 							flags[newIndex] = oldFlags[oldIndex];
@@ -1281,7 +1281,7 @@ tidy class SurfaceGrid : PlanetSurface {
 					}
 					else {
 						if(x >= offset && x < uint(addSize.x)+offset) {
-							uint addIndex = (y - oldSize.y) * addSize.width + (x - offset);
+							uint addIndex = getTileIndex(x - offset, y - oldSize.y, addSize);
 							biomes[newIndex] = addBiomes[addIndex];
 							@tileBuildings[newIndex] = null;
 							if((devState !is null && devState[addIndex]) || (developed && biomes[newIndex] != voidBiome)) {
@@ -1314,10 +1314,10 @@ tidy class SurfaceGrid : PlanetSurface {
 
 			for(uint x = 0; x < size.x; ++x) {
 				for(uint y = 0; y < size.y; ++y) {
-					uint newIndex = y * size.width + x;
+					uint newIndex = getTileIndex(x, y);
 					if(x < oldSize.x) {
 						if(y < oldSize.y) {
-							uint oldIndex = y * oldSize.width + x;
+							uint oldIndex = getTileIndex(x, y, oldSize);
 							biomes[newIndex] = oldBiomes[oldIndex];
 							@tileBuildings[newIndex] = oldBuildings[oldIndex];
 							flags[newIndex] = oldFlags[oldIndex];
@@ -1330,7 +1330,7 @@ tidy class SurfaceGrid : PlanetSurface {
 					}
 					else {
 						if(y >= offset && y < uint(addSize.y)+offset) {
-							uint addIndex = (y - offset) * addSize.width + (x - oldSize.x);
+							uint addIndex = getTileIndex(x - oldSize.x, y - offset, addSize);
 							biomes[newIndex] = addBiomes[addIndex];
 							@tileBuildings[newIndex] = null;
 							if(developed && biomes[newIndex] != voidBiome) {
