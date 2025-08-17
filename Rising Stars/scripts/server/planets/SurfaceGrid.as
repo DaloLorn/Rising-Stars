@@ -1243,7 +1243,13 @@ tidy class SurfaceGrid : PlanetSurface {
 		}
 	}
 
-	void addSurfaceArea(const vec2i& addSize, array<uint8>& addBiomes, uint8 voidBiome = uint(-1), bool developed = false, bool vertical = false, const array<bool>@ devState = null) {
+	void addSurfaceArea(const vec2i& addedSize, array<uint8>& addBiomes, uint8 voidBiome = uint(-1), bool developed = false, bool vertical = false, const array<bool>@ devState = null) {
+		// Can't change the signature without potentially breaking downstream 
+		// mods depending on this function, but this is not legal.
+		// It was never legal.
+		if(addedSize.width < 0 || addedSize.height < 0)
+			return;
+
 		array<uint8> oldBiomes = biomes;
 		array<uint8> oldFlags = flags;
 		array<SurfaceBuilding@> oldBuildings = tileBuildings;
@@ -1251,6 +1257,7 @@ tidy class SurfaceGrid : PlanetSurface {
 		if(voidBiome == uint(-1))
 			voidBiome = baseBiome.id;
 		delta = true;
+		vec2u addSize = vec2u(uint(addedSize.width), uint(addedSize.height));
 
 		if(vertical) {
 			size.y += addSize.y;
