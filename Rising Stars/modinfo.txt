@@ -6,11 +6,11 @@
 
 		[b]NOTE: This mod now requires the OpenSR Modpack to be installed in your game's mod folders in order to function.[list]
 		[*]Workshop users can subscribe to the MP from the Required Items section to the right.
-		[*]Users of SR2MM 1.1.0 should have it automatically installed as a dependency, and may safely ignore this note.
+		[*]Users of SR2MM 1.1.0 or later (or the OpenSR Launchpad) should have it automatically installed as a dependency, and may safely ignore this note.
 		[*]Users of SR2MM versions before 1.1.0, or users installing the mod manually, will have to download from the "master" branch of the Modpack's GitHub repository, listed at the bottom of this modinfo.
 		[/list]
 		
-		Once the CP has been installed, you do not need to enable it in order to play Rising Stars.[/b]
+		Once the MP has been installed, you do not need to enable it in order to play Rising Stars.[/b]
 
 		[b][h1]Current version: 1.4.0 (Forces of Corruption)[/h1][/b]
 		[b][h1]The current release of the mod features the following:[/h1][/b][list]
@@ -31,14 +31,14 @@
 		[*][i]Live on the fringes of galactic society, building and maintaining a widespread web of corruption through which to dominate the galaxy[/i][/list]
 		[/list]
 		[*]A fully transformed tech grid, bringing back the organized nature of the ABEM grid and reintroducing its specialization system
-		[*]More than a dozen new subsystems, including Ferrofluid Armor, Miner Hulls, Covariant Shield Generators, and Singularity Cores
+		[*]More than a dozen new subsystems, including Ferrofluid Armor, Specialist Architecture, Covariant Shield Generators, and Singularity Cores
 		[*]A complete overhaul of weapon balancing
 		[*]Several new resources, such as Technofarms, Ancient Shipyards, and Tropical Paradises
 		[*]Several new orbital modules - Stellar Shield Generators, Power Transmitters, Subspace Telescope Arrays, and others
 		[*]Several new buildings, including Command Centers and Centralized Coordination Complexes
 		[*]Increased control over the way the game plays, with settings such as First Contact Mode, Research Effectiveness Decay, and more being changeable during game configuration
 		[*]New gameplay mechanics:[list]
-			[*]Flux - [i]an FTL type originally developed for WotH before being polished up in RS, Flux ships can periodically teleport between star systems for free, but cost FTL to build, and can neither use other FTL types nor travel through the interstellar void[/i]
+			[*]Flux - [i]an FTL type originally developed for WotH before being polished up in RS: Flux ships can periodically teleport between star systems for free, but cost FTL to build, and can neither use other FTL types nor travel through the interstellar void[/i]
 			[*]Derelicts - [i]flagships not using Sinew now have a chance of being disabled rather than destroyed when they lose all their Control, depending on how badly damaged they are[/i]
 			[*]Stellar Phenomena - [i]the unique 'Nebula' system of the base game is now a variety of non-unique nebulae with all sorts of different effects and valuable resources, while black holes hold valuable 'Ancient Hubworlds' that are guarded by powerful Remnant fleets, and are no longer limited to galactic cores[/i]
 			[*]Boarding - [i]send troops to attack the enemy from within and take their ships for yourself[/i]
@@ -52,6 +52,9 @@
 			[*]FTL Suppression - [i]most FTL jamming effects now only impede FTL travel instead of preventing it, though the standalone FTL Jammer can still temporarily block transit[/i]
 			[*]Logistics - [i]building multiple ships of the same design grants scaling cost reductions and partial XP sharing, while early warning orbitals complicate surprise attacks[/i]
 			[*]FTL Colonization/Towing - [i]all FTL types can now be used for colonization or towing things across the galaxy[/i]
+			[*]Starship Architecture - [i]the mutually-exclusive hull subsystems of vanilla have been overhauled and made mutually compatible[/i]
+			[*]Innovation/Secret Revamp - [i]based on Skeletonxf's Colonization Expansion; secret techs are no longer secret, and Innovation researches a random unlock node instead of revealing a secret[/i]
+			[*]Expanded Hyperfield Sequencing - [i]all FTL types benefit from Hyperfield Sequencing[/i]
 			[/list]
 		[*]New maps:[list]
 			[*]Precious Clouds - [i]4-player map; race to rule the rich nebulae at the heart of this small sector[/i]
@@ -60,7 +63,7 @@
 
 		Full patch notes can be found in the forums.
 		[h1][b]Links[/b][/h1]
-		[b]SR2 Mod Manager:[/b] https://github.com/DaloLorn/SR2ModManager
+		[b]OpenSR Launchpad:[/b] https://github.com/OpenSRProject/OpenStarRuler-Launchpad
 		[b]OpenSR Modpack on GitHub:[/b] https://github.com/OpenSRProject/OpenStarRuler-Modpack
 		[b]OpenSR on GitHub:[/b] https://github.com/OpenSRProject
 		[b]Rising Stars on GitHub:[/b] https://github.com/DaloLorn/Rising-Stars		
