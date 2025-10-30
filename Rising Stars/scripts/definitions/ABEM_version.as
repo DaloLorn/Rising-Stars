@@ -2,7 +2,7 @@ import version;
 import CP_version;
 
 // ABEMMOD's last revision was 724.
-const string MOD_REVISION = "1424";
+const string MOD_REVISION = "1425";
 const array<string> VERSIONS = {
 	"v2.0.3",
 	"OpenSR v1.0.0",
@@ -24,6 +24,7 @@ const array<string> CP_REVISIONS = {
 	"296",
 	"297",
 	"298",
+	"299",
 };
 
 const string MOD_NAME = "Rising Stars v1.4.0";
