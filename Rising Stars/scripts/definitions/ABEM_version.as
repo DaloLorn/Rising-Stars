@@ -17,6 +17,7 @@ const array<string> REVISIONS = {
 
 const array<string> CP_VERSIONS = {
 	"OpenSR Modpack v1.1.0",
+	"OpenSR Modpack v1.2.0",
 };
 
 const array<string> CP_REVISIONS = {
@@ -25,6 +26,7 @@ const array<string> CP_REVISIONS = {
 	"297",
 	"298",
 	"299",
+	"300",
 };
 
 const string MOD_NAME = "Rising Stars v1.4.0";
