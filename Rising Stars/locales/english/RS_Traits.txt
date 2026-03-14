@@ -118,7 +118,7 @@ TRAIT_TECHNOCRACY_DESC: [vspace=6/][b][color=#0087c7]Extra Starting Cards:[/colo
 TRAIT_CRIME_SYNDICATE: Crime Syndicate
 TRAIT_CRIME_SYNDICATE_DESC: <<|
 	[vspace=3/][img=OrbitalIcons::3*#d9a111;22]Uses [b]Shadowports[/b] and [b]Defilers[/b] to corrupt other empires' planets, stealing a portion of their gross income, civilian production, and Materials generated.[/img]
-	[vspace=6/][img=Revolutionaries;22]The base Loyalty and population growth of owned planets is halved.[/img]
+	[vspace=6/][img=Revolutionaries;22]The population growth of owned planets is reduced by 20%, and enemies can capture them 50% faster.[/img]
 	[vspace=6/][img=AttributeIcons::3*#fbb;22]Repair rates, shield capacity and regeneration, health, armor effectiveness, boarding strength, Troop Pod effectiveness and ship weapon damage are all reduced by 20%.[/img]
 	[vspace=6/][img=techSupply;22]Is allied with the Dread Pirate, and can lend him ships in exchange for an 80% maintenance reduction and 40% of the loot he gains from them.[/img]
 	[vspace=6/][img=ResourceIcon::0;22]Receives an extra 50% Special Funds whenever they gain any. Uses Special Funds to pay off debt, reducing or preventing its negative effects.[/img]

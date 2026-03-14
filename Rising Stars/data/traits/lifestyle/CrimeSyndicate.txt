@@ -31,7 +31,9 @@ Trait: CrimeSyndicate
 
     ModAttribute(MaintainFromSpecialFunds, Add, 1)
     ModAttribute(SpecialFundsFactor, AddBase, 0.5)
-	ModAttribute(PopulationGrowthFactor, AddBase, -0.5)
+	ModAttribute(CaptureSupplyDifficulty, AddBase, -0.5)
+	ModAttribute(CaptureTimeDifficulty, AddBase, -0.5)
+	ModAttribute(PopulationGrowthFactor, AddBase, -0.2)
 	ModAttribute(OrbitalHealthMod, AddBase, -0.2)
 	ModAttribute(OrbitalArmorMod, AddBase, -0.2)
 	ModAttribute(OrbitalShieldMod, AddBase, -0.2)
