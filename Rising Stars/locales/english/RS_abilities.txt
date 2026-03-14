@@ -192,6 +192,6 @@ ABL_CORRUPT_PLANET: Corrupt Planet
 ABL_CORRUPT_PLANET_DESC: <<
 	Uses the ship's hacker array to tap into and manipulate a planet's comm network, laying the foundations for its corruption.
 
-	A planet needs to absorb approximately 60 points of Corruption per point of Loyalty from this ship to be corrupted by it. Using multiple hacker arrays will not speed up the process.
+	A planet needs to absorb approximately 10 points of Corruption per point of Loyalty from this ship to be corrupted by it. Using multiple hacker arrays will not speed up the process.
 >>
 PER_SECOND: /s

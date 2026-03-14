@@ -3,7 +3,7 @@ Ability: CorruptPlanet
 	Description: #ABL_CORRUPT_PLANET_DESC
 	Icon: techTargeting*d8a111
 
-	Range: 6000
+	Range: 9000
 
 	Target: targ = Object
 
@@ -16,7 +16,7 @@ Ability: CorruptPlanet
 	IsToggleTarget(targ)
 	IsAutoColonize()
 	IsStatusToggle(Corrupting)
-	ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 14, Sys.CorruptRate:1)
-	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 15, Sys.CorruptRate:1)
+	ABEM_races::TriggerTargetAccumulated(targ, RemoveStatus(Corrupted), 9, Sys.CorruptRate:1)
+	ABEM_races::TriggerTargetAccumulated(targ, AddStatus(Corrupted, Set Origin Empire = True), 10, Sys.CorruptRate:1)
 
 	ShowSubsystemVariable(Sys.CorruptRate:1, Format = #PER_SECOND, Name = #S_CORRUPT_RATE, Icon = techTargeting*d8a111, Color = #d8a111, Efficiency = True)
