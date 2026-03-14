@@ -20,8 +20,8 @@ Trait: Technicists
 	UnlockTag(ShieldGenerator)
 	UnlockSubsystem(Forcefield)
 
-	AddModifier(ShieldRegenMult(1.20))
-	AddModifier(ShieldCapacityMult(2.1))
+	AddModifier(ShieldRegenMult(1.1))
+	AddModifier(ShieldCapacityMult(1.7))
 	AddModifier(tag/IsArmor::HpMult(0.5))
 	AddModifier(ArmorRegenFactor(0.5))
 	AddModifier( ShieldHarmonizer::BonusShieldMult(2.1) )
