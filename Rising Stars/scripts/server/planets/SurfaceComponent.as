@@ -1596,7 +1596,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(prevShadowport !is null && prevShadowport.owner !is null && prevShadowport.owner.major) {
 			Empire@ prevOwner = prevShadowport.owner;
 			if(stolenIncome != 0)
-				prevOwner.modTotalBudget(-stolenIncome, MoT_Planet_Income);
+				prevOwner.modTotalBudget(-stolenIncome, MoT_Racketeering);
 			if(stolenResearch != 0)
 				prevOwner.modResearchRate(-double(stolenResearch) * TILE_RESEARCH_RATE);
 			if(stolenInfluence != 0)
@@ -1612,7 +1612,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(planet.shadowport !is null && planet.shadowport.owner !is null && planet.shadowport.owner.major) {
 			Empire@ newOwner = planet.shadowport.owner;
 			if(stolenIncome != 0)
-				newOwner.modTotalBudget(stolenIncome, MoT_Planet_Income);
+				newOwner.modTotalBudget(stolenIncome, MoT_Racketeering);
 			if(stolenResearch != 0)
 				newOwner.modResearchRate(double(stolenResearch) * TILE_RESEARCH_RATE);
 			if(stolenInfluence != 0)
