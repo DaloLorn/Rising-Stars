@@ -31,14 +31,7 @@ class AddGlobalCargo : BonusEffect {
         double amt = amount.decimal;
         double stolen = 0;
         Planet@ planet = cast<Planet>(obj);
-        bool shouldSteal = planet !is null && planet.shadowport !is null
-            && planet.shadowport.owner !is null && planet.shadowport.owner.major;
-        bool canSteal = shouldSteal && planet.region !is null && planet.shadowport.region !is null && planet.shadowport.hasStatusEffect(SHADOWPORT_UNPACKED);
-        if(canSteal) {
-            TradePath path(planet.shadowport.owner);
-            path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
-            canSteal = path.isUsablePath;
-        }
+        bool canSteal = planet !is null && planet.shadowport !is null && planet.shadowport.owner !is null && planet.shadowport.owner.major && planet.hasActiveRacketeering;
         
         if(canSteal) {
             stolen = amt * STEAL_FACTOR;

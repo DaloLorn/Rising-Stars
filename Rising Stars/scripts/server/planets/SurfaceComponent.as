@@ -56,6 +56,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	double prevResearch = 0;
 	double prevDefense = 0;
 
+	bool isRacketeering = false;
 	int stolenIncome = 0;
 	double stolenInfluence = 0;
 	double stolenEnergy = 0;
@@ -137,6 +138,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file << popIncome;
 		file << bonusIncome;
 
+		file.writeBit(isRacketeering);
 		file << stolenIncome;
 		file << stolenInfluence;
 		file << stolenEnergy;
@@ -226,6 +228,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(file >= SV_0125)
 			file >> bonusIncome;
 
+		isRacketeering = file.readBit();
 		file >> stolenIncome;
 		file >> stolenInfluence;
 		file >> stolenEnergy;
@@ -510,6 +513,10 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 	uint get_emptyDevelopedTiles() {
 		return grid.emptyDeveloped;
+	}
+
+	bool get_hasActiveRacketeering() {
+		return isRacketeering;
 	}
 
 	void replaceAllBiomesWith(Object& obj, uint id) {
@@ -2574,6 +2581,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			TradePath path(planet.shadowport.owner);
 			path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
 			canSteal = path.isUsablePath;
+			if(canSteal) {
+				isRacketeering = true;
+			}
 		}
 
 		//Update resources from grid

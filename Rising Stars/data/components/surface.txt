@@ -112,6 +112,7 @@ server:
 	void modIncomingPop(double population);
 	safe double get_IncomingPop();
 	safe uint get_emptyDevelopedTiles();
+	safe bool get_hasActiveRacketeering();
 	
 	relocking void surfaceTick(double time);
 	void colonyShipArrival(Empire@ owner, double population);
