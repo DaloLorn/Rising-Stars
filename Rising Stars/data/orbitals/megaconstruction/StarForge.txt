@@ -31,6 +31,7 @@ Module: StarForge
 	AddStatus(StarForge)
 
 	MultConstructionCost(0.5)
+	AddStatus(SuppressRacialStealth)
 
 	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StarForge, AdaptedStarForge))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())

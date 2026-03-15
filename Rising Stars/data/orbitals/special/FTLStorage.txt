@@ -17,7 +17,7 @@ Module: FTLStorage
 	Material: GenericPBR_FTLStorage
 	Unique: False
 
-	RequireTrait(StarChildren)
+	RequireEither(RequireTrait(StarChildren), RequireTrait(CrimeSyndicate))
 
 	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(FTLStorage, AdaptedFTLStorage))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())

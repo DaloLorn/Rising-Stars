@@ -34,6 +34,7 @@ Module: AdaptedSingularityLab
 	
 	AddRegionStatusEnemies(SingularityDisruption)
 	SuppressSystemFTL()
+	AddStatus(SuppressRacialStealth)
 	
 	private RequireUnlockTag(NylliAdaptation4)
 	

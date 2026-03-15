@@ -1,0 +1,62 @@
+Technology: AnastarTerraformSpec1
+	Name: #R_SPEC_TERRAFORM1
+	Description: #R_SPEC_TERRAFORM1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 250
+	Class: Secret
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Icon: SupplyIcon
+	Symbol: EnormousPlanet
+	Color: #84ff19
+	SecondaryMoneyCost(500)
+	ReplaceTechnologyNodes(AnastarAdaptationSpec1, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.1)
+	ModAttribute(TerraformLaborFactor, Add, -0.1)
+
+Technology: AnastarAdaptationSpec1
+	Name: #R_SPEC_ANASTAR_ADAPTATION1
+	Description: #R_SPEC_ANASTAR_ADAPTATION1_DESC:20%:10%
+	Time Cost: 60
+	Point Cost: 250
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Secret
+	Icon: TechIcons::2
+	Symbol: SequesteredSociety
+	Color: #6c412f
+	ReplaceTechnologyNodes(AnastarTerraformSpec1, SpecConnector)
+	ModAttribute(OrbitalLaborCostFactor, Multiply, 0.5)
+	ModAttribute(OrbitalBuildCostFactor, Multiply, 0.8)
+	ModAttribute(OrbitalMaintMod, Multiply, 0.9)
+	AddModifier(StationHull::OrbitalMaintMultFactor(0.9))
+	ModAttribute(ImperialBldConstructionRate, Multiply, 2)
+	ModAttribute(BuildingCostFactor, Multiply, 0.8)
+	ModAttribute(BuildingMaintFactor, Multiply, 0.9)
+
+Technology: AnastarTerraformSpec4
+	Name: #R_SPEC_TERRAFORM4
+	Description: #R_SPEC_TERRAFORM4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Secret
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Color: #84ff19
+	Icon: ResourceIcons::29*#66ffff
+	Symbol: EnormousPlanet
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(AnastarAdaptationSpec4, SpecConnector)
+	UnlockTag(Terraform4)
+
+Technology: AnastarAdaptationSpec4
+	Name: #R_SPEC_ADAPTATION4
+	Description: #R_SPEC_ANASTAR_ADAPTATION4_DESC
+	Time Cost: 300
+	Point Cost: 1500
+	Class: Secret
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Color: #6c412f
+	Symbol: SequesteredSociety
+	Icon: Refinery
+	SecondaryMoneyCost(3000)
+	ReplaceTechnologyNodes(AnastarTerraformSpec4, SpecConnector)
+	ModAttribute(Adaptation4, Add, 1)
+    ModAttribute(NylliAdaptation4, Add, 1)

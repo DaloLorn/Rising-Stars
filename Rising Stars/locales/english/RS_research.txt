@@ -23,16 +23,6 @@ R_CAT_INDUSTRY_DESC: <<
 R_CAT_PROPULSION_DESC: <<
 	[color=#aaa][i]Remember, children, fasten your seatbelts before you go to Ludicrous SpeAAAAARGH![/i][/color]
 >>
-R_NYLLI_FOOD: Nutrient Recyclers
-R_NYLLI_FOOD_DESC: <<
-	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
-
-	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
-	
-	[i][bbloc=#ORB_FARM_DESC/][/i]
-	
-	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
->>
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
@@ -319,7 +309,19 @@ R_NYLLI_FOOD_BLURB: Nutrient Orbitals
 R_NYLLI_FOOD_DESC: <<
 	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
 
-	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
+	Unlocks the Hydroponics Station and Water Reclamation Facility modules for economic starbases.
+	
+	[i][bbloc=#ORB_FARM_DESC/][/i]
+	
+	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
+>>
+R_ANASTAR_MEGACITY: Hyperdense Accommodations
+R_ANASTAR_MEGACITY_DESC: <<
+	[i][color=#aaa]As interstellar crime booms, it seems inevitable that the largest syndicates will metamorphose into a civilization unto themselves. Terrestrial megacities are a natural consequence of this trend; but not all of these criminals are content to make themselves dependent on a fixed location, and try to become [/i]less[i] dependent on planetary resources...[/color][/i]
+
+	Unlocks the Megacity building, and the Hydroponics Station and Water Reclamation Facility modules for economic starbases.
+
+	[i][bbloc=#BLD_MEGACITY_DESC/][/i]
 	
 	[i][bbloc=#ORB_FARM_DESC/][/i]
 	
@@ -795,7 +797,7 @@ R_SPEC_ATROAN_ADAPTATION4_DESC: <<
 
 	[bbloc=#R_SPEC_DISCLAIMER:Specialized Programming/]
 >>
-*** TERRAFORMING VS ADAPTATION - NYLLI ***
+*** TERRAFORMING VS ADAPTATION - NYLLI/ANASTAR ***
 
 R_SPEC_NYLLI_TERRAFORM1: Streamlined Terraforming
 R_SPEC_NYLLI_ADAPTATION1: Optimized Habitats
@@ -810,6 +812,13 @@ R_SPEC_NYLLI_ADAPTATION1_DESC: <<
 	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
 
 	Halves the Labor cost of all orbitals and stations. Additionally, reduces the base construction and maintenance costs of orbitals and stations by $1 and $2, respectively.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Terraforming/]
+>>
+R_SPEC_ANASTAR_ADAPTATION1_DESC: <<
+	[color=#aaa][i]A group of accountants and managers recently snuck onto one of our habitat construction sites. At first, we tried to get them out of there, but it turns out they had some pretty useful suggestions to streamline the construction process.[/i][/color]
+
+	Doubles the base construction speed of imperial buildings, orbitals, and stations. Additionally, reduces the base construction and maintenance costs of imperial buildings, orbitals, and stations by $1 and $2, respectively. (These modifiers stack multiplicatively with Construction upgrades, where applicable.)
 
 	[bbloc=#R_SPEC_DISCLAIMER:Streamlined Terraforming/]
 >>
@@ -860,9 +869,18 @@ R_SPEC_NYLLI_TERRAFORM4_DESC: <<
 R_SPEC_NYLLI_ADAPTATION4_DESC: <<
 	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
 
-	Most orbitals will now be automatically upgraded to Advanced versions, which generate a secondary effect in addition to their usual functionality.
+	Most orbitals will now be automatically upgraded to advanced versions, which generate a secondary effect in addition to their usual functionality.
 
 	This effect does not apply to Guardian Facilities, FTL orbitals, satellites, Habitats, or captured racial orbitals such as Mainframes, Orbital Replicators and Embassies.
+
+	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
+>>
+R_SPEC_ANASTAR_ADAPTATION4_DESC: <<
+	[color=#aaa][i]By modifying large portions of our infrastructure to be used for secondary projects, we can considerably streamline our civilization.[/i][/color]
+
+	Most imperial buildings now generate a secondary effect in addition to their usual function. The effect will be added to the building's description. Similarly, most orbitals will be automatically upgraded to advanced versions, as if this tech was researched by Star Children.
+
+	This effect does not apply to Stalks, Altars, Atroan control hubs, Guardian Facilities, FTL orbitals, satellites, or captured racial orbitals such as Habitats, Mainframes, Orbital Replicators and Embassies.
 
 	[bbloc=#R_SPEC_DISCLAIMER:Ecosystem Restructuring/]
 >>
@@ -925,7 +943,7 @@ R_SPEC_BLUUHBI_ADAPTATION4: Multipurpose Infrastructure
 R_SPEC_BLUUHBI_TERRAFORM4_DESC: <<
 	[color=#aaa][i]Our engineers have developed a new Harvester design. Called a 'Devourer', this craft is heavier and more expensive than an ordinary Harvester, but its advanced weapons and defenses make it a formidable siege engine.[/i][/color]
 
-	Unlocks the Devourer Hull for use on flagships. Devourers are a variant of Harvesters, and receive all the Harvester-related abilities and upgrades this implies.
+	Unlocks the Devourer Hull for use on flagships.
 
 	[bbloc=#S_WAR_HARVESTER_DESC/]
 

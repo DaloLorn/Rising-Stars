@@ -30,6 +30,7 @@ Module: FTLJammer
 	GrantAbility(FTLJammer)
 	LimitOncePerSystem(FTLJammerFlag, Any Empire = True)
 	SetSystemFlag(EarlyWarningSystem)
+	AddStatus(SuppressRacialStealth)
 Module: AdaptedFTLJammer
 	Inherit: FTLJammer
 	Name: #ORB_FTL_JAMMER_ADAPTED

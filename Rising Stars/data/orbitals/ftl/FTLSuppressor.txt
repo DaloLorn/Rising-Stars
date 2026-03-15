@@ -26,6 +26,7 @@ Module: FTLSuppressor
 	ConsumeCargo(Ore, 500)
 
 	RequireOnOrbital(MilitaryCore)
+	AddStatus(SuppressRacialStealth)
 Module: AdaptedFTLSuppressor
 	Inherit: FTLJammer
 	Name: #ORB_FTL_SUPPRESSOR_ADAPTED

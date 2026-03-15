@@ -45,3 +45,20 @@ Technology: NylliMegacity
 	SkipOnUnlockedTag(NylliNutrients)
 	ModAttribute(ProgenitorTechProgress, Add, 1)
 	UnlockTag(NylliNutrients)
+
+Technology: AnastarMegacity
+	Name: #R_ANASTAR_MEGACITY
+	Description: #R_ANASTAR_MEGACITY_DESC
+	Class: Unlock
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	Point Cost: 1000
+	Time Cost: 120
+
+	Icon: Megacity
+	Color: #00f3ff
+
+	ModAttribute(ProgenitorTechProgress, Add, 1)
+	UnlockTag(MegacityUnlock)
+	SkipOnUnlockedTag(MegacityUnlock)
+	UnlockTag(NylliNutrients)

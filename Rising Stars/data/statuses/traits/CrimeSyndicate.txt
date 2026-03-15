@@ -14,3 +14,18 @@ Status: LoanedPirate
     ABEM_races::MaintainFromOriginEmpire(0.2)
 	ABEM_races::TriggerWithOriginEmpireWhenRemoved(TakeControl())
 	piracy::PirateStatus(True, True)
+
+Status: NoRacialEffects
+	Visible To: Nobody
+
+	AddStatus(SuppressRacialStealth)
+
+Status: SuppressRacialStealth
+	Visible To: Nobody
+
+// Not actually used yet, needs a custom hook and I'm not
+// sure it's necessary
+Status: CrimeSyndicateOrbital
+	Visible To: Nobody
+
+	IfNotHaveStatus(SuppressRacialStealth, AddStatus(Stealthed))

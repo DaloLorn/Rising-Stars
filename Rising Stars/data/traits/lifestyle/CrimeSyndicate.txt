@@ -25,7 +25,6 @@ Trait: CrimeSyndicate
 	SpawnShip(Defiler, Override Disable Starting = True)
 	SpawnShip(Defiler, Override Disable Starting = True)
 	SpawnShip(Shadowport, Override Disable Starting = True)
-	AddStatusOwnedPlanets(CrimeSyndicate)
 	AddStatusOwnedFleets(CrimeSyndicateFleet)
 	ABEM_races::AllyPirates()
 
@@ -39,6 +38,14 @@ Trait: CrimeSyndicate
 	ModAttribute(OrbitalShieldMod, AddBase, -0.2)
 	ModAttribute(ScoreMult, AddBase, -0.2)
 	ModAttribute(SystemRepairMod, AddBase, -0.2)
+
+	ReplaceTechnologyNodes(Megacity, AnastarMegacity)
+
+	ReplaceTechnologyNodes(TerraformSpec1, AnastarTerraformSpec1)
+	ReplaceTechnologyNodes(TerraformSpec4, AnastarTerraformSpec4)
+
+	ReplaceTechnologyNodes(AdaptationSpec1, AnastarAdaptationSpec1)
+	ReplaceTechnologyNodes(AdaptationSpec4, AnastarAdaptationSpec4)
 
 	AddModifier(BoardingStrengthFactor(0.8))
 	AddModifier(DamageMult(0.8))

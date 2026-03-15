@@ -21,6 +21,7 @@ Module: StellarShieldGenerator
 
 	AddRegionStatus(StellarShield, false) // This 'false' says that the status must apply to all objects in the system regardless of owner.
 	FacesOrbitCenter()
+	AddStatus(SuppressRacialStealth)
 
 	private IfTagUnlocked(NylliAdaptation4, ABEM_orbitals::ReplaceModule(StellarShieldGenerator, AdaptedStellarShieldGenerator))
 	private RequireEither(ABEM_races::RequireNotUnlockTag(NylliAdaptation4), RequireNotManual())
