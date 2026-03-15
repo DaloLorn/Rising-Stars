@@ -16,7 +16,7 @@ CARGO_SHIP: Cargo Hauler
 SHIP_MATERIALS_WORTH: [right][b][color=#0f0]$1[/color][/b] units[/right]
 TT_SHIP_SHIELD: <<
 	[font=Medium]Shield[/font]
-	Any incoming damage is first blocked by shields. Shield Hardness reduces most incoming damage up to a percentage. Shield Mitigation further reduces the amount of damage taken by shields and reduces the amount of piercing weapon damage penetrating the shield. 
+	Any incoming damage is first blocked by shields. Shield Hardness reduces most incoming damage by a flat amount, down to a minimum percentage. Shield Mitigation then reduces the remaining damage to the shield, and reduces the amount of piercing weapon damage penetrating the shield. 
 
 	[b]Current Shield[/b] [offset=230]$1[/offset]
 	[b]Maximum Shield[/b] [offset=230]$2[/offset]
@@ -31,7 +31,7 @@ TT_SHIP_MITIGATION: <<
 >>
 
 TT_SHIP_SHIELD_ABSORB: <<
-	[b]Shield Hardness[/b] [offset=230]$1 (up to $2%)[/offset]
+	[b]Shield Hardness[/b] [offset=230]$1 (down to $2%)[/offset]
 	[b]Shield Absorption Rate[/b] [offset=230]$3/sec[/offset]
 >>
 

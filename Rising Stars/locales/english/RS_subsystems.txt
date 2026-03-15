@@ -129,7 +129,7 @@ S_SHIELDHARDENING: Shield Hardness
 STT_SHIElDHARDENING: <<
 	How much damage is removed from all incoming attacks by the ship's shield hardener as long as the ship's shields are active. This damage is removed before mitigation/bleedthrough is applied, but still counts towards mitigation growth. Most attacks can only be reduced to 50% of their initial damage by shield hardness, but certain weapons like Pulse Bolts can be reduced to 25%, and penetrating weapons like Piercing Drones can only be reduced to 75%.
 
-	Damage from Shock Missiles, Disruptors, Particle Lances, Warheads, or Shield Harmonizers is not affected by shield hardness. Destroying shield hardener hexes will both reduce shield hardness and raise the minimum damage threshold until they are repaired. (For instance, reducing a shield hardener to 1% of operational hexes will reduce hardness to 1% of the stated value, and prevent it from removing more than 0.5% of most attacks' damage.)
+	Damage from Shock Missiles, Disruptors, Particle Lances, Warheads, or Shield Harmonizers is not affected by shield hardness. Destroying shield hardener hexes will both reduce shield hardness and raise the minimum damage threshold until they are repaired. (For instance, reducing a shield hardener to 1% of operational hexes will reduce hardness to 1% of the stated value, and prevent it from removing more than 0.5% damage from most attacks.)
 >>
 S_HARDENER_FACTOR: Mitigation Factor
 
@@ -801,9 +801,9 @@ S_SUPSHIELD_DESC: <<
 S_SHIELD_HARDENER_DESC: <<
 	Supports and strengthens the ship's shield, improving its ability to adapt to and safely absorb incoming fire.
 
-	[img=Plus]While shields are up, reduces damage from most weapons.[/img]
+	[img=Plus]While shields are up, reduces damage from most weapons by a flat amount, down to a minimum percentage (50% for most weapons).[/img]
 	[img=Plus]Increases minimum shield mitigation, and improves mitigation growth.[/img]
-	[img=Minus]When shields are at weakened strength, the block chance is lowered.[/img]
+	[img=Minus]As the hardener takes damage, it will raise the damage reduction threshold in addition to weakening all its other effects.[/img]
 >>
 
 S_BOARDING_PARTY_DESC: <<
