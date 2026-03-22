@@ -1461,22 +1461,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		}
 
 		calculateSightRange(obj);
-		formation.reset(obj.radius * 2.0, getFormationRadius(obj));
-
-		double minRad;
-		if(obj.isPlanet) {
-			// Planets have such a large radius taking multiples of it
-			// will exceed the maxRad calculation which makes the formation
-			// have a min radius higher than the max - ie no actual space
-			// for supports at all.
-			minRad = obj.radius + 2.0;
-		} else {
-			// BEGIN NON-MIT CODE - DOF
-			// Increased min radius for supports that are larger than ourselves.
-			minRad = obj.radius * 3.0;
-			// END NON-MIT CODE
-		}
-		formation.reset(minRad, getFormationRadius(obj));
+		formation.reset(getFormationInnerRadius(obj), getFormationRadius(obj));
 		leaderChangeOwner(obj, null, obj.owner);
 
 		AllowFillFrom = obj.isPlanet;
@@ -1661,21 +1646,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		//Refresh formations
 		if(formationDelta && !obj.inCombat) {
 			if(!obj.hasMover || !obj.isMoving) {
-				double minRad;
-				if(obj.isPlanet) {
-					// Planets have such a large radius taking multiples of it
-					// will exceed the maxRad calculation which makes the formation
-					// have a min radius higher than the max - ie no actual space
-					// for supports at all.
-					minRad = obj.radius + 2.0;
-				} else {
-					// BEGIN NON-MIT CODE - DOF
-					// Increasing radius for supports larger than flagship
-					minRad = obj.radius * 3.0;
-					// END NON-MIT CODE
-				}
-				double maxRad = getFormationRadius(obj);
-				formation.reset(minRad, maxRad);
+				formation.reset(getFormationInnerRadius(obj), getFormationRadius(obj));
 				for(uint i = 0, cnt = supports.length; i < cnt; ++i) {
 					Ship@ ship = cast<Ship>(supports[i]);
 					const Design@ dsg = ship.blueprint.design;
@@ -2198,6 +2169,14 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		}
 	}
 
+	double getFormationInnerRadius(Object& obj) {
+		double outerRadius = getFormationRadius(obj);
+		double innerRadius = obj.radius * 3.0;
+		if(obj.isPlanet && innerRadius > outerRadius - 500.0)
+			innerRadius = min(outerRadius - 500.0, obj.radius + 50.0);
+		return innerRadius;
+	}
+
 	double getFormationRadius(Object& obj) {
 		Planet@ pl = cast<Planet>(obj);
 		if(pl !is null)
@@ -2479,7 +2458,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 			if(dsg.hasTag(ST_Satellite))
 				supplySatellite += supply;
 
-			double minRad = obj.radius + 2.0;
+			double minRad = getFormationInnerRadius(obj);
 			double maxRad = getFormationRadius(obj);
 
 			/*double height = randomd(-1.0,1.0) * support.radius;*/
