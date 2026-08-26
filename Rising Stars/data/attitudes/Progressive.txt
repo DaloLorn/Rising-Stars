@@ -36,8 +36,14 @@ Attitude: Progressive
 		ModEmpireAttribute(WelfareEfficiency, Multiply, 2)
 
 	Level:
-		Description: #ATT_PROGRESSIVE_L5
+		Description: #ATT_PROGRESSIVE_L5:10
 		Icon: ActionBarIcons::2
 		Threshold: 18
 
 		EnableModifier(HexSizeFactor(1.10))
+		ModEmpireAttribute(EmpireMassFactor, Multiply, 0.9)
+		EnableModifier(BuildCostFactor(0.9))
+		EnableModifier(LaborCostFactor(0.9))
+		EnableModifier(MaintCostFactor(0.9))
+		EnableModifier(tag/Compressible::EnergyBuildCostFactor(0.9))
+		EnableModifier(var/PowerUse::EnergyBuildCostFactor(0.9))

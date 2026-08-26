@@ -359,6 +359,8 @@ R_SYS_NANOMESH_DESC: <<
 >>
 R_SUPPORT_SIZE_DESC: <<
 	Increases the hex size of all your support ship designs by $1%, making them more effective.
+
+	Unlike changing the ship's size, this technology does not change its mass or any costs associated with it.
 >>
 R_SUPPORT_SHIELDS: Support Shield Generator
 R_SYS_SUPSHIELD_DESC: <<
