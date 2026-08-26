@@ -1,6 +1,6 @@
 Technology: SupportSize
 	Name: #R_SUPPORT_SIZE
-	Description: #R_SUPPORT_SIZE_DESC:7
+	Description: #R_SUPPORT_SIZE_DESC:10
 
 	Icon: techConstruction * #8ca2ff
 	Symbol: ActionBarIcons::2
@@ -13,4 +13,4 @@ Technology: SupportSize
 	Time Cost: 160
 
 	ReduceResearchPenalty(1200)
-	AddModifier(SupportHull::IncreaseHexLimit(7))
+	AddModifier(SupportHull::HexSizeFactor(1.1))
