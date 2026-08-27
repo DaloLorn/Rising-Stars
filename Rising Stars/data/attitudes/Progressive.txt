@@ -41,9 +41,9 @@ Attitude: Progressive
 		Threshold: 18
 
 		EnableModifier(HexSizeFactor(1.10))
-		ModEmpireAttribute(EmpireMassFactor, Multiply, 0.9)
-		EnableModifier(BuildCostFactor(0.9))
-		EnableModifier(LaborCostFactor(0.9))
-		EnableModifier(MaintCostFactor(0.9))
-		EnableModifier(tag/Compressible::EnergyBuildCostFactor(0.9))
-		EnableModifier(var/PowerUse::EnergyBuildCostFactor(0.9))
+		ModEmpireAttribute(EmpireMassFactor, Multiply, 10/11)
+		EnableModifier(BuildCostFactor(10/11))
+		EnableModifier(LaborCostFactor(10/11))
+		EnableModifier(MaintCostFactor(10/11))
+		EnableModifier(tag/Compressible::EnergyBuildCostFactor(10/11))
+		EnableModifier(var/PowerUse::EnergyBuildCostFactor(10/11))

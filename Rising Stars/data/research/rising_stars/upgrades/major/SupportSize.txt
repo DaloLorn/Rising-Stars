@@ -14,7 +14,7 @@ Technology: SupportSize
 
 	ReduceResearchPenalty(1200)
 	AddModifier(SupportHull::HexSizeFactor(1.1))
-	AddModifier(SupportHull::MassFactor(0.9))
-	AddModifier(SupportHull::BuildCostFactor(0.9))
-	AddModifier(SupportHull::LaborCostFactor(0.9))
-	AddModifier(SupportHull::MaintCostFactor(0.9))
+	AddModifier(SupportHull::MassFactor(10/11))
+	AddModifier(SupportHull::BuildCostFactor(10/11))
+	AddModifier(SupportHull::LaborCostFactor(10/11))
+	AddModifier(SupportHull::MaintCostFactor(10/11))
