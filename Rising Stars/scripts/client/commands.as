@@ -147,6 +147,14 @@ class ExportResources : ObjectTargeting {
 			return locale::EXPORT_RESOURCES_PROMPT;
 	}
 
+	bool isExportAllowed(Empire& origin, Empire& destination) {
+		if(origin is destination)
+			return true;
+		if(origin is null || destination is null)
+			return false;
+		return origin.TradeMask & destination.mask != 0;
+	}
+
 	string message(Object@ target, bool valid) {
 		if(!valid) {
 			if(isTemporary && objs.length == 1 && objs[0] is target)
@@ -155,7 +163,7 @@ class ExportResources : ObjectTargeting {
 		}
 	
 		if(res !is null && objs.length <= 1) {
-			if(!isQueued && target.owner is playerEmpire)
+			if(!isQueued && isExportAllowed(playerEmpire, target.owner))
 				return format(locale::EXPORT_RESOURCE, res.name, target.name);
 			else
 				return format(locale::QUEUE_EXPORT_RESOURCE, res.name, target.name);

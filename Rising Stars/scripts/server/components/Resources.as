@@ -390,7 +390,7 @@ tidy class ObjectResources : Component_Resources, Savable {
 				continue;
 			if(res.origin is obj)
 				continue;
-			if(res.origin.owner !is obj.owner)
+			if(!isExportAllowed(res.origin.owner, obj.owner))
 				continue;
 
 			res.origin.exportResourceByID(res.id, toObject);
