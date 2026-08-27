@@ -900,6 +900,14 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 		}
 		else if(selected.exportEnabled && clicked.importEnabled
 				&& (selected.region !is null && clicked.region !is null)) {
+			bool canExportToClicked = 
+				clicked.owner is playerEmpire ||
+				(
+					clicked.owner !is null &&
+					clicked.owner.major &&
+					playerEmpire.TradeMask & clicked.owner.mask != 0
+				);
+
 			for(uint i = 0; i < cnt; ++i) {
 				const ResourceType@ type = getResource(selected.nativeResourceType[i]);
 				if(!type.exportable)
@@ -915,14 +923,14 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 					usable = selected.nativeResourceUsable[i];
 
 				if(dest is clicked) {
-					if(usable && clicked.owner is playerEmpire)
+					if(usable && canExportToClicked)
 						text = format(locale::STOP_EXPORT_RESOURCE, type.name, dest.name);
 					else
 						text = format(locale::STOP_EXPORT_RES_QUEUE, type.name, dest.name);
 					addOption(menu, selected, clicked, text, StopExportResource(i), type.smallIcon);
 				}
 				else {
-					if(usable && clicked.owner is playerEmpire)
+					if(usable && canExportToClicked)
 						text = format(locale::EXPORT_RESOURCE, type.name, clicked.name);
 					else
 						text = format(locale::QUEUE_EXPORT_RESOURCE, type.name, clicked.name);
@@ -936,6 +944,13 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 			if(selected.importEnabled && clicked.exportEnabled
 					&& (selected.region !is null && clicked.region !is null)) {
 				cnt = clicked.nativeResourceCount;
+				bool canExportToSelected = 
+					selected.owner is playerEmpire ||
+					(
+						selected.owner !is null &&
+						selected.owner.major &&
+						playerEmpire.TradeMask & selected.owner.mask != 0
+					);
 				for(uint i = 0; i < cnt; ++i) {
 					const ResourceType@ type = getResource(clicked.nativeResourceType[i]);
 					if(!type.exportable)
@@ -949,14 +964,14 @@ bool openContextMenu(Object& clicked, Object@ selected = null) {
 						usable = clicked.nativeResourceUsable[i];
 
 					if(dest is selected) {
-						if(usable && selected.owner is playerEmpire)
+						if(usable && canExportToSelected)
 							text = format(locale::STOP_IMPORT_RESOURCE, type.name, clicked.name);
 						else
 							text = format(locale::STOP_IMPORT_RES_QUEUE, type.name, clicked.name);
 						addOption(menu, selected, clicked, text, StopImportResource(i), type.smallIcon);
 					}
 					else {
-						if(usable && selected.owner is playerEmpire)
+						if(usable && canExportToSelected)
 							text = format(locale::IMPORT_RESOURCE, type.name, clicked.name);
 						else
 							text = format(locale::QUEUE_IMPORT_RESOURCE, type.name, clicked.name);

@@ -289,6 +289,14 @@ tidy class ObjectResources : Component_Resources, Savable {
 		ResourceModId++;
 	}
 
+	bool isExportAllowed(Empire& origin, Empire& destination) {
+		if(origin is destination)
+			return true;
+		if(origin is null || destination is null)
+			return false;
+		return origin.TradeMask & destination.mask != 0;
+	}
+
 	void getNativeResources(Player& pl, const Object& obj) {
 		Empire@ plEmp = pl.emp;
 		if(plEmp is obj.owner || pl == SERVER_PLAYER) {
@@ -952,7 +960,8 @@ tidy class ObjectResources : Component_Resources, Savable {
 		}
 
 		//If this is ordered to something by a different owner, we queue it
-		if(to !is null && obj.owner !is to.owner) {
+		// ... Unless we have a trade agreement with them!
+		if(to !is null && !isExportAllowed(obj.owner, to.owner)) {
 			queueExportResource(forEmpire, obj, index, to);
 			@to = null;
 		}
@@ -1492,7 +1501,7 @@ tidy class ObjectResources : Component_Resources, Savable {
 				Empire@ otherOwner = r.exportedTo.owner;
 
 				//Check if exporting to wrong owner
-				if(otherOwner !is obj.owner) {
+				if(!isExportAllowed(obj.owner, otherOwner)) {
 					//Cancel exports to foreign empires
 					queueExportResource(obj.owner, obj, i, r.exportedTo, r.locked);
 					_exportResource(obj, i, null);
@@ -1509,7 +1518,7 @@ tidy class ObjectResources : Component_Resources, Savable {
 		if(queuedExports !is null) {
 			for(uint i = 0; queuedExports !is null &&  i < queuedExports.length; ++i) {
 				QueuedResource@ q = queuedExports[i];
-				if(q.forEmpire is obj.owner && q.to.owner is obj.owner) {
+				if(q.forEmpire is obj.owner && isExportAllowed(obj.owner, q.to.owner)) {
 					//Find native resource index from id
 					int rIndex = -1;
 					for(uint n = 0, rcnt = nativeResources.length; n < rcnt; ++n) {
@@ -1612,7 +1621,10 @@ tidy class ObjectResources : Component_Resources, Savable {
 		for(uint i = 0, cnt = nativeResources.length; i < cnt; ++i) {
 			NativeResource@ r = nativeResources[i];
 			@r.path.forEmpire = obj.owner;
-			if(r.exportedTo !is null && r.exportedTo.owner !is obj.owner) {
+			// Tricky. The new owner might not want to resume exports,
+			// even if both empires have trade access... but
+			// let's default to resuming. --Dalo
+			if(r.exportedTo !is null && !isExportAllowed(obj.owner, r.exportedTo.owner)) {
 				//Add previous export as queued
 				if(r.locked)
 					queueExportResource(prevOwner, obj, i, r.exportedTo, r.locked);
@@ -1649,7 +1661,7 @@ tidy class ObjectResources : Component_Resources, Savable {
 		if(queuedExports !is null) {
 			for(uint i = 0; queuedExports !is null && i < queuedExports.length; ++i) {
 				QueuedResource@ q = queuedExports[i];
-				if(q.forEmpire is obj.owner && q.to.owner is obj.owner) {
+				if(q.forEmpire is obj.owner && isExportAllowed(obj.owner, q.to.owner)) {
 					//Find native resource index from id
 					int rIndex = -1;
 					for(uint n = 0, rcnt = nativeResources.length; n < rcnt; ++n) {
