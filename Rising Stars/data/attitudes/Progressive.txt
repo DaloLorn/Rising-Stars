@@ -40,10 +40,13 @@ Attitude: Progressive
 		Icon: ActionBarIcons::2
 		Threshold: 18
 
-		EnableModifier(HexSizeFactor(1.10))
+		EnableModifier(FlagshipHull::HexSizeFactor(1.1))
+		EnableModifier(SupportHull::HexSizeFactor(1.1))
+		EnableModifier(StationHull::HexSizeFactor(1.1))
+		EnableModifier(SatelliteHull::HexSizeFactor(1.1))
 		ModEmpireAttribute(EmpireMassFactor, Multiply, 10/11)
 		EnableModifier(BuildCostFactor(10/11))
 		EnableModifier(LaborCostFactor(10/11))
 		EnableModifier(MaintCostFactor(10/11))
-		EnableModifier(tag/Compressible::EnergyBuildCostFactor(10/11))
-		EnableModifier(var/PowerUse::EnergyBuildCostFactor(10/11))
+		EnableModifier(EnergyBuildCostFactor(10/11))
+		EnableModifier(FlareBomb::EnergyBuildCostFactor(1.1))
