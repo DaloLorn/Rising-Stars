@@ -491,6 +491,7 @@ class MakePlanet : MapHook {
 Planet@ spawnPlanetSpec(const vec3d& point, const string& resourceSpec, bool distributeResource = true, double radius = 0.0, bool physics = true) {
 	MakePlanet plHook;
 	plHook.initClass();
+	plHook.orbit_spacing.set(0);
 	plHook.resource.str = resourceSpec;
 	plHook.distribute_resource.boolean = distributeResource;
 	plHook.moons.boolean = false;

@@ -696,8 +696,10 @@ class SystemGenerator : IsolateHook {
 			for(uint i = 0, cnt = generatedSystems.length; i < cnt; ++i) {
 				double d = generatedSystems[i].position.distanceTo(desc.position);
 				if(generatedSystems[i] is desc)
-					continue;
-				if(d < 13000.0)
+					continue; 
+				// Scaling - Dolynick, myself, or both failed to notice
+				// this bit of code needed to be updated for the rescaled universe.
+				if(d < 260000.0)
 					nearby.insertLast(generatedSystems[i]);
 				if(d < closestDist) {
 					closestDist = d;
