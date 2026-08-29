@@ -28,6 +28,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 	int maxPlanetLevel = -1;
 	uint orbitsMask = 0;
 
+	bool isRacketeering = false;
+	double[] stolenResources = double[](TR_COUNT, 0);
+
 	uint DecayLevel = 0;
 	double DecayTimer = -1.0;
 
@@ -384,6 +387,16 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 		return grid.pressures[resource];
 	}
 
+	double getResourceTheft(uint resource) {
+		if(resource >= stolenResources.length)
+			return 0.0;
+		return stolenResources[resource];
+	}
+
+	bool get_hasActiveRacketeering() {
+		return isRacketeering;
+	}
+
 	void surfaceTick(Object& obj, double time) {
 		//Set icon visibility
 		if(icon !is null) {
@@ -545,6 +558,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 		}
 	}
 
+	void _readRacketeering(Message& msg) {
+		isRacketeering = msg.readBit();
+		for(uint i = 0; i < TR_COUNT; ++i) {
+			msg >> stolenResources[i];
+		}
+	}
+
 	void _readColonization(Message& msg) {
 		if(!msg.readBit())
 			return;
@@ -569,6 +589,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 			_readColonization(msg);
 		if(msg.readBit())
 			_readLoy(obj, msg);
+		if(msg.readBit())
+			_readRacketeering(msg);
 	}
 
 	Empire@ prevPlayer = playerEmpire;
@@ -694,6 +716,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 		_readLoy(obj, msg);
 		_readVis(msg);
 		_readColonization(msg);
+		_readRacketeering(msg);
 
 		msg >> Quarantined;
 		tileDevelopRate = msg.read_float();

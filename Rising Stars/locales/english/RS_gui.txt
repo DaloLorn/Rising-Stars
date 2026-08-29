@@ -140,3 +140,35 @@ TT_COLONIZE_THIS_FTL: <<|
 
 	If the origin planet is not in the same system, FTL use during colonization will incur a total cost of $2 FTL.
 >>
+
+PLANET_RESOURCE_STOLEN: [b]Stolen by Racketeering:[/b] [offset=220]$1[/offset]
+
+PLANET_INCOME_STOLEN: <<
+	[bbloc=#PLANET_INCOME_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]
+>>
+
+PLANET_ENERGY_STOLEN: <<
+	[bbloc=#PLANET_ENERGY_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]¸¸
+>>
+
+PLANET_DEFENSE_STOLEN: <<
+	[bbloc=#PLANET_DEFENSE_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]
+>>
+
+PLANET_INFLUENCE_STOLEN: <<
+	[bbloc=#PLANET_INFLUENCE_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]
+>>
+
+PLANET_RESEARCH_STOLEN: <<
+	[bbloc=#PLANET_RESEARCH_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]
+>>
+
+PLANET_LABOR_STOLEN: <<
+	[bbloc=#PLANET_LABOR_TIP:$1:$2/]
+	[bbloc=#PLANET_RESOURCE_STOLEN:$3/]
+>>

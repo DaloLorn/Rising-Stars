@@ -390,6 +390,10 @@ class SurfaceDisplay : DisplayBox {
 
 	void updateVars() {
 		resetVars();
+		
+		Empire@ corruptor;
+		if(pl.shadowport !is null)
+			@corruptor = pl.shadowport.owner;
 
 		if(pl.visible) {
 			if(pl.owner.valid && pl.owner.HasPopulation != 0) {
@@ -403,7 +407,7 @@ class SurfaceDisplay : DisplayBox {
 				addVariable(icons::Population, popText, locale::PLANET_POPULATION_TIP, popColor);
 			}
 		}
-		if(pl.owner is playerEmpire) {
+		if(pl.owner is playerEmpire || playerEmpire is corruptor) {
 			auto@ scTrait = getTrait("StarChildren");
 			auto@ anTrait = getTrait("Ancient");
 			if((scTrait is null || !pl.owner.hasTrait(scTrait.id)) && (anTrait is null || !pl.owner.hasTrait(anTrait.id))) {
@@ -420,7 +424,10 @@ class SurfaceDisplay : DisplayBox {
 				if(income < 0)
 					color = colors::Red;
 				string value = formatMoney(income);
-				string ttip = format(locale::PLANET_INCOME_TIP, standardize(surface.pressures[TR_Money], true), standardize(surface.resources[TR_Money], true));
+				string stolen = formatMoney(pl.getResourceTheft(TR_Money));
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_INCOME_TIP, standardize(surface.pressures[TR_Money], true), standardize(surface.resources[TR_Money], true))
+					: format(locale::PLANET_INCOME_STOLEN, standardize(surface.pressures[TR_Money], true), standardize(surface.resources[TR_Money], true), stolen);
 				addVariable(icons::Money, value, ttip, color);
 			}
 
@@ -429,39 +436,54 @@ class SurfaceDisplay : DisplayBox {
 			string loyText = toString(pl.currentLoyalty, 0);
 			addVariable(icons::Loyalty, loyText, locale::PLANET_LOYALTY_TIP, colors::White);
 		}
-		if(pl.owner is playerEmpire) {
+		if(pl.owner is playerEmpire || playerEmpire is corruptor) {
 			if(surface.resources[TR_Energy] > 0 || surface.pressures[TR_Energy] > 0) {
 				Color color = colors::Energy;
 				string value = "+"+formatRate(surface.resources[TR_Energy] * TILE_ENERGY_RATE * pl.owner.EnergyEfficiency);
-				string ttip = format(locale::PLANET_ENERGY_TIP, standardize(surface.pressures[TR_Energy], true), standardize(surface.saturates[TR_Energy], true));
+				string stolen = playerEmpire is corruptor ? "+"+formatRate(pl.getResourceTheft(TR_Energy) * corruptor.EnergyEfficiency) : "";
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_ENERGY_TIP, standardize(surface.pressures[TR_Energy], true), standardize(surface.saturates[TR_Energy], true))
+					: format(locale::PLANET_ENERGY_STOLEN, standardize(surface.pressures[TR_Energy], true), standardize(surface.saturates[TR_Energy], true), stolen);
 				addVariable(icons::Energy, value, ttip, color);
 			}
 
 			if(surface.resources[TR_Defense] > 0 || surface.pressures[TR_Defense] > 0) {
 				Color color = colors::Defense;
 				string value = standardize(surface.resources[TR_Defense], true);
-				string ttip = format(locale::PLANET_DEFENSE_TIP, standardize(surface.pressures[TR_Defense], true), standardize(surface.saturates[TR_Defense], true));
+				string stolen = standardize(pl.getResourceTheft(TR_Defense), true);
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_DEFENSE_TIP, standardize(surface.pressures[TR_Defense], true), standardize(surface.saturates[TR_Defense], true))
+					: format(locale::PLANET_DEFENSE_STOLEN, standardize(surface.pressures[TR_Defense], true), standardize(surface.saturates[TR_Defense], true), stolen);
 				addVariable(icons::Defense, value, ttip, color);
 			}
 
 			if(surface.resources[TR_Influence] > 0 || surface.pressures[TR_Influence] > 0) {
 				Color color = colors::Influence;
 				string value = standardize(surface.resources[TR_Influence], true);
-				string ttip = format(locale::PLANET_INFLUENCE_TIP, standardize(surface.pressures[TR_Influence], true), standardize(surface.saturates[TR_Influence], true));
+				string stolen = standardize(pl.getResourceTheft(TR_Influence), true);
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_INFLUENCE_TIP, standardize(surface.pressures[TR_Influence], true), standardize(surface.saturates[TR_Influence], true))
+					: format(locale::PLANET_INFLUENCE_STOLEN, standardize(surface.pressures[TR_Influence], true), standardize(surface.saturates[TR_Influence], true), stolen);
 				addVariable(icons::Influence, value, ttip, color);
 			}
 
 			if(surface.resources[TR_Research] > 0 || surface.pressures[TR_Research] > 0) {
 				Color color = colors::Research;
 				string value = "+"+formatRate(surface.resources[TR_Research] * TILE_RESEARCH_RATE * pl.owner.ResearchEfficiency);
-				string ttip = format(locale::PLANET_RESEARCH_TIP, standardize(surface.pressures[TR_Research], true), standardize(surface.saturates[TR_Research], true));
+				string stolen = standardize(pl.getResourceTheft(TR_Research), true);
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_RESEARCH_TIP, standardize(surface.pressures[TR_Research], true), standardize(surface.saturates[TR_Research], true))
+					: format(locale::PLANET_RESEARCH_STOLEN, standardize(surface.pressures[TR_Research], true), standardize(surface.saturates[TR_Research], true), stolen);
 				addVariable(icons::Research, value, ttip, color);
 			}
 
 			if(pl.laborIncome > 0) {
 				Color color = colors::Labor;
 				string value = formatMinuteRate(pl.laborIncome);
-				string ttip = format(locale::PLANET_LABOR_TIP, standardize(surface.pressures[TR_Labor], true), standardize(surface.saturates[TR_Labor], true));
+				string stolen = formatMinuteRate(pl.getResourceTheft(TR_Labor));
+				string ttip = pl.owner is playerEmpire || !pl.hasActiveRacketeering
+					? format(locale::PLANET_LABOR_TIP, standardize(surface.pressures[TR_Labor], true), standardize(surface.saturates[TR_Labor], true))
+					: format(locale::PLANET_LABOR_STOLEN, standardize(surface.pressures[TR_Labor], true), standardize(surface.saturates[TR_Labor], true), stolen);
 				addVariable(icons::Labor, value, ttip, color);
 			}
 

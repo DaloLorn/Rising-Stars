@@ -57,12 +57,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	double prevDefense = 0;
 
 	bool isRacketeering = false;
-	int stolenIncome = 0;
-	double stolenInfluence = 0;
-	double stolenEnergy = 0;
-	double stolenResearch = 0;
-	double stolenDefense = 0;
-	double stolenLabor = 0;
+	double[] stolenResources = double[](TR_COUNT, 0);
+	bool racketeeringDelta = false;
 
 	const Design@ defenseDesign;
 	double defenseLabor = -1;
@@ -139,12 +135,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file << bonusIncome;
 
 		file.writeBit(isRacketeering);
-		file << stolenIncome;
-		file << stolenInfluence;
-		file << stolenEnergy;
-		file << stolenResearch;
-		file << stolenDefense;
-		file << stolenLabor;
+		for(uint i = 0; i < TR_COUNT; ++i) {
+			file << stolenResources[i];
+		}
 
 		file << growthRate;
 		file << tileDevelopRate;
@@ -229,12 +222,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			file >> bonusIncome;
 
 		isRacketeering = file.readBit();
-		file >> stolenIncome;
-		file >> stolenInfluence;
-		file >> stolenEnergy;
-		file >> stolenResearch;
-		file >> stolenDefense;
-		file >> stolenLabor;
+		for(uint i = 0; i < TR_COUNT; ++i) {
+			file >> stolenResources[i];
+		}
 
 		file >> growthRate;
 		file >> tileDevelopRate;
@@ -861,6 +851,12 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(resource >= grid.civResources.length)
 			return 0.0;
 		return grid.civResources[resource];
+	}
+
+	double getResourceTheft(uint resource) {
+		if(resource >= stolenResources.length)
+			return 0.0;
+		return stolenResources[resource];
 	}
 
 	void modResource(uint resource, double amount) {
@@ -1600,16 +1596,23 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		Planet@ planet = cast<Planet>(obj);
 		if(planet is null)
 			return;
+		int stolenIncome = int(stolenResources[TR_Money]);
+		double stolenResearch = stolenResources[TR_Research];
+		double stolenInfluence = stolenResources[TR_Influence];
+		double stolenEnergy = stolenResources[TR_Energy];
+		double stolenDefense = stolenResources[TR_Defense];
+		double stolenLabor= stolenResources[TR_Labor];
+
 		if(prevShadowport !is null && prevShadowport.owner !is null && prevShadowport.owner.major) {
 			Empire@ prevOwner = prevShadowport.owner;
 			if(stolenIncome != 0)
 				prevOwner.modTotalBudget(-stolenIncome, MoT_Racketeering);
 			if(stolenResearch != 0)
-				prevOwner.modResearchRate(-double(stolenResearch) * TILE_RESEARCH_RATE);
+				prevOwner.modResearchRate(-stolenResearch * TILE_RESEARCH_RATE);
 			if(stolenInfluence != 0)
 				prevOwner.modInfluenceIncome(-stolenInfluence);
 			if(stolenEnergy != 0)
-				prevOwner.modEnergyIncome(-double(stolenEnergy) * TILE_ENERGY_RATE);
+				prevOwner.modEnergyIncome(-stolenEnergy * TILE_ENERGY_RATE);
 			if(stolenDefense != 0)
 				prevOwner.modDefenseRate(stolenDefense);
 			if(stolenLabor != 0)
@@ -1621,11 +1624,11 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(stolenIncome != 0)
 				newOwner.modTotalBudget(stolenIncome, MoT_Racketeering);
 			if(stolenResearch != 0)
-				newOwner.modResearchRate(double(stolenResearch) * TILE_RESEARCH_RATE);
+				newOwner.modResearchRate(stolenResearch * TILE_RESEARCH_RATE);
 			if(stolenInfluence != 0)
 				newOwner.modInfluenceIncome(stolenInfluence);
 			if(stolenEnergy != 0)
-				newOwner.modEnergyIncome(double(stolenEnergy) * TILE_ENERGY_RATE);
+				newOwner.modEnergyIncome(stolenEnergy * TILE_ENERGY_RATE);
 			if(stolenDefense != 0)
 				newOwner.modDefenseRate(stolenDefense);
 			if(stolenLabor != 0)
@@ -2581,22 +2584,22 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			TradePath path(planet.shadowport.owner);
 			path.generate(getSystem(planet.region), getSystem(planet.shadowport.region), keepCache=true);
 			canSteal = path.isUsablePath;
-			if(canSteal) {
-				isRacketeering = true;
-			}
 		}
+		isRacketeering = canSteal;
 
 		//Update resources from grid
 		int newIncome = ceil(grid.resources[TR_Money] * TILE_MONEY_RATE * obj.owner.MoneyGenerationFactor) + popIncome + bonusIncome;
 		int newStolenIncome = abs(int(double(newIncome * STEAL_FACTOR)));
+		int stolenIncome = int(stolenResources[TR_Money]);
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenIncome = 0;
-			newIncome -= newStolenIncome;
-			if(newStolenIncome != stolenIncome)
-				planet.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Planet_Income);
+			if(newStolenIncome != stolenIncome) {
+				planet.shadowport.owner.modTotalBudget(newStolenIncome - stolenIncome, MoT_Racketeering);
+				obj.owner.modTotalBudget(-(newStolenIncome - stolenIncome), MoT_Racketeering);
+			}			
 		}
-		stolenIncome = newStolenIncome;
+		stolenResources[TR_Money] = double(newStolenIncome);
 		if(prevIncome != newIncome) {
 			if(prevIncome < 0) {
 				if(newIncome < 0) {
@@ -2621,14 +2624,15 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		double newEnergy = max(grid.resources[TR_Energy], 0.0);
 		double newStolenEnergy = newEnergy * STEAL_FACTOR;
+		double stolenEnergy = stolenResources[TR_Energy];
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenEnergy = 0;
 			newEnergy -= newStolenEnergy;
 			if(newStolenEnergy != stolenEnergy)
-				planet.shadowport.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
+				planet.shadowport.owner.modEnergyIncome(double(newStolenEnergy - stolenEnergy) * TILE_ENERGY_RATE);
 		}
-		stolenEnergy = newStolenEnergy;
+		stolenResources[TR_Energy] = newStolenEnergy;
 		if(newEnergy != prevEnergy) {
 			obj.owner.modEnergyIncome(double(newEnergy - prevEnergy) * TILE_ENERGY_RATE);
 			prevEnergy = newEnergy;
@@ -2636,6 +2640,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		double newInfluence = max(grid.resources[TR_Influence], 0.0);
 		double newStolenInfluence = newInfluence * STEAL_FACTOR;
+		double stolenInfluence = stolenResources[TR_Influence];
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenInfluence = 0;
@@ -2643,7 +2648,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(int(newStolenInfluence) != int(stolenInfluence))
 				planet.shadowport.owner.modInfluenceIncome(int(newStolenInfluence) - int(stolenInfluence));
 		}
-		stolenInfluence = newStolenInfluence;
+		stolenResources[TR_Influence] = newStolenInfluence;
 		if(int(newInfluence) != int(prevInfluence)) {
 			obj.owner.modInfluenceIncome(int(newInfluence) - int(prevInfluence));
 			prevInfluence = newInfluence;
@@ -2651,14 +2656,15 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		double newResearch = max(grid.resources[TR_Research], 0.0);
 		double newStolenResearch = newResearch * STEAL_FACTOR;
+		double stolenResearch = stolenResources[TR_Research];
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenResearch = 0;
 			newResearch -= newStolenResearch;
 			if(newStolenResearch != stolenResearch)
-				planet.shadowport.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
+				planet.shadowport.owner.modResearchRate(double(newStolenResearch - stolenResearch) * TILE_RESEARCH_RATE);
 		}
-		stolenResearch = newStolenResearch;
+		stolenResources[TR_Research] = newStolenResearch;
 		if(newResearch != prevResearch) {
 			obj.owner.modResearchRate(double(newResearch - prevResearch) * TILE_RESEARCH_RATE);
 			prevResearch = newResearch;
@@ -2666,6 +2672,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		double newDefense = max(grid.resources[TR_Defense], 0.0) * DEFENSE_LABOR_PM / 60.0 * obj.owner.DefenseGenerationFactor;
 		double newStolenDefense = newDefense * STEAL_FACTOR;
+		double stolenDefense = stolenResources[TR_Defense];
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenDefense = 0;
@@ -2673,7 +2680,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(newStolenDefense != stolenDefense)
 				planet.shadowport.owner.modDefenseRate(newStolenDefense - stolenDefense);
 		}
-		stolenDefense = newStolenDefense;
+		stolenResources[TR_Defense] = newStolenDefense;
 		bool pooled = obj.canGainSupports && obj.owner.hasDefending;
 		if(!pooled) {
 			if(prevDefense < -0.01) {
@@ -2705,6 +2712,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		double laborRes = max(grid.resources[TR_Labor], 0.0);
 		double labor = laborRes * TILE_LABOR_RATE * obj.owner.LaborGenerationFactor;
 		double newStolenLabor = labor * STEAL_FACTOR;
+		double stolenLabor = stolenResources[TR_Labor];
 		if(shouldSteal) {
 			if(!canSteal)
 				newStolenLabor = 0;
@@ -2712,7 +2720,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(newStolenLabor != stolenLabor)
 				planet.shadowport.modLaborIncome(newStolenLabor - stolenLabor);
 		}
-		stolenLabor = newStolenLabor;
+		stolenResources[TR_Labor] = newStolenLabor;
 
 		if(prevLabor != labor) {
 			bool hasLabor = laborRes > 0.0001 || obj.laborIncome > 0.0001 || obj.currentLaborStored > 0.001;
@@ -2849,6 +2857,13 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			}
 		}
 	}
+
+	void _writeRacketeering(Message& msg) {
+		msg.writeBit(isRacketeering);
+		for(uint i = 0; i < TR_COUNT; ++i) {
+			msg << stolenResources[i];
+		}
+	}
 	
 	void _writeColonization(Message& msg) {
 		uint8 cnt = uint8(colonization.length);
@@ -2867,7 +2882,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	bool writeSurfaceDelta(const Object& obj, Message& msg) {
-		if(!deltaRes && !deltaAff && !deltaPop && !grid.delta && !deltaCol && !deltaLoy)
+		if(!deltaRes && !deltaAff && !deltaPop && !grid.delta && !deltaCol && !deltaLoy && !racketeeringDelta)
 			return false;
 
 		msg.write1();
@@ -2925,6 +2940,15 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			msg.write0();
 		}
 
+		if(racketeeringDelta) {
+			racketeeringDelta = false;
+			msg.write1();
+			_writeRacketeering(msg);
+		}
+		else {
+			msg.write0();
+		}
+
 		return true;
 	}
 
@@ -2935,6 +2959,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		_writeLoy(obj, msg);
 		_writeVis(msg);
 		_writeColonization(msg);
+		_writeRacketeering(msg);
 
 		msg << Quarantined;
 		msg << float(tileDevelopRate);
