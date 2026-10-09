@@ -15,6 +15,13 @@ Subsystem: JuggernautHull
 	AddShipModifier: ArmorResistMult(1.5)
 	AddShipModifier: MassMult(5)
 	AddShipModifier: TurnThrustMult(3)
+	AddShipModifier: ShieldCapacityMult(12)
+	AddShipModifier: ShieldMitBaseFactor(1.5)
+	AddShipModifier: ShieldHardeningFactor(1.5)
+	AddShipModifier: ShieldMitRateFactor(1.5)
+	AddShipModifier: ShieldMitDecayFactor(2/3)
+	// ... Yes, really.
+	AddShipModifier: HardenerMitigationFactorFactor(1.5)
 
 
 	AddShipModifier: TechMultFactor(1)

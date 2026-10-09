@@ -14,6 +14,12 @@ Subsystem: WarHarvester
 	AddShipModifier: HpMult(3.0)
 	AddShipModifier: DamageResistMult(2)
 	AddShipModifier: ShieldCapacityMult(3)
+	AddShipModifier: ShieldMitBaseFactor(2)
+	AddShipModifier: ShieldHardeningFactor(2)
+	AddShipModifier: ShieldMitRateFactor(2)
+	AddShipModifier: ShieldMitDecayFactor(0.5)
+	// ... Yes, really.
+	AddShipModifier: HardenerMitigationFactorFactor(2)
 	AddShipModifier: MassMult(6 + TerraformMassMod)
 	AddShipModifier: FlingCostMultFactor(1/6)
 	AddShipModifier: SupplyCapacityMult(0.01)

@@ -14,6 +14,12 @@ Subsystem: MothershipHull
 	AddShipModifier: HpMult(3.0)
 	AddShipModifier: ShieldCapacityMult(3.0)
 	AddShipModifier: DamageResistMult(2.0)
+	AddShipModifier: ShieldMitBaseFactor(2.0)
+	AddShipModifier: ShieldHardeningFactor(2.0)
+	AddShipModifier: ShieldMitRateFactor(2.0)
+	AddShipModifier: ShieldMitDecayFactor(0.5)
+	// ... Yes, really.
+	AddShipModifier: HardenerMitigationFactorFactor(2.0)
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)

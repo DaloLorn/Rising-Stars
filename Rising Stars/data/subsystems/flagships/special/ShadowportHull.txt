@@ -14,6 +14,12 @@ Subsystem: ShadowportHull
 	AddShipModifier: HpMult(2.0)
 	AddShipModifier: DamageResistMult(1.5)
 	AddShipModifier: ShieldCapacityMult(2)
+	AddShipModifier: ShieldMitBaseFactor(1.5)
+	AddShipModifier: ShieldHardeningFactor(1.5)
+	AddShipModifier: ShieldMitRateFactor(1.5)
+	AddShipModifier: ShieldMitDecayFactor(2/3)
+	// ... Yes, really.
+	AddShipModifier: HardenerMitigationFactorFactor(1.5)
 	AddShipModifier: SupplyCapacityMult(0.01)
 	AddShipModifier: SupplyCostMult(0)
 	AddShipModifier: RepairSupplyCostFactor(-1)

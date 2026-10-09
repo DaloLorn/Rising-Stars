@@ -181,9 +181,8 @@ S_HARVESTER_DESC: <<
 
 	[img=Plus]Can prepare planets for Harvesting by Ringworlds.[/img]
 	[img=Plus]Can use the Planet Devourer subsystem to mine Barren planets for Ore.[/img]
-	[img=Plus]All hex health is doubled.[/img]
-	[img=Plus]All damage resistance is increased by 50%.[/img]
-	[img=Plus]Shield capacity is doubled.[/img]
+	[img=Plus]All hex health and shield capacity is doubled.[/img]
+	[img=Plus]All damage resistance (including shield hardness) is increased by 50%.[/img]
 	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
 	[img=Plus]Slipstream costs are significantly reduced.[/img]
 	[img=Plus]Cargo storage capacity is multiplied tenfold.[/img]
@@ -488,7 +487,8 @@ S_JUGGERNAUT_HULL: Bombship Hull
 S_JUGGERNAUT_HULL_DESC: <<
 	A specialized hull designed for containing and stabilizing a large payload of extremely volatile explosives.
 
-	[img=Plus]Increases health by 1100%, and boosts armor damage resistance by 50%.[/img]
+	[img=Plus]Increases health and shield capacity by 1100%.[/img]
+	[img=Plus]Increases armor damage resistance and shield hardness by 50%.[/img]
 	[img=AntimatterReactor;22;#ff0000]Significantly increases the potency of, and requires a Self-Destruct Device. Also allows manual detonation of Self-Destruct Devices.[/img]
 	[img=Plus]Halved maintenance cost.[/img]
 	[img=Minus]Increases mass by 400%, but increases turn thrust by only 200%.[/img]
@@ -549,8 +549,7 @@ S_COLOSSUS_HULL_DESC: <<
 	An exceptionally large and resilient hull architecture capable of going toe to toe with even the largest of foes.
 
 	[img=MenuIcons::3;22]Increases hex limit by 300%.[/img]
-	[img=Plus]Doubles all health and damage resistance.[/img]
-	[img=Plus]Triples shield capacity.[/img]
+	[img=Plus]Doubles all health, shielding, and damage resistance.[/img]
 	[img=Plus]Reduces maintenance cost by 25%.[/img]
 	[img=Plus]Triples weapon damage, halves projectile spread, and increases range by 50%.[/img]
 	[img=Minus]Increases build and labor costs by 50%.[/img]
@@ -566,8 +565,7 @@ S_COLOSSUS_HULL_DESC_OLD: <<
 	An exceptionally large and resilient hull architecture capable of going toe to toe with even the largest of foes. [b][color=#a00]This is an older variant of the Colossus Architecture that has been removed from the game and can no longer be used; it remains only for the purposes of letting you review your old designs.[/color][/b]
 
 	[img=MenuIcons::3;22]Increases hex limit by 900%.[/img]
-	[img=Plus]Doubles all health and damage resistance.[/img]
-	[img=Plus]Triples shield capacity.[/img]
+	[img=Plus]Doubles all health, shielding, and damage resistance.[/img]
 	[img=Plus]Reduces maintenance cost by 25%.[/img]
 	[img=Plus]Triples weapon damage, halves projectile spread, and increases range by 50%.[/img]
 	[img=Minus]Increases build and labor costs by 50%.[/img]
@@ -583,7 +581,7 @@ S_SUPERSTRUCTURE_HULL_DESC: <<
 
 	[img=Plus]Build and labor costs are decreased by 66%.[/img]
 	[img=Plus]Maintenance costs are decreased by 50%.[/img]
-	[img=Minus]All health and damage resistance is reduced by 25%.[/img]
+	[img=Minus]All health and damage resistance is reduced by 25%. (Unlike other similar effects, this does not affect shielding.)[/img]
 	[img=Minus]Hexes reduced to 25% health or less cannot be repaired without refitting at an object with Labor.[/img]
 	[img=Minus]Building the ship requires Ore equivalent to 75% of its build and labor costs, and 37.5% of its maintenance cost.[/img]
 	[img=MenuIcons::3;22][color=#aaa][i]Cannot be used on a ship with Titan Architecture.[/i][/color][/img]
@@ -594,9 +592,8 @@ S_CARRIER_HULL_DESC: <<
 	A hull architecture specifically designed to control and maintain a large fleet of support ships.
 
 	[img=Plus]Doubles any support capacity.[/img]
-	[img=Plus]Increases all health and shield capacity by 50%.[/img]
-	[img=Plus]Increases supply capacity by 400%.[/img]
-	[img=Plus]Doubles repair and shield regeneration rates.[/img]
+	[img=Plus]Doubles all health and shield capacity[/img]
+	[img=Plus]Increases supply capacity by 550%.[/img]
 	[img=Minus]Weapon damage is reduced by 40%.[/img]
 	[img=Minus]Build, labor and maintenance costs are increased by 30%.[/img]
 	[img=Minus]Reduces the hex limit by 26 hexes, without a corresponding increase in hex size.[/img]
@@ -662,9 +659,8 @@ S_DESTROYER_HULL: Destroyer Architecture
 S_DESTROYER_HULL_DESC: <<
 	A hull architecture optimized to fit many different weapon turrets at the cost of limiting its support contingent.
 
-	[img=Plus]Increases health by 200%.[/img]
-	[img=Plus]Increases armor resistance by 50%.[/img]
-	[img=Plus]Increases shield capacity by 350%.[/img]
+	[img=Plus]Increases health and shield capacity by 200%.[/img]
+	[img=Plus]Increases armor and shield resistances by 50%.[/img]
 	[img=Plus]Decreases mass by 30%. Also increases hyperdrive speed and jump drive safe range by the same percentage.[/img]
 	[img=Plus]Increases the hex limit by 30 hexes, without a corresponding decrease in hex size.[/img]
 	[img=Minus]Support capacity is decreased by 40%.[/img]
@@ -929,9 +925,8 @@ S_WAR_HARVESTER_DESC: <<
 
 	[img=Plus]Can prepare planets for Harvesting by Ringworlds.[/img]
 	[img=Plus]Can use the Planet Devourer subsystem to mine Barren planets for Ore.[/img]
-	[img=Plus]All hex health is tripled.[/img]
+	[img=Plus]All hex health and shield capacity is tripled.[/img]
 	[img=Plus]All damage resistance is doubled.[/img]
-	[img=Plus]Shield capacity is tripled.[/img]
 	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
 	[img=Plus]Slipstream costs are significantly reduced.[/img]
 	[img=Plus]Cargo storage capacity is multiplied tenfold.[/img]
@@ -947,7 +942,7 @@ S_SHADOWPORT_HULL_DESC: <<
 	[img=Plus]Counts as a planet for victory conditions.[/img]
 	[img=Plus]Can unpack into a stationary base for significant economic and defensive bonuses, such as the ability to construct orbitals and asteroid mines, §400k income, and doubled health.[/img]
 	[img=Plus]All hex health and shield capacity is doubled (for a total of quadruple health when stationary).[/img]
-	[img=Plus]All damage resistance is increased by 50%.[/img]
+	[img=Plus]All damage resistance (including shields) is increased by 50%.[/img]
 	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
 	[img=Plus]Weapon range, firing arcs, and accuracy are increased to that of a station.[/img]
 	[img=Minus]Mass is doubled.[/img]
