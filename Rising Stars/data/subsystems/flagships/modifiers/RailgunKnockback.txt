@@ -1,5 +1,5 @@
 Template: tag/IsRailgun, var/Impulse
-	Module: ProjectileImpulse
+	Module: RailgunKnockback
 		Name: #S_RAILGUN_KNOCKBACK
 		Description: #S_RAILGUN_KNOCKBACK_DESC
 		Color: #238f59
