@@ -30,7 +30,7 @@ Subsystem: RailgunBattery
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
 	Modifier: AddRailgunKnockback(Amount)
-		Impulse := Impulse + Amount * Size
+		Impulse := Impulse + Amount * Size * (6 + 1 * $NEW_MOVEMENT)
 
 	Requires:
 		Command = 1
