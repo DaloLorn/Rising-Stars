@@ -953,10 +953,18 @@ class GuiBlueprint : BaseGuiElement {
 			}
 
 			//Draw selection
-			else if(displayHovered) {
-				material::SubsystemCursor.draw(recti_centered(
-					getHexPos(vec2u(hexHovered), true) + start + (hexSize / 2),
-					vec2i(hexSize.x * WALL_RATIO.x, hexSize.y * WALL_RATIO.y)));
+			else if(displayHovered && design !is null) {
+				const Subsystem@ sys = design.subsystem(vec2u(hexHovered));
+				// Not sure how this can be the case when the design said it's a valid hex,
+				// but somehow it happened in testing. --Dalo
+				if(sys !is null) {
+					for(uint i = 0; i < sys.hexCount; i++) {
+						const vec2u hex = sys.hexagon(i);
+						material::SubsystemCursor.draw(recti_centered(
+							getHexPos(hex, true) + start + (hexSize / 2),
+							vec2i(hexSize.x * WALL_RATIO.x, hexSize.y * WALL_RATIO.y)));
+					}
+				}
 			}
 
 			//Draw firing arcs when hovering turrets
