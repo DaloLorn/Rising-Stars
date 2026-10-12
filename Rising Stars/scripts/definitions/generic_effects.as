@@ -5451,7 +5451,7 @@ class ExperienceOverTime : GenericEffect {
 			return;
 		}
 
-		timer = 0.0;
+		timer -= 10.0;
 		data.store(timer);
 		obj.addExperience(10.0 * amount.decimal);
 	}
